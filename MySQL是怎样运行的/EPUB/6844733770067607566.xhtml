@@ -1,0 +1,2283 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>后悔了怎么办 —— undo 日志 (上)</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>后悔了怎么办 —— undo 日志 (上)</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1 class="heading">
+ undo日志（上）
+</h1>
+<p>
+ 标签： MySQL是怎样运行的
+</p>
+<hr/>
+<h2 class="heading">
+ 事务回滚的需求
+</h2>
+<p>
+ 我们说过
+ <code>
+  事务
+ </code>
+ 需要保证
+ <code>
+  原子性
+ </code>
+ ，也就是事务中的操作要么全部完成，要么什么也不做。但是偏偏有时候事务执行到一半会出现一些情况，比如：
+</p>
+<ul>
+ <li>
+  <p>
+   情况一：事务执行过程中可能遇到各种错误，比如服务器本身的错误，操作系统错误，甚至是突然断电导致的错误。
+  </p>
+ </li>
+ <li>
+  <p>
+   情况二：程序员可以在事务执行过程中手动输入
+   <code>
+    ROLLBACK
+   </code>
+   语句结束当前的事务的执行。
+  </p>
+ </li>
+</ul>
+<p>
+ 这两种情况都会导致事务执行到一半就结束，但是事务执行过程中可能已经修改了很多东西，为了保证事务的原子性，我们需要把东西改回原先的样子，这个过程就称之为
+ <code>
+  回滚
+ </code>
+ （英文名：
+ <code>
+  rollback
+ </code>
+ ），这样就可以造成一个假象：
+ <span style="color:red">
+  这个事务看起来什么都没做
+ </span>
+ ，所以符合
+ <code>
+  原子性
+ </code>
+ 要求。
+</p>
+<p>
+ 小时候我非常痴迷于象棋，总是想找厉害的大人下棋，赢棋是不可能赢棋的，这辈子都不可能赢棋的，又不想认输，只能偷偷的悔棋才能勉强玩的下去。
+ <code>
+  悔棋
+ </code>
+ 就是一种非常典型的
+ <code>
+  回滚
+ </code>
+ 操作，比如棋子往前走两步，
+ <code>
+  悔棋
+ </code>
+ 对应的操作就是向后走两步；比如棋子往左走一步，
+ <code>
+  悔棋
+ </code>
+ 对应的操作就是向右走一步。数据库中的回滚跟
+ <code>
+  悔棋
+ </code>
+ 差不多，你插入了一条记录，
+ <code>
+  回滚
+ </code>
+ 操作对应的就是把这条记录删除掉；你更新了一条记录，
+ <code>
+  回滚
+ </code>
+ 操作对应的就是把该记录更新为旧值；你删除了一条记录，
+ <code>
+  回滚
+ </code>
+ 操作对应的自然就是把该记录再插进去。说的貌似很简单的样子[手动偷笑]。
+</p>
+<p>
+ 从上边的描述中我们已经能隐约感觉到，每当我们要对一条记录做改动时（这里的
+ <code>
+  改动
+ </code>
+ 可以指
+ <code>
+  INSERT
+ </code>
+ 、
+ <code>
+  DELETE
+ </code>
+ 、
+ <code>
+  UPDATE
+ </code>
+ ），都需要留一手 ——
+ <span style="color:red">
+  把回滚时所需的东西都给记下来
+ </span>
+ 。比方说：
+</p>
+<ul>
+ <li>
+  <p>
+   你插入一条记录时，至少要把这条记录的主键值记下来，之后回滚的时候只需要把这个主键值对应的记录删掉就好了。
+  </p>
+ </li>
+ <li>
+  <p>
+   你删除了一条记录，至少要把这条记录中的内容都记下来，这样之后回滚时再把由这些内容组成的记录插入到表中就好了。
+  </p>
+ </li>
+ <li>
+  <p>
+   你修改了一条记录，至少要把修改这条记录前的旧值都记录下来，这样之后回滚时再把这条记录更新为旧值就好了。
+  </p>
+ </li>
+</ul>
+<p>
+ 设计数据库的大叔把这些为了回滚而记录的这些东东称之为撤销日志，英文名为
+ <code>
+  undo log
+ </code>
+ ，我们也可以土洋结合，称之为
+ <code>
+  undo日志
+ </code>
+ 。这里需要注意的一点是，由于查询操作（
+ <code>
+  SELECT
+ </code>
+ ）并不会修改任何用户记录，所以在查询操作执行时，并不需要记录相应的
+ <code>
+  undo日志
+ </code>
+ 。在真实的
+ <code>
+  InnoDB
+ </code>
+ 中，
+ <code>
+  undo日志
+ </code>
+ 其实并不像我们上边所说的那么简单，不同类型的操作产生的
+ <code>
+  undo日志
+ </code>
+ 的格式也是不同的，不过先暂时把这些容易让人脑子糊的具体细节放一放，我们先回过头来看看
+ <code>
+  事务id
+ </code>
+ 是个神马玩意儿。
+</p>
+<h2 class="heading">
+ 事务id
+</h2>
+<h3 class="heading">
+ 给事务分配id的时机
+</h3>
+<p>
+ 我们前边在唠叨
+ <code>
+  事务简介
+ </code>
+ 时说过，一个事务可以是一个只读事务，或者是一个读写事务：
+</p>
+<ul>
+ <li>
+  <p>
+   我们可以通过
+   <code>
+    START TRANSACTION READ ONLY
+   </code>
+   语句开启一个只读事务。
+  </p>
+  <p>
+   在只读事务中不可以对普通的表（其他事务也能访问到的表）进行增、删、改操作，但可以对临时表做增、删、改操作。
+  </p>
+ </li>
+ <li>
+  <p>
+   我们可以通过
+   <code>
+    START TRANSACTION READ WRITE
+   </code>
+   语句开启一个读写事务，或者使用
+   <code>
+    BEGIN
+   </code>
+   、
+   <code>
+    START TRANSACTION
+   </code>
+   语句开启的事务默认也算是读写事务。
+  </p>
+  <p>
+   在读写事务中可以对表执行增删改查操作。
+  </p>
+ </li>
+</ul>
+<p>
+ 如果某个事务执行过程中对某个表执行了增、删、改操作，那么
+ <code>
+  InnoDB
+ </code>
+ 存储引擎就会给它分配一个独一无二的
+ <code>
+  事务id
+ </code>
+ ，分配方式如下：
+</p>
+<ul>
+ <li>
+  <p>
+   对于只读事务来说，只有在它第一次对某个用户创建的临时表执行增、删、改操作时才会为这个事务分配一个
+   <code>
+    事务id
+   </code>
+   ，否则的话是不分配
+   <code>
+    事务id
+   </code>
+   的。
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+我们前边说过对某个查询语句执行EXPLAIN分析它的查询计划时，有时候在Extra列会看到Using temporary的提示，这个表明在执行该查询语句时会用到内部临时表。这个所谓的内部临时表和我们手动用CREATE TEMPORARY TABLE创建的用户临时表并不一样，在事务回滚时并不需要把执行SELECT语句过程中用到的内部临时表也回滚，在执行SELECT语句用到内部临时表时并不会为它分配事务id。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   对于读写事务来说，只有在它第一次对某个表（包括用户创建的临时表）执行增、删、改操作时才会为这个事务分配一个
+   <code>
+    事务id
+   </code>
+   ，否则的话也是不分配
+   <code>
+    事务id
+   </code>
+   的。
+  </p>
+  <p>
+   有的时候虽然我们开启了一个读写事务，但是在这个事务中全是查询语句，并没有执行增、删、改的语句，那也就意味着这个事务并不会被分配一个
+   <code>
+    事务id
+   </code>
+   。
+  </p>
+ </li>
+</ul>
+<p>
+ 说了半天，
+ <code>
+  事务id
+ </code>
+ 有啥子用？这个先保密哈，后边会一步步的详细唠叨。现在只要知道只有在事务对表中的记录做改动时才会为这个事务分配一个唯一的
+ <code>
+  事务id
+ </code>
+ 。
+</p>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+上边描述的事务id分配策略是针对MySQL 5.7来说的，前边的版本的分配方式可能不同～
+ </p>
+</blockquote>
+<h3 class="heading">
+ 事务id是怎么生成的
+</h3>
+<p>
+ 这个
+ <code>
+  事务id
+ </code>
+ 本质上就是一个数字，它的分配策略和我们前边提到的对隐藏列
+ <code>
+  row_id
+ </code>
+ （当用户没有为表创建主键和
+ <code>
+  UNIQUE
+ </code>
+ 键时
+ <code>
+  InnoDB
+ </code>
+ 自动创建的列）的分配策略大抵相同，具体策略如下：
+</p>
+<ul>
+ <li>
+  <p>
+   服务器会在内存中维护一个全局变量，每当需要为某个事务分配一个
+   <code>
+    事务id
+   </code>
+   时，就会把该变量的值当作
+   <code>
+    事务id
+   </code>
+   分配给该事务，并且把该变量自增1。
+  </p>
+ </li>
+ <li>
+  <p>
+   每当这个变量的值为
+   <code>
+    256
+   </code>
+   的倍数时，就会将该变量的值刷新到系统表空间的页号为
+   <code>
+    5
+   </code>
+   的页面中一个称之为
+   <code>
+    Max Trx ID
+   </code>
+   的属性处，这个属性占用
+   <code>
+    8
+   </code>
+   个字节的存储空间。
+  </p>
+ </li>
+ <li>
+  <p>
+   当系统下一次重新启动时，会将上边提到的
+   <code>
+    Max Trx ID
+   </code>
+   属性加载到内存中，将该值加上256之后赋值给我们前边提到的全局变量（因为在上次关机时该全局变量的值可能大于
+   <code>
+    Max Trx ID
+   </code>
+   属性值）。
+  </p>
+ </li>
+</ul>
+<p>
+ 这样就可以保证整个系统中分配的
+ <code>
+  事务id
+ </code>
+ 值是一个递增的数字。先被分配
+ <code>
+  id
+ </code>
+ 的事务得到的是较小的
+ <code>
+  事务id
+ </code>
+ ，后被分配
+ <code>
+  id
+ </code>
+ 的事务得到的是较大的
+ <code>
+  事务id
+ </code>
+ 。
+</p>
+<h3 class="heading">
+ trx_id隐藏列
+</h3>
+<p>
+ 我们前边唠叨
+ <code>
+  InnoDB
+ </code>
+ 记录行格式的时候重点强调过：
+ <span style="color:red">
+  聚簇索引的记录除了会保存完整的用户数据以外，而且还会自动添加名为trx_id、roll_pointer的隐藏列，如果用户没有在表中定义主键以及UNIQUE键，还会自动添加一个名为row_id的隐藏列
+ </span>
+ 。所以一条记录在页面中的真实结构看起来就是这样的：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d62h05ffsum114cn05koa1igbp.png-45.1kB" src="39ae2c36-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 其中的
+ <code>
+  trx_id
+ </code>
+ 列其实还蛮好理解的，就是某个对这个聚簇索引记录做改动的语句所在的事务对应的
+ <code>
+  事务id
+ </code>
+ 而已（此处的改动可以是
+ <code>
+  INSERT
+ </code>
+ 、
+ <code>
+  DELETE
+ </code>
+ 、
+ <code>
+  UPDATE
+ </code>
+ 操作）。至于
+ <code>
+  roll_pointer
+ </code>
+ 隐藏列我们后边分析～
+</p>
+<h2 class="heading">
+ undo日志的格式
+</h2>
+<p>
+ 为了实现事务的
+ <code>
+  原子性
+ </code>
+ ，
+ <code>
+  InnoDB
+ </code>
+ 存储引擎在实际进行增、删、改一条记录时，都需要
+ <span style="color:red">
+  先
+ </span>
+ 把对应的
+ <code>
+  undo日志
+ </code>
+ 记下来。一般每对一条记录做一次改动，就对应着一条
+ <code>
+  undo日志
+ </code>
+ ，但在某些更新记录的操作中，也可能会对应着2条
+ <code>
+  undo日志
+ </code>
+ ，这个我们后边会仔细唠叨。一个事务在执行过程中可能新增、删除、更新若干条记录，也就是说需要记录很多条对应的
+ <code>
+  undo日志
+ </code>
+ ，这些
+ <code>
+  undo日志
+ </code>
+ 会被从
+ <code>
+  0
+ </code>
+ 开始编号，也就是说根据生成的顺序分别被称为
+ <code>
+  第0号undo日志
+ </code>
+ 、
+ <code>
+  第1号undo日志
+ </code>
+ 、...、
+ <code>
+  第n号undo日志
+ </code>
+ 等，这个编号也被称之为
+ <code>
+  undo no
+ </code>
+ 。
+</p>
+<p>
+ 这些
+ <code>
+  undo日志
+ </code>
+ 是被记录到类型为
+ <code>
+  FIL_PAGE_UNDO_LOG
+ </code>
+ （对应的十六进制是
+ <code>
+  0x0002
+ </code>
+ ，忘记了页面类型是个啥的同学需要回过头再看看前边的章节）的页面中。这些页面可以从系统表空间中分配，也可以从一种专门存放
+ <code>
+  undo日志
+ </code>
+ 的表空间，也就是所谓的
+ <code>
+  undo tablespace
+ </code>
+ 中分配。不过关于如何分配存储
+ <code>
+  undo日志
+ </code>
+ 的页面这个事情我们稍后再说，现在先来看看不同操作都会产生什么样子的
+ <code>
+  undo日志
+ </code>
+ 吧～ 为了故事的顺利发展，我们先来创建一个名为
+ <code>
+  undo_demo
+ </code>
+ 的表：
+</p>
+<pre><code class="hljs bash" lang="bash">CREATE TABLE undo_demo (
+    id INT NOT NULL,
+    key1 VARCHAR(100),
+    col VARCHAR(100),
+    PRIMARY KEY (id),
+    KEY idx_key1 (key1)
+)Engine=InnoDB CHARSET=utf8;
+</code></pre>
+<p>
+ 这个表中有3个列，其中
+ <code>
+  id
+ </code>
+ 列是主键，我们为
+ <code>
+  key1
+ </code>
+ 列建立了一个二级索引，
+ <code>
+  col
+ </code>
+ 列是一个普通的列。我们前边介绍
+ <code>
+  InnoDB
+ </code>
+ 的数据字典时说过，每个表都会被分配一个唯一的
+ <code>
+  table id
+ </code>
+ ，我们可以通过系统数据库
+ <code>
+  information_schema
+ </code>
+ 中的
+ <code>
+  innodb_sys_tables
+ </code>
+ 表来查看某个表对应的
+ <code>
+  table id
+ </code>
+ 是什么，现在我们查看一下
+ <code>
+  undo_demo
+ </code>
+ 对应的
+ <code>
+  table id
+ </code>
+ 是多少：
+</p>
+<pre><code class="hljs bash" lang="bash">mysql&gt; SELECT * FROM information_schema.innodb_sys_tables WHERE name = <span class="hljs-string">'xiaohaizi/undo_demo'</span>;
++----------+---------------------+------+--------+-------+-------------+------------+---------------+------------+
+| TABLE_ID | NAME                | FLAG | N_COLS | SPACE | FILE_FORMAT | ROW_FORMAT | ZIP_PAGE_SIZE | SPACE_TYPE |
++----------+---------------------+------+--------+-------+-------------+------------+---------------+------------+
+|      138 | xiaohaizi/undo_demo |   33 |      6 |   482 | Barracuda   | Dynamic    |             0 | Single     |
++----------+---------------------+------+--------+-------+-------------+------------+---------------+------------+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.01 sec)
+</code></pre>
+<p>
+ 从查询结果可以看出，
+ <code>
+  undo_demo
+ </code>
+ 表对应的
+ <code>
+  table id
+ </code>
+ 为
+ <code>
+  138
+ </code>
+ ，先把这个值记住，我们后边有用。
+</p>
+<h3 class="heading">
+ INSERT操作对应的undo日志
+</h3>
+<p>
+ 我们前边说过，当我们向表中插入一条记录时会有
+ <code>
+  乐观插入
+ </code>
+ 和
+ <code>
+  悲观插入
+ </code>
+ 的区分，但是不管怎么插入，最终导致的结果就是这条记录被放到了一个数据页中。如果希望回滚这个插入操作，那么把这条记录删除就好了，也就是说在写对应的
+ <code>
+  undo
+ </code>
+ 日志时，主要是把这条记录的主键信息记上。所以设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔设计了一个类型为
+ <code>
+  TRX_UNDO_INSERT_REC
+ </code>
+ 的
+ <code>
+  undo日志
+ </code>
+ ，它的完整结构如下图所示：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d65eln739ukbei9pgid81pr57o.png-112.4kB" src="39bfb1e0-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 根据示意图我们强调几点：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    undo no
+   </code>
+   在一个事务中是从
+   <code>
+    0
+   </code>
+   开始递增的，也就是说只要事务没提交，每生成一条
+   <code>
+    undo日志
+   </code>
+   ，那么该条日志的
+   <code>
+    undo no
+   </code>
+   就增1。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果记录中的主键只包含一个列，那么在类型为
+   <code>
+    TRX_UNDO_INSERT_REC
+   </code>
+   的
+   <code>
+    undo日志
+   </code>
+   中只需要把该列占用的存储空间大小和真实值记录下来，如果记录中的主键包含多个列，那么每个列占用的存储空间大小和对应的真实值都需要记录下来（图中的
+   <code>
+    len
+   </code>
+   就代表列占用的存储空间大小，
+   <code>
+    value
+   </code>
+   就代表列的真实值）。
+  </p>
+ </li>
+</ul>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+当我们向某个表中插入一条记录时，实际上需要向聚簇索引和所有的二级索引都插入一条记录。不过记录undo日志时，我们只需要考虑向聚簇索引插入记录时的情况就好了，因为其实聚簇索引记录和二级索引记录是一一对应的，我们在回滚插入操作时，只需要知道这条记录的主键信息，然后根据主键信息做对应的删除操作，做删除操作时就会顺带着把所有二级索引中相应的记录也删除掉。后边说到的DELETE操作和UPDATE操作对应的undo日志也都是针对聚簇索引记录而言的，我们之后就不强调了。
+ </p>
+</blockquote>
+<p>
+ 现在我们向
+ <code>
+  undo_demo
+ </code>
+ 中插入两条记录：
+</p>
+<pre><code class="hljs bash" lang="bash">BEGIN;  <span class="hljs-comment"># 显式开启一个事务，假设该事务的id为100</span>
+
+<span class="hljs-comment"># 插入两条记录</span>
+INSERT INTO undo_demo(id, key1, col) 
+    VALUES (1, <span class="hljs-string">'AWM'</span>, <span class="hljs-string">'狙击枪'</span>), (2, <span class="hljs-string">'M416'</span>, <span class="hljs-string">'步枪'</span>);
+</code></pre>
+<p>
+ 因为记录的主键只包含一个
+ <code>
+  id
+ </code>
+ 列，所以我们在对应的
+ <code>
+  undo日志
+ </code>
+ 中只需要将待插入记录的
+ <code>
+  id
+ </code>
+ 列占用的存储空间长度（
+ <code>
+  id
+ </code>
+ 列的类型为
+ <code>
+  INT
+ </code>
+ ，
+ <code>
+  INT
+ </code>
+ 类型占用的存储空间长度为
+ <code>
+  4
+ </code>
+ 个字节）和真实值记录下来。本例中插入了两条记录，所以会产生两条类型为
+ <code>
+  TRX_UNDO_INSERT_REC
+ </code>
+ 的
+ <code>
+  undo日志
+ </code>
+ :
+</p>
+<ul>
+ <li>
+  <p>
+   第一条
+   <code>
+    undo日志
+   </code>
+   的
+   <code>
+    undo no
+   </code>
+   为
+   <code>
+    0
+   </code>
+   ，记录主键占用的存储空间长度为
+   <code>
+    4
+   </code>
+   ，真实值为
+   <code>
+    1
+   </code>
+   。画一个示意图就是这样：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1d658eq7rokf19jffpt20010b63t.png-52.6kB" src="39d240ee-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+ </li>
+ <li>
+  <p>
+   第二条
+   <code>
+    undo日志
+   </code>
+   的
+   <code>
+    undo no
+   </code>
+   为
+   <code>
+    1
+   </code>
+   ，记录主键占用的存储空间长度为
+   <code>
+    4
+   </code>
+   ，真实值为
+   <code>
+    2
+   </code>
+   。画一个示意图就是这样（与第一条
+   <code>
+    undo日志
+   </code>
+   对比，
+   <code>
+    undo no
+   </code>
+   和主键各列信息有不同）：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1d658gaqa1n1g5b7166lden5je4q.png-52.5kB" src="39e6faca-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+ </li>
+</ul>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+为了最大限度的节省undo日志占用的存储空间，和我们前边说过的redo日志类似，设计InnoDB的大叔会给undo日志中的某些属性进行压缩处理，具体的压缩细节我们就不唠叨了。
+ </p>
+</blockquote>
+<h4 class="heading">
+ roll_pointer隐藏列的含义
+</h4>
+<p>
+ 是时候揭开
+ <code>
+  roll_pointer
+ </code>
+ 的真实面纱了，这个占用
+ <code>
+  7
+ </code>
+ 个字节的字段其实一点都不神秘，本质上就是一个指向记录对应的
+ <code>
+  undo日志
+ </code>
+ 的一个指针。比方说我们上边向
+ <code>
+  undo_demo
+ </code>
+ 表里插入了2条记录，每条记录都有与其对应的一条
+ <code>
+  undo日志
+ </code>
+ 。记录被存储到了类型为
+ <code>
+  FIL_PAGE_INDEX
+ </code>
+ 的页面中（就是我们前边一直所说的
+ <code>
+  数据页
+ </code>
+ ），
+ <code>
+  undo日志
+ </code>
+ 被存放到了类型为
+ <code>
+  FIL_PAGE_UNDO_LOG
+ </code>
+ 的页面中。效果如图所示：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d65h98l3qve1ekb13epv4f37685.png-70.6kB" src="39f4b6d8-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 从图中也可以更直观的看出来，
+ <code>
+  roll_pointer
+ </code>
+ <span style="color:red">
+  本质就是一个指针，指向记录对应的undo日志
+ </span>
+ 。不过这
+ <code>
+  7
+ </code>
+ 个字节的
+ <code>
+  roll_pointer
+ </code>
+ 的每一个字节具体的含义我们后边唠叨完如何分配存储
+ <code>
+  undo
+ </code>
+ 日志的页面之后再具体说哈～
+</p>
+<h3 class="heading">
+ DELETE操作对应的undo日志
+</h3>
+<p>
+ 我们知道插入到页面中的记录会根据记录头信息中的
+ <code>
+  next_record
+ </code>
+ 属性组成一个单向链表，我们把这个链表称之为
+ <code>
+  正常记录链表
+ </code>
+ ；我们在前边唠叨数据页结构的时候说过，被删除的记录其实也会根据记录头信息中的
+ <code>
+  next_record
+ </code>
+ 属性组成一个链表，只不过这个链表中的记录占用的存储空间可以被重新利用，所以也称这个链表为
+ <code>
+  垃圾链表
+ </code>
+ 。
+ <code>
+  Page Header
+ </code>
+ 部分有一个称之为
+ <code>
+  PAGE_FREE
+ </code>
+ 的属性，它指向由被删除记录组成的垃圾链表中的头节点。为了故事的顺利发展，我们先画一个图，假设此刻某个页面中的记录分布情况是这样的（这个不是
+ <code>
+  undo_demo
+ </code>
+ 表中的记录，只是我们随便举的一个例子）：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d6abjg9n1kocq5d10j6250164v9.png-62.8kB" src="3a07433e-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 为了突出主题，在这个简化版的示意图中，我们只把记录的
+ <code>
+  delete_mask
+ </code>
+ 标志位展示了出来。从图中可以看出，
+ <code>
+  正常记录链表
+ </code>
+ 中包含了3条正常记录，
+ <code>
+  垃圾链表
+ </code>
+ 里包含了2条已删除记录，在
+ <code>
+  垃圾链表
+ </code>
+ 中的这些记录占用的存储空间可以被重新利用。页面的
+ <code>
+  Page Header
+ </code>
+ 部分的
+ <code>
+  PAGE_FREE
+ </code>
+ 属性的值代表指向
+ <code>
+  垃圾链表
+ </code>
+ 头节点的指针。假设现在我们准备使用
+ <code>
+  DELETE
+ </code>
+ 语句把
+ <code>
+  正常记录链表
+ </code>
+ 中的最后一条记录给删除掉，其实这个删除的过程需要经历两个阶段：
+</p>
+<ul>
+ <li>
+  <p>
+   阶段一：仅仅将记录的
+   <code>
+    delete_mask
+   </code>
+   标识位设置为
+   <code>
+    1
+   </code>
+   ，其他的不做修改（其实会修改记录的
+   <code>
+    trx_id
+   </code>
+   、
+   <code>
+    roll_pointer
+   </code>
+   这些隐藏列的值）。设计
+   <code>
+    InnoDB
+   </code>
+   的大叔把这个阶段称之为
+   <code>
+    delete mark
+   </code>
+   。
+  </p>
+  <p>
+   把这个过程画下来就是这样：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1d78ts1ajulu1v9o11i2g619s3p.png-64.1kB" src="3a1cd29e-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+  <p>
+   可以看到，
+   <code>
+    正常记录链表
+   </code>
+   中的最后一条记录的
+   <code>
+    delete_mask
+   </code>
+   值被设置为
+   <code>
+    1
+   </code>
+   ，但是并没有被加入到
+   <code>
+    垃圾链表
+   </code>
+   。也就是此时记录处于一个
+   <code>
+    中间状态
+   </code>
+   ，跟猪八戒照镜子——里外不是人似的。在删除语句所在的事务提交之前，被删除的记录一直都处于这种所谓的
+   <code>
+    中间状态
+   </code>
+   。
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+为啥会有这种奇怪的中间状态呢？其实主要是为了实现一个称之为MVCC的功能，哈哈，稍后再介绍。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   阶段二：
+   <span style="color:red">
+    当该删除语句所在的事务提交之后
+   </span>
+   ，会有
+   <span style="color:red">
+    专门的线程后
+   </span>
+   来真正的把记录删除掉。所谓真正的删除就是把该记录从
+   <code>
+    正常记录链表
+   </code>
+   中移除，并且加入到
+   <code>
+    垃圾链表
+   </code>
+   中，然后还要调整一些页面的其他信息，比如页面中的用户记录数量
+   <code>
+    PAGE_N_RECS
+   </code>
+   、上次插入记录的位置
+   <code>
+    PAGE_LAST_INSERT
+   </code>
+   、垃圾链表头节点的指针
+   <code>
+    PAGE_FREE
+   </code>
+   、页面中可重用的字节数量
+   <code>
+    PAGE_GARBAGE
+   </code>
+   、还有页目录的一些信息等等。设计
+   <code>
+    InnoDB
+   </code>
+   的大叔把这个阶段称之为
+   <code>
+    purge
+   </code>
+   。
+  </p>
+  <p>
+   把
+   <code>
+    阶段二
+   </code>
+   执行完了，这条记录就算是真正的被删除掉了。这条已删除记录占用的存储空间也可以被重新利用了。画下来就是这样：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1de3lkv7bkem1n1717tj1jbq669p.png-71.5kB" src="3a2f5b30-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+  <p>
+   对照着图我们还要注意一点，将被删除记录加入到
+   <code>
+    垃圾链表
+   </code>
+   时，实际上加入到链表的头节点处，会跟着修改
+   <code>
+    PAGE_FREE
+   </code>
+   属性的值。
+  </p>
+ </li>
+</ul>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+页面的Page Header部分有一个PAGE_GARBAGE属性，该属性记录着当前页面中可重用存储空间占用的总字节数。每当有已删除记录被加入到垃圾链表后，都会把这个PAGE_GARBAGE属性的值加上该已删除记录占用的存储空间大小。PAGE_FREE指向垃圾链表的头节点，之后每当新插入记录时，首先判断PAGE_FREE指向的头节点代表的已删除记录占用的存储空间是否足够容纳这条新插入的记录，如果不可以容纳，就直接向页面中申请新的空间来存储这条记录（是的，你没看错，并不会尝试遍历整个垃圾链表，找到一个可以容纳新记录的节点）。如果可以容纳，那么直接重用这条已删除记录的存储空间，并且把PAGE_FREE指向垃圾链表中的下一条已删除记录。但是这里有一个问题，如果新插入的那条记录占用的存储空间大小小于垃圾链表的头节点占用的存储空间大小，那就意味头节点对应的记录占用的存储空间里有一部分空间用不到，这部分空间就被称之为碎片空间。那这些碎片空间岂不是永远都用不到了么？其实也不是，这些碎片空间占用的存储空间大小会被统计到PAGE_GARBAGE属性中，这些碎片空间在整个页面快使用完前并不会被重新利用，不过当页面快满时，如果再插入一条记录，此时页面中并不能分配一条完整记录的空间，这时候会首先看一看PAGE_GARBAGE的空间和剩余可利用的空间加起来是不是可以容纳下这条记录，如果可以的话，InnoDB会尝试重新组织页内的记录，重新组织的过程就是先开辟一个临时页面，把页面内的记录依次插入一遍，因为依次插入时并不会产生碎片，之后再把临时页面的内容复制到本页面，这样就可以把那些碎片空间都解放出来（很显然重新组织页面内的记录比较耗费性能）。
+ </p>
+</blockquote>
+<p>
+ 从上边的描述中我们也可以看出来，在删除语句所在的事务提交之前，只会经历
+ <code>
+  阶段一
+ </code>
+ ，也就是
+ <code>
+  delete mark
+ </code>
+ 阶段（提交之后我们就不用回滚了，所以只需考虑对删除操作的
+ <code>
+  阶段一
+ </code>
+ 做的影响进行回滚）。设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔为此设计了一种称之为
+ <code>
+  TRX_UNDO_DEL_MARK_REC
+ </code>
+ 类型的
+ <code>
+  undo日志
+ </code>
+ ，它的完整结构如下图所示：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d6avo9eb10dd26lb9jo2o10hu9.png-134.6kB" src="3a418e18-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 额滴个神呐，这个里边的属性也太多了点儿吧～ （其实大部分属性的意思我们上边已经介绍过了） 是的，的确有点多，不过大家千万不要在意，如果记不住千万不要勉强自己，我这里把它们都列出来让大家混个脸熟而已。劳烦大家先克服一下密集恐急症，再抬头大致看一遍上边的这个类型为
+ <code>
+  TRX_UNDO_DEL_MARK_REC
+ </code>
+ 的
+ <code>
+  undo日志
+ </code>
+ 中的属性，特别注意一下这几点：
+</p>
+<ul>
+ <li>
+  <p>
+   在对一条记录进行
+   <code>
+    delete mark
+   </code>
+   操作前，需要把该记录的旧的
+   <code>
+    trx_id
+   </code>
+   和
+   <code>
+    roll_pointer
+   </code>
+   隐藏列的值都给记到对应的
+   <code>
+    undo日志
+   </code>
+   中来，就是我们图中显示的
+   <code>
+    old trx_id
+   </code>
+   和
+   <code>
+    old roll_pointer
+   </code>
+   属性。这样有一个好处，那就是可以通过
+   <code>
+    undo日志
+   </code>
+   的
+   <code>
+    old roll_pointer
+   </code>
+   找到记录在修改之前对应的
+   <code>
+    undo
+   </code>
+   日志。比方说在一个事务中，我们先插入了一条记录，然后又执行对该记录的删除操作，这个过程的示意图就是这样：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1d6cg2ocf8ctpot13121pb7a9tp.png-36.4kB" src="3a5857ba-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+  <p>
+   从图中可以看出来，执行完
+   <code>
+    delete mark
+   </code>
+   操作后，它对应的
+   <code>
+    undo
+   </code>
+   日志和
+   <code>
+    INSERT
+   </code>
+   操作对应的
+   <code>
+    undo
+   </code>
+   日志就串成了一个链表。这个很有意思啊，这个链表就称之为
+   <code>
+    版本链
+   </code>
+   ，现在貌似看不出这个
+   <code>
+    版本链
+   </code>
+   有啥用，等我们再往后看看，讲完
+   <code>
+    UPDATE
+   </code>
+   操作对应的
+   <code>
+    undo
+   </code>
+   日志后，这个所谓的
+   <code>
+    版本链
+   </code>
+   就慢慢的展现出它的牛逼之处了。
+  </p>
+ </li>
+ <li>
+  <p>
+   与类型为
+   <code>
+    TRX_UNDO_INSERT_REC
+   </code>
+   的
+   <code>
+    undo日志
+   </code>
+   不同，类型为
+   <code>
+    TRX_UNDO_DEL_MARK_REC
+   </code>
+   的
+   <code>
+    undo
+   </code>
+   日志还多了一个
+   <code>
+    索引列各列信息
+   </code>
+   的内容，也就是说如果某个列被包含在某个索引中，那么它的相关信息就应该被记录到这个
+   <code>
+    索引列各列信息
+   </code>
+   部分，所谓的相关信息包括该列在记录中的位置（用
+   <code>
+    pos
+   </code>
+   表示），该列占用的存储空间大小（用
+   <code>
+    len
+   </code>
+   表示），该列实际值（用
+   <code>
+    value
+   </code>
+   表示）。所以
+   <code>
+    索引列各列信息
+   </code>
+   存储的内容实质上就是
+   <code>
+    &lt;pos, len, value&gt;
+   </code>
+   的一个列表。这部分信息主要是用在事务提交后，对该
+   <code>
+    中间状态记录
+   </code>
+   做真正删除的阶段二，也就是
+   <code>
+    purge
+   </code>
+   阶段中使用的，具体如何使用现在我们可以忽略～
+  </p>
+ </li>
+</ul>
+<p>
+ 该介绍的我们介绍完了，现在继续在上边那个事务id为
+ <code>
+  100
+ </code>
+ 的事务中删除一条记录，比如我们把
+ <code>
+  id
+ </code>
+ 为1的那条记录删除掉：
+</p>
+<pre><code class="hljs bash" lang="bash">BEGIN;  <span class="hljs-comment"># 显式开启一个事务，假设该事务的id为100</span>
+
+<span class="hljs-comment"># 插入两条记录</span>
+INSERT INTO undo_demo(id, key1, col) 
+    VALUES (1, <span class="hljs-string">'AWM'</span>, <span class="hljs-string">'狙击枪'</span>), (2, <span class="hljs-string">'M416'</span>, <span class="hljs-string">'步枪'</span>);
+    
+<span class="hljs-comment"># 删除一条记录    </span>
+DELETE FROM undo_demo WHERE id = 1; 
+</code></pre>
+<p>
+ 这个
+ <code>
+  delete mark
+ </code>
+ 操作对应的
+ <code>
+  undo日志
+ </code>
+ 的结构就是这样：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d6bbl6nnk8a1ntk1d0ggmog6837.png-113.3kB" src="3a689e90-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 对照着这个图，我们得注意下边几点：
+</p>
+<ul>
+ <li>
+  <p>
+   因为这条
+   <code>
+    undo
+   </code>
+   日志是
+   <code>
+    id
+   </code>
+   为
+   <code>
+    100
+   </code>
+   的事务中产生的第3条
+   <code>
+    undo
+   </code>
+   日志，所以它对应的
+   <code>
+    undo no
+   </code>
+   就是
+   <code>
+    2
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   在对记录做
+   <code>
+    delete mark
+   </code>
+   操作时，记录的
+   <code>
+    trx_id
+   </code>
+   隐藏列的值是
+   <code>
+    100
+   </code>
+   （也就是说对该记录最近的一次修改就发生在本事务中），所以把
+   <code>
+    100
+   </code>
+   填入
+   <code>
+    old trx_id
+   </code>
+   属性中。然后把记录的
+   <code>
+    roll_pointer
+   </code>
+   隐藏列的值取出来，填入
+   <code>
+    old roll_pointer
+   </code>
+   属性中，这样就可以通过
+   <code>
+    old roll_pointer
+   </code>
+   属性值找到最近一次对该记录做改动时产生的
+   <code>
+    undo日志
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   由于
+   <code>
+    undo_demo
+   </code>
+   表中有2个索引：一个是聚簇索引，一个是二级索引
+   <code>
+    idx_key1
+   </code>
+   。只要是包含在索引中的列，那么这个列在记录中的位置（
+   <code>
+    pos
+   </code>
+   ），占用存储空间大小（
+   <code>
+    len
+   </code>
+   ）和实际值（
+   <code>
+    value
+   </code>
+   ）就需要存储到
+   <code>
+    undo日志
+   </code>
+   中。
+  </p>
+  <ul>
+   <li>
+    <p>
+     对于主键来说，只包含一个
+     <code>
+      id
+     </code>
+     列，存储到
+     <code>
+      undo日志
+     </code>
+     中的相关信息分别是：
+    </p>
+    <ul>
+     <li>
+      <code>
+       pos
+      </code>
+      ：
+      <code>
+       id
+      </code>
+      列是主键，也就是在记录的第一个列，它对应的
+      <code>
+       pos
+      </code>
+      值为
+      <code>
+       0
+      </code>
+      。
+      <code>
+       pos
+      </code>
+      占用1个字节来存储。
+     </li>
+     <li>
+      <code>
+       len
+      </code>
+      ：
+      <code>
+       id
+      </code>
+      列的类型为
+      <code>
+       INT
+      </code>
+      ，占用4个字节，所以
+      <code>
+       len
+      </code>
+      的值为
+      <code>
+       4
+      </code>
+      。
+      <code>
+       len
+      </code>
+      占用1个字节来存储。
+     </li>
+     <li>
+      <code>
+       value
+      </code>
+      ：在被删除的记录中
+      <code>
+       id
+      </code>
+      列的值为
+      <code>
+       1
+      </code>
+      ，也就是
+      <code>
+       value
+      </code>
+      的值为
+      <code>
+       1
+      </code>
+      。
+      <code>
+       value
+      </code>
+      占用4个字节来存储。
+     </li>
+    </ul>
+    <p>
+     画一个图演示一下就是这样：
+    </p>
+    <p>
+    </p>
+    <figure>
+     <img alt="image_1d65ppnsu18o7ggb1lg114o7kf28i.png-39.6kB" src="3a75d92a-13d6-11ed-838d-acde48001122"/>
+     <figcaption>
+     </figcaption>
+    </figure>
+    <p>
+    </p>
+    <p>
+     所以对于
+     <code>
+      id
+     </code>
+     列来说，最终存储的结果就是
+     <code>
+      &lt;0, 4, 1&gt;
+     </code>
+     ，存储这些信息占用的存储空间大小为
+     <code>
+      1 + 1 + 4 = 6
+     </code>
+     个字节。
+    </p>
+   </li>
+   <li>
+    <p>
+     对于
+     <code>
+      idx_key1
+     </code>
+     来说，只包含一个
+     <code>
+      key1
+     </code>
+     列，存储到
+     <code>
+      undo日志
+     </code>
+     中的相关信息分别是：
+    </p>
+    <ul>
+     <li>
+      <code>
+       pos
+      </code>
+      ：
+      <code>
+       key1
+      </code>
+      列是排在
+      <code>
+       id
+      </code>
+      列、
+      <code>
+       trx_id
+      </code>
+      列、
+      <code>
+       roll_pointer
+      </code>
+      列之后的，它对应的
+      <code>
+       pos
+      </code>
+      值为
+      <code>
+       3
+      </code>
+      。
+      <code>
+       pos
+      </code>
+      占用1个字节来存储。
+     </li>
+     <li>
+      <code>
+       len
+      </code>
+      ：
+      <code>
+       key1
+      </code>
+      列的类型为
+      <code>
+       VARCHAR(100)
+      </code>
+      ，使用
+      <code>
+       utf8
+      </code>
+      字符集，被删除的记录实际存储的内容是
+      <code>
+       AWM
+      </code>
+      ，所以一共占用3个字节，也就是所以
+      <code>
+       len
+      </code>
+      的值为
+      <code>
+       3
+      </code>
+      。
+      <code>
+       len
+      </code>
+      占用1个字节来存储。
+     </li>
+     <li>
+      <code>
+       value
+      </code>
+      ：在被删除的记录中
+      <code>
+       key1
+      </code>
+      列的值为
+      <code>
+       AWM
+      </code>
+      ，也就是
+      <code>
+       value
+      </code>
+      的值为
+      <code>
+       AWM
+      </code>
+      。
+      <code>
+       value
+      </code>
+      占用3个字节来存储。
+     </li>
+    </ul>
+    <p>
+     画一个图演示一下就是这样：
+    </p>
+    <p>
+    </p>
+    <figure>
+     <img alt="image_1de3v6ca916bt16kn9sa1ouk1pvn9.png-38.8kB" src="3a8930e2-13d6-11ed-838d-acde48001122"/>
+     <figcaption>
+     </figcaption>
+    </figure>
+    <p>
+    </p>
+    <p>
+     所以对于
+     <code>
+      key1
+     </code>
+     列来说，最终存储的结果就是
+     <code>
+      &lt;3, 3, 'AWM'&gt;
+     </code>
+     ，存储这些信息占用的存储空间大小为
+     <code>
+      1 + 1 + 3 = 5
+     </code>
+     个字节。
+    </p>
+   </li>
+  </ul>
+  <p>
+   从上边的叙述中可以看到，
+   <code>
+    &lt;0, 4, 1&gt;
+   </code>
+   和
+   <code>
+    &lt;3, 3, 'AWM'&gt;
+   </code>
+   共占用
+   <code>
+    11
+   </code>
+   个字节。然后
+   <code>
+    index_col_info len
+   </code>
+   本身占用
+   <code>
+    2
+   </code>
+   个字节，所以加起来一共占用
+   <code>
+    13
+   </code>
+   个字节，把数字
+   <code>
+    13
+   </code>
+   就填到了
+   <code>
+    index_col_info len
+   </code>
+   的属性中。
+  </p>
+ </li>
+</ul>
+<h3 class="heading">
+ UPDATE操作对应的undo日志
+</h3>
+<p>
+ 在执行
+ <code>
+  UPDATE
+ </code>
+ 语句时，
+ <code>
+  InnoDB
+ </code>
+ 对更新主键和不更新主键这两种情况有截然不同的处理方案。
+</p>
+<h4 class="heading">
+ 不更新主键的情况
+</h4>
+<p>
+ 在不更新主键的情况下，又可以细分为被更新的列占用的存储空间不发生变化和发生变化的情况。
+</p>
+<ul>
+ <li>
+  <p>
+   就地更新（in-place update）
+  </p>
+  <p>
+   更新记录时，对于被更新的
+   <span style="color:red">
+    每个列
+   </span>
+   来说，如果更新后的列和更新前的列占用的存储空间都一样大，那么就可以进行
+   <code>
+    就地更新
+   </code>
+   ，也就是直接在原记录的基础上修改对应列的值。再次强调一边，是
+   <span style="color:red">
+    每个列
+   </span>
+   在更新前后占用的存储空间一样大，有任何一个被更新的列更新前比更新后占用的存储空间大，或者更新前比更新后占用的存储空间小都不能进行
+   <code>
+    就地更新
+   </code>
+   。比方说现在
+   <code>
+    undo_demo
+   </code>
+   表里还有一条
+   <code>
+    id
+   </code>
+   值为
+   <code>
+    2
+   </code>
+   的记录，它的各个列占用的大小如图所示（因为采用
+   <code>
+    utf8
+   </code>
+   字符集，所以
+   <code>
+    '步枪'
+   </code>
+   这两个字符占用6个字节）：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1d67tvp7i1ke1bhn1pre1usu1lvs1p.png-43.5kB" src="3a9abf38-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+  <p>
+   假如我们有这样的
+   <code>
+    UPDATE
+   </code>
+   语句：
+  </p>
+  <pre><code class="hljs bash" lang="bash">UPDATE undo_demo 
+    SET key1 = <span class="hljs-string">'P92'</span>, col = <span class="hljs-string">'手枪'</span> 
+    WHERE id = 2;
+</code></pre>
+  <p>
+   在这个
+   <code>
+    UPDATE
+   </code>
+   语句中，
+   <code>
+    col
+   </code>
+   列从
+   <code>
+    步枪
+   </code>
+   被更新为
+   <code>
+    手枪
+   </code>
+   ，前后都占用6个字节，也就是占用的存储空间大小未改变；
+   <code>
+    key1
+   </code>
+   列从
+   <code>
+    M416
+   </code>
+   被更新为
+   <code>
+    P92
+   </code>
+   ，也就是从
+   <code>
+    4
+   </code>
+   个字节被更新为
+   <code>
+    3
+   </code>
+   个字节，这就不满足
+   <code>
+    就地更新
+   </code>
+   需要的条件了，所以不能进行
+   <code>
+    就地更新
+   </code>
+   。但是如果
+   <code>
+    UPDATE
+   </code>
+   语句长这样：
+  </p>
+  <pre><code class="hljs bash" lang="bash">UPDATE undo_demo 
+    SET key1 = <span class="hljs-string">'M249'</span>, col = <span class="hljs-string">'机枪'</span> 
+    WHERE id = 2;
+</code></pre>
+  <p>
+   由于各个被更新的列在更新前后占用的存储空间是一样大的，所以这样的语句可以执行
+   <code>
+    就地更新
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   先删除掉旧记录，再插入新记录
+  </p>
+  <p>
+   在不更新主键的情况下，如果有
+   <span style="color:red">
+    任何一个
+   </span>
+   被更新的列更新前和更新后占用的存储空间大小不一致，那么就需要先把这条旧的记录从聚簇索引页面中删除掉，然后再根据更新后列的值创建一条新的记录插入到页面中。
+  </p>
+  <p>
+   请注意一下，我们这里所说的
+   <code>
+    删除
+   </code>
+   并不是
+   <code>
+    delete mark
+   </code>
+   操作，而是真正的删除掉，也就是把这条记录从
+   <code>
+    正常记录链表
+   </code>
+   中移除并加入到
+   <code>
+    垃圾链表
+   </code>
+   中，并且修改页面中相应的统计信息（比如
+   <code>
+    PAGE_FREE
+   </code>
+   、
+   <code>
+    PAGE_GARBAGE
+   </code>
+   等这些信息）。不过这里做真正删除操作的线程并不是在唠叨
+   <code>
+    DELETE
+   </code>
+   语句中做
+   <code>
+    purge
+   </code>
+   操作时使用的另外专门的线程，而是由用户线程同步执行真正的删除操作，真正删除之后紧接着就要根据各个列更新后的值创建的新记录插入。
+  </p>
+  <p>
+   这里如果新创建的记录占用的存储空间大小不超过旧记录占用的空间，那么可以直接重用被加入到
+   <code>
+    垃圾链表
+   </code>
+   中的旧记录所占用的存储空间，否则的话需要在页面中新申请一段空间以供新记录使用，如果本页面内已经没有可用的空间的话，那就需要进行页面分裂操作，然后再插入新记录。
+  </p>
+ </li>
+</ul>
+<p>
+ 针对
+ <code>
+  UPDATE
+ </code>
+ 不更新主键的情况（包括上边所说的就地更新和先删除旧记录再插入新记录），设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔们设计了一种类型为
+ <code>
+  TRX_UNDO_UPD_EXIST_REC
+ </code>
+ 的
+ <code>
+  undo日志
+ </code>
+ ，它的完整结构如下：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d9i13fuqvt2i9qtg9gg2ju2p.png-128.8kB" src="3ac15b66-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 其实大部分属性和我们介绍过的
+ <code>
+  TRX_UNDO_DEL_MARK_REC
+ </code>
+ 类型的
+ <code>
+  undo日志
+ </code>
+ 是类似的，不过还是要注意这么几点：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    n_updated
+   </code>
+   属性表示本条
+   <code>
+    UPDATE
+   </code>
+   语句执行后将有几个列被更新，后边跟着的
+   <code>
+    &lt;pos, old_len, old_value&gt;
+   </code>
+   分别表示被更新列在记录中的位置、更新前该列占用的存储空间大小、更新前该列的真实值。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果在
+   <code>
+    UPDATE
+   </code>
+   语句中更新的列包含索引列，那么也会添加
+   <code>
+    索引列各列信息
+   </code>
+   这个部分，否则的话是不会添加这个部分的。
+  </p>
+ </li>
+</ul>
+<p>
+ 现在继续在上边那个事务id为100的事务中更新一条记录，比如我们把id为2的那条记录更新一下：
+</p>
+<pre><code class="hljs bash" lang="bash">BEGIN;  <span class="hljs-comment"># 显式开启一个事务，假设该事务的id为100</span>
+
+<span class="hljs-comment"># 插入两条记录</span>
+INSERT INTO undo_demo(id, key1, col) 
+    VALUES (1, <span class="hljs-string">'AWM'</span>, <span class="hljs-string">'狙击枪'</span>), (2, <span class="hljs-string">'M416'</span>, <span class="hljs-string">'步枪'</span>);
+    
+<span class="hljs-comment"># 删除一条记录    </span>
+DELETE FROM undo_demo WHERE id = 1; 
+
+<span class="hljs-comment"># 更新一条记录</span>
+UPDATE undo_demo
+    SET key1 = <span class="hljs-string">'M249'</span>, col = <span class="hljs-string">'机枪'</span>
+    WHERE id = 2;
+</code></pre>
+<p>
+ 这个
+ <code>
+  UPDATE
+ </code>
+ 语句更新的列大小都没有改动，所以可以采用
+ <code>
+  就地更新
+ </code>
+ 的方式来执行，在真正改动页面记录时，会先记录一条类型为
+ <code>
+  TRX_UNDO_UPD_EXIST_REC
+ </code>
+ 的
+ <code>
+  undo日志
+ </code>
+ ，长这样：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d6bbqp2f3q160v1lribq31n0f44.png-141.9kB" src="3ad3d534-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 对照着这个图我们注意一下这几个地方：
+</p>
+<ul>
+ <li>
+  <p>
+   因为这条
+   <code>
+    undo日志
+   </code>
+   是
+   <code>
+    id
+   </code>
+   为
+   <code>
+    100
+   </code>
+   的事务中产生的第4条
+   <code>
+    undo日志
+   </code>
+   ，所以它对应的
+   <code>
+    undo no
+   </code>
+   就是3。
+  </p>
+ </li>
+ <li>
+  <p>
+   这条日志的
+   <code>
+    roll_pointer
+   </code>
+   指向
+   <code>
+    undo no
+   </code>
+   为
+   <code>
+    1
+   </code>
+   的那条日志，也就是插入主键值为
+   <code>
+    2
+   </code>
+   的记录时产生的那条
+   <code>
+    undo日志
+   </code>
+   ，也就是最近一次对该记录做改动时产生的
+   <code>
+    undo日志
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   由于本条
+   <code>
+    UPDATE
+   </code>
+   语句中更新了索引列
+   <code>
+    key1
+   </code>
+   的值，所以需要记录一下
+   <code>
+    索引列各列信息
+   </code>
+   部分，也就是把主键和
+   <code>
+    key1
+   </code>
+   列更新前的信息填入。
+  </p>
+ </li>
+</ul>
+<h4 class="heading">
+ 更新主键的情况
+</h4>
+<p>
+ 在聚簇索引中，记录是按照主键值的大小连成了一个单向链表的，如果我们更新了某条记录的主键值，意味着这条记录在聚簇索引中的位置将会发生改变，比如你将记录的主键值从1更新为10000，如果还有非常多的记录的主键值分布在
+ <code>
+  1 ~ 10000
+ </code>
+ 之间的话，那么这两条记录在聚簇索引中就有可能离得非常远，甚至中间隔了好多个页面。针对
+ <code>
+  UPDATE
+ </code>
+ 语句中更新了记录主键值的这种情况，
+ <code>
+  InnoDB
+ </code>
+ 在聚簇索引中分了两步处理：
+</p>
+<ul>
+ <li>
+  <p>
+   将旧记录进行
+   <code>
+    delete mark
+   </code>
+   操作
+  </p>
+  <p>
+   高能注意：
+   <span style="color:red">
+    这里是delete mark操作！这里是delete mark操作！这里是delete mark操作！
+   </span>
+   也就是说在
+   <code>
+    UPDATE
+   </code>
+   语句所在的事务提交前，对旧记录只做一个
+   <code>
+    delete mark
+   </code>
+   操作，在事务提交后才由
+   <span style="color:red">
+    专门的线程做purge操作，把它加入到垃圾链表中
+   </span>
+   。这里一定要和我们上边所说的在不更新记录主键值时，先真正删除旧记录，再插入新记录的方式区分开！
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+之所以只对旧记录做delete mark操作，是因为别的事务同时也可能访问这条记录，如果把它真正的删除加入到垃圾链表后，别的事务就访问不到了。这个功能就是所谓的MVCC，我们后边的章节中会详细唠叨什么是个MVCC。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   根据更新后各列的值创建一条新记录，并将其插入到聚簇索引中（需重新定位插入的位置）。
+  </p>
+  <p>
+   由于更新后的记录主键值发生了改变，所以需要重新从聚簇索引中定位这条记录所在的位置，然后把它插进去。
+  </p>
+ </li>
+</ul>
+<p>
+ 针对
+ <code>
+  UPDATE
+ </code>
+ 语句更新记录主键值的这种情况，在对该记录进行
+ <code>
+  delete mark
+ </code>
+ 操作前，会记录一条类型为
+ <code>
+  TRX_UNDO_DEL_MARK_REC
+ </code>
+ 的
+ <code>
+  undo日志
+ </code>
+ ；之后插入新记录时，会记录一条类型为
+ <code>
+  TRX_UNDO_INSERT_REC
+ </code>
+ 的
+ <code>
+  undo日志
+ </code>
+ ，也就是说每对一条记录的主键值做改动时，会记录2条
+ <code>
+  undo日志
+ </code>
+ 。这些日志的格式我们上边都唠叨过了，就不赘述了。
+</p>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+其实还有一种称为TRX_UNDO_UPD_DEL_REC的undo日志的类型我们没有介绍，主要是想避免引入过多的复杂度，如果大家对这种类型的undo日志的使用感兴趣的话，可以额外查一下别的资料。
+ </p>
+</blockquote>
+</div>
+
+</div>
+</body>
+</html>

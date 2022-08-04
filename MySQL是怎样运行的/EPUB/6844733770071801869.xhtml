@@ -1,0 +1,3412 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>后悔了怎么办 —— undo 日志 (下)</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>后悔了怎么办 —— undo 日志 (下)</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1 class="heading">
+ undo日志（下）
+</h1>
+<p>
+ 标签： MySQL是怎样运行的
+</p>
+<hr/>
+<p>
+ 上一章我们主要唠叨了为什么需要
+ <code>
+  undo日志
+ </code>
+ ，以及
+ <code>
+  INSERT
+ </code>
+ 、
+ <code>
+  DELETE
+ </code>
+ 、
+ <code>
+  UPDATE
+ </code>
+ 这些会对数据做改动的语句都会产生什么类型的
+ <code>
+  undo日志
+ </code>
+ ，还有不同类型的
+ <code>
+  undo日志
+ </code>
+ 的具体格式是什么。本章会继续唠叨这些
+ <code>
+  undo日志
+ </code>
+ 会被具体写到什么地方，以及在写入过程中需要注意的一些问题。
+</p>
+<h2 class="heading">
+ 通用链表结构
+</h2>
+<p>
+ 在写入
+ <code>
+  undo日志
+ </code>
+ 的过程中会使用到多个链表，很多链表都有同样的节点结构，如图所示：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d79gnaudfg2psk2l7mi1146r20.png-104.8kB" src="3b4bdb1a-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 在某个表空间内，我们可以通过一个页的页号和在页内的偏移量来唯一定位一个节点的位置，这两个信息也就相当于指向这个节点的一个指针。所以：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    Pre Node Page Number
+   </code>
+   和
+   <code>
+    Pre Node Offset
+   </code>
+   的组合就是指向前一个节点的指针
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    Next Node Page Number
+   </code>
+   和
+   <code>
+    Next Node Offset
+   </code>
+   的组合就是指向后一个节点的指针。
+  </p>
+ </li>
+</ul>
+<p>
+ 整个
+ <code>
+  List Node
+ </code>
+ 占用
+ <code>
+  12
+ </code>
+ 个字节的存储空间。
+</p>
+<p>
+ 为了更好的管理链表，设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔还提出了一个基节点的结构，里边存储了这个链表的
+ <code>
+  头节点
+ </code>
+ 、
+ <code>
+  尾节点
+ </code>
+ 以及链表长度信息，基节点的结构示意图如下：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d79o8ra61jh6k0k6af13vpg329.png-103.9kB" src="3b5ff7bc-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 其中：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    List Length
+   </code>
+   表明该链表一共有多少节点。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    First Node Page Number
+   </code>
+   和
+   <code>
+    First Node Offset
+   </code>
+   的组合就是指向链表头节点的指针。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    Last Node Page Number
+   </code>
+   和
+   <code>
+    Last Node Offset
+   </code>
+   的组合就是指向链表尾节点的指针。
+  </p>
+ </li>
+</ul>
+<p>
+ 整个
+ <code>
+  List Base Node
+ </code>
+ 占用
+ <code>
+  16
+ </code>
+ 个字节的存储空间。
+</p>
+<p>
+ 所以使用
+ <code>
+  List Base Node
+ </code>
+ 和
+ <code>
+  List Node
+ </code>
+ 这两个结构组成的链表的示意图就是这样：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d79nq0ge1gn7pmcaa7gma1uh62q.png-71kB" src="3b763ebe-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+上述链表结构我们在前边的文章中频频提到，尤其是在表空间那一章重点描述过，不过我不敢奢求大家都记住了，所以在这里又强调一遍，希望大家不要嫌我烦，我只是怕大家忘了学习后续内容吃力而已～
+ </p>
+</blockquote>
+<h2 class="heading">
+ FIL_PAGE_UNDO_LOG页面
+</h2>
+<p>
+ 我们前边唠叨表空间的时候说过，表空间其实是由许许多多的页面构成的，页面默认大小为
+ <code>
+  16KB
+ </code>
+ 。这些页面有不同的类型，比如类型为
+ <code>
+  FIL_PAGE_INDEX
+ </code>
+ 的页面用于存储聚簇索引以及二级索引，类型为
+ <code>
+  FIL_PAGE_TYPE_FSP_HDR
+ </code>
+ 的页面用于存储表空间头部信息的，还有其他各种类型的页面，其中有一种称之为
+ <code>
+  FIL_PAGE_UNDO_LOG
+ </code>
+ 类型的页面是专门用来存储
+ <code>
+  undo日志
+ </code>
+ 的，这种类型的页面的通用结构如下图所示（以默认的
+ <code>
+  16KB
+ </code>
+ 大小为例）：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d79ec33apm47brq901sur3bi16.png-63.2kB" src="3bc29e12-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ “类型为
+ <code>
+  FIL_PAGE_UNDO_LOG
+ </code>
+ 的页”这种说法太绕口，以后我们就简称为
+ <code>
+  Undo页面
+ </code>
+ 了哈。上图中的
+ <code>
+  File Header
+ </code>
+ 和
+ <code>
+  File Trailer
+ </code>
+ 是各种页面都有的通用结构，我们前边唠叨过很多遍了，这里就不赘述了（忘记了的可以到讲述数据页结构或者表空间的章节中查看）。
+ <code>
+  Undo Page Header
+ </code>
+ 是
+ <code>
+  Undo页面
+ </code>
+ 所特有的，我们来看一下它的结构：
+</p>
+<p>
+</p>
+<figure>
+ <img src="3bd770d0-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 其中各个属性的意思如下：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_PAGE_TYPE
+   </code>
+   ：本页面准备存储什么种类的
+   <code>
+    undo日志
+   </code>
+   。
+  </p>
+  <p>
+   我们前边介绍了好几种类型的
+   <code>
+    undo日志
+   </code>
+   ，它们可以被分为两个大类：
+  </p>
+  <ul>
+   <li>
+    <p>
+     <code>
+      TRX_UNDO_INSERT
+     </code>
+     （使用十进制
+     <code>
+      1
+     </code>
+     表示）：类型为
+     <code>
+      TRX_UNDO_INSERT_REC
+     </code>
+     的
+     <code>
+      undo日志
+     </code>
+     属于此大类，一般由
+     <code>
+      INSERT
+     </code>
+     语句产生，或者在
+     <code>
+      UPDATE
+     </code>
+     语句中有更新主键的情况也会产生此类型的
+     <code>
+      undo日志
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     <code>
+      TRX_UNDO_UPDATE
+     </code>
+     （使用十进制
+     <code>
+      2
+     </code>
+     表示），除了类型为
+     <code>
+      TRX_UNDO_INSERT_REC
+     </code>
+     的
+     <code>
+      undo日志
+     </code>
+     ，其他类型的
+     <code>
+      undo日志
+     </code>
+     都属于这个大类，比如我们前边说的
+     <code>
+      TRX_UNDO_DEL_MARK_REC
+     </code>
+     、
+     <code>
+      TRX_UNDO_UPD_EXIST_REC
+     </code>
+     啥的，一般由
+     <code>
+      DELETE
+     </code>
+     、
+     <code>
+      UPDATE
+     </code>
+     语句产生的
+     <code>
+      undo日志
+     </code>
+     属于这个大类。
+    </p>
+   </li>
+  </ul>
+  <p>
+   这个
+   <code>
+    TRX_UNDO_PAGE_TYPE
+   </code>
+   属性可选的值就是上边的两个，用来标记本页面用于存储哪个大类的
+   <code>
+    undo日志
+   </code>
+   ，不同大类的
+   <code>
+    undo日志
+   </code>
+   不能混着存储，比如一个
+   <code>
+    Undo页面
+   </code>
+   的
+   <code>
+    TRX_UNDO_PAGE_TYPE
+   </code>
+   属性值为
+   <code>
+    TRX_UNDO_INSERT
+   </code>
+   ，那么这个页面就只能存储类型为
+   <code>
+    TRX_UNDO_INSERT_REC
+   </code>
+   的
+   <code>
+    undo日志
+   </code>
+   ，其他类型的
+   <code>
+    undo日志
+   </code>
+   就不能放到这个页面中了。
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+之所以把undo日志分成两个大类，是因为类型为TRX_UNDO_INSERT_REC的undo日志在事务提交后可以直接删除掉，而其他类型的undo日志还需要为所谓的MVCC服务，不能直接删除掉，对它们的处理需要区别对待。当然，如果你看这段话迷迷糊糊的话，那就不需要再看一遍了，现在只需要知道undo日志分为2个大类就好了，更详细的东西我们后边会仔细唠叨的。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_PAGE_START
+   </code>
+   ：表示在当前页面中是从什么位置开始存储
+   <code>
+    undo日志
+   </code>
+   的，或者说表示第一条
+   <code>
+    undo日志
+   </code>
+   在本页面中的起始偏移量。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_PAGE_FREE
+   </code>
+   ：与上边的
+   <code>
+    TRX_UNDO_PAGE_START
+   </code>
+   对应，表示当前页面中存储的最后一条
+   <code>
+    undo
+   </code>
+   日志结束时的偏移量，或者说从这个位置开始，可以继续写入新的
+   <code>
+    undo日志
+   </code>
+   。
+  </p>
+  <p>
+   假设现在向页面中写入了3条
+   <code>
+    undo日志
+   </code>
+   ，那么
+   <code>
+    TRX_UNDO_PAGE_START
+   </code>
+   和
+   <code>
+    TRX_UNDO_PAGE_FREE
+   </code>
+   的示意图就是这样：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1d79s1ib21rku5fkq3to1e14313.png-54kB" src="3bef556a-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+  <p>
+   当然，在最初一条
+   <code>
+    undo日志
+   </code>
+   也没写入的情况下，
+   <code>
+    TRX_UNDO_PAGE_START
+   </code>
+   和
+   <code>
+    TRX_UNDO_PAGE_FREE
+   </code>
+   的值是相同的。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_PAGE_NODE
+   </code>
+   ：代表一个
+   <code>
+    List Node
+   </code>
+   结构（链表的普通节点，我们上边刚说的）。
+  </p>
+  <p>
+   下边马上用到这个属性，稍安勿躁。
+  </p>
+ </li>
+</ul>
+<h2 class="heading">
+ Undo页面链表
+</h2>
+<h3 class="heading">
+ 单个事务中的Undo页面链表
+</h3>
+<p>
+ 因为一个事务可能包含多个语句，而且一个语句可能对若干条记录进行改动，而对每条记录进行改动前，都需要记录1条或2条的
+ <code>
+  undo日志
+ </code>
+ ，所以在一个事务执行过程中可能产生很多
+ <code>
+  undo日志
+ </code>
+ ，这些日志可能一个页面放不下，需要放到多个页面中，这些页面就通过我们上边介绍的
+ <code>
+  TRX_UNDO_PAGE_NODE
+ </code>
+ 属性连成了链表：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d79v7bib12041n9d1gpe1t8a10jc1g.png-60.8kB" src="3c03a600-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 大家往上再瞅一瞅上边的图，我们特意把链表中的第一个
+ <code>
+  Undo页面
+ </code>
+ 给标了出来，称它为
+ <code>
+  first undo page
+ </code>
+ ，其余的
+ <code>
+  Undo页面
+ </code>
+ 称之为
+ <code>
+  normal undo page
+ </code>
+ ，这是因为在
+ <code>
+  first undo page
+ </code>
+ 中除了记录
+ <code>
+  Undo Page Header
+ </code>
+ 之外，还会记录其他的一些管理信息，这个我们稍后再说哈。
+</p>
+<p>
+ 在一个事务执行过程中，可能混着执行
+ <code>
+  INSERT
+ </code>
+ 、
+ <code>
+  DELETE
+ </code>
+ 、
+ <code>
+  UPDATE
+ </code>
+ 语句，也就意味着会产生不同类型的
+ <code>
+  undo日志
+ </code>
+ 。但是我们前边又强调过，同一个
+ <code>
+  Undo页面
+ </code>
+ 要么只存储
+ <code>
+  TRX_UNDO_INSERT
+ </code>
+ 大类的
+ <code>
+  undo日志
+ </code>
+ ，要么只存储
+ <code>
+  TRX_UNDO_UPDATE
+ </code>
+ 大类的
+ <code>
+  undo日志
+ </code>
+ ，反正不能混着存，所以在一个事务执行过程中就可能需要2个
+ <code>
+  Undo页面
+ </code>
+ 的链表，一个称之为
+ <code>
+  insert undo链表
+ </code>
+ ，另一个称之为
+ <code>
+  update undo链表
+ </code>
+ ，画个示意图就是这样：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7a6t4va1e0c1l9t1hq51vlt183l2d.png-54.6kB" src="3c162e4c-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 另外，设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔规定对普通表和临时表的记录改动时产生的
+ <code>
+  undo日志
+ </code>
+ 要分别记录（我们稍后阐释为啥这么做），所以在一个事务中
+ <span style="color:red">
+  最多
+ </span>
+ 有4个以
+ <code>
+  Undo页面
+ </code>
+ 为节点组成的链表：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7bg5o7c3t11nch988lj51hsl9.png-106.8kB" src="3c278188-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 当然，并不是在事务一开始就会为这个事务分配这4个链表，具体分配策略如下：
+</p>
+<ul>
+ <li>
+  <p>
+   刚刚开启事务时，一个
+   <code>
+    Undo页面
+   </code>
+   链表也不分配。
+  </p>
+ </li>
+ <li>
+  <p>
+   当事务执行过程中向普通表中插入记录或者执行更新记录主键的操作之后，就会为其分配一个
+   <code>
+    普通表的insert undo链表
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   当事务执行过程中删除或者更新了普通表中的记录之后，就会为其分配一个
+   <code>
+    普通表的update undo链表
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   当事务执行过程中向临时表中插入记录或者执行更新记录主键的操作之后，就会为其分配一个
+   <code>
+    临时表的insert undo链表
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   当事务执行过程中删除或者更新了临时表中的记录之后，就会为其分配一个
+   <code>
+    临时表的update undo链表
+   </code>
+   。
+  </p>
+ </li>
+</ul>
+<p>
+ 总结一句就是：
+ <span style="color:red">
+  按需分配，啥时候需要啥时候再分配，不需要就不分配
+ </span>
+ 。
+</p>
+<h3 class="heading">
+ 多个事务中的Undo页面链表
+</h3>
+<p>
+ 为了尽可能提高
+ <code>
+  undo日志
+ </code>
+ 的写入效率，
+ <span style="color:red">
+  不同事务执行过程中产生的undo日志需要被写入到不同的Undo页面链表中
+ </span>
+ 。比方说现在有事务
+ <code>
+  id
+ </code>
+ 分别为
+ <code>
+  1
+ </code>
+ 、
+ <code>
+  2
+ </code>
+ 的两个事务，我们分别称之为
+ <code>
+  trx 1
+ </code>
+ 和
+ <code>
+  trx 2
+ </code>
+ ，假设在这两个事务执行过程中：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    trx 1
+   </code>
+   对普通表做了
+   <code>
+    DELETE
+   </code>
+   操作，对临时表做了
+   <code>
+    INSERT
+   </code>
+   和
+   <code>
+    UPDATE
+   </code>
+   操作。
+  </p>
+  <p>
+   <code>
+    InnoDB
+   </code>
+   会为
+   <code>
+    trx 1
+   </code>
+   分配3个链表，分别是：
+  </p>
+  <ul>
+   <li>
+    <p>
+     针对普通表的
+     <code>
+      update undo链表
+     </code>
+    </p>
+   </li>
+   <li>
+    <p>
+     针对临时表的
+     <code>
+      insert undo链表
+     </code>
+    </p>
+   </li>
+   <li>
+    <p>
+     针对临时表的
+     <code>
+      update undo链表
+     </code>
+     。
+    </p>
+   </li>
+  </ul>
+ </li>
+ <li>
+  <p>
+   <code>
+    trx 2
+   </code>
+   对普通表做了
+   <code>
+    INSERT
+   </code>
+   、
+   <code>
+    UPDATE
+   </code>
+   和
+   <code>
+    DELETE
+   </code>
+   操作，没有对临时表做改动。
+  </p>
+  <p>
+   <code>
+    InnoDB
+   </code>
+   会为
+   <code>
+    trx 2
+   </code>
+   分配2个链表，分别是：
+  </p>
+  <ul>
+   <li>
+    <p>
+     针对普通表的
+     <code>
+      insert undo链表
+     </code>
+    </p>
+   </li>
+   <li>
+    <p>
+     针对普通表的
+     <code>
+      update undo链表
+     </code>
+     。
+    </p>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p>
+ 综上所述，在
+ <code>
+  trx 1
+ </code>
+ 和
+ <code>
+  trx 2
+ </code>
+ 执行过程中，
+ <code>
+  InnoDB
+ </code>
+ 共需为这两个事务分配5个
+ <code>
+  Undo页面
+ </code>
+ 链表，画个图就是这样：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7blo9dp1m4tj1f1ke9te11654m.png-96.8kB" src="3c3db160-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 如果有更多的事务，那就意味着可能会产生更多的
+ <code>
+  Undo页面
+ </code>
+ 链表。
+</p>
+<h2 class="heading">
+ undo日志具体写入过程
+</h2>
+<h3 class="heading">
+ 段（Segment）的概念
+</h3>
+<p>
+ 如果你有认真看过表空间那一章的话，对这个
+ <code>
+  段
+ </code>
+ 的概念应该印象深刻，我们当时花了非常大的篇幅来唠叨这个概念。简单讲，这个
+ <code>
+  段
+ </code>
+ 是一个逻辑上的概念，本质上是由若干个零散页面和若干个完整的区组成的。比如一个
+ <code>
+  B+
+ </code>
+ 树索引被划分成两个段，一个叶子节点段，一个非叶子节点段，这样叶子节点就可以被尽可能的存到一起，非叶子节点被尽可能的存到一起。每一个段对应一个
+ <code>
+  INODE Entry
+ </code>
+ 结构，这个
+ <code>
+  INODE Entry
+ </code>
+ 结构描述了这个段的各种信息，比如段的
+ <code>
+  ID
+ </code>
+ ，段内的各种链表基节点，零散页面的页号有哪些等信息（具体该结构中每个属性的意思大家可以到表空间那一章里再次重温一下）。我们前边也说过，为了定位一个
+ <code>
+  INODE Entry
+ </code>
+ ，设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔设计了一个
+ <code>
+  Segment Header
+ </code>
+ 的结构：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7bp5ndt171bb6rkohot41e023.png-75.7kB" src="3c4d681c-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 整个
+ <code>
+  Segment Header
+ </code>
+ 占用10个字节大小，各个属性的意思如下：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    Space ID of the INODE Entry
+   </code>
+   ：
+   <code>
+    INODE Entry
+   </code>
+   结构所在的表空间ID。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    Page Number of the INODE Entry
+   </code>
+   ：
+   <code>
+    INODE Entry
+   </code>
+   结构所在的页面页号。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    Byte Offset of the INODE Ent
+   </code>
+   ：
+   <code>
+    INODE Entry
+   </code>
+   结构在该页面中的偏移量
+  </p>
+ </li>
+</ul>
+<p>
+ 知道了表空间ID、页号、页内偏移量，不就可以唯一定位一个
+ <code>
+  INODE Entry
+ </code>
+ 的地址了么～
+</p>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+这部分关于段的各种概念我们在表空间那一章中都有详细解释，在这里重提一下只是为了唤醒大家沉睡的记忆，如果有任何不清楚的地方可以再次跳回表空间的那一章仔细读一下。
+ </p>
+</blockquote>
+<h3 class="heading">
+ Undo Log Segment Header
+</h3>
+<p>
+ 设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔规定，每一个
+ <code>
+  Undo页面
+ </code>
+ 链表都对应着一个
+ <code>
+  段
+ </code>
+ ，称之为
+ <code>
+  Undo Log Segment
+ </code>
+ 。也就是说链表中的页面都是从这个段里边申请的，所以他们在
+ <code>
+  Undo页面
+ </code>
+ 链表的第一个页面，也就是上边提到的
+ <code>
+  first undo page
+ </code>
+ 中设计了一个称之为
+ <code>
+  Undo Log Segment Header
+ </code>
+ 的部分，这个部分中包含了该链表对应的段的
+ <code>
+  segment header
+ </code>
+ 信息以及其他的一些关于这个段的信息，所以
+ <code>
+  Undo
+ </code>
+ 页面链表的第一个页面其实长这样：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7brcccqah1rdn10573vh1onip.png-70.5kB" src="3c5efea6-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 可以看到这个
+ <code>
+  Undo
+ </code>
+ 链表的第一个页面比普通页面多了个
+ <code>
+  Undo Log Segment Header
+ </code>
+ ，我们来看一下它的结构：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7bsbk8o15ja2bk1s9p11c51vs2p.png-80.2kB" src="3c921264-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 其中各个属性的意思如下：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_STATE
+   </code>
+   ：本
+   <code>
+    Undo页面
+   </code>
+   链表处在什么状态。
+  </p>
+  <p>
+   一个
+   <code>
+    Undo Log Segment
+   </code>
+   可能处在的状态包括：
+  </p>
+  <ul>
+   <li>
+    <p>
+     <code>
+      TRX_UNDO_ACTIVE
+     </code>
+     ：活跃状态，也就是一个活跃的事务正在往这个段里边写入
+     <code>
+      undo日志
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     <code>
+      TRX_UNDO_CACHED
+     </code>
+     ：被缓存的状态。处在该状态的
+     <code>
+      Undo页面
+     </code>
+     链表等待着之后被其他事务重用。
+    </p>
+   </li>
+   <li>
+    <p>
+     <code>
+      TRX_UNDO_TO_FREE
+     </code>
+     ：对于
+     <code>
+      insert undo
+     </code>
+     链表来说，如果在它对应的事务提交之后，该链表不能被重用，那么就会处于这种状态。
+    </p>
+   </li>
+   <li>
+    <p>
+     <code>
+      TRX_UNDO_TO_PURGE
+     </code>
+     ：对于
+     <code>
+      update undo
+     </code>
+     链表来说，如果在它对应的事务提交之后，该链表不能被重用，那么就会处于这种状态。
+    </p>
+   </li>
+   <li>
+    <p>
+     <code>
+      TRX_UNDO_PREPARED
+     </code>
+     ：包含处于
+     <code>
+      PREPARE
+     </code>
+     阶段的事务产生的
+     <code>
+      undo日志
+     </code>
+     。
+    </p>
+   </li>
+  </ul>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+Undo页面链表什么时候会被重用，怎么重用我们之后会详细说的。事务的PREPARE阶段是在所谓的分布式事务中才出现的，本书中不会介绍更多关于分布式事务的事情，所以大家目前忽略这个状态就好了。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_LAST_LOG
+   </code>
+   ：本
+   <code>
+    Undo页面
+   </code>
+   链表中最后一个
+   <code>
+    Undo Log Header
+   </code>
+   的位置。
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+关于什么是Undo Log Header，我们稍后马上介绍哈。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_FSEG_HEADER
+   </code>
+   ：本
+   <code>
+    Undo页面
+   </code>
+   链表对应的段的
+   <code>
+    Segment Header
+   </code>
+   信息（就是我们上一节介绍的那个10字节结构，通过这个信息可以找到该段对应的
+   <code>
+    INODE Entry
+   </code>
+   ）。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_PAGE_LIST
+   </code>
+   ：
+   <code>
+    Undo页面
+   </code>
+   链表的基节点。
+  </p>
+  <p>
+   我们上边说
+   <code>
+    Undo页面
+   </code>
+   的
+   <code>
+    Undo Page Header
+   </code>
+   部分有一个12字节大小的
+   <code>
+    TRX_UNDO_PAGE_NODE
+   </code>
+   属性，这个属性代表一个
+   <code>
+    List Node
+   </code>
+   结构。每一个
+   <code>
+    Undo页面
+   </code>
+   都包含
+   <code>
+    Undo Page Header
+   </code>
+   结构，这些页面就可以通过这个属性连成一个链表。这个
+   <code>
+    TRX_UNDO_PAGE_LIST
+   </code>
+   属性代表着这个链表的基节点，当然这个基节点只存在于
+   <code>
+    Undo页面
+   </code>
+   链表的第一个页面，也就是
+   <code>
+    first undo page
+   </code>
+   中。
+  </p>
+ </li>
+</ul>
+<h3 class="heading">
+ Undo Log Header
+</h3>
+<p>
+ 一个事务在向
+ <code>
+  Undo页面
+ </code>
+ 中写入
+ <code>
+  undo日志
+ </code>
+ 时的方式是十分简单暴力的，就是直接往里怼，写完一条紧接着写另一条，各条
+ <code>
+  undo日志
+ </code>
+ 之间是亲密无间的。写完一个
+ <code>
+  Undo页面
+ </code>
+ 后，再从段里申请一个新页面，然后把这个页面插入到
+ <code>
+  Undo页面
+ </code>
+ 链表中，继续往这个新申请的页面中写。设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔认为同一个事务向一个
+ <code>
+  Undo页面
+ </code>
+ 链表中写入的
+ <code>
+  undo日志
+ </code>
+ 算是一个组，比方说我们上边介绍的
+ <code>
+  trx 1
+ </code>
+ 由于会分配3个
+ <code>
+  Undo页面
+ </code>
+ 链表，也就会写入3个组的
+ <code>
+  undo日志
+ </code>
+ ；
+ <code>
+  trx 2
+ </code>
+ 由于会分配2个
+ <code>
+  Undo页面
+ </code>
+ 链表，也就会写入2个组的
+ <code>
+  undo日志
+ </code>
+ 。在每写入一组
+ <code>
+  undo日志
+ </code>
+ 时，都会在这组
+ <code>
+  undo日志
+ </code>
+ 前先记录一下关于这个组的一些属性，设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔把存储这些属性的地方称之为
+ <code>
+  Undo Log Header
+ </code>
+ 。所以
+ <code>
+  Undo页面
+ </code>
+ 链表的第一个页面在真正写入
+ <code>
+  undo日志
+ </code>
+ 前，其实都会被填充
+ <code>
+  Undo Page Header
+ </code>
+ 、
+ <code>
+  Undo Log Segment Header
+ </code>
+ 、
+ <code>
+  Undo Log Header
+ </code>
+ 这3个部分，如图所示：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7cbktqb16oqih12mqmghn2a1m.png-82kB" src="3ca079c6-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 这个
+ <code>
+  Undo Log Header
+ </code>
+ 具体的结构如下：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7cfr3cjsec64714qgucc1s8s9.png-122.8kB" src="3caf4a14-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 哇唔，映入眼帘的又是一大坨属性，我们先大致看一下它们都是啥意思：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_TRX_ID
+   </code>
+   ：生成本组
+   <code>
+    undo日志
+   </code>
+   的事务
+   <code>
+    id
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_TRX_NO
+   </code>
+   ：事务提交后生成的一个需要序号，使用此序号来标记事务的提交顺序（先提交的此序号小，后提交的此序号大）。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_DEL_MARKS
+   </code>
+   ：标记本组
+   <code>
+    undo
+   </code>
+   日志中是否包含由于
+   <code>
+    Delete mark
+   </code>
+   操作产生的
+   <code>
+    undo日志
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_LOG_START
+   </code>
+   ：表示本组
+   <code>
+    undo
+   </code>
+   日志中第一条
+   <code>
+    undo日志
+   </code>
+   的在页面中的偏移量。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_XID_EXISTS
+   </code>
+   ：本组
+   <code>
+    undo日志
+   </code>
+   是否包含XID信息。
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+本书不会讲述更多关于XID是个什么东东，有兴趣的同学可以到搜索引擎或者文档中搜一搜哈。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_DICT_TRANS
+   </code>
+   ：标记本组
+   <code>
+    undo日志
+   </code>
+   是不是由DDL语句产生的。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_TABLE_ID
+   </code>
+   ：如果
+   <code>
+    TRX_UNDO_DICT_TRANS
+   </code>
+   为真，那么本属性表示DDL语句操作的表的
+   <code>
+    table id
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_NEXT_LOG
+   </code>
+   ：下一组的
+   <code>
+    undo日志
+   </code>
+   在页面中开始的偏移量。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_PREV_LOG
+   </code>
+   ：上一组的
+   <code>
+    undo日志
+   </code>
+   在页面中开始的偏移量。
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+一般来说一个Undo页面链表只存储一个事务执行过程中产生的一组undo日志，但是在某些情况下，可能会在一个事务提交之后，之后开启的事务重复利用这个Undo页面链表，这样就会导致一个Undo页面中可能存放多组Undo日志，TRX_UNDO_NEXT_LOG和TRX_UNDO_PREV_LOG就是用来标记下一组和上一组undo日志在页面中的偏移量的。关于什么时候重用Undo页面链表，怎么重用这个链表我们稍后会详细说明的，现在先理解TRX_UNDO_NEXT_LOG和TRX_UNDO_PREV_LOG这两个属性的意思就好了。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_UNDO_HISTORY_NODE
+   </code>
+   ：一个12字节的
+   <code>
+    List Node
+   </code>
+   结构，代表一个称之为
+   <code>
+    History
+   </code>
+   链表的节点。
+  </p>
+ </li>
+</ul>
+<h3 class="heading">
+ 小结
+</h3>
+<p>
+ 对于没有被重用的
+ <code>
+  Undo页面
+ </code>
+ 链表来说，链表的第一个页面，也就是
+ <code>
+  first undo page
+ </code>
+ 在真正写入
+ <code>
+  undo日志
+ </code>
+ 前，会填充
+ <code>
+  Undo Page Header
+ </code>
+ 、
+ <code>
+  Undo Log Segment Header
+ </code>
+ 、
+ <code>
+  Undo Log Header
+ </code>
+ 这3个部分，之后才开始正式写入
+ <code>
+  undo日志
+ </code>
+ 。对于其他的页面来说，也就是
+ <code>
+  normal undo page
+ </code>
+ 在真正写入
+ <code>
+  undo日志
+ </code>
+ 前，只会填充
+ <code>
+  Undo Page Header
+ </code>
+ 。链表的
+ <code>
+  List Base Node
+ </code>
+ 存放到
+ <code>
+  first undo page
+ </code>
+ 的
+ <code>
+  Undo Log Segment Header
+ </code>
+ 部分，
+ <code>
+  List Node
+ </code>
+ 信息存放到每一个
+ <code>
+  Undo页面
+ </code>
+ 的
+ <code>
+  undo Page Header
+ </code>
+ 部分，所以画一个
+ <code>
+  Undo页面
+ </code>
+ 链表的示意图就是这样：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7cocjrk1dvm1ehg16da1di4mfb16.png-87kB" src="3cc44608-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<h2 class="heading">
+ 重用Undo页面
+</h2>
+<p>
+ 我们前边说为了能提高并发执行的多个事务写入
+ <code>
+  undo日志
+ </code>
+ 的性能，设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔决定为每个事务单独分配相应的
+ <code>
+  Undo页面
+ </code>
+ 链表（最多可能单独分配4个链表）。但是这样也造成了一些问题，比如其实大部分事务执行过程中可能只修改了一条或几条记录，针对某个
+ <code>
+  Undo页面
+ </code>
+ 链表只产生了非常少的
+ <code>
+  undo日志
+ </code>
+ ，这些
+ <code>
+  undo日志
+ </code>
+ 可能只占用一丢丢存储空间，每开启一个事务就新创建一个
+ <code>
+  Undo页面
+ </code>
+ 链表（虽然这个链表中只有一个页面）来存储这么一丢丢
+ <code>
+  undo日志
+ </code>
+ 岂不是太浪费了么？的确是挺浪费，于是设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔本着勤俭节约的优良传统，决定在事务提交后在某些情况下重用该事务的
+ <code>
+  Undo页面
+ </code>
+ 链表。一个
+ <code>
+  Undo页面
+ </code>
+ 链表是否可以被重用的条件很简单：
+</p>
+<ul>
+ <li>
+  <p>
+   该链表中只包含一个
+   <code>
+    Undo页面
+   </code>
+   。
+  </p>
+  <p>
+   如果一个事务执行过程中产生了非常多的
+   <code>
+    undo日志
+   </code>
+   ，那么它可能申请非常多的页面加入到
+   <code>
+    Undo页面
+   </code>
+   链表中。在该事物提交后，如果将整个链表中的页面都重用，那就意味着即使新的事务并没有向该
+   <code>
+    Undo页面
+   </code>
+   链表中写入很多
+   <code>
+    undo日志
+   </code>
+   ，那该链表中也得维护非常多的页面，那些用不到的页面也不能被别的事务所使用，这样就造成了另一种浪费。所以设计
+   <code>
+    InnoDB
+   </code>
+   的大叔们规定，只有在
+   <code>
+    Undo页面
+   </code>
+   链表中只包含一个
+   <code>
+    Undo页面
+   </code>
+   时，该链表才可以被下一个事务所重用。
+  </p>
+ </li>
+ <li>
+  <p>
+   该
+   <code>
+    Undo页面
+   </code>
+   已经使用的空间小于整个页面空间的3/4。
+  </p>
+ </li>
+</ul>
+<p>
+ 我们前边说过，
+ <code>
+  Undo页面
+ </code>
+ 链表按照存储的
+ <code>
+  undo日志
+ </code>
+ 所属的大类可以被分为
+ <code>
+  insert undo链表
+ </code>
+ 和
+ <code>
+  update undo链表
+ </code>
+ 两种，这两种链表在被重用时的策略也是不同的，我们分别看一下：
+</p>
+<ul>
+ <li>
+  <p>
+   insert undo链表
+  </p>
+  <p>
+   <code>
+    insert undo链表
+   </code>
+   中只存储类型为
+   <code>
+    TRX_UNDO_INSERT_REC
+   </code>
+   的
+   <code>
+    undo日志
+   </code>
+   ，这种类型的
+   <code>
+    undo日志
+   </code>
+   在事务提交之后就没用了，就可以被清除掉。所以在某个事务提交后，重用这个事务的
+   <code>
+    insert undo链表
+   </code>
+   （这个链表中只有一个页面）时，可以直接把之前事务写入的一组
+   <code>
+    undo日志
+   </code>
+   覆盖掉，从头开始写入新事务的一组
+   <code>
+    undo日志
+   </code>
+   ，如下图所示：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1d7el7sg0pje14rjc06rp51r8r1m.png-91.7kB" src="3cd6698c-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+  <p>
+   如图所示，假设有一个事务使用的
+   <code>
+    insert undo链表
+   </code>
+   ，到事务提交时，只向
+   <code>
+    insert undo链表
+   </code>
+   中插入了3条
+   <code>
+    undo日志
+   </code>
+   ，这个
+   <code>
+    insert undo链表
+   </code>
+   只申请了一个
+   <code>
+    Undo页面
+   </code>
+   。假设此刻该页面已使用的空间小于整个页面大小的3/4，那么下一个事务就可以重用这个
+   <code>
+    insert undo链表
+   </code>
+   （链表中只有一个页面）。假设此时有一个新事务重用了该
+   <code>
+    insert undo链表
+   </code>
+   ，那么可以直接把旧的一组
+   <code>
+    undo日志
+   </code>
+   覆盖掉，写入一组新的
+   <code>
+    undo日志
+   </code>
+   。
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+当然，在重用Undo页面链表写入新的一组undo日志时，不仅会写入新的Undo Log Header，还会适当调整Undo Page Header、Undo Log Segment Header、Undo Log Header中的一些属性，比如TRX_UNDO_PAGE_START、TRX_UNDO_PAGE_FREE等等等等，这些我们就不具体唠叨了。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   update undo链表
+  </p>
+  <p>
+   在一个事务提交后，它的
+   <code>
+    update undo链表
+   </code>
+   中的
+   <code>
+    undo日志
+   </code>
+   也不能立即删除掉（这些日志用于MVCC，我们后边会说的）。所以如果之后的事务想重用
+   <code>
+    update undo链表
+   </code>
+   时，就不能覆盖之前事务写入的
+   <code>
+    undo日志
+   </code>
+   。这样就相当于在同一个
+   <code>
+    Undo页面
+   </code>
+   中写入了多组的
+   <code>
+    undo日志
+   </code>
+   ，效果看起来就是这样：
+  </p>
+  <p>
+  </p>
+  <figure>
+   <img alt="image_1d7elkmtjdbv1kth1c9jk17is123.png-126.3kB" src="3cea929a-13d6-11ed-838d-acde48001122"/>
+   <figcaption>
+   </figcaption>
+  </figure>
+  <p>
+  </p>
+ </li>
+</ul>
+<h2 class="heading">
+ 回滚段
+</h2>
+<h3 class="heading">
+ 回滚段的概念
+</h3>
+<p>
+ 我们现在知道一个事务在执行过程中最多可以分配4个
+ <code>
+  Undo页面
+ </code>
+ 链表，在同一时刻不同事务拥有的
+ <code>
+  Undo页面
+ </code>
+ 链表是不一样的，所以在同一时刻系统里其实可以有许许多多个
+ <code>
+  Undo页面
+ </code>
+ 链表存在。为了更好的管理这些链表，设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔又设计了一个称之为
+ <code>
+  Rollback Segment Header
+ </code>
+ 的页面，在这个页面中存放了各个
+ <code>
+  Undo页面
+ </code>
+ 链表的
+ <code>
+  frist undo page
+ </code>
+ 的
+ <code>
+  页号
+ </code>
+ ，他们把这些
+ <code>
+  页号
+ </code>
+ 称之为
+ <code>
+  undo slot
+ </code>
+ 。我们可以这样理解，每个
+ <code>
+  Undo页面
+ </code>
+ 链表都相当于是一个班，这个链表的
+ <code>
+  first undo page
+ </code>
+ 就相当于这个班的班长，找到了这个班的班长，就可以找到班里的其他同学（其他同学相当于
+ <code>
+  normal undo page
+ </code>
+ ）。有时候学校需要向这些班级传达一下精神，就需要把班长都召集在会议室，这个
+ <code>
+  Rollback Segment Header
+ </code>
+ 就相当于是一个会议室。
+</p>
+<p>
+ 我们看一下这个称之为
+ <code>
+  Rollback Segment Header
+ </code>
+ 的页面长啥样（以默认的16KB为例）：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7gs2k8u1i9i15r71dg97fj10jv9.png-88kB" src="3d02d59e-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔规定，每一个
+ <code>
+  Rollback Segment Header
+ </code>
+ 页面都对应着一个段，这个段就称为
+ <code>
+  Rollback Segment
+ </code>
+ ，翻译过来就是
+ <code>
+  回滚段
+ </code>
+ 。与我们之前介绍的各种段不同的是，这个
+ <code>
+  Rollback Segment
+ </code>
+ 里其实只有一个页面（这可能是设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔们的一种洁癖，他们可能觉得为了某个目的去分配页面的话都得先申请一个段，或者他们觉得虽然目前版本的
+ <code>
+  MySQL
+ </code>
+ 里
+ <code>
+  Rollback Segment
+ </code>
+ 里其实只有一个页面，但可能之后的版本里会增加页面也说不定）。
+</p>
+<p>
+ 了解了
+ <code>
+  Rollback Segment
+ </code>
+ 的含义之后，我们再来看看这个称之为
+ <code>
+  Rollback Segment Header
+ </code>
+ 的页面的各个部分的含义都是啥意思：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    TRX_RSEG_MAX_SIZE
+   </code>
+   ：本
+   <code>
+    Rollback Segment
+   </code>
+   中管理的所有
+   <code>
+    Undo页面
+   </code>
+   链表中的
+   <code>
+    Undo页面
+   </code>
+   数量之和的最大值。换句话说，本
+   <code>
+    Rollback Segment
+   </code>
+   中所有
+   <code>
+    Undo页面
+   </code>
+   链表中的
+   <code>
+    Undo页面
+   </code>
+   数量之和不能超过
+   <code>
+    TRX_RSEG_MAX_SIZE
+   </code>
+   代表的值。
+  </p>
+  <p>
+   该属性的值默认为无限大，也就是我们想写多少
+   <code>
+    Undo页面
+   </code>
+   都可以。
+  </p>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+无限大其实也只是个夸张的说法，4个字节能表示最大的数也就是0xFFFFFFFF，但是我们之后会看到，0xFFFFFFFF这个数有特殊用途，所以实际上TRX_RSEG_MAX_SIZE的值为0xFFFFFFFE。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_RSEG_HISTORY_SIZE
+   </code>
+   ：
+   <code>
+    History
+   </code>
+   链表占用的页面数量。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_RSEG_HISTORY
+   </code>
+   ：
+   <code>
+    History
+   </code>
+   链表的基节点。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_RSEG_FSEG_HEADER
+   </code>
+   ：本
+   <code>
+    Rollback Segment
+   </code>
+   对应的10字节大小的
+   <code>
+    Segment Header
+   </code>
+   结构，通过它可以找到本段对应的
+   <code>
+    INODE Entry
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRX_RSEG_UNDO_SLOTS
+   </code>
+   ：各个
+   <code>
+    Undo页面
+   </code>
+   链表的
+   <code>
+    first undo page
+   </code>
+   的
+   <code>
+    页号
+   </code>
+   集合，也就是
+   <code>
+    undo slot
+   </code>
+   集合。
+  </p>
+  <p>
+   一个页号占用
+   <code>
+    4
+   </code>
+   个字节，对于
+   <code>
+    16KB
+   </code>
+   大小的页面来说，这个
+   <code>
+    TRX_RSEG_UNDO_SLOTS
+   </code>
+   部分共存储了
+   <code>
+    1024
+   </code>
+   个
+   <code>
+    undo slot
+   </code>
+   ，所以共需
+   <code>
+    1024 × 4 = 4096
+   </code>
+   个字节。
+  </p>
+ </li>
+</ul>
+<h3 class="heading">
+ 从回滚段中申请Undo页面链表
+</h3>
+<p>
+ 初始情况下，由于未向任何事务分配任何
+ <code>
+  Undo页面
+ </code>
+ 链表，所以对于一个
+ <code>
+  Rollback Segment Header
+ </code>
+ 页面来说，它的各个
+ <code>
+  undo slot
+ </code>
+ 都被设置成了一个特殊的值：
+ <code>
+  FIL_NULL
+ </code>
+ （对应的十六进制就是
+ <code>
+  0xFFFFFFFF
+ </code>
+ ），表示该
+ <code>
+  undo slot
+ </code>
+ 不指向任何页面。
+</p>
+<p>
+ 随着时间的流逝，开始有事务需要分配
+ <code>
+  Undo页面
+ </code>
+ 链表了，就从回滚段的第一个
+ <code>
+  undo slot
+ </code>
+ 开始，看看该
+ <code>
+  undo slot
+ </code>
+ 的值是不是
+ <code>
+  FIL_NULL
+ </code>
+ ：
+</p>
+<ul>
+ <li>
+  <p>
+   如果是
+   <code>
+    FIL_NULL
+   </code>
+   ，那么在表空间中新创建一个段（也就是
+   <code>
+    Undo Log Segment
+   </code>
+   ），然后从段里申请一个页面作为
+   <code>
+    Undo页面
+   </code>
+   链表的
+   <code>
+    first undo page
+   </code>
+   ，然后把该
+   <code>
+    undo slot
+   </code>
+   的值设置为刚刚申请的这个页面的页号，这样也就意味着这个
+   <code>
+    undo slot
+   </code>
+   被分配给了这个事务。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果不是
+   <code>
+    FIL_NULL
+   </code>
+   ，说明该
+   <code>
+    undo slot
+   </code>
+   已经指向了一个
+   <code>
+    undo链表
+   </code>
+   ，也就是说这个
+   <code>
+    undo slot
+   </code>
+   已经被别的事务占用了，那就跳到下一个
+   <code>
+    undo slot
+   </code>
+   ，判断该
+   <code>
+    undo slot
+   </code>
+   的值是不是
+   <code>
+    FIL_NULL
+   </code>
+   ，重复上边的步骤。
+  </p>
+ </li>
+</ul>
+<p>
+ 一个
+ <code>
+  Rollback Segment Header
+ </code>
+ 页面中包含
+ <code>
+  1024
+ </code>
+ 个
+ <code>
+  undo slot
+ </code>
+ ，如果这
+ <code>
+  1024
+ </code>
+ 个
+ <code>
+  undo slot
+ </code>
+ 的值都不为
+ <code>
+  FIL_NULL
+ </code>
+ ，这就意味着这
+ <code>
+  1024
+ </code>
+ 个
+ <code>
+  undo slot
+ </code>
+ 都已经名花有主（被分配给了某个事务），此时由于新事务无法再获得新的
+ <code>
+  Undo页面
+ </code>
+ 链表，就会回滚这个事务并且给用户报错：
+</p>
+<pre><code class="hljs bash" lang="bash">Too many active concurrent transactions
+</code></pre>
+<p>
+ 用户看到这个错误，可以选择重新执行这个事务（可能重新执行时有别的事务提交了，该事务就可以被分配
+ <code>
+  Undo页面
+ </code>
+ 链表了）。
+</p>
+<p>
+ 当一个事务提交时，它所占用的
+ <code>
+  undo slot
+ </code>
+ 有两种命运：
+</p>
+<ul>
+ <li>
+  <p>
+   如果该
+   <code>
+    undo slot
+   </code>
+   指向的
+   <code>
+    Undo页面
+   </code>
+   链表符合被重用的条件（就是我们上边说的
+   <code>
+    Undo页面
+   </code>
+   链表只占用一个页面并且已使用空间小于整个页面的3/4）。
+  </p>
+  <p>
+   该
+   <code>
+    undo slot
+   </code>
+   就处于被缓存的状态，设计
+   <code>
+    InnoDB
+   </code>
+   的大叔规定这时该
+   <code>
+    Undo页面
+   </code>
+   链表的
+   <code>
+    TRX_UNDO_STATE
+   </code>
+   属性（该属性在
+   <code>
+    first undo page
+   </code>
+   的
+   <code>
+    Undo Log Segment Header
+   </code>
+   部分）会被设置为
+   <code>
+    TRX_UNDO_CACHED
+   </code>
+   。
+  </p>
+  <p>
+   被缓存的
+   <code>
+    undo slot
+   </code>
+   都会被加入到一个链表，根据对应的
+   <code>
+    Undo页面
+   </code>
+   链表的类型不同，也会被加入到不同的链表：
+  </p>
+  <ul>
+   <li>
+    <p>
+     如果对应的
+     <code>
+      Undo页面
+     </code>
+     链表是
+     <code>
+      insert undo链表
+     </code>
+     ，则该
+     <code>
+      undo slot
+     </code>
+     会被加入
+     <code>
+      insert undo cached链表
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     如果对应的
+     <code>
+      Undo页面
+     </code>
+     链表是
+     <code>
+      update undo链表
+     </code>
+     ，则该
+     <code>
+      undo slot
+     </code>
+     会被加入
+     <code>
+      update undo cached链表
+     </code>
+     。
+    </p>
+   </li>
+  </ul>
+  <p>
+   一个回滚段就对应着上述两个
+   <code>
+    cached链表
+   </code>
+   ，如果有新事务要分配
+   <code>
+    undo slot
+   </code>
+   时，先从对应的
+   <code>
+    cached链表
+   </code>
+   中找。如果没有被缓存的
+   <code>
+    undo slot
+   </code>
+   ，才会到回滚段的
+   <code>
+    Rollback Segment Header
+   </code>
+   页面中再去找。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果该
+   <code>
+    undo slot
+   </code>
+   指向的
+   <code>
+    Undo页面
+   </code>
+   链表不符合被重用的条件，那么针对该
+   <code>
+    undo slot
+   </code>
+   对应的
+   <code>
+    Undo页面
+   </code>
+   链表类型不同，也会有不同的处理：
+  </p>
+  <ul>
+   <li>
+    <p>
+     如果对应的
+     <code>
+      Undo页面
+     </code>
+     链表是
+     <code>
+      insert undo链表
+     </code>
+     ，则该
+     <code>
+      Undo页面
+     </code>
+     链表的
+     <code>
+      TRX_UNDO_STATE
+     </code>
+     属性会被设置为
+     <code>
+      TRX_UNDO_TO_FREE
+     </code>
+     ，之后该
+     <code>
+      Undo页面
+     </code>
+     链表对应的段会被释放掉（也就意味着段中的页面可以被挪作他用），然后把该
+     <code>
+      undo slot
+     </code>
+     的值设置为
+     <code>
+      FIL_NULL
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     如果对应的
+     <code>
+      Undo页面
+     </code>
+     链表是
+     <code>
+      update undo链表
+     </code>
+     ，则该
+     <code>
+      Undo页面
+     </code>
+     链表的
+     <code>
+      TRX_UNDO_STATE
+     </code>
+     属性会被设置为
+     <code>
+      TRX_UNDO_TO_PRUGE
+     </code>
+     ，则会将该
+     <code>
+      undo slot
+     </code>
+     的值设置为
+     <code>
+      FIL_NULL
+     </code>
+     ，然后将本次事务写入的一组
+     <code>
+      undo
+     </code>
+     日志放到所谓的
+     <code>
+      History链表
+     </code>
+     中（需要注意的是，这里并不会将
+     <code>
+      Undo页面
+     </code>
+     链表对应的段给释放掉，因为这些
+     <code>
+      undo
+     </code>
+     日志还有用呢～）。
+    </p>
+   </li>
+  </ul>
+  <blockquote class="warning">
+   <p>
+    小贴士：
+
+更多关于History链表的事我们稍后再说，稍安勿躁哈。
+   </p>
+  </blockquote>
+ </li>
+</ul>
+<h3 class="heading">
+ 多个回滚段
+</h3>
+<p>
+ 我们说一个事务执行过程中最多分配
+ <code>
+  4
+ </code>
+ 个
+ <code>
+  Undo页面
+ </code>
+ 链表，而一个回滚段里只有
+ <code>
+  1024
+ </code>
+ 个
+ <code>
+  undo slot
+ </code>
+ ，很显然
+ <code>
+  undo slot
+ </code>
+ 的数量有点少啊。我们即使假设一个读写事务执行过程中只分配
+ <code>
+  1
+ </code>
+ 个
+ <code>
+  Undo页面
+ </code>
+ 链表，那
+ <code>
+  1024
+ </code>
+ 个
+ <code>
+  undo slot
+ </code>
+ 也只能支持
+ <code>
+  1024
+ </code>
+ 个读写事务同时执行，再多了就崩溃了。这就相当于会议室只能容下1024个班长同时开会，如果有几千人同时到会议室开会的话，那后来的那些班长就没地方坐了，只能等待前边的人开完会自己再进去开。
+</p>
+<p>
+ 话说在
+ <code>
+  InnoDB
+ </code>
+ 的早期发展阶段的确只有一个回滚段，但是设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔后来意识到了这个问题，咋解决这问题呢？会议室不够，多盖几个会议室不就得了。所以设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔一口气定义了
+ <code>
+  128
+ </code>
+ 个回滚段，也就相当于有了
+ <code>
+  128 × 1024 = 131072
+ </code>
+ 个
+ <code>
+  undo slot
+ </code>
+ 。假设一个读写事务执行过程中只分配
+ <code>
+  1
+ </code>
+ 个
+ <code>
+  Undo页面
+ </code>
+ 链表，那么就可以同时支持
+ <code>
+  131072
+ </code>
+ 个读写事务并发执行（这么多事务在一台机器上并发执行，还真没见过呢～）。
+</p>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+只读事务并不需要分配Undo页面链表，MySQL 5.7中所有刚开启的事务默认都是只读事务，只有在事务执行过程中对记录做了某些改动时才会被升级为读写事务。
+ </p>
+</blockquote>
+<p>
+ 每个回滚段都对应着一个
+ <code>
+  Rollback Segment Header
+ </code>
+ 页面，有128个回滚段，自然就要有128个
+ <code>
+  Rollback Segment Header
+ </code>
+ 页面，这些页面的地址总得找个地方存一下吧！于是设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔在系统表空间的第
+ <code>
+  5
+ </code>
+ 号页面的某个区域包含了128个8字节大小的格子：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7214jha1cua1dgu1r6718091gbfm.png-27.4kB" src="3d19888e-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 每个8字节的格子的构造就像这样：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d721oblche9a4pmng15p1dk313.png-9.9kB" src="3d2d047c-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 如果所示，每个8字节的格子其实由两部分组成：
+</p>
+<ul>
+ <li>
+  <p>
+   4字节大小的
+   <code>
+    Space ID
+   </code>
+   ，代表一个表空间的ID。
+  </p>
+ </li>
+ <li>
+  <p>
+   4字节大小的
+   <code>
+    Page number
+   </code>
+   ，代表一个页号。
+  </p>
+ </li>
+</ul>
+<p>
+ 也就是说每个8字节大小的
+ <code>
+  格子
+ </code>
+ 相当于一个指针，指向某个表空间中的某个页面，这些页面就是
+ <code>
+  Rollback Segment Header
+ </code>
+ 。这里需要注意的一点事，要定位一个
+ <code>
+  Rollback Segment Header
+ </code>
+ 还需要知道对应的表空间ID，这也就意味着
+ <span style="color:red">
+  不同的回滚段可能分布在不同的表空间中
+ </span>
+ 。
+</p>
+<p>
+ 所以通过上边的叙述我们可以大致清楚，在系统表空间的第
+ <code>
+  5
+ </code>
+ 号页面中存储了128个
+ <code>
+  Rollback Segment Header
+ </code>
+ 页面地址，每个
+ <code>
+  Rollback Segment Header
+ </code>
+ 就相当于一个回滚段。在
+ <code>
+  Rollback Segment Header
+ </code>
+ 页面中，又包含
+ <code>
+  1024
+ </code>
+ 个
+ <code>
+  undo slot
+ </code>
+ ，每个
+ <code>
+  undo slot
+ </code>
+ 都对应一个
+ <code>
+  Undo页面
+ </code>
+ 链表。我们画个示意图：
+</p>
+<p>
+</p>
+<figure>
+ <img alt="image_1d7h72gvlin31far16h11elj16tu1m.png-97kB" src="3d3d1fce-13d6-11ed-838d-acde48001122"/>
+ <figcaption>
+ </figcaption>
+</figure>
+<p>
+</p>
+<p>
+ 把图一画出来就清爽多了。
+</p>
+<h3 class="heading">
+ 回滚段的分类
+</h3>
+<p>
+ 我们把这128个回滚段给编一下号，最开始的回滚段称之为
+ <code>
+  第0号回滚段
+ </code>
+ ，之后依次递增，最后一个回滚段就称之为
+ <code>
+  第127号回滚段
+ </code>
+ 。这128个回滚段可以被分成两大类：
+</p>
+<ul>
+ <li>
+  <p>
+   第
+   <code>
+    0
+   </code>
+   号、第
+   <code>
+    33～127
+   </code>
+   号回滚段属于一类。其中第
+   <code>
+    0
+   </code>
+   号回滚段必须在系统表空间中（就是说第
+   <code>
+    0
+   </code>
+   号回滚段对应的
+   <code>
+    Rollback Segment Header
+   </code>
+   页面必须在系统表空间中），第
+   <code>
+    33～127
+   </code>
+   号回滚段既可以在系统表空间中，也可以在自己配置的
+   <code>
+    undo
+   </code>
+   表空间中，关于怎么配置我们稍后再说。
+  </p>
+  <p>
+   如果一个事务在执行过程中由于对普通表的记录做了改动需要分配
+   <code>
+    Undo页面
+   </code>
+   链表时，必须从这一类的段中分配相应的
+   <code>
+    undo slot
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   第
+   <code>
+    1～32
+   </code>
+   号回滚段属于一类。这些回滚段必须在临时表空间（对应着数据目录中的
+   <code>
+    ibtmp1
+   </code>
+   文件）中。
+  </p>
+  <p>
+   如果一个事务在执行过程中由于对临时表的记录做了改动需要分配
+   <code>
+    Undo页面
+   </code>
+   链表时，必须从这一类的段中分配相应的
+   <code>
+    undo slot
+   </code>
+   。
+  </p>
+ </li>
+</ul>
+<p>
+ 也就是说如果一个事务在执行过程中既对普通表的记录做了改动，又对临时表的记录做了改动，那么需要为这个记录分配2个回滚段，再分别到这两个回滚段中分配对应的
+ <code>
+  undo slot
+ </code>
+ 。
+</p>
+<p>
+ 不知道大家有没有疑惑，为啥要把针对普通表和临时表来划分不同种类的
+ <code>
+  回滚段
+ </code>
+ 呢？这个还得从
+ <code>
+  Undo页面
+ </code>
+ 本身说起，我们说
+ <code>
+  Undo页面
+ </code>
+ 其实是类型为
+ <code>
+  FIL_PAGE_UNDO_LOG
+ </code>
+ 的页面的简称，说到底它也是一个普通的页面。我们前边说过，在修改页面之前一定要先把对应的
+ <code>
+  redo日志
+ </code>
+ 写上，这样在系统奔溃重启时才能恢复到奔溃前的状态。我们向
+ <code>
+  Undo页面
+ </code>
+ 写入
+ <code>
+  undo日志
+ </code>
+ 本身也是一个写页面的过程，设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔为此还设计了许多种
+ <code>
+  redo日志
+ </code>
+ 的类型，比方说
+ <code>
+  MLOG_UNDO_HDR_CREATE
+ </code>
+ 、
+ <code>
+  MLOG_UNDO_INSERT
+ </code>
+ 、
+ <code>
+  MLOG_UNDO_INIT
+ </code>
+ 等等等等，也就是说我们对
+ <code>
+  Undo页面
+ </code>
+ 做的任何改动都会记录相应类型的
+ <code>
+  redo日志
+ </code>
+ 。但是对于临时表来说，因为修改临时表而产生的
+ <code>
+  undo日志
+ </code>
+ 只需要在系统运行过程中有效，如果系统奔溃了，那么在重启时也不需要恢复这些
+ <code>
+  undo
+ </code>
+ 日志所在的页面，所以在写针对临时表的
+ <code>
+  Undo页面
+ </code>
+ 时，并不需要记录相应的
+ <code>
+  redo日志
+ </code>
+ 。总结一下针对普通表和临时表划分不同种类的
+ <code>
+  回滚段
+ </code>
+ 的原因：
+ <span style="color:red">
+  在修改针对普通表的回滚段中的Undo页面时，需要记录对应的redo日志，而修改针对临时表的回滚段中的Undo页面时，不需要记录对应的redo日志
+ </span>
+ 。
+</p>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+实际上在MySQL 5.7.21这个版本中，如果我们仅仅对普通表的记录做了改动，那么只会为该事务分配针对普通表的回滚段，不分配针对临时表的回滚段。但是如果我们仅仅对临时表的记录做了改动，那么既会为该事务分配针对普通表的回滚段，又会为其分配针对临时表的回滚段（不过分配了回滚段并不会立即分配undo slot，只有在真正需要Undo页面链表时才会去分配回滚段中的undo slot）。
+ </p>
+</blockquote>
+<h3 class="heading">
+ 为事务分配Undo页面链表详细过程
+</h3>
+<p>
+ 上边说了一大堆的概念，大家应该有一点点的小晕，接下来我们以事务对普通表的记录做改动为例，给大家梳理一下事务执行过程中分配
+ <code>
+  Undo页面
+ </code>
+ 链表时的完整过程，
+</p>
+<ul>
+ <li>
+  <p>
+   事务在执行过程中对普通表的记录首次做改动之前，首先会到系统表空间的第
+   <code>
+    5
+   </code>
+   号页面中分配一个回滚段（其实就是获取一个
+   <code>
+    Rollback Segment Header
+   </code>
+   页面的地址）。一旦某个回滚段被分配给了这个事务，那么之后该事务中再对普通表的记录做改动时，就不会重复分配了。
+  </p>
+  <p>
+   使用传说中的
+   <code>
+    round-robin
+   </code>
+   （循环使用）方式来分配回滚段。比如当前事务分配了第
+   <code>
+    0
+   </code>
+   号回滚段，那么下一个事务就要分配第
+   <code>
+    33
+   </code>
+   号回滚段，下下个事务就要分配第
+   <code>
+    34
+   </code>
+   号回滚段，简单一点的说就是这些回滚段被轮着分配给不同的事务（就是这么简单粗暴，没啥好说的）。
+  </p>
+ </li>
+ <li>
+  <p>
+   在分配到回滚段后，首先看一下这个回滚段的两个
+   <code>
+    cached链表
+   </code>
+   有没有已经缓存了的
+   <code>
+    undo slot
+   </code>
+   ，比如如果事务做的是
+   <code>
+    INSERT
+   </code>
+   操作，就去回滚段对应的
+   <code>
+    insert undo cached链表
+   </code>
+   中看看有没有缓存的
+   <code>
+    undo slot
+   </code>
+   ；如果事务做的是
+   <code>
+    DELETE
+   </code>
+   操作，就去回滚段对应的
+   <code>
+    update undo cached链表
+   </code>
+   中看看有没有缓存的
+   <code>
+    undo slot
+   </code>
+   。如果有缓存的
+   <code>
+    undo slot
+   </code>
+   ，那么就把这个缓存的
+   <code>
+    undo slot
+   </code>
+   分配给该事务。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果没有缓存的
+   <code>
+    undo slot
+   </code>
+   可供分配，那么就要到
+   <code>
+    Rollback Segment Header
+   </code>
+   页面中找一个可用的
+   <code>
+    undo slot
+   </code>
+   分配给当前事务。
+  </p>
+  <p>
+   从
+   <code>
+    Rollback Segment Header
+   </code>
+   页面中分配可用的
+   <code>
+    undo slot
+   </code>
+   的方式我们上边也说过了，就是从第
+   <code>
+    0
+   </code>
+   个
+   <code>
+    undo slot
+   </code>
+   开始，如果该
+   <code>
+    undo slot
+   </code>
+   的值为
+   <code>
+    FIL_NULL
+   </code>
+   ，意味着这个
+   <code>
+    undo slot
+   </code>
+   是空闲的，就把这个
+   <code>
+    undo slot
+   </code>
+   分配给当前事务，否则查看第
+   <code>
+    1
+   </code>
+   个
+   <code>
+    undo slot
+   </code>
+   是否满足条件，依次类推，直到最后一个
+   <code>
+    undo slot
+   </code>
+   。如果这
+   <code>
+    1024
+   </code>
+   个
+   <code>
+    undo slot
+   </code>
+   都没有值为
+   <code>
+    FIL_NULL
+   </code>
+   的情况，就直接报错喽（一般不会出现这种情况）～
+  </p>
+ </li>
+ <li>
+  <p>
+   找到可用的
+   <code>
+    undo slot
+   </code>
+   后，如果该
+   <code>
+    undo slot
+   </code>
+   是从
+   <code>
+    cached链表
+   </code>
+   中获取的，那么它对应的
+   <code>
+    Undo Log Segment
+   </code>
+   已经分配了，否则的话需要重新分配一个
+   <code>
+    Undo Log Segment
+   </code>
+   ，然后从该
+   <code>
+    Undo Log Segment
+   </code>
+   中申请一个页面作为
+   <code>
+    Undo页面
+   </code>
+   链表的
+   <code>
+    first undo page
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   然后事务就可以把
+   <code>
+    undo日志
+   </code>
+   写入到上边申请的
+   <code>
+    Undo页面
+   </code>
+   链表了！
+  </p>
+ </li>
+</ul>
+<p>
+ 对临时表的记录做改动的步骤和上述的一样，就不赘述了。不过需要再次强调一次，
+ <span style="color:red">
+  如果一个事务在执行过程中既对普通表的记录做了改动，又对临时表的记录做了改动，那么需要为这个记录分配2个回滚段。并发执行的不同事务其实也可以被分配相同的回滚段，只要分配不同的undo slot就可以了
+ </span>
+ 。
+</p>
+<h2 class="heading">
+ 回滚段相关配置
+</h2>
+<h3 class="heading">
+ 配置回滚段数量
+</h3>
+<p>
+ 我们前边说系统中一共有
+ <code>
+  128
+ </code>
+ 个回滚段，其实这只是默认值，我们可以通过启动参数
+ <code>
+  innodb_rollback_segments
+ </code>
+ 来配置回滚段的数量，可配置的范围是
+ <code>
+  1~128
+ </code>
+ 。但是这个参数并不会影响针对临时表的回滚段数量，针对临时表的回滚段数量一直是
+ <code>
+  32
+ </code>
+ ，也就是说：
+</p>
+<ul>
+ <li>
+  <p>
+   如果我们把
+   <code>
+    innodb_rollback_segments
+   </code>
+   的值设置为
+   <code>
+    1
+   </code>
+   ，那么只会有1个针对普通表的可用回滚段，但是仍然有32个针对临时表的可用回滚段。
+  </p>
+ </li>
+ <li>
+  <ul>
+   <li>
+    如果我们把
+    <code>
+     innodb_rollback_segments
+    </code>
+    的值设置为
+    <code>
+     2～33
+    </code>
+    之间的数，效果和将其设置为
+    <code>
+     1
+    </code>
+    是一样的。
+   </li>
+  </ul>
+ </li>
+ <li>
+  <p>
+   如果我们把
+   <code>
+    innodb_rollback_segments
+   </code>
+   设置为大于
+   <code>
+    33
+   </code>
+   的数，那么针对普通表的可用回滚段数量就是该值减去32。
+  </p>
+ </li>
+</ul>
+<h3 class="heading">
+ 配置undo表空间
+</h3>
+<p>
+ 默认情况下，针对普通表设立的回滚段（第
+ <code>
+  0
+ </code>
+ 号以及第
+ <code>
+  33~127
+ </code>
+ 号回滚段）都是被分配到系统表空间的。其中的第第
+ <code>
+  0
+ </code>
+ 号回滚段是一直在系统表空间的，但是第
+ <code>
+  33~127
+ </code>
+ 号回滚段可以通过配置放到自定义的
+ <code>
+  undo表空间
+ </code>
+ 中。但是这种配置只能在系统初始化（创建数据目录时）的时候使用，一旦初始化完成，之后就不能再次更改了。我们看一下相关启动参数：
+</p>
+<ul>
+ <li>
+  <p>
+   通过
+   <code>
+    innodb_undo_directory
+   </code>
+   指定
+   <code>
+    undo表空间
+   </code>
+   所在的目录，如果没有指定该参数，则默认
+   <code>
+    undo表空间
+   </code>
+   所在的目录就是数据目录。
+  </p>
+ </li>
+ <li>
+  <p>
+   通过
+   <code>
+    innodb_undo_tablespaces
+   </code>
+   定义
+   <code>
+    undo表空间
+   </code>
+   的数量。该参数的默认值为
+   <code>
+    0
+   </code>
+   ，表明不创建任何
+   <code>
+    undo表空间
+   </code>
+   。
+  </p>
+  <p>
+   第
+   <code>
+    33~127
+   </code>
+   号回滚段可以平均分布到不同的
+   <code>
+    undo表空间
+   </code>
+   中。
+  </p>
+ </li>
+</ul>
+<blockquote class="warning">
+ <p>
+  小贴士：
+
+如果我们在系统初始化的时候指定了创建了undo表空间，那么系统表空间中的第0号回滚段将处于不可用状态。
+ </p>
+</blockquote>
+<p>
+ 比如我们在系统初始化时指定的
+ <code>
+  innodb_rollback_segments
+ </code>
+ 为
+ <code>
+  35
+ </code>
+ ，
+ <code>
+  innodb_undo_tablespaces
+ </code>
+ 为
+ <code>
+  2
+ </code>
+ ，这样就会将第
+ <code>
+  33
+ </code>
+ 、
+ <code>
+  34
+ </code>
+ 号回滚段分别分布到一个
+ <code>
+  undo表空间
+ </code>
+ 中。
+</p>
+<p>
+ 设立
+ <code>
+  undo表空间
+ </code>
+ 的一个好处就是在
+ <code>
+  undo表空间
+ </code>
+ 中的文件大到一定程度时，可以自动的将该
+ <code>
+  undo表空间
+ </code>
+ 截断（truncate）成一个小文件。而系统表空间的大小只能不断的增大，却不能截断。
+</p>
+
+</div>
+
+</div>
+</body>
+</html>

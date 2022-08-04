@@ -1,0 +1,579 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>专题式讲解 —— MySQL的COUNT语句是怎么执行的</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>专题式讲解 —— MySQL的COUNT语句是怎么执行的</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1>
+ MySQL的COUNT语句是怎么执行的
+</h1>
+<p>
+ 标签： MySQL是怎样运行的
+</p>
+<hr/>
+<p>
+ 众多开发小伙伴在写业务逻辑的时候都会有一个统计行数的需求，此时COUNT函数便成为了首选。但是大家发现，随着数据量的增长，COUNT执行的越来越慢，本文从源码的角度来帮助小伙伴们分析一下MySQL中的COUNT函数是如何执行的。
+</p>
+<p>
+ 需要声明一点，本文所使用的MySQL源码版本是5.7.22，并且只针对InnoDB存储引擎。在深入介绍之前需要大家具有一些前置知识，才可以顺利讨论。
+</p>
+<h2>
+ 前置知识1——InnoDB的B+树索引
+</h2>
+<p>
+ 为了故事的顺利发展，我们引入一个表：
+</p>
+<pre><code>CREATE TABLE t (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    key1 INT,
+    common_field VARCHAR(100),
+    PRIMARY KEY (id),
+    KEY idx_key1 (key1)
+) Engine=InnoDB CHARSET=utf8;
+</code></pre>
+<p>
+ 这个表就包含2个索引（也就是2棵B+树）：
+</p>
+<ul>
+ <li>
+  <p>
+   以
+   <code>
+    id
+   </code>
+   列为主键对应的聚簇索引。
+  </p>
+ </li>
+ <li>
+  <p>
+   为
+   <code>
+    key1
+   </code>
+   列建立的二级索引
+   <code>
+    idx_key1
+   </code>
+   。
+  </p>
+ </li>
+</ul>
+<p>
+ 我们向表中插入一些记录：
+</p>
+<pre><code>INSERT INTO t VALUES
+    (1, 30, 'b'),
+    (2, 80, 'b'),
+    (3, 23, 'b'),
+    (4, NULL, 'b'),
+    (5, 11, 'b'),
+    (6, 53, 'b'),
+    (7, 63, 'b'),
+    (8, NULL, 'b'),
+    (9, 99, 'b'),
+    (10, 12, 'b'),
+    (11, 66, 'b'),
+    (12, NULL, 'b'),
+    (13, 66, 'b'),
+    (14, 30, 'b'),
+    (15, 11, 'b'),
+    (16, 90, 'b');
+</code></pre>
+<p>
+ 所以现在
+ <code>
+  t
+ </code>
+ 表的聚簇索引示意图就是这样：
+</p>
+<p>
+ <img alt="" src="44645b8c-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ <code>
+  t
+ </code>
+ 表的二级索引示意图就是这样：
+</p>
+<p>
+ <img alt="" src="44718866-13d6-11ed-838d-acde48001122"/>
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  原谅我们画了一个极度简化版的B+树：我们省略了B+树中的页面节点，省略了每层页面节点之间的双向链表，省略了页面中记录的单向链表，省略了页面中的页目录结构，还有省略了好多东西。但是我们保留B+树最为核心的一个特点：记录是按照键值大小进行排序的。即对于聚簇索引来说，记录是按照id列进行排序的；对于二级索引idx_key1来说，记录是按照key1列进行排序的，在key1列相同时再按照id列进行排序。
+ </p>
+</blockquote>
+<p>
+ 从上边聚簇索引和二级索引的结构中大家可以发现：
+ <strong>
+  每一条聚簇索引记录都可以在二级索引中找到唯一的一条二级索引记录与其相对应。
+ </strong>
+</p>
+<h2>
+ 前置知识2——server层和存储引擎的交互
+</h2>
+<p>
+ 以下边这个查询为例：
+</p>
+<pre><code>SELECT * FROM t WHERE key1 &gt; 70 AND common_field != 'a';
+</code></pre>
+<p>
+ 假设优化器认为通过扫描二级索引idx_key1中key1值在(70, +∞)这个区间中的二级索引记录的成本更小，那么查询将以下述方式执行：
+</p>
+<ul>
+ <li>
+  <p>
+   server层先让InnoDB去查在key1值在(70, +无穷)区间中的第一条记录。
+  </p>
+ </li>
+ <li>
+  <p>
+   InnoDB通过二级索引idx_key1对应的B+树，从B+树根页面一层一层向下定位，快速找到(70, +无穷)区间的第一条二级索引记录，然后根据该二级索引记录进行回表操作，找到完整的聚簇索引记录，然后返回给server层。
+  </p>
+ </li>
+ <li>
+  <p>
+   server层判断InnoDB返回的记录符不符合搜索条件
+   <code>
+    key1 &gt; 70 AND common_field != 'a'
+   </code>
+   ，如果不符合的话就跳过该记录，否则将其发送到客户端。
+  </p>
+ </li>
+</ul>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  此处将记录发送给客户端其实是发送到本地的网络缓冲区，缓冲区大小由net_buffer_length控制，默认是16KB大小。等缓冲区满了才真正发送网络包到客户端。
+ </p>
+</blockquote>
+<ul>
+ <li>
+  <p>
+   然后server层向InnoDB要下一条记录。
+  </p>
+ </li>
+ <li>
+  <p>
+   InnoDB根据上一次找到的二级索引记录的next_record属性，获取到下一条二级索引记录，回表后将完整的聚簇索引记录返回给server层。
+  </p>
+ </li>
+ <li>
+  <p>
+   server继续判断，不符合搜索条件即跳过该记录，否则发送到客户端。
+  </p>
+ </li>
+ <li>
+  <p>
+   ... 一直循环上述过程，直到InnoDB找不到下一条记录，则向server层报告查询完毕。
+  </p>
+ </li>
+ <li>
+  <p>
+   server层收到InnoDB报告的查询完毕请求，停止查询。
+  </p>
+ </li>
+</ul>
+<p>
+ 可见，一般情况下server层和存储引擎层是以记录为单位进行交互的。
+</p>
+<p>
+ 我们看一下源码中读取一条记录的函数调用栈：
+</p>
+<p>
+ <img alt="" src="447b4428-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 其中的
+ <code>
+  handler::ha_index_next
+ </code>
+ 便是server层向存储引擎要下一条记录的接口。
+</p>
+<p>
+ 其中的
+ <code>
+  row_search_mvcc
+ </code>
+ 是读取一条记录最重要的函数，这个函数长的吓人，有一千多行：
+</p>
+<p>
+ <img alt="" src="44863ea0-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 每读取一条记录，都要做非常多的工作，
+ <strong>
+  诸如进行多版本的可见性判断，要不要对记录进行加锁的判断，要是加锁的话加什么锁的选择，完成记录从InnoDB的存储格式到server层存储格式的转换
+ </strong>
+ 等等等等十分繁杂的工作。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  不知道你们公司有没有写这么长函数的同学，如果有的话你想不想打他。
+ </p>
+</blockquote>
+<h2>
+ 前置知识3——COUNT是个啥
+</h2>
+<p>
+ COUNT是一个汇总函数（聚集函数），它接收1个表达式作为参数：
+</p>
+<pre><code>COUNT(expr)
+</code></pre>
+<p>
+ COUNT函数用于统计在符合搜索条件的记录中，指定的表达式
+ <code>
+  expr
+ </code>
+ 不为NULL的行数有多少。这里需要特别注意的是，
+ <code>
+  expr
+ </code>
+ 不仅仅可以是列名，其他任意表达式都是可以的。
+</p>
+<p>
+ 比方说：
+</p>
+<pre><code>SELECT COUNT(key1) FROM t;
+</code></pre>
+<p>
+ 这个语句是用于统计在single_table表的所有记录中，key1列不为NULL的行数是多少。
+</p>
+<p>
+ 再看这个：
+</p>
+<pre><code>SELECT COUNT('abc') FROM t;
+</code></pre>
+<p>
+ 这个语句是用于统计在single_table表的所有记录中，'abc'这个表达式不为NULL的行数是多少。很显然，'abc'这个表达式永远不是NULL，所以上述语句其实就是统计single_table表里有多少条记录。
+</p>
+<p>
+ 再看这个：
+</p>
+<pre><code>SELECT COUNT(*) FROM t;
+</code></pre>
+<p>
+ 这个语句就是直接统计single_table表有多少条记录。
+</p>
+<p>
+ 总结+注意：
+ <strong>
+  COUNT函数的参数可以是任意表达式，该函数用于统计在符合搜索条件的记录中，指定的表达式不为NULL的行数有多少
+ </strong>
+ 。
+</p>
+<h2>
+ MySQL中COUNT是怎样执行的
+</h2>
+<p>
+ 做了那么多铺垫，终于到了MySQL中COUNT是怎样执行的了。
+</p>
+<p>
+ 以下边这个语句为例：
+</p>
+<pre><code>SELECT COUNT(*) FROM t;
+</code></pre>
+<p>
+ 这个语句是要去查询表t中共包含多少条记录。由于聚簇索引和二级索引中的记录是一一对应的，而二级索引记录中包含的列是少于聚簇索引记录的，所以同样数量的二级索引记录可以比聚簇索引记录占用更少的存储空间。如果我们使用二级索引执行上述查询，即数一下idx_key1中共有多少条二级索引记录，是比直接数聚簇索引中共有多少聚簇索引记录可以节省很多I/O成本。所以优化器会决定使用idx_key1执行上述查询：
+</p>
+<pre><code>mysql&gt; EXPLAIN SELECT COUNT(*) FROM t;
++----+-------------+-------+------------+-------+---------------+----------+---------+------+------+----------+-------------+
+| id | select_type | table | partitions | type  | possible_keys | key      | key_len | ref  | rows | filtered | Extra       |
++----+-------------+-------+------------+-------+---------------+----------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | t     | NULL       | index | NULL          | idx_key1 | 5       | NULL |   16 |   100.00 | Using index |
++----+-------------+-------+------------+-------+---------------+----------+---------+------+------+----------+-------------+
+1 row in set, 1 warning (0.02 sec)
+</code></pre>
+<p>
+ 在执行上述查询时，server层会维护一个名叫count的变量，然后：
+</p>
+<ul>
+ <li>
+  <p>
+   server层向InnoDB要第一条记录。
+  </p>
+ </li>
+ <li>
+  <p>
+   InnoDB找到idx_key1的第一条二级索引记录，并返回给server层（
+   <strong>
+    注意：由于此时只是统计记录数量，所以并不需要回表
+   </strong>
+   ）。
+  </p>
+ </li>
+ <li>
+  <p>
+   由于COUNT函数的参数是
+   <code>
+    *
+   </code>
+   ，MySQL会将
+   <code>
+    *
+   </code>
+   当作常数0处理。由于0并不是NULL，server层给count变量加1。
+  </p>
+ </li>
+ <li>
+  <p>
+   server层向InnoDB要下一条记录。
+  </p>
+ </li>
+ <li>
+  <p>
+   InnoDB通过二级索引记录的next_record属性找到下一条二级索引记录，并返回给server层。
+  </p>
+ </li>
+ <li>
+  <p>
+   server层继续给count变量加1。
+  </p>
+ </li>
+ <li>
+  <p>
+   ... 重复上述过程，直到InnoDB向server层返回没记录可查的消息。
+  </p>
+ </li>
+ <li>
+  <p>
+   server层将最终的count变量的值发送到客户端。
+  </p>
+ </li>
+</ul>
+<p>
+ 我们看一下源码里给count变量加1的代码是怎么写的：
+</p>
+<p>
+ <img alt="" src="4497fe7e-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 其大意就是判断一下COUNT里的表达式是不是NULL，如果不是NULL的话就给count变量加1。
+</p>
+<p>
+ 我们再来看一下arg_is_null的实现：
+</p>
+<p>
+ <img alt="" src="44a1abd6-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 其中最重要的是我们标蓝的那一行，item[i]表示的就是COUNT函数中的参数，我们调试一下对于
+ <code>
+  COUNT(*)
+ </code>
+ 来说，表达式
+ <code>
+  *
+ </code>
+ 的值是什么：
+</p>
+<p>
+ <img alt="" src="44abadca-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 可以看到，
+ <code>
+  *
+ </code>
+ 表达式的类型其实是
+ <code>
+  Item_int
+ </code>
+ ，这表示MySQL其实会把
+ <code>
+  *
+ </code>
+ 当作一个整数处理，它的值是0（见图中箭头）。也就是说我们在判断表达式
+ <code>
+  *
+ </code>
+ 是不是为NULL，也就是在判断整数
+ <code>
+  0
+ </code>
+ 是不是为NULL，很显然不为NULL。
+</p>
+<h2>
+ 那COUNT(1)，COUNT(id)，COUNT(非主键列)呢？
+</h2>
+<p>
+ 那在执行COUNT(1)呢？比方说下边这个语句：
+</p>
+<pre><code>SELECT COUNT(1) FROM t;
+</code></pre>
+<p>
+ 我们看一下：
+</p>
+<p>
+ <img alt="" src="44b3578c-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 可以看到，常数
+ <code>
+  1
+ </code>
+ 对应的类型其实是
+ <code>
+  PTI_num_literal_num
+ </code>
+ ，它其实是
+ <code>
+  Item_int
+ </code>
+ 的一个包装类型，本质上还是代表一个整数，它的值是
+ <code>
+  1
+ </code>
+ （见图中箭头）。也就是说我们其实是在判断表达式
+ <code>
+  1
+ </code>
+ 是不是为NULL，很显然不为NULL。
+</p>
+<p>
+ 再看一下COUNT(id)：
+</p>
+<pre><code>SELECT COUNT(id) FROM t;
+</code></pre>
+<p>
+ 我们看一下：
+</p>
+<p>
+ <img alt="" src="44bb35ba-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 可以看到，
+ <code>
+  id
+ </code>
+ 对应的类型是
+ <code>
+  Item_field
+ </code>
+ ，代表一个字段。
+</p>
+<p>
+ 对于
+ <code>
+  COUNT(*)
+ </code>
+ 、
+ <code>
+  COUNT(1)
+ </code>
+ 或者任意的
+ <code>
+  COUNT(常数)
+ </code>
+ 来说，读取哪个索引的记录其实并不重要，因为server层只关心存储引擎是否读到了记录，而并不需要从记录中提取指定的字段来判断是否为NULL。所以优化器会使用占用存储空间最小的那个索引来执行查询。
+</p>
+<p>
+ 对于
+ <code>
+  COUNT(id)
+ </code>
+ 来说，由于id是主键，不论是聚簇索引记录，还是任意一个二级索引记录中都会包含主键字段，所以其实读取任意一个索引中的记录都可以获取到id字段，此时优化器也会选择占用存储空间最小的那个索引来执行查询。
+</p>
+<p>
+ 而对于
+ <code>
+  COUNT(非主键列)
+ </code>
+ 来说，我们指定的列可能并不会包含在每一个索引中。这样优化器只能选择包含我们指定的列的索引去执行查询，这就
+ <strong>
+  可能
+ </strong>
+ 导致优化器选择的索引并不是最小的那个。
+</p>
+<h2>
+ 总结一下
+</h2>
+<p>
+ 对于
+ <code>
+  COUNT(*)
+ </code>
+ 、
+ <code>
+  COUNT(常数)
+ </code>
+ 、
+ <code>
+  COUNT(主键)
+ </code>
+ 形式的COUNT函数来说，优化器可以选择最小的索引执行查询，从而提升效率，它们的执行过程是一样的，只不过在判断表达式是否为NULL时选择不同的判断方式，这个判断为NULL的过程的代价可以忽略不计，所以我们可以认为
+ <code>
+  COUNT(*)
+ </code>
+ 、
+ <code>
+  COUNT(常数)
+ </code>
+ 、
+ <code>
+  COUNT(主键)
+ </code>
+ 所需要的代价是相同的。
+</p>
+<p>
+ 而对于
+ <code>
+  COUNT(非主键列)
+ </code>
+ 来说，server层必须要从InnoDB中读到包含
+ <code>
+  非主键列
+ </code>
+ 的记录，所以优化器并不能随心所欲的选择最小的索引去执行。
+</p>
+<h2>
+ 我想改进一下？
+</h2>
+<p>
+ 我们知道，InnoDB的记录都是存储在数据页中的（页面大小默认为16KB），而每个数据页的
+ <code>
+  Page Header
+ </code>
+ 部分都有一个统计当前页面中记录数量的属性
+ <code>
+  PAGE_N_RECS
+ </code>
+ 。那有的同学说了：在执行COUNT函数的时候直接去把各个页面的这个
+ <code>
+  PAGE_N_RECS
+ </code>
+ 属性加起来不就好了么？
+</p>
+<p>
+ 答案是：行不通的！
+ <strong>
+  对于普通的SELECT语句来说，每次查询都要从记录的版本链上找到可见的版本才算是读到了记录；对于加了FOR UPDATE或LOCK IN SHARE MODE后缀的SELECT语句来说，每次查询都要给记录添加合适的锁
+ </strong>
+ 。所以这个读取每一条记录的过程（就是上边给出的row_search_mvcc函数）在InnoDB的目前实现中是无法跳过的，InnoDB还是得老老实实的读一条记录，返给server层一条记录。
+</p>
+<p>
+ 那如果我的业务中有COUNT需求，但是由于数据量太大导致即使优化器即使通过扫描二级索引记录的方式也还是太慢怎么办？既然业务上有需求，当然还是业务第一喽，我们可以在另一个地方存储一份待统计数据的行数，每次增删改记录都维护一下。
+</p>
+<p>
+ 这样的解决方案显著增加了开发小伙伴的工作量，部分开发小伙伴肯定不太乐意，那就去怼你的产品经理吧：这么大数据量要TM什么精确值，你来告诉我这么大数据量要TM什么的TM的精确值？
+</p>
+</div>
+
+</div>
+</body>
+</html>

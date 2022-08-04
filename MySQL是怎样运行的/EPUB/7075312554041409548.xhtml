@@ -1,0 +1,515 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>专题式讲解 —— MySQL中NULL值引起的小锅</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>专题式讲解 —— MySQL中NULL值引起的小锅</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1>
+ MySQL中NULL值引起的小锅
+</h1>
+<p>
+ 标签：MySQL是怎样运行的
+</p>
+<hr/>
+<p>
+ 这一系列文章主要说明了一个道理：
+ <span>
+  MySQL查询优化器决策是否使用某个索引执行查询时的依据是使用该索引的成本是否足够低，而成本很大程度上取决于需要扫描的二级索引记录数量占表中所有记录数量的比例
+ </span>
+ 。
+</p>
+<h2>
+ innodb_stats_method的作用
+</h2>
+<p>
+ 我们知道
+ <code>
+  索引列不重复的值的数量
+ </code>
+ 这个统计数据对于
+ <code>
+  MySQL
+ </code>
+ 查询优化器十分重要，因为通过它可以计算出在索引列中平均一个值重复多少行，它的应用场景主要有两个：
+</p>
+<ul>
+ <li>
+  <p>
+   单表查询中单点区间太多，比方说这样：
+  </p>
+  <pre><code>SELECT * FROM tbl_name WHERE key IN ('xx1', 'xx2', ..., 'xxn');
+</code></pre>
+  <p>
+   当
+   <code>
+    IN
+   </code>
+   里的参数数量过多时，采用
+   <code>
+    index dive
+   </code>
+   的方式直接访问
+   <code>
+    B+
+   </code>
+   树索引去同步统计每个单点区间对应的记录的数量就太耗费性能了，所以直接依赖统计数据中的平均一个值重复多少行来计算单点区间对应的记录数量。
+  </p>
+ </li>
+ <li>
+  <p>
+   连接查询时，如果有涉及两个表的等值匹配连接条件，该连接条件对应的被驱动表中的列又拥有索引时，则可以使用
+   <code>
+    ref
+   </code>
+   访问方法来对被驱动表进行查询，比方说这样：
+  </p>
+  <pre><code>SELECT * FROM t1 JOIN t2 ON t1.column = t2.key WHERE ...;
+</code></pre>
+  <p>
+   在真正执行对
+   <code>
+    t2
+   </code>
+   表的查询前，
+   <code>
+    t1.comumn
+   </code>
+   的值是不确定的，所以我们也不能通过
+   <code>
+    index dive
+   </code>
+   的方式直接访问
+   <code>
+    B+
+   </code>
+   树索引去同步统计每个单点区间对应的记录的数量，所以也只能依赖统计数据中的平均一个值重复多少行来计算单点区间对应的记录数量。
+  </p>
+ </li>
+</ul>
+<p>
+ 在统计索引列不重复的值的数量时，有一个比较烦的问题就是索引列中出现
+ <code>
+  NULL
+ </code>
+ 值怎么办，比方说某个索引列的内容是这样：
+</p>
+<pre><code>+------+
+| col  |
++------+
+|    1 |
+|    2 |
+| NULL |
+| NULL |
++------+
+</code></pre>
+<p>
+ 此时计算这个
+ <code>
+  col
+ </code>
+ 列中不重复的值的数量就有下边的分歧：
+</p>
+<ul>
+ <li>
+  <p>
+   有的人认为
+   <code>
+    NULL
+   </code>
+   值代表一个未确定的值，所以设计
+   <code>
+    MySQL
+   </code>
+   的大叔才认为任何和
+   <code>
+    NULL
+   </code>
+   值做比较的表达式的值都为
+   <code>
+    NULL
+   </code>
+   ，就是这样：
+  </p>
+  <pre><code>mysql&gt; SELECT 1 = NULL;
++----------+
+| 1 = NULL |
++----------+
+|     NULL |
++----------+
+1 row in set (0.00 sec)
+
+mysql&gt; SELECT 1 != NULL;
++-----------+
+| 1 != NULL |
++-----------+
+|      NULL |
++-----------+
+1 row in set (0.00 sec)
+
+mysql&gt; SELECT NULL = NULL;
++-------------+
+| NULL = NULL |
++-------------+
+|        NULL |
++-------------+
+1 row in set (0.00 sec)
+
+mysql&gt; SELECT NULL != NULL;
++--------------+
+| NULL != NULL |
++--------------+
+|         NULL |
++--------------+
+1 row in set (0.00 sec)
+</code></pre>
+  <p>
+   所以每一个
+   <code>
+    NULL
+   </code>
+   值都是独一无二的，也就是说统计索引列不重复的值的数量时，应该把
+   <code>
+    NULL
+   </code>
+   值当作一个独立的值，所以
+   <code>
+    col
+   </code>
+   列的不重复的值的数量就是：
+   <code>
+    4
+   </code>
+   （分别是1、2、NULL、NULL这四个值）。
+  </p>
+ </li>
+ <li>
+  <p>
+   有的人认为其实
+   <code>
+    NULL
+   </code>
+   值在业务上就是代表没有，所有的
+   <code>
+    NULL
+   </code>
+   值代表的意义是一样的，所以
+   <code>
+    col
+   </code>
+   列不重复的值的数量就是：
+   <code>
+    3
+   </code>
+   （分别是1、2、NULL这三个值）。
+  </p>
+ </li>
+ <li>
+  <p>
+   有的人认为这
+   <code>
+    NULL
+   </code>
+   完全没有意义嘛，所以在统计索引列不重复的值的数量时压根儿不能把它们算进来，所以
+   <code>
+    col
+   </code>
+   列不重复的值的数量就是：
+   <code>
+    2
+   </code>
+   （分别是1、2这两个值）。
+  </p>
+ </li>
+</ul>
+<p>
+ 设计
+ <code>
+  MySQL
+ </code>
+ 的大叔蛮贴心的，他们提供了一个名为
+ <code>
+  innodb_stats_method
+ </code>
+ 的系统变量，相当于在计算某个索引列不重复值的数量时如何对待
+ <code>
+  NULL
+ </code>
+ 值这个锅甩给了用户，这个系统变量有三个候选值：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    nulls_equal
+   </code>
+   ：认为所有
+   <code>
+    NULL
+   </code>
+   值都是相等的。这个值也是
+   <code>
+    innodb_stats_method
+   </code>
+   的默认值。
+  </p>
+  <p>
+   如果某个索引列中
+   <code>
+    NULL
+   </code>
+   值特别多的话，这种统计方式会让优化器认为某个列中平均一个值重复次数特别多，所以倾向于不使用索引进行访问。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    nulls_unequal
+   </code>
+   ：认为所有
+   <code>
+    NULL
+   </code>
+   值都是不相等的。
+  </p>
+  <p>
+   如果某个索引列中
+   <code>
+    NULL
+   </code>
+   值特别多的话，这种统计方式会让优化器认为某个列中平均一个值重复次数特别少，所以倾向于使用索引进行访问。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    nulls_ignored
+   </code>
+   ：直接把
+   <code>
+    NULL
+   </code>
+   值忽略掉。
+  </p>
+ </li>
+</ul>
+<p>
+ 反正这个锅是甩给用户了，当你选定了
+ <code>
+  innodb_stats_method
+ </code>
+ 值之后，优化器即使选择了不是最优的执行计划，那也跟设计
+ <code>
+  MySQL
+ </code>
+ 的大叔们没关系了哈～ 当然对于用户的我们来说，
+ <span>
+  最好不在索引列中存放NULL值才是正解
+ </span>
+ 。
+</p>
+<h2>
+ 两种不同的统计数据存储方式
+</h2>
+<p>
+ <code>
+  InnoDB
+ </code>
+ 提供了两种存储统计数据的方式：
+</p>
+<ul>
+ <li>
+  <p>
+   永久性的统计数据
+  </p>
+  <p>
+   这种统计数据存储在磁盘上，也就是服务器重启之后这些统计数据还在。
+  </p>
+ </li>
+ <li>
+  <p>
+   非永久性的统计数据
+  </p>
+  <p>
+   这种统计数据存储在内存中，当服务器关闭时这些这些统计数据就都被清除掉了，等到服务器重启之后，在某些适当的场景下才会重新收集这些统计数据。
+  </p>
+ </li>
+</ul>
+<p>
+ 设计
+ <code>
+  MySQL
+ </code>
+ 的大叔们给我们提供了系统变量
+ <code>
+  innodb_stats_persistent
+ </code>
+ 来控制到底采用哪种方式去存储统计数据。在
+ <code>
+  MySQL 5.6.6
+ </code>
+ 之前，
+ <code>
+  innodb_stats_persistent
+ </code>
+ 的值默认是
+ <code>
+  OFF
+ </code>
+ ，也就是说
+ <code>
+  InnoDB
+ </code>
+ 的统计数据默认是存储到内存的，之后的版本中
+ <code>
+  innodb_stats_persistent
+ </code>
+ 的值默认是
+ <code>
+  ON
+ </code>
+ ，也就是统计数据默认被存储到磁盘中。
+</p>
+<p>
+ 不过
+ <code>
+  InnoDB
+ </code>
+ 默认是
+ <span>
+  以表为单位来收集和存储统计数据的
+ </span>
+ ，也就是说我们可以把某些表的统计数据（以及该表的索引统计数据）存储在磁盘上，把另一些表的统计数据存储在内存中。怎么做到的呢？我们可以在创建和修改表的时候通过指定
+ <code>
+  STATS_PERSISTENT
+ </code>
+ 属性来指明该表的统计数据存储方式：
+</p>
+<pre><code>CREATE TABLE 表名 (...) Engine=InnoDB, STATS_PERSISTENT = (1|0);
+
+ALTER TABLE 表名 Engine=InnoDB, STATS_PERSISTENT = (1|0);
+</code></pre>
+<p>
+ 当
+ <code>
+  STATS_PERSISTENT=1
+ </code>
+ 时，表明我们想把该表的统计数据永久的存储到磁盘上，当
+ <code>
+  STATS_PERSISTENT=0
+ </code>
+ 时，表明我们想把该表的统计数据临时的存储到内存中。如果我们在创建表时未指定
+ <code>
+  STATS_PERSISTENT
+ </code>
+ 属性，那默认采用系统变量
+ <code>
+  innodb_stats_persistent
+ </code>
+ 的值作为该属性的值。
+</p>
+<h2>
+ 问题
+</h2>
+<p>
+ 有同学在小册群中反应在使用基于磁盘的统计数据时，将
+ <code>
+  innodb_stats_method
+ </code>
+ 系统变量设置成不同的值，但是发现对应的统计数据却并未发生预想的变化（可以通过
+ <code>
+  SHOW INDEX FROM tbl_name
+ </code>
+ 或者查看
+ <code>
+  mysql
+ </code>
+ 数据库下的
+ <code>
+  innodb_index_stats
+ </code>
+ 表），这到底是因为啥呢？
+</p>
+<h2>
+ 原因
+</h2>
+<p>
+ 我一开始也对这个现象有点儿疑惑，于是不得不再次打开看吐了的源码来看。
+</p>
+<ol>
+ <li>
+  <p>
+   比较两条记录是否相同的函数是
+   <code>
+    cmp_rec_rec_with_match
+   </code>
+   ，如下图所示：
+  </p>
+  <p>
+   <img alt="" src="43982e22-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   其中的
+   <code>
+    nulls_unequal
+   </code>
+   参数是用来区别是否将两个
+   <code>
+    null
+   </code>
+   值认为是相等的。
+  </p>
+ </li>
+ <li>
+  <p>
+   在计算基于磁盘的统计数据时，是这样调用该函数的：
+  </p>
+  <p>
+   <img alt="" src="43a8d024-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   可以看到
+   <code>
+    nulls_unequal
+   </code>
+   参数是硬编码为
+   <code>
+    FALSE
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   在计算基于内存的统计数据时，是这样调用该函数的：
+  </p>
+  <p>
+   <img alt="" src="43b58544-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   可以看到这种调用的方式就是正常的。
+  </p>
+ </li>
+</ol>
+<p>
+ 从实践来看，在计算基于内存的统计数据时，改变系统变量
+ <code>
+  innodb_stats_method
+ </code>
+ 的值是起作用的，但是在计算基于磁盘的统计数据时，改变该系统变量的值是无效的。我也并不知道设计
+ <code>
+  InnoDB
+ </code>
+ 的大叔为什么这么写，翻了翻代码也没看见这么写有什么特别的注释，之后还特意去看了MySQL文档中关于统计数据收集的相关章节，也没发现有特别声明这两者的区别。可能是一个bug?或者有啥深层次的含义？有知道的同学可以留言哈～
+</p>
+</div>
+
+</div>
+</body>
+</html>

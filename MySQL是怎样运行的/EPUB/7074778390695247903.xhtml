@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>专题式讲解 —— MySQL的server层和存储引擎层是如何交互的</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>专题式讲解 —— MySQL的server层和存储引擎层是如何交互的</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1>
+ MySQL的server层和存储引擎层是如何交互的
+</h1>
+<p>
+ 标签： MySQL是怎样运行的
+</p>
+<hr/>
+<p>
+ <code>
+  SQL
+ </code>
+ 的全称是
+ <code>
+  Structured Query Language
+ </code>
+ ，翻译成中国话就是
+ <code>
+  结构化查询语言
+ </code>
+ 。这是一种声明式的语法，何为声明式？可以联想一下我们生活中的老板，老板在布置任务的时候会告诉你：小王啊，今天把这些砖从A地搬到B地啊，然后就没然后了。老板并不关心你是用手抬，还是用车拉，老板只关心结果：你把砖搬过去就好了。我们之于数据库而言，就是一个老板，
+ <code>
+  SQL
+ </code>
+ 语句就是我们给数据库下达的任务，至于具体数据库怎么执行我们并不关心，我们只关心最后数据库给我们返回的结果。
+</p>
+<p>
+ 对于设计数据库的人而言，语句怎么执行就得好好考虑了，老板不操心，事儿总还得干。设计
+ <code>
+  MySQL
+ </code>
+ 的大叔人为的把
+ <code>
+  MySQL
+ </code>
+ 分为
+ <code>
+  server
+ </code>
+ 层和
+ <code>
+  存储引擎
+ </code>
+ 层，但是什么操作是在
+ <code>
+  server
+ </code>
+ 层做的，什么操作是在
+ <code>
+  存储引擎
+ </code>
+ 层做的大家可能有些迷糊。本文将以一个实例来展示它们二者各自负责的事情。
+</p>
+<h3>
+ 准备工作
+</h3>
+<p>
+ 为了故事的顺利发展，我们先创建一个表：
+</p>
+<pre><code>CREATE TABLE hero (
+    id INT,
+    name VARCHAR(100),
+    country varchar(100),
+    PRIMARY KEY (id),
+    KEY idx_name (name)
+) Engine=InnoDB CHARSET=utf8;
+</code></pre>
+<p>
+ 我们为
+ <code>
+  hero
+ </code>
+ 表的
+ <code>
+  id
+ </code>
+ 列创建了聚簇索引，为
+ <code>
+  name
+ </code>
+ 列创建了一个二级索引。这个
+ <code>
+  hero
+ </code>
+ 表主要是为了存储三国时的一些英雄，我们向表中插入一些记录：
+</p>
+<pre><code>INSERT INTO hero VALUES
+    (1, 'l刘备', '蜀'),
+    (3, 'z诸葛亮', '蜀'),
+    (8, 'c曹操', '魏'),
+    (15, 'x荀彧', '魏'),
+    (20, 's孙权', '吴');
+</code></pre>
+<p>
+ 现在表中的数据就是这样的：
+</p>
+<pre><code>mysql&gt; SELECT * FROM hero;
++----+------------+---------+
+| id | name       | country |
++----+------------+---------+
+|  1 | l刘备      | 蜀      |
+|  3 | z诸葛亮    | 蜀      |
+|  8 | c曹操      | 魏      |
+| 15 | x荀彧      | 魏      |
+| 20 | s孙权      | 吴      |
++----+------------+---------+
+5 rows in set (0.00 sec)
+</code></pre>
+<p>
+ 准备工作就做完了。
+</p>
+<h3>
+ 正文
+</h3>
+<p>
+ 一条语句在执行之前需要生成所谓的执行计划，也就是该语句将采用什么方式来执行（使用什么索引，采用什么连接顺序等等），我们可以通过
+ <code>
+  Explain
+ </code>
+ 语句来查看这个执行计划，比方说对于下边语句来说：
+</p>
+<pre><code>mysql&gt; EXPLAIN SELECT * FROM hero WHERE name &lt; 's孙权' AND country = '蜀';
++----+-------------+-------+------------+-------+---------------+----------+---------+------+------+----------+------------------------------------+
+| id | select_type | table | partitions | type  | possible_keys | key      | key_len | ref  | rows | filtered | Extra                              |
++----+-------------+-------+------------+-------+---------------+----------+---------+------+------+----------+------------------------------------+
+|  1 | SIMPLE      | hero  | NULL       | range | idx_name      | idx_name | 303     | NULL |    2 |    20.00 | Using index condition; Using where |
++----+-------------+-------+------------+-------+---------------+----------+---------+------+------+----------+------------------------------------+
+1 row in set, 1 warning (0.03 sec)
+</code></pre>
+<p>
+ 输出结果的
+ <code>
+  key
+ </code>
+ 列值为
+ <code>
+  idx_name
+ </code>
+ ，
+ <code>
+  type
+ </code>
+ 列的值为
+ <code>
+  range
+ </code>
+ ，表明会针对
+ <code>
+  idx_name
+ </code>
+ 二级索引进行一个范围查询。很多同学在这里有一个疑惑：到底是一次性把所有符合条件的二级索引都取出来之后再统一进行回表操作，还是每从二级索引中取出一条符合条件的记录就进行回表一次？其实
+ <span>
+  server层和存储引擎层的交互是以记录为单位的
+ </span>
+ ，上边这个语句的完整执行过程就是这样的：
+</p>
+<ol>
+ <li>
+  <p>
+   server层第一次开始执行查询，把条件
+   <code>
+    name &lt; 's孙权'
+   </code>
+   交给存储引擎，让存储引擎定位符合条件的第一条记录。
+  </p>
+ </li>
+ <li>
+  <p>
+   存储引擎在二级索引
+   <code>
+    idx_name
+   </code>
+   中定位
+   <code>
+    name &lt; 's孙权'
+   </code>
+   的第一条记录，很显然第一条符合该条件的二级索引记录的
+   <code>
+    name
+   </code>
+   列的值为
+   <code>
+    'c曹操'
+   </code>
+   。然后需要注意，我们看到
+   <code>
+    EXPLAIN
+   </code>
+   语句的输出结果的
+   <code>
+    Extra
+   </code>
+   列有一个
+   <code>
+    Using index condition
+   </code>
+   的提示，这表明会将有关
+   <code>
+    idx_name
+   </code>
+   二级索引的查询条件放在存储引擎层判断一下，这个特性就是所谓的
+   <code>
+    索引条件下推
+   </code>
+   （Index Condition Pushdown，简称
+   <code>
+    ICP
+   </code>
+   ）。很显然这里的
+   <code>
+    ICP
+   </code>
+   条件就是
+   <code>
+    name &lt; 's孙权'
+   </code>
+   。有的同学可能会问这不就是脱了裤子放屁么，
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'c曹操'
+   </code>
+   的这条记录就是通过
+   <code>
+    name &lt; 's孙权'
+   </code>
+   这个条件定位的，为啥还要再判断一次？这就是设计MySQL 的大叔的粗暴设计，十分简单，没有为啥～
+  </p>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    对于使用二级索引进行等值查询的情况有些许不同，比方说上边的条件换成
+    <code>
+     name = 's孙权'
+    </code>
+    ，对于等值查询的这种情况，设计MySQL的大叔在InnoDB存储引擎层有特殊的处理方案，是不作为ICP条件进行处理的。
+   </p>
+  </blockquote>
+  <p>
+   然后拿着该二级索引记录中的主键值去回表，把完整的用户记录都取到之后返回给
+   <code>
+    server层
+   </code>
+   （也就是说得到一条二级索引记录后立即去回表，而不是把所有的二级索引记录都拿到后统一去回表）。
+  </p>
+ </li>
+ <li>
+  <p>
+   我们的执行计划输出的
+   <code>
+    Extra
+   </code>
+   列有一个
+   <code>
+    Using Where
+   </code>
+   的提示，意味着server层在接收到存储引擎层返回的记录之后，接着就要判断其余的WHERE条件是否成立（就是再判断一下
+   <code>
+    country = '蜀'
+   </code>
+   是否成立）。如果成立的话，就直接发送给客户端。
+  </p>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    什么？发现一条记录符合条件就发送给了客户端？那为什么我的客户端不是一条一条的显示查询结果，而是一下子全部展示呢？这是客户端软件的鬼，人家规定在接收完全部的记录之后再展示而已。
+   </p>
+  </blockquote>
+  <p>
+   如果不成立的话，就跳过该条记录。
+  </p>
+ </li>
+ <li>
+  <p>
+   接着server层向存储引擎层要求继续读刚才那条记录的下一条记录。
+  </p>
+ </li>
+ <li>
+  <p>
+   因为每条记录的头信息中都有
+   <code>
+    next_record
+   </code>
+   的这个属性，所以可以快速定位到下一条记录的位置，然后继续判断
+   <code>
+    ICP
+   </code>
+   条件，然后进行回表操作，存储引擎把下一条记录取出后就将其返回给server层。
+  </p>
+ </li>
+ <li>
+  <p>
+   然后重复第3步的过程，直到存储引擎层遇到了不符合
+   <code>
+    name &lt; 's孙权'
+   </code>
+   的记录，然后向server层返回了读取完毕的信息，这时server层将结束查询。
+  </p>
+ </li>
+</ol>
+<p>
+ 这个过程用语言描述还是有点儿啰嗦，我们写一个超级简化版的伪代码来瞅瞅（注意，是超级简化版）：
+</p>
+<pre><code>
+first_read = true;  //是否是第一次读取
+while (true) {
+
+    if (first_read) {
+        first_read = false;
+        err = index_read(...);  //调用存储引擎接口，定位到第一条符合条件的记录;
+    } else {
+        err = index_next(...); //调用存储引擎接口，读取下一条记录
+    }
+    
+    if (err = 存储引擎的查询完毕信息) {
+        break;  //结束查询
+    }
+    
+    if (是否符合WHERE条件) {
+        send_data();    //将该记录发送给客户端;
+    } else {
+        //跳过本记录
+    }
+}
+</code></pre>
+<p>
+ 上述的伪代码虽然很粗糙，但也基本表明了意思哈～ 之后有机会我们再唠叨唠叨使用临时表的情况已经使用
+ <code>
+  filesort
+ </code>
+ 的情况是怎么执行的。
+</p>
+</div>
+
+</div>
+</body>
+</html>

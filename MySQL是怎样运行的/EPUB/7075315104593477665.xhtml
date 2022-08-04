@@ -1,0 +1,2838 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>专题式讲解 —— 语句加锁分析实例</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>专题式讲解 —— 语句加锁分析实例</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1>
+ 语句加锁分析
+</h1>
+<p>
+ 标签： MySQL是怎样运行的
+</p>
+<h2>
+ 事前准备
+</h2>
+<p>
+ 建立一个存储三国英雄的
+ <code>
+  hero
+ </code>
+ 表：
+</p>
+<pre><code>CREATE TABLE hero (
+    number INT,
+    name VARCHAR(100),
+    country varchar(100),
+    PRIMARY KEY (number),
+    KEY idx_name (name)
+) Engine=InnoDB CHARSET=utf8;
+</code></pre>
+<p>
+ 然后向这个表里插入几条记录：
+</p>
+<pre><code>INSERT INTO hero VALUES
+    (1, 'l刘备', '蜀'),
+    (3, 'z诸葛亮', '蜀'),
+    (8, 'c曹操', '魏'),
+    (15, 'x荀彧', '魏'),
+    (20, 's孙权', '吴');
+</code></pre>
+<h2>
+ 语句加锁分析
+</h2>
+<p>
+ 说了这么久，还是没说一条语句该加什么锁（心里是不是有点mmp啊[坏笑]）。在进一步分析之前，我们先给
+ <code>
+  hero
+ </code>
+ 表的
+ <code>
+  name
+ </code>
+ 列建一个索引：
+</p>
+<pre><code>ALTER TABLE hero ADD INDEX idx_name (name);
+</code></pre>
+<p>
+ 然后现在
+ <code>
+  hero
+ </code>
+ 表就有了两个索引（一个二级索引，一个聚簇索引），示意图如下：
+</p>
+<p>
+ <img alt="" src="4a6ef2bc-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 其实啊，“XXX语句该加什么锁”本身就是个伪命题，一条语句需要加的锁受到很多条件制约，比方说：
+</p>
+<ul>
+ <li>
+  <p>
+   事务的隔离级别
+  </p>
+ </li>
+ <li>
+  <p>
+   语句执行时使用的索引（比如聚簇索引、唯一二级索引、普通二级索引）
+  </p>
+ </li>
+ <li>
+  <p>
+   查询条件（比方说
+   <code>
+    =
+   </code>
+   、
+   <code>
+    =&lt;
+   </code>
+   、
+   <code>
+    &gt;=
+   </code>
+   等等）
+  </p>
+ </li>
+ <li>
+  <p>
+   具体执行的语句类型
+  </p>
+ </li>
+</ul>
+<p>
+ 在继续详细分析语句的加锁过程前，大家一定要有一个全局概念：
+ <code>
+  加锁
+ </code>
+ 只是解决并发事务执行过程中引起的
+ <code>
+  脏写
+ </code>
+ 、
+ <code>
+  脏读
+ </code>
+ 、
+ <code>
+  不可重复读
+ </code>
+ 、
+ <code>
+  幻读
+ </code>
+ 这些问题的一种解决方案（
+ <code>
+  MVCC
+ </code>
+ 算是一种解决
+ <code>
+  脏读
+ </code>
+ 、
+ <code>
+  不可重复读
+ </code>
+ 、
+ <code>
+  幻读
+ </code>
+ 这些问题的一种解决方案），一定要意识到
+ <code>
+  加锁
+ </code>
+ 的出发点是为了解决这些问题，不同情景下要解决的问题不一样，才导致加的锁不一样，千万不要为了加锁而加锁，容易把自己绕进去。当然，有时候因为
+ <code>
+  MySQL
+ </code>
+ 具体的实现而导致一些情景下的加锁有些不太好理解，这就得我们死记硬背了～
+</p>
+<p>
+ 我们这里把语句分为3种大类：普通的
+ <code>
+  SELECT
+ </code>
+ 语句、锁定读的语句、INSERT语句，我们分别看一下。
+</p>
+<h3>
+ 普通的SELECT语句
+</h3>
+<p>
+ 普通的
+ <code>
+  SELECT
+ </code>
+ 语句在：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    READ UNCOMMITTED
+   </code>
+   隔离级别下，不加锁，直接读取记录的最新版本，可能发生
+   <code>
+    脏读
+   </code>
+   、
+   <code>
+    不可重复读
+   </code>
+   和
+   <code>
+    幻读
+   </code>
+   问题。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    READ COMMITTED
+   </code>
+   隔离级别下，不加锁，在每次执行普通的
+   <code>
+    SELECT
+   </code>
+   语句时都会生成一个
+   <code>
+    ReadView
+   </code>
+   ，这样解决了
+   <code>
+    脏读
+   </code>
+   问题，但没有解决
+   <code>
+    不可重复读
+   </code>
+   和
+   <code>
+    幻读
+   </code>
+   问题。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    REPEATABLE READ
+   </code>
+   隔离级别下，不加锁，只在第一次执行普通的
+   <code>
+    SELECT
+   </code>
+   语句时生成一个
+   <code>
+    ReadView
+   </code>
+   ，这样把
+   <code>
+    脏读
+   </code>
+   、
+   <code>
+    不可重复读
+   </code>
+   和
+   <code>
+    幻读
+   </code>
+   问题都解决了。
+  </p>
+  <p>
+   不过这里有一个小插曲：
+  </p>
+  <pre><code># 事务T1，REPEATABLE READ隔离级别下
+mysql&gt; BEGIN;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; SELECT * FROM hero WHERE number = 30;
+Empty set (0.01 sec)
+
+# 此时事务T2执行了：INSERT INTO hero VALUES(30, 'g关羽', '魏'); 并提交
+
+mysql&gt; UPDATE hero SET country = '蜀' WHERE number = 30;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql&gt; SELECT * FROM hero WHERE number = 30;
++--------+---------+---------+
+| number | name    | country |
++--------+---------+---------+
+|     30 | g关羽   | 蜀      |
++--------+---------+---------+
+1 row in set (0.01 sec)
+</code></pre>
+  <p>
+   在
+   <code>
+    REPEATABLE READ
+   </code>
+   隔离级别下，
+   <code>
+    T1
+   </code>
+   第一次执行普通的
+   <code>
+    SELECT
+   </code>
+   语句时生成了一个
+   <code>
+    ReadView
+   </code>
+   ，之后
+   <code>
+    T2
+   </code>
+   向
+   <code>
+    hero
+   </code>
+   表中新插入了一条记录便提交了，
+   <code>
+    ReadView
+   </code>
+   并不能阻止
+   <code>
+    T1
+   </code>
+   执行
+   <code>
+    UPDATE
+   </code>
+   或者
+   <code>
+    DELETE
+   </code>
+   语句来对改动这个新插入的记录（因为
+   <code>
+    T2
+   </code>
+   已经提交，改动该记录并不会造成阻塞），但是这样一来这条新记录的
+   <code>
+    trx_id
+   </code>
+   隐藏列就变成了
+   <code>
+    T1
+   </code>
+   的
+   <code>
+    事务id
+   </code>
+   ，之后
+   <code>
+    T1
+   </code>
+   中再使用普通的
+   <code>
+    SELECT
+   </code>
+   语句去查询这条记录时就可以看到这条记录了，也就把这条记录返回给客户端了。因为这个特殊现象的存在，你也可以认为
+   <code>
+    InnoDB
+   </code>
+   中的
+   <code>
+    MVCC
+   </code>
+   并不能完完全全的禁止幻读。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    SERIALIZABLE
+   </code>
+   隔离级别下，需要分为两种情况讨论：
+  </p>
+  <ul>
+   <li>
+    <p>
+     在系统变量
+     <code>
+      autocommit=0
+     </code>
+     时，也就是禁用自动提交时，普通的
+     <code>
+      SELECT
+     </code>
+     语句会被转为
+     <code>
+      SELECT ... LOCK IN SHARE MODE
+     </code>
+     这样的语句，也就是在读取记录前需要先获得记录的
+     <code>
+      S锁
+     </code>
+     ，具体的加锁情况和
+     <code>
+      REPEATABLE READ
+     </code>
+     隔离级别下一样，我们后边再分析。
+    </p>
+   </li>
+   <li>
+    <p>
+     在系统变量
+     <code>
+      autocommit=1
+     </code>
+     时，也就是启用自动提交时，普通的
+     <code>
+      SELECT
+     </code>
+     语句并不加锁，只是利用
+     <code>
+      MVCC
+     </code>
+     来生成一个
+     <code>
+      ReadView
+     </code>
+     去读取记录。
+    </p>
+    <p>
+     为啥不加锁呢？因为启用自动提交意味着一个事务中只包含一条语句，一条语句也就没有啥
+     <code>
+      不可重复读
+     </code>
+     、
+     <code>
+      幻读
+     </code>
+     这样的问题了。
+    </p>
+   </li>
+  </ul>
+ </li>
+</ul>
+<h3>
+ 锁定读的语句
+</h3>
+<p>
+ 我们把下边四种语句放到一起讨论：
+</p>
+<ul>
+ <li>
+  <p>
+   语句一：
+   <code>
+    SELECT ... LOCK IN SHARE MODE;
+   </code>
+  </p>
+ </li>
+ <li>
+  <p>
+   语句二：
+   <code>
+    SELECT ... FOR UPDATE;
+   </code>
+  </p>
+ </li>
+ <li>
+  <p>
+   语句三：
+   <code>
+    UPDATE ...
+   </code>
+  </p>
+ </li>
+ <li>
+  <p>
+   语句四：
+   <code>
+    DELETE ...
+   </code>
+  </p>
+ </li>
+</ul>
+<p>
+ 我们说
+ <code>
+  语句一
+ </code>
+ 和
+ <code>
+  语句二
+ </code>
+ 是
+ <code>
+  MySQL
+ </code>
+ 中规定的两种
+ <code>
+  锁定读
+ </code>
+ 的语法格式，而
+ <code>
+  语句三
+ </code>
+ 和
+ <code>
+  语句四
+ </code>
+ 由于在执行过程需要首先定位到被改动的记录并给记录加锁，也可以被认为是一种
+ <code>
+  锁定读
+ </code>
+ 。
+</p>
+<h4>
+ READ UNCOMMITTED/READ COMMITTED隔离级别下
+</h4>
+<p>
+ 在
+ <code>
+  READ UNCOMMITTED
+ </code>
+ 下语句的加锁方式和
+ <code>
+  READ COMMITTED
+ </code>
+ 隔离级别下语句的加锁方式基本一致，所以就放到一块儿说了。值得注意的是，采用
+ <code>
+  加锁
+ </code>
+ 方式解决并发事务带来的问题时，其实
+ <code>
+  脏读
+ </code>
+ 和
+ <code>
+  不可重复读
+ </code>
+ 在任何一个隔离级别下都不会发生（因为
+ <code>
+  读-写
+ </code>
+ 操作需要排队进行）。
+</p>
+<h5>
+ 对于使用主键进行等值查询的情况
+</h5>
+<ul>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE number = 8 LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   这个语句执行时只需要访问一下聚簇索引中
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的记录，所以只需要给它加一个
+   <code>
+    S型正经记录锁
+   </code>
+   就好了，如图所示：
+  </p>
+  <p>
+   <img alt="" src="4a97e442-13d6-11ed-838d-acde48001122"/>
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE number = 8 FOR UPDATE;
+</code></pre>
+  <p>
+   这个语句执行时只需要访问一下聚簇索引中
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的记录，所以只需要给它加一个
+   <code>
+    X型正经记录锁
+   </code>
+   就好了，如图所示：
+  </p>
+  <p>
+   <img alt="" src="4ac1b88a-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    为了区分S锁和X锁，我们之后在示意图中就把加了S锁的记录染成蓝色，把加了X锁的记录染成紫色。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    UPDATE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>UPDATE hero SET country = '汉' WHERE number = 8;
+</code></pre>
+  <p>
+   这条
+   <code>
+    UPDATE
+   </code>
+   语句并没有更新二级索引列，加锁方式和上边所说的
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句一致。
+  </p>
+  <p>
+   如果
+   <code>
+    UPDATE
+   </code>
+   语句中更新了二级索引列，比方说：
+  </p>
+  <pre><code>UPDATE hero SET name = 'cao曹操' WHERE number = 8;
+</code></pre>
+  <p>
+   该语句的实际执行步骤是首先更新对应的
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的聚簇索引记录，再更新对应的二级索引记录，所以加锁的步骤就是：
+  </p>
+  <ol>
+   <li>
+    <p>
+     为
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      8
+     </code>
+     的聚簇索引记录加上
+     <code>
+      X型正经记录锁
+     </code>
+     （该记录对应的）。
+    </p>
+   </li>
+   <li>
+    <p>
+     为该聚簇索引记录对应的
+     <code>
+      idx_name
+     </code>
+     二级索引记录（也就是
+     <code>
+      name
+     </code>
+     值为
+     <code>
+      'c曹操'
+     </code>
+     ，
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      8
+     </code>
+     的那条二级索引记录）加上
+     <code>
+      X型正经记录锁
+     </code>
+     。
+    </p>
+   </li>
+  </ol>
+  <p>
+   画个图就是这样：
+  </p>
+  <p>
+   <img alt="" src="4b0b170a-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    我们用带圆圈的数字来表示为各条记录加锁的顺序。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    DELETE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>DELETE FROM hero WHERE number = 8;
+</code></pre>
+  <p>
+   我们平时所说的“DELETE表中的一条记录”其实意味着对聚簇索引和所有的二级索引中对应的记录做
+   <code>
+    DELETE
+   </code>
+   操作，本例子中就是要先把
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的聚簇索引记录执行
+   <code>
+    DELETE
+   </code>
+   操作，然后把对应的
+   <code>
+    idx_name
+   </code>
+   二级索引记录删除，所以加锁的步骤和上边更新带有二级索引列的
+   <code>
+    UPDATE
+   </code>
+   语句一致，就不画图了。
+  </p>
+ </li>
+</ul>
+<h5>
+ 对于使用主键进行范围查询的情况
+</h5>
+<ul>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE number &lt;= 8 LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   这个语句看起来十分简单，但它的执行过程还是有一丢丢小复杂的：
+  </p>
+  <ol>
+   <li>
+    <p>
+     先到聚簇索引中定位到满足
+     <code>
+      number &lt;= 8
+     </code>
+     的第一条记录，也就是
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      1
+     </code>
+     的记录，然后为其加锁。
+    </p>
+   </li>
+   <li>
+    <p>
+     判断一下该记录是否符合
+     <code>
+      索引条件下推
+     </code>
+     中的条件。
+    </p>
+    <p>
+     我们前边介绍过一个称之为
+     <code>
+      索引条件下推
+     </code>
+     （
+     <code>
+      Index Condition Pushdown
+     </code>
+     ，简称
+     <code>
+      ICP
+     </code>
+     ）的功能，也就是把查询中与被使用索引有关的查询条件下推到存储引擎中判断，而不是返回到
+     <code>
+      server
+     </code>
+     层再判断。不过需要注意的是，
+     <code>
+      索引条件下推
+     </code>
+     只是为了减少回表次数，也就是减少读取完整的聚簇索引记录的次数，从而减少
+     <code>
+      IO
+     </code>
+     操作。而对于
+     <code>
+      聚簇索引
+     </code>
+     而言不需要回表，它本身就包含着全部的列，也起不到减少
+     <code>
+      IO
+     </code>
+     操作的作用，所以设计
+     <code>
+      InnoDB
+     </code>
+     的大叔们规定这个
+     <code>
+      索引条件下推
+     </code>
+     特性只适用于
+     <code>
+      二级索引
+     </code>
+     。也就是说在本例中与被使用索引有关的条件是：
+     <code>
+      number &lt;= 8
+     </code>
+     ，而
+     <code>
+      number
+     </code>
+     列又是聚簇索引列，所以本例中并没有符合
+     <code>
+      索引条件下推
+     </code>
+     的查询条件，自然也就不需要判断该记录是否符合
+     <code>
+      索引条件下推
+     </code>
+     中的条件。
+    </p>
+   </li>
+   <li>
+    <p>
+     判断一下该记录是否符合范围查询的边界条件
+    </p>
+    <p>
+     因为在本例中是利用主键
+     <code>
+      number
+     </code>
+     进行范围查询，设计
+     <code>
+      InnoDB
+     </code>
+     的大叔规定每从聚簇索引中取出一条记录时都要判断一下该记录是否符合范围查询的边界条件，也就是
+     <code>
+      number &lt;= 8
+     </code>
+     这个条件。如果符合的话将其返回给
+     <code>
+      server层
+     </code>
+     继续处理，否则的话需要释放掉在该记录上加的锁，并给
+     <code>
+      server层
+     </code>
+     返回一个查询完毕的信息。
+    </p>
+    <p>
+     对于
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      1
+     </code>
+     的记录是符合这个条件的，所以会将其返回到
+     <code>
+      server层
+     </code>
+     继续处理。
+    </p>
+   </li>
+   <li>
+    <p>
+     将该记录返回到
+     <code>
+      server层
+     </code>
+     继续判断。
+    </p>
+    <p>
+     <code>
+      server层
+     </code>
+     如果收到存储引擎层提供的查询完毕的信息，就结束查询，否则继续判断那些没有进行
+     <code>
+      索引条件下推
+     </code>
+     的条件，在本例中就是继续判断
+     <code>
+      number &lt;= 8
+     </code>
+     这个条件是否成立。噫，不是在第3步中已经判断过了么，怎么在这又判断一回？是的，设计
+     <code>
+      InnoDB
+     </code>
+     的大叔采用的策略就是这么简单粗暴，把凡是没有经过
+     <code>
+      索引条件下推
+     </code>
+     的条件都需要放到
+     <code>
+      server
+     </code>
+     层再判断一遍。如果该记录符合剩余的条件（没有进行
+     <code>
+      索引条件下推
+     </code>
+     的条件），那么就把它发送给客户端，不然的话需要释放掉在该记录上加的锁。
+    </p>
+   </li>
+   <li>
+    <p>
+     然后刚刚查询得到的这条记录（也就是
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      1
+     </code>
+     的记录）组成的单向链表继续向后查找，得到了
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      3
+     </code>
+     的记录，然后重复第
+     <code>
+      2
+     </code>
+     ，
+     <code>
+      3
+     </code>
+     ，
+     <code>
+      4
+     </code>
+     、
+     <code>
+      5
+     </code>
+     这几个步骤。
+    </p>
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    上述步骤是在MySQL 5.7.21这个版本中验证的，不保证其他版本有无出入。
+   </p>
+  </blockquote>
+  <p>
+   但是这个过程有个问题，就是当找到
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的那条记录的时候，还得向后找一条记录（也就是
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的记录），在存储引擎读取这条记录的时候，也就是上述的第
+   <code>
+    1
+   </code>
+   步中，就得为这条记录加锁，然后在第3步时，判断该记录不符合
+   <code>
+    number &lt;= 8
+   </code>
+   这个条件，又要释放掉这条记录的锁，这个过程导致
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的记录先被加锁，然后把锁释放掉，过程就是这样：
+  </p>
+  <p>
+   <img alt="" src="4b44653c-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   这个过程有意思的一点就是，如果你先在事务
+   <code>
+    T1
+   </code>
+   中执行：
+  </p>
+  <pre><code># 事务T1
+BEGIN;
+SELECT * FROM hero WHERE number &lt;= 8 LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   然后再到事务
+   <code>
+    T2
+   </code>
+   中执行：
+  </p>
+  <pre><code># 事务T2
+BEGIN;
+SELECT * FROM hero WHERE number = 15 FOR UPDATE;
+</code></pre>
+  <p>
+   是没有问题的，因为在
+   <code>
+    T2
+   </code>
+   执行时，事务
+   <code>
+    T1
+   </code>
+   已经释放掉了
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的记录的锁，但是如果你先执行
+   <code>
+    T2
+   </code>
+   ，再执行
+   <code>
+    T1
+   </code>
+   ，由于
+   <code>
+    T2
+   </code>
+   已经持有了
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的记录的锁，事务
+   <code>
+    T1
+   </code>
+   将因为获取不到这个锁而等待。
+  </p>
+  <p>
+   我们再看一个使用主键进行范围查询的例子：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE number &gt;= 8 LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   这个语句的执行过程其实和我们举的上一个例子类似。也是先到聚簇索引中定位到满足
+   <code>
+    number &gt;= 8
+   </code>
+   这个条件的第一条记录，也就是
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的记录，然后就可以沿着由记录组成的单向链表一路向后找，每找到一条记录，就会为其加上锁，然后判断该记录符不符合范围查询的边界条件，不过这里的边界条件比较特殊：
+   <code>
+    number &gt;= 8
+   </code>
+   ，只要记录不小于8就算符合边界条件，所以判断和没判断是一样一样的。最后把这条记录返回给
+   <code>
+    server层
+   </code>
+   ，
+   <code>
+    server层
+   </code>
+   再判断
+   <code>
+    number &gt;= 8
+   </code>
+   这个条件是否成立，如果成立的话就发送给客户端，否则的话就结束查询。不过
+   <code>
+    InnoDB
+   </code>
+   存储引擎找到索引中的最后一条记录，也就是
+   <code>
+    Supremum
+   </code>
+   伪记录之后，在存储引擎内部就可以立即判断这是一条伪记录，不必要返回给
+   <code>
+    server层
+   </code>
+   处理，也没必要给它也加上锁（也就是说在第1步中就压根儿没给这条记录加锁）。整个过程会给
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   、
+   <code>
+    15
+   </code>
+   、
+   <code>
+    20
+   </code>
+   这三条记录加上
+   <code>
+    S型正经记录锁
+   </code>
+   ，画个图表示一下就是这样：
+  </p>
+  <p>
+   <img alt="" src="4bb2349a-13d6-11ed-838d-acde48001122"/>
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句来为记录加锁：
+  </p>
+  <p>
+   和
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句类似，只不过加的是
+   <code>
+    X型正经记录锁
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    UPDATE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>UPDATE hero SET country = '汉' WHERE number &gt;= 8;
+</code></pre>
+  <p>
+   这条
+   <code>
+    UPDATE
+   </code>
+   语句并没有更新二级索引列，加锁方式和上边所说的
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句一致。
+  </p>
+  <p>
+   如果
+   <code>
+    UPDATE
+   </code>
+   语句中更新了二级索引列，比方说：
+  </p>
+  <pre><code>UPDATE hero SET name = 'cao曹操' WHERE number &gt;= 8;
+</code></pre>
+  <p>
+   这时候会首先更新聚簇索引记录，再更新对应的二级索引记录，所以加锁的步骤就是：
+  </p>
+  <ol>
+   <li>
+    <p>
+     为
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      8
+     </code>
+     的聚簇索引记录加上
+     <code>
+      X型正经记录锁
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     然后为上一步中的记录索引记录对应的
+     <code>
+      idx_name
+     </code>
+     二级索引记录加上
+     <code>
+      X型正经记录锁
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     为
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      15
+     </code>
+     的聚簇索引记录加上
+     <code>
+      X型正经记录锁
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     然后为上一步中的记录索引记录对应的
+     <code>
+      idx_name
+     </code>
+     二级索引记录加上
+     <code>
+      X型正经记录锁
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     为
+     <code>
+      number
+     </code>
+     值为
+     <code>
+      20
+     </code>
+     的聚簇索引记录加上
+     <code>
+      X型正经记录锁
+     </code>
+     。
+    </p>
+   </li>
+   <li>
+    <p>
+     然后为上一步中的记录索引记录对应的
+     <code>
+      idx_name
+     </code>
+     二级索引记录加上
+     <code>
+      X型正经记录锁
+     </code>
+     。
+    </p>
+   </li>
+  </ol>
+  <p>
+   画个图就是这样：
+  </p>
+  <p>
+   <img alt="" src="4bde1d4e-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   如果是下边这个语句：
+  </p>
+  <pre><code>UPDATE hero SET country = '汉' WHERE number &lt;= 8;
+</code></pre>
+  <p>
+   则会对
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    1
+   </code>
+   、
+   <code>
+    3
+   </code>
+   、
+   <code>
+    8
+   </code>
+   聚簇索引记录以及它们对应的二级索引记录加
+   <code>
+    X型正经记录锁
+   </code>
+   ，加锁顺序和上边语句中的加锁顺序类似，都是先对一条聚簇索引记录加锁后，再给对应的二级索引记录加锁。之后会继续对
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的聚簇索引记录加锁，但是随后
+   <code>
+    InnoDB
+   </code>
+   存储引擎判断它不符合边界条件，随即会释放掉该聚簇索引记录上的锁（注意这个过程中没有对
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的聚簇索引记录对应的二级索引记录加锁）。具体示意图就不画了。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    DELETE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>DELETE FROM hero WHERE number &gt;= 8;
+</code></pre>
+  <p>
+   和
+  </p>
+  <pre><code>DELETE FROM hero WHERE number &lt;= 8;
+</code></pre>
+  <p>
+   这两个语句的加锁情况和更新带有二级索引列的
+   <code>
+    UPDATE
+   </code>
+   语句一致，就不画图了。
+  </p>
+ </li>
+</ul>
+<h5>
+ 对于使用二级索引进行等值查询的情况
+</h5>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  在READ UNCOMMITTED和READ COMMITTED隔离级别下，使用普通的二级索引和唯一二级索引进行加锁的过程是一样的，所以我们也就不分开讨论了。
+ </p>
+</blockquote>
+<ul>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE name = 'c曹操' LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   这个语句的执行过程是先通过二级索引
+   <code>
+    idx_name
+   </code>
+   定位到满足
+   <code>
+    name = 'c曹操'
+   </code>
+   条件的二级索引记录，然后进行回表操作。所以先要对二级索引记录加
+   <code>
+    S型正经记录锁
+   </code>
+   ，然后再给对应的聚簇索引记录加
+   <code>
+    S型正经记录锁
+   </code>
+   ，示意图如下：
+  </p>
+  <p>
+   <img alt="" src="4c337ad2-13d6-11ed-838d-acde48001122"/>
+   <br/>
+   这里需要再次强调一下这个语句的加锁顺序：
+  </p>
+  <ol>
+   <li>
+    <p>
+     先对
+     <code>
+      name
+     </code>
+     列为
+     <code>
+      'c曹操'
+     </code>
+     二级索引记录进行加锁。
+    </p>
+   </li>
+   <li>
+    <p>
+     再对相应的聚簇索引记录进行加锁。
+    </p>
+   </li>
+  </ol>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    我们知道idx_name是一个普通的二级索引，到idx_name索引中定位到满足name= 'c曹操'这个条件的第一条记录后，就可以沿着这条记录一路向后找。可是从我们上边的描述中可以看出来，并没有对下一条二级索引记录进行加锁，这是为什么呢？这是因为设计InnoDB的大叔对等值匹配的条件有特殊处理，他们规定在InnoDB存储引擎层查找到当前记录的下一条记录时，在对其加锁前就直接判断该记录是否满足等值匹配的条件，如果不满足直接返回（也就是不加锁了），否则的话需要将其加锁后再返回给server层。所以这里也就不需要对下一条二级索引记录进行加锁了。
+   </p>
+  </blockquote>
+  <p>
+   现在要介绍一个非常有趣的事情，我们假设上边这个语句在事务
+   <code>
+    T1
+   </code>
+   中运行，然后事务
+   <code>
+    T2
+   </code>
+   中运行下边一个我们之前介绍过的语句：
+  </p>
+  <pre><code>UPDATE hero SET name = '曹操' WHERE number = 8;
+</code></pre>
+  <p>
+   这两个语句都是要对
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的聚簇索引记录和对应的二级索引记录加锁，但是不同点是加锁的顺序不一样。这个
+   <code>
+    UPDATE
+   </code>
+   语句是先对聚簇索引记录进行加锁，后对二级索引记录进行加锁，如果在不同事务中运行上述两个语句，可能发生一种贼奇妙的事情 ——
+  </p>
+  <ul>
+   <li>
+    <p>
+     事务
+     <code>
+      T1
+     </code>
+     持有了二级索引记录的锁，事务
+     <code>
+      T2
+     </code>
+     持有了聚簇索引记录的锁。
+    </p>
+   </li>
+   <li>
+    <p>
+     事务
+     <code>
+      T1
+     </code>
+     在等待获取聚簇索引记录上的锁，，事务
+     <code>
+      T2
+     </code>
+     在等待获取二级索引记录上的锁。
+    </p>
+   </li>
+  </ul>
+  <p>
+   两个事务都分别持有一个锁，而且都在等待对方已经持有的那个锁，这种情况就是所谓的
+   <code>
+    死锁
+   </code>
+   ，两个事务都无法运行下去，必须选择一个进行回滚，对性能影响比较大。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句时，比如：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE name = 'c曹操' FOR UPDATE;
+</code></pre>
+  <p>
+   这种情况下与
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   语句的加锁情况类似，都是给访问到的二级索引记录和对应的聚簇索引记录加锁，只不过加的是
+   <code>
+    X型正经记录锁
+   </code>
+   罢了。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    UPDATE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <p>
+   与更新二级索引记录的
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   的加锁情况类似，不过如果被更新的列中还有别的二级索引列的话，对应的二级索引记录也会被加锁。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    DELETE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <p>
+   与
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   的加锁情况类似，不过如果表中还有别的二级索引列的话，对应的二级索引记录也会被加锁。
+  </p>
+ </li>
+</ul>
+<h5>
+ 对于使用二级索引进行范围查询的情况
+</h5>
+<ul>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero FORCE INDEX(idx_name)  WHERE name &gt;= 'c曹操' LOCK IN SHARE MODE;
+</code></pre>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    因为优化器会计算使用二级索引进行查询的成本，在成本较大时可能选择以全表扫描的方式来执行查询，所以我们这里使用FORCE INDEX(idx_name)来强制使用二级索引idx_name来执行查询。
+   </p>
+  </blockquote>
+  <p>
+   这个语句的执行过程其实是先到二级索引中定位到满足
+   <code>
+    name &gt;= 'c曹操'
+   </code>
+   的第一条记录，也就是
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    c曹操
+   </code>
+   的记录，然后就可以沿着这条记录的链表一路向后找，从二级索引
+   <code>
+    idx_name
+   </code>
+   的示意图中可以看出，所有的用户记录都满足
+   <code>
+    name &gt;= 'c曹操'
+   </code>
+   的这个条件，所以所有的二级索引记录都会被加
+   <code>
+    S型正经记录锁
+   </code>
+   ，它们对应的聚簇索引记录也会被加
+   <code>
+    S型正经记录锁
+   </code>
+   。不过需要注意一下加锁顺序，对一条二级索引记录加锁完后，会接着对它相应的聚簇索引记录加锁，完后才会对下一条二级索引记录进行加锁，以此类推～ 画个图表示一下就是这样：
+  </p>
+  <p>
+   <img alt="" src="4c5d1e0a-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   再来看下边这个语句：
+  </p>
+  <pre><code>SELECT * FROM hero FORCE INDEX(idx_name) WHERE name &lt;= 'c曹操' LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   这个语句的加锁情况就有点儿有趣了。前边说在使用
+   <code>
+    number &lt;= 8
+   </code>
+   这个条件的语句中，需要把
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的记录也加一个锁，之后又判断它不符合边界条件而把锁释放掉。而对于查询条件
+   <code>
+    name &lt;= 'c曹操'
+   </code>
+   的语句来说，执行该语句需要使用到二级索引，而与二级索引相关的条件是可以使用
+   <code>
+    索引条件下推
+   </code>
+   这个特性的。设计
+   <code>
+    InnoDB
+   </code>
+   的大叔规定，如果一条记录不符合
+   <code>
+    索引条件下推
+   </code>
+   中的条件的话，直接跳到下一条记录（这个过程根本不将其返回到
+   <code>
+    server层
+   </code>
+   ），如果这已经是最后一条记录，那么直接向
+   <code>
+    server层
+   </code>
+   报告查询完毕。但是这里头有个问题呀：
+   <span>
+    先对一条记录加了锁，然后再判断该记录是不是符合索引条件下推的条件，如果不符合直接跳到下一条记录或者直接向server层报告查询完毕，这个过程中并没有把那条被加锁的记录上的锁释放掉呀！！！
+   </span>
+   。本例中使用的查询条件是
+   <code>
+    name &lt;= 'c曹操'
+   </code>
+   ，在为
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'c曹操'
+   </code>
+   的二级索引记录以及它对应的聚簇索引加锁之后，会接着二级索引中的下一条记录，也就是
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'l刘备'
+   </code>
+   的那条二级索引记录，由于该记录不符合
+   <code>
+    索引条件下推
+   </code>
+   的条件，而且是范围查询的最后一条记录，会直接向
+   <code>
+    server层
+   </code>
+   报告查询完毕，重点是这个过程中并不会释放
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'l刘备'
+   </code>
+   的二级索引记录上的锁，也就导致了语句执行完毕时的加锁情况如下所示：
+  </p>
+  <p>
+   <img alt="" src="4c845786-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   这样子会造成一个尴尬情况，假如
+   <code>
+    T1
+   </code>
+   执行了上述语句并且尚未提交，
+   <code>
+    T2
+   </code>
+   再执行这个语句：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE name = 'l刘备' FOR UPDATE;
+</code></pre>
+  <p>
+   <code>
+    T2
+   </code>
+   中的语句需要获取
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    l刘备
+   </code>
+   的二级索引记录上的
+   <code>
+    X型正经记录锁
+   </code>
+   ，而
+   <code>
+    T1
+   </code>
+   中仍然持有
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    l刘备
+   </code>
+   的二级索引记录上的
+   <code>
+    S型正经记录锁
+   </code>
+   ，这就造成了
+   <code>
+    T2
+   </code>
+   获取不到锁而进入等待状态。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句时：
+  </p>
+  <p>
+   和
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句类似，只不过加的是
+   <code>
+    X型正经记录锁
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    UPDATE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>UPDATE hero SET country = '汉' WHERE name &gt;= 'c曹操';
+</code></pre>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    FORCE INDEX只对SELECT语句起作用，UPDATE语句虽然支持该语法，但实质上不起作用，DELETE语句压根儿不支持该语法。
+   </p>
+  </blockquote>
+  <p>
+   假设该语句执行时使用了
+   <code>
+    idx_name
+   </code>
+   二级索引来进行
+   <code>
+    锁定读
+   </code>
+   ，那么它的加锁方式和上边所说的
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句一致。如果有其他二级索引列也被更新，那么也会为对应的二级索引记录进行加锁，就不赘述了。不过还有一个有趣的情况，比方说：
+  </p>
+  <pre><code>UPDATE hero SET country = '汉' WHERE name &lt;= 'c曹操';
+</code></pre>
+  <p>
+   我们前边说的
+   <code>
+    索引条件下推
+   </code>
+   这个特性只适用于
+   <code>
+    SELECT
+   </code>
+   语句，也就是说
+   <code>
+    UPDATE
+   </code>
+   语句中无法使用，那么这个语句就会为
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'c曹操'
+   </code>
+   和
+   <code>
+    'l刘备'
+   </code>
+   的二级索引记录以及它们对应的聚簇索引进行加锁，之后在判断边界条件时发现
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'l刘备'
+   </code>
+   的二级索引记录不符合
+   <code>
+    name &lt;= 'c曹操'
+   </code>
+   条件，再把该二级索引记录和对应的聚簇索引记录上的锁释放掉。这个过程如下图所示：
+  </p>
+  <p>
+   <img alt="" src="4caaaecc-13d6-11ed-838d-acde48001122"/>
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    DELETE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>DELETE FROM hero WHERE name &gt;= 'c曹操';
+</code></pre>
+  <p>
+   和
+  </p>
+  <pre><code>DELETE FROM hero WHERE name &lt;= 'c曹操';
+</code></pre>
+  <p>
+   如果这两个语句采用二级索引来进行
+   <code>
+    锁定读
+   </code>
+   ，那么它们的加锁情况和更新带有二级索引列的
+   <code>
+    UPDATE
+   </code>
+   语句一致，就不画图了。
+  </p>
+ </li>
+</ul>
+<h5>
+ 全表扫描的情况
+</h5>
+<p>
+ 比方说：
+</p>
+<pre><code>SELECT * FROM hero WHERE country  = '魏' LOCK IN SHARE MODE;
+</code></pre>
+<p>
+ 由于
+ <code>
+  country
+ </code>
+ 列上未建索引，所以只能采用全表扫描的方式来执行这条查询语句，存储引擎每读取一条聚簇索引记录，就会为这条记录加锁一个
+ <code>
+  S型正常记录锁
+ </code>
+ ，然后返回给
+ <code>
+  server层
+ </code>
+ ，如果
+ <code>
+  server层
+ </code>
+ 判断
+ <code>
+  country  = '魏'
+ </code>
+ 这个条件是否成立，如果成立则将其发送给客户端，否则会释放掉该记录上的锁，画个图就像这样：
+</p>
+<p>
+ <img alt="" src="4cb6561e-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 使用
+ <code>
+  SELECT ... FOR UPDATE
+ </code>
+ 进行加锁的情况与上边类似，只不过加的是
+ <code>
+  X型正经记录锁
+ </code>
+ ，就不赘述了。
+</p>
+<p>
+ 对于
+ <code>
+  UPDATE ...
+ </code>
+ 和
+ <code>
+  DELETE ...
+ </code>
+ 的语句来说，在遍历聚簇索引中的记录，都会为该聚簇索引记录加上
+ <code>
+  X型正经记录锁
+ </code>
+ ，然后：
+</p>
+<ul>
+ <li>
+  <p>
+   如果该聚簇索引记录不满足条件，直接把该记录上的锁释放掉。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果该聚簇索引记录满足条件，则会对相应的二级索引记录加上
+   <code>
+    X型正经记录锁
+   </code>
+   （
+   <code>
+    DELETE
+   </code>
+   语句会对所有二级索引列加锁，
+   <code>
+    UPDATE
+   </code>
+   语句只会为更新的二级索引列对应的二级索引记录加锁）。
+  </p>
+ </li>
+</ul>
+<h4>
+ REPEATABLE READ隔离级别下
+</h4>
+<p>
+ <code>
+  REPEATABLE READ
+ </code>
+ 隔离级别与
+ <code>
+  READ UNCOMMITTED
+ </code>
+ 和
+ <code>
+  READ COMMITTED
+ </code>
+ 这两个隔离级别相比，最主要的就是要解决
+ <code>
+  幻读
+ </code>
+ 问题，
+ <code>
+  幻读
+ </code>
+ 的解决还得靠我们上边讲过的
+ <code>
+  gap锁
+ </code>
+ 。
+</p>
+<h5>
+ 对于使用主键进行等值查询的情况
+</h5>
+<ul>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE number = 8 LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   我们知道主键具有唯一性，在一个事务中下次再执行这个查询语句的时候肯定不会有别的事务插入多条
+   <code>
+    number
+   </code>
+   值为8的记录，所以这种情况下和
+   <code>
+    READ UNCOMMITTED／READ COMMITTED
+   </code>
+   隔离级别下一样，我们只需要为这条
+   <code>
+    number
+   </code>
+   值为8的记录加一个
+   <code>
+    S型正经记录锁
+   </code>
+   就好了，如图所示：
+  </p>
+  <p>
+   <img alt="" src="4cc1759e-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   但是如果我们查询了查询的主键值不存在，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE number = 7 LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   由于
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    7
+   </code>
+   的记录不存在，为了禁止
+   <code>
+    幻读
+   </code>
+   现象，在当前事务提交前我们需要预防别的事务插入
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    7
+   </code>
+   的新记录，所以需要在
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的记录上加一个
+   <code>
+    gap锁
+   </code>
+   ，也就是不允许别的事务插入
+   <code>
+    number
+   </code>
+   值在
+   <code>
+    (3, 8)
+   </code>
+   这个区间的新记录。画个图表示一下：
+  </p>
+  <p>
+   <img alt="" src="4ccdb868-13d6-11ed-838d-acde48001122"/>
+  </p>
+ </li>
+</ul>
+<p>
+ 如果在
+ <code>
+  READ UNCOMMITTED／READ COMMITTED
+ </code>
+ 隔离级别下一样查询了一条主键值不存在的记录，那么什么锁也不需要加，因为在
+ <code>
+  READ UNCOMMITTED／READ COMMITTED
+ </code>
+ 隔离级别下，并不需要禁止
+ <code>
+  幻读
+ </code>
+ 问题。
+</p>
+<p>
+ 其余语句的使用主键进行等值查询的情况与
+ <code>
+  READ UNCOMMITTED／READ COMMITTED
+ </code>
+ 隔离级别类似，这里就不赘述了。
+</p>
+<h5>
+ 对于使用主键进行范围查询的情况
+</h5>
+<ul>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE number &gt;= 8 LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   因为要解决幻读问题，所以禁止别的事务插入
+   <code>
+    number
+   </code>
+   值符合
+   <code>
+    number &gt;= 8
+   </code>
+   的记录，又因为主键本身就是唯一的，所以我们不用担心在
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的前边有新记录插入，只需要保证不要让新记录插入到
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的后边就好了，所以：
+  </p>
+  <ul>
+   <li>
+    为
+    <code>
+     number
+    </code>
+    值为
+    <code>
+     8
+    </code>
+    的记录加一个
+    <code>
+     S型正经记录锁
+    </code>
+    。
+   </li>
+   <li>
+    为
+    <code>
+     number
+    </code>
+    值大于
+    <code>
+     8
+    </code>
+    的记录都加一个
+    <code>
+     S型next-key锁
+    </code>
+    （包括
+    <code>
+     Supremum
+    </code>
+    伪记录）。
+   </li>
+  </ul>
+  <p>
+   画个图就是这样子：
+  </p>
+  <p>
+   <img alt="" src="4cd71958-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    为什么不给Supremum记录加gap锁，而要加next-key锁呢？其实设计InnoDB的大叔在处理Supremum记录上加的next-key锁时就是当作gap锁看待的，只不过为了节省锁结构（我们前边说锁的类型不一样的话不能被放到一个锁结构中）才这么做的而已，大家不必在意。
+   </p>
+  </blockquote>
+  <p>
+   同样的，下边这个范围查询也是有点特殊：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE number &lt;= 8 LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   因为没有使用
+   <code>
+    索引记录下推
+   </code>
+   ，所以在加锁时会把
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    1
+   </code>
+   、
+   <code>
+    3
+   </code>
+   、
+   <code>
+    8
+   </code>
+   、
+   <code>
+    15
+   </code>
+   这四条记录都加上
+   <code>
+    S型next-key
+   </code>
+   锁，不过之后
+   <code>
+    server层
+   </code>
+   判断
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的记录不满足
+   <code>
+    number &lt;= 8
+   </code>
+   条件后，与
+   <code>
+    READ UNCOMMITTED/READ COMMITTED
+   </code>
+   隔离级别下的处理方式不同，
+   <code>
+    REPEATABLE READ
+   </code>
+   隔离级别下并不会把锁释放掉，所以现在的加锁的图示就是这样：
+  </p>
+  <p>
+   <img alt="" src="4ce5ec44-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   这样如果别的事务想要插入的新记录的
+   <code>
+    number
+   </code>
+   值在
+   <code>
+    (-∞, 1)
+   </code>
+   、
+   <code>
+    (1, 3)
+   </code>
+   、
+   <code>
+    (3, 8)
+   </code>
+   、
+   <code>
+    (8, 15)
+   </code>
+   之间的话，是会进入等待状态的。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句时：
+  </p>
+  <p>
+   和
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句类似，只不过需要将上边提到的
+   <code>
+    S型next-key锁
+   </code>
+   替换成
+   <code>
+    X型next-key锁
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    UPDATE ...
+   </code>
+   来为记录加锁：
+  </p>
+  <p>
+   如果
+   <code>
+    UPDATE
+   </code>
+   语句未更新二级索引列，比方说：
+  </p>
+  <pre><code>UPDATE hero SET country = '汉' WHERE number &gt;= 8;
+</code></pre>
+  <p>
+   这条
+   <code>
+    UPDATE
+   </code>
+   语句并没有更新二级索引列，加锁方式和上边所说的
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句一致。
+  </p>
+  <p>
+   如果
+   <code>
+    UPDATE
+   </code>
+   语句中更新了二级索引列，比方说：
+  </p>
+  <pre><code>UPDATE hero SET name = 'cao曹操' WHERE number &gt;= 8;
+</code></pre>
+  <p>
+   对聚簇索引加锁的情况和
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   一致，也就是对
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   的记录加
+   <code>
+    X型正经记录锁
+   </code>
+   ，对
+   <code>
+    number
+   </code>
+   值
+   <code>
+    15
+   </code>
+   、
+   <code>
+    20
+   </code>
+   的记录以及
+   <code>
+    Supremum
+   </code>
+   记录加
+   <code>
+    X型next-key锁
+   </code>
+   。但是也会对
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    8
+   </code>
+   、
+   <code>
+    15
+   </code>
+   、
+   <code>
+    20
+   </code>
+   的二级索引记录加
+   <code>
+    X型正经记录锁
+   </code>
+   ，画个图表示一下：
+  </p>
+  <p>
+   <img alt="" src="4cf6da40-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   如果是下边这个语句：
+  </p>
+  <pre><code>UPDATE hero SET country = '汉' WHERE number &lt;= 8;
+</code></pre>
+  <p>
+   则会对
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    1
+   </code>
+   、
+   <code>
+    3
+   </code>
+   、
+   <code>
+    8
+   </code>
+   、
+   <code>
+    15
+   </code>
+   的聚簇索引记录加
+   <code>
+    X型next-key
+   </code>
+   ，但是由于
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的聚簇索引记录不满足
+   <code>
+    number &lt;= 8
+   </code>
+   的条件，虽然在
+   <code>
+    REPEATABLE READ
+   </code>
+   隔离级别下不会将它的锁释放掉，但是也并不会对这条聚簇索引记录对应的二级索引记录加锁，也就是说只会为二级索引记录的
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    1
+   </code>
+   、
+   <code>
+    3
+   </code>
+   、
+   <code>
+    8
+   </code>
+   的记录加
+   <code>
+    X型正经记录锁
+   </code>
+   ，图就不画了。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    DELETE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>DELETE FROM hero WHERE number &gt;= 8;
+</code></pre>
+  <p>
+   和
+  </p>
+  <pre><code>DELETE FROM hero WHERE number &lt;= 8;
+</code></pre>
+  <p>
+   这两个语句的加锁情况和更新带有二级索引列的
+   <code>
+    UPDATE
+   </code>
+   语句一致，就不画图了。
+  </p>
+ </li>
+</ul>
+<h5>
+ 对于使用唯一二级索引进行等值查询的情况
+</h5>
+<p>
+ 由于
+ <code>
+  hero
+ </code>
+ 表并没有唯一二级索引，我们把原先的
+ <code>
+  idx_name
+ </code>
+ 修改为一个唯一二级索引：
+</p>
+<pre><code>ALTER TABLE hero DROP INDEX idx_name, ADD UNIQUE KEY uk_name (name);
+</code></pre>
+<ul>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE name = 'c曹操' LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   由于唯一二级索引具有唯一性，在一个事务中下次再执行这个查询语句的时候肯定不会有别的事务插入多条
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    c曹操
+   </code>
+   的记录，所以这种情况下和
+   <code>
+    READ UNCOMMITTED／READ COMMITTED
+   </code>
+   隔离级别下一样，我们只需要为这条
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'c曹操'
+   </code>
+   的二级索引记录加一个
+   <code>
+    S型正经记录锁
+   </code>
+   ，然后再为它对应的聚簇索引记录加一个
+   <code>
+    S型正经记录锁
+   </code>
+   就好了，其实和
+   <code>
+    READ UNCOMMITTED/READ COMMITTED
+   </code>
+   隔离级别下加锁方式是一样的，我们画个图看看：
+  </p>
+  <p>
+   <img alt="" src="4d025dd4-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   注意，是先对二级索引记录加锁，再对聚簇索引加锁。
+  </p>
+  <p>
+   如果对唯一二级索引等值查询的值并不存在，比如：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE name = 'g关羽' LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   在唯一二级索引
+   <code>
+    uk_name
+   </code>
+   中，键值比
+   <code>
+    'g关羽'
+   </code>
+   大的第一条记录的键值为
+   <code>
+    l刘备
+   </code>
+   ，所以需要在这条二级索引记录上加一个
+   <code>
+    gap锁
+   </code>
+   ，如图所示：
+  </p>
+  <p>
+   <img alt="" src="4d0dc73c-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   注意，这里只对二级索引记录进行加锁，并不会对聚簇索引记录进行加锁。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句时，比如：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE name = 'c曹操' FOR UPDATE;
+</code></pre>
+  <p>
+   这种情况下与
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   语句的加锁情况类似，都是给访问到的二级索引记录和对应的聚簇索引记录加锁，只不过加的是
+   <code>
+    X型正经记录锁
+   </code>
+   罢了。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    UPDATE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <p>
+   与
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   的加锁情况类似，不过如果被更新的列中还有别的二级索引列的话，这些对应的二级索引列也会被加锁。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    DELETE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <p>
+   与
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   的加锁情况类似，不过如果表中还有别的二级索引列的话，这些对应的二级索引列也会被加锁。
+  </p>
+ </li>
+</ul>
+<h5>
+ 对于使用唯一二级索引进行范围查询的情况
+</h5>
+<ul>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... LOCK IN SHARE MODE
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <pre><code>SELECT * FROM hero FORCE INDEX(idx_name) WHERE name &gt;= 'c曹操' LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   这个语句的执行过程其实是先到二级索引中定位到满足
+   <code>
+    name &gt;= 'c曹操'
+   </code>
+   的第一条记录，也就是
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    c曹操
+   </code>
+   的记录，然后就可以沿着这条记录的链表一路向后找，从二级索引
+   <code>
+    idx_name
+   </code>
+   的示意图中可以看出，所有的用户记录都满足
+   <code>
+    name &gt;= 'c曹操'
+   </code>
+   的这个条件，所以所有的二级索引记录都会被加
+   <code>
+    S型next-key锁
+   </code>
+   ，它们对应的聚簇索引记录也会被加
+   <code>
+    S型正经记录锁
+   </code>
+   ，二级索引的最后一条
+   <code>
+    Supremum
+   </code>
+   记录也会被加
+   <code>
+    S型next-key锁
+   </code>
+   。不过需要注意一下加锁顺序，对一条二级索引记录加锁完后，会接着对它响应的聚簇索引记录加锁，完后才会对下一条二级索引记录进行加锁，以此类推～ 画个图表示一下就是这样：
+  </p>
+  <p>
+   <img alt="" src="4d1bea9c-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   再来看下边这个语句：
+  </p>
+  <pre><code>SELECT * FROM hero WHERE name &lt;= 'c曹操' LOCK IN SHARE MODE;
+</code></pre>
+  <p>
+   这个语句先会为
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'c曹操'
+   </code>
+   的二级索引记录加
+   <code>
+    S型next-key锁
+   </code>
+   以及它对应的聚簇索引记录加
+   <code>
+    S型正经记录锁
+   </code>
+   。然后还要给
+   <code>
+    name
+   </code>
+   值为
+   <code>
+    'l刘备'
+   </code>
+   的二级索引加
+   <code>
+    S型next-key锁
+   </code>
+   ，
+   <code>
+    server层
+   </code>
+   判断
+  </p>
+  <p>
+   前边在说为
+   <code>
+    number &lt;= 8
+   </code>
+   这个条件进行加锁时，会把
+   <code>
+    number
+   </code>
+   值为
+   <code>
+    15
+   </code>
+   的记录也加一个锁，之后
+   <code>
+    server层
+   </code>
+   判断不符合条件后再释放掉，现在换成二级索引就不用为下一条记录加锁了么？是的，这主要是因为我们开启了
+   <code>
+    索引条件下推
+   </code>
+   ，对于二级索引记录来说，可以先在存储引擎层判断给定条件
+   <code>
+    name &lt;= 'c曹操'
+   </code>
+   是否成立，如果不成立就不返回给
+   <code>
+    server层
+   </code>
+   了，从而避免了不必要的加锁。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句时：
+  </p>
+  <p>
+   和
+   <code>
+    SELECT ... FOR LOCK IN SHARE MODE
+   </code>
+   语句类似，只不过加的是
+   <code>
+    X型正经记录锁
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    UPDATE ...
+   </code>
+   来为记录加锁
+  </p>
+  <p>
+   和
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句类似，只不过如果被更新的列中有二级索引列的话，会把被更新的二级索引记录也添加X型正经记录锁。
+  </p>
+ </li>
+ <li>
+  <p>
+   使用
+   <code>
+    DELETE ...
+   </code>
+   来为记录加锁，比方说：
+  </p>
+  <p>
+   和
+   <code>
+    SELECT ... FOR UPDATE
+   </code>
+   语句类似，只不过所有被删除的二级索引记录都会被添加X型正经记录锁。
+  </p>
+ </li>
+</ul>
+</div>
+
+</div>
+</body>
+</html>

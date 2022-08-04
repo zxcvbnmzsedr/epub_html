@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>专题式讲解 —— 设计MySQL的大叔为何偏爱ref</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>专题式讲解 —— 设计MySQL的大叔为何偏爱ref</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1>
+ 设计MySQL的大叔为何偏爱ref
+</h1>
+<p>
+ 标签（空格分隔）： MySQL是怎样运行的
+</p>
+<hr/>
+<h2>
+ 回忆一下查询成本
+</h2>
+<p>
+ 对于一个查询来说，有时候可以通过不同的索引或者全表扫描来执行它，MySQL优化器会通过事先生成的统计数据，或者少量访问B+树索引的方式来分析使用各个索引时都需要扫描多少条记录，然后计算使用不同索引的查询成本，最后选择成本最低的那个来执行查询。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  我们之前称那种通过少量访问B+树索引来分析需要扫描的记录数量的方式称为index dive，不知道大家还有没有印象。
+ </p>
+</blockquote>
+<p>
+ 一个很简单的思想就是：使用某个索引执行查询时，需要扫描的记录越少，就越可能使用这个索引来执行查询。
+</p>
+<h2>
+ 创建场景
+</h2>
+<p>
+ 假如我们现在有一个表t，它的表结构如下所示：
+</p>
+<pre><code>CREATE TABLE t (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    key1 VARCHAR(100),
+    common_field VARCHAR(100),
+    INDEX idx_key1 (key1)
+) ENGINE=InnoDB CHARSET=utf8;
+</code></pre>
+<p>
+ 这个表包含3个列：
+</p>
+<ul>
+ <li>
+  id列是自增主键
+ </li>
+ <li>
+  key1列用于存储字符串，我们为key1列建立了一个普通的二级索引
+ </li>
+ <li>
+  common_field列用于存储字符串
+ </li>
+</ul>
+<p>
+ 现在该表中共有10000条记录：
+</p>
+<pre><code>mysql&gt; SELECT COUNT(*) FROM t;
++----------+
+| COUNT(*) |
++----------+
+|    10000 |
++----------+
+1 row in set (2.65 sec)
+</code></pre>
+<p>
+ 其中key1列为
+ <code>
+  'a'
+ </code>
+ 的记录有
+ <code>
+  2310
+ </code>
+ 条：
+</p>
+<pre><code>mysql&gt; SELECT COUNT(*) FROM t WHERE key1 = 'a';
++----------+
+| COUNT(*) |
++----------+
+|     2310 |
++----------+
+1 row in set (0.83 sec)
+</code></pre>
+<p>
+ key1列在
+ <code>
+  'a'
+ </code>
+ 到
+ <code>
+  'i'
+ </code>
+ 之间的记录也有
+ <code>
+  2310
+ </code>
+ 条：
+</p>
+<pre><code>mysql&gt; SELECT COUNT(*) FROM t WHERE key1 &gt; 'a' AND key1 &lt; 'i';
++----------+
+| COUNT(*) |
++----------+
+|     2310 |
++----------+
+1 row in set (1.31 sec)
+</code></pre>
+<p>
+ 现在我们有如下两个查询：
+</p>
+<pre><code>查询1：SELECT * FROM t WHERE key1 = 'a';
+
+查询2：SELECT * FROM t WHERE key1 &gt; 'a' AND key1 &lt; 'i';
+</code></pre>
+<p>
+ 按理说上边两个查询需要扫描的记录数量是一样的，MySQL查询优化器对待它们的态度也应该是一样的，也就是要么都使用二级索引idx_key1执行它们，要么都使用全表扫描的方式来执行它们。不过现实是貌似查询优化器更喜欢
+ <code>
+  查询1
+ </code>
+ ，而比较讨厌
+ <code>
+  查询2
+ </code>
+ 。查询1的执行计划如下所示：
+</p>
+<pre><code># 查询1的执行计划
+mysql&gt; EXPLAIN SELECT * FROM t WHERE key1 = 'a'\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: t
+   partitions: NULL
+         type: ref
+possible_keys: idx_key1
+          key: idx_key1
+      key_len: 303
+          ref: const
+         rows: 2310
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.04 sec)
+</code></pre>
+<p>
+ 查询2的执行计划如下所示：
+</p>
+<pre><code># 查询2的执行计划
+mysql&gt; EXPLAIN SELECT * FROM t WHERE key1 &gt; 'a' AND key1 &lt; 'i'\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: t
+   partitions: NULL
+         type: ALL
+possible_keys: idx_key1
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 9912
+     filtered: 23.31
+        Extra: Using where
+1 row in set, 1 warning (0.03 sec)
+</code></pre>
+<p>
+ 很显然，查询优化器决定使用idx_key1二级索引执行查询1，而使用全表扫描来执行查询2。
+</p>
+<p>
+ 为什么？凭什么？同样是扫描相同数量的记录，凭什么我range访问方法就要比你ref低一头？设计MySQL的大叔，你为何这么偏心...
+</p>
+<h2>
+ 解密偏心原因
+</h2>
+<p>
+ 世界上没有无缘无故的爱，也没有无缘无故的恨。这事儿还得从索引结构说起。比方说idx_key1二级索引结构长这样：
+</p>
+<p>
+ <img alt="" src="434b2744-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 原谅我们把索引对应的B+树结构弄了一个极度精简版，我们忽略掉了页的结构，只保留了叶子节点的记录。虽然极度精简，但是我们还是保留了一个极其重要的特性：B+树叶子节点中的记录是按照索引列的值从小到大排序的。对于二级索引idx_key1来说：
+</p>
+<ul>
+ <li>
+  二级索引叶子节点的记录只保留key1列和id列
+ </li>
+ <li>
+  二级索引记录是先按照key1列的值从小到大的顺序进行排序的。
+ </li>
+ <li>
+  如果key1列的值相同，则按照主键值，也就是id列的值从小到大的顺序进行排序。
+ </li>
+</ul>
+<p>
+ 也就是说，对于所有key1值为
+ <code>
+  'a'
+ </code>
+ 的二级索引记录来说，它们都是按照id列的值进行排序的。对于查询1：
+</p>
+<pre><code>查询1: SELECT * FROM t WHERE key1 = 'a';
+</code></pre>
+<p>
+ 由于查询列表是* ，也就是说我们需要通过读取到的二级索引记录的id值执行回表操作，到聚簇索引中找到完整的用户记录（为了去获取common_field列的值）后才可以将记录发送到客户端。对于所有key1列值等于
+ <code>
+  'a'
+ </code>
+ 的二级索引记录，由于它们是按照id列的值排序的，所以：
+</p>
+<ul>
+ <li>
+  <p>
+   前一次回表的id值所属的聚簇索引记录和下一次回表的id值所属的聚簇索引记录很大可能在同一个数据页中
+  </p>
+ </li>
+ <li>
+  <p>
+   即使前一次回表的id值所属的聚簇索引记录和下一次回表的id值所属的聚簇索引记录不在同一个数据页中，由于回表的id值是递增的，所以我们很大可能通过顺序I/O的方式找到下一个数据页，也就是说这个过程中很大可能不需要很大幅度的移动磁头就可以找到下一个数据页。这可以减少很多随机I/O带来的性能开销。
+  </p>
+ </li>
+</ul>
+<p>
+ 综上所属，执行语句1时，回表操作带来的性能开销较小。
+</p>
+<p>
+ 而对于查询2来说：
+</p>
+<pre><code>查询2: SELECT * FROM t WHERE key1 &gt; 'a' AND key1 &lt; 'i';
+</code></pre>
+<p>
+ 由于需要扫描的二级索引记录对应的id值是无序的，所以执行回表操作时，需要访问的聚簇索引记录所在的数据页很大可能就是无序的，这样会造成很多随机I/O。所以如果使用idx_key1来执行查询1和查询2，执行查询1的成本很显然会比查询2低，这也是设计MySQL的大叔更钟情于ref而不是range的原因。
+</p>
+<h2>
+ MySQL的内部实现
+</h2>
+<p>
+ MySQL优化器在计算回表的成本时，在使用二级索引执行查询并且需要回表的情境下，对于ref和range是很明显的区别对待的：
+</p>
+<ul>
+ <li>
+  <p>
+   对于range来说，需要扫描多少条二级索引记录，就相当于需要访问多少个页面。每访问一个页面，回表的I/O成本就加1。
+  </p>
+  <p>
+   比方对于查询2来说，需要回表的记录数是2310，因为回表操作而计算的I/O成本就是2310。
+  </p>
+ </li>
+ <li>
+  <p>
+   对于ref来说，回表开销带来的I/O成本存在天花板，也就是定义了一个上限值：
+  </p>
+  <pre><code>double	worst_seeks;
+</code></pre>
+  <p>
+   这个上限值的取值是从下边两个值中取较小的那个：
+  </p>
+  <ul>
+   <li>
+    全表记录数的十分之一（此处的全表记录数属于统计数据，是一个估计值）
+   </li>
+   <li>
+    聚簇索引所占页面的3倍
+   </li>
+  </ul>
+  <p>
+   比方对于查询1来说，回表的记录数是2310，按理说计算因回表操作带来的I/O成本也应该是2310。但是由于对于ref访问方法，计算回表操作时带来的I/O成本时存在天花板，会从全表记录的十分之一（也就是9912/10=991，9912为估计值）以及聚簇索引所占页面的3倍（本例中聚簇索引占用的页面数就是97，乘以3就是291）选择更小的那个，本例中也就是291。
+  </p>
+ </li>
+</ul>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  在成本分析的代码中，range和index、all是被分到一类里的，ref是亲儿子，单独分析了一波。不过我们也可以看到，设计MySQL的大叔在计算range访问方法的代价时，直接认为每次回表都需要进行一次页面I/O，这是十分粗暴的，何况我们的实际聚簇索引总共才97个页面，它却将回表成本计算为2310，这也是很不精确的。当然，由于目前的算法无法预测哪些页面在内存中，哪些不在，所以也就将就将就用吧～
+ </p>
+</blockquote>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>专题式讲解 —— MySQL的定点数类型</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>专题式讲解 —— MySQL的定点数类型</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1>
+ MySQL的定点数类型
+</h1>
+<p>
+ 标签： MySQL是怎样运行的
+</p>
+<hr/>
+<p>
+ 上一篇文章我们唠叨了浮点数，知道了浮点数存储小数是不精确的。本篇继续唠叨一下MySQL中的另一种存储小数的方式 —— 定点数。
+</p>
+<h3>
+ 定点数类型
+</h3>
+<p>
+ 正因为用浮点数表示小数可能会有不精确的情况，在一些情况下我们必须保证小数是精确的，所以设计
+ <code>
+  MySQL
+ </code>
+ 的大叔们提出一种称之为
+ <code>
+  定点数
+ </code>
+ 的数据类型，它也是存储小数的一种方式：
+</p>
+<p>
+ |类型|占用的存储空间（单位：字节）|取值范围|
+|:--:|:--:|:--:|:--:|
+|
+ <code>
+  DECIMAL(M, D)
+ </code>
+ |取决于M和D|取决于M和D|
+</p>
+<p>
+ 其中：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    M
+   </code>
+   表示该小数最多需要的十进制有效数字个数。
+  </p>
+  <p>
+   注意是
+   <code>
+    有效数字
+   </code>
+   个数，比方说对于小数
+   <code>
+    -2.3
+   </code>
+   来说有效数字个数就是2，对于小数
+   <code>
+    0.9
+   </code>
+   来说有效数字个数就是
+   <code>
+    1
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    D
+   </code>
+   表示该小数的小数点后的十进制数字个数。
+  </p>
+  <p>
+   这个好理解，小数点后有几个十进制数字，
+   <code>
+    D
+   </code>
+   的值就是什么。
+  </p>
+ </li>
+</ul>
+<p>
+ 举个例子看一下，设置了
+ <code>
+  M
+ </code>
+ 和
+ <code>
+  D
+ </code>
+ 的单精度浮点数的取值范围的变化：
+</p>
+<table>
+ <thead>
+  <tr>
+   <th align="center">
+    类型
+   </th>
+   <th align="center">
+    取值范围
+   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td align="center">
+    <code>
+     DECIMAL(4, 1)
+    </code>
+   </td>
+   <td align="center">
+    -999.9~999.9
+   </td>
+  </tr>
+  <tr>
+   <td align="center">
+    <code>
+     DECIMAL(5, 1)
+    </code>
+   </td>
+   <td align="center">
+    -9999.9~9999.9
+   </td>
+  </tr>
+  <tr>
+   <td align="center">
+    <code>
+     DECIMAL(6, 1)
+    </code>
+   </td>
+   <td align="center">
+    -99999.9~99999.9
+   </td>
+  </tr>
+  <tr>
+   <td align="center">
+    <code>
+     DECIMAL(4, 0)
+    </code>
+   </td>
+   <td align="center">
+    -9999~9999
+   </td>
+  </tr>
+  <tr>
+   <td align="center">
+    <code>
+     DECIMAL(4, 1)
+    </code>
+   </td>
+   <td align="center">
+    -999.9~999.9
+   </td>
+  </tr>
+  <tr>
+   <td align="center">
+    <code>
+     DECIMAL(4, 2)
+    </code>
+   </td>
+   <td align="center">
+    -99.99~99.99
+   </td>
+  </tr>
+ </tbody>
+</table>
+<p>
+ 可以看到，
+ <span>
+  在D相同的情况下，M越大，该类型的取值范围越大；在M相同的情况下，D越大，该类型的取值范围越小
+ </span>
+ 。当然，
+ <code>
+  M
+ </code>
+ 和
+ <code>
+  D
+ </code>
+ 的取值也不是无限大的，
+ <code>
+  M
+ </code>
+ 的取值范围是
+ <code>
+  1~255
+ </code>
+ ，
+ <code>
+  D
+ </code>
+ 的取值范围是
+ <code>
+  0~30
+ </code>
+ ，而且
+ <code>
+  D
+ </code>
+ 的值必须不大于
+ <code>
+  M
+ </code>
+ 。
+ <code>
+  M
+ </code>
+ 和
+ <code>
+  D
+ </code>
+ 都是可选的，如果我们省略了它们，那它们的值按照机器支持的最大值来存储。
+</p>
+<p>
+ 我们说定点数是一种精确的小数，为了达到精确的目的我们就不能把它转换成二进制小数之后再存储(因为有很多十进制小数转为二进制小数后需要进行舍入操作，导致二进制小数表示的数值是不精确的)。其实转念一想，所谓的小数只是把两个十进制整数用小数点分割开来而已，我们只要把小数点左右的两个十进制整数给存储起来，那不就是精确的了么。比方说对于十进制小数
+ <code>
+  2.38
+ </code>
+ 来说，我们可以把这个小数的小数点左右的两个整数，也就是
+ <code>
+  2
+ </code>
+ 和
+ <code>
+  38
+ </code>
+ 分别保存起来，那么不就相当于保存了一个精确的小数么，这波操作是不是很6。
+</p>
+<p>
+ 当然事情并没有这么简单，对于给定
+ <code>
+  M
+ </code>
+ 、
+ <code>
+  D
+ </code>
+ 值的
+ <code>
+  DECIMAL(M, D)
+ </code>
+ 类型，比如
+ <code>
+  DEMCIMAL(16, 4)
+ </code>
+ 来说：
+</p>
+<ul>
+ <li>
+  <p>
+   首先确定小数点左边的整数最多需要存储的十进制位数是12位，小数点右边的整数需要存储的十进制位数是4位，如图所示：
+  </p>
+  <p>
+   <img alt="" src="4862f46e-13d6-11ed-838d-acde48001122"/>
+  </p>
+ </li>
+ <li>
+  <p>
+   从小数点位置出发，每个整数每隔9个十进制位划分为1组，效果就是这样：
+  </p>
+  <p>
+   <img alt="" src="486fc810-13d6-11ed-838d-acde48001122"/>
+  </p>
+  <p>
+   从图中可以看出，如果不足9个十进制位，也会被划分成一组。
+  </p>
+ </li>
+ <li>
+  <p>
+   针对每个组中的十进制数字，将其转换为二进制数字进行存储，根据组中包含的十进制数字位数不同，所需的存储空间大小也不同，具体见下表：
+  </p>
+  <table>
+   <thead>
+    <tr>
+     <th align="center">
+      组中包含的十进制位数
+     </th>
+     <th align="center">
+      占用存储空间大小（单位：字节）
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td align="center">
+      1或2
+     </td>
+     <td align="center">
+      1
+     </td>
+    </tr>
+    <tr>
+     <td align="center">
+      3或4
+     </td>
+     <td align="center">
+      2
+     </td>
+    </tr>
+    <tr>
+     <td align="center">
+      5或6
+     </td>
+     <td align="center">
+      3
+     </td>
+    </tr>
+    <tr>
+     <td align="center">
+      7或8或9
+     </td>
+     <td align="center">
+      4
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   所以
+   <code>
+    DECIMAL(16, 4)
+   </code>
+   共需要占用
+   <code>
+    8
+   </code>
+   个字节的存储空间大小，这8个字节由下边3个部分组成：
+  </p>
+  <ul>
+   <li>
+    第1组包含3个十进制位，需要使用2个字节存储。
+   </li>
+   <li>
+    第2组包含9个十进制位，需要使用4个字节存储。
+   </li>
+   <li>
+    第3组包含4个十进制位，需要使用2个字节存储。
+   </li>
+  </ul>
+ </li>
+ <li>
+  <p>
+   将转换完成的比特位序列的最高位设置为1。
+  </p>
+ </li>
+</ul>
+<p>
+ 这些步骤看的有一丢丢懵逼吧，别着急，举个例子就都清楚了。比方说我们使用定点数类型
+ <code>
+  DECIMAL(16, 4)
+ </code>
+ 来存储十进制小数
+ <code>
+  1234567890.1234
+ </code>
+ ，这个小数会被划分成3个部分：
+</p>
+<pre><code>1 234567890 1234
+</code></pre>
+<p>
+ 也就是：
+</p>
+<ul>
+ <li>
+  第1组中包含整数
+  <code>
+   1
+  </code>
+  。
+ </li>
+ <li>
+  第2组中包含整数
+  <code>
+   234567890
+  </code>
+  。
+ </li>
+ <li>
+  第3组中包含整数
+  <code>
+   1234
+  </code>
+  。
+ </li>
+</ul>
+<p>
+ 然后将每一组中的十进制数字转换成对应的二进制数字：
+</p>
+<ul>
+ <li>
+  <p>
+   第1组占用2个字节，整数
+   <code>
+    1
+   </code>
+   对应的二进制数就是（字节之间实际上没有空格，只不过为了大家理解上的方便我们加了一个空格）：
+  </p>
+  <pre><code>00000000 00000001
+</code></pre>
+  <p>
+   二进制看起来太难受，我们还是转换成对应的十六进制看一下：
+  </p>
+  <pre><code>0x0001
+</code></pre>
+ </li>
+ <li>
+  <p>
+   第2组占用4个字节，整数
+   <code>
+    234567890
+   </code>
+   对应的十六进制数就是：
+  </p>
+  <pre><code>0x0DFB38D2
+</code></pre>
+ </li>
+ <li>
+  <p>
+   第3组占用2个字节，整数
+   <code>
+    1234
+   </code>
+   对应的十六进制数就是：
+  </p>
+  <pre><code>0x04D2
+</code></pre>
+ </li>
+</ul>
+<p>
+ 所以将这些十六进制数字连起来之后就是：
+</p>
+<pre><code>0x00010DFB38D204D2
+</code></pre>
+<p>
+ 最后还要将这个结果的最高位设置为1，所以最终十进制小数
+ <code>
+  1234567890.1234
+ </code>
+ 使用定点数类型
+ <code>
+  DECIMAL(16, 4)
+ </code>
+ 存储时共占用8个字节，具体内容为：
+</p>
+<pre><code>0x80010DFB38D204D2
+</code></pre>
+<p>
+ 有的同学会问，如果我们想使用定点数类型
+ <code>
+  DECIMAL(16, 4)
+ </code>
+ 存储一个负数怎么办，比方说
+ <code>
+  -1234567890.1234
+ </code>
+ ，这时只需要将
+ <code>
+  0x80010DFB38D204D2
+ </code>
+ 中的每一个比特位都执行一个取反操作就好，也就是得到下边这个结果：
+</p>
+<pre><code>0x7FFEF204C72DFB2D
+</code></pre>
+<p>
+ 从上边的叙述中我们可以知道，对于
+ <code>
+  DECIMAL(M, D)
+ </code>
+ 类型来说，给定的
+ <code>
+  M
+ </code>
+ 和
+ <code>
+  D
+ </code>
+ 的值不同，所需的存储空间大小也不同。可以看到，与浮点数相比，定点数需要更多的空间来存储数据，所以如果不是在某些需要存储精确小数的场景下，一般的小数用浮点数表示就足够了。
+</p>
+<p>
+ 对于定点数类型
+ <code>
+  DECIMAL(M, D)
+ </code>
+ 来说，
+ <code>
+  M
+ </code>
+ 和
+ <code>
+  D
+ </code>
+ 都是可选的，默认的
+ <code>
+  M
+ </code>
+ 的值是10，默认的
+ <code>
+  D
+ </code>
+ 的值是0，也就是说下列等式是成立的：
+</p>
+<pre><code>DECIMAL = DECIMAL(10) = DECIMAL(10, 0)
+DECIMAL(n) = DECIMAL(n, 0)
+</code></pre>
+<p>
+ 另外
+ <code>
+  M
+ </code>
+ 的范围是
+ <code>
+  1~65
+ </code>
+ ，
+ <code>
+  D
+ </code>
+ 的范围是
+ <code>
+  0~30
+ </code>
+ ，且
+ <code>
+  D
+ </code>
+ 的值不能超过
+ <code>
+  M
+ </code>
+ 。
+</p>
+</div>
+
+</div>
+</body>
+</html>

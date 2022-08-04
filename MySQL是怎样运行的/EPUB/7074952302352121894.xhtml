@@ -1,0 +1,781 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title> 专题式讲解 —— MySQL查询成本和扫描区间(MySQL中IS NULL、IS NOT NULL、!=不能用索引？胡扯！)</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1> 专题式讲解 —— MySQL查询成本和扫描区间(MySQL中IS NULL、IS NOT NULL、!=不能用索引？胡扯！)</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1>
+ MySQL查询成本和扫描区间(MySQL中IS NULL、IS NOT NULL、!=不能用索引？胡扯！)
+</h1>
+<p>
+ 标签： MySQL是怎样运行的
+</p>
+<hr/>
+<h2>
+ 前情回顾
+</h2>
+<p>
+ 经过前面的学习我们知道了对于
+ <code>
+  InnoDB
+ </code>
+ 存储引擎来说，表中的数据都存储在所谓的B+树中，我们每多建立一个索引，就相当于多建立一棵B+树。
+</p>
+<ul>
+ <li>
+  <p>
+   对于聚簇索引对应的B+树来说，叶子节点处存储了完整的用户记录（所谓完整用户记录，就是指一条聚簇索引记录中包含所有用户定义的列已经一些内建的列），并且这些聚簇索引记录按照主键值从小到大排序。
+  </p>
+ </li>
+ <li>
+  <p>
+   对于二级索引对应的B+树来说，叶子节点处存储了不完整的用户记录（所谓不完整用户记录，就是指一条二级索引记录只包含索引列和主键），并且这些二级索引记录按照索引列的值从小到大排序。
+  </p>
+ </li>
+</ul>
+<p>
+ 我们向表中存储了多少条记录，每一棵B+树的叶子节点中就包含多少条记录（注意是“每一棵”，包括聚簇索引对应的B+树以及二级索引对应的B+树）。
+</p>
+<h2>
+ 示例
+</h2>
+<p>
+ 我们举个例子：
+</p>
+<pre><code>CREATE TABLE t (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    key1 INT,
+    common_field VARCHAR(100),
+    PRIMARY KEY (id),
+    KEY idx_key1 (key1)
+) Engine=InnoDB CHARSET=utf8;
+</code></pre>
+<p>
+ 这个表就包含2个索引（也就是2棵B+树）：
+</p>
+<ul>
+ <li>
+  <p>
+   以
+   <code>
+    id
+   </code>
+   列为主键对应的聚簇索引。
+  </p>
+ </li>
+ <li>
+  <p>
+   为
+   <code>
+    key1
+   </code>
+   列建立的二级索引
+   <code>
+    idx_key1
+   </code>
+   。
+  </p>
+ </li>
+</ul>
+<p>
+ 我们向表中插入一些记录：
+</p>
+<pre><code>INSERT INTO t VALUES
+    (1, 30, 'b'),
+    (2, 80, 'b'),
+    (3, 23, 'b'),
+    (4, NULL, 'b'),
+    (5, 11, 'b'),
+    (6, 53, 'b'),
+    (7, 63, 'b'),
+    (8, NULL, 'b'),
+    (9, 99, 'b'),
+    (10, 12, 'b'),
+    (11, 66, 'b'),
+    (12, NULL, 'b'),
+    (13, 66, 'b'),
+    (14, 30, 'b'),
+    (15, 11, 'b'),
+    (16, 90, 'b');
+</code></pre>
+<p>
+ 所以现在
+ <code>
+  s1
+ </code>
+ 表的聚簇索引示意图就是这样：
+</p>
+<p>
+ <img alt="" src="419be622-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ <code>
+  s1
+ </code>
+ 表的二级索引示意图就是这样：
+</p>
+<p>
+ <img alt="" src="41a8275c-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 从图中可以看出，值为
+ <code>
+  NULL
+ </code>
+ 的二级索引记录都被放到了B+树的最左边，这是因为设计InnoDB的大叔们有规定：
+</p>
+<blockquote>
+ <p>
+  We define the SQL null to be the smallest possible value of a field.
+ </p>
+</blockquote>
+<p>
+ 也就是认为
+ <code>
+  NULL
+ </code>
+ 值是最小的。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  原谅我们把B+树的结构做了一个如此这般的简化，我们省略了页面的结构，省略了所有的内节点（只画了了三角形替代），省略了记录之间的链表，因为这些不是本文的重点，画成如果所示的样子只是为了突出叶子节点处的记录是按照给定索引的键值进行排序的。
+ </p>
+</blockquote>
+<h2>
+ 查询是怎么执行的
+</h2>
+<p>
+ 比方说我们现在执行下边这个查询语句：
+</p>
+<pre><code>SELECT * FROM t WHERE key1 = 53;
+</code></pre>
+<p>
+ 那么语句的执行过程就如下图所示：
+</p>
+<p>
+ <img alt="" src="41b48ca4-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 用文字描述一下这个过程也就是：
+</p>
+<ul>
+ <li>
+  <p>
+   先通过二级索引
+   <code>
+    idx_key1
+   </code>
+   对应的
+   <code>
+    B+
+   </code>
+   树快速定位到
+   <code>
+    key1
+   </code>
+   列值为
+   <code>
+    53
+   </code>
+   的那条二级索引记录。
+  </p>
+ </li>
+ <li>
+  <p>
+   然后通过二级索引记录上的主键值，也就是
+   <code>
+    6
+   </code>
+   到执行
+   <code>
+    回表
+   </code>
+   操作，也就是到聚簇索引中再找到
+   <code>
+    id
+   </code>
+   列值为
+   <code>
+    6
+   </code>
+   的聚簇索引记录。
+  </p>
+ </li>
+</ul>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  B+树叶子节点中的记录都是按照键值按照从小到大的顺序排好序的，通过B+树索引定位到叶子节点中的一条记录是非常快速的。
+ </p>
+</blockquote>
+<p>
+ 像下边这个查询：
+</p>
+<pre><code>SELECT * FROM t WHERE key1 &gt; 20 AND key1 &lt; 50;
+</code></pre>
+<p>
+ 它的执行示意图就是这样：
+</p>
+<p>
+ <img alt="" src="41c5648e-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 用文字表述就是这样：
+</p>
+<ul>
+ <li>
+  <p>
+   先通过二级索引
+   <code>
+    idx_key1
+   </code>
+   对应的
+   <code>
+    B+
+   </code>
+   树快速定位到满足
+   <code>
+    key1 &gt; 20
+   </code>
+   的第一条记录，也就是我们图中所示的
+   <code>
+    key1
+   </code>
+   值为
+   <code>
+    23
+   </code>
+   的那条记录，然后根据该二级索引中的主键值
+   <code>
+    3
+   </code>
+   执行回表操作，得到完整的用户记录后发送到客户端。
+  </p>
+ </li>
+ <li>
+  <p>
+   然后根据上一步骤中获取到的
+   <code>
+    key1
+   </code>
+   列值为
+   <code>
+    23
+   </code>
+   的二级索引记录的
+   <code>
+    next_record
+   </code>
+   属性，找到紧邻着的下一条二级索引记录，也就是
+   <code>
+    key1
+   </code>
+   列值为
+   <code>
+    30
+   </code>
+   的记录，然后执行回表操作，得到完整用户记录后发送到客户端。
+  </p>
+ </li>
+ <li>
+  <p>
+   然后再找上一步骤中获取到的
+   <code>
+    key1
+   </code>
+   列值为
+   <code>
+    30
+   </code>
+   的二级索引记录的下一条记录，该记录的
+   <code>
+    key1
+   </code>
+   列值也为
+   <code>
+    30
+   </code>
+   ，继续执行回表操作将完整的用户记录发送到客户端。
+  </p>
+ </li>
+ <li>
+  <p>
+   然后再找上一步骤中获取到的
+   <code>
+    key1
+   </code>
+   列值为
+   <code>
+    30
+   </code>
+   的二级索引记录的下一条记录，该记录的
+   <code>
+    key1
+   </code>
+   列值为
+   <code>
+    53
+   </code>
+   ，不满足
+   <code>
+    key1 &lt; 50
+   </code>
+   的条件，所以查询就此终止。
+  </p>
+ </li>
+</ul>
+<p>
+ 从上边的步骤中也可以看出来：
+ <span>
+  需要扫描的二级索引记录越多，需要执行的回表操作也就越多
+ </span>
+ 。如果需要扫描的二级索引记录占全部记录的比例达到某个范围，那优化器就可能选择使用全表扫描的方式执行查询（一个极端的例子就是扫描全部的二级索引记录，那么将对所有的二级索引记录执行回表操作，显然还不如直接全表扫描）。
+</p>
+<p>
+ 所以现在的结论就是：
+ <span>
+  判定某个查询是否可以使用索引的条件就是需要扫描的二级索引记录占全部记录的比例是否比较低，较低的话说明成本较低，那就可以使用二级索引来执行查询，否则要采用全表扫描
+ </span>
+ 。
+</p>
+<h2>
+ 扫描区间和边界条件
+</h2>
+<p>
+ 对于下边这个查询来说：
+</p>
+<pre><code>SELECT * FROM t WHERE key1 &gt; 20 AND key1 &lt; 50;
+</code></pre>
+<p>
+ 如果我们使用idx_key1执行该查询的话，那么就需要扫描key1值在(20, 50)这个区间中的所有二级索引记录，我们就把(20, 50)称作使用idx_key1执行上述查询时的扫描区间，把key1 &gt; 20 AND key1 &lt; 50称作形成该扫描区间的边界条件。
+</p>
+<p>
+ 只要索引列和常数使用=、&lt;=&gt;、IN、NOT IN、IS NULL、IS NOT NULL、&gt;、&lt;、&gt;=、&lt;=、BETWEEN、!=或者LIKE操作符连接起来，就可以产生所谓的扫描区间。这里头有一些比较容易让人忽略的
+ <code>
+  扫描区间
+ </code>
+ ：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    IN
+   </code>
+   操作符的语义和若干个等值匹配操作符
+   <code>
+    =
+   </code>
+   之间用
+   <code>
+    OR
+   </code>
+   连接起来的语义是一样的，它们都会产生多个单点扫描区间，比如下边这两个语句的语义上的效果是一样的：
+  </p>
+  <pre><code>SELECT * FROM single_table WHERE key1 IN ('a', 'b');
+
+SELECT * FROM single_table WHERE key1 = 'a' OR key1 = 'b';
+</code></pre>
+ </li>
+ <li>
+  <p>
+   <code>
+    !=
+   </code>
+   产生的扫描区间比较有趣，也容易被大家忽略，比如：
+  </p>
+  <pre><code>SELECT * FROM single_table WHERE key1 != 'a';
+</code></pre>
+  <p>
+   此时使用idx_key1执行查询时对应的扫描区间就是：
+   <code>
+    (-∞, 'a')
+   </code>
+   和
+   <code>
+    ('a', +∞)
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    LIKE
+   </code>
+   操作符比较特殊，只有在匹配完整字符串或者匹配字符串前缀时才可以产生合适的扫描区间。
+  </p>
+  <p>
+   比较字符串的大小其实就相当于依次比较每个字符的大小，那么：
+  </p>
+  <ul>
+   <li>
+    <p>
+     先比较字符串的第一个字符，第一个字符小的那个字符串就比较小。
+    </p>
+   </li>
+   <li>
+    <p>
+     如果两个字符串的第一个字符相同，再比较第二个字符，第二个字符比较小的那个字符串就比较小。
+    </p>
+   </li>
+   <li>
+    <p>
+     如果两个字符串的前两个字符都相同，那就接着比较第三个字符；依此类推。
+    </p>
+   </li>
+  </ul>
+  <p>
+   对于某个索引列来说，字符串前缀相同的记录肯定是相邻的。比方说我们有一个搜索条件是
+   <code>
+    key1 LIKE 'a%'
+   </code>
+   ，而对于二级索引idx_key1来说，所有字符串前缀为'a'的二级索引记录肯定是相邻的，这也就意味着我们只要定位到第一条key1值的字符串前缀为'a'的记录，然后就可以沿着记录所在的单向链表向后扫描，直到某条二级索引记录的字符串前缀不为'a'为止
+  </p>
+  <p>
+   很显然，
+   <code>
+    key1 LIKE 'a%'
+   </code>
+   形成的扫描区间相当于是['a', 'b') （注意，这里是
+   <code>
+    相当于
+   </code>
+   ，其实里边还有一些曲折的故事我们没说）。
+  </p>
+ </li>
+</ul>
+<p>
+ 其实对于任何查询语句来说，优化器都会按照下边的思路去判断该使用何种方式执行查询：
+</p>
+<ol>
+ <li>
+  <p>
+   分析使用不同索引执行查询时对应的扫描区间都是什么。
+  </p>
+ </li>
+ <li>
+  <p>
+   采用某些手段来分析以下在使用扫描不同索引的扫描区间时对应的成本分别是多少。
+  </p>
+  <blockquote>
+   <p>
+    小贴士：
+    <br/>
+    <br/>
+    我们这里定性的分析成本，而不是定量分析，定量分析可以到书中具体查看。大家粗略的认为扫描区间中的记录越多，成本就越高就好了。
+   </p>
+  </blockquote>
+ </li>
+ <li>
+  <p>
+   比较使用不同索引执行查询的成本以及全表扫描的成本哪个更低，选择成本最低的那个方案去执行查询，这个方案就是所谓的
+   <code>
+    执行计划
+   </code>
+   。
+  </p>
+ </li>
+</ol>
+<h2>
+ 具体的查询条件分析
+</h2>
+<p>
+ 我们分别看一下WHERE子句中出现
+ <code>
+  IS NULL
+ </code>
+ 、
+ <code>
+  IS NOT NULL
+ </code>
+ 、
+ <code>
+  !=
+ </code>
+ 这些条件时优化器是怎么做决策的。
+</p>
+<h3>
+ IS NULL的情况
+</h3>
+<p>
+ 比方说这个查询：
+</p>
+<pre><code>SELECT * FROM t WHERE key1 IS NULL;
+</code></pre>
+<p>
+ 优化器在真正执行查询前，会首先少量的访问一下索引，调查一下
+ <code>
+  key1
+ </code>
+ 在
+ <code>
+  [NULL, NULL]
+ </code>
+ 这个区间的记录有多少条：
+</p>
+<p>
+ <img alt="" src="41d086e8-13d6-11ed-838d-acde48001122"/>
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  [NULL, NULL]这个区间代表区间里只有一个NULL值。
+ </p>
+</blockquote>
+<p>
+ 优化器经过调查得知，需要扫描的二级索引记录占总记录条数的比例是
+ <code>
+  3/16
+ </code>
+ ，它觉得这个查询使用二级索引来执行比较靠谱，所以在执行计划中就显示使用这个
+ <code>
+  idx_key1
+ </code>
+ 来执行查询：
+</p>
+<p>
+ <img alt="" src="41dc8894-13d6-11ed-838d-acde48001122"/>
+</p>
+<h3>
+ IS NOT NULL的情况
+</h3>
+<p>
+ 比方说这个查询：
+</p>
+<pre><code>SELECT * FROM t WHERE key1 IS NOT NULL;
+</code></pre>
+<p>
+ 优化器在真正执行查询前，会首先少量的访问一下索引，调查一下
+ <code>
+  key1
+ </code>
+ 在
+ <code>
+  (NULL, +∞)
+ </code>
+ 这个区间内记录有多少条：
+</p>
+<p>
+ <img alt="" src="41e65b76-13d6-11ed-838d-acde48001122"/>
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  我们这里把NULL当作是最小值对待，你可以认为它比-∞都小。另外注意区间(NULL, +∞)是开区间，也就意味这不包括NULL值。
+ </p>
+</blockquote>
+<p>
+ 优化器经过调查得知，需要扫描的二级索引记录占总记录条数的比例是
+ <code>
+  13/16
+ </code>
+ ，跟显然这个比例已经非常大了，所以优化器决定使用全表扫描的方式来执行查询：
+</p>
+<p>
+ <img alt="" src="41f0f46e-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 那怎么才能让使用
+ <code>
+  IS NOT NULL
+ </code>
+ 条件的查询使用到二级索引呢？这还不简单，让表中符合
+ <code>
+  IS NOT NULL
+ </code>
+ 条件的记录少不就行了，我们可以执行一下：
+</p>
+<pre><code>UPDATE t SET key1 = NULL WHERE key1 &lt; 80;
+</code></pre>
+<p>
+ 这样再去执行这个查询：
+</p>
+<pre><code>SELECT * FROM t WHERE key1 IS NOT NULL;
+</code></pre>
+<p>
+ 优化器在真正执行查询前，会首先少量的访问一下索引，调查一下
+ <code>
+  key1
+ </code>
+ 在
+ <code>
+  (NULL, +∞)
+ </code>
+ 这个区间内记录有多少条：：
+</p>
+<p>
+ <img alt="" src="41fd3300-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 优化器经过调查得知，需要扫描的二级索引记录占总记录条数的比例是
+ <code>
+  3/16
+ </code>
+ ，它觉得这个查询使用二级索引来执行比较靠谱，所以在执行计划中就显示使用这个
+ <code>
+  idx_key1
+ </code>
+ 来执行查询：
+</p>
+<p>
+ <img alt="" src="4205bdae-13d6-11ed-838d-acde48001122"/>
+</p>
+<h3>
+ != 的情况
+</h3>
+<p>
+ 比方说这个查询：
+</p>
+<pre><code>SELECT * FROM t WHERE key1 != 80;
+</code></pre>
+<p>
+ 优化器在真正执行查询前，会首先少量的访问一下索引，调查一下
+ <code>
+  key1
+ </code>
+ 在
+ <code>
+  (NULL, 80)
+ </code>
+ 和
+ <code>
+  (80, +∞)
+ </code>
+ 这两个区间内记录有多少条：
+</p>
+<p>
+ <img alt="" src="42120474-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 优化器经过调查得知，需要扫描的二级索引记录占总记录条数的比例是
+ <code>
+  2/16
+ </code>
+ ，它觉得这个查询使用二级索引来执行比较靠谱，所以在执行计划中就显示使用这个
+ <code>
+  idx_key1
+ </code>
+ 来执行查询：
+</p>
+<p>
+ <img alt="" src="421cd020-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 且慢！为啥执行计划的
+ <code>
+  rows
+ </code>
+ 列的值为3呢？？？这是个什么鬼，明明只有2条记录符合条件嘛。哈哈，我们罗列一下每个区间找到的符合条件的记录数量：
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    (NULL, 80)
+   </code>
+   区间中有0条记录满足条件
+   <code>
+    key1 != 80
+   </code>
+   。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    (80, +∞)
+   </code>
+   区间中有2条记录满足条件
+   <code>
+    key1 != 80
+   </code>
+   。
+  </p>
+ </li>
+</ul>
+<p>
+ 可是设计优化器的大叔在这里有个规定：
+ <span>
+  当某个扫描区间符合给定条件的记录数量为0时，硬生生的把它掰成1
+ </span>
+ 。也就是说实际优化器认为在
+ <code>
+  (NULL, 80)
+ </code>
+ 这个扫描区间中有1条记录符合条件
+ <code>
+  key1 != 80
+ </code>
+ 。所以执行计划的
+ <code>
+  rows
+ </code>
+ 列才显示了
+ <code>
+  3
+ </code>
+ 。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  下边是设计优化器的大叔自己对当某个扫描区间符合给定条件的记录数量为0时硬生生的把它掰成1的解释（能看懂的就看，看不懂赶紧跳过）：
+The MySQL optimizer seems to believe an estimate of 0 rows is always accurate and may return the result 'Empty set' based on that. The accuracy is not guaranteed, and even if it were, for a locking read we should anyway perform the search to set the next-key lock. Add 1 to the value to make sure MySQL does not make the assumption!
+ </p>
+</blockquote>
+<h2>
+ 总结
+</h2>
+<p>
+ 至此，我们分别分析了拥有
+ <code>
+  IS NULL
+ </code>
+ 、
+ <code>
+  IS NOT NULL
+ </code>
+ 、
+ <code>
+  !=
+ </code>
+ 这三个条件的查询是在什么情况下使用二级索引来执行的，核心结论就是：
+ <span>
+  成本决定执行计划，跟使用什么查询条件并没有什么关系
+ </span>
+ 。优化器会首先针对可能使用到的二级索引划分几个扫描区间，然后分别调查这些区间内有多少条记录，在这些扫描区间内的二级索引记录的总和占总共的记录数量的比例达到某个值时，优化器将放弃使用二级索引执行查询，转而采用全表扫描。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  其实扫描区间划分的太多也会影响优化器的决策，比方说IN条件中有太多个参数，将会降低优化器决定使用二级索引执行查询的几率。
+  <br/>
+  另外，优化器调查在某个扫描区间内的索引记录的条数的方式有两种，一种是所谓的index dive（这种方式在数据少的时候是精确的，在数据多时会有些偏差），一种是依赖index statistics，也就是统计数据来做调查（这种方式的统计是很不精确的，有时候偏差是超级巨大的），反正不论采用哪种方式，优化器都会将各个扫描区间中的索引记录数量给计算出来。关于这两种调查方式在《MySQL是怎样运行：从根儿上理解MySQL》中都给出了详细的算法，当然都占用了相当大的篇幅，写在MySQL是怎样运行的里就有点杀鸡用牛刀了。
+ </p>
+</blockquote>
+</div>
+
+</div>
+</body>
+</html>

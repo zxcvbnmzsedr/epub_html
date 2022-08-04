@@ -1,0 +1,1019 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/#" lang="en" xml:lang="en">
+  <head>
+    <title>专题式讲解 —— XA事务与两阶段提交</title>
+  </head>
+  <body><div class="markdown-body">
+    <h1>专题式讲解 —— XA事务与两阶段提交</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="style/style.css" type="text/css"/>
+
+<div class="markdown-body">
+    <h1>
+ XA事务与两阶段提交
+</h1>
+<p>
+ 标签： MySQL是怎样运行的
+</p>
+<hr/>
+<h2>
+ 什么是分布式事务
+</h2>
+<p>
+ 我们平常使用事务的时候，基本流程是这样的：
+</p>
+<ul>
+ <li>
+  使用
+  <code>
+   BEGIN/START TRANSACTION
+  </code>
+  来开启一个事务。
+ </li>
+ <li>
+  然后可以继续向服务器发送一些增删改查语句，这些语句都属于这个事务的一部分。
+ </li>
+ <li>
+  之后可以向服务器发送
+  <code>
+   COMMIT
+  </code>
+  语句来表明这个事务的所有语句都已经发送完了，服务器可以提交这个事务了。
+ </li>
+</ul>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  如果auto_commit系统变量值为1，并且我们未显式使用BEGIN/START TRANSACTION开启事务，那MySQL也会将单条语句当作是一个事务来执行。
+ </p>
+</blockquote>
+<p>
+ 我们知道MySQL分为server层和存储引擎层，而
+ <strong>
+  事务具体是在存储引擎层实现的
+ </strong>
+ 。有的存储引擎支持事务，有的不支持。
+</p>
+<p>
+ 对于支持事务的存储引擎来说，它们提供了相应的开启事务、提交事务的接口。server层只需要调用这些接口，来让存储引擎执行事务。
+</p>
+<p>
+ 除了MySQL自带的支持事务的存储引擎InnoDB外，其他一些公司也为MySQL开发了一些支持事务的存储引擎，比方说阿里的XEngine，Facebook的Rocksdb等。
+</p>
+<p>
+ 在书写包含在一个事务中的语句时，不同语句可能会涉及不同存储引擎的表，这时如果我们想保持整个事务要么全部执行，要么全部不执行的话，本质上就需要保证各个存储引擎的事务全部提交，或者全部回滚。不能存在某些存储引擎事务提交了，某些存储引擎事务回滚了的情况。
+</p>
+<p>
+ 稍微总结一下就是：我们有一个大的事务，我们可以称其为
+ <code>
+  全局事务
+ </code>
+ ，这个全局事务由若干的小的事务组成。要实现这个大的事务，就必须让它对应的若干个小的事务全部完成，或者全部回滚。我们也可以把这个大的全局事务称作
+ <code>
+  分布式事务
+ </code>
+ 。
+</p>
+<p>
+ 除了上述涉及多个存储引擎的全局事务之外，
+ <code>
+  分布式事务
+ </code>
+ 还有更多的应用场景。比方说我们的数据分布在多个MySQL服务器中；甚至有的数据分布在MySQL服务器中，有的数据分布在Oracle服务器中；甚至有些服务器在中国，有些服务器在美国。我们想完成一个操作，这个操作会更新多个系统里的数据，此时如果我们想让这个操作具有原子性，就需要保证让各个系统中的小事务要么全部提交，要么全部回滚。这时的这个跨多个系统的操作也可以被称作
+ <code>
+  分布式事务
+ </code>
+ 。
+</p>
+<p>
+ 跨行转账是一个典型的分布式事务的实例。各个银行都有自己的服务，如果狗哥在招商银行存了10块钱，他想把这10块钱转给猫爷在建设银行的账户，那么招商银行先得给狗哥账户扣10块，然后建设银行给猫爷账户增10块。而招商银行和建设银行根本就不是一个系统，招商银行给狗哥扣钱的业务放到了自己的一个事务里，建设银行给猫爷加钱的业务放到了自己的一个事务里，这两个事务其实在各自的系统中并没有什么关系，完全有可能招商银行的事务提交了，而建设银行的事务由于系统宕机而失败了，这就导致狗哥扣了钱，却没有转给猫爷的惨剧发生。所以我们必须引入一些机制，来实现
+ <code>
+  分布式事务
+ </code>
+ 。
+</p>
+<h2>
+ XA规范
+</h2>
+<p>
+ 有一个名叫
+ <code>
+  X/Open
+ </code>
+ （这名儿听着就挺霸气）的组织提出了一个名为
+ <code>
+  XA
+ </code>
+ 的规范。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  为节省同志们去搜索这份规范的宝贵时间，大家在“我们都是小青蛙”公众号输入“XA”即可下载该规范。
+ </p>
+</blockquote>
+<p>
+ 有人说
+ <code>
+  XA
+ </code>
+ 的含义是
+ <code>
+  Extended Architecture
+ </code>
+ 。令人迷惑的是，我竟然没在上述规范中找到
+ <code>
+  XA
+ </code>
+ 到底是个啥意思（很尴尬），大家把它理解成一个名字就好了，其实叫成
+ <code>
+  王尼玛
+ </code>
+ 也没啥问题。
+</p>
+<p>
+ 这个XA规范提出了2个角色：
+</p>
+<ul>
+ <li>
+  一个全局事务由多个小的事务组成，所以我们得在某个地方找一个总揽全局的家伙，这个家伙用于和各个小事务进行沟通，指导它们是提交还是回滚。这个家伙被称作事务协调器（Transaction Coordinator）或者资源管理器（Resource Manager）。
+ </li>
+</ul>
+<p>
+ 不论是
+ <code>
+  事务协调器
+ </code>
+ ，还是
+ <code>
+  资源管理器
+ </code>
+ 这样的名字念起来都比较拗口，有催眠功效，我们后续就把
+ <code>
+  事务协调器
+ </code>
+ 或者
+ <code>
+  资源管理器
+ </code>
+ 称作
+ <code>
+  大哥
+ </code>
+ 了哈。
+</p>
+<ul>
+ <li>
+  管理一个小事务的家伙被称作事务管理器（Transaction Manager）。
+ </li>
+</ul>
+<p>
+ <code>
+  事务管理器
+ </code>
+ 念起来也比较拗口，我们就把它称作
+ <code>
+  小弟
+ </code>
+ 了哈。
+</p>
+<p>
+ 要提交一个全局事务，那么属于该全局事务的若干个小事务就应该全部提交，只要有任何一个小事务无法提交，那么整个全局事务就应该全部回滚。所以此时
+ <code>
+  大哥
+ </code>
+ 不能让各个
+ <code>
+  小弟
+ </code>
+ 逐个提交，因为不能保证后面提交的
+ <code>
+  小弟
+ </code>
+ 是否可能发生错误。此时XA规范中指出，要提交一个全局事务，必须分为2步：
+</p>
+<ul>
+ <li>
+  <p>
+   Prepare阶段：当
+   <code>
+    大哥
+   </code>
+   准备提交一个全局事务时，会依次通知各个
+   <code>
+    小弟
+   </code>
+   说：“现在事务中的语句都已经执行完了，我们准备提交了，你这里有没有什么问题？”。如果
+   <code>
+    小弟
+   </code>
+   觉得自己没有问题，就把在事务执行过程中所产生的redo日志都刷新到硬盘，然后对
+   <code>
+    大哥
+   </code>
+   说：“没有问题”。如果
+   <code>
+    小弟
+   </code>
+   遇到了啥突发情况不能提交（比方说磁盘满了，不能写redo了），就对大哥说：“不行，提交不了了”。
+  </p>
+ </li>
+ <li>
+  <p>
+   Commit阶段：如果在Prepare阶段各个
+   <code>
+    小弟
+   </code>
+   给
+   <code>
+    大哥
+   </code>
+   的答复都是:“OK，木有问题”，那
+   <code>
+    大哥
+   </code>
+   就要真正通知各个小弟去提交事务了。如果在Prepare阶段某个
+   <code>
+    小弟
+   </code>
+   给
+   <code>
+    大哥
+   </code>
+   的回复是：“NO，做不了”，那
+   <code>
+    大哥
+   </code>
+   就得通知所有
+   <code>
+    小弟
+   </code>
+   ：“遇到突发情况，所有人立即回滚”。
+   <code>
+    小弟
+   </code>
+   收到通知便都回滚了。
+   <strong>
+    不过在
+    <code>
+     大哥
+    </code>
+    通知各个
+    <code>
+     小弟
+    </code>
+    是要提交之前，都需在某个地方记录一下这个全局事务已经提交，以及各个小弟都是什么的信息。
+   </strong>
+  </p>
+ </li>
+</ul>
+<p>
+ XA规范把上述全局事务提交时所经历的两个阶段称作
+ <code>
+  两阶段提交
+ </code>
+ 。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  如果一个全局事务仅包含一个
+  <code>
+   小弟
+  </code>
+  的话，那两阶段提交可以退化成1阶段提交。
+ </p>
+</blockquote>
+<p>
+ 大家可以看到，XA规范引入了一个在事务提交时的
+ <code>
+  Prepare阶段
+ </code>
+ ，这个阶段就是让各个事务做好提交前的准备，具体就是把语句执行过程中产生的redo日志都刷盘。如果语句执行过程中的redo日志都刷盘了，那么即使之后系统崩溃，那么在重启的时候还是可以恢复到该事务各个语句都执行完的样子。
+</p>
+<p>
+ 这样的话，在Prepare阶段结束后，即使某个小弟因为某些原因而崩溃，在之后重启恢复时，也可以把自己再次恢复成
+ <code>
+  Prepare
+ </code>
+ 状态。
+ <strong>
+  在崩溃恢复结束后，大哥可以继续让小弟提交或者回滚。
+ </strong>
+</p>
+<p>
+ 以上就是XA规范的核心内容，下边可以来唠叨一下MySQL对上述XA规范的实现了。
+</p>
+<h2>
+ MySQL中的XA事务
+</h2>
+<p>
+ MySQL中的XA事务分为
+ <code>
+  外部XA
+ </code>
+ 和
+ <code>
+  内部XA
+ </code>
+ ，我们分别来看一下。
+</p>
+<h3>
+ 外部XA
+</h3>
+<p>
+ 在MySQL的
+ <code>
+  外部XA
+ </code>
+ 实现中，MySQL服务器充当
+ <code>
+  小弟
+ </code>
+ ，而连接服务器的客户端程序充当
+ <code>
+  大哥
+ </code>
+ 。
+</p>
+<p>
+ 与使用
+ <code>
+  BEGIN
+ </code>
+ 语句开启，使用
+ <code>
+  COMMIT
+ </code>
+ 提交的常规事务不同，如果我们想在MySQL中使用XA事务，需要一些特殊的语句：
+</p>
+<ul>
+ <li>
+  <code>
+   XA {START|BEGIN} xid
+  </code>
+  ：该语句用于开启一个XA事务，此时该XA事务处于
+  <code>
+   ACTIVE
+  </code>
+  状态。
+ </li>
+</ul>
+<p>
+ 在一台MySQL服务器上，每个XA事务都必须有一个唯一的id，被称作
+ <code>
+  xid
+ </code>
+ 。这个xid是由发起XA事务的应用程序（客户端）自己指定的，只要我们自己保证它唯一就好了。
+</p>
+<p>
+ 这个
+ <code>
+  xid
+ </code>
+ 其实是由
+ <code>
+  gtrid
+ </code>
+ 、
+ <code>
+  bqual
+ </code>
+ 、
+ <code>
+  formatID
+ </code>
+ 三个部分组成的：
+</p>
+<pre><code>xid: gtrid [, bqual [, formatID ]]
+</code></pre>
+<p>
+ 其中
+ <code>
+  gtrid
+ </code>
+ （global transaction id）是指全局事务id，是一个
+ <strong>
+  字符串
+ </strong>
+ ，
+ <code>
+  bqual
+ </code>
+ 是指分支限定符，
+ <code>
+  formatID
+ </code>
+ 是指gtrid和bqual所使用的格式。
+</p>
+<p>
+ 不过我们这里并不打算详纠啥是个分支，还限定符，以及啥格式之类的，我们可以在指定
+ <code>
+  xid
+ </code>
+ 的时候省略
+ <code>
+  bqual
+ </code>
+ 和
+ <code>
+  formatID
+ </code>
+ 的值，MySQL会使用默认的值（
+ <code>
+  bqual
+ </code>
+ 默认是空字符串''，
+ <code>
+  formatID
+ </code>
+ 默认是1）。也就是说我们文章后续内容指定
+ <code>
+  xid
+ </code>
+ 时仅指定
+ <code>
+  gtrid
+ </code>
+ 就好了，也就是指定一个
+ <strong>
+  字符串
+ </strong>
+ 即可。
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    XA END xid
+   </code>
+   ：在使用
+   <code>
+    XA START xid
+   </code>
+   开启了一个XA事务后，客户端就可以接着发送属于这个XA事务的各条语句，等所有语句都发送完毕后，就可以接着发送
+   <code>
+    XA END xid
+   </code>
+   来告知服务器由
+   <code>
+    xid
+   </code>
+   标识的XA事务的所有语句都输入完了。此时该XA事务处于
+   <code>
+    IDLE
+   </code>
+   状态。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    XA PREPARE xid
+   </code>
+   ：对于处于
+   <code>
+    IDLE
+   </code>
+   状态的XA事务，应用程序就可以询问MySQL服务器是否准备好提交这个XA事务了，此时就可以给服务器发送
+   <code>
+    XA PREPARE xid
+   </code>
+   语句。当MySQL服务器收到此语句后，就需要做准备提交前的工作了，比如把该事务执行过程中所产生的redo日志刷新到磁盘等。此时XA事务处于
+   <code>
+    PREPARE
+   </code>
+   状态。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    XA COMMIT xid [ONE PHASE]
+   </code>
+   ：对于处于
+   <code>
+    PREPARE
+   </code>
+   状态的XA事务，应用程序可以发送
+   <code>
+    XA COMMIT xid
+   </code>
+   来让MySQL服务器提交XA事务。如果此XA事务尚处于
+   <code>
+    IDEL
+   </code>
+   状态，那应用程序可以不发送
+   <code>
+    XA PREPARE xid
+   </code>
+   ，而直接发送
+   <code>
+    XA COMMIT xid ONE PHASE
+   </code>
+   来让MySQL服务器直接提交事务即可。此XA事务处于
+   <code>
+    COMMITE
+   </code>
+   状态。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    XA ROLLBACK xid
+   </code>
+   ：应用程序通过发送此语句来让MySQL服务器回滚xid所标识的事务。此时XA事务处于
+   <code>
+    ABORT
+   </code>
+   状态。
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    XA RECOVER
+   </code>
+   ：应用程序想看一下当前MySQL服务器上已经处于Prepare状态的XA事务有哪些，就可以发送该语句。
+  </p>
+ </li>
+</ul>
+<p>
+ 介绍了在MySQL中使用
+ <code>
+  外部XA
+ </code>
+ 的一些语句，接下来可以画一个XA事务的状态转换图了：
+</p>
+<p>
+ <img alt="" src="526bdb60-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 哔哔了很多，赶紧来做个实验：
+</p>
+<pre><code>mysql&gt; XA START 'a';    //XA事务进入ACTIVE状态
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; DELETE FROM x WHERE id = 1;  //XA事务中包含的语句
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; XA END 'a';      //XA事务进入IDEL状态
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; XA PREPARE 'a';  //XA事务进入PREPARE状态
+Query OK, 0 rows affected (0.01 sec)
+
+mysql&gt; XA COMMIT 'a';   //XA事务进入COMMIT状态
+Query OK, 0 rows affected (0.01 sec)
+</code></pre>
+<p>
+ MySQL的外部XA除了被用于跨行转账这种经典的分布式事务应用场景，还被广泛应用于所谓的
+ <code>
+  数据库中间件
+ </code>
+ 。
+</p>
+<p>
+ 现在各个公司由于表中数据太多，这些数据会被分散在不通服务器中存储。由应用程序员分别和不同的MySQL服务器打交道实在费劲，所以有一种称作
+ <code>
+  数据库中间件
+ </code>
+ 的东西开始问世。即应用程序只将SQL语句发送给数据库中间件，中间件分析一下该SQL访问的数据都在哪些不同的服务器中存储着，并且计算出不通服务器应该执行哪些SQL语句。然后就可以对不同的服务器分别开启XA事务，并且让把不同服务器需要执行的语句分别发送到不同的服务器中。等应用程序员告知中间件准备提交事务时，中间件先给各个服务器发送
+ <code>
+  XA PREPARE
+ </code>
+ 语句，如果各个服务器都返回OK的话，接着就给各个服务器发送
+ <code>
+  XA COMMIT
+ </code>
+ 语句来提交XA事务，等各个服务器把提交成功的消息返回给中间件，中间件就可以通知应用程序事务提交成功了。
+</p>
+<h3>
+ 内部XA
+</h3>
+<p>
+ 对于一台服务器来说，即使客户端使用
+ <code>
+  BEGIN/START TRANSACTION
+ </code>
+ 语句开启的普通事务，该事务所包含的语句也有可能涉及多个存储引擎。此时MySQL内部采用XA规范来保证所有支持事务的存储引擎要么全部提交，要么全部回滚，这也被称作MySQL的
+ <code>
+  内部XA
+ </code>
+ 。
+</p>
+<p>
+ 另外有一点值得注意的是，
+ <code>
+  内部XA
+ </code>
+ 除了解决这种设计多个存储引擎的事务之外，还解决保证binlog和存储引擎所做的修改是一致的问题。我们稍后重点展开一下这个问题。
+</p>
+<p>
+ 在MySQL内部执行一个事务时，存储引擎会修改相应的数据，server层会记录语句对应的binlog。这是两个要么都完成，要么都步完成的事情。否则的话：
+</p>
+<ul>
+ <li>
+  <p>
+   如果存储引擎修改了相应数据并且提交了事务，而server层却未写入binlog。在有主从复制的场景中，意味着这个事务不会在从库中得已执行，从而造成主从之间的数据不一致。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果server层写入了binlog，但存储引擎却回滚了事务。在有主从复制的场景中，意味着这个事务会在从库中得已执行，从而造成主从之间的数据不一致。
+  </p>
+ </li>
+</ul>
+<p>
+ 那我们需要保证：
+ <strong>
+  如果存储引擎提交了事务，server层的binlog日志必须也被写入到硬盘上；如果存储引擎回滚了事务，server层的binlog日志必须不能被写入到硬盘上
+ </strong>
+ 。
+</p>
+<p>
+ MySQL采用
+ <code>
+  内部XA
+ </code>
+ 来实现上述内容，下边以Innodb存储引擎为例，具体讨论一下Innodb事务的提交和binlog日志写入的过程。
+</p>
+<h2>
+ 有binlog参与的内部XA事务
+</h2>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  后续会用到很多undo日志结构的内容，这些内容都在《MySQL是怎样运行的：从根儿上理解MySQL》书籍中有详细叙述，如果不了解的话，看起来可能会有点儿困难，建议先将undo日志章节内容看熟。
+ </p>
+</blockquote>
+<p>
+ 当客户端执行
+ <code>
+  COMMIT
+ </code>
+ 语句或者在自动提交的情况下，MySQL内部开启一个XA事务，分两阶段来完成XA事务的提交：
+</p>
+<ul>
+ <li>
+  Prepare阶段：存储引擎将该事务执行过程中产生的redo日志刷盘，并且将本事务的状态设置为
+  <code>
+   PREPARE
+  </code>
+  。binlog啥也不干。下边看一下具体的代码。
+ </li>
+</ul>
+<p>
+ <code>
+  binlog_prepare
+ </code>
+ 是在PREPARE阶段对binlog所做的一些操作：
+</p>
+<p>
+ <img alt="" src="527766e2-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ <code>
+  binlog_prepare
+ </code>
+ 函数基本啥也没干，我们就不展开说了。
+</p>
+<p>
+ <code>
+  innobase_xa_prepare
+ </code>
+ 是InnoDB存储引擎实现的XA规范的prepare接口：
+</p>
+<p>
+ <img alt="" src="52851026-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 这个函数做了很多事情，我们得好好唠叨一下。
+</p>
+<p>
+ 首先我们知道事务执行过程中需要写undo日志，这些undo日志被写到若干个页面中，这些页面也被称作
+ <code>
+  Undo页面
+ </code>
+ ，这些页面会串成一个链表，称作
+ <code>
+  Undo页面
+ </code>
+ 链表。在一个事务对应的Undo页面链表的首个页面中，记录了一些关于这个事务的一些属性，我们贴个图看一下：
+</p>
+<p>
+ <img alt="" src="5293b7c0-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 我们先看一下其中的
+ <code>
+  Undo Log Segment Header
+ </code>
+ 部分：
+</p>
+<p>
+ <img alt="" src="529f5de6-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 其中的
+ <code>
+  TRX_UNDO_STATE
+ </code>
+ 字段就表明该事务目前处于什么状态。当处于Prepare阶段时，调用
+ <code>
+  innobase_xa_prepare
+ </code>
+ 函数会将
+ <code>
+  TRX_UNDO_STATE
+ </code>
+ 字段的值设置为
+ <code>
+  TRX_UNDO_PREPARED
+ </code>
+ （整数5），表明当前事务处在Prepare阶段。
+</p>
+<p>
+ 我们再看一下
+ <code>
+  Undo Log Header
+ </code>
+ 部分：
+</p>
+<p>
+ <img alt="" src="52ab55ce-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 这个部分体现着这个
+ <code>
+  Undo页面链表
+ </code>
+ 所属的事务的各种信息，包括事务id。其中两个属性和我们今天主题特别搭：
+</p>
+<ul>
+ <li>
+  <code>
+   TRX_UNDO_XID_EXISTS
+  </code>
+  ：表示有没有xid信息。
+ </li>
+ <li>
+  <code>
+   XID信息
+  </code>
+  ：表示具体的xid是什么。
+ </li>
+</ul>
+<p>
+ 当处于Prepare阶段时，调用
+ <code>
+  innobase_xa_prepare
+ </code>
+ 函数会将
+ <code>
+  TRX_UNDO_XID_EXISTS
+ </code>
+ 设置为TRUE，并将本次内部XA事务的
+ <code>
+  xid
+ </code>
+ （这个xid是MySQL自己生成的）写入
+ <code>
+  XID信息
+ </code>
+ 处。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  再一次强调，修改Undo页面也是在修改页面，事务凡是修改页面就需要先记录相应的redo日志。
+ </p>
+</blockquote>
+<p>
+ 记录了关于该事务的各种属性之后，接下来该将到现在为止所产生的所有redo日志进行刷盘，刷盘的函数如下所示：
+</p>
+<p>
+ <img alt="" src="52b82d26-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 在将redo日志刷盘之后，即使之后系统崩溃，在重启恢复的时候也可以将处于Prepare状态的事务完全恢复。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  在MySQL 5.7中，有一个称之为
+  <code>
+   组提交
+  </code>
+  （group commit）的优化。即设计InnoDB的大叔觉得各个事务分别刷自己的redo日志和binlog效率太低，他们把并发执行的多个事务所产生的redo日志和binlog在后续的Commit阶段集中起来统一刷新，这样可能提升效率，所以在MySQL 5.7以及之后的版本中，上述在Prepare阶段刷新redo日志的操作会被推迟到Commit阶段才真正执行。关于
+  <code>
+   组提交
+  </code>
+  的优化措施我们并不想过多展开，大家忽略这个优化就好了，这里就认为在Prepare阶段事务就已经将执行过程中产生的redo日志刷盘就OK。
+ </p>
+</blockquote>
+<ul>
+ <li>
+  Commit阶段：先将事务执行过程中产生的binlog刷新到硬盘，再执行存储引擎的提交工作。
+ </li>
+</ul>
+<p>
+ 将binlog刷盘的函数如下：
+</p>
+<p>
+ <img alt="" src="52c86696-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ InnoDB存储引擎提交事务使用
+ <code>
+  innobase_commit
+ </code>
+ 函数完成存储引擎层面的事务提交：
+</p>
+<p>
+ <img alt="" src="52d3d468-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ <code>
+  innobase_commit
+ </code>
+ 函数做了很多事情，我们挑一些重要的来说。
+</p>
+<p>
+ 首先是更新
+ <code>
+  Undo页面链表
+ </code>
+ 的状态，将我们上边说的
+ <code>
+  Undo Log Segment Header
+ </code>
+ 部分的STATE字段更新一下。更新规则如下：
+</p>
+<p>
+ <img alt="" src="52deeb32-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 也就是说如果当前事务产生的undo日志比较少，那么就继续让别的事务复用该
+ <code>
+  Undo页面链表
+ </code>
+ ，将STATE设置为
+ <code>
+  TRX_UNDO_CACHED
+ </code>
+ ；如果
+ <code>
+  Undo页面链表
+ </code>
+ 用于存储INSERT操作产生的undo日志，那么就将STATE设置为
+ <code>
+  TRX_UNDO_TO_FREE
+ </code>
+ ，稍后会释放
+ <code>
+  Undo页面链表
+ </code>
+ 占用的页面；如果
+ <code>
+  Undo页面链表
+ </code>
+ 用于存储其他操作产生的undo日志，那么就将STATE设置为
+ <code>
+  TRX_UNDO_TO_PURGE
+ </code>
+ ，等待purge线程后台回收该
+ <code>
+  Undo页面链表
+ </code>
+ 。
+</p>
+<blockquote>
+ <p>
+  小贴士：
+  <br/>
+  <br/>
+  UPDATE、DELETE操作产生的undo日志可能会用于其他事务的MVCC操作，所以不能立即删除。
+ </p>
+</blockquote>
+<p>
+ 对于存储UPDATE、DELETE操作产生的undo日志的
+ <code>
+  Undo页面链表
+ </code>
+ ，还要将其加入所谓的History链表，关于这个History链表是啥，我们这里就不展开了。
+</p>
+<p>
+ 每个
+ <code>
+  Undo页面链表
+ </code>
+ 的首个页面的页号会被存储在表空间的某个地方，以便崩溃恢复的时候可以根据该页来进行恢复。如果此时在事务提交时，
+ <code>
+  Undo页面链表
+ </code>
+ 的状态被设置为
+ <code>
+  TRX_UNDO_CACHED
+ </code>
+ ，那存储
+ <code>
+  Undo页面链表
+ </code>
+ 的首个页面的页号的地方也就不需要做改动；如果此时在事务提交时，
+ <code>
+  Undo页面链表
+ </code>
+ 的状态被设置为
+ <code>
+  TRX_UNDO_CACHED
+ </code>
+ ，那存储
+ <code>
+  Undo页面链表
+ </code>
+ 的首个页面的页号的地方就得被设置为空，这样这个地方就可以被其他事务使用了。
+</p>
+<p>
+ 至此，这个事务就算是提交完了。
+</p>
+<h2>
+ 崩溃恢复
+</h2>
+<p>
+ 每当系统重启时，都会先进入恢复过程。
+</p>
+<p>
+ 此时首先按照已经刷新到磁盘的redo日志修改页面，把系统恢复到崩溃前的状态。
+</p>
+<p>
+ 然后在表空间中找一下各个
+ <code>
+  Undo页面链表
+ </code>
+ 的首个页面的页号，然后就可以读取该页面的各种信息。我们再把这个页面的内容给大家看一下：
+</p>
+<p>
+ <img alt="" src="52ebf91c-13d6-11ed-838d-acde48001122"/>
+</p>
+<p>
+ 通过这个页面，我们可以知道该
+ <code>
+  Undo页面链表
+ </code>
+ 对应的事务状态是什么：
+</p>
+<ul>
+ <li>
+  <p>
+   如果是
+   <code>
+    TRX_UNDO_ACTIVE
+   </code>
+   状态，也就是活跃状态，直接按照undo日志里记载的内容将其回滚就好了。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果是
+   <code>
+    TRX_UNDO_PREPARE
+   </code>
+   状态，那么是提交还是回滚就取决于binlog的状态了，我们稍后再说。
+  </p>
+ </li>
+ <li>
+  <p>
+   如果是其他状态，就将该事务提交即可。
+  </p>
+ </li>
+</ul>
+<p>
+ 对于处于PREPARE状态的事务，存储引擎既可以提交，也可以回滚，这取决于目前该事务对应的binlog是否已经写入硬盘。这时就会读取最后一个binlog日志文件，从日志文件中找一下有没有该PREPARE事务对应的xid记录，如果有的话，就将该事务提交，否则就回滚好了。
+</p>
+<h2>
+ 最后
+</h2>
+<p>
+ 这一篇文章有点儿长，不点赞/在看/分享，真的好么～
+</p>
+</div>
+
+</div>
+</body>
+</html>
