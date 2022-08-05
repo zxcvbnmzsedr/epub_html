@@ -32,14 +32,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pytest lxml
       - run: python epub2html/epub2html.py
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v1
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # Upload entire repository
-          path: 'docs'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@main
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: ./docs
