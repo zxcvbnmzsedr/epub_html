@@ -93,7 +93,7 @@ class Epub2Html():
             no_hash_name = src
             if src.find('#') != -1:
                 no_hash_name = src[:src.find("#")]
-            unified_src = "EPUB/" + no_hash_name
+            unified_src = no_hash_name
 
             menus.append(f"<li><a href=\"#\" onClick=\"showDiv('{unified_src}')\">{name}</a></li>")
 
@@ -199,5 +199,10 @@ def main(filepath, outputdir):
     print("converted! " + e.getIndexLoc())
 
 
+def parse_dir(dir):
+    out_path = 'html'
+    main('../book/大型网站技术架构.epub', '../html/')
+
+
 if __name__ == '__main__':
-    main('../download/大型网站技术架构.epub', '../download/')
+    parse_dir('../book')
