@@ -34,8 +34,11 @@ class Epub2Html():
         self.opf_a_path = join(self.root_a_path, opf_r_root_path)
         self.opf_a_dir = dirname(join(self.root_a_path, opf_r_root_path))
 
-        self.ncx_r_opf_path, self.css_r_opf_path = self.paths_from_opf()
+        self.ncx_r_opf_path, self.css_r_opf_path, self.cover_r_opf_path = self.paths_from_opf()
         self.is_gen = (self.opf_a_dir == self.root_a_path)
+        if not self.is_gen:
+            self.cover_r_opf_path = self.opf_a_dir.replace(self.root_a_path + '/', '') + '/' + self.cover_r_opf_path
+
         self.ncx_a_path = join(self.opf_a_dir, self.ncx_r_opf_path)
 
         if self.css_r_opf_path:
@@ -67,6 +70,7 @@ class Epub2Html():
 
         ncx_r_opf_path = None
         css_r_opf_path = None
+        cover_r_opf_path = None
         root = self.get_xml_root(self.opf_a_path)
 
         for item in root.findall(".//manifest/"):
@@ -78,7 +82,15 @@ class Epub2Html():
             if "css" in item.attrib["media-type"]:
                 css_r_opf_path = href
 
-        return ncx_r_opf_path, css_r_opf_path
+        for item in root.findall(".//metadata/meta"):
+            name = item.attrib.get('name')
+            if name == 'cover':
+                content = item.attrib.get('content')
+                find_cover = root.findall(f".//manifest/item[@id='{content}']")
+                if len(find_cover) != 0:
+                    cover_r_opf_path = find_cover[0].attrib.get('href')
+
+        return ncx_r_opf_path, css_r_opf_path, cover_r_opf_path
 
     def getIndexLoc(self):
         return self.index_a_path
@@ -179,7 +191,7 @@ class Epub2Html():
         Path(join(self.outputdir, self.epub_name_without_ext, "./index.html")).write_text(self.template,
                                                                                           encoding='utf-8')
         self.gen_jquery_js()
-        return self.epub_name_without_ext
+        return self.epub_name_without_ext, self.cover_r_opf_path
 
     def gen_jquery_js(self):
         script_dir = dirname(abspath(__file__))
@@ -198,9 +210,9 @@ def main(filepath, outputdir):
         outputdir = tempfile.gettempdir()
 
     e = Epub2Html(filepath, outputdir)
-    r = e.gen()
+    r, cover = e.gen()
     print("converted! " + e.getIndexLoc())
-    return r
+    return r, cover
 
 
 def parse_dir(dir, out_path):
@@ -210,8 +222,10 @@ def parse_dir(dir, out_path):
     for path, dir_list, file_list in epub_list:
         for file_name in file_list:
             epub_path = os.path.join(path, file_name)
-            r = main(epub_path, out_path)
-            book_list.append(f"<li><a href=\"{r}\">{r}</a></li>")
+            r, cover = main(epub_path, out_path)
+
+            book_list.append(
+                f"<a class='card' href=\"{r}\"><img src=\"{r}/{cover}\" /><div class='title'><p>{r}</p></div></a>")
 
     script_dir = dirname(abspath(__file__))
     template_path = join(script_dir, "index.html")
