@@ -112,7 +112,6 @@ class Epub2Html():
             # if no_hash_name in self.alread_gen_html:
             #     continue
 
-            self.alread_gen_html.add(no_hash_name)
             if src.find('#') != -1:
                 no_hash_name = src[:src.find("#")]
             washed_content = self.gen_content(join(dirname(self.ncx_a_path), no_hash_name))
@@ -162,10 +161,12 @@ class Epub2Html():
         return tmp
 
     def wash_img_link(self, content_path, content):
+        if content_path in self.alread_gen_html:
+            return content
         content = re.sub("(?<=src=\")(.*)(?=\")",
                          lambda match: os.path.relpath(join(dirname(content_path), match.group(1)), self.root_a_path),
                          content)
-
+        self.alread_gen_html.add(content_path)
         return content
 
     def hash(self, s):
