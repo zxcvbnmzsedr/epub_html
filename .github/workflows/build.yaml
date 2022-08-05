@@ -42,4 +42,4 @@ jobs:
           path: 'docs'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@gh-page
+        uses: actions/deploy-pages@main
