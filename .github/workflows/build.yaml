@@ -21,8 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install flake8 pytest lxml
       - run: pip install -r requirements.txt
       - run: python epub2html/epub2html.py
       - name: Deploy

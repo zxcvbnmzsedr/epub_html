@@ -1,4 +1,3 @@
-import getopt
 import html.parser as htmlparser
 import os
 import re
