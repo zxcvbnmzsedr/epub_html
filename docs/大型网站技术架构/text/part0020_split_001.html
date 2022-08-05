@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>10　维基百科的高性能架构设计分析</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="calibre7" id="calibre_pb_1"><a id="sec001" class="calibre8"></a>
+ 10.1　Wikipedia网站整体架构</h2>
+<p class="calibre1">目前Wikipedia网站建立在LAMP（LinuxLApacheAMySQLMPHP）之上，其他基础技术组件也全部采用免费的开源软件。因为Wikipedia是非盈利的，所以尽可能使用免费的软件和廉价的服务器，这种技术倾向使得技术团队不得不量体裁衣、看米下锅，榨尽系统所有资源的利用价值，用最少的资源成就最不可思议的奇迹，最终也让技术团队获得了真正的成长。</p>
+<p class="calibre1">Wikipedia的架构如图10.2所示。</p>
+<div class="kindle-cn-bodycontent-div-alone"><img class="kindle-cn-bodycontent-image-alone80-withnote" alt="" src="../images/00112.jpeg"/>
+<p class="kindle-cn-picture-txt-withfewcharactors">图10.2　Wikipedia 架构图</p>
+<p class="kindle-cn-picture-txt-withmanycharactors">（图片来源：http://www.slideshare.net/kapil/wikimediaarchiteciture）</p>
+</div>
+<p class="calibre1">Wikipedia架构的主要组成部分如下。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">GeoDNS：</span>
+ 基于开源域名服务器软件BIND（Berkeley Internet Name Domain）的增强版本，可将域名解析到离用户最近的服务器。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">LVS：</span>
+ 基于Linux的开源负载均衡服务器。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">Squid：</span>
+ 基于Linux的开源反向代理服务器。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">Lighttpd：</span>
+ 开源的应用服务器，较主流的Apache服务器更轻量、更快速。实践中，有许多网站使用Lighttpd作为图片服务器。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">PHP：</span>
+ 免费的Web应用程序开发语言，最流行的网站建站语言。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">Memcached：</span>
+ 无中心高性能的开源分布式缓存系统，稳定、可靠、历久弥新，是网站分布式缓存服务必备的。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">Lucene：</span>
+ 由Apache出品，Java开发的开源全文搜索引擎。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">MySQL：</span>
+ 开源的关系数据库管理系统，虽被Oracle收购，但开源社区将其继续开源发展的决心不动摇。</p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>9　淘宝网的架构演化案例分析</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="calibre7" id="calibre_pb_2"><a id="sec002" class="calibre8"></a>
+ 9.2　淘宝网技术架构演化</h2>
+<p class="calibre1">2003年，花3000美金买来的淘宝网站是用PHP开发的，淘宝的工程师做了简单的汉化处理，并对数据库做了读写分离，最早的淘宝网架构如图9.5所示。</p>
+<div class="kindle-cn-bodycontent-div-alone"><img class="kindle-cn-bodycontent-image-alone80-withnote" alt="" src="../images/00107.jpeg"/>
+<p class="kindle-cn-picture-txt-withfewcharactors">图9.5　2003年淘宝网架构</p>
+</div>
+<p class="calibre1">像我们见过的绝大多数中小网站一样，当年的淘宝网使用典型的LinuxL ApacheAMySQLMPHP（LAMP）架构。作为一个刚刚起步的小网站，使用开源、免费、简单的技术产品搭建网站是明智之举，可谓一举多得：免费的技术降低网站的成本，成熟的开源技术可以从开源社区获取文档和技术支持；网站发展初期，业务不明确，需求变化多，简单的技术方案可以快速响应需求变化；简单的技术也可以让工程师快速上手，缩短学习周期；退一步，如果业务发展不顺利，及时关闭网站止损，亦可减少沉没成本，促使管理层和投资者快速决策。</p>
+<p class="calibre1">幸而淘宝业务蒸蒸日上，逐步蚕食eBay在中国的市场。随着业务的快速发展，电子商务网站特有的业务复杂性和PHP易开发、难维护的特性产生了难以调和的冲突；不断扩展的业务让工程师承受着沉重的负担；不断增加的用户和商品数又让系统特别是存储系统不堪重负。总之，架构重构势在必行。2004年，淘宝在SUN技术顾问的协助下进行了一次重要的重构，放弃了原来的LAMP架构，转而使用Java作为开发平台，使用Oracle做后端数据库，如图9.6所示。</p>
+<div class="kindle-cn-bodycontent-div-alone"><img class="kindle-cn-bodycontent-image-alone80-withnote" alt="" src="../images/00108.jpeg"/>
+<p class="kindle-cn-picture-txt-withfewcharactors">图9.6　2004年淘宝网架构</p>
+</div>
+<p class="calibre1">系统架构使用了当时在企业应用领域崭露头角的MVC框架和ORM框架，分别解决视图与业务逻辑分离的问题和对象与关系数据库解耦的问题，淘宝没有使用当时风头正劲的Struts和Hibernate，而是选择了自己开发MVC框架Webx，而ORM框架则选择了IBatis。</p>
+<p class="calibre1">当时淘宝还开发了另一个重要产品Antx，这个针对Java平台的、扩展自Ant的项目构建工具对于网站项目开发、测试、发布至关重要，一个非常重要的功能就是管理配置项。对于一个Java开发的大型Web系统，内部通常会包含数百个jar文件，每个jar文件都是一个独立的模块，这些模块由不同团队开发，实现不同功能，最后组成一个完整的系统。这些模块通常也都有自己的配置文件，比如数据库连接模块需要配置数据库URL、连接池大小等，这些配置参数在开发环境、测试环境、生产环境各不相同。Antx提供了一个灵活管理这些分散配置项的解决方案。</p>
+<p class="calibre1">应用服务器使用Weblogic，数据库使用Oracle，这些产品都需要昂贵的授权使用费。而Oracle又需要部署在昂贵的IBM小型机和同样昂贵的EMC存储设备上。淘宝这时候弃免费而选择付费产品，和建站初选择免费一样，同样是明智之举：业务快速发展，宝贵的开发资源应该投入到新业务开发上，而不是解决这些可以用付费产品搞定的基础技术问题上；成熟的付费产品和售后支持令业务和市场没有后顾之忧，可以全力以赴地拓展市场；对于一个快速发展的网站，特别是电子商务网站而言，严重宕机、重要用户数据丢失可能会极大地打击消费者信心，令网站发展平生波澜，而这些业界领先的产品经过多年的洗练，有较强的可用性保证。</p>
+<p class="calibre1">此后三四年间，淘宝在Oracle、EMC、IBM的护航下，高歌猛进，业务蒸蒸日上，技术也逐渐成长，基于自身需求，逐步摸索适合自己的技术发展之路，如图9.7所示。</p>
+<div class="kindle-cn-bodycontent-div-alone"><img class="kindle-cn-bodycontent-image-alone80-withnote" alt="" src="../images/00109.jpeg"/>
+<p class="kindle-cn-picture-txt-withfewcharactors">图9.7　2006年的淘宝架构</p>
+</div>
+<p class="calibre1">放弃EJB，引入Spring，用免费的JBoss替代收费的Weblogic，因为Weblogic并非物有所值，EJB对于网站来说也太过笨重。淘宝后来甚至用更轻量级的Jetty替代了JBoss，对淘宝而言，应用服务器只需要一个Servlet容器，越简单越快越好。在合适的场景下使用合适的产品，而不是最好的产品，所谓小脚穿大鞋，不但跑不快，还可能会摔跤。</p>
+<p class="calibre1">直到这时，淘宝架构和技术依然是泯然于众的中庸水平而已，没有拖业务的后腿，使用业界成熟的方案和可靠的技术，没有什么可指责的也没有什么可炫耀的。但也就是在这个时候，淘宝技术开始发力，许多奠定淘宝坚实架构基础的产品和技术从这个时候开始逐步酝酿，走向成熟。目前这些产品多数都已开源，如表9.1所示。</p>
+<div class="kindle-cn-bodycontent-div-alone">
+<p class="kindle-cn-picture-txt-withfewcharactors1">表9.1　淘宝主要开源系统</p>
+<img class="kindle-cn-bodycontent-image-alone" alt="" src="../images/00110.jpeg"/>
+</div>
+<p class="kindle-cn-picture-txt-withmanycharactors">（资料来源：http://code.taobao.org/）</p>
+<p class="calibre1">随着淘宝技术的不断发展壮大，淘宝对集群环境下分布式高可用系统的架构设计技术越来越得心应手，Oracle、IBM、EMC也变得不是必须，于是淘宝开始逐步放弃使用这些昂贵的设备和软件，回归到开源的MySQL及NoSQL系统，正如淘宝2003年建站之初的选择。这也再一次验证了辩证法关于事物发展的否定之否定及螺旋式上升的普遍规律，仿佛回到原点，但一切已经完全不同了。</p>
+</body>
+</html>

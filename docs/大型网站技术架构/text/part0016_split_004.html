@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>7　随需应变：网站的可扩展架构</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="calibre7" id="calibre_pb_4"><a id="sec009" class="calibre8"></a>
+ 7.4　可扩展的数据结构</h2>
+<p class="calibre1">传统的关系数据库为了保证关系运算（通过SQL语句）的正确性，在设计数据库表结构的时候，就需要指定表的schema——字段名称，数据类型等，并要遵循特定的设计范式。这些规范带来的一个问题就是僵硬的数据结构难以面对需求变更带来的挑战，有些应用系统设计者通过预先设计一些冗余字段来应对，不过显然这是一种糟糕的数据库设计。</p>
+<p class="calibre1">那么有没有办法能够做到可扩展的数据结构设计呢？无需修改表结构就可以新增字段呢？许多NoSQL数据库使用的ColumnFamily（列族）设计就是一个解决方案。ColumnFamily最早在Google的Bigtable中使用，这是一种面向列族的稀疏矩阵存储格式，如表7.1所示。</p>
+<div class="kindle-cn-bodycontent-div-alone">
+<p class="kindle-cn-picture-txt-withfewcharactors1">表7.1　ColumnFamily数据存储格式</p>
+<img class="kindle-cn-bodycontent-image-alone" alt="" src="../images/00086.jpeg"/>
+</div>
+<p class="calibre1">这是一个学生的基本信息表，不同学生的联系方式各不相同，选修的课程也不同，而且在将来会有更多联系方式和课程加入到这张表，如果按照传统的关系数据库设计，无论提前预设多少冗余字段都会捉襟见肘，疲于应付。</p>
+<p class="calibre1">而使用支持ColumnFamily结构的NoSQL数据库，创建表的时候，只需要指定ColumnFamily的名字，无需指定字段（Column），可以在数据写入时再指定，通过这种方式，数据表可以包含数百万的字段，使得应用程序的数据结构可以随意扩展。而在查询时，可以通过指定任意字段名称和值进行查询。</p>
+</body>
+</html>

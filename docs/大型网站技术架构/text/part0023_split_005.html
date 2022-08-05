@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>13　大型网站典型故障案例分析</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="calibre7" id="calibre_pb_5"><a id="sec005" class="calibre8"></a>
+ 13.5　应用启动不同步引发的故障</h2>
+<p class="calibre1">
+<span class="kindle-cn-bold">故障现象：</span>
+ 某应用发布后，服务器立即崩溃。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">原因分析：</span>
+ 应用程序Web环境使用ApacheAJBoss的模式，用户请求通过Apache转发JBoss。在发布时，Apache和JBoss同时启动，由于JBoss启动时需要加载很多应用并初始化，花费时间较长，结果JBoss还没有完全启动，Apache就已经启动完毕开始接收用户请求，大量请求阻塞在JBoss进程中，最终导致JBoss崩溃。除了这种Apache和JBoss启动不同步的情况，网站还有很多类似的场景，都需要后台服务准备好，前台应用才能启动，否则就会导致故障。这种情况被内部人戏称作“姑娘们还没穿好衣服，老鸨就开门迎客了”。</p>
+<p class="kindle-cn-bold1">经验教训：</p>
+<ul class="kindle-cn-ul-disc">
+<li class="calibre11">老鸨开门前要检查下姑娘们是否穿好了衣服。就本例来说，在应用程序中加入一个特定的动态页面（比如只返回OK两个字母），启动脚本先启动JBoss，然后在脚本中不断用curl命令访问这个特定页面，直到收到OK，才启动Apache。</li>
+</ul>
+</body>
+</html>
