@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>大型网站技术架构</title>
+
+    <script type="text/javascript" src="./jquery.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="stylesheet.css" />
+
+    <!-- <link rel="stylesheet" href="./stylesheet.css" /> -->
+    <script
+            src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"
+    ></script>
+    <style type="text/css">
+        html body {
+            font-family: Consolas, FangSong, Lantinghei SC, Helvetica Neue,
+            Helvetica, Arial, Microsoft YaHei, \\5fae\8f6f\96c5\9ed1,
+            STHeitiSC-Light, simsun, \\5b8b\4f53, WenQuanYi Zen Hei,
+            WenQuanYi Micro Hei, "sans-serif" !important;
+            /* -webkit-font-smoothing: antialiased  !important; */
+            font-size: 18px !important;
+            height: 100% !important;
+        }
+
+        pre {
+            font-size: 20px !important;
+        }
+
+        .sidebar {
+            font-size: 15px !important;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: block;
+            background-color: #324057;
+            background-color: #f5f5f5;
+            border-right: 1px solid #eee;
+            width: 300px;
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+            -webkit-box-shadow: #ccc 0 0 10px;
+            box-shadow: #ccc 0 0 10px;
+            box-sizing: border-box;
+        }
+
+        .main {
+            margin-left: 0;
+            height: 100%;
+        }
+
+        /*菜单显示按钮*/
+        .sidebar > .closeMenu > span {
+            opacity: 0;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            font-size: 25px;
+            color: #bfcbd9;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -25px;
+            padding-top: 3px;
+            padding-left: 9px;
+            transform-origin: 20px 20px;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .sidebar > .closeMenu > span {
+            opacity: 0;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            font-size: 25px;
+            color: #bfcbd9;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -25px;
+            padding-top: 3px;
+            padding-left: 9px;
+            transform-origin: 20px 20px;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .sidebar > .closeMenu > span:last-child {
+            display: none;
+        }
+
+        /* Sidebar navigation */
+        .nav-sidebar {
+            margin-right: 30px;
+            padding: 20px 0;
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+
+        .nav-sidebar > li > a {
+            color: #337ab7;
+        }
+
+        .menuItem:hover > a {
+            background-color: #eee;
+        }
+
+        .nav .active > a,
+        .nav-sidebar .active:hover > a {
+            background-color: #428bca;
+            color: #fff;
+        }
+
+        .lightli {
+
+            color: red;
+        }
+
+        .index {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar" id="list_left">
+    <ul class="nav nav-sidebar ">
+<li><a href="#" onClick="showDiv('EPUB/text/part0001.html')">书名页</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0001.html')">版权页</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0002.html')">好评袭来</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0003.html')">推荐序一</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0004.html')">推荐序二</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0005.html')">序　我为什么要写这本书</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0006.html')">致谢</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0007.html')">目录</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0007.html')">第1篇　概述</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0007.html')">第2篇　架构</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0010_split_003.html')">第3篇　案例</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0010_split_003.html')">9　淘宝网的架构演化案例分析</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0007.html')">10　维基百科的高性能架构设计分析</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0013_split_001.html')">第4篇　架构师</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0013_split_001.html')">14　架构师领导艺术</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0013_split_003.html')">15　网站架构师职场攻略</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0026_split_001.html')">15.1　发现问题，寻找突破</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0026_split_002.html')">15.2　提出问题，寻求支持</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0026_split_003.html')">15.3　解决问题，达成绩效</a></li>
+</ul>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0013_split_003.html')">16　漫话网站架构师</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0013_split_003.html')">附录A　大型网站架构技术一览</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0013_split_004.html')">附录B　Web开发技术发展历程</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0013_split_004.html')">后记</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0011_split_004.html')">11　海量分布式存储系统Doris的高可用架构设计分析</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0021_split_001.html')">11.1　分布式存储系统的高可用架构</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0021_split_002.html')">11.2　不同故障情况下的高可用解决方案</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0021_split_002.html')">11.2.1　分布式存储系统的故障分类</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0021_split_002.html')">11.2.2　正常情况下系统访问结构</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0021_split_002.html')">11.2.3　瞬时故障的高可用解决方案</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0021_split_002.html')">11.2.4　临时故障的高可用解决方案</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0021_split_002.html')">11.2.5　永久故障的高可用解决方案</a></li>
+</ul>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0009_split_000.html')">12　网购秒杀系统架构设计案例分析</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0022_split_001.html')">12.1　秒杀活动的技术挑战</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0022_split_002.html')">12.2　秒杀系统的应对策略</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0022_split_003.html')">12.3　秒杀系统架构设计</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0022_split_004.html')">12.4　小结</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0009_split_000.html')">13　大型网站典型故障案例分析</a></li>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_005.html')">5.5　高可用的数据</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_005.html')">5.5.1　CAP原理</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_005.html')">5.5.2　数据备份</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_005.html')">5.5.3　失效转移</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_006.html')">5.6　高可用网站的软件质量保证</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_006.html')">5.6.1　网站发布</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_006.html')">5.6.2　自动化测试</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_006.html')">5.6.3　预发布验证</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_006.html')">5.6.4　代码控制</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_006.html')">5.6.5　自动化发布</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_006.html')">5.6.6　灰度发布</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_007.html')">5.7　网站运行监控</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_007.html')">5.7.1　监控数据采集</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_007.html')">5.7.2　监控管理</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/text/part0014_split_008.html')">5.8　小结</a></li>
+</ul>
+    <div class="closeMenu">
+        <span class="glyphicon glyphicon-triangle-left"></span>
+        <span class="glyphicon glyphicon-triangle-right"></span>
+    </div>
+</div>
+<div class="main">
+    <div id="content" class="index">
+        <div class="calibre">
+<p class="kindle-cn-copyright-text">
+<span class="kindle-cn-bold">&#20869;&#23481;&#31616;&#20171;</span>
+</p>
+<p class="calibre1">&#26412;&#20070;&#36890;&#36807;&#26803;&#29702;&#22823;&#22411;&#32593;&#31449;&#25216;&#26415;&#21457;&#23637;&#21382;&#31243;&#65292;&#21078;&#26512;&#22823;&#22411;&#32593;&#31449;&#25216;&#26415;&#26550;&#26500;&#27169;&#24335;&#65292;&#28145;&#20837;&#35762;&#36848;&#22823;&#22411;&#20114;&#32852;&#32593;&#26550;&#26500;&#35774;&#35745;&#30340;&#26680;&#24515;&#21407;&#29702;&#65292;&#24182;&#36890;&#36807;&#19968;&#32452;&#20856;&#22411;&#32593;&#31449;&#25216;&#26415;&#26550;&#26500;&#35774;&#35745;&#26696;&#20363;&#65292;&#20026;&#35835;&#32773;&#21576;&#29616;&#19968;&#24133;&#21253;&#25324;&#25216;&#26415;&#36873;&#22411;&#12289;&#26550;&#26500;&#35774;&#35745;&#12289;&#24615;&#33021;&#20248;&#21270;&#12289;Web&#23433;&#20840;&#12289;&#31995;&#32479;&#21457;&#24067;&#12289;&#36816;&#32500;&#30417;&#25511;&#31561;&#22312;&#20869;&#30340;&#22823;&#22411;&#32593;&#31449;&#24320;&#21457;&#20840;&#26223;&#35270;&#22270;&#12290;</p>
+<p class="calibre1">&#26412;&#20070;&#19981;&#20165;&#36866;&#29992;&#20110;&#25351;&#23548;&#32593;&#31449;&#24037;&#31243;&#24072;&#12289;&#26550;&#26500;&#24072;&#36827;&#34892;&#32593;&#31449;&#25216;&#26415;&#26550;&#26500;&#35774;&#35745;&#65292;&#20063;&#21487;&#29992;&#20110;&#25351;&#23548;&#20135;&#21697;&#32463;&#29702;&#12289;&#39033;&#30446;&#32463;&#29702;&#12289;&#27979;&#35797;&#36816;&#32500;&#20154;&#21592;&#31561;&#20102;&#35299;&#32593;&#31449;&#25216;&#26415;&#26550;&#26500;&#30340;&#22522;&#30784;&#27010;&#24565;&#65307;&#36824;&#21487;&#20379;&#21253;&#25324;&#20225;&#19994;&#31995;&#32479;&#24320;&#21457;&#20154;&#21592;&#22312;&#20869;&#30340;&#21508;&#31867;&#36719;&#20214;&#24320;&#21457;&#20174;&#19994;&#20154;&#21592;&#20511;&#37492;&#65292;&#20102;&#35299;&#22823;&#22411;&#32593;&#31449;&#30340;&#35299;&#20915;&#26041;&#26696;&#21644;&#24320;&#21457;&#29702;&#24565;&#12290;</p>
+<div class="empty"></div>
+<p class="kindle-cn-copyright-text1">&#26410;&#32463;&#35768;&#21487;&#65292;&#19981;&#24471;&#20197;&#20219;&#20309;&#26041;&#24335;&#22797;&#21046;&#25110;&#25220;&#34989;&#26412;&#20070;&#20043;&#37096;&#20998;&#25110;&#20840;&#37096;&#20869;&#23481;&#12290;</p>
+<p class="kindle-cn-copyright-text1">&#29256;&#26435;&#25152;&#26377;&#65292;&#20405;&#26435;&#24517;&#31350;&#12290;</p>
+<div class="empty"></div>
+<p class="kindle-cn-copyright-text2">&#22270;&#20070;&#22312;&#29256;&#32534;&#30446;&#65288;CIP&#65289;&#25968;&#25454;</p>
+<p class="kindle-cn-copyright-text1">&#22823;&#22411;&#32593;&#31449;&#25216;&#26415;&#26550;&#26500;&#65306;&#26680;&#24515;&#21407;&#29702;&#19982;&#26696;&#20363;&#20998;&#26512;&#65295;&#26446;&#26234;&#24935;&#33879;&#65294;&#8212;&#21271;&#20140;&#65306;&#30005;&#23376;&#24037;&#19994;&#20986;&#29256;&#31038;&#65292;2013.9</p>
+<p class="kindle-cn-copyright-text1">ISBN 978-7-121-21200-0</p>
+<p class="kindle-cn-copyright-text1">&#8544;&#65294;&#9312;&#22823;&#8230;&#12288;&#8545;&#65294;&#9312;&#26446;&#8230;&#12288;&#8546;&#65294;&#9312;&#32593;&#31449;&#65293;&#24314;&#35774;&#12288;&#8547;&#65294;&#9312;TP393.092</p>
+<p class="kindle-cn-copyright-text1">&#20013;&#22269;&#29256;&#26412;&#22270;&#20070;&#39302;CIP&#25968;&#25454;&#26680;&#23383;&#65288;2013&#65289;&#31532;182399&#21495;</p>
+<div class="empty"></div>
+<p class="kindle-cn-copyright-text1">&#36131;&#20219;&#32534;&#36753;&#65306;&#24464;&#27941;&#24179;</p>
+<p class="kindle-cn-copyright-text1">&#21360;&#12288;&#12288;&#21047;&#65306;&#19977;&#27827;&#24066;&#21452;&#23792;&#21360;&#21047;&#35013;&#35746;&#26377;&#38480;&#20844;&#21496;</p>
+<p class="kindle-cn-copyright-text1">&#35013;&#12288;&#12288;&#35746;&#65306;&#19977;&#27827;&#24066;&#21452;&#23792;&#21360;&#21047;&#35013;&#35746;&#26377;&#38480;&#20844;&#21496;</p>
+<p class="kindle-cn-copyright-text1">&#20986;&#29256;&#21457;&#34892;&#65306;&#30005;&#23376;&#24037;&#19994;&#20986;&#29256;&#31038;</p>
+<p class="kindle-cn-copyright-text1">&#21271;&#20140;&#24066;&#28023;&#28096;&#21306;&#19975;&#23551;&#36335;173&#20449;&#31665;&#12288;&#37038;&#32534;&#65306;100036</p>
+<p class="kindle-cn-copyright-text1">&#24320;&#12288;&#12288;&#26412;&#65306;720&#215;1000&#12288;1/16&#12288;&#21360;&#24352;&#65306;15&#12288;&#23383;&#25968;&#65306;240&#21315;&#23383;</p>
+<p class="kindle-cn-copyright-text1">&#21360;&#12288;&#12288;&#27425;&#65306;2013&#24180;9&#26376;&#31532;1&#27425;&#21360;&#21047;</p>
+<p class="kindle-cn-copyright-text1">&#21360;&#12288;&#12288;&#25968;&#65306;4000&#20876;&#12288;&#23450;&#20215;&#65306;59.00&#20803;</p>
+<p class="kindle-cn-copyright-text1">&#20961;&#25152;&#36141;&#20080;&#30005;&#23376;&#24037;&#19994;&#20986;&#29256;&#31038;&#22270;&#20070;&#26377;&#32570;&#25439;&#38382;&#39064;&#65292;&#35831;&#21521;&#36141;&#20080;&#20070;&#24215;&#35843;&#25442;&#12290;&#33509;&#20070;&#24215;&#21806;&#32570;&#65292;&#35831;&#19982;&#26412;&#31038;&#21457;&#34892;&#37096;&#32852;&#31995;&#65292;&#32852;&#31995;&#21450;&#37038;&#36141;&#30005;&#35805;&#65306;&#65288;010&#65289;88254888&#12290;</p>
+<p class="kindle-cn-copyright-text1">&#36136;&#37327;&#25237;&#35785;&#35831;&#21457;&#37038;&#20214;&#33267;zlts@phei.com.cn&#65292;&#30423;&#29256;&#20405;&#26435;&#20030;&#25253;&#35831;&#21457;&#37038;&#20214;&#33267;dbqq@phei.com.cn&#12290;</p>
+<p class="kindle-cn-copyright-text1">&#26381;&#21153;&#28909;&#32447;&#65306;&#65288;010&#65289;88258888&#12290;</p>
+</div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function showDiv(pageid) {
+        $("#content").load(pageid);
+    }
+
+    $(document).ready(function () {
+        window.addEventListener("beforeprint", function (event) {
+            $(".main").animate({margin: "0 auto", marginLeft: 0}, "linear");
+            $(".sidebar").hide()
+
+        });
+        window.addEventListener("afterprint", function (event) {
+            $(".sidebar").show()
+            $(".main").animate({marginLeft: moveLeft + 15}, "linear");
+        });
+        //fixed定位 高度满屏
+        $(".sidebar").height($(window).height());
+
+        //实现显示隐藏可以删除
+        $(".sidebar").on("mouseover", function () {
+            $(".closeMenu > span").css({
+                opacity: 1
+            });
+        });
+        $(".sidebar").on("mouseleave blur", function () {
+            $(".closeMenu > span").css({
+                opacity: 0
+            });
+        });
+
+        var moveLeft = $("#list_left").width();
+
+        //设置内容快初始位置
+        $(".main").css({marginLeft: moveLeft});
+
+        //判断隐藏显示核心代码
+        var isShow = true;
+        $(".closeMenu span").click(function () {
+            $(this)
+                .hide()
+                .siblings()
+                .show();
+            if (isShow) {
+                $("#list_left").animate(
+                    {
+                        marginLeft: -(moveLeft - 30) //30 刚好显示icon图标
+                    },
+                    200,
+                    "linear",
+                    function () {
+                        isShow = false;
+                        $(".closeMenu > span").css({
+                            opacity: 1
+                        });
+                    }
+                );
+                $(".main").animate({margin: "0 auto", marginLeft: 15}, "linear");
+            } else {
+                $("#list_left").animate(
+                    {
+                        marginLeft: 0
+                    },
+                    200,
+                    "linear",
+                    function () {
+                        isShow = true;
+                    }
+                );
+                $(".main").animate({marginLeft: moveLeft + 15}, "linear");
+            }
+        });
+
+        $(window).resize(function () {
+            $("#list_left").height($(window).height());
+        });
+    });
+
+
+</script>
+</body>
+</html>

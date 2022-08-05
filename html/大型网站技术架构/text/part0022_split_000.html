@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>12　网购秒杀系统架构设计案例分析</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h1 class="calibre6" id="calibre_pb_0">12　网购秒杀系统架构设计案例分析</h1>
+<p class="calibre1">秒杀是电子商务网站常见的一种营销手段：将少量商品（通常只有一件）以极低的价格，在特定的时间点开始出售。比如一元钱的手机，五元钱的电脑，十元钱的汽车等。因为商品价格诱人，而且数量有限，所以很多人趋之若鹜，在秒杀活动开始前涌入网站，等到秒杀活动开始的一瞬间，点下购买按钮（在此之前购买按钮为灰色，不可以点击），抢购商品。这些商品因为在活动开始的一秒内就被卖光了，所以被称作秒杀。</p>
+<p class="calibre1">网站通过这种营销手段，制造某种轰动效应，从而达到网站推广的目的。而最终能够被幸运之神眷顾，秒到商品的只有一两个人而已。很多电子商务网站已经把秒杀活动常态化了，经常性地举行秒杀活动。</p>
+<p class="calibre1">秒杀虽然对网站推广有很多好处，也能给消费者带来利益（虽然是很少的几个人），但是对网站技术却是极大的挑战：网站是为正常运营设计的，而秒杀活动带来的并发访问用户却是平时的数百倍甚至上千倍。网站如果为秒杀时的最高并发访问量进行设计部署，就需要比正常运营多得多的服务器，而这些服务器在绝大部分时候都是用不着的，浪费惊人。所以网站的秒杀业务不能使用正常的网站业务流程，也不能和正常的网站交易业务共用服务器，必须设计部署专门的秒杀系统，进行专门应对。</p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>13　大型网站典型故障案例分析</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="calibre7" id="calibre_pb_7"><a id="sec007" class="calibre8"></a>
+ 13.7　滥用生产环境引发的故障</h2>
+<p class="calibre1">
+<span class="kindle-cn-bold">故障现象：</span>
+ 监控发现某个时段内，某些应用突然变慢，内部网络访问延迟非常厉害。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">原因分析：</span>
+ 检查发现，该时段内网卡流量也下降，但是没有找到原因。过了一阵子才知道，原来有工程师在线上生产环境进行性能压力测试，占用了大部分交换机带宽。</p>
+<p class="kindle-cn-bold1">经验教训：</p>
+<ul class="kindle-cn-ul-disc">
+<li class="calibre11">访问线上生产环境要规范，不小心就会导致大事故。</li>
+</ul>
+<p class="calibre1">网站数据库有专门的DBA维护，如果发现数据库存在错误记录，需要进行数据订正，必须走数据订正流程，申请DBA协助。于是就有工程师为避免麻烦，直接写一段数据库更新操作的代码，悄悄放到生产环境应用服务器上执行，神不知鬼不觉地订正了数据。但是如果不小心写错了SQL，后果可想而知。</p>
+</body>
+</html>
