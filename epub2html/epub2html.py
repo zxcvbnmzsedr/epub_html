@@ -234,4 +234,6 @@ def parse_dir(dir, out_path):
 
 
 if __name__ == '__main__':
-    parse_dir('../book', '../docs/')
+    PROJECT_ABSOLUTE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    print(PROJECT_ABSOLUTE_PATH)
+    parse_dir(PROJECT_ABSOLUTE_PATH + '/book', PROJECT_ABSOLUTE_PATH + '/docs/')
