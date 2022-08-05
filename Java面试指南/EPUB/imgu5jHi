@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>NoSuchKey</Code>
+  <Message>The specified key does not exist.</Message>
+  <RequestId>62ED1C670E3953343527ADC1</RequestId>
+  <HostId>guide-blog-images.oss-cn-shenzhen.aliyuncs.com</HostId>
+  <Key>javaguide/项目流程.png</Key>
+</Error>
