@@ -1,3 +1,4 @@
+import getopt
 import html.parser as htmlparser
 import os
 import re
@@ -34,7 +35,7 @@ class Epub2Html():
         self.opf_a_dir = dirname(join(self.root_a_path, opf_r_root_path))
 
         self.ncx_r_opf_path, self.css_r_opf_path = self.paths_from_opf()
-
+        self.is_gen = (self.opf_a_dir == self.root_a_path)
         self.ncx_a_path = join(self.opf_a_dir, self.ncx_r_opf_path)
 
         if self.css_r_opf_path:
@@ -87,13 +88,14 @@ class Epub2Html():
             name = cc.find("./navLabel/text").text.strip()
             link = cc.find("./content")
             src = urllib.parse.unquote(link.attrib["src"])
-            unified_src = src
-
-            # extract only name
             no_hash_name = src
             if src.find('#') != -1:
                 no_hash_name = src[:src.find("#")]
-            unified_src = no_hash_name
+
+            if not self.is_gen:
+                unified_src = self.opf_a_dir.replace(self.root_a_path + '/', '') + '/' + no_hash_name
+            else:
+                unified_src = no_hash_name
 
             menus.append(f"<li><a href=\"#\" onClick=\"showDiv('{unified_src}')\">{name}</a></li>")
 
@@ -177,6 +179,7 @@ class Epub2Html():
         Path(join(self.outputdir, self.epub_name_without_ext, "./index.html")).write_text(self.template,
                                                                                           encoding='utf-8')
         self.gen_jquery_js()
+        return self.epub_name_without_ext
 
     def gen_jquery_js(self):
         script_dir = dirname(abspath(__file__))
@@ -195,14 +198,27 @@ def main(filepath, outputdir):
         outputdir = tempfile.gettempdir()
 
     e = Epub2Html(filepath, outputdir)
-    e.gen()
+    r = e.gen()
     print("converted! " + e.getIndexLoc())
+    return r
 
 
-def parse_dir(dir):
-    out_path = 'html'
-    main('../book/大型网站技术架构.epub', '../html/')
+def parse_dir(dir, out_path):
+    epub_list = os.walk(dir)
+    book_list = []
+
+    for path, dir_list, file_list in epub_list:
+        for file_name in file_list:
+            epub_path = os.path.join(path, file_name)
+            r = main(epub_path, out_path)
+            book_list.append(f"<li><a href=\"{r}\">{r}</a></li>")
+
+    script_dir = dirname(abspath(__file__))
+    template_path = join(script_dir, "index.html")
+    template = Path(template_path).read_text(encoding='utf-8')
+    template = template.replace("${booklist}$", "".join(book_list))
+    Path(out_path + './index.html').write_text(template)
 
 
 if __name__ == '__main__':
-    parse_dir('../book')
+    parse_dir('../book', '../docs/')
