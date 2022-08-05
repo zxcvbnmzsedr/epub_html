@@ -1,0 +1,130 @@
+/* Global setting */
+/* 全局设定 */
+body {
+	line-height: 1.618em;
+}
+
+/* TOC link color */
+/* 目录条目链接颜色 */
+a {
+	color: #0000CC;
+}
+
+/* TOC Title */
+/* 目录标题 */
+.kindle-cn-toc-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+	letter-spacing: 1em;
+    text-align: center;
+	border-bottom: 1.5px dotted #000000;
+}
+
+.kindle-en-toc-title {
+	text-align:center;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+/* Level 1 TOC */
+/* 一级标题 */
+.kindle-cn-toc-level-1 {
+    margin-left: 0em;
+}
+
+/* Level 2 TOC */
+/* 二级标题 */
+.kindle-cn-toc-level-2 {
+    margin-left: 2em;
+}
+
+/* Level 3 TOC */
+/* 三级标题 */
+.kindle-cn-toc-level-3 {
+    margin-left: 2em;
+}
+
+/* Level 4 TOC */
+/* 四级标题 */
+.kindle-cn-toc-level-4 {
+    margin-left: 2em;
+}
+
+/* Level 5 TOC */
+/* 五级标题 */
+.kindle-cn-toc-level-5 {
+    margin-left: 2em;
+}
+
+/* Level 6 TOC */
+/* 六级标题 */
+.kindle-cn-toc-level-6 {
+    margin-left: 2em;
+}
+/** 加粗 **/
+span.kindle-cn-bold{
+font-weight: bold;
+}
+
+/** 斜体字 **/
+span.kindle-cn-italic{
+font-style: italic;
+}
+
+/** 斜体加粗字体**/
+span.kindle-cn-bold-italic{
+font-weight: bold;
+font-style: italic;
+}
+
+/** 下划线**/
+span.kindle-cn-underline{
+text-decoration: underline;
+}
+
+/** 删除线 **/
+ span.kindle-cn-strike{
+text-decoration: line-through;
+}
+
+/** 双下划线 **/ 
+span.kindle-cn-specialtext-double{
+	border-bottom:0.2em double;
+}
+
+/** 点线式边框 **/ 
+span.kindle-cn-specialtext-dot{
+	border-style:dotted;
+}
+
+/** 破折线式边框 **/ 
+span.kindle-cn-specialtext-dash{
+	border-style:dashed;
+	border-width: 1px;
+}
+
+/** 直线式边框 **/ 
+span.kindle-cn-specialtext-dot{
+	border-style:solid;
+	border-width: 1px;
+}
+
+/* 数学上标字体 */
+span.math-super {
+	font-size: 0.7em;
+	vertical-align: super;
+}
+
+/* 数学上标倾斜字体 */
+span.math-super-italic {
+	font-size: 0.7em;
+	font-style: italic;
+	vertical-align: super;
+}
+
+/* 数学下标字体 */
+span.math-sub {
+	font-size: 0.7em;
+	vertical-align: sub;
+}

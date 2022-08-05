@@ -1,0 +1,568 @@
+<div><div class="markdown-body">
+    <h1>&#31070;&#20853;&#21033;&#22120; &#8212;&#8212; optimizer trace &#30340;&#31070;&#22855;&#21151;&#25928;</h1>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <h1 class="heading">
+ optimizer trace &#34920;&#30340;&#31070;&#22855;&#21151;&#25928;
+</h1>
+<p>
+ &#26631;&#31614;&#65306; MySQL &#26159;&#24590;&#26679;&#36816;&#34892;&#30340;
+</p>
+<hr>
+<p>
+ &#23545;&#20110;
+ <code>
+  MySQL 5.6
+ </code>
+ &#20197;&#21450;&#20043;&#21069;&#30340;&#29256;&#26412;&#26469;&#35828;&#65292;&#26597;&#35810;&#20248;&#21270;&#22120;&#23601;&#20687;&#26159;&#19968;&#20010;&#40657;&#30418;&#23376;&#19968;&#26679;&#65292;&#20320;&#21482;&#33021;&#36890;&#36807;
+ <code>
+  EXPLAIN
+ </code>
+ &#35821;&#21477;&#26597;&#30475;&#21040;&#26368;&#21518;&#20248;&#21270;&#22120;&#20915;&#23450;&#20351;&#29992;&#30340;&#25191;&#34892;&#35745;&#21010;&#65292;&#21364;&#26080;&#27861;&#30693;&#36947;&#23427;&#20026;&#20160;&#20040;&#20570;&#36825;&#20010;&#20915;&#31574;&#12290;&#36825;&#23545;&#20110;&#19968;&#37096;&#20998;&#21916;&#27426;&#21032;&#26681;&#38382;&#24213;&#30340;&#23567;&#20249;&#20276;&#26469;&#35828;&#31616;&#30452;&#26159;&#28798;&#38590;&#65306;&#8220;&#25105;&#23601;&#35273;&#24471;&#20351;&#29992;&#20854;&#20182;&#30340;&#25191;&#34892;&#26041;&#26696;&#27604;
+ <code>
+  EXPLAIN
+ </code>
+ &#36755;&#20986;&#30340;&#36825;&#31181;&#26041;&#26696;&#24378;&#65292;&#20973;&#20160;&#20040;&#20248;&#21270;&#22120;&#20570;&#30340;&#20915;&#23450;&#21644;&#25105;&#24819;&#30340;&#19981;&#19968;&#26679;&#21602;&#65311;&#8221;
+</p>
+<p>
+ &#22312;
+ <code>
+  MySQL 5.6
+ </code>
+ &#20197;&#21450;&#20043;&#21518;&#30340;&#29256;&#26412;&#20013;&#65292;&#35774;&#35745;
+ <code>
+  MySQL
+ </code>
+ &#30340;&#22823;&#21460;&#36148;&#24515;&#30340;&#20026;&#36825;&#37096;&#20998;&#23567;&#20249;&#20276;&#25552;&#20986;&#20102;&#19968;&#20010;
+ <code>
+  optimizer trace
+ </code>
+ &#30340;&#21151;&#33021;&#65292;&#36825;&#20010;&#21151;&#33021;&#21487;&#20197;&#35753;&#25105;&#20204;&#26041;&#20415;&#30340;&#26597;&#30475;&#20248;&#21270;&#22120;&#29983;&#25104;&#25191;&#34892;&#35745;&#21010;&#30340;&#25972;&#20010;&#36807;&#31243;&#65292;&#36825;&#20010;&#21151;&#33021;&#30340;&#24320;&#21551;&#19982;&#20851;&#38381;&#30001;&#31995;&#32479;&#21464;&#37327;
+ <code>
+  optimizer_trace
+ </code>
+ &#20915;&#23450;&#65292;&#25105;&#20204;&#30475;&#19968;&#19979;&#65306;
+</p>
+<pre><code class="hljs bash" lang="bash">mysql&gt; SHOW VARIABLES LIKE <span class="hljs-string">'optimizer_trace'</span>;
++-----------------+--------------------------+
+| Variable_name   | Value                    |
++-----------------+--------------------------+
+| optimizer_trace | enabled=off,one_line=off |
++-----------------+--------------------------+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.02 sec)
+</code></pre>
+<p>
+ &#21487;&#20197;&#30475;&#21040;
+ <code>
+  enabled
+ </code>
+ &#20540;&#20026;
+ <code>
+  off
+ </code>
+ &#65292;&#34920;&#26126;&#36825;&#20010;&#21151;&#33021;&#40664;&#35748;&#26159;&#20851;&#38381;&#30340;&#12290;
+</p>
+<blockquote class="warning">
+ <p>
+  &#23567;&#36148;&#22763;&#65306;
+
+one_line&#30340;&#20540;&#26159;&#25511;&#21046;&#36755;&#20986;&#26684;&#24335;&#30340;&#65292;&#22914;&#26524;&#20026;on&#37027;&#20040;&#25152;&#26377;&#36755;&#20986;&#37117;&#23558;&#22312;&#19968;&#34892;&#20013;&#23637;&#31034;&#65292;&#19981;&#36866;&#21512;&#20154;&#38405;&#35835;&#65292;&#25152;&#20197;&#25105;&#20204;&#23601;&#20445;&#25345;&#20854;&#40664;&#35748;&#20540;&#20026;off&#21543;&#12290;
+ </p>
+</blockquote>
+<p>
+ &#22914;&#26524;&#24819;&#25171;&#24320;&#36825;&#20010;&#21151;&#33021;&#65292;&#24517;&#39035;&#39318;&#20808;&#25226;
+ <code>
+  enabled
+ </code>
+ &#30340;&#20540;&#25913;&#20026;
+ <code>
+  on
+ </code>
+ &#65292;&#23601;&#20687;&#36825;&#26679;&#65306;
+</p>
+<pre><code class="hljs bash" lang="bash">mysql&gt; SET optimizer_trace=<span class="hljs-string">"enabled=on"</span>;
+Query OK, 0 rows affected (0.00 sec)
+</code></pre>
+<p>
+ &#28982;&#21518;&#25105;&#20204;&#23601;&#21487;&#20197;&#36755;&#20837;&#25105;&#20204;&#24819;&#35201;&#26597;&#30475;&#20248;&#21270;&#36807;&#31243;&#30340;&#26597;&#35810;&#35821;&#21477;&#65292;&#24403;&#35813;&#26597;&#35810;&#35821;&#21477;&#25191;&#34892;&#23436;&#25104;&#21518;&#65292;&#23601;&#21487;&#20197;&#21040;
+ <code>
+  information_schema
+ </code>
+ &#25968;&#25454;&#24211;&#19979;&#30340;
+ <code>
+  OPTIMIZER_TRACE
+ </code>
+ &#34920;&#20013;&#26597;&#30475;&#23436;&#25972;&#30340;&#20248;&#21270;&#36807;&#31243;&#12290;&#36825;&#20010;
+ <code>
+  OPTIMIZER_TRACE
+ </code>
+ &#34920;&#26377;4&#20010;&#21015;&#65292;&#20998;&#21035;&#26159;&#65306;
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    QUERY
+   </code>
+   &#65306;&#34920;&#31034;&#25105;&#20204;&#30340;&#26597;&#35810;&#35821;&#21477;&#12290;
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    TRACE
+   </code>
+   &#65306;&#34920;&#31034;&#20248;&#21270;&#36807;&#31243;&#30340;JSON&#26684;&#24335;&#25991;&#26412;&#12290;
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    MISSING_BYTES_BEYOND_MAX_MEM_SIZE
+   </code>
+   &#65306;&#30001;&#20110;&#20248;&#21270;&#36807;&#31243;&#21487;&#33021;&#20250;&#36755;&#20986;&#24456;&#22810;&#65292;&#22914;&#26524;&#36229;&#36807;&#26576;&#20010;&#38480;&#21046;&#26102;&#65292;&#22810;&#20313;&#30340;&#25991;&#26412;&#23558;&#19981;&#20250;&#34987;&#26174;&#31034;&#65292;&#36825;&#20010;&#23383;&#27573;&#23637;&#31034;&#20102;&#34987;&#24573;&#30053;&#30340;&#25991;&#26412;&#23383;&#33410;&#25968;&#12290;
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    INSUFFICIENT_PRIVILEGES
+   </code>
+   &#65306;&#34920;&#31034;&#26159;&#21542;&#27809;&#26377;&#26435;&#38480;&#26597;&#30475;&#20248;&#21270;&#36807;&#31243;&#65292;&#40664;&#35748;&#20540;&#26159;0&#65292;&#21482;&#26377;&#26576;&#20123;&#29305;&#27530;&#24773;&#20917;&#19979;&#25165;&#20250;&#26159;
+   <code>
+    1
+   </code>
+   &#65292;&#25105;&#20204;&#26242;&#26102;&#19981;&#20851;&#24515;&#36825;&#20010;&#23383;&#27573;&#30340;&#20540;&#12290;
+  </p>
+ </li>
+</ul>
+<p>
+ &#23436;&#25972;&#30340;&#20351;&#29992;
+ <code>
+  optimizer trace
+ </code>
+ &#21151;&#33021;&#30340;&#27493;&#39588;&#24635;&#32467;&#22914;&#19979;&#65306;
+</p>
+<pre><code class="hljs bash" lang="bash"><span class="hljs-comment"># 1. &#25171;&#24320;optimizer trace&#21151;&#33021; (&#40664;&#35748;&#24773;&#20917;&#19979;&#23427;&#26159;&#20851;&#38381;&#30340;):</span>
+SET optimizer_trace=<span class="hljs-string">"enabled=on"</span>;
+
+<span class="hljs-comment"># 2. &#36825;&#37324;&#36755;&#20837;&#20320;&#33258;&#24049;&#30340;&#26597;&#35810;&#35821;&#21477;</span>
+SELECT ...; 
+
+<span class="hljs-comment"># 3. &#20174;OPTIMIZER_TRACE&#34920;&#20013;&#26597;&#30475;&#19978;&#19968;&#20010;&#26597;&#35810;&#30340;&#20248;&#21270;&#36807;&#31243;</span>
+SELECT * FROM information_schema.OPTIMIZER_TRACE;
+
+<span class="hljs-comment"># 4. &#21487;&#33021;&#20320;&#36824;&#35201;&#35266;&#23519;&#20854;&#20182;&#35821;&#21477;&#25191;&#34892;&#30340;&#20248;&#21270;&#36807;&#31243;&#65292;&#37325;&#22797;&#19978;&#36793;&#30340;&#31532;2&#12289;3&#27493;</span>
+...
+
+<span class="hljs-comment"># 5. &#24403;&#20320;&#20572;&#27490;&#26597;&#30475;&#35821;&#21477;&#30340;&#20248;&#21270;&#36807;&#31243;&#26102;&#65292;&#25226;optimizer trace&#21151;&#33021;&#20851;&#38381;</span>
+SET optimizer_trace=<span class="hljs-string">"enabled=off"</span>;
+</code></pre>
+<p>
+ &#29616;&#22312;&#25105;&#20204;&#26377;&#19968;&#20010;&#25628;&#32034;&#26465;&#20214;&#27604;&#36739;&#22810;&#30340;&#26597;&#35810;&#35821;&#21477;&#65292;&#23427;&#30340;&#25191;&#34892;&#35745;&#21010;&#22914;&#19979;&#65306;
+</p>
+<pre><code class="hljs bash" lang="bash">mysql&gt; EXPLAIN SELECT * FROM s1 WHERE
+    -&gt;     key1 &gt; <span class="hljs-string">'z'</span> AND
+    -&gt;     key2 &lt; 1000000 AND
+    -&gt;     key3 IN (<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>) AND
+    -&gt;     common_field = <span class="hljs-string">'abc'</span>;
++----+-------------+-------+------------+-------+----------------------------+----------+---------+------+------+----------+------------------------------------+
+| id | select_type | table | partitions | <span class="hljs-built_in">type</span>  | possible_keys              | key      | key_len | ref  | rows | filtered | Extra                              |
++----+-------------+-------+------------+-------+----------------------------+----------+---------+------+------+----------+------------------------------------+
+|  1 | SIMPLE      | s1    | NULL       | range | idx_key2,idx_key1,idx_key3 | idx_key2 | 5       | NULL |   12 |     0.42 | Using index condition; Using <span class="hljs-built_in">where</span> |
++----+-------------+-------+------------+-------+----------------------------+----------+---------+------+------+----------+------------------------------------+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span>, 1 warning (0.00 sec)
+</code></pre>
+<p>
+ &#21487;&#20197;&#30475;&#21040;&#35813;&#26597;&#35810;&#21487;&#33021;&#20351;&#29992;&#21040;&#30340;&#32034;&#24341;&#26377;3&#20010;&#65292;&#37027;&#20040;&#20026;&#20160;&#20040;&#20248;&#21270;&#22120;&#26368;&#32456;&#36873;&#25321;&#20102;
+ <code>
+  idx_key2
+ </code>
+ &#32780;&#19981;&#36873;&#25321;&#20854;&#20182;&#30340;&#32034;&#24341;&#25110;&#32773;&#30452;&#25509;&#20840;&#34920;&#25195;&#25551;&#21602;&#65311;&#36825;&#26102;&#20505;&#23601;&#21487;&#20197;&#36890;&#36807;
+ <code>
+  otpimzer trace
+ </code>
+ &#21151;&#33021;&#26469;&#26597;&#30475;&#20248;&#21270;&#22120;&#30340;&#20855;&#20307;&#24037;&#20316;&#36807;&#31243;&#65306;
+</p>
+<pre><code class="hljs bash" lang="bash">SET optimizer_trace=<span class="hljs-string">"enabled=on"</span>;
+
+SELECT * FROM s1 WHERE 
+    key1 &gt; <span class="hljs-string">'z'</span> AND 
+    key2 &lt; 1000000 AND 
+    key3 IN (<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>) AND 
+    common_field = <span class="hljs-string">'abc'</span>;
+    
+SELECT * FROM information_schema.OPTIMIZER_TRACE\G    
+</code></pre>
+<p>
+ &#25105;&#20204;&#30452;&#25509;&#30475;&#19968;&#19979;&#36890;&#36807;&#26597;&#35810;
+ <code>
+  OPTIMIZER_TRACE
+ </code>
+ &#34920;&#24471;&#21040;&#30340;&#36755;&#20986;&#65288;&#25105;&#20351;&#29992;
+ <code>
+  #
+ </code>
+ &#21518;&#36319;&#38543;&#27880;&#37322;&#30340;&#24418;&#24335;&#20026;&#22823;&#23478;&#35299;&#37322;&#20102;&#20248;&#21270;&#36807;&#31243;&#20013;&#30340;&#19968;&#20123;&#27604;&#36739;&#37325;&#35201;&#30340;&#28857;&#65292;&#22823;&#23478;&#37325;&#28857;&#20851;&#27880;&#19968;&#19979;&#65289;&#65306;
+</p>
+<pre><code class="hljs bash" lang="bash">*************************** 1. row ***************************
+<span class="hljs-comment"># &#20998;&#26512;&#30340;&#26597;&#35810;&#35821;&#21477;&#26159;&#20160;&#20040;</span>
+QUERY: SELECT * FROM s1 WHERE
+    key1 &gt; <span class="hljs-string">'z'</span> AND
+    key2 &lt; 1000000 AND
+    key3 IN (<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>) AND
+    common_field = <span class="hljs-string">'abc'</span>
+
+<span class="hljs-comment"># &#20248;&#21270;&#30340;&#20855;&#20307;&#36807;&#31243;</span>
+TRACE: {
+  <span class="hljs-string">"steps"</span>: [
+    {
+      <span class="hljs-string">"join_preparation"</span>: {     <span class="hljs-comment"># prepare&#38454;&#27573;</span>
+        <span class="hljs-string">"select#"</span>: 1,
+        <span class="hljs-string">"steps"</span>: [
+          {
+            <span class="hljs-string">"IN_uses_bisection"</span>: <span class="hljs-literal">true</span>
+          },
+          {
+            <span class="hljs-string">"expanded_query"</span>: <span class="hljs-string">"/* select#1 */ select `s1`.`id` AS `id`,`s1`.`key1` AS `key1`,`s1`.`key2` AS `key2`,`s1`.`key3` AS `key3`,`s1`.`key_part1` AS `key_part1`,`s1`.`key_part2` AS `key_part2`,`s1`.`key_part3` AS `key_part3`,`s1`.`common_field` AS `common_field` from `s1` where ((`s1`.`key1` &gt; 'z') and (`s1`.`key2` &lt; 1000000) and (`s1`.`key3` in ('a','b','c')) and (`s1`.`common_field` = 'abc'))"</span>
+          }
+        ] /* steps */
+      } /* join_preparation */
+    },
+    {
+      <span class="hljs-string">"join_optimization"</span>: {    <span class="hljs-comment"># optimize&#38454;&#27573;</span>
+        <span class="hljs-string">"select#"</span>: 1,
+        <span class="hljs-string">"steps"</span>: [
+          {
+            <span class="hljs-string">"condition_processing"</span>: {   <span class="hljs-comment"># &#22788;&#29702;&#25628;&#32034;&#26465;&#20214;</span>
+              <span class="hljs-string">"condition"</span>: <span class="hljs-string">"WHERE"</span>,
+              <span class="hljs-comment"># &#21407;&#22987;&#25628;&#32034;&#26465;&#20214;</span>
+              <span class="hljs-string">"original_condition"</span>: <span class="hljs-string">"((`s1`.`key1` &gt; 'z') and (`s1`.`key2` &lt; 1000000) and (`s1`.`key3` in ('a','b','c')) and (`s1`.`common_field` = 'abc'))"</span>,
+              <span class="hljs-string">"steps"</span>: [
+                {
+                  <span class="hljs-comment"># &#31561;&#20540;&#20256;&#36882;&#36716;&#25442;</span>
+                  <span class="hljs-string">"transformation"</span>: <span class="hljs-string">"equality_propagation"</span>,
+                  <span class="hljs-string">"resulting_condition"</span>: <span class="hljs-string">"((`s1`.`key1` &gt; 'z') and (`s1`.`key2` &lt; 1000000) and (`s1`.`key3` in ('a','b','c')) and (`s1`.`common_field` = 'abc'))"</span>
+                },
+                {
+                  <span class="hljs-comment"># &#24120;&#37327;&#20256;&#36882;&#36716;&#25442;    </span>
+                  <span class="hljs-string">"transformation"</span>: <span class="hljs-string">"constant_propagation"</span>,
+                  <span class="hljs-string">"resulting_condition"</span>: <span class="hljs-string">"((`s1`.`key1` &gt; 'z') and (`s1`.`key2` &lt; 1000000) and (`s1`.`key3` in ('a','b','c')) and (`s1`.`common_field` = 'abc'))"</span>
+                },
+                {
+                  <span class="hljs-comment"># &#21435;&#38500;&#27809;&#29992;&#30340;&#26465;&#20214;</span>
+                  <span class="hljs-string">"transformation"</span>: <span class="hljs-string">"trivial_condition_removal"</span>,
+                  <span class="hljs-string">"resulting_condition"</span>: <span class="hljs-string">"((`s1`.`key1` &gt; 'z') and (`s1`.`key2` &lt; 1000000) and (`s1`.`key3` in ('a','b','c')) and (`s1`.`common_field` = 'abc'))"</span>
+                }
+              ] /* steps */
+            } /* condition_processing */
+          },
+          {
+            <span class="hljs-comment"># &#26367;&#25442;&#34394;&#25311;&#29983;&#25104;&#21015;</span>
+            <span class="hljs-string">"substitute_generated_columns"</span>: {
+            } /* substitute_generated_columns */
+          },
+          {
+            <span class="hljs-comment"># &#34920;&#30340;&#20381;&#36182;&#20449;&#24687;</span>
+            <span class="hljs-string">"table_dependencies"</span>: [
+              {
+                <span class="hljs-string">"table"</span>: <span class="hljs-string">"`s1`"</span>,
+                <span class="hljs-string">"row_may_be_null"</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-string">"map_bit"</span>: 0,
+                <span class="hljs-string">"depends_on_map_bits"</span>: [
+                ] /* depends_on_map_bits */
+              }
+            ] /* table_dependencies */
+          },
+          {
+            <span class="hljs-string">"ref_optimizer_key_uses"</span>: [
+            ] /* ref_optimizer_key_uses */
+          },
+          {
+          
+            <span class="hljs-comment"># &#39044;&#20272;&#19981;&#21516;&#21333;&#34920;&#35775;&#38382;&#26041;&#27861;&#30340;&#35775;&#38382;&#25104;&#26412;</span>
+            <span class="hljs-string">"rows_estimation"</span>: [
+              {
+                <span class="hljs-string">"table"</span>: <span class="hljs-string">"`s1`"</span>,
+                <span class="hljs-string">"range_analysis"</span>: {
+                  <span class="hljs-string">"table_scan"</span>: {   <span class="hljs-comment"># &#20840;&#34920;&#25195;&#25551;&#30340;&#34892;&#25968;&#20197;&#21450;&#25104;&#26412;</span>
+                    <span class="hljs-string">"rows"</span>: 9688,
+                    <span class="hljs-string">"cost"</span>: 2036.7
+                  } /* table_scan */,
+                  
+                  <span class="hljs-comment"># &#20998;&#26512;&#21487;&#33021;&#20351;&#29992;&#30340;&#32034;&#24341;</span>
+                  <span class="hljs-string">"potential_range_indexes"</span>: [
+                    {
+                      <span class="hljs-string">"index"</span>: <span class="hljs-string">"PRIMARY"</span>,   <span class="hljs-comment"># &#20027;&#38190;&#19981;&#21487;&#29992;</span>
+                      <span class="hljs-string">"usable"</span>: <span class="hljs-literal">false</span>,
+                      <span class="hljs-string">"cause"</span>: <span class="hljs-string">"not_applicable"</span>
+                    },
+                    {
+                      <span class="hljs-string">"index"</span>: <span class="hljs-string">"idx_key2"</span>,  <span class="hljs-comment"># idx_key2&#21487;&#33021;&#34987;&#20351;&#29992;</span>
+                      <span class="hljs-string">"usable"</span>: <span class="hljs-literal">true</span>,
+                      <span class="hljs-string">"key_parts"</span>: [
+                        <span class="hljs-string">"key2"</span>
+                      ] /* key_parts */
+                    },
+                    {
+                      <span class="hljs-string">"index"</span>: <span class="hljs-string">"idx_key1"</span>,  <span class="hljs-comment"># idx_key1&#21487;&#33021;&#34987;&#20351;&#29992;</span>
+                      <span class="hljs-string">"usable"</span>: <span class="hljs-literal">true</span>,
+                      <span class="hljs-string">"key_parts"</span>: [
+                        <span class="hljs-string">"key1"</span>,
+                        <span class="hljs-string">"id"</span>
+                      ] /* key_parts */
+                    },
+                    {
+                      <span class="hljs-string">"index"</span>: <span class="hljs-string">"idx_key3"</span>,  <span class="hljs-comment"># idx_key3&#21487;&#33021;&#34987;&#20351;&#29992;</span>
+                      <span class="hljs-string">"usable"</span>: <span class="hljs-literal">true</span>,
+                      <span class="hljs-string">"key_parts"</span>: [
+                        <span class="hljs-string">"key3"</span>,
+                        <span class="hljs-string">"id"</span>
+                      ] /* key_parts */
+                    },
+                    {
+                      <span class="hljs-string">"index"</span>: <span class="hljs-string">"idx_key_part"</span>,  <span class="hljs-comment"># idx_keypart&#19981;&#21487;&#29992;</span>
+                      <span class="hljs-string">"usable"</span>: <span class="hljs-literal">false</span>,
+                      <span class="hljs-string">"cause"</span>: <span class="hljs-string">"not_applicable"</span>
+                    }
+                  ] /* potential_range_indexes */,
+                  <span class="hljs-string">"setup_range_conditions"</span>: [
+                  ] /* setup_range_conditions */,
+                  <span class="hljs-string">"group_index_range"</span>: {
+                    <span class="hljs-string">"chosen"</span>: <span class="hljs-literal">false</span>,
+                    <span class="hljs-string">"cause"</span>: <span class="hljs-string">"not_group_by_or_distinct"</span>
+                  } /* group_index_range */,
+                  
+                  <span class="hljs-comment"># &#20998;&#26512;&#21508;&#31181;&#21487;&#33021;&#20351;&#29992;&#30340;&#32034;&#24341;&#30340;&#25104;&#26412;</span>
+                  <span class="hljs-string">"analyzing_range_alternatives"</span>: {
+                    <span class="hljs-string">"range_scan_alternatives"</span>: [
+                      {
+                        <span class="hljs-comment"># &#20351;&#29992;idx_key2&#30340;&#25104;&#26412;&#20998;&#26512;</span>
+                        <span class="hljs-string">"index"</span>: <span class="hljs-string">"idx_key2"</span>,
+                        <span class="hljs-comment"># &#20351;&#29992;idx_key2&#30340;&#33539;&#22260;&#21306;&#38388;</span>
+                        <span class="hljs-string">"ranges"</span>: [
+                          <span class="hljs-string">"NULL &lt; key2 &lt; 1000000"</span>
+                        ] /* ranges */,
+                        <span class="hljs-string">"index_dives_for_eq_ranges"</span>: <span class="hljs-literal">true</span>,   <span class="hljs-comment"># &#26159;&#21542;&#20351;&#29992;index dive</span>
+                        <span class="hljs-string">"rowid_ordered"</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment"># &#20351;&#29992;&#35813;&#32034;&#24341;&#33719;&#21462;&#30340;&#35760;&#24405;&#26159;&#21542;&#25353;&#29031;&#20027;&#38190;&#25490;&#24207;</span>
+                        <span class="hljs-string">"using_mrr"</span>: <span class="hljs-literal">false</span>,     <span class="hljs-comment"># &#26159;&#21542;&#20351;&#29992;mrr</span>
+                        <span class="hljs-string">"index_only"</span>: <span class="hljs-literal">false</span>,    <span class="hljs-comment"># &#26159;&#21542;&#26159;&#32034;&#24341;&#35206;&#30422;&#35775;&#38382;</span>
+                        <span class="hljs-string">"rows"</span>: 12,     <span class="hljs-comment"># &#20351;&#29992;&#35813;&#32034;&#24341;&#33719;&#21462;&#30340;&#35760;&#24405;&#26465;&#25968;</span>
+                        <span class="hljs-string">"cost"</span>: 15.41,  <span class="hljs-comment"># &#20351;&#29992;&#35813;&#32034;&#24341;&#30340;&#25104;&#26412;</span>
+                        <span class="hljs-string">"chosen"</span>: <span class="hljs-literal">true</span>  <span class="hljs-comment"># &#26159;&#21542;&#36873;&#25321;&#35813;&#32034;&#24341;</span>
+                      },
+                      {
+                        <span class="hljs-comment"># &#20351;&#29992;idx_key1&#30340;&#25104;&#26412;&#20998;&#26512;</span>
+                        <span class="hljs-string">"index"</span>: <span class="hljs-string">"idx_key1"</span>,
+                        <span class="hljs-comment"># &#20351;&#29992;idx_key1&#30340;&#33539;&#22260;&#21306;&#38388;</span>
+                        <span class="hljs-string">"ranges"</span>: [
+                          <span class="hljs-string">"z &lt; key1"</span>
+                        ] /* ranges */,
+                        <span class="hljs-string">"index_dives_for_eq_ranges"</span>: <span class="hljs-literal">true</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"rowid_ordered"</span>: <span class="hljs-literal">false</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"using_mrr"</span>: <span class="hljs-literal">false</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"index_only"</span>: <span class="hljs-literal">false</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"rows"</span>: 266,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"cost"</span>: 320.21,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"chosen"</span>: <span class="hljs-literal">false</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"cause"</span>: <span class="hljs-string">"cost"</span>   <span class="hljs-comment"># &#22240;&#20026;&#25104;&#26412;&#22826;&#22823;&#25152;&#20197;&#19981;&#36873;&#25321;&#35813;&#32034;&#24341;</span>
+                      },
+                      {
+                        <span class="hljs-comment"># &#20351;&#29992;idx_key3&#30340;&#25104;&#26412;&#20998;&#26512;</span>
+                        <span class="hljs-string">"index"</span>: <span class="hljs-string">"idx_key3"</span>,
+                        <span class="hljs-comment"># &#20351;&#29992;idx_key3&#30340;&#33539;&#22260;&#21306;&#38388;</span>
+                        <span class="hljs-string">"ranges"</span>: [
+                          <span class="hljs-string">"a &lt;= key3 &lt;= a"</span>,
+                          <span class="hljs-string">"b &lt;= key3 &lt;= b"</span>,
+                          <span class="hljs-string">"c &lt;= key3 &lt;= c"</span>
+                        ] /* ranges */,
+                        <span class="hljs-string">"index_dives_for_eq_ranges"</span>: <span class="hljs-literal">true</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"rowid_ordered"</span>: <span class="hljs-literal">false</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"using_mrr"</span>: <span class="hljs-literal">false</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"index_only"</span>: <span class="hljs-literal">false</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"rows"</span>: 21,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"cost"</span>: 28.21,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"chosen"</span>: <span class="hljs-literal">false</span>,   <span class="hljs-comment"># &#21516;&#19978;</span>
+                        <span class="hljs-string">"cause"</span>: <span class="hljs-string">"cost"</span>   <span class="hljs-comment"># &#21516;&#19978;</span>
+                      }
+                    ] /* range_scan_alternatives */,
+                    
+                    <span class="hljs-comment"># &#20998;&#26512;&#20351;&#29992;&#32034;&#24341;&#21512;&#24182;&#30340;&#25104;&#26412;</span>
+                    <span class="hljs-string">"analyzing_roworder_intersect"</span>: {
+                      <span class="hljs-string">"usable"</span>: <span class="hljs-literal">false</span>,
+                      <span class="hljs-string">"cause"</span>: <span class="hljs-string">"too_few_roworder_scans"</span>
+                    } /* analyzing_roworder_intersect */
+                  } /* analyzing_range_alternatives */,
+                  
+                  <span class="hljs-comment"># &#23545;&#20110;&#19978;&#36848;&#21333;&#34920;&#26597;&#35810;s1&#26368;&#20248;&#30340;&#35775;&#38382;&#26041;&#27861;</span>
+                  <span class="hljs-string">"chosen_range_access_summary"</span>: {
+                    <span class="hljs-string">"range_access_plan"</span>: {
+                      <span class="hljs-string">"type"</span>: <span class="hljs-string">"range_scan"</span>,
+                      <span class="hljs-string">"index"</span>: <span class="hljs-string">"idx_key2"</span>,
+                      <span class="hljs-string">"rows"</span>: 12,
+                      <span class="hljs-string">"ranges"</span>: [
+                        <span class="hljs-string">"NULL &lt; key2 &lt; 1000000"</span>
+                      ] /* ranges */
+                    } /* range_access_plan */,
+                    <span class="hljs-string">"rows_for_plan"</span>: 12,
+                    <span class="hljs-string">"cost_for_plan"</span>: 15.41,
+                    <span class="hljs-string">"chosen"</span>: <span class="hljs-literal">true</span>
+                  } /* chosen_range_access_summary */
+                } /* range_analysis */
+              }
+            ] /* rows_estimation */
+          },
+          {
+            
+            <span class="hljs-comment"># &#20998;&#26512;&#21508;&#31181;&#21487;&#33021;&#30340;&#25191;&#34892;&#35745;&#21010;</span>
+            <span class="hljs-comment">#&#65288;&#23545;&#22810;&#34920;&#26597;&#35810;&#36825;&#21487;&#33021;&#26377;&#24456;&#22810;&#31181;&#19981;&#21516;&#30340;&#26041;&#26696;&#65292;&#21333;&#34920;&#26597;&#35810;&#30340;&#26041;&#26696;&#19978;&#36793;&#24050;&#32463;&#20998;&#26512;&#36807;&#20102;&#65292;&#30452;&#25509;&#36873;&#21462;idx_key2&#23601;&#22909;&#65289;</span>
+            <span class="hljs-string">"considered_execution_plans"</span>: [
+              {
+                <span class="hljs-string">"plan_prefix"</span>: [
+                ] /* plan_prefix */,
+                <span class="hljs-string">"table"</span>: <span class="hljs-string">"`s1`"</span>,
+                <span class="hljs-string">"best_access_path"</span>: {
+                  <span class="hljs-string">"considered_access_paths"</span>: [
+                    {
+                      <span class="hljs-string">"rows_to_scan"</span>: 12,
+                      <span class="hljs-string">"access_type"</span>: <span class="hljs-string">"range"</span>,
+                      <span class="hljs-string">"range_details"</span>: {
+                        <span class="hljs-string">"used_index"</span>: <span class="hljs-string">"idx_key2"</span>
+                      } /* range_details */,
+                      <span class="hljs-string">"resulting_rows"</span>: 12,
+                      <span class="hljs-string">"cost"</span>: 17.81,
+                      <span class="hljs-string">"chosen"</span>: <span class="hljs-literal">true</span>
+                    }
+                  ] /* considered_access_paths */
+                } /* best_access_path */,
+                <span class="hljs-string">"condition_filtering_pct"</span>: 100,
+                <span class="hljs-string">"rows_for_plan"</span>: 12,
+                <span class="hljs-string">"cost_for_plan"</span>: 17.81,
+                <span class="hljs-string">"chosen"</span>: <span class="hljs-literal">true</span>
+              }
+            ] /* considered_execution_plans */
+          },
+          {
+            <span class="hljs-comment"># &#23581;&#35797;&#32473;&#26597;&#35810;&#28155;&#21152;&#19968;&#20123;&#20854;&#20182;&#30340;&#26597;&#35810;&#26465;&#20214;</span>
+            <span class="hljs-string">"attaching_conditions_to_tables"</span>: {
+              <span class="hljs-string">"original_condition"</span>: <span class="hljs-string">"((`s1`.`key1` &gt; 'z') and (`s1`.`key2` &lt; 1000000) and (`s1`.`key3` in ('a','b','c')) and (`s1`.`common_field` = 'abc'))"</span>,
+              <span class="hljs-string">"attached_conditions_computation"</span>: [
+              ] /* attached_conditions_computation */,
+              <span class="hljs-string">"attached_conditions_summary"</span>: [
+                {
+                  <span class="hljs-string">"table"</span>: <span class="hljs-string">"`s1`"</span>,
+                  <span class="hljs-string">"attached"</span>: <span class="hljs-string">"((`s1`.`key1` &gt; 'z') and (`s1`.`key2` &lt; 1000000) and (`s1`.`key3` in ('a','b','c')) and (`s1`.`common_field` = 'abc'))"</span>
+                }
+              ] /* attached_conditions_summary */
+            } /* attaching_conditions_to_tables */
+          },
+          {
+            <span class="hljs-comment"># &#20877;&#31245;&#31245;&#30340;&#25913;&#36827;&#19968;&#19979;&#25191;&#34892;&#35745;&#21010;</span>
+            <span class="hljs-string">"refine_plan"</span>: [
+              {
+                <span class="hljs-string">"table"</span>: <span class="hljs-string">"`s1`"</span>,
+                <span class="hljs-string">"pushed_index_condition"</span>: <span class="hljs-string">"(`s1`.`key2` &lt; 1000000)"</span>,
+                <span class="hljs-string">"table_condition_attached"</span>: <span class="hljs-string">"((`s1`.`key1` &gt; 'z') and (`s1`.`key3` in ('a','b','c')) and (`s1`.`common_field` = 'abc'))"</span>
+              }
+            ] /* refine_plan */
+          }
+        ] /* steps */
+      } /* join_optimization */
+    },
+    {
+      <span class="hljs-string">"join_execution"</span>: {    <span class="hljs-comment"># execute&#38454;&#27573;</span>
+        <span class="hljs-string">"select#"</span>: 1,
+        <span class="hljs-string">"steps"</span>: [
+        ] /* steps */
+      } /* join_execution */
+    }
+  ] /* steps */
+}
+
+<span class="hljs-comment"># &#22240;&#20248;&#21270;&#36807;&#31243;&#25991;&#26412;&#22826;&#22810;&#32780;&#20002;&#24323;&#30340;&#25991;&#26412;&#23383;&#33410;&#22823;&#23567;&#65292;&#20540;&#20026;0&#26102;&#34920;&#31034;&#24182;&#27809;&#26377;&#20002;&#24323;</span>
+MISSING_BYTES_BEYOND_MAX_MEM_SIZE: 0
+
+<span class="hljs-comment"># &#26435;&#38480;&#23383;&#27573;</span>
+INSUFFICIENT_PRIVILEGES: 0
+
+1 row <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)
+</code></pre>
+<p>
+ &#22823;&#23478;&#30475;&#21040;&#36825;&#20010;&#36755;&#20986;&#30340;&#31532;&#19968;&#24863;&#35273;&#23601;&#26159;&#36825;&#25991;&#26412;&#20063;&#22826;&#22810;&#20102;&#28857;&#20799;&#21543;&#65292;&#20854;&#23454;&#36825;&#21482;&#26159;&#20248;&#21270;&#22120;&#25191;&#34892;&#36807;&#31243;&#20013;&#30340;&#19968;&#23567;&#37096;&#20998;&#65292;&#35774;&#35745;
+ <code>
+  MySQL
+ </code>
+ &#30340;&#22823;&#21460;&#21487;&#33021;&#20250;&#22312;&#20043;&#21518;&#30340;&#29256;&#26412;&#20013;&#28155;&#21152;&#26356;&#22810;&#30340;&#20248;&#21270;&#36807;&#31243;&#20449;&#24687;&#12290;&#19981;&#36807;&#26434;&#20081;&#20043;&#20013;&#20854;&#23454;&#36824;&#26159;&#34542;&#26377;&#35268;&#24459;&#30340;&#65292;&#20248;&#21270;&#36807;&#31243;&#22823;&#33268;&#20998;&#20026;&#20102;&#19977;&#20010;&#38454;&#27573;&#65306;
+</p>
+<ul>
+ <li>
+  <p>
+   <code>
+    prepare
+   </code>
+   &#38454;&#27573;
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    optimize
+   </code>
+   &#38454;&#27573;
+  </p>
+ </li>
+ <li>
+  <p>
+   <code>
+    execute
+   </code>
+   &#38454;&#27573;
+  </p>
+ </li>
+</ul>
+<p>
+ &#25105;&#20204;&#25152;&#35828;&#30340;&#22522;&#20110;&#25104;&#26412;&#30340;&#20248;&#21270;&#20027;&#35201;&#38598;&#20013;&#22312;
+ <code>
+  optimize
+ </code>
+ &#38454;&#27573;&#65292;&#23545;&#20110;&#21333;&#34920;&#26597;&#35810;&#26469;&#35828;&#65292;&#25105;&#20204;&#20027;&#35201;&#20851;&#27880;
+ <code>
+  optimize
+ </code>
+ &#38454;&#27573;&#30340;
+ <code>
+  "rows_estimation"
+ </code>
+ &#36825;&#20010;&#36807;&#31243;&#65292;&#36825;&#20010;&#36807;&#31243;&#28145;&#20837;&#20998;&#26512;&#20102;&#23545;&#21333;&#34920;&#26597;&#35810;&#30340;&#21508;&#31181;&#25191;&#34892;&#26041;&#26696;&#30340;&#25104;&#26412;&#65307;&#23545;&#20110;&#22810;&#34920;&#36830;&#25509;&#26597;&#35810;&#26469;&#35828;&#65292;&#25105;&#20204;&#26356;&#22810;&#38656;&#35201;&#20851;&#27880;
+ <code>
+  "considered_execution_plans"
+ </code>
+ &#36825;&#20010;&#36807;&#31243;&#65292;&#36825;&#20010;&#36807;&#31243;&#37324;&#20250;&#20889;&#26126;&#21508;&#31181;&#19981;&#21516;&#30340;&#36830;&#25509;&#26041;&#24335;&#25152;&#23545;&#24212;&#30340;&#25104;&#26412;&#12290;&#21453;&#27491;&#20248;&#21270;&#22120;&#26368;&#32456;&#20250;&#36873;&#25321;&#25104;&#26412;&#26368;&#20302;&#30340;&#37027;&#31181;&#26041;&#26696;&#26469;&#20316;&#20026;&#26368;&#32456;&#30340;&#25191;&#34892;&#35745;&#21010;&#65292;&#20063;&#23601;&#26159;&#25105;&#20204;&#20351;&#29992;
+ <code>
+  EXPLAIN
+ </code>
+ &#35821;&#21477;&#25152;&#23637;&#29616;&#20986;&#30340;&#37027;&#31181;&#26041;&#26696;&#12290;
+</p>
+<p>
+ &#22914;&#26524;&#26377;&#23567;&#20249;&#20276;&#23545;&#20351;&#29992;
+ <code>
+  EXPLAIN
+ </code>
+ &#35821;&#21477;&#23637;&#31034;&#20986;&#30340;&#23545;&#26576;&#20010;&#26597;&#35810;&#30340;&#25191;&#34892;&#35745;&#21010;&#24456;&#19981;&#29702;&#35299;&#65292;&#22823;&#23478;&#21487;&#20197;&#23581;&#35797;&#20351;&#29992;
+ <code>
+  optimizer trace
+ </code>
+ &#21151;&#33021;&#26469;&#35814;&#32454;&#20102;&#35299;&#27599;&#19968;&#31181;&#25191;&#34892;&#26041;&#26696;&#23545;&#24212;&#30340;&#25104;&#26412;&#65292;&#30456;&#20449;&#36825;&#20010;&#21151;&#33021;&#33021;&#35753;&#22823;&#23478;&#26356;&#28145;&#20837;&#30340;&#20102;&#35299;
+ <code>
+  MySQL
+ </code>
+ &#26597;&#35810;&#20248;&#21270;&#22120;&#12290;
+</p>
+
+</div>
+
+</div>
+</div>

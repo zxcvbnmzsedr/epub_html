@@ -1,0 +1,1230 @@
+<div><div class="markdown-body">
+    <h1>&#22914;&#20309;&#35774;&#35745;&#19968;&#20010;&#25490;&#34892;&#27036;&#65311;</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="e9e8d2ec807c475a63f62e8faca1f8c7">
+  <span class="ne-text">
+   &#25490;&#34892;&#27036;&#21040;&#22788;&#21487;&#35265;&#65292;&#27604;&#22914;&#30452;&#25773;&#38388;&#36865;&#31036;&#29289;&#30340;&#25490;&#34892;&#27036;&#12289;&#26379;&#21451;&#22280;&#30340;&#24494;&#20449;&#27493;&#25968;&#25490;&#34892;&#27036;&#12289;&#29579;&#32773;&#33635;&#32768;&#20013;&#30340;&#27573;&#20301;&#25490;&#34892;&#27036;&#31561;&#31561;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="e38c2cb0596a87b636dca01d94324729">
+  <br>
+ </p>
+ <p class="ne-p" id="4c79bb541f9e4759277bfb3c7c51e5f5">
+  <img class="ne-image" id="qq2dv" src="EPUB/imgqq2dv" width="483">
+ </p>
+ <p class="ne-p" id="679bde067f53660c3790dae795e3c884">
+  <br>
+ </p>
+ <p class="ne-p" id="66476a2cb2e786b274050c10908626a9">
+  <span class="ne-text">
+   &#20170;&#22825;&#35753;&#25105;&#20204;&#20174;&#31243;&#24207;&#35774;&#35745;&#30340;&#35282;&#24230;&#65292;&#26469;&#30475;&#30475;&#22914;&#20309;&#35774;&#35745;&#19968;&#20010;&#25490;&#34892;&#27036;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="75f3960590864e9f581c5f5ee6be9a73">
+  <br>
+ </p>
+ <p class="ne-p" id="211c3c00cf02b3509da336ccd1f45db9">
+  <span class="ne-text">
+   &#25105;&#20204;&#20808;&#20174;&#26368;&#22522;&#30784;&#30340;&#23454;&#29616;&#26041;&#24335;&#26469;&#35828;&#36215;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="4527f81eb91ff02e712d0269aa79f671">
+  <br>
+ </p>
+ <h2 id="1d5e36b4">
+  <span class="ne-text">
+   MySQL &#30340; ORDER BY &#20851;&#38190;&#23383;
+  </span>
+ </h2>
+ <p class="ne-p" id="36793584c331df14bd12f4dc91ef7660">
+  <br>
+ </p>
+ <p class="ne-p" id="3481d3145e60f653f2204b5dd9266f1d">
+  <span class="ne-text">
+   &#31532;&#19968;&#31181;&#35201;&#20171;&#32461;&#30340;&#23454;&#29616;&#26041;&#24335;&#23601;&#26159;&#30452;&#25509;&#20351;&#29992; MySQL &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ORDER BY
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#38190;&#23383;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ORDER BY
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#38190;&#23383;&#21487;&#20197;&#23545;&#26597;&#35810;&#20986;&#26469;&#30340;&#25968;&#25454;&#25353;&#29031;&#25351;&#23450;&#30340;&#23383;&#27573;&#36827;&#34892;&#25490;&#24207;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="23018ea59cbba430f4fb2146548215d1">
+  <br>
+ </p>
+ <p class="ne-p" id="c68ec649628db025e7cd86133bc57ac7">
+  <span class="ne-text">
+   &#25105;&#30456;&#20449;&#20294;&#20961;&#26159;&#23398;&#36807; MySQL &#30340;&#20154;&#65292;&#19968;&#23450;&#37117;&#29992;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ORDER BY
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#38190;&#23383;&#65281;&#27809;&#29992;&#36807;&#30340;&#65292;&#20808;&#19981;&#35201;&#30475;&#19979;&#38754;&#30340;&#25991;&#31456;&#20102;&#65292;&#40635;&#28902;&#40664;&#40664;&#21453;&#24605; 3 &#20998;&#38047;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="9d396cfc72da3b30005c5392e712d6ea">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-sql" data-language="sql" id="19fa35f2">SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC/DESC;</pre>
+ <p class="ne-p" id="43de0bb7f8b2eae2189ce9e9c92d7851">
+  <br>
+ </p>
+ <p class="ne-p" id="50f007c6d30a9bbd2b78f39e2fb6683b">
+  <span class="ne-text">
+   &#25105;&#20043;&#21069;&#22312;&#19968;&#20010;&#29992;&#25143;&#25968;&#25454;&#37327;&#19981;&#22823;&#65288;6w &#29992;&#25143;&#24038;&#21491;&#65289;&#24182;&#19988;&#25490;&#24207;&#38656;&#27714;&#24182;&#19981;&#22797;&#26434;&#30340;&#39033;&#30446;&#20013;&#20351;&#29992;&#30340;&#23601;&#26159;&#36825;&#31181;&#26041;&#27861;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="36e8de2d456f3ab97f888aaead8ebf2f">
+  <br>
+ </p>
+ <p class="ne-p" id="0910c115b422f8d55a8e81ea13d67249">
+  <span class="ne-text">
+   &#36825;&#31181;&#26041;&#24335;&#30340;&#20248;&#32570;&#28857;&#20063;&#27604;&#36739;&#26126;&#26174;&#12290;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#22909;&#22788;&#26159;&#27604;&#36739;&#31616;&#21333;&#65292;&#19981;&#38656;&#35201;&#24341;&#20837;&#39069;&#22806;&#30340;&#32452;&#20214;&#65292;&#25104;&#26412;&#27604;&#36739;&#20302;&#12290;&#22351;&#22788;&#23601;&#26159;&#27599;&#27425;&#29983;&#25104;&#25490;&#34892;&#27036;&#37117;&#27604;&#36739;&#32791;&#26102;&#65292;&#23545;&#25968;&#25454;&#24211;&#30340;&#24615;&#33021;&#28040;&#32791;&#38750;&#24120;&#20043;&#22823;&#65292;&#25968;&#25454;&#37327;&#19968;&#22823;&#65292;&#19994;&#21153;&#22330;&#26223;&#31245;&#24494;&#22797;&#26434;&#19968;&#28857;&#23601;&#39030;&#19981;&#20303;&#20102;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="8906c91e4676c0bde039caebf0539c0d">
+  <br>
+ </p>
+ <p class="ne-p" id="04d8022e4c4f614583e07d5bc62cf494">
+  <span class="ne-text">
+   &#25105;&#20204;&#36825;&#37324;&#21019;&#24314;&#19968;&#20010;&#21517;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    cus_order
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#34920;&#65292;&#26469;&#23454;&#38469;&#27979;&#35797;&#19968;&#19979;&#36825;&#31181;&#25490;&#24207;&#26041;&#24335;&#12290;&#20026;&#20102;&#27979;&#35797;&#26041;&#20415;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    cus_order
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#24352;&#34920;&#21482;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    id
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    name
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825; 3 &#20010;&#23383;&#27573;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="35f53ad0e671f916934353c20a8e0a23">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-sql" data-language="sql" id="ebba7928">CREATE TABLE `cus_order` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `score` int(11) NOT NULL,
+  `name` varchar(11) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=100000 DEFAULT CHARSET=utf8mb4;</pre>
+ <p class="ne-p" id="a4fa39c1f750030d128f5e775760ebef">
+  <br>
+ </p>
+ <p class="ne-p" id="f9095465ed29569f198076d6cec4ed5b">
+  <span class="ne-text">
+   &#25105;&#20204;&#23450;&#20041;&#19968;&#20010;&#31616;&#21333;&#30340;&#23384;&#20648;&#36807;&#31243;&#65288;PROCEDURE&#65289;&#26469;&#25554;&#20837; 100w &#27979;&#35797;&#25968;&#25454;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="f969ea3a90b23265ba18d13a561302ab">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-sql" data-language="sql" id="cf3995e7">DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `BatchinsertDataToCusOder`(IN start_num INT,IN max_num INT)
+BEGIN
+      DECLARE i INT default start_num;
+      WHILE i &lt; max_num DO
+          insert into `cus_order`(`id`, `score`, `name`)
+          values (i,RAND() * 1000000,CONCAT('user', i));
+          SET i = i + 1;
+      END WHILE;
+  END;;
+DELIMITER ;</pre>
+ <p class="ne-p" id="b44ed9b04ea17fd7a95c5158cf400ffd">
+  <br>
+ </p>
+ <p class="ne-p" id="a538a58259eff656d0b0f8c7dd10050a">
+  <span class="ne-text">
+   &#23384;&#20648;&#36807;&#31243;&#23450;&#20041;&#23436;&#25104;&#20043;&#21518;&#65292;&#25105;&#20204;&#25191;&#34892;&#23384;&#20648;&#36807;&#31243;&#21363;&#21487;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="57ae1b36b37e62907cba75e7c625f0bc">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-sql" data-language="sql" id="7f9d6081">CALL BatchinsertDataToCusOder(1, 1000000); # &#25554;&#20837;100w+&#30340;&#38543;&#26426;&#25968;&#25454;</pre>
+ <p class="ne-p" id="595bd13b88c92b415d28d01d8b32412f">
+  <br>
+ </p>
+ <p class="ne-p" id="6ddb82b4aee19f3a7aafe148ff6d02c1">
+  <span class="ne-text">
+   &#31561;&#24453;&#19968;&#20250;&#65292;100w &#30340;&#27979;&#35797;&#25968;&#25454;&#23601;&#25554;&#20837;&#23436;&#25104;&#20102;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="7c5cfab02a67c719e3c94b921fbe0a7b">
+  <br>
+ </p>
+ <p class="ne-p" id="e8afaf7375aa5cb848433e5f28e4e161">
+  <span class="ne-text">
+   &#20026;&#20102;&#33021;&#22815;&#23545;&#36825; 100w &#25968;&#25454;&#25353;&#29031;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36827;&#34892;&#25490;&#24207;&#65292;&#25105;&#20204;&#38656;&#35201;&#25191;&#34892;&#19979;&#38754;&#30340; SQL &#35821;&#21477;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="d5b4feeb62a5924e0b7f1a4b31f40a40">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-sql" data-language="sql" id="ae51d4ce">SELECT `score`,`name` FROM `cus_order` ORDER BY `score` DESC;#&#38477;&#24207;&#25490;&#24207;</pre>
+ <p class="ne-p" id="09ee876ebb8f7b1317d6f51339a794a2">
+  <br>
+ </p>
+ <p class="ne-p" id="25ac2605e75b19aa3a9a23b2c99f94c5">
+  <span class="ne-text">
+   &#20026;&#20102;&#33021;&#22815;&#26597;&#30475;&#36825;&#22871; SQL &#35821;&#21477;&#30340;&#25191;&#34892;&#26102;&#38388;&#65292;&#25105;&#20204;&#38656;&#35201;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    show profiles
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="4f7fb2dd1ca1b2a08e7ff7e5b2783d38">
+  <br>
+ </p>
+ <p class="ne-p" id="03e7e399ec4919e733b36246eebf5411">
+  <span class="ne-text">
+   &#19981;&#36807;&#65292;&#35831;&#30830;&#20445;&#20320;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    profiling
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#24320;&#21551;&#65288;on&#65289;&#30340;&#29366;&#24577;&#65288;&#21487;&#20197;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    show variables
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#26597;&#30475;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="d1930aa21dfbad43fa19c99c353f6786">
+  <br>
+ </p>
+ <p class="ne-p" id="04dc55050f820882b0759dd16a53cbe9">
+  <span class="ne-text">
+   &#40664;&#35748;&#24773;&#20917;&#19979;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    profiling
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#20851;&#38381;&#65288;off&#65289;&#30340;&#29366;&#24577;&#65292;&#20320;&#30452;&#25509;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    set @@profiling=1
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#21363;&#21487;&#24320;&#21551;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="496c7379ef4cb97bb758ed9b86fc6d90">
+  <br>
+ </p>
+ <p class="ne-p" id="7e5b4b19f631c45e158b15f62d272bb7">
+  <span class="ne-text">
+   &#28982;&#21518;&#65292;&#25105;&#20204;&#23601;&#26597;&#35810;&#21040;&#20102;&#20855;&#20307;&#30340;&#25191;&#34892;&#36895;&#24230;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="68891bf85dd1ac4bbebf31a518acda0d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-json" data-language="json" id="25218929">{
+  "Query_ID": 6,
+  "Duration": 3.63526325,
+  "Query": "SELECT `score`,`name` FROM `cus_order` ORDER BY `score` DESC"
+}</pre>
+ <p class="ne-p" id="dab14f5d352fd1af2844b5f040ed1b93">
+  <br>
+ </p>
+ <p class="ne-p" id="e9405ea4c895c5ca3ac382822cd457af">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#65292;&#19968;&#20849;&#32791;&#26102;&#20102;&#25509;&#36817; 4 s&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="b4943ba5bf1086ea55f4d5c45bf7db0b">
+  <br>
+ </p>
+ <p class="ne-p" id="ac0dfbdfe3c721f989bbfd05a52ab4ee">
+  <strong>
+   <span class="ne-text">
+    &#22914;&#20309;&#20248;&#21270;&#21602;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#21152;&#32034;&#24341;&#24182;&#19988;&#38480;&#21046;&#25490;&#24207;&#25968;&#25454;&#37327;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#26159;&#19968;&#31181;&#27604;&#36739;&#24120;&#35265;&#30340;&#20248;&#21270;&#26041;&#24335;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="59bc3e681e15ca57c4018c09686a85ce">
+  <br>
+ </p>
+ <p class="ne-p" id="c18dbd2db45bfcd61b1aa13f91b0f451">
+  <span class="ne-text">
+   &#25105;&#20204;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23383;&#27573;&#21152;&#32034;&#24341;&#65292;&#24182;&#38480;&#21046;&#21482;&#25490;&#24207;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25490;&#21517;&#21069; 500 &#30340;&#25968;&#25454;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="721780b4d603eb9090f3d4511d574b0a">
+  <br>
+ </p>
+ <p class="ne-p" id="a444dcfcdf7c98af3dc0ee0d18dde145">
+  <span class="ne-text">
+   &#36825;&#20010;&#26102;&#20505;&#65292;&#25105;&#20204;&#20877;&#25191;&#34892;&#19979;&#38754;&#30340; SQL &#35821;&#21477;&#65292;&#36895;&#24230;&#23601;&#24555;&#20102;&#24456;&#22810;&#65292;&#21482;&#38656;&#35201; 0.01 &#31186;&#23601;&#25490;&#24207;&#20102;&#21069; 500 &#21517;&#30340;&#25968;&#25454;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="7faed526e60dbef9c6843af857c2dc0b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-json" data-language="json" id="672c37ab">{
+  "Query_ID": 38,
+  "Duration": 0.0102915,
+  "Query": "SELECT `score`,`name` FROM `cus_order` ORDER BY `score` DESC LIMIT 500"
+}</pre>
+ <p class="ne-p" id="dd17c86c5e2b65ee03fa644241883aaa">
+  <br>
+ </p>
+ <p class="ne-p" id="aa345dcb129fecf8f642b843659e8690">
+  <span class="ne-text">
+   &#24403;&#28982;&#20102;&#65292;&#36825;&#21482;&#26159;&#19968;&#20010;&#26368;&#31616;&#21333;&#30340;&#22330;&#26223;&#65292;&#23454;&#38469;&#39033;&#30446;&#20013;&#30340;&#22797;&#26434;&#24230;&#35201;&#27604;&#25105;&#36825;&#37324;&#21015;&#20030;&#30340;&#20363;&#23376;&#22797;&#26434;&#24456;&#22810;&#65292;&#25191;&#34892;&#36895;&#24230;&#20063;&#20250;&#24930;&#24456;&#22810;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="8565188e91745a725edde3c70ac5d12b">
+  <br>
+ </p>
+ <p class="ne-p" id="bbd456405a3687e8ce3903387d968444">
+  <span class="ne-text">
+   &#19981;&#36807;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#33021;&#19981;&#29992; MySQL &#30340; ORDER BY &#20851;&#38190;&#23383;&#36824;&#26159;&#35201;&#30475;&#20855;&#20307;&#30340;&#19994;&#21153;&#22330;&#26223;&#12290;&#22914;&#26524;&#35828;&#20320;&#30340;&#39033;&#30446;&#38656;&#35201;&#25490;&#24207;&#25968;&#25454;&#37327;&#27604;&#36739;&#23567;&#24182;&#19988;&#19994;&#21153;&#22330;&#26223;&#19981;&#22797;&#26434;&#30340;&#35805;&#65288;&#27604;&#22914;&#20320;&#23545;&#20320;&#21338;&#23458;&#30340;&#25152;&#26377;&#25991;&#31456;&#25353;&#29031;&#38405;&#35835;&#37327;&#26469;&#25490;&#24207;&#65289;&#65292;&#25105;&#35273;&#24471;&#30452;&#25509;&#20351;&#29992; MySQL &#30340;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     ORDER BY
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#20851;&#38190;&#23383;&#23601;&#21487;&#20197;&#20102;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="6d9b14b6459b7200a664ae8c7e07c61c">
+  <br>
+ </p>
+ <h2 id="9fe4f07d">
+  <span class="ne-text">
+   Redis &#30340; sorted set
+  </span>
+ </h2>
+ <p class="ne-p" id="88dde7a76243771e6580f7cdcd1338e7">
+  <br>
+ </p>
+ <p class="ne-p" id="8314171d3f035c6defd67ab9bc34c611">
+  <img class="ne-image" id="MgjfX" src="EPUB/imgMgjfX" width="956">
+ </p>
+ <p class="ne-p" id="a72eaad9eb93ec81a39a7bd6a206a231">
+  <br>
+ </p>
+ <p class="ne-p" id="49892e31d3c36601e4d975f6c6aa1cc6">
+  <span class="ne-text">
+   &#20102;&#35299;&#36807; Redis &#24120;&#35265;&#25968;&#25454;&#32467;&#26500;&#30340;&#23567;&#20249;&#20276;&#65292;&#37117;&#30693;&#36947; Redis &#20013;&#26377;&#19968;&#20010;&#21483;&#20570;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#25968;&#25454;&#32467;&#26500;&#32463;&#24120;&#34987;&#29992;&#22312;&#21508;&#31181;&#25490;&#34892;&#27036;&#30340;&#22330;&#26223;&#19979;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="d91337e926e8af17c36ee372962086bf">
+  <br>
+ </p>
+ <p class="ne-p" id="1575e3921c2ffb5638b03e430a578259">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#25105;&#20204;&#33021;&#22815;&#36731;&#26494;&#24212;&#23545;&#30334;&#19975;&#32423;&#21035;&#30340;&#29992;&#25143;&#25968;&#25454;&#25490;&#24207;&#12290;&#36825;&#31616;&#30452;&#23601;&#26159;&#19987;&#38376;&#20026;&#25490;&#34892;&#27036;&#35774;&#35745;&#30340;&#25968;&#25454;&#32467;&#26500;&#21834;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="06084779265e8ff93745ef3fcbafe657">
+  <br>
+ </p>
+ <p class="ne-p" id="0fd5fd74d0e82a21ac285e460ba2423b">
+  <span class="ne-text">
+   Redis &#20013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26377;&#28857;&#31867;&#20284;&#20110; Java &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    TreeSet
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    HashMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#32467;&#21512;&#20307;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#25968;&#25454;&#20250;&#25353;&#29031;&#26435;&#37325;&#21442;&#25968;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20540;&#36827;&#34892;&#25490;&#24207;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="413d69646f2a473adab64aff35169600">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="3f6623bd">ZADD key [NX|XX] [GT|LT] [CH] [INCR] score member [score member ...]</pre>
+ <table class="ne-table" id="0b7819fb" style="width: 750px">
+  <tbody>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="ua258747f">
+      <span class="ne-text">
+       User
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="uac406acd">
+      <span class="ne-text">
+       Score
+      </span>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="u47168126">
+      <span class="ne-text">
+       user1
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="u673dc157">
+      <span class="ne-text">
+       112.0
+      </span>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="u4f3f200c">
+      <span class="ne-text">
+       user2
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="uedd9f03c">
+      <span class="ne-text">
+       100.0
+      </span>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="u5e3103d7">
+      <span class="ne-text">
+       user3
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="uf99d3117">
+      <span class="ne-text">
+       123.0
+      </span>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="u2269162a">
+      <span class="ne-text">
+       user4
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="u5e9c8645">
+      <span class="ne-text">
+       100.0
+      </span>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="u75cc277c">
+      <span class="ne-text">
+       user5
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="ubfd1d5c9">
+      <span class="ne-text">
+       33.0
+      </span>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="ucbc2e404">
+      <span class="ne-text">
+       user6
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="u5e6d6189">
+      <span class="ne-text">
+       993.0
+      </span>
+     </p>
+    </td>
+   </tr>
+  </tbody>
+ </table>
+ <p class="ne-p" id="eeb8706ee406a55c80f8ded750a6dec3">
+  <br>
+ </p>
+ <p class="ne-p" id="b9b60afa08c5e4a4ad8239806bce7f9e">
+  <span class="ne-text">
+   &#25105;&#20204;&#36825;&#37324;&#31616;&#21333;&#26469;&#28436;&#31034;&#19968;&#19979;&#12290;&#25105;&#20204;&#25226;&#19978;&#34920;&#20013;&#30340;&#25968;&#25454;&#28155;&#21152;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="35077df087ccfe82c906bf0b3a15224d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="81d87083"># &#36890;&#36807; zadd &#21629;&#20196;&#28155;&#21152;&#20102; 6 &#20010;&#20803;&#32032;&#21040; cus_order_set &#20013;
+127.0.0.1:6379&gt; ZADD cus_order_set 112.0 user1 100.0 user2 123.0 user3 100.0 user4 33.0 user5 993.0 user6
+(integer) 6</pre>
+ <p class="ne-p" id="fcbfa1f30ca1a0a0e4bdcc5203c9e8d4">
+  <br>
+ </p>
+ <p class="ne-p" id="df589aa989aca013e3593ca03e61db7f">
+  <img class="ne-image" id="tPKwp" src="EPUB/imgtPKwp" width="801">
+ </p>
+ <p class="ne-p" id="f12fb5e22808a1913503169a250282ac">
+  <br>
+ </p>
+ <p class="ne-p" id="e81ac176f6763873374c42604affa3d1">
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22522;&#26412;&#21487;&#20197;&#28385;&#36275;&#22823;&#37096;&#20998;&#25490;&#34892;&#27036;&#30340;&#22330;&#26223;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="e098e8bd8e2dc66f6a8fd54f0946b966">
+  <br>
+ </p>
+ <p class="ne-p" id="e0ab0a61e83e2c27f2ef7905b3fca39a">
+  <strong>
+   <span class="ne-text">
+    &#22914;&#26524;&#25105;&#20204;&#35201;&#26597;&#30475;&#21253;&#21547;&#25152;&#26377;&#29992;&#25143;&#30340;&#25490;&#34892;&#27036;&#24590;&#20040;&#21150;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ZRANGE
+   </span>
+  </code>
+  <span class="ne-text">
+   (&#20174;&#23567;&#21040;&#22823;&#25490;&#24207;) /
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ZREVRANGE
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65288;&#20174;&#22823;&#21040;&#23567;&#25490;&#24207;&#65289;
+  </span>
+ </p>
+ <p class="ne-p" id="1ca35cf27857475def8b30c86babdb25">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="dae8557d"># -1 &#20195;&#34920;&#30340;&#26159;&#20840;&#37096;&#30340;&#29992;&#25143;&#25968;&#25454;&#65292;
+127.0.0.1:6379&gt; ZREVRANGE cus_order_set 0 -1
+1) "user6"
+2) "user3"
+3) "user1"
+4) "user4"
+5) "user2"
+6) "user5"</pre>
+ <p class="ne-p" id="5590e2c75f6931cbc51fbbd4aadd735d">
+  <br>
+ </p>
+ <p class="ne-p" id="973ae428abc2a59d4fcb54c482d31a07">
+  <strong>
+   <span class="ne-text">
+    &#22914;&#26524;&#25105;&#20204;&#35201;&#26597;&#30475;&#21482;&#21253;&#21547;&#21069; 3 &#21517;&#30340;&#25490;&#34892;&#27036;&#24590;&#20040;&#21150;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#38480;&#23450;&#33539;&#22260;&#21306;&#38388;&#21363;&#21487;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="a0f0570175568cf00e4c025fd3706316">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="dd69f904"># 0 &#20026; start  2 &#20026; stop
+127.0.0.1:6379&gt; ZREVRANGE cus_order_set 0 2
+1) "user6"
+2) "user3"
+3) "user1"</pre>
+ <p class="ne-p" id="71bbcbabdace2f7a2b3ce56077a09ce8">
+  <br>
+ </p>
+ <p class="ne-p" id="22284df4bd01f2a17f3f665c677b8a0c">
+  <strong>
+   <span class="ne-text">
+    &#22914;&#26524;&#25105;&#20204;&#38656;&#35201;&#26597;&#35810;&#26576;&#20010;&#29992;&#25143;&#30340;&#20998;&#25968;&#24590;&#20040;&#21150;&#21602;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ZSCORE
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#21363;&#21487;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="5f35b206e25ec557b3f738e31b0feefe">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="9ddb5aa1">127.0.0.1:6379&gt; ZSCORE  cus_order_set "user1"
+"112"</pre>
+ <p class="ne-p" id="117cc63a63c3deac9a133f2145d66724">
+  <br>
+ </p>
+ <p class="ne-p" id="4b412b7aa0918a1a26bafee9c9c72135">
+  <strong>
+   <span class="ne-text">
+    &#22914;&#26524;&#25105;&#20204;&#38656;&#35201;&#26597;&#35810;&#26576;&#20010;&#29992;&#25143;&#30340;&#25490;&#21517;&#24590;&#20040;&#21150;&#21602;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ZREVRANK
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#21363;&#21487;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="efeeadd1c71a526275d0bdbbafe3de42">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="ae7e8518">127.0.0.1:6379&gt; ZREVRANK  cus_order_set "user3"
+(integer) 1 # user3 &#25490;&#21517;&#31532;2</pre>
+ <p class="ne-p" id="660d29699513c01c8a26113077c6e85e">
+  <br>
+ </p>
+ <p class="ne-p" id="5644796c65c5feb1509047243e603463">
+  <strong>
+   <span class="ne-text">
+    &#22914;&#20309;&#23545;&#29992;&#25143;&#30340;&#25490;&#21517;&#25968;&#25454;&#36827;&#34892;&#26356;&#26032;&#21602;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ZINCRBY
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#21363;&#21487;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="5ba037c7a49093c829a5dad0b08515b0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="b02964f4"># &#23545; user1 &#30340;&#20998;&#25968;&#21152;2
+127.0.0.1:6379&gt; ZINCRBY cus_order_set +2 "user1"
+"114"
+# &#23545; user1 &#30340;&#20998;&#25968;&#20943;1
+127.0.0.1:6379&gt; ZINCRBY cus_order_set -1 "user1"
+"113"
+# &#26597;&#30475; user1 &#30340;&#20998;&#25968;
+127.0.0.1:6379&gt; ZSCORE  cus_order_set "user1"
+"113"</pre>
+ <p class="ne-p" id="18b2dcc2b8395666f2bc790d60520fe0">
+  <br>
+ </p>
+ <p class="ne-p" id="378bc6a2a926f37e8f637cd7dada16c1">
+  <span class="ne-text">
+   &#38500;&#20102;&#25105;&#19978;&#38754;&#25552;&#21040;&#30340;&#20043;&#22806;&#65292;&#36824;&#26377;&#19968;&#20123;&#20854;&#20182;&#30340;&#21629;&#20196;&#26469;&#24110;&#21161;&#20320;&#35299;&#20915;&#26356;&#22810;&#25490;&#34892;&#27036;&#22330;&#26223;&#30340;&#38656;&#27714;&#65292;&#24819;&#35201;&#28145;&#20837;&#30740;&#31350;&#30340;&#23567;&#20249;&#20276;&#21487;&#20197;&#20180;&#32454;&#23398;&#20064;&#21734;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="e2c8e064d64182cd51f197f48e69d67b">
+  <br>
+ </p>
+ <p class="ne-p" id="e552ad96b8f81d14a5f6a56cc0f3aeaf">
+  <span class="ne-text">
+   &#19981;&#36807;&#65292;&#38656;&#35201;&#27880;&#24847;&#30340;&#19968;&#28857;&#26159;&#65306;
+  </span>
+  <strong>
+   <span class="ne-text">
+    Redis &#20013;&#21482;&#20445;&#23384;&#20102;&#25490;&#34892;&#27036;&#23637;&#31034;&#25152;&#38656;&#30340;&#25968;&#25454;&#65292;&#38656;&#35201;&#29992;&#25143;&#30340;&#20855;&#20307;&#20449;&#24687;&#25968;&#25454;&#30340;&#35805;&#65292;&#36824;&#26159;&#38656;&#35201;&#21435;&#23545;&#24212;&#30340;&#25968;&#25454;&#24211;&#65288;&#27604;&#22914; MySQL&#65289;&#20013;&#26597;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="68b954d7a9e9ddfb9c49baad3d82fb47">
+  <br>
+ </p>
+ <p class="ne-p" id="5b0b163e42ac082f347d035546220edb">
+  <strong>
+   <span class="ne-text">
+    &#20320;&#20197;&#20026;&#36825;&#26679;&#23601;&#23436;&#20107;&#20102;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#19981;&#23384;&#22312;&#30340;&#65281;&#36824;&#26377;&#19968;&#20123;&#26080;&#27861;&#20165;&#20165;&#36890;&#36807; Redis &#25552;&#20379;&#30340;&#21629;&#20196;&#35299;&#20915;&#30340;&#22330;&#26223;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="f39c04a598bd9618fbd93f6185b76636">
+  <br>
+ </p>
+ <p class="ne-p" id="8100b7bdaa8a729de26b4d68c50eaf3a">
+  <span class="ne-text">
+   &#27604;&#22914;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#22914;&#20309;&#23454;&#29616;&#22810;&#26465;&#20214;&#25490;&#24207;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#20854;&#23454;&#65292;&#31572;&#26696;&#20063;&#27604;&#36739;&#31616;&#21333;&#65292;&#23545;&#20110;&#22823;&#37096;&#20998;&#22330;&#26223;&#65292;&#25105;&#20204;&#30452;&#25509;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20540;&#20570;&#25991;&#31456;&#21363;&#21487;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="a0624e21d4ba51d6c8de9c785819ed75">
+  <br>
+ </p>
+ <p class="ne-p" id="9844bd84cc5d8295e2efee27dfff92be">
+  <span class="ne-text">
+   &#26356;&#20855;&#20307;&#28857;&#30340;&#35805;&#23601;&#26159;&#65292;&#25105;&#20204;&#26681;&#25454;&#29305;&#23450;&#30340;&#26465;&#20214;&#26469;&#25340;&#25509;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20540;&#21363;&#21487;&#12290;&#27604;&#22914;&#25105;&#20204;&#36824;&#35201;&#21152;&#19978;&#26102;&#38388;&#20808;&#21518;&#26465;&#20214;&#30340;&#35805;&#65292;&#30452;&#25509;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20540;&#28155;&#21152;&#19978;&#26102;&#38388;&#25139;&#21363;&#21487;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="543338f219ee7162c7e6307e1996beba">
+  <br>
+ </p>
+ <p class="ne-p" id="5f2d9d4e226209c710d7c8f461eb936a">
+  <span class="ne-text">
+   &#20877;&#27604;&#22914;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#22914;&#20309;&#23454;&#29616;&#25351;&#23450;&#26085;&#26399;&#65288;&#27604;&#22914;&#26368;&#36817; 7 &#22825;&#65289;&#30340;&#29992;&#25143;&#25968;&#25454;&#25490;&#24207;&#65311;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="87152e261e5e87186ca5f4a0b009f808">
+  <br>
+ </p>
+ <p class="ne-p" id="fbabdb74019459e7fb0483491c9d6e4c">
+  <span class="ne-text">
+   &#25105;&#35828;&#19968;&#31181;&#27604;&#36739;&#31616;&#21333;&#30340;&#26041;&#27861;&#65306;&#25105;&#20204;&#25226;&#27599;&#19968;&#22825;&#30340;&#25968;&#25454;&#37117;&#25353;&#29031;&#26085;&#26399;&#20026;&#21517;&#23383;&#65292;&#27604;&#22914; 20350305 &#23601;&#20195;&#34920; 2035 &#24180; 3 &#26376; 5 &#21495;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="a817ac37d2db585c3e28bd1216446d80">
+  <br>
+ </p>
+ <p class="ne-p" id="0d1bc6ed236885aa1de9690637f1d8fa">
+  <span class="ne-text">
+   &#22914;&#26524;&#25105;&#20204;&#38656;&#35201;&#26597;&#35810;&#26368;&#36817; n &#22825;&#30340;&#25490;&#34892;&#27036;&#25968;&#25454;&#30340;&#35805;&#65292;&#30452;&#25509;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ZUNIONSTORE
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#27714; n &#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#24182;&#38598;&#21363;&#21487;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="3f9cb4fbec289c17ebd75e62235519cb">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="9ab0f277">ZUNIONSTORE last_n_days n 20350305 20350306....</pre>
+ <p class="ne-p" id="378a1eff4be8046f6a9be0315fc24c78">
+  <br>
+ </p>
+ <p class="ne-p" id="07ecf38782c3e74000e83977bb78bdc4">
+  <span class="ne-text">
+   &#25105;&#19981;&#30693;&#36947;&#22823;&#23478;&#30475;&#25026;&#20102;&#27809;&#26377;&#65292;&#25105;&#36825;&#37324;&#36824;&#26159;&#31616;&#21333;&#22320;&#36896;&#19968;&#20123;&#25968;&#25454;&#27169;&#25311;&#19968;&#19979;&#21543;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="4920d43797e34929a6422c0c6c630b84">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="87a4ec3c"># &#20998;&#21035;&#28155;&#21152;&#20102; 3 &#22825;&#30340;&#25968;&#25454;
+127.0.0.1:6379&gt; ZADD 20350305 112.0 user1 100.0 user2 123.0 user3
+(integer) 3
+127.0.0.1:6379&gt; ZADD 20350306 100.0 user4
+(integer) 1
+127.0.0.1:6379&gt; ZADD 20350307 33.0 user5 993.0 user6
+(integer) 2</pre>
+ <p class="ne-p" id="a6d1bfa11fd54459df9aeb0fcd529bdc">
+  <br>
+ </p>
+ <p class="ne-p" id="0e57b8d6939dece7cbed22aae7994df8">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ZUNIONSTORE
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#26469;&#26597;&#30475;&#26368;&#36817; 3 &#22825;&#30340;&#25490;&#34892;&#27036;&#24773;&#20917;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="19fcbcb43b9b6ae6139c2476721dab5c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="3b1649cf">127.0.0.1:6379&gt; ZUNIONSTORE last_n_days 3 20350305 20350306 20350307
+(integer) 6</pre>
+ <p class="ne-p" id="e25503499c1b6823f63c5aef22ebcbe8">
+  <br>
+ </p>
+ <p class="ne-p" id="a97f8d898ef719b42b7e2ae454b1803a">
+  <span class="ne-text">
+   &#29616;&#22312;&#65292;&#36825; 3 &#22825;&#30340;&#25968;&#25454;&#37117;&#38598;&#20013;&#22312;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    last_n_days
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="31bbbbf08b535c40b7fa06edcbe6b3ac">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="35dc3f88">127.0.0.1:6379&gt; ZREVRANGE last_n_days 0 -1
+1) "user6"
+2) "user3"
+3) "user1"
+4) "user4"
+5) "user2"
+6) "user5"</pre>
+ <p class="ne-p" id="2df6cba4e3149256b905bbfe21da6d6b">
+  <br>
+ </p>
+ <p class="ne-p" id="c718dff28124e580b955d8f66dd62e08">
+  <span class="ne-text">
+   &#22914;&#26524;&#19968;&#20010;&#29992;&#25143;&#21516;&#26102;&#22312;&#22810;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#35805;&#65292;&#23427;&#26368;&#32456;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20540;&#23601;&#31561;&#20110;&#36825;&#20123;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#35813;&#29992;&#25143;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20540;&#20043;&#21644;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="471742fea98064f1561a4b68fa0b02de">
+  <br>
+ </p>
+ <p class="ne-p" id="d9d6defab7b0df46bf0de645739ae2b9">
+  <span class="ne-text">
+   &#26082;&#28982;&#21487;&#20197;&#27714;&#24182;&#38598;&#65292;&#37027;&#24517;&#28982;&#20063;&#21487;&#20197;&#27714;&#20132;&#38598;&#12290;&#20320;&#21487;&#20197;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ZINTERSTORE
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#26469;&#27714;&#22810;&#20010; n &#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sorted set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20132;&#38598;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="d0fe2519be83895a2fadd144a43cd730">
+  <br>
+ </p>
+ <p class="ne-p" id="dd2608f9acf1d8911400a44fe3c08449">
+  <strong>
+   <span class="ne-text">
+    &#26377;&#21738;&#20123;&#22330;&#26223;&#21487;&#20197;&#29992;&#21040;&#22810;&#20010;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     sorted set
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#30340;&#20132;&#38598;&#21602;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#27604;&#22914;&#27599;&#26085;&#25171;&#21345;&#30340;&#22330;&#26223;&#65292;&#20320;&#23545;&#26576;&#19968;&#27573;&#26102;&#38388;&#27599;&#22825;&#25171;&#21345;&#30340;&#20154;&#36827;&#34892;&#25490;&#24207;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="6b99baca128b684fc095b58337d322dd">
+  <br>
+ </p>
+ <p class="ne-p" id="207d99395e17869a0ed3d9a305d3f5be">
+  <span class="ne-text">
+   &#36825;&#20010;&#21629;&#20196;&#36824;&#26377;&#19968;&#20010;&#24120;&#29992;&#30340;&#26435;&#37325;&#21442;&#25968;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    weights
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65288;&#40664;&#35748;&#20026; 1&#65289;&#12290;&#22312;&#36827;&#34892;&#24182;&#38598;/&#20132;&#38598;&#30340;&#36807;&#31243;&#20013;&#65292;&#27599;&#20010;&#38598;&#21512;&#20013;&#30340;&#20803;&#32032;&#20250;&#23558;&#33258;&#24049;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    score
+   </span>
+  </code>
+  <span class="ne-text">
+   *
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    weights
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="d7b84429b8a5ab8efc9733ad0aeb73fd">
+  <br>
+ </p>
+ <p class="ne-p" id="e4fdf01d7602bc9fe24ca33530fd937a">
+  <span class="ne-text">
+   &#25105;&#19979;&#38754;&#28436;&#31034;&#19968;&#19979;&#36825;&#20010;&#21442;&#25968;&#30340;&#20316;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="6e62fd31ce86ea57902d7597ab9c1b49">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="a137818c"># staff_set &#23384;&#25918;&#21592;&#24037;&#30340;&#25490;&#21517;&#20449;&#24687;
+127.0.0.1:6379&gt; ZADD staff_set 3.0 staff1 4.0 staff2
+(integer) 2
+# staff_set &#23384;&#25918;&#31649;&#29702;&#32773;&#30340;&#25490;&#21517;&#20449;&#24687;
+127.0.0.1:6379&gt; ZADD manager_set 1.0 manager1 2.0 manager2
+(integer) 2</pre>
+ <p class="ne-p" id="d0331b1c9c12b1f1f6c24e425b3e4612">
+  <br>
+ </p>
+ <p class="ne-p" id="005a64d36037de22b9b86903af967307">
+  <span class="ne-text">
+   &#22914;&#26524;&#65292;&#25105;&#20204;&#38656;&#35201;&#23558;&#21592;&#24037;&#21644;&#31649;&#29702;&#32773;&#25918;&#22312;&#19968;&#36215;&#27604;&#36739;&#65292;&#19981;&#36807;&#65292;&#20004;&#32773;&#26435;&#37325;&#20998;&#21035;&#20026; 1 &#21644; 3&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="62bb8c57f3213e9cd1991800c90fe129">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="00475d51"># staff_set &#30340;&#26435;&#37325;&#20026;1 manager_set&#30340;&#26435;&#37325;&#20026;3
+127.0.0.1:6379&gt; ZUNIONSTORE all_user_set 2 staff_set manager_set WEIGHTS 1 3
+(integer) 4</pre>
+ <p class="ne-p" id="03217a74de4afd7fb4df7e11ca5230eb">
+  <br>
+ </p>
+ <p class="ne-p" id="e6efde03f4cd8225244372ce3155850b">
+  <span class="ne-text">
+   &#26368;&#32456;&#25490;&#24207;&#30340;&#32467;&#26524;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="f2b96ffaae5ac606b7ed2eafde0270cb">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="f66fa00b">127.0.0.1:6379&gt; ZREVRANGE all_user_set 0 -1
+1) "manager2"
+2) "staff2"
+3) "staff1"
+4) "manager1"</pre>
+ <p class="ne-p" id="a6bac60667588e32706b8c4afad99d04">
+  <br>
+ </p>
+ <h2 id="25f9c7fa">
+  <span class="ne-text">
+   &#24635;&#32467;
+  </span>
+ </h2>
+ <p class="ne-p" id="3edd5f5c38c748f33bc71d4d0b8ca699">
+  <br>
+ </p>
+ <p class="ne-p" id="3df5939aa9bc2447191959c51469e05c">
+  <span class="ne-text">
+   &#19978;&#38754;&#25105;&#19968;&#20849;&#25552;&#21040;&#20102;&#20004;&#31181;&#35774;&#35745;&#25490;&#34892;&#27036;&#30340;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="8b8c30093cec5d199c12c6860273eecc">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="e464785935fa47e5cd0382e4fa5ffd69">
+   <span class="ne-text">
+    MySQL &#30340; ORDER BY &#20851;&#38190;&#23383;
+   </span>
+  </li>
+  <li id="af9bece6528546dfdc61da62a48dd0f5">
+   <span class="ne-text">
+    Redis &#30340; sorted set
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="a23345cfca91e953851011c10a3cdbff">
+  <br>
+ </p>
+ <p class="ne-p" id="1e5f31604109d1fd12a972595cf42d2d">
+  <span class="ne-text">
+   &#20854;&#23454;&#65292;&#36825;&#20004;&#31181;&#27809;&#26377;&#23408;&#22909;&#23408;&#22351;&#65292;&#36824;&#26159;&#35201;&#30475;&#20855;&#20307;&#30340;&#19994;&#21153;&#22330;&#26223;&#12290;&#22914;&#26524;&#35828;&#20320;&#30340;&#39033;&#30446;&#38656;&#35201;&#25490;&#24207;&#25968;&#25454;&#37327;&#27604;&#36739;&#23567;&#24182;&#19988;&#19994;&#21153;&#22330;&#26223;&#19981;&#22797;&#26434;&#30340;&#35805;&#65288;&#27604;&#22914;&#20320;&#23545;&#20320;&#21338;&#23458;&#30340;&#25152;&#26377;&#25991;&#31456;&#25353;&#29031;&#38405;&#35835;&#37327;&#26469;&#25490;&#24207;&#65289;&#65292;&#25105;&#35273;&#24471;&#30452;&#25509;&#20351;&#29992; MySQL &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ORDER BY
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#38190;&#23383;&#23601;&#21487;&#20197;&#20102;&#65292;&#27809;&#24517;&#35201;&#20026;&#20102;&#25490;&#34892;&#27036;&#24341;&#20837;&#19968;&#20010; Redis&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="2f8d10a958244125a980291b0f7f0b10">
+  <br>
+ </p>
+ <p class="ne-p" id="54919de83a653eddfaf3886dd8c26e21">
+  <span class="ne-text">
+   &#21478;&#22806;&#65292;&#22312;&#27809;&#26377;&#20998;&#39029;&#24182;&#19988;&#25968;&#25454;&#37327;&#19981;&#22823;&#30340;&#24773;&#20917;&#19979;&#65292;&#30452;&#25509;&#22312;&#21069;&#31471;&#25343;&#21040;&#25152;&#26377;&#38656;&#35201;&#29992;&#21040;&#30340;&#25968;&#25454;&#20043;&#21518;&#20877;&#36827;&#34892;&#25490;&#24207;&#20063;&#26159;&#21487;&#20197;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="10ef0043a5d66b8f7083072e9b88fecb">
+  <br>
+ </p>
+</div>
+</div>
+</div>

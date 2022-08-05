@@ -1,0 +1,2327 @@
+<div><div class="markdown-body">
+    <h1>SpringBoot &#24120;&#35265;&#38754;&#35797;&#39064;&#24635;&#32467;</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="u9cf2ee1d">
+  <span class="ne-text">
+   &#24066;&#38754;&#19978;&#20851;&#20110; Spring Boot &#30340;&#38754;&#35797;&#39064;&#25220;&#26469;&#25220;&#21435;&#65292;&#27627;&#26080;&#20215;&#20540;&#21487;&#35328;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u64be38bd">
+  <br>
+ </p>
+ <p class="ne-p" id="ua6d47aeb">
+  <span class="ne-text">
+   &#36825;&#31687;&#25991;&#31456;&#65292;&#25105;&#20250;&#31616;&#21333;&#23601;&#33258;&#24049;&#36825;&#20960;&#24180;&#20351;&#29992; Spring Boot &#30340;&#19968;&#20123;&#32463;&#39564;&#65292;&#24635;&#32467;&#19968;&#20123;&#24120;&#35265;&#30340;&#38754;&#35797;&#39064;&#20379;&#23567;&#20249;&#20276;&#20204;&#33258;&#27979;&#21644;&#23398;&#20064;&#12290;&#23569;&#37096;&#20998;&#20851;&#20110; Spring/Spring Boot &#30340;&#20171;&#32461;&#21442;&#32771;&#20102;&#23448;&#32593;&#65292;&#20854;&#20182;&#30342;&#20026;&#21407;&#21019;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5f3e8e25">
+  <br>
+ </p>
+ <h3 id="20f7ca5f">
+  <span class="ne-text">
+   1. &#31616;&#21333;&#20171;&#32461;&#19968;&#19979; Spring?&#26377;&#21861;&#32570;&#28857;?
+  </span>
+ </h3>
+ <p class="ne-p" id="u4721c9c3">
+  <br>
+ </p>
+ <p class="ne-p" id="u5f688ff5">
+  <span class="ne-text">
+   Spring &#26159;&#37325;&#37327;&#32423;&#20225;&#19994;&#24320;&#21457;&#26694;&#26550;
+  </span>
+  <strong>
+   <span class="ne-text">
+    Enterprise JavaBean&#65288;EJB&#65289;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#30340;&#26367;&#20195;&#21697;&#65292;Spring &#20026;&#20225;&#19994;&#32423; Java &#24320;&#21457;&#25552;&#20379;&#20102;&#19968;&#31181;&#30456;&#23545;&#31616;&#21333;&#30340;&#26041;&#27861;&#65292;&#36890;&#36807;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#20381;&#36182;&#27880;&#20837;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#38754;&#21521;&#20999;&#38754;&#32534;&#31243;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#29992;&#31616;&#21333;&#30340;
+  </span>
+  <strong>
+   <span class="ne-text">
+    Java &#23545;&#35937;&#65288;Plain Old Java Object&#65292;POJO&#65289;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#23454;&#29616;&#20102; EJB &#30340;&#21151;&#33021;
+  </span>
+ </p>
+ <p class="ne-p" id="ue3a7b6eb">
+  <br>
+ </p>
+ <p class="ne-p" id="u1d61b110">
+  <strong>
+   <span class="ne-text">
+    &#34429;&#28982; Spring &#30340;&#32452;&#20214;&#20195;&#30721;&#26159;&#36731;&#37327;&#32423;&#30340;&#65292;&#20294;&#23427;&#30340;&#37197;&#32622;&#21364;&#26159;&#37325;&#37327;&#32423;&#30340;&#65288;&#38656;&#35201;&#22823;&#37327; XML &#37197;&#32622;&#65289;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u911b7685">
+  <br>
+ </p>
+ <p class="ne-p" id="u1a4850f5">
+  <span class="ne-text">
+   &#20026;&#27492;&#65292;Spring 2.5 &#24341;&#20837;&#20102;&#22522;&#20110;&#27880;&#35299;&#30340;&#32452;&#20214;&#25195;&#25551;&#65292;&#36825;&#28040;&#38500;&#20102;&#22823;&#37327;&#38024;&#23545;&#24212;&#29992;&#31243;&#24207;&#33258;&#36523;&#32452;&#20214;&#30340;&#26174;&#24335; XML &#37197;&#32622;&#12290;Spring 3.0 &#24341;&#20837;&#20102;&#22522;&#20110; Java &#30340;&#37197;&#32622;&#65292;&#36825;&#26159;&#19968;&#31181;&#31867;&#22411;&#23433;&#20840;&#30340;&#21487;&#37325;&#26500;&#37197;&#32622;&#26041;&#24335;&#65292;&#21487;&#20197;&#20195;&#26367; XML&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub25aa1f2">
+  <br>
+ </p>
+ <p class="ne-p" id="ucc8d32a1">
+  <span class="ne-text">
+   &#23613;&#31649;&#22914;&#27492;&#65292;&#25105;&#20204;&#20381;&#26087;&#27809;&#33021;&#36867;&#33073;&#37197;&#32622;&#30340;&#39764;&#29226;&#12290;&#24320;&#21551;&#26576;&#20123; Spring &#29305;&#24615;&#26102;&#65292;&#27604;&#22914;&#20107;&#21153;&#31649;&#29702;&#21644; Spring MVC&#65292;&#36824;&#26159;&#38656;&#35201;&#29992; XML &#25110; Java &#36827;&#34892;&#26174;&#24335;&#37197;&#32622;&#12290;&#21551;&#29992;&#31532;&#19977;&#26041;&#24211;&#26102;&#20063;&#38656;&#35201;&#26174;&#24335;&#37197;&#32622;&#65292;&#27604;&#22914;&#22522;&#20110; Thymeleaf &#30340; Web &#35270;&#22270;&#12290;&#37197;&#32622; Servlet &#21644;&#36807;&#28388;&#22120;&#65288;&#27604;&#22914; Spring &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServlet
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#21516;&#26679;&#38656;&#35201;&#22312; web.xml &#25110; Servlet &#21021;&#22987;&#21270;&#20195;&#30721;&#37324;&#36827;&#34892;&#26174;&#24335;&#37197;&#32622;&#12290;&#32452;&#20214;&#25195;&#25551;&#20943;&#23569;&#20102;&#37197;&#32622;&#37327;&#65292;Java &#37197;&#32622;&#35753;&#23427;&#30475;&#19978;&#21435;&#31616;&#27905;&#19981;&#23569;&#65292;&#20294; Spring &#36824;&#26159;&#38656;&#35201;&#19981;&#23569;&#37197;&#32622;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u7515b56d">
+  <br>
+ </p>
+ <p class="ne-p" id="udca012ca">
+  <span class="ne-text">
+   &#20809;&#37197;&#32622;&#36825;&#20123; XML &#25991;&#20214;&#37117;&#22815;&#25105;&#20204;&#22836;&#30140;&#30340;&#20102;&#65292;&#21344;&#29992;&#20102;&#25105;&#20204;&#22823;&#37096;&#20998;&#26102;&#38388;&#21644;&#31934;&#21147;&#12290;&#38500;&#27492;&#20043;&#22806;&#65292;&#30456;&#20851;&#24211;&#30340;&#20381;&#36182;&#38750;&#24120;&#35753;&#20154;&#22836;&#30140;&#65292;&#19981;&#21516;&#24211;&#20043;&#38388;&#30340;&#29256;&#26412;&#20914;&#31361;&#20063;&#38750;&#24120;&#24120;&#35265;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf962f800">
+  <br>
+ </p>
+ <h3 id="7876824d">
+  <span class="ne-text">
+   2. &#20026;&#20160;&#20040;&#35201;&#26377; SpringBoot?
+  </span>
+ </h3>
+ <p class="ne-p" id="uc444352d">
+  <br>
+ </p>
+ <p class="ne-p" id="u8f95ece6">
+  <span class="ne-text">
+   Spring &#26088;&#22312;&#31616;&#21270; J2EE &#20225;&#19994;&#24212;&#29992;&#31243;&#24207;&#24320;&#21457;&#12290;Spring Boot  &#26088;&#22312;&#31616;&#21270; Spring &#24320;&#21457;&#65288;&#20943;&#23569;&#37197;&#32622;&#25991;&#20214;&#65292;&#24320;&#31665;&#21363;&#29992;&#65281;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf7076272">
+  <br>
+ </p>
+ <p class="ne-p" id="uf994431f">
+  <img class="ne-image" id="Qnv2w" src="EPUB/imgQnv2w" width="345">
+ </p>
+ <p class="ne-p" id="u7bdec64c">
+  <br>
+ </p>
+ <h3 id="763db08c">
+  <span class="ne-text">
+   3. &#35828;&#20986;&#20351;&#29992; Spring Boot &#30340;&#20027;&#35201;&#20248;&#28857;
+  </span>
+ </h3>
+ <p class="ne-p" id="u5b82d706">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="ub3a3289d">
+   <span class="ne-text">
+    &#24320;&#21457;&#22522;&#20110; Spring &#30340;&#24212;&#29992;&#31243;&#24207;&#24456;&#23481;&#26131;&#12290;
+   </span>
+  </li>
+  <li id="u09bc694f">
+   <span class="ne-text">
+    Spring Boot &#39033;&#30446;&#25152;&#38656;&#30340;&#24320;&#21457;&#25110;&#24037;&#31243;&#26102;&#38388;&#26126;&#26174;&#20943;&#23569;&#65292;&#36890;&#24120;&#20250;&#25552;&#39640;&#25972;&#20307;&#29983;&#20135;&#21147;&#12290;
+   </span>
+  </li>
+  <li id="ud977eff7">
+   <span class="ne-text">
+    Spring Boot &#19981;&#38656;&#35201;&#32534;&#20889;&#22823;&#37327;&#26679;&#26495;&#20195;&#30721;&#12289;XML &#37197;&#32622;&#21644;&#27880;&#37322;&#12290;
+   </span>
+  </li>
+  <li id="u7b851beb">
+   <span class="ne-text">
+    Spring &#24341;&#23548;&#24212;&#29992;&#31243;&#24207;&#21487;&#20197;&#24456;&#23481;&#26131;&#22320;&#19982; Spring &#29983;&#24577;&#31995;&#32479;&#38598;&#25104;&#65292;&#22914; Spring JDBC&#12289;Spring ORM&#12289;Spring Data&#12289;Spring Security &#31561;&#12290;
+   </span>
+  </li>
+  <li id="u5017e54e">
+   <span class="ne-text">
+    Spring Boot &#36981;&#24490;&#8220;&#22266;&#25191;&#24049;&#35265;&#30340;&#40664;&#35748;&#37197;&#32622;&#8221;&#65292;&#20197;&#20943;&#23569;&#24320;&#21457;&#24037;&#20316;&#65288;&#40664;&#35748;&#37197;&#32622;&#21487;&#20197;&#20462;&#25913;&#65289;&#12290;
+   </span>
+  </li>
+  <li id="uba2e0654">
+   <span class="ne-text">
+    Spring Boot &#24212;&#29992;&#31243;&#24207;&#25552;&#20379;&#23884;&#20837;&#24335; HTTP &#26381;&#21153;&#22120;&#65292;&#22914; Tomcat &#21644; Jetty&#65292;&#21487;&#20197;&#36731;&#26494;&#22320;&#24320;&#21457;&#21644;&#27979;&#35797; web &#24212;&#29992;&#31243;&#24207;&#12290;&#65288;&#36825;&#28857;&#24456;&#36190;&#65281;&#26222;&#36890;&#36816;&#34892; Java &#31243;&#24207;&#30340;&#26041;&#24335;&#23601;&#33021;&#36816;&#34892;&#22522;&#20110; Spring Boot web &#39033;&#30446;&#65292;&#30465;&#20107;&#24456;&#22810;&#65289;
+   </span>
+  </li>
+  <li id="u473dc5ec">
+   <span class="ne-text">
+    Spring Boot &#25552;&#20379;&#21629;&#20196;&#34892;&#25509;&#21475;(CLI)&#24037;&#20855;&#65292;&#29992;&#20110;&#24320;&#21457;&#21644;&#27979;&#35797; Spring Boot &#24212;&#29992;&#31243;&#24207;&#65292;&#22914; Java &#25110; Groovy&#12290;
+   </span>
+  </li>
+  <li id="ue7f37dba">
+   <span class="ne-text">
+    Spring Boot &#25552;&#20379;&#20102;&#22810;&#31181;&#25554;&#20214;&#65292;&#21487;&#20197;&#20351;&#29992;&#20869;&#32622;&#24037;&#20855;(&#22914; Maven &#21644; Gradle)&#24320;&#21457;&#21644;&#27979;&#35797; Spring Boot &#24212;&#29992;&#31243;&#24207;&#12290;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u201495fd">
+  <br>
+ </p>
+ <h3 id="4e95f062">
+  <span class="ne-text">
+   4. &#20160;&#20040;&#26159; Spring Boot Starters?
+  </span>
+ </h3>
+ <p class="ne-p" id="u8bf60912">
+  <br>
+ </p>
+ <p class="ne-p" id="u07abc961">
+  <span class="ne-text">
+   Spring Boot Starters &#26159;&#19968;&#31995;&#21015;&#20381;&#36182;&#20851;&#31995;&#30340;&#38598;&#21512;&#65292;&#22240;&#20026;&#23427;&#30340;&#23384;&#22312;&#65292;&#39033;&#30446;&#30340;&#20381;&#36182;&#20043;&#38388;&#30340;&#20851;&#31995;&#23545;&#25105;&#20204;&#26469;&#35828;&#21464;&#30340;&#26356;&#21152;&#31616;&#21333;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc9cee68b">
+  <br>
+ </p>
+ <p class="ne-p" id="u2f7b2108">
+  <span class="ne-text">
+   &#20030;&#20010;&#20363;&#23376;&#65306;&#22312;&#27809;&#26377; Spring Boot Starters &#20043;&#21069;&#65292;&#25105;&#20204;&#24320;&#21457; REST &#26381;&#21153;&#25110; Web &#24212;&#29992;&#31243;&#24207;&#26102;; &#25105;&#20204;&#38656;&#35201;&#20351;&#29992;&#20687; Spring MVC&#65292;Tomcat &#21644; Jackson &#36825;&#26679;&#30340;&#24211;&#65292;&#36825;&#20123;&#20381;&#36182;&#25105;&#20204;&#38656;&#35201;&#25163;&#21160;&#19968;&#20010;&#19968;&#20010;&#28155;&#21152;&#12290;&#20294;&#26159;&#65292;&#26377;&#20102; Spring Boot Starters &#25105;&#20204;&#21482;&#38656;&#35201;&#19968;&#20010;&#21482;&#38656;&#28155;&#21152;&#19968;&#20010;
+  </span>
+  <strong>
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#19968;&#20010;&#20381;&#36182;&#23601;&#21487;&#20197;&#20102;&#65292;&#36825;&#20010;&#20381;&#36182;&#21253;&#21547;&#30340;&#23383;&#20381;&#36182;&#20013;&#21253;&#21547;&#20102;&#25105;&#20204;&#24320;&#21457; REST &#26381;&#21153;&#38656;&#35201;&#30340;&#25152;&#26377;&#20381;&#36182;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf9f55b1b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-xml" data-language="xml" id="7b8a1d46">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+ <p class="ne-p" id="uff723f87">
+  <br>
+ </p>
+ <h3 id="ae12fb7c">
+  <span class="ne-text">
+   5. Spring Boot &#25903;&#25345;&#21738;&#20123;&#20869;&#23884; Servlet &#23481;&#22120;&#65311;
+  </span>
+ </h3>
+ <p class="ne-p" id="ue9c2315b">
+  <br>
+ </p>
+ <p class="ne-p" id="u86914495">
+  <span class="ne-text">
+   Spring Boot &#25903;&#25345;&#20197;&#19979;&#23884;&#20837;&#24335; Servlet &#23481;&#22120;:
+  </span>
+ </p>
+ <table class="ne-table" id="7ada93ac" style="width: 750px">
+  <tbody>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="ub980fd64">
+      <strong>
+       <span class="ne-text">
+        Name
+       </span>
+      </strong>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="u1e2b74f1">
+      <strong>
+       <span class="ne-text">
+        Servlet Version
+       </span>
+      </strong>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="u7b270490">
+      <span class="ne-text">
+       Tomcat 9.0
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="u893eade2">
+      <span class="ne-text">
+       4.0
+      </span>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="u78701884">
+      <span class="ne-text">
+       Jetty 9.4
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="uca09eb0b">
+      <span class="ne-text">
+       3.1
+      </span>
+     </p>
+    </td>
+   </tr>
+   <tr style="height: 33px">
+    <td width="375">
+     <p class="ne-p" id="u1153af2a">
+      <span class="ne-text">
+       Undertow 2.0
+      </span>
+     </p>
+    </td>
+    <td width="375">
+     <p class="ne-p" id="u906a053d">
+      <span class="ne-text">
+       4.0
+      </span>
+     </p>
+    </td>
+   </tr>
+  </tbody>
+ </table>
+ <p class="ne-p" id="ua0fb271c">
+  <br>
+ </p>
+ <p class="ne-p" id="ude4019ed">
+  <span class="ne-text">
+   &#24744;&#36824;&#21487;&#20197;&#23558; Spring &#24341;&#23548;&#24212;&#29992;&#31243;&#24207;&#37096;&#32626;&#21040;&#20219;&#20309; Servlet 3.1+&#20860;&#23481;&#30340; Web &#23481;&#22120;&#20013;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u74b3b011">
+  <br>
+ </p>
+ <p class="ne-p" id="ua5928784">
+  <span class="ne-text">
+   &#36825;&#23601;&#26159;&#20320;&#20026;&#20160;&#20040;&#21487;&#20197;&#36890;&#36807;&#30452;&#25509;&#20687;&#36816;&#34892; &#26222;&#36890; Java &#39033;&#30446;&#19968;&#26679;&#36816;&#34892; SpringBoot &#39033;&#30446;&#12290;&#36825;&#26679;&#30340;&#30830;&#30465;&#20107;&#20102;&#24456;&#22810;&#65292;&#26041;&#20415;&#20102;&#25105;&#20204;&#36827;&#34892;&#24320;&#21457;&#65292;&#38477;&#20302;&#20102;&#23398;&#20064;&#38590;&#24230;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u619c5e86">
+  <br>
+ </p>
+ <h3 id="fafbbe5b">
+  <span class="ne-text">
+   6. &#22914;&#20309;&#22312; Spring Boot &#24212;&#29992;&#31243;&#24207;&#20013;&#20351;&#29992; Jetty &#32780;&#19981;&#26159; Tomcat?
+  </span>
+ </h3>
+ <p class="ne-p" id="u837c7752">
+  <br>
+ </p>
+ <p class="ne-p" id="u80a76656">
+  <span class="ne-text">
+   Spring Boot &#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#20351;&#29992; Tomcat &#20316;&#20026;&#40664;&#35748;&#30340;&#23884;&#20837;&#24335; servlet &#23481;&#22120;, &#22914;&#26524;&#20320;&#24819;&#20351;&#29992; Jetty &#30340;&#35805;&#21482;&#38656;&#35201;&#20462;&#25913;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   (Maven)&#25110;&#32773;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    build.gradle
+   </span>
+  </code>
+  <span class="ne-text">
+   (Gradle)&#23601;&#21487;&#20197;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue6aebd30">
+  <br>
+ </p>
+ <p class="ne-p" id="ufec2ea71">
+  <strong>
+   <span class="ne-text">
+    Maven:
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ud66c8c62">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-xml" data-language="xml" id="f1382fe0">&lt;!--&#20174;Web&#21551;&#21160;&#22120;&#20381;&#36182;&#20013;&#25490;&#38500;Tomcat--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+	&lt;exclusions&gt;
+		&lt;exclusion&gt;
+			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
+		&lt;/exclusion&gt;
+	&lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;!--&#28155;&#21152;Jetty&#20381;&#36182;--&gt;
+&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+	&lt;artifactId&gt;spring-boot-starter-jetty&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+ <p class="ne-p" id="uc824e8b0">
+  <br>
+ </p>
+ <p class="ne-p" id="u3039a284">
+  <strong>
+   <span class="ne-text">
+    Gradle:
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ucc4cf878">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-groovy" data-language="groovy" id="aa29fc93">compile("org.springframework.boot:spring-boot-starter-web") {
+     exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+}
+compile("org.springframework.boot:spring-boot-starter-jetty")</pre>
+ <p class="ne-p" id="u6ebacc2b">
+  <br>
+ </p>
+ <p class="ne-p" id="u28fe6ef7">
+  <span class="ne-text">
+   &#35828;&#20010;&#39064;&#22806;&#35805;&#65292;&#20174;&#19978;&#38754;&#21487;&#20197;&#30475;&#20986;&#20351;&#29992; Gradle &#26356;&#21152;&#31616;&#27905;&#26126;&#20102;&#65292;&#20294;&#26159;&#22269;&#20869;&#30446;&#21069;&#36824;&#26159; Maven &#20351;&#29992;&#30340;&#22810;&#19968;&#28857;&#65292;&#25105;&#20010;&#20154;&#35273;&#24471; Gradle &#22312;&#24456;&#22810;&#26041;&#38754;&#37117;&#35201;&#22909;&#24456;&#22810;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ubcfa1baf">
+  <br>
+ </p>
+ <h3 id="699141b3">
+  <span class="ne-text">
+   7. &#20171;&#32461;&#19968;&#19979;@SpringBootApplication &#27880;&#35299;
+  </span>
+ </h3>
+ <p class="ne-p" id="u4889b163">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="5b9e35e9">package org.springframework.boot.autoconfigure;
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(excludeFilters = {
+		@Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+		@Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
+public @interface SpringBootApplication {
+   ......
+}</pre>
+ <p class="ne-p" id="u6ad094d0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="562d22ed">package org.springframework.boot;
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Configuration
+public @interface SpringBootConfiguration {
+
+}</pre>
+ <p class="ne-p" id="uc8f7dd44">
+  <br>
+ </p>
+ <p class="ne-p" id="u216e8818">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#20986;&#22823;&#27010;&#21487;&#20197;&#25226;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @SpringBootApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30475;&#20316;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Configuration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ComponentScan
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#38598;&#21512;&#12290;&#26681;&#25454; SpringBoot &#23448;&#32593;&#65292;&#36825;&#19977;&#20010;&#27880;&#35299;&#30340;&#20316;&#29992;&#20998;&#21035;&#26159;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6148dc95">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u0cc5b96f">
+   <code class="ne-code">
+    <span class="ne-text">
+     @EnableAutoConfiguration
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#21551;&#29992; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#26426;&#21046;
+   </span>
+  </li>
+  <li id="u3df6ce15">
+   <code class="ne-code">
+    <span class="ne-text">
+     @ComponentScan
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306; &#25195;&#25551;&#34987;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Component
+    </span>
+   </code>
+   <span class="ne-text">
+    (
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Service
+    </span>
+   </code>
+   <span class="ne-text">
+    ,
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Controller
+    </span>
+   </code>
+   <span class="ne-text">
+    )&#27880;&#35299;&#30340; bean&#65292;&#27880;&#35299;&#40664;&#35748;&#20250;&#25195;&#25551;&#35813;&#31867;&#25152;&#22312;&#30340;&#21253;&#19979;&#25152;&#26377;&#30340;&#31867;&#12290;
+   </span>
+  </li>
+  <li id="uac0e5efa">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Configuration
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#20801;&#35768;&#22312;&#19978;&#19979;&#25991;&#20013;&#27880;&#20876;&#39069;&#22806;&#30340; bean &#25110;&#23548;&#20837;&#20854;&#20182;&#37197;&#32622;&#31867;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="uc670b1a7">
+  <br>
+ </p>
+ <h3 id="d46940ed">
+  <span class="ne-text">
+   8. Spring Boot &#30340;&#33258;&#21160;&#37197;&#32622;&#26159;&#22914;&#20309;&#23454;&#29616;&#30340;?
+  </span>
+ </h3>
+ <p class="ne-p" id="ufc12be68">
+  <br>
+ </p>
+ <p class="ne-p" id="u46c0b718">
+  <span class="ne-text">
+   &#36825;&#20010;&#26159;&#22240;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @SpringBootApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#21407;&#22240;&#65292;&#22312;&#19978;&#19968;&#20010;&#38382;&#39064;&#20013;&#24050;&#32463;&#25552;&#21040;&#20102;&#36825;&#20010;&#27880;&#35299;&#12290;&#25105;&#20204;&#30693;&#36947;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @SpringBootApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30475;&#20316;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Configuration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ComponentScan
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#38598;&#21512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u61407c1e">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u0fb8232e">
+   <code class="ne-code">
+    <span class="ne-text">
+     @EnableAutoConfiguration
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#21551;&#29992; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#26426;&#21046;
+   </span>
+  </li>
+  <li id="u1db02551">
+   <code class="ne-code">
+    <span class="ne-text">
+     @ComponentScan
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306; &#25195;&#25551;&#34987;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Component
+    </span>
+   </code>
+   <span class="ne-text">
+    (
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Service
+    </span>
+   </code>
+   <span class="ne-text">
+    ,
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Controller
+    </span>
+   </code>
+   <span class="ne-text">
+    )&#27880;&#35299;&#30340; bean&#65292;&#27880;&#35299;&#40664;&#35748;&#20250;&#25195;&#25551;&#35813;&#31867;&#25152;&#22312;&#30340;&#21253;&#19979;&#25152;&#26377;&#30340;&#31867;&#12290;
+   </span>
+  </li>
+  <li id="u8beb1973">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Configuration
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#20801;&#35768;&#22312;&#19978;&#19979;&#25991;&#20013;&#27880;&#20876;&#39069;&#22806;&#30340; bean &#25110;&#23548;&#20837;&#20854;&#20182;&#37197;&#32622;&#31867;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="uba649f2f">
+  <br>
+ </p>
+ <p class="ne-p" id="ueea65315">
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#21551;&#21160;&#33258;&#21160;&#37197;&#32622;&#30340;&#20851;&#38190;&#65292;&#28304;&#30721;&#22914;&#19979;(&#24314;&#35758;&#33258;&#24049;&#25171;&#26029;&#28857;&#35843;&#35797;&#65292;&#36208;&#19968;&#36941;&#22522;&#26412;&#30340;&#27969;&#31243;)&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uf0e4df0f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="80293ff0">import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import org.springframework.context.annotation.Import;
+
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@AutoConfigurationPackage
+@Import({AutoConfigurationImportSelector.class})
+public @interface EnableAutoConfiguration {
+    String ENABLED_OVERRIDE_PROPERTY = "spring.boot.enableautoconfiguration";
+
+    Class&lt;?&gt;[] exclude() default {};
+
+    String[] excludeName() default {};
+}</pre>
+ <p class="ne-p" id="u95833d10">
+  <br>
+ </p>
+ <p class="ne-p" id="u14c5fc74">
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#36890;&#36807; Spring &#25552;&#20379;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Import
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#23548;&#20837;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Import
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#21487;&#20197;&#23548;&#20837;&#37197;&#32622;&#31867;&#25110;&#32773; Bean &#21040;&#24403;&#21069;&#31867;&#20013;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u75f2fc7e">
+  <br>
+ </p>
+ <p class="ne-p" id="u9c24648a">
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#20013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getCandidateConfigurations
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20250;&#23558;&#25152;&#26377;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#20449;&#24687;&#20197; List &#30340;&#24418;&#24335;&#36820;&#22238;&#12290;&#36825;&#20123;&#37197;&#32622;&#20449;&#24687;&#20250;&#34987; Spring &#23481;&#22120;&#20316; bean &#26469;&#31649;&#29702;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufba85d0a">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="76f3cdd0">	protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) {
+		List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(getSpringFactoriesLoaderFactoryClass(),
+				getBeanClassLoader());
+		Assert.notEmpty(configurations, "No auto configuration classes found in META-INF/spring.factories. If you "
+				+ "are using a custom packaging, make sure that file is correct.");
+		return configurations;
+	}</pre>
+ <p class="ne-p" id="u709697ff">
+  <br>
+ </p>
+ <p class="ne-p" id="u54b79708">
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#20449;&#24687;&#26377;&#20102;&#65292;&#37027;&#20040;&#33258;&#21160;&#37197;&#32622;&#36824;&#24046;&#20160;&#20040;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u742502c3">
+  <br>
+ </p>
+ <p class="ne-p" id="ue2fb2b05">
+  <code class="ne-code">
+   <span class="ne-text">
+    @Conditional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   (&#25351;&#23450;&#30340;&#31867;&#24517;&#39035;&#23384;&#22312;&#20110;&#31867;&#36335;&#24452;&#19979;),
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   (&#23481;&#22120;&#20013;&#26159;&#21542;&#26377;&#25351;&#23450;&#30340; Bean)&#31561;&#31561;&#37117;&#26159;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Conditional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#25193;&#23637;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u27de0a6e">
+  <br>
+ </p>
+ <p class="ne-p" id="uff322d1e">
+  <span class="ne-text">
+   &#25343; Spring Security &#30340;&#33258;&#21160;&#37197;&#32622;&#20030;&#20010;&#20363;&#23376;:
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SecurityAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#23548;&#20837;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    WebSecurityEnablerConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    WebSecurityEnablerConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#28304;&#20195;&#30721;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uc66ca93d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="978f91db">@Configuration
+@ConditionalOnBean(WebSecurityConfigurerAdapter.class)
+@ConditionalOnMissingBean(name = BeanIds.SPRING_SECURITY_FILTER_CHAIN)
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+@EnableWebSecurity
+public class WebSecurityEnablerConfiguration {
+
+}</pre>
+ <p class="ne-p" id="u2f0084db">
+  <br>
+ </p>
+ <p class="ne-p" id="u82affb96">
+  <code class="ne-code">
+   <span class="ne-text">
+    WebSecurityEnablerConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#20013;&#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25351;&#23450;&#20102;&#23481;&#22120;&#20013;&#24517;&#39035;&#36824;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    WebSecurityConfigurerAdapter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#25110;&#20854;&#23454;&#29616;&#31867;&#12290;&#25152;&#20197;&#65292;&#19968;&#33324;&#24773;&#20917;&#19979; Spring Security &#37197;&#32622;&#31867;&#37117;&#20250;&#21435;&#23454;&#29616;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    WebSecurityConfigurerAdapter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#26679;&#33258;&#21160;&#23558;&#37197;&#32622;&#23601;&#23436;&#25104;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufcf2504a">
+  <br>
+ </p>
+ <h3 id="58cdf82a">
+  <span class="ne-text">
+   9. &#24320;&#21457; RESTful Web &#26381;&#21153;&#24120;&#29992;&#30340;&#27880;&#35299;&#26377;&#21738;&#20123;&#65311;
+  </span>
+ </h3>
+ <p class="ne-p" id="ucc72ac3f">
+  <br>
+ </p>
+ <p class="ne-p" id="uf924dd88">
+  <strong>
+   <span class="ne-text">
+    Spring Bean &#30456;&#20851;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u5f6a0465">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u0eec500f">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Autowired
+    </span>
+   </code>
+   <span class="ne-text">
+    : &#33258;&#21160;&#23548;&#20837;&#23545;&#35937;&#21040;&#31867;&#20013;&#65292;&#34987;&#27880;&#20837;&#36827;&#30340;&#31867;&#21516;&#26679;&#35201;&#34987; Spring &#23481;&#22120;&#31649;&#29702;&#12290;
+   </span>
+  </li>
+  <li id="ua4b83943">
+   <code class="ne-code">
+    <span class="ne-text">
+     @RestController
+    </span>
+   </code>
+   <span class="ne-text">
+    :
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @RestController
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27880;&#35299;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Controller&#21644;
+    </span>
+   </code>
+   <span class="ne-text">
+    @
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ResponseBody
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#21512;&#38598;,&#34920;&#31034;&#36825;&#26159;&#20010;&#25511;&#21046;&#22120; bean,&#24182;&#19988;&#26159;&#23558;&#20989;&#25968;&#30340;&#36820;&#22238;&#20540;&#30452; &#25509;&#22635;&#20837; HTTP &#21709;&#24212;&#20307;&#20013;,&#26159; REST &#39118;&#26684;&#30340;&#25511;&#21046;&#22120;&#12290;
+   </span>
+  </li>
+  <li id="u81f3f818">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Component
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#36890;&#29992;&#30340;&#27880;&#35299;&#65292;&#21487;&#26631;&#27880;&#20219;&#24847;&#31867;&#20026;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Spring
+    </span>
+   </code>
+   <span class="ne-text">
+    &#32452;&#20214;&#12290;&#22914;&#26524;&#19968;&#20010; Bean &#19981;&#30693;&#36947;&#23646;&#20110;&#21738;&#20010;&#23618;&#65292;&#21487;&#20197;&#20351;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Component
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27880;&#35299;&#26631;&#27880;&#12290;
+   </span>
+  </li>
+  <li id="ub872b793">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Repository
+    </span>
+   </code>
+   <span class="ne-text">
+    : &#23545;&#24212;&#25345;&#20037;&#23618;&#21363; Dao &#23618;&#65292;&#20027;&#35201;&#29992;&#20110;&#25968;&#25454;&#24211;&#30456;&#20851;&#25805;&#20316;&#12290;
+   </span>
+  </li>
+  <li id="ud6d08eb2">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Service
+    </span>
+   </code>
+   <span class="ne-text">
+    : &#23545;&#24212;&#26381;&#21153;&#23618;&#65292;&#20027;&#35201;&#28041;&#21450;&#19968;&#20123;&#22797;&#26434;&#30340;&#36923;&#36753;&#65292;&#38656;&#35201;&#29992;&#21040; Dao &#23618;&#12290;
+   </span>
+  </li>
+  <li id="u8cbc9ab0">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Controller
+    </span>
+   </code>
+   <span class="ne-text">
+    : &#23545;&#24212; Spring MVC &#25511;&#21046;&#23618;&#65292;&#20027;&#35201;&#29992;&#20110;&#25509;&#21463;&#29992;&#25143;&#35831;&#27714;&#24182;&#35843;&#29992; Service &#23618;&#36820;&#22238;&#25968;&#25454;&#32473;&#21069;&#31471;&#39029;&#38754;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u901ed0c7">
+  <br>
+ </p>
+ <p class="ne-p" id="u0ad9fb58">
+  <strong>
+   <span class="ne-text">
+    &#22788;&#29702;&#24120;&#35265;&#30340; HTTP &#35831;&#27714;&#31867;&#22411;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u1760468f">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u8ddf23ea">
+   <code class="ne-code">
+    <span class="ne-text">
+     @GetMapping
+    </span>
+   </code>
+   <span class="ne-text">
+    : GET &#35831;&#27714;&#12289;
+   </span>
+  </li>
+  <li id="u1468d2c7">
+   <code class="ne-code">
+    <span class="ne-text">
+     @PostMapping
+    </span>
+   </code>
+   <span class="ne-text">
+    : POST &#35831;&#27714;&#12290;
+   </span>
+  </li>
+  <li id="ue9a7a025">
+   <code class="ne-code">
+    <span class="ne-text">
+     @PutMapping
+    </span>
+   </code>
+   <span class="ne-text">
+    : PUT &#35831;&#27714;&#12290;
+   </span>
+  </li>
+  <li id="u7ae8579a">
+   <code class="ne-code">
+    <span class="ne-text">
+     @DeleteMapping
+    </span>
+   </code>
+   <span class="ne-text">
+    : DELETE &#35831;&#27714;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="ucfadd115">
+  <br>
+ </p>
+ <p class="ne-p" id="u2f229b77">
+  <strong>
+   <span class="ne-text">
+    &#21069;&#21518;&#31471;&#20256;&#20540;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u6300f7fa">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="uf3106747">
+   <code class="ne-code">
+    <span class="ne-text">
+     @RequestParam
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20197;&#21450;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Pathvairable &#65306;@PathVariable&#29992;&#20110;&#33719;&#21462;&#36335;&#24452;&#21442;&#25968;&#65292;@RequestParam&#29992;&#20110;&#33719;&#21462;&#26597;&#35810;&#21442;&#25968;&#12290;
+    </span>
+   </code>
+  </li>
+  <li id="u148d0a3f">
+   <code class="ne-code">
+    <span class="ne-text">
+     @RequestBody
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#29992;&#20110;&#35835;&#21462; Request &#35831;&#27714;&#65288;&#21487;&#33021;&#26159; POST,PUT,DELETE,GET &#35831;&#27714;&#65289;&#30340; body &#37096;&#20998;&#24182;&#19988; Content-Type &#20026;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     application/json
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26684;&#24335;&#30340;&#25968;&#25454;&#65292;&#25509;&#25910;&#21040;&#25968;&#25454;&#20043;&#21518;&#20250;&#33258;&#21160;&#23558;&#25968;&#25454;&#32465;&#23450;&#21040; Java &#23545;&#35937;&#19978;&#21435;&#12290;&#31995;&#32479;&#20250;&#20351;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     HttpMessageConverter
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25110;&#32773;&#33258;&#23450;&#20041;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     HttpMessageConverter
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23558;&#35831;&#27714;&#30340; body &#20013;&#30340; json &#23383;&#31526;&#20018;&#36716;&#25442;&#20026; java &#23545;&#35937;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u9e8a2230">
+  <br>
+ </p>
+ <p class="ne-p" id="u9dfc1ec1">
+  <span class="ne-text">
+   &#35814;&#32454;&#20171;&#32461;&#21487;&#20197;&#26597;&#30475;&#36825;&#31687;&#25991;&#31456;&#65306;
+  </span>
+  <a class="ne-link" data-href="https://javaguide.cn/system-design/framework/spring/spring-common-annotations.html" href="https://javaguide.cn/system-design/framework/spring/spring-common-annotations.html" target="_blank">
+   <span class="ne-text">
+    &#12298;Spring/Spring Boot &#24120;&#29992;&#27880;&#35299;&#24635;&#32467;&#12299;
+   </span>
+  </a>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1f4f27cf">
+  <br>
+ </p>
+ <h3 id="8af11872">
+  <span class="ne-text">
+   10. Spirng Boot &#24120;&#29992;&#30340;&#20004;&#31181;&#37197;&#32622;&#25991;&#20214;
+  </span>
+ </h3>
+ <p class="ne-p" id="u7355149b">
+  <br>
+ </p>
+ <p class="ne-p" id="ua45984ab">
+  <span class="ne-text">
+   &#25105;&#20204;&#21487;&#20197;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    application.properties
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;&#32773;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    application.yml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545; Spring Boot &#31243;&#24207;&#36827;&#34892;&#31616;&#21333;&#30340;&#37197;&#32622;&#12290;&#22914;&#26524;&#65292;&#20320;&#19981;&#36827;&#34892;&#37197;&#32622;&#30340;&#35805;&#65292;&#23601;&#26159;&#20351;&#29992;&#30340;&#40664;&#35748;&#37197;&#32622;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc4155e23">
+  <br>
+ </p>
+ <h3 id="63bf2da4">
+  <span class="ne-text">
+   11. &#20160;&#20040;&#26159; YAML&#65311;YAML &#37197;&#32622;&#30340;&#20248;&#21183;&#22312;&#21738;&#37324; ?
+  </span>
+ </h3>
+ <p class="ne-p" id="ue8176038">
+  <br>
+ </p>
+ <p class="ne-p" id="u7892d6dc">
+  <span class="ne-text">
+   YAML &#26159;&#19968;&#31181;&#20154;&#31867;&#21487;&#35835;&#30340;&#25968;&#25454;&#24207;&#21015;&#21270;&#35821;&#35328;&#12290;&#23427;&#36890;&#24120;&#29992;&#20110;&#37197;&#32622;&#25991;&#20214;&#12290;&#19982;&#23646;&#24615;&#25991;&#20214;&#30456;&#27604;&#65292;&#22914;&#26524;&#25105;&#20204;&#24819;&#35201;&#22312;&#37197;&#32622;&#25991;&#20214;&#20013;&#28155;&#21152;&#22797;&#26434;&#30340;&#23646;&#24615;&#65292;YAML &#25991;&#20214;&#23601;&#26356;&#21152;&#32467;&#26500;&#21270;&#65292;&#32780;&#19988;&#26356;&#23569;&#28151;&#28102;&#12290;&#21487;&#20197;&#30475;&#20986; YAML &#20855;&#26377;&#20998;&#23618;&#37197;&#32622;&#25968;&#25454;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4531396f">
+  <br>
+ </p>
+ <p class="ne-p" id="u682386f7">
+  <span class="ne-text">
+   &#30456;&#27604;&#20110; Properties &#37197;&#32622;&#30340;&#26041;&#24335;&#65292;YAML &#37197;&#32622;&#30340;&#26041;&#24335;&#26356;&#21152;&#30452;&#35266;&#28165;&#26224;&#65292;&#31616;&#20171;&#26126;&#20102;&#65292;&#26377;&#23618;&#27425;&#24863;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u3d4e04e2">
+  <br>
+ </p>
+ <p class="ne-p" id="u296a2194">
+  <img class="ne-image" id="nrFuI" src="EPUB/imgnrFuI" width="2010">
+ </p>
+ <p class="ne-p" id="u25183adf">
+  <br>
+ </p>
+ <p class="ne-p" id="ua473dabd">
+  <span class="ne-text">
+   &#20294;&#26159;&#65292;YAML &#37197;&#32622;&#30340;&#26041;&#24335;&#26377;&#19968;&#20010;&#32570;&#28857;&#65292;&#37027;&#23601;&#26159;&#19981;&#25903;&#25345;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @PropertySource
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#23548;&#20837;&#33258;&#23450;&#20041;&#30340; YAML &#37197;&#32622;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1e15ec90">
+  <br>
+ </p>
+ <h3 id="c575c415">
+  <span class="ne-text">
+   12. Spring Boot &#24120;&#29992;&#30340;&#35835;&#21462;&#37197;&#32622;&#25991;&#20214;&#30340;&#26041;&#27861;&#26377;&#21738;&#20123;&#65311;
+  </span>
+ </h3>
+ <p class="ne-p" id="u7df74173">
+  <br>
+ </p>
+ <p class="ne-p" id="ud482e50e">
+  <span class="ne-text">
+   &#25105;&#20204;&#35201;&#35835;&#21462;&#30340;&#37197;&#32622;&#25991;&#20214;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    application.yml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20869;&#23481;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u9241b50b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-yaml" data-language="yaml" id="42a9d3c5">wuhan2020: 2020&#24180;&#21021;&#27494;&#27721;&#29190;&#21457;&#20102;&#26032;&#22411;&#20896;&#29366;&#30149;&#27602;&#65292;&#30123;&#24773;&#20005;&#37325;&#65292;&#20294;&#26159;&#65292;&#25105;&#30456;&#20449;&#19968;&#20999;&#37117;&#20250;&#36807;&#21435;&#65281;&#27494;&#27721;&#21152;&#27833;&#65281;&#20013;&#22269;&#21152;&#27833;&#65281;
+
+my-profile:
+  name: Guide&#21733;
+  email: koushuangbwcx@163.com
+
+library:
+  location: &#28246;&#21271;&#27494;&#27721;&#21152;&#27833;&#20013;&#22269;&#21152;&#27833;
+  books:
+    - name: &#22825;&#25165;&#22522;&#26412;&#27861;
+      description: &#20108;&#21313;&#20108;&#23681;&#30340;&#26519;&#26397;&#22805;&#22312;&#29238;&#20146;&#30830;&#35786;&#38463;&#23572;&#33576;&#28023;&#40664;&#30149;&#36825;&#22825;&#65292;&#24471;&#30693;&#33258;&#24049;&#26263;&#24651;&#22810;&#24180;&#30340;&#26657;&#22253;&#30007;&#31070;&#35060;&#20043;&#21363;&#23558;&#20986;&#22269;&#28145;&#36896;&#30340;&#28040;&#24687;&#8212;&#8212;&#23545;&#26041;&#32771;&#21462;&#30340;&#23398;&#26657;&#65292;&#24688;&#26159;&#29238;&#20146;&#24403;&#24180;&#20026;&#22905;&#25918;&#24323;&#30340;&#37027;&#25152;&#12290;
+    - name: &#26102;&#38388;&#30340;&#31209;&#24207;
+      description: &#20026;&#20160;&#20040;&#25105;&#20204;&#35760;&#24471;&#36807;&#21435;&#65292;&#32780;&#38750;&#26410;&#26469;&#65311;&#26102;&#38388;&#8220;&#27969;&#36893;&#8221;&#24847;&#21619;&#30528;&#20160;&#20040;&#65311;&#26159;&#25105;&#20204;&#23384;&#22312;&#20110;&#26102;&#38388;&#20043;&#20869;&#65292;&#36824;&#26159;&#26102;&#38388;&#23384;&#22312;&#20110;&#25105;&#20204;&#20043;&#20013;&#65311;&#21345;&#27931;&#183;&#32599;&#38886;&#21033;&#29992;&#35799;&#24847;&#30340;&#25991;&#23383;&#65292;&#36992;&#35831;&#25105;&#20204;&#24605;&#32771;&#36825;&#19968;&#20120;&#21476;&#38590;&#39064;&#8212;&#8212;&#26102;&#38388;&#30340;&#26412;&#36136;&#12290;
+    - name: &#20102;&#19981;&#36215;&#30340;&#25105;
+      description: &#22914;&#20309;&#20859;&#25104;&#19968;&#20010;&#26032;&#20064;&#24815;&#65311;&#22914;&#20309;&#35753;&#24515;&#26234;&#21464;&#24471;&#26356;&#25104;&#29087;&#65311;&#22914;&#20309;&#25317;&#26377;&#39640;&#36136;&#37327;&#30340;&#20851;&#31995;&#65311; &#22914;&#20309;&#36208;&#20986;&#20154;&#29983;&#30340;&#33392;&#38590;&#26102;&#21051;&#65311;</pre>
+ <p class="ne-p" id="u6a734646">
+  <br>
+ </p>
+ <h4 id="0d465177">
+  <span class="ne-text">
+   12.1. &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @value
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35835;&#21462;&#27604;&#36739;&#31616;&#21333;&#30340;&#37197;&#32622;&#20449;&#24687;
+  </span>
+ </h4>
+ <p class="ne-p" id="u48f05387">
+  <br>
+ </p>
+ <p class="ne-p" id="u13d1318b">
+  <span class="ne-text">
+   &#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Value("${property}")
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35835;&#21462;&#27604;&#36739;&#31616;&#21333;&#30340;&#37197;&#32622;&#20449;&#24687;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u2b7edc1e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="d74c7f4f">@Value("${wuhan2020}")
+String wuhan2020;</pre>
+ <p class="ne-p" id="u0658bd1e">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u87d620a4">
+   <strong>
+    <span class="ne-text">
+     &#38656;&#35201;&#27880;&#24847;&#30340;&#26159;
+    </span>
+   </strong>
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      @value
+     </span>
+    </strong>
+   </code>
+   <strong>
+    <span class="ne-text">
+     &#36825;&#31181;&#26041;&#24335;&#26159;&#19981;&#34987;&#25512;&#33616;&#30340;&#65292;Spring &#27604;&#36739;&#24314;&#35758;&#30340;&#26159;&#19979;&#38754;&#20960;&#31181;&#35835;&#21462;&#37197;&#32622;&#20449;&#24687;&#30340;&#26041;&#24335;&#12290;
+    </span>
+   </strong>
+  </p>
+ </div>
+ <p class="ne-p" id="ucd20527f">
+  <br>
+ </p>
+ <h4 id="986dc46c">
+  <span class="ne-text">
+   12.2. &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConfigurationProperties
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35835;&#21462;&#24182;&#19982; bean &#32465;&#23450;
+  </span>
+ </h4>
+ <p class="ne-p" id="u106987ce">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ue22c439e">
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      LibraryProperties
+     </span>
+    </strong>
+   </code>
+   <strong>
+    <span class="ne-text">
+     &#31867;&#19978;&#21152;&#20102;
+    </span>
+   </strong>
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      @Component
+     </span>
+    </strong>
+   </code>
+   <strong>
+    <span class="ne-text">
+     &#27880;&#35299;&#65292;&#25105;&#20204;&#21487;&#20197;&#20687;&#20351;&#29992;&#26222;&#36890; bean &#19968;&#26679;&#23558;&#20854;&#27880;&#20837;&#21040;&#31867;&#20013;&#20351;&#29992;&#12290;
+    </span>
+   </strong>
+  </p>
+ </div>
+ <p class="ne-p" id="uca6a695c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="e9c4dde0">
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
+@ConfigurationProperties(prefix = "library")
+@Setter
+@Getter
+@ToString
+class LibraryProperties {
+    private String location;
+    private List&lt;Book&gt; books;
+
+    @Setter
+    @Getter
+    @ToString
+    static class Book {
+        String name;
+        String description;
+    }
+}</pre>
+ <p class="ne-p" id="u0b6e5ad5">
+  <br>
+ </p>
+ <p class="ne-p" id="u464a7b1e">
+  <span class="ne-text">
+   &#36825;&#20010;&#26102;&#20505;&#20320;&#23601;&#21487;&#20197;&#20687;&#20351;&#29992;&#26222;&#36890; bean &#19968;&#26679;&#65292;&#23558;&#20854;&#27880;&#20837;&#21040;&#31867;&#20013;&#20351;&#29992;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u7760c958">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="60170ca1">package cn.javaguide.readconfigproperties;
+
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ * @author shuang.kou
+ */
+@SpringBootApplication
+public class ReadConfigPropertiesApplication implements InitializingBean {
+
+    private final LibraryProperties library;
+
+    public ReadConfigPropertiesApplication(LibraryProperties library) {
+        this.library = library;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(ReadConfigPropertiesApplication.class, args);
+    }
+
+    @Override
+    public void afterPropertiesSet() {
+        System.out.println(library.getLocation());
+        System.out.println(library.getBooks());    }
+}</pre>
+ <p class="ne-p" id="ub506a51b">
+  <br>
+ </p>
+ <p class="ne-p" id="uf75f0457">
+  <span class="ne-text">
+   &#25511;&#21046;&#21488;&#36755;&#20986;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u798f7052">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-plain" data-language="plain" id="6f750cb2">&#28246;&#21271;&#27494;&#27721;&#21152;&#27833;&#20013;&#22269;&#21152;&#27833;
+[LibraryProperties.Book(name=&#22825;&#25165;&#22522;&#26412;&#27861;, description........]</pre>
+ <p class="ne-p" id="ua3de7679">
+  <br>
+ </p>
+ <h4 id="52d2251e">
+  <span class="ne-text">
+   12.3. &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConfigurationProperties
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35835;&#21462;&#24182;&#26657;&#39564;
+  </span>
+ </h4>
+ <p class="ne-p" id="u159cc2ac">
+  <br>
+ </p>
+ <p class="ne-p" id="u5117ff22">
+  <span class="ne-text">
+   &#25105;&#20204;&#20808;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    application.yml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20462;&#25913;&#20026;&#22914;&#19979;&#20869;&#23481;&#65292;&#26126;&#26174;&#30475;&#20986;&#36825;&#19981;&#26159;&#19968;&#20010;&#27491;&#30830;&#30340; email &#26684;&#24335;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uddc998a2">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-yaml" data-language="yaml" id="f33222e1">my-profile:
+  name: Guide&#21733;
+  email: koushuangbwcx@</pre>
+ <p class="ne-p" id="u1d36dcd9">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u5bad8bfd">
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      ProfileProperties
+     </span>
+    </strong>
+   </code>
+   <strong>
+    <span class="ne-text">
+     &#31867;&#27809;&#26377;&#21152;
+    </span>
+   </strong>
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      @Component
+     </span>
+    </strong>
+   </code>
+   <strong>
+    <span class="ne-text">
+     &#27880;&#35299;&#12290;&#25105;&#20204;&#22312;&#25105;&#20204;&#35201;&#20351;&#29992;
+    </span>
+   </strong>
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      ProfileProperties
+     </span>
+    </strong>
+   </code>
+   <strong>
+    <span class="ne-text">
+     &#30340;&#22320;&#26041;&#20351;&#29992;
+    </span>
+   </strong>
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      @EnableConfigurationProperties
+     </span>
+    </strong>
+   </code>
+   <strong>
+    <span class="ne-text">
+     &#27880;&#20876;&#25105;&#20204;&#30340;&#37197;&#32622; bean&#65306;
+    </span>
+   </strong>
+  </p>
+ </div>
+ <p class="ne-p" id="ue7bcc983">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="83b657f2">import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+/**
+* @author shuang.kou
+*/
+@Getter
+@Setter
+@ToString
+@ConfigurationProperties("my-profile")
+@Validated
+public class ProfileProperties {
+   @NotEmpty
+   private String name;
+
+   @Email
+   @NotEmpty
+   private String email;
+
+   //&#37197;&#32622;&#25991;&#20214;&#20013;&#27809;&#26377;&#35835;&#21462;&#21040;&#30340;&#35805;&#23601;&#29992;&#40664;&#35748;&#20540;
+   private Boolean handsome = Boolean.TRUE;
+
+}</pre>
+ <p class="ne-p" id="u681f3dad">
+  <br>
+ </p>
+ <p class="ne-p" id="u83a9e7fc">
+  <span class="ne-text">
+   &#20855;&#20307;&#20351;&#29992;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u2df772ee">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="8c206ebb">package cn.javaguide.readconfigproperties;
+
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+/**
+ * @author shuang.kou
+ */
+@SpringBootApplication
+@EnableConfigurationProperties(ProfileProperties.class)
+public class ReadConfigPropertiesApplication implements InitializingBean {
+    private final ProfileProperties profileProperties;
+
+    public ReadConfigPropertiesApplication(ProfileProperties profileProperties) {
+        this.profileProperties = profileProperties;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(ReadConfigPropertiesApplication.class, args);
+    }
+
+    @Override
+    public void afterPropertiesSet() {
+        System.out.println(profileProperties.toString());
+    }
+}</pre>
+ <p class="ne-p" id="u482bc292">
+  <br>
+ </p>
+ <p class="ne-p" id="uc31a86d1">
+  <span class="ne-text">
+   &#22240;&#20026;&#25105;&#20204;&#30340;&#37038;&#31665;&#26684;&#24335;&#19981;&#27491;&#30830;&#65292;&#25152;&#20197;&#31243;&#24207;&#36816;&#34892;&#30340;&#26102;&#20505;&#23601;&#25253;&#38169;&#65292;&#26681;&#26412;&#36816;&#34892;&#19981;&#36215;&#26469;&#65292;&#20445;&#35777;&#20102;&#25968;&#25454;&#31867;&#22411;&#30340;&#23433;&#20840;&#24615;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u9ffb78e9">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-plain" data-language="plain" id="42672cf2">Binding to target org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'my-profile' to cn.javaguide.readconfigproperties.ProfileProperties failed:
+
+    Property: my-profile.email
+    Value: koushuangbwcx@
+    Origin: class path resource [application.yml]:5:10
+    Reason: must be a well-formed email address</pre>
+ <p class="ne-p" id="u5526424f">
+  <br>
+ </p>
+ <p class="ne-p" id="u34ffba04">
+  <span class="ne-text">
+   &#25105;&#20204;&#25226;&#37038;&#31665;&#27979;&#35797;&#25913;&#20026;&#27491;&#30830;&#30340;&#20043;&#21518;&#20877;&#36816;&#34892;&#65292;&#25511;&#21046;&#21488;&#23601;&#33021;&#25104;&#21151;&#25171;&#21360;&#20986;&#35835;&#21462;&#21040;&#30340;&#20449;&#24687;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ubb18ed9e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-plain" data-language="plain" id="8122c50f">ProfileProperties(name=Guide&#21733;, email=koushuangbwcx@163.com, handsome=true)</pre>
+ <p class="ne-p" id="u07c1960f">
+  <br>
+ </p>
+ <h4 id="dd0b2502">
+  <span class="ne-text">
+   12.4.
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @PropertySource
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35835;&#21462;&#25351;&#23450;&#30340; properties &#25991;&#20214;
+  </span>
+ </h4>
+ <p class="ne-p" id="u4e6c4835">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="3edf7e71">import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+
+@Component
+@PropertySource("classpath:website.properties")
+@Getter
+@Setter
+class WebSite {
+    @Value("${url}")
+    private String url;
+}</pre>
+ <p class="ne-p" id="u47732e56">
+  <br>
+ </p>
+ <p class="ne-p" id="u7494278c">
+  <span class="ne-text">
+   &#20351;&#29992;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ua1fcecd0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="62be3b5b">@Autowired
+private WebSite webSite;
+
+System.out.println(webSite.getUrl());//https://javaguide.cn/</pre>
+ <p class="ne-p" id="u3ef74efc">
+  <br>
+ </p>
+ <h3 id="d7a89693">
+  <span class="ne-text">
+   13. Spring Boot &#21152;&#36733;&#37197;&#32622;&#25991;&#20214;&#30340;&#20248;&#20808;&#32423;&#20102;&#35299;&#20040;&#65311;
+  </span>
+ </h3>
+ <p class="ne-p" id="u7b36512f">
+  <br>
+ </p>
+ <p class="ne-p" id="u1b0b30a6">
+  <span class="ne-text">
+   Spring &#35835;&#21462;&#37197;&#32622;&#25991;&#20214;&#20063;&#26159;&#26377;&#20248;&#20808;&#32423;&#30340;&#65292;&#30452;&#25509;&#19978;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ua7378661">
+  <br>
+ </p>
+ <p class="ne-p" id="uc92ea47b">
+  <img class="ne-image" id="dN7Nz" src="EPUB/imgdN7Nz" width="812">
+ </p>
+ <p class="ne-p" id="u0355f076">
+  <br>
+ </p>
+ <p class="ne-p" id="u3c454197">
+  <span class="ne-text">
+   &#26356;&#23545;&#20869;&#23481;&#35831;&#26597;&#30475;&#23448;&#26041;&#25991;&#26723;&#65306;
+  </span>
+  <a class="ne-link" data-href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config" href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config" target="_blank">
+   <span class="ne-text">
+    https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config
+   </span>
+  </a>
+ </p>
+ <p class="ne-p" id="u45c1f034">
+  <br>
+ </p>
+ <h3 id="b8f5e3f3">
+  <span class="ne-text">
+   14. &#24120;&#29992;&#30340; Bean &#26144;&#23556;&#24037;&#20855;&#26377;&#21738;&#20123;&#65311;
+  </span>
+ </h3>
+ <p class="ne-p" id="u05c11a3a">
+  <br>
+ </p>
+ <p class="ne-p" id="u394e3e84">
+  <span class="ne-text">
+   MapStruct&#12289;ModelMapper&#12289;Dozer&#12289;Orika&#12289;JMapper &#26159; 5 &#31181;&#24120;&#29992;&#30340; Bean &#26144;&#23556;&#24037;&#20855;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6785ef22">
+  <br>
+ </p>
+ <p class="ne-p" id="uba7a0f44">
+  <span class="ne-text">
+   &#32508;&#21512;&#26085;&#24120;&#20351;&#29992;&#24773;&#20917;&#21644;&#30456;&#20851;&#27979;&#35797;&#25968;&#25454;&#65292;&#20010;&#20154;&#24863;&#35273; MapStruct&#12289;ModelMapper &#36825;&#20004;&#20010; Bean &#26144;&#23556;&#26694;&#26550;&#26159;&#26368;&#20339;&#36873;&#25321;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8423dea5">
+  <br>
+ </p>
+ <h3 id="5e2efdd8">
+  <span class="ne-text">
+   15. Spring Boot &#22914;&#20309;&#30417;&#25511;&#31995;&#32479;&#23454;&#38469;&#36816;&#34892;&#29366;&#20917;&#65311;
+  </span>
+ </h3>
+ <p class="ne-p" id="uc2998304">
+  <br>
+ </p>
+ <p class="ne-p" id="u0f71f691">
+  <span class="ne-text">
+   &#25105;&#20204;&#21487;&#20197;&#20351;&#29992; Spring Boot Actuator &#26469;&#23545; Spring Boot &#39033;&#30446;&#36827;&#34892;&#31616;&#21333;&#30340;&#30417;&#25511;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8d9fca13">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-xml" data-language="xml" id="c08b34e0">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+&lt;/dependency&gt;</pre>
+ <p class="ne-p" id="uf5ecb69f">
+  <br>
+ </p>
+ <p class="ne-p" id="u7b3afaf7">
+  <span class="ne-text">
+   &#38598;&#25104;&#20102;&#36825;&#20010;&#27169;&#22359;&#20043;&#21518;&#65292;&#20320;&#30340; Spring Boot &#24212;&#29992;&#31243;&#24207;&#23601;&#33258;&#24102;&#20102;&#19968;&#20123;&#24320;&#31665;&#21363;&#29992;&#30340;&#33719;&#21462;&#31243;&#24207;&#36816;&#34892;&#26102;&#30340;&#20869;&#37096;&#29366;&#24577;&#20449;&#24687;&#30340; API&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1765051c">
+  <br>
+ </p>
+ <p class="ne-p" id="u940f1d94">
+  <span class="ne-text">
+   &#27604;&#22914;&#36890;&#36807; GET &#26041;&#27861;&#35775;&#38382;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    /health
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#20320;&#23601;&#21487;&#20197;&#33719;&#21462;&#24212;&#29992;&#31243;&#24207;&#30340;&#20581;&#24247;&#25351;&#26631;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5eeaeb2f">
+  <br>
+ </p>
+ <h3 id="550c939e">
+  <span class="ne-text">
+   16. Spring Boot &#22914;&#20309;&#20570;&#35831;&#27714;&#21442;&#25968;&#26657;&#39564;&#65311;
+  </span>
+ </h3>
+ <p class="ne-p" id="u01cc4c8b">
+  <br>
+ </p>
+ <p class="ne-p" id="u97f59084">
+  <span class="ne-text">
+   &#25968;&#25454;&#30340;&#26657;&#39564;&#30340;&#37325;&#35201;&#24615;&#23601;&#19981;&#29992;&#35828;&#20102;&#65292;&#21363;&#20351;&#22312;&#21069;&#31471;&#23545;&#25968;&#25454;&#36827;&#34892;&#26657;&#39564;&#30340;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#36824;&#26159;&#35201;&#23545;&#20256;&#20837;&#21518;&#31471;&#30340;&#25968;&#25454;&#20877;&#36827;&#34892;&#19968;&#36941;&#26657;&#39564;&#65292;&#36991;&#20813;&#29992;&#25143;&#32469;&#36807;&#27983;&#35272;&#22120;&#30452;&#25509;&#36890;&#36807;&#19968;&#20123; HTTP &#24037;&#20855;&#30452;&#25509;&#21521;&#21518;&#31471;&#35831;&#27714;&#19968;&#20123;&#36829;&#27861;&#25968;&#25454;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ueaa10421">
+  <br>
+ </p>
+ <p class="ne-p" id="u602105bd">
+  <span class="ne-text">
+   Spring Boot &#31243;&#24207;&#20570;&#35831;&#27714;&#21442;&#25968;&#26657;&#39564;&#30340;&#35805;&#21482;&#38656;&#35201;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20381;&#36182;&#23601;&#22815;&#20102;&#65292;&#23427;&#30340;&#23376;&#20381;&#36182;&#21253;&#21547;&#20102;&#25105;&#20204;&#25152;&#38656;&#35201;&#30340;&#19996;&#35199;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc4ea111a">
+  <br>
+ </p>
+ <h4 id="343fabbd">
+  <span class="ne-text">
+   16.1. &#26657;&#39564;&#27880;&#35299;
+  </span>
+ </h4>
+ <p class="ne-p" id="ubf0072e5">
+  <br>
+ </p>
+ <p class="ne-p" id="uf394444e">
+  <strong>
+   <span class="ne-text">
+    JSR &#25552;&#20379;&#30340;&#26657;&#39564;&#27880;&#35299;
+   </span>
+  </strong>
+  <span class="ne-text">
+   :
+  </span>
+ </p>
+ <p class="ne-p" id="u7b17fa85">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="uaab3b9a8">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Null
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#20026; null
+   </span>
+  </li>
+  <li id="ubb5e80be">
+   <code class="ne-code">
+    <span class="ne-text">
+     @NotNull
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#19981;&#20026; null
+   </span>
+  </li>
+  <li id="u97813d89">
+   <code class="ne-code">
+    <span class="ne-text">
+     @AssertTrue
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#20026; true
+   </span>
+  </li>
+  <li id="u75710761">
+   <code class="ne-code">
+    <span class="ne-text">
+     @AssertFalse
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#20026; false
+   </span>
+  </li>
+  <li id="u72816ec4">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Min(value)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#26159;&#19968;&#20010;&#25968;&#23383;&#65292;&#20854;&#20540;&#24517;&#39035;&#22823;&#20110;&#31561;&#20110;&#25351;&#23450;&#30340;&#26368;&#23567;&#20540;
+   </span>
+  </li>
+  <li id="ud98f5d4b">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Max(value)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#26159;&#19968;&#20010;&#25968;&#23383;&#65292;&#20854;&#20540;&#24517;&#39035;&#23567;&#20110;&#31561;&#20110;&#25351;&#23450;&#30340;&#26368;&#22823;&#20540;
+   </span>
+  </li>
+  <li id="u3fbaf0c0">
+   <code class="ne-code">
+    <span class="ne-text">
+     @DecimalMin(value)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#26159;&#19968;&#20010;&#25968;&#23383;&#65292;&#20854;&#20540;&#24517;&#39035;&#22823;&#20110;&#31561;&#20110;&#25351;&#23450;&#30340;&#26368;&#23567;&#20540;
+   </span>
+  </li>
+  <li id="u8229809a">
+   <code class="ne-code">
+    <span class="ne-text">
+     @DecimalMax(value)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#26159;&#19968;&#20010;&#25968;&#23383;&#65292;&#20854;&#20540;&#24517;&#39035;&#23567;&#20110;&#31561;&#20110;&#25351;&#23450;&#30340;&#26368;&#22823;&#20540;
+   </span>
+  </li>
+  <li id="uc6514779">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Size(max=, min=)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#30340;&#22823;&#23567;&#24517;&#39035;&#22312;&#25351;&#23450;&#30340;&#33539;&#22260;&#20869;
+   </span>
+  </li>
+  <li id="uecfc7909">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Digits (integer, fraction)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#26159;&#19968;&#20010;&#25968;&#23383;&#65292;&#20854;&#20540;&#24517;&#39035;&#22312;&#21487;&#25509;&#21463;&#30340;&#33539;&#22260;&#20869;
+   </span>
+  </li>
+  <li id="u5231b406">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Past
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#26159;&#19968;&#20010;&#36807;&#21435;&#30340;&#26085;&#26399;
+   </span>
+  </li>
+  <li id="u6ce20519">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Future
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#26159;&#19968;&#20010;&#23558;&#26469;&#30340;&#26085;&#26399;
+   </span>
+  </li>
+  <li id="ufdd07b30">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Pattern(regex=,flag=)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#31526;&#21512;&#25351;&#23450;&#30340;&#27491;&#21017;&#34920;&#36798;&#24335;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u24c2eb19">
+  <br>
+ </p>
+ <p class="ne-p" id="u04b71182">
+  <strong>
+   <span class="ne-text">
+    Hibernate Validator &#25552;&#20379;&#30340;&#26657;&#39564;&#27880;&#35299;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u5158f7bc">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="uac572770">
+   <code class="ne-code">
+    <span class="ne-text">
+     @NotBlank(message =)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#39564;&#35777;&#23383;&#31526;&#20018;&#38750; null&#65292;&#19988;&#38271;&#24230;&#24517;&#39035;&#22823;&#20110; 0
+   </span>
+  </li>
+  <li id="u43c17b52">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Email
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#26159;&#30005;&#23376;&#37038;&#31665;&#22320;&#22336;
+   </span>
+  </li>
+  <li id="ub3c573fa">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Length(min=,max=)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#23383;&#31526;&#20018;&#30340;&#22823;&#23567;&#24517;&#39035;&#22312;&#25351;&#23450;&#30340;&#33539;&#22260;&#20869;
+   </span>
+  </li>
+  <li id="uabab813d">
+   <code class="ne-code">
+    <span class="ne-text">
+     @NotEmpty
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#23383;&#31526;&#20018;&#30340;&#24517;&#39035;&#38750;&#31354;
+   </span>
+  </li>
+  <li id="u8e93fd18">
+   <code class="ne-code">
+    <span class="ne-text">
+     @Range(min=,max=,message=)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#34987;&#27880;&#37322;&#30340;&#20803;&#32032;&#24517;&#39035;&#22312;&#21512;&#36866;&#30340;&#33539;&#22260;&#20869;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u2d97a2dc">
+  <br>
+ </p>
+ <p class="ne-p" id="u8facd267">
+  <strong>
+   <span class="ne-text">
+    &#20351;&#29992;&#31034;&#20363;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u3de14d62">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="6a4ec209">@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Person {
+
+    @NotNull(message = "classId &#19981;&#33021;&#20026;&#31354;")
+    private String classId;
+
+    @Size(max = 33)
+    @NotNull(message = "name &#19981;&#33021;&#20026;&#31354;")
+    private String name;
+
+    @Pattern(regexp = "((^Man$|^Woman$|^UGM$))", message = "sex &#20540;&#19981;&#22312;&#21487;&#36873;&#33539;&#22260;")
+    @NotNull(message = "sex &#19981;&#33021;&#20026;&#31354;")
+    private String sex;
+
+    @Email(message = "email &#26684;&#24335;&#19981;&#27491;&#30830;")
+    @NotNull(message = "email &#19981;&#33021;&#20026;&#31354;")
+    private String email;
+
+}</pre>
+ <p class="ne-p" id="ud4e529b4">
+  <br>
+ </p>
+ <h4 id="6b2eb0df">
+  <span class="ne-text">
+   16.2. &#39564;&#35777;&#35831;&#27714;&#20307;(RequestBody)
+  </span>
+ </h4>
+ <p class="ne-p" id="u4781e6d5">
+  <br>
+ </p>
+ <p class="ne-p" id="ud045088b">
+  <span class="ne-text">
+   &#25105;&#20204;&#22312;&#38656;&#35201;&#39564;&#35777;&#30340;&#21442;&#25968;&#19978;&#21152;&#19978;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Valid
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#65292;&#22914;&#26524;&#39564;&#35777;&#22833;&#36133;&#65292;&#23427;&#23558;&#25243;&#20986;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    MethodArgumentNotValidException
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#40664;&#35748;&#24773;&#20917;&#19979;&#65292;Spring &#20250;&#23558;&#27492;&#24322;&#24120;&#36716;&#25442;&#20026; HTTP Status 400&#65288;&#38169;&#35823;&#35831;&#27714;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u7f28e4f8">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b6827f2a">@RestController
+@RequestMapping("/api")
+public class PersonController {
+
+    @PostMapping("/person")
+    public ResponseEntity&lt;Person&gt; getPerson(@RequestBody @Valid Person person) {
+        return ResponseEntity.ok().body(person);
+    }
+}</pre>
+ <p class="ne-p" id="ub921eba1">
+  <br>
+ </p>
+ <h4 id="f52753ac">
+  <span class="ne-text">
+   16.3. &#39564;&#35777;&#35831;&#27714;&#21442;&#25968;(Path Variables &#21644; Request Parameters)
+  </span>
+ </h4>
+ <p class="ne-p" id="u687fd871">
+  <br>
+ </p>
+ <p class="ne-p" id="uf9788b8e">
+  <span class="ne-text">
+   &#19968;&#23450;&#19968;&#23450;&#19981;&#35201;&#24536;&#35760;&#22312;&#31867;&#19978;&#21152;&#19978; Validated &#27880;&#35299;&#20102;&#65292;&#36825;&#20010;&#21442;&#25968;&#21487;&#20197;&#21578;&#35785; Spring &#21435;&#26657;&#39564;&#26041;&#27861;&#21442;&#25968;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue3e09f9b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="f757a8ba">@RestController
+@RequestMapping("/api")
+@Validated
+public class PersonController {
+
+    @GetMapping("/person/{id}")
+    public ResponseEntity&lt;Integer&gt; getPersonByID(@Valid @PathVariable("id") @Max(value = 5,message = "&#36229;&#36807; id &#30340;&#33539;&#22260;&#20102;") Integer id) {
+        return ResponseEntity.ok().body(id);
+    }
+
+    @PutMapping("/person")
+    public ResponseEntity&lt;String&gt; getPersonByName(@Valid @RequestParam("name") @Size(max = 6,message = "&#36229;&#36807; name &#30340;&#33539;&#22260;&#20102;") String name) {
+        return ResponseEntity.ok().body(name);
+    }
+}</pre>
+ <p class="ne-p" id="u5a3e8c6c">
+  <br>
+ </p>
+ <p class="ne-p" id="u379a042e">
+  <span class="ne-text">
+   &#26356;&#22810;&#20869;&#23481;&#35831;&#21442;&#32771;&#25105;&#30340;&#21407;&#21019;&#65306;
+  </span>
+  <a class="ne-link" data-href="https://snailclimb.gitee.io/springboot-guide/#/./docs/advanced/spring-bean-validation" href="https://snailclimb.gitee.io/springboot-guide/#/./docs/advanced/spring-bean-validation" target="_blank">
+   <strong>
+    <span class="ne-text">
+     &#22914;&#20309;&#22312; Spring/Spring Boot &#20013;&#20570;&#21442;&#25968;&#26657;&#39564;&#65311;&#20320;&#38656;&#35201;&#20102;&#35299;&#30340;&#37117;&#22312;&#36825;&#37324;&#65281;
+    </span>
+   </strong>
+  </a>
+ </p>
+ <p class="ne-p" id="u3a8fc79f">
+  <br>
+ </p>
+ <h3 id="a720498b">
+  <span class="ne-text">
+   17. &#22914;&#20309;&#20351;&#29992; Spring Boot &#23454;&#29616;&#20840;&#23616;&#24322;&#24120;&#22788;&#29702;&#65311;
+  </span>
+ </h3>
+ <p class="ne-p" id="uc19f08da">
+  <br>
+ </p>
+ <p class="ne-p" id="ub1bd0a4d">
+  <span class="ne-text">
+   &#21487;&#20197;&#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ControllerAdvice
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ExceptionHandler
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#29702;&#20840;&#23616;&#24322;&#24120;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u91fd6b86">
+  <br>
+ </p>
+ <p class="ne-p" id="u6c18bfc6">
+  <span class="ne-text">
+   &#26356;&#22810;&#20869;&#23481;&#35831;&#21442;&#32771;&#25105;&#30340;&#21407;&#21019; &#65306;
+  </span>
+  <a class="ne-link" data-href="https://snailclimb.gitee.io/springboot-guide/#/./docs/advanced/springboot-handle-exception-plus" href="https://snailclimb.gitee.io/springboot-guide/#/./docs/advanced/springboot-handle-exception-plus" target="_blank">
+   <span class="ne-text">
+    Spring Boot &#24322;&#24120;&#22788;&#29702;&#22312;&#23454;&#38469;&#39033;&#30446;&#20013;&#30340;&#24212;&#29992;
+   </span>
+  </a>
+ </p>
+ <p class="ne-p" id="ud73cd2e4">
+  <br>
+ </p>
+ <h3 id="192d4ad5">
+  <span class="ne-text">
+   18. Spring Boot &#20013;&#22914;&#20309;&#23454;&#29616;&#23450;&#26102;&#20219;&#21153; ?
+  </span>
+ </h3>
+ <p class="ne-p" id="ud2db531d">
+  <br>
+ </p>
+ <p class="ne-p" id="ub85464e6">
+  <span class="ne-text">
+   &#25105;&#20204;&#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Scheduled
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#23601;&#33021;&#24456;&#26041;&#20415;&#22320;&#21019;&#24314;&#19968;&#20010;&#23450;&#26102;&#20219;&#21153;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u62954778">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="68b5d5a2">@Component
+public class ScheduledTasks {
+    private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+
+    /**
+     * fixedRate&#65306;&#22266;&#23450;&#36895;&#29575;&#25191;&#34892;&#12290;&#27599;5&#31186;&#25191;&#34892;&#19968;&#27425;&#12290;
+     */
+    @Scheduled(fixedRate = 5000)
+    public void reportCurrentTimeWithFixedRate() {
+        log.info("Current Thread : {}", Thread.currentThread().getName());
+        log.info("Fixed Rate Task : The time is now {}", dateFormat.format(new Date()));
+    }
+}</pre>
+ <p class="ne-p" id="u53f577c2">
+  <br>
+ </p>
+ <p class="ne-p" id="u624701e9">
+  <span class="ne-text">
+   &#21333;&#32431;&#20381;&#38752;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Scheduled
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299; &#36824;&#19981;&#34892;&#65292;&#25105;&#20204;&#36824;&#38656;&#35201;&#22312; SpringBoot &#20013;&#25105;&#20204;&#21482;&#38656;&#35201;&#22312;&#21551;&#21160;&#31867;&#19978;&#21152;&#19978;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableScheduling
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#65292;&#36825;&#26679;&#25165;&#21487;&#20197;&#21551;&#21160;&#23450;&#26102;&#20219;&#21153;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableScheduling
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#20316;&#29992;&#26159;&#21457;&#29616;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Scheduled
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20219;&#21153;&#24182;&#22312;&#21518;&#21488;&#25191;&#34892;&#35813;&#20219;&#21153;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>

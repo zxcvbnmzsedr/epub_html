@@ -1,0 +1,1241 @@
+/** ------------------------------------------------------------------------------------------------------ **/
+/** 全局样式设定 **/
+/** ------------------------------------------------------------------------------------------------------ **/
+
+/** ----------------------------------------------- **/
+/** 全局样式 **/
+/** ----------------------------------------------- **/
+
+/** 行高字号设定 **/
+body {
+	font-size: 1em;
+	text-align: justify;
+	line-height: 1.618em;
+}
+
+/*书名页*/
+.smy-sm{font-size:2em;font-family:hei;margin-top:2em;margin-bottom:0em;text-align:center;font-weight:normal;}
+/*书名页*/
+.smy-sm1{font-size:1.5em;font-family:hei;margin-top:1em;margin-bottom:0em;text-align:center;font-weight:normal;}
+/*书名页丛书名*/
+.smy-csm{font-size:1.7em;font-family:hei;margin-top:0em;margin-bottom:0em;text-align:center;font-weight:normal;}
+/*书名页副书名*/
+.smy-fsm{font-size:1.7em;font-family:hei;margin-bottom:2em;margin-top:0em;text-align:left;font-weight:normal;}
+/*书名页副书名*/
+.smy-fsm1{font-size:1.7em;font-family:hei;margin-bottom:0em;margin-top:0.5em;text-align:center;font-weight:normal;}
+/*书名页作者*/
+.smy-zz{font-size:1.5em;font-family:hei;margin-top:1em;margin-bottom:0em;text-align:center;font-weight:normal;}
+
+.smy-zz1{font-size:1.5em;font-family:hei;margin-top:1em;margin-bottom:0em;text-align:center;font-weight:normal;}
+
+.smy-cbs{font-size:1.5em;font-family:hei;margin-top:6em;text-align:center;font-weight:normal;}
+/*书名页其它*/
+.smy-qt{font-size:1.5em;font-family:hei;text-align:center;font-weight:normal;}
+
+/** 全文首行缩进2个中文字符 **/
+p {
+	text-indent: 2em;
+}
+
+/** 版权信息页正文 **/
+p.kindle-cn-copyright-text {
+	line-height: 1.618em;
+	text-indent: 0em;
+}
+
+
+/** 引用框 **/
+blockquote.kindle-cn-blockquote {
+	background: #DCDCDC;
+ 	border-left: 0.5em solid #c7c7c7;
+  	margin: 1.5em;
+  	padding: 1em;
+ 	text-indent:2em;
+  	line-height:1.5em;
+}
+
+div.kindle-cn-blockquote {
+	border-left: 0.5em solid #c7c7c7;
+	margin: 1.5em;
+ 	padding: 0.5em;
+ 	text-indent:2em;
+	font-family:STKai, "MKai PRC", Kai;
+  	line-height:1.5em;
+}
+
+
+/** 日语 **/
+:lang(ja) {
+    font-family: TBGothic, TBMincho, TBGothic, HYGothic, TsukushiMincho;
+}
+
+/** 文字居右 **/
+p.kindle-cn-signature {
+	text-align: right;
+}
+p.kindle-cn-signature1{
+	text-align: right;
+	margin-right: 2em;
+}
+
+
+/** 首字下沉 **/
+span.kindle-cn-dropcap {
+	float:left;
+	font-size:2.85em;
+	line-height: 1em;
+	padding:0em 0em 0em 0em;
+	text-indent:0
+}
+p.kindle-cn-dropcap{
+	text-indent:0em;
+}
+
+
+/** 行间图 **/
+img.kindle-cn-inline-image {
+	height: 1em;
+	vertical-align: middle;
+	margin-left: 0em ;
+	margin-right: 0em  ;
+}
+/* 根据原文调整图片大小 plus1*/
+img.kindle-cn-inline-image2 {
+	height: 2em;
+	vertical-align: middle;
+	margin-left: 0em ;
+	margin-right: 0em  ;
+}
+/* 根据原文调整图片大小 plus1*/
+img.kindle-cn-inline-image4 {
+	height: 4em;
+	vertical-align: middle;
+	margin-left: 0em ;
+	margin-right: 0em  ;
+}
+/* 根据原文调整图片大小 plus1*/
+img.kindle-cn-inline-image3 {
+	height: 3em;
+	vertical-align: middle;
+	margin-left: 0em ;
+	margin-right: 0em  ;
+}
+/** 生僻字 **/
+img.kindle-cn-inline-character{
+	width: 1em;
+	vertical-align:middle;
+}
+
+/** 段落里的引用部分 **/
+p.kindle-cn-ref {
+	margin:0em 2em 0em 2em;
+	font-family:STKai, "MKai PRC", Kai;
+}
+
+/** ----------------------------------------------- **/
+
+
+
+
+/** ----------------------------------------------- **/
+/** 多字体 **/
+/** ----------------------------------------------- **/
+
+/** 黑体文字 **/
+.kindle-cn-hei { 
+	font-family: "MYing Hei S", Hei; 
+}
+
+/** 宋体文字 **/
+.kindle-cn-song { 
+	font-family: STSong, "Song S", Song; 
+}
+
+/** 楷体文字 **/
+.kindle-cn-kai { 
+	font-family: STKai, "MKai PRC", Kai; 
+}
+
+/** ----------------------------------------------- **/
+
+
+
+
+/** ----------------------------------------------- **/
+/** 列表样式 **/
+/** ----------------------------------------------- **/
+
+/** 无序列表样式 **/
+/** 圈标签 **/
+ul.kindle-cn-ul-disc {
+	list-style-type: disc;
+}
+
+/** 圆环标签 **/
+ul.kindle-cn-ul-circle {
+	list-style-type: circle;
+}
+
+/** 方形标签 **/
+ul.kindle-cn-ul-square {
+	list-style-type: square;
+}
+
+
+/** 有序列表样式 **/
+/** 此样式会显示1. 2. 3. **/
+ol.kindle-cn-ol-decimal {
+	list-style-type: decimal;
+} 
+ 
+/** 此样式会显示i. ii. iii. **/
+ol.kindle-cn-ol-lroman {
+	list-style-type: lower-roman;
+}
+
+/** 此样式会显示I. II. III. **/
+ol.kindle-cn-ol-uroman {
+	list-style-type: upper-roman;
+} 
+
+/** 此样式会显示a. b. c. **/
+ol.kindle-cn-ol-lalpha {
+	list-style-type: lower-alpha;
+}
+
+/** ----------------------------------------------- **/
+
+
+
+
+/** ----------------------------------------------- **/
+/** 标题样式 **/
+/** ----------------------------------------------- **/
+
+
+/** 双线标题 **/
+h1.kindle-cn-heading-1 {
+	border-bottom: 2px dashed #c7c7c7;
+	border-top: 2px dashed #c7c7c7;
+	padding: 0.75em 0 0.75em 0;
+	width: 100%;
+	page-break-before: always;
+	font-size: 3em;
+	font-family:"MYing Hei S", Hei;
+}
+
+
+/** 下单线标题 **/
+h1.kindle-cn-heading-2 {
+	font-size: 3em;
+	font-family:"MYing Hei S", Hei;
+	border-bottom: 2px dashed #c7c7c7;
+	margin-bottom: -0em;
+	width: 100%;
+	page-break-before: always;
+}
+
+h2.kindle-cn-heading2 {
+	width: 100%;
+	font-size: 2.5em;
+}
+
+h3.kindle-cn-heading2 {
+	font-size: 2em;
+}
+h4.kindle-cn-heading2 {
+	font-size: 1.5em;
+}
+h5.kindle-cn-heading2 {
+	font-size: 1em;
+}
+h1{font-weight:bold;text-align:center;}/*一级标题*/
+h2{font-weight:bold;text-indent:0em;text-align:left;}/*二级标题*/
+h3{font-weight:bold;text-indent:0em;text-align:left;}/*三级标题*/
+h4{font-weight:bold;text-align:left;text-indent:2em}/*四级标题*/
+h5{font-size:1em;font-weight:normal;text-align:left;text-indent:2em;}/*五级标题*/
+/**/
+
+/** 页眉标题 **/
+div.kindle-cn-page-header-outer{
+	border-bottom: 1px solid #FF9900;
+	margin-bottom: 0em;
+	width: 100%;
+}
+
+h1.kindle-cn-heading-3{
+	padding:0.4em;
+	margin:0;
+	width: 100%;
+	color: white;
+	background-color:#FF9900;
+	display: inline;
+	font-size:0.8em;
+	page-break-before: always;
+}
+
+
+/** ----------------------------------------------- **/
+
+
+
+
+
+
+
+/** ----------------------------------------------- **/
+/** 图片样式设定 **/
+/** ----------------------------------------------- **/
+
+
+/** ----------------------------- **/
+/** 图片居中样式 **/
+/** ----------------------------- **/
+
+/** Div居中样式 **/
+div.kindle-cn-bodycontent-div-alone100  {
+    width: 100%;
+    text-align: center;
+}
+
+/** 图片80%大小，带图说 **/
+img.kindle-cn-bodycontent-image-alone80-withnote  {
+	width: 80%;
+	margin-bottom: 0em;
+}
+
+/** 图片80%大小，不带图说 **/
+img.kindle-cn-bodycontent-image-alone80  {
+	width: 80%;
+	margin-bottom: 0.5em;
+}
+/** 图片50%大小，带图说 **/
+img.kindle-cn-bodycontent-image-alone50-withnote  {
+	width: 50%;
+	margin-bottom: 0em;
+}
+
+/** 图片50%大小，不带图说 **/
+img.kindle-cn-bodycontent-image-alone50  {
+	width: 50%;
+	margin-bottom: 0.5em;
+}
+
+/** 图片80%大小，图说在图上方，通常用于表格 **/
+img.kindle-cn-bodycontent-image-alone80-1  {
+	width: 80%;
+	margin-top: 0.3em;
+}
+
+/** 图说文字少，居中对齐 **/
+p.kindle-cn-picture-txt-withfewcharactors {
+	font-size: 0.85em;
+	font-family: STKai, "MKai PRC", Kai;
+	text-align: center;
+	margin-top: 0.3em;
+	text-indent: 0;
+}
+
+/** 图说文字多，左对齐 **/
+p.kindle-cn-picture-txt-withmanycharactors {
+	font-size: 0.85em;
+	font-family: STKai, "MKai PRC", Kai;
+	text-align: left;
+	margin-top: 0.3em;
+	text-indent: 0;
+}
+/** ----------------------------- **/
+
+
+
+/** ----------------------------- **/
+/** 右绕排图样式（图片在右侧） **/
+/** ----------------------------- **/
+
+/** div样式 **/
+div.kindle-cn-bodycontent-div-right  {
+	width: 45%;
+	margin-left: 1em;
+	float: right;
+	font-size: 1em;
+}
+
+/** 图片样式1(不带图说) **/
+img.kindle-cn-bodycontent-divright-image-withoutnote {
+	width: 100%;
+	margin-bottom:0.5em
+}
+
+/** 图片样式2(带图说) **/
+img.kindle-cn-bodycontent-divright-image-withnote {
+	width: 100%;
+	margin-bottom:0em
+}
+
+/** 图说样式(左对齐，左侧边与图片边缘对齐 **/
+p.kindle-cn-picture-txt-right {
+	font-size: 0.85em;
+	font-family: STKai, "MKai PRC", Kai;
+	text-align: left;
+	text-indent: 0;
+	margin-top: 0em;
+}
+/** ----------------------------- **/
+
+
+
+/** ----------------------------- **/
+/** 左绕排图(图片在左侧 **/
+/** ----------------------------- **/
+
+/** div样式 **/
+div.kindle-cn-bodycontent-div-left  {
+	width: 45%;
+	margin-right: 1em;
+	float: left;
+	font-size: 1em;
+}
+
+/** 图片样式1(不带图说 **/
+img.kindle-cn-bodycontent-divleft-image-withoutnote {
+	width: 100%;
+	margin-bottom:0.5em
+}
+
+/** 图片样式2(带图说 **/
+img.kindle-cn-bodycontent-divleft-image-withnote {
+	width: 100%;
+	margin-bottom:0em
+}
+
+/** 图说样式(左对齐，左侧边与图片边缘对齐 **/
+p.kindle-cn-picture-txt-left {
+	font-size: 0.85em;
+	font-family: STKai, "MKai PRC", Kai;
+	text-align: left;
+	margin-top: -0.5em;
+	text-indent: 0;
+}
+/** ----------------------------- **/
+
+
+
+
+/** ----------------------------- **/
+/** 并列图片 **/
+/** ----------------------------- **/
+/** 无图注 **/
+table.kindle-cn-picture-parallel-1 {
+	margin: 1em auto 1em auto; 
+	text-align: center;
+}
+
+td.kindle-cn-picture-parallel-2 {
+	vertical-align: bottom; 
+	text-align: center;
+	width: 40%;
+}
+img.kindle-cn-picture-parallel-3 {
+	text-align:center; 
+	width:90%;
+}
+
+/** ----四图一页无图注---- **/
+table.kindle-cn-picture-four-1 {
+                margin:auto;
+}
+
+td.kindle-cn-picture-four-2 {
+                width:40%;
+                vertical-align:bottom
+}
+
+img.kindle-cn-tourism-four_images-3 {
+	width:100%;
+}
+/** ----------------------------- **/
+
+
+
+/** ----------------------------- **/
+/** 并列图片 **/
+/** ----------------------------- **/
+/** 无图注 **/
+table.kindle-cn-picture-parallel-1 {
+	margin: 1em auto 1em auto; 
+	text-align: center;
+}
+
+td.kindle-cn-picture-parallel-2 {
+	vertical-align: bottom; 
+	text-align: center;
+	width: 40%;
+}
+img.kindle-cn-picture-parallel-3 {
+	text-align:center; 
+	width:90%;
+}
+
+
+/** ----------------------------- **/
+/** 并列图文横排 **/
+/** ----------------------------- **/
+
+table.kindle-cn-tourism-double_image_with_notes-1 {
+	margin: 1em auto 1em auto; 
+	text-align: center;
+}
+
+td.kindle-cn-tourism-double_image_with_notes-2 {
+	vertical-align: bottom; 
+	width: 48%;
+}
+
+td.kindle-cn-tourism-double_image_with_notes-3 {
+	vertical-align:top;
+	text-align:justify;
+	font-size:0.85em;
+	padding : 0.8em;
+	font-family:STKai, "MKai PRC", Kai;
+	width: 48%;
+}
+
+img.kindle-cn-tourism-double_image_with_notes-4 {
+	width: 95%; 
+}/** ----------------------------- **/
+
+
+/** ----------------------------- **/
+/** 三图文并列横排 **/
+/** ----------------------------- **/
+
+table.kindle-cn-tourism-triple_image_with_notes-1 {
+	margin: 1em auto 1em auto; 
+	text-align: center;
+}
+
+td.kindle-cn-tourism-triple_image_with_notes-2 {
+	vertical-align: bottom; 
+	width: 30%;
+}
+
+td.kindle-cn-tourism-triple_image_with_notes-3 {
+	vertical-align:top;
+	text-align:justify;
+	font-size:0.85em;
+	padding: 0em 1em 0em 1em;
+	font-family:STKai, "MKai PRC", Kai;
+	width: 30%;
+}
+
+img.kindle-cn-tourism-triple_image_with_notes-4 {
+	width: 95%;
+}
+/** ----------------------------- **/
+
+
+/** ----------------------------------------------- **/
+
+
+
+
+
+
+/** ----------------------------------------------- **/
+/** 表格样式设定 **/
+/** ----------------------------------------------- **/
+
+
+/** ----------------------------- **/
+/** 横向表头 **/
+/** ----------------------------- **/
+
+table.kindle-cn-table-body {
+	margin: 1em auto 1em auto;
+	border-style: solid solid none none;
+	width: 100%;
+	border-width: 1px;
+}
+
+td.kindle-cn-table-th{
+	vertical-align: middle;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border-style: none none solid solid;
+	border-width: 1px;
+	font-weight: bold;
+	text-align:center;
+}
+td.kindle-cn-table-dg1 {
+	vertical-align: middle;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border-style: solid solid solid solid;
+	border-width: 1px;
+	text-align:center;
+}
+/** ----------------------------- **/
+
+
+
+
+/** ----------------------------- **/
+/** 纵向表头 **/
+/** ----------------------------- **/
+table.kindle-cn-table-body {
+	margin: 1em auto 1em auto;
+	border-style: solid solid none none;
+	width: 100%;
+	border-width: 1px;
+}
+
+/** 普通单元格1 **/
+td.kindle-cn-table-dg1 {
+	vertical-align: middle;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border-style: none none solid solid;
+	border-width: 1px;
+	text-align:center;
+}
+
+/** 普通单元格2 **/
+td.kindle-cn-table-dg2 {
+	vertical-align: middle;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border-style: none none solid solid;
+	border-width: 1px;
+	text-align: left;
+}
+
+/** ----------------------------- **/
+
+
+
+
+/** ----------------------------- **/
+/** 带底色无边框表格 **/
+/** ----------------------------- **/
+table.kindle-cn-bodyt {
+	margin: 1em 0em 0.5em 0em;
+	border-style: solid none solid none;
+	border-width: 2px;
+	border-color: #000000;
+}
+
+td.kindle-cn-table-rt {
+	vertical-align: middle;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	background-color: #c7c7c7;
+	text-align: center;
+	font-weight: bold;
+}
+
+/** 普通单元格 **/
+td.kindle-cn-table-rn {
+	vertical-align: top;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	background-color: #DCDCDC;
+	text-align:left;
+}
+
+/** ----------------------------- **/
+
+
+
+/** ----------------------------- **/
+/** 内部无边框表格 **/
+/** ----------------------------- **/
+
+table.kindle-cn-table-bodyt-1 {
+	margin: 1em 0em 1em 0em;
+	border-style: solid none solid none;
+	border-width: 2px;
+}
+
+td.kindle-cn-table-rt1 {
+	vertical-align: middle;
+	border-style: none none solid none;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	border-width: 1px;
+	text-align: center;
+	font-weight: bold;
+}
+
+/** 普通单元格 **/
+td.kindle-cn-table-rn1 {
+	vertical-align: top;
+	padding: 0.5em 0.5em 0.5em 0.5em;
+	text-align:left;
+}
+/** ----------------------------- **/
+
+
+
+
+
+/** ----------------------------------------------- **/
+/** 边框样式 **/
+/** ----------------------------------------------- **/
+/** ----------------------------- **/
+/** 阴影边框样式 **/
+/** ----------------------------- **/
+div.kindle-cn-frame-shadow{
+	border: 1px solid #146eb4;
+	box-shadow: 5px 5px 5px #c7c7c7;
+	width: 95%;
+	padding: 0.3em;
+	margin-left: 2%;
+	margin-right: 3%;
+}
+
+
+/** 边框内文字无缩进 **/
+p.kindle-cn-noindent{
+	text-indent:0
+}
+
+/** ----------------------------- **/
+/** 提示框 **/
+/** ----------------------------- **/
+div.kindle-cn-tip-box {
+	padding:1em 1em 1em 1em; 
+	margin: 1em 0 1em 0em;
+	background-color: #DCDCDC;
+	font-family:STKai, "MKai PRC", Kai;
+	line-height:1.5em;
+}
+
+/** ----------------------------- **/
+/** 直角框 **/
+/** ----------------------------- **/
+div.kindle-cn-frame-zhijiao {
+	font-size: 1em;
+	padding: 0.5em;
+	margin: 1.5em 0em 1.5em 0em;
+	border-style: solid solid solid solid;
+	border-width: 1px;
+}
+/** ----------------------------- **/
+/** 圆角框 **/
+/** ----------------------------- **/
+div.kindle-cn-frame-yuanjiao{
+	font-size: 1em;
+	padding: 0.5em;
+	margin: 1.5em 0em 1.5em 0em;
+	border-style: solid solid solid solid;
+	border-width: 1px;
+	border-radius: 0.5em;
+}
+
+/** ----------------------------- **/
+/** 带底色知识点文本框**/
+/** ----------------------------- **/
+div.kindle-cn-frame-zhishidian1 {
+	font-size: 1em;
+	padding: 0.5em;
+	margin: 1.5em 0em 1.5em 0em;
+	background-color: #DCDCDC;
+	border-bottom: solid 1px #666666;
+}
+
+
+/** ----------------------------- **/
+/** 诗歌**/
+/** ----------------------------- **/
+p.kindle-cn-poem-left {
+	margin-left: 2em;
+	font-family:STKai, "MKai PRC", Kai;
+	text-indent: 0em;
+
+}
+p.kindle-cn-poem-center {
+	font-family:STKai, "MKai PRC", Kai;
+	text-align: center;
+	text-indent:0em;
+}
+
+/** 底纹知识点 **/
+p.kindle-cn-frame-zsdtext1 {
+	padding: 0.3em 0em 0.25em 0.3em;
+	margin-top: -0.5em;
+	margin-left: -0.5em;
+	font-weight: bold;
+	margin-right: -0.5em;
+	text-align: center;
+	color: #000000;
+	border-bottom: solid 1px #666666;
+	background-color: #c7c7c7;
+	text-indent:0em;
+}
+
+/** ----------------------------- **/
+/** 知识点标题虚线文本框 **/
+/** ----------------------------- **/
+p.kindle-cn-frame-zsdtext2 {
+	padding-bottom: 0.2em;
+	font-size: 1em;
+	font-weight: bold;
+	text-indent: 0em;
+	border-bottom: solid 1px #666666;
+}
+
+
+
+/** ----------------------------- **/
+
+
+
+/** ----------------------------------------------- **/
+/** 文字特殊样式 **/
+/** ----------------------------------------------- **/
+
+/** 加粗 **/
+span.kindle-cn-bold{
+font-weight: bold;
+}
+
+/** 斜体字 **/
+span.kindle-cn-italic{
+font-style: italic;
+}
+
+/** 斜体加粗字体**/
+span.kindle-cn-bold-italic{
+font-weight: bold;
+font-style: italic;
+}
+
+/** 下划线**/
+span.kindle-cn-underline{
+text-decoration: underline;
+}
+
+/** 删除线 **/
+ span.kindle-cn-strike{
+text-decoration: line-through;
+}
+
+/** 双下划线 **/ 
+span.kindle-cn-specialtext-double{
+	border-bottom:0.2em double;
+}
+
+/** 点线式边框 **/ 
+span.kindle-cn-specialtext-dot{
+	border-style:dotted;
+}
+
+/** 破折线式边框 **/ 
+span.kindle-cn-specialtext-dash{
+	border-style:dashed;
+	border-width: 1px;
+}
+
+/** 直线式边框 **/ 
+span.kindle-cn-specialtext-dot{
+	border-style:solid;
+	border-width: 1px;
+}
+
+/* 数学上标字体 */
+span.math-super {
+	font-size: 0.7em;
+	vertical-align: super;
+}
+
+/* 数学上标倾斜字体 */
+span.math-super-italic {
+	font-size: 0.7em;
+	font-style: italic;
+	vertical-align: super;
+}
+
+/* 数学下标字体 */
+span.math-sub {
+	font-size: 0.7em;
+	vertical-align: sub;
+}
+
+/** ----------------------------------------------- **/
+
+
+/** ----------------------------------------------- **/
+/** 带侧向竖线引用框 **/
+/** ----------------------------------------------- **/
+ 
+ 
+/* 带侧向竖线引用框 */
+blockquote.kindle-cn-blockquote {
+  	background: #f9f9f9;
+	border-left: 0.5em solid #ccc;
+	margin: 1.5em;
+ 	padding: 0.5em;
+ 	text-indent:2em;
+	font-family:STKai, "MKai PRC", Kai;
+  	line-height:1.5em;
+}
+
+/** ----------------------------- **/
+
+
+/** ------------------------------------------------------------------------------------------------------ **/
+
+
+
+
+
+
+
+
+
+/** ------------------------------------------------------------------------------------------------------ **/
+/** 英语样式 **/  
+
+/** ------------------------------------------------------------------------------------------------------ **/
+
+/** ----------------------------- **/
+/** 音标样式 **/
+/** ----------------------------- **/
+
+@font-face 
+{
+	font-family: yinbiao;
+	src: url(XXXXXXXXXXXXXXXX);  
+}
+
+/**音标区块不使用粗体，嵌入西文字体。 **/
+span.kindle-cn-eng-yinbiao
+{
+	font-family:yinbiao;
+}
+/**单词区块使用粗体，字体为默认字体。 **/
+p.kindle-cn-bold
+{
+	font-weight: bold;
+}
+/** ----------------------------- **/
+
+/** ------------------------------------------------------------------------------------------------------ **/
+
+ 
+
+/** ------------------------------------------------------------------------------------------------------ **/
+/** 摄影类样式 **/
+/** ------------------------------------------------------------------------------------------------------ **/
+
+/** 步骤，白字 **/
+span.kindle-cn-photography-step-white {
+	background-color: #FF9900;
+	font-family: "verdana";
+	font-style: "italic" ;
+	font-weight: bold;
+	color: white;
+	padding: 0.3em;
+	box-shadow: 0px 3px 3px #666666;
+}
+
+/** 步骤，黑字 **/
+span.kindle-cn-photography-step-black {
+	background-color: #FF9900;
+	font-family: "verdana";
+	font-style: "italic" ;
+	font-weight: bold;
+	color: black;
+	padding: 0.3em;
+	box-shadow: 0px 3px 3px #666666;
+	border-bottom: 2px solid #666666;
+	margin-bottom: -0.5em;
+	width: 100%;
+}
+
+/** 问答 **/
+span.kindle-cn-qa {
+	font-weight: bold;
+	color: #EE1475;
+	font-family: "MYing Hei S", Hei; 
+}
+/** ------------------------------------------------------------------------------------------------------ **/
+
+
+
+
+
+/** ------------------------------------------------------------------------------------------------------ **/
+/** 旅行类样式 **/
+/** ------------------------------------------------------------------------------------------------------ **/
+
+/** 旅行类信息文本框 **/
+div.kindle-cn-tourism-lnfo-tags-1 {
+background-color:#c7c7c7; 
+font-family: 宋体; 
+float: left; 
+border-radius: 1em;
+margin:0em 1em 1em 0em; 
+padding: 1em; 
+border-width: 0.1em; 
+border-style: solid; 
+box-shadow:0em 0em 2em #c7c7c7;
+font-weight:500;
+font-size:0.85em;
+border-color:black;
+}
+
+p.kindle-cn-tourism-lnfo-tags-2 {
+	border-radius: 1em;
+	color:white;
+	line-height:1.5em;
+	background-color:#146eb4;
+}
+/** ------------------------------------------------------------------------------------------------------ **/
+
+
+/** ------------------------------------------------------------------------------------------------------ **/
+/** 计算机类样式 **/
+/** ------------------------------------------------------------------------------------------------------ **/
+/** 行间代码 **/
+code.kindle-cn-computer-code{
+	font-family: monospace;
+}
+/** ------------------------------------------------------------------------------------------------------ **/
+
+/** 考试类样式 **/
+/*选择题*/
+p.kindle-cn-exam-choice{
+	text-indent: 0em;
+	font-size: 1em;
+	margin-left: 2em;
+}
+
+
+/**字符样式**/
+span.kindle-cn-char-bold{
+	font-weight: bold;
+}
+
+span.kindle-cn-char-italic{
+	font-style: italic;
+}
+
+span.kindle-cn-char-bolditalic{
+	font-weight: bold;
+	font-style: italic;
+}
+
+span.kindle-cn-char-underline{
+	text-decoration: underline;
+}
+
+span.kindle-cn-char-delete{
+	text-decoration: line-through;
+}
+
+span.kindle-cn-char-doubleunderline{
+	text-decoration: line-through;
+}
+
+/** 加粗 **/
+span.kindle-cn-bold{
+font-weight: bold;
+}
+
+/** 斜体字 **/
+span.kindle-cn-italic{
+font-style: italic;
+}
+
+/** 斜体加粗字体**/
+span.kindle-cn-bold-italic{
+font-weight: bold;
+font-style: italic;
+}
+
+/** 下划线**/
+span.kindle-cn-underline{
+text-decoration: underline;
+}
+
+/** 删除线 **/
+span.kindle-cn-strike{
+text-decoration: line-through;
+}
+
+/** 双下划线 **/ 
+span.kindle-cn-specialtext-double{
+	border-bottom:0.2em double;
+}
+
+/**背景色**/
+span.kindle-cn-specialtext-bg{
+	background-color:red;
+}
+
+/**部分楷体**/
+span.kindle-cn-specialtext-kaiti{
+	font-family:STKai, "MKai PRC", Kai;
+}
+
+/** 点线式边框 **/ 
+span.kindle-cn-specialtext-dot{
+	border-style:dotted;
+}
+
+/** 破折线式边框 **/ 
+span.kindle-cn-specialtext-dash{
+	border-style:dashed;
+	border-width: 1px;
+}
+
+/** 直线式边框 **/ 
+span.kindle-cn-specialtext-str-line{
+	border-style:solid;
+	border-width: 1px;
+}
+
+/* 数学上标字体 */
+span.math-super {
+	font-size: 0.7em;
+	vertical-align: super;
+}
+
+/* 数学上标倾斜字体 */
+span.math-super-italic {
+	font-size: 0.7em;
+	font-style: italic;
+	vertical-align: super;
+}
+
+/* 数学下标字体 */
+span.math-sub {
+	font-size: 0.7em;
+	vertical-align: sub;
+}
+/**段落样式**/
+/*无缩进*/
+p.kindle-cn-para-no-indent{
+	text-indent: 0em;
+}
+/*2em 无缩进*/
+div.kindle-cn-para-2em-indent{
+	margin-left: 2em;
+}
+p.kindle-cn-para-2em-indent{
+	margin-left: 2em;
+}
+
+
+/*居左*/
+p.kindle-cn-para-left{
+	text-align: left;
+}
+/*居中*/
+p.kindle-cn-para-center{
+	text-align: center;
+	text-indent: 0em;
+}
+.kindle-cn-para-center{
+	text-align: center;
+	text-indent: 0em;
+}
+/*居右*/
+p.kindle-cn-para-right{
+	text-align: right;
+}
+
+/*居中*/
+p.kindle-cn-para-align-center{
+	text-align:center;
+}
+.kindle-cn-bottom-border-heading{
+	border-bottom: 2px dashed grey;
+	margin-bottom: -0em;
+	width: 100%;
+}
+/*背景色*/
+.color
+	{color:#146eb4}
+.color1 
+	{background-color:#146eb4}
+.color2 
+	{background-color:#FF9900}
+.color3 
+	{background-color:#666666}
+.color4 
+	{background-color:#c7c7c7}
+.color5 
+	{background-color:#DCDCDC}
+.color6 
+	{background-color:#b8f1cc}
+.color7 
+	{background-color:#18ca68}
+.color8 
+	{background-color:#A8D700}
+.color9 
+	{background-color:#ffd801}
+.color10 
+	{background-color:#EE1475}
+.color11 
+	{background-color:#009ee7}
+.color12 
+	{background-color:#e3393c}
+.page-break
+	{page-break-after:always}
+
+/*绕排解除*/
+
+.kindle-cn-bodycontent-div-left-clear{
+	clear:left;
+}
+
+.kindle-cn-bodycontent-div-right-clear{
+	clear:right;
+}
+/*字号*/
+.font2{
+	font-size:0.8em;
+}
+/*字号*/
+.font3{
+	font-size:1.1em;
+}
+/*注解*/
+.fnote{
+	font-size: 0.9em;
+	line-height: 1.5em;
+	text-align: justify;
+	margin: 0.5em 0em 0.5em 0em;
+	text-indent:2em
+}
+
+/*空白行*/
+.empty{
+	margin-bottom:2.2em;
+	margin-top:2.2em;
+}
+
+/*英文小大写*/
+.specialtext-smallcaps{
+	font-variant:small-caps
+}
+.specialtext-overline{
+	text-decoration:overline
+}
+.kindle-cn-ul-image {
+	list-style:outside;
+}/*列表-列表符为图像*/
+
+/*字下带点*/
+.kindle-cn-dotundertext{
+	-webkit-text-emphasis-style:dot;
+		 -moz-text-emphasis-style:dot;
+		  -ms-text-emphasis-style:dot;
+		      text-emphasis-style:dot;
+	-webkit-text-emphasis-position:under;
+		 -moz-text-emphasis-position:under;
+		  -ms-text-emphasis-position:under;
+		      text-emphasis-position:under;
+}
+/** 此样式会显示A. B. C. **/
+ol.kindle-cn-ol-ualpha {
+	list-style-type: upper-alpha;
+}
+span.kindle-cn-Russian{
+	font-family: "MYing Hei S", Hei;
+}  

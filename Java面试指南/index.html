@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Java面试指南</title>
+
+    <script type="text/javascript" src="./jquery.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="EPUB/style/style.css" />
+
+    <!-- <link rel="stylesheet" href="./stylesheet.css" /> -->
+    <script
+            src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"
+    ></script>
+    <style type="text/css">
+        html body {
+            font-family: Consolas, FangSong, Lantinghei SC, Helvetica Neue,
+            Helvetica, Arial, Microsoft YaHei, \\5fae\8f6f\96c5\9ed1,
+            STHeitiSC-Light, simsun, \\5b8b\4f53, WenQuanYi Zen Hei,
+            WenQuanYi Micro Hei, "sans-serif" !important;
+            /* -webkit-font-smoothing: antialiased  !important; */
+            font-size: 18px !important;
+            height: 100% !important;
+        }
+
+        pre {
+            font-size: 20px !important;
+        }
+
+        .sidebar {
+            font-size: 15px !important;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: block;
+            background-color: #324057;
+            background-color: #f5f5f5;
+            border-right: 1px solid #eee;
+            width: 300px;
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+            -webkit-box-shadow: #ccc 0 0 10px;
+            box-shadow: #ccc 0 0 10px;
+            box-sizing: border-box;
+        }
+
+        .main {
+            margin-left: 0;
+            height: 100%;
+        }
+
+        /*菜单显示按钮*/
+        .sidebar > .closeMenu > span {
+            opacity: 0;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            font-size: 25px;
+            color: #bfcbd9;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -25px;
+            padding-top: 3px;
+            padding-left: 9px;
+            transform-origin: 20px 20px;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .sidebar > .closeMenu > span {
+            opacity: 0;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            font-size: 25px;
+            color: #bfcbd9;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -25px;
+            padding-top: 3px;
+            padding-left: 9px;
+            transform-origin: 20px 20px;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .sidebar > .closeMenu > span:last-child {
+            display: none;
+        }
+
+        /* Sidebar navigation */
+        .nav-sidebar {
+            margin-right: 30px;
+            padding: 20px 0;
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+
+        .nav-sidebar > li > a {
+            color: #337ab7;
+        }
+
+        .menuItem:hover > a {
+            background-color: #eee;
+        }
+
+        .nav .active > a,
+        .nav-sidebar .active:hover > a {
+            background-color: #428bca;
+            color: #fff;
+        }
+
+        .lightli {
+
+            color: red;
+        }
+
+        .index {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar" id="list_left">
+    <ul class="nav nav-sidebar ">
+<li><a href="#" onClick="showDiv('EPUB/Svaho-ypNzyvZ9fK.xhtml')">介绍</a></li>
+<li><a href="#" onClick="showDiv('EPUB/q8bZMSK8W0I11VW_.xhtml')">面试准备篇</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/gxZ-LEtM5v6NHiwI.xhtml')">如何准备 Java 面试？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/SPU6n-Wecaeb164i.xhtml')">面试常见词汇扫盲</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/DDeZPPQYWsulR7hx.xhtml')">程序员简历到底该怎么写？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/d5KrEqdbY6aHtJgS.xhtml')">为什么要学习源码？源码这块面试会怎么问呢？如何阅读源码？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/u3pjKLEmLhewPdYp.xhtml')">为什么要准备算法面试？怎么高效刷 Leetcode？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/X0SuOIckCKOFHrHL.xhtml')">没有项目经验怎么办？跟着视频做的项目会被面试官嫌弃不？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/LrDIVvGGNjO8_Sdr.xhtml')">优质 Java 实战项目推荐</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/ADzAbucc22Bvs9-u.xhtml')">接触不到高并发场景咋办？如何获得高并发的经验？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/ukhrIZsIHmpoxUs5.xhtml')">什么项目算是有亮点的或者是面试官认为有价值的？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/JAcHAv852mLD0s_i.xhtml')">去外包对自己的简历有影响么？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/JHxfWqZX8kek505l.xhtml')">如果面试官问“你有什么问题问我吗？”，该如何回答？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/2m8iZv4k5-OU6nYk.xhtml')">Java 优质面试视频推荐</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/XGVkzZNXaPucqLwE.xhtml')">技术面试题篇</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/ITo--JgIrZu9UZOp.xhtml')">系统设计</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/G4c6aQA0F-OBiWC5.xhtml')">如何准备系统设计面试？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/se6xlpeZGfn1KQrU.xhtml')">如何设计一个秒杀系统？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/KYGd6ZOSFE09Mgz8.xhtml')">如何自己实现一个 RPC 框架？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/8ylW245fBypnovsI.xhtml')">如何设计一个排行榜？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/45THha9WBSfD_W3V.xhtml')">如何设计微博 Feed 流/信息流系统？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/5bf91RwDltU_Jl7h.xhtml')">如何设计一个短链系统？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/qySlFBBY42sf6l7c.xhtml')">如何设计一个站内消息系统？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/BLRbs63Gt5EgI_FZ.xhtml')">如何解决大文件上传问题？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/W0H2qSbBL33VNoM0.xhtml')">如何统计网站UV？</a></li>
+</ul>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/vW7zBNwNaklDu8De.xhtml')">Java</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/P7TODWEKOfHwb57V.xhtml')">Java IO 模型常见面试题总结</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/vEKj8qvOM6cjGyaa.xhtml')">Java 数据类型常见面试题总结</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/sb9AC2uYwpnuCszL.xhtml')">泛型&通配符常见面试题总结</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/Im5laBrePrxLOisW.xhtml')">String 类常见面试题总结</a></li>
+</ul>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/QKT7wiAmOzjkZPYt.xhtml')">数据库</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/NDRGPVGwtLGXTe1t.xhtml')">MySQL：常见的日志都有什么用？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/lJLi0GrflR6JLG_B.xhtml')">MySQL：索引为什么使用 B+树？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/_Go6Ph21haaH3N9G.xhtml')">缓存基础常见面试题总结</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/_Joafo6vuAuc_iH3.xhtml')">Redis 集群常见面试题总结</a></li>
+</ul>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/QZ38DtOkiIGbmj15.xhtml')">常见框架</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/LXm9ENRbzxxo6BTG.xhtml')">SpringBoot 常见面试题总结</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/aVTQKA8dnnx7yvVa.xhtml')">Netty 常见面试题总结</a></li>
+</ul>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/tcSwM_sjIClCE6ro.xhtml')">分布式</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/sTCmV5jiVYL4NSen.xhtml')">分布式事务常见面试题总结</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/xC6Io9_WyAETNGng.xhtml')">分布式配置中心常见面试题总结</a></li>
+</ul>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/MUYdm5x7BKCWs8PL.xhtml')">高并发</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/BONuo9-zJdABMQzI.xhtml')">高可用：负载均衡的常见算法有哪些？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/yfoWXIL0IJvfCsAL.xhtml')">高性能：池化技术的应用场景</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/6nOw8vhv55x1DFPu.xhtml')">高性能：零拷贝为什么能提升性能？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/RmSjUDLFXyGu0G0F.xhtml')">高性能：如何进行 SQL优化？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/XHK3E5uPFRroS5vv.xhtml')">高可用：如何设计一个高可用系统？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/hOk6KWvHNumHXq4k.xhtml')">高可用：降级和熔断有什么区别？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/uws-YYv6JFUumsZ6.xhtml')">高可用：灰度发布和回滚有什么用？</a></li>
+</ul>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/fbwO5zZCiK88XRfJ.xhtml')">服务器</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/KLOTDTgguu0juK_p.xhtml')">Tomcat 常见面试题总结</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/V131QR4gftLoz5Ev.xhtml')">Nginx 常见面试题总结</a></li>
+</ul>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/erIUSD-5JYbSU3De.xhtml')">Devops</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/Gi-76IxRuL8icxHy.xhtml')">监控系统常见面试题总结</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/0JNMJnmMdehTlwS9.xhtml')">日志系统常见面试题总结</a></li>
+</ul>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/9d3tl0k14bX5yLEf.xhtml')">技术面试题自测篇</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/YTndDA1sn4HssDvn.xhtml')">Java基础</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/LLgMvaF3Rqgg-A3H.xhtml')">Java 集合</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/pGu3dnfduvBLC-Vb.xhtml')">Java并发</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/VQignsdXtLi9riVq.xhtml')">JVM</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/Vx6vyTk7YF9U03uA.xhtml')">MySQL</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/zvlvwj0-WWBGCm1w.xhtml')">Redis</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/_EqJOaKEygACSWIw.xhtml')">面经篇</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/iDVkk2JnX59mDu60.xhtml')">双非本科、0实习、0比赛项目经历。3个月上岸百度</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/lAKMGl7-gqDehAXS.xhtml')">从考研失败到收获到自己满意的Offer</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/C5i1PGWgR5Atg_98.xhtml')">五面阿里，终获 offer!</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/E9r-VP1G4XPiZIQG.xhtml')">4年经验，面试Bigo挂在了第三轮</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/OZGCDTbeRPQreXoY.xhtml')">2年经验，2021 阿里、头条、美团，滴滴，京东面经</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/EQ2xu1JLcG5S0-GH.xhtml')">2021 华为|字节|腾讯|京东|网易|滴滴面经分享（6个offer）</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/k1bumVS-XLFTUPrQ.xhtml')">2021 虾皮，网易云，京东，阿里校招面经！附参考答案</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/ugHKR4x5f3H-lAVd.xhtml')">2022 滴滴，网易，Shopee，B站，携程，阿里，字节社招面经总结！</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/yEwYb_XNbulkmNcG.xhtml')">2022腾讯云Java工程师一面 + 被捞一面 + 二面面经</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/PDsLCEpc9DJBwC4P.xhtml')">2022 步步高 Java 后端 6 面面经</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/_k84wZ-fSDPFJFoo.xhtml')">2022 金蝶 Java 后三面面经（已OC）</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/5QN34lGh9CGKKDQO.xhtml')">2022美团、华为、字节 Offer 面经（附参考答案）</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/54k-DL2IJXKMs5k-.xhtml')">2022 四年经验高级 Java 工程师面经</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/87LjXIaCbCgIHZru.xhtml')">练级攻略篇</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/BR-3xNCMTXYq6GVK.xhtml')">如何更高效地自学？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/GpYziysPevpzxMjY.xhtml')">如何提高编程能力？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/ZhHVGJVApTPQMWKM.xhtml')">如何快速上手一个新项目？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/vRzzdiAk6lYmqjGR.xhtml')">如何成为一个合格的程序员？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/xjxlVI7qbb-sPnAN.xhtml')">如何提高工作效率？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/Sjd5jcUvA-qj1f-x.xhtml')">如何快速学习新技术？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/BXTJUg7GGRgPQwLX.xhtml')">如何提高个人硬实力？</a></li>
+</ul>
+<li><a href="#" onClick="showDiv('EPUB/1bVIt7TWnbdhzsqC.xhtml')">工作篇</a></li>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/nL3dkWVFmokY8xVl.xhtml')">如何选择职业方向？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/NsCr9P0O9U9cI_uN.xhtml')">新入职一家公司如何快速进入工作状态？</a></li>
+</ul>
+<ul>
+<li><a href="#" onClick="showDiv('EPUB/DeGrNrERVUWb9URT.xhtml')">如何在绩效考核中脱颖而出？</a></li>
+</ul>
+</ul>
+    <div class="closeMenu">
+        <span class="glyphicon glyphicon-triangle-left"></span>
+        <span class="glyphicon glyphicon-triangle-right"></span>
+    </div>
+</div>
+<div class="main">
+    <div id="content" class="index">
+        <div><div class="markdown-body">
+    <h1>&#20171;&#32461;</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="u3bc42bae">
+  <span class="ne-text">
+   &#20026;&#20102;&#22238;&#39304;&#21152;&#20837;
+  </span>
+  <a class="ne-link" data-href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&amp;mid=2247517286&amp;idx=1&amp;sn=5d6a6e0f82ce6cb7b3164a48d5f95e71&amp;chksm=cea1cbadf9d642bb74c69d6b8e7ecea879d440587d561563cfdcfadb87cfe7014e4caf6b388b&amp;token=1704166093&amp;lang=zh_CN#rd" href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&amp;mid=2247517286&amp;idx=1&amp;sn=5d6a6e0f82ce6cb7b3164a48d5f95e71&amp;chksm=cea1cbadf9d642bb74c69d6b8e7ecea879d440587d561563cfdcfadb87cfe7014e4caf6b388b&amp;token=1704166093&amp;lang=zh_CN#rd" target="_blank">
+   <span class="ne-text">
+    &#30693;&#35782;&#26143;&#29699;
+   </span>
+  </a>
+  <span class="ne-text">
+   &#30340;&#23567;&#20249;&#20276;&#65292;&#36825;&#20004;&#24180;&#22810;&#30340;&#26102;&#38388;&#25105;&#36824;&#36129;&#29486;&#20102;&#19968;&#20221;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#12298;Java &#38754;&#35797;&#25351;&#21271;&#12299;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#20320;&#21487;&#20197;&#23558;&#20854;&#30475;&#20316;&#26159;
+  </span>
+  <a class="ne-link" data-href="https://javaguide.cn/" href="https://javaguide.cn/" target="_blank">
+   <span class="ne-text">
+    JavaGuide
+   </span>
+  </a>
+  <span class="ne-text">
+   &#24320;&#28304;&#29256;&#30340;&#34917;&#20805;&#23436;&#21892;&#65292;&#20004;&#32773;&#37197;&#21512;&#20351;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uddcd15c4">
+  <br>
+ </p>
+ <p class="ne-p" id="u6d676a8c">
+  <span class="ne-text">
+   &#30446;&#21069;&#30340;&#35805;&#65292;JavaGuide &#36824;&#22312;&#25345;&#32493;&#26356;&#26032;&#23436;&#21892;&#20013;&#65281;&#22823;&#27010;&#19968;&#21608;&#20250;&#26356;&#26032; 1~3 &#31687;&#25991;&#31456;&#65292;
+  </span>
+ </p>
+ <p class="ne-p" id="ub8dab626">
+  <br>
+ </p>
+ <p class="ne-p" id="uc80c00c4">
+  <img class="ne-image" id="Y2xuA" src="EPUB/imgY2xuA" width="1594">
+ </p>
+ <p class="ne-p" id="ue39dbd6f">
+  <br>
+ </p>
+ <p class="ne-p" id="u0781a8c5">
+  <span class="ne-text">
+   &#25105;&#20889;&#20102;&#25968;&#21313;&#31687;&#25991;&#31456;&#25163;&#25226;&#25163;&#25945;&#20320;&#22914;&#20309;&#20934;&#22791;&#38754;&#35797;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u17b5781a">
+  <br>
+ </p>
+ <p class="ne-p" id="uc54ff4bf">
+  <img class="ne-image" id="mK5wa" src="EPUB/imgmK5wa" width="2282">
+ </p>
+ <p class="ne-p" id="uc5097194">
+  <br>
+ </p>
+ <p class="ne-p" id="u1f6dbc5a">
+  <span class="ne-text">
+   &#25216;&#26415;&#38754;&#35797;&#39064;&#31687;&#30340;&#20869;&#23481;&#21644; JavaGuide &#24320;&#28304;&#29256;&#26412;&#20114;&#34917;&#65292;&#19981;&#20165;&#20165;&#21253;&#25324;&#26368;&#22522;&#26412;&#30340; Java&#12289;&#24120;&#35265;&#26694;&#26550;&#31561;&#20843;&#32929;&#25991;&#65292;&#36824;&#21253;&#25324;&#31995;&#32479;&#35774;&#35745;&#12289;&#20998;&#24067;&#24335;&#12289;&#39640;&#24182;&#21457;&#31561;&#36827;&#38454;&#20869;&#23481;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uade7b014">
+  <br>
+ </p>
+ <p class="ne-p" id="ud1a3cd00">
+  <img class="ne-image" id="ctU5L" src="EPUB/imgctU5L" width="2310">
+ </p>
+ <p class="ne-p" id="uecd20261">
+  <br>
+ </p>
+ <p class="ne-p" id="uddcc17f2">
+  <span class="ne-text">
+   &#20026;&#20102;&#35753;&#23567;&#20249;&#20276;&#20204;&#33258;&#27979;&#20197;&#26816;&#26597;&#33258;&#24049;&#30340;&#25484;&#25569;&#24773;&#20917;&#65292;&#25105;&#36824;&#25512;&#20986;&#20102;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#12300;&#25216;&#26415;&#38754;&#35797;&#39064;&#33258;&#27979;&#12301;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#31995;&#21015;&#12290;&#19981;&#36807;&#65292;&#30446;&#21069;&#21482;&#26356;&#26032;&#20102; Java &#37096;&#20998;&#30340;&#33258;&#27979;&#65292;&#27491;&#22312;&#25345;&#32493;&#26356;&#26032;&#20013;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4e83cd1e">
+  <br>
+ </p>
+ <p class="ne-p" id="u8fd17d9f">
+  <img class="ne-image" id="AkqEH" src="EPUB/imgAkqEH" width="747">
+ </p>
+ <p class="ne-p" id="uae994ab1">
+  <br>
+ </p>
+ <p class="ne-p" id="u922d43c7">
+  <img class="ne-image" id="CnHDm" src="EPUB/imgCnHDm" width="1461">
+ </p>
+ <p class="ne-p" id="u6e9bffa1">
+  <br>
+ </p>
+ <p class="ne-p" id="u56ae7efa">
+  <span class="ne-text">
+   &#38500;&#20102;&#12298;Java &#38754;&#35797;&#25351;&#21271;&#12299;&#20043;&#22806;&#65292;&#26143;&#29699;&#36824;&#26377;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#12298;Java &#24517;&#35835;&#28304;&#30721;&#31995;&#21015;&#12299;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65288;&#30446;&#21069;&#24050;&#32463;&#25972;&#29702;&#20102; Dubbo 2.6.x &#12289;Netty 4.x&#12289;SpringBoot2.1 &#30340;&#28304;&#30721;&#65289;&#12289;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#12298;&#20174;&#38646;&#24320;&#22987;&#20889;&#19968;&#20010; RPC &#26694;&#26550;&#12299;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65288;&#24050;&#26356;&#26032;&#23436;&#65289; &#12289;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#12298;Kafka &#24120;&#35265;&#38754;&#35797;&#39064;/&#30693;&#35782;&#28857;&#24635;&#32467;&#12299;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#31561;&#22810;&#20010;&#19987;&#23646;&#23567;&#20876;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1bbf95f2">
+  <br>
+ </p>
+ <p class="ne-p" id="u9cc6df8d">
+  <img class="ne-image" id="tY4uN" src="EPUB/imgtY4uN" width="869">
+ </p>
+ <p class="ne-p" id="ud322fa46">
+  <br>
+ </p>
+ <p class="ne-p" id="ub889d14f">
+  <span class="ne-text">
+   &#36825;&#20123;&#23567;&#20876;&#30340;&#20869;&#23481;&#20960;&#20046;&#37117;&#26159;&#25105;&#21033;&#29992;&#19994;&#20313;&#26102;&#38388;&#20889;&#30340;&#65292;&#23569;&#37096;&#20998;&#20869;&#23481;&#26159;&#25105;&#25972;&#29702;&#30340;&#27604;&#22914;&#12298;Java &#24517;&#35835;&#28304;&#30721;&#31995;&#21015;&#12299;&#36825;&#20010;&#23567;&#20876;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function showDiv(pageid) {
+        $("#content").load(pageid, function () {
+            console.log(pageid)
+            if (pageid.indexOf('#') !== -1) {
+                id = pageid.split('#')[1]
+                $("body,html").animate(
+                    {scrollTop: $("#" + id).offset().top},
+                    0
+                );
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        window.addEventListener("beforeprint", function (event) {
+            $(".main").animate({margin: "0 auto", marginLeft: 0}, "linear");
+            $(".sidebar").hide()
+
+        });
+        window.addEventListener("afterprint", function (event) {
+            $(".sidebar").show()
+            $(".main").animate({marginLeft: moveLeft + 15}, "linear");
+        });
+        //fixed定位 高度满屏
+        $(".sidebar").height($(window).height());
+
+        //实现显示隐藏可以删除
+        $(".sidebar").on("mouseover", function () {
+            $(".closeMenu > span").css({
+                opacity: 1
+            });
+        });
+        $(".sidebar").on("mouseleave blur", function () {
+            $(".closeMenu > span").css({
+                opacity: 0
+            });
+        });
+
+        var moveLeft = $("#list_left").width();
+
+        //设置内容快初始位置
+        $(".main").css({marginLeft: moveLeft});
+
+        //判断隐藏显示核心代码
+        var isShow = true;
+        $(".closeMenu span").click(function () {
+            $(this)
+                .hide()
+                .siblings()
+                .show();
+            if (isShow) {
+                $("#list_left").animate(
+                    {
+                        marginLeft: -(moveLeft - 30) //30 刚好显示icon图标
+                    },
+                    200,
+                    "linear",
+                    function () {
+                        isShow = false;
+                        $(".closeMenu > span").css({
+                            opacity: 1
+                        });
+                    }
+                );
+                $(".main").animate({margin: "0 auto", marginLeft: 15}, "linear");
+            } else {
+                $("#list_left").animate(
+                    {
+                        marginLeft: 0
+                    },
+                    200,
+                    "linear",
+                    function () {
+                        isShow = true;
+                    }
+                );
+                $(".main").animate({marginLeft: moveLeft + 15}, "linear");
+            }
+        });
+
+        $(window).resize(function () {
+            $("#list_left").height($(window).height());
+        });
+    });
+
+
+</script>
+</body>
+</html>
