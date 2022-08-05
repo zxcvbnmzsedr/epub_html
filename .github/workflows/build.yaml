@@ -17,8 +17,9 @@ jobs:
           ref: main
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-#      - run: pip install -r requirements.txt
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+      - run: pip install -r requirements.txt
       - run: python epub2html/epub2html.py
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
