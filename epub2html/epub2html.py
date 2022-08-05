@@ -110,8 +110,8 @@ class Epub2Html():
 
             menus.append(f"<li><a href=\"#\" onClick=\"showDiv('{unified_src}')\">{name}</a></li>")
 
-            if no_hash_name in self.alread_gen_html:
-                continue
+            # if no_hash_name in self.alread_gen_html:
+            #     continue
 
             self.alread_gen_html.add(no_hash_name)
 
@@ -236,4 +236,5 @@ def parse_dir(dir, out_path):
 if __name__ == '__main__':
     PROJECT_ABSOLUTE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     print(PROJECT_ABSOLUTE_PATH)
-    parse_dir(PROJECT_ABSOLUTE_PATH + '/book', PROJECT_ABSOLUTE_PATH + '/docs/')
+    # parse_dir(PROJECT_ABSOLUTE_PATH + '/book', PROJECT_ABSOLUTE_PATH + '/docs/')
+    main(PROJECT_ABSOLUTE_PATH + '/book/大型网站技术架构.epub', PROJECT_ABSOLUTE_PATH + '/docs/')
