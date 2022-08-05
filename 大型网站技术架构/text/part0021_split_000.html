@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>11　海量分布式存储系统Doris的高可用架构设计分析</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h1 class="calibre6" id="calibre_pb_0">11　海量分布式存储系统Doris的高可用架构设计分析</h1>
+<p class="calibre1">Doris（https://github.com/itisaid/Doris）是一个海量分布式KV存储系统，其设计目标是支持中等规模高可用、可伸缩的KV存储集群。跟主流的NoSQL系统HBase相比（Doris0.1 vs. HBase0.90），Doris具有相似的性能和线性伸缩能力，并具有更好的可用性及更友好的图形用户管理界面。</p>
+<p class="calibre1">对于一个数据存储系统而言，高可用意味着两个意思：</p>
+<ul class="kindle-cn-ul-disc">
+<li class="calibre11">高可用的服务：任何时候，包括宕机、硬盘损坏、系统升级、停机维护、集群扩容等各种情况，都可以对系统进行读写访问操作。</li>
+<li class="calibre11">高可靠的数据：任何情况下，数据可靠存储，不丢失。</li>
+</ul>
+<p class="calibre1">那么高可用的架构设计也就是在各种软硬件故障的情况下，系统如何保障数据可靠存储，服务可用。</p>
+</body>
+</html>

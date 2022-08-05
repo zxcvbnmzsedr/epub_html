@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="MySQL是怎样运行的" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>MySQL是怎样运行的</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="chapter_0">
+      <navLabel>
+        <text>万里长征第一步（非常重要！非常重要！非常重要！此处省略一万遍） —— 如何愉快的阅读本小册</text>
+      </navLabel>
+      <content src="6844733769945972749.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_1">
+      <navLabel>
+        <text>装作自己是个小白 —— 重新认识MySQL</text>
+      </navLabel>
+      <content src="6844733770042441736.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_2">
+      <navLabel>
+        <text>MySQL的调控按钮 —— 启动选项和系统变量</text>
+      </navLabel>
+      <content src="6844733770042441735.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_3">
+      <navLabel>
+        <text>乱码的前世今生 —— 字符集和比较规则</text>
+      </navLabel>
+      <content src="6844733770042441741.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_4">
+      <navLabel>
+        <text>从一条记录说起—— InnoDB 记录结构</text>
+      </navLabel>
+      <content src="6844733770046636040.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_5">
+      <navLabel>
+        <text>盛放记录的大盒子 —— InnoDB 数据页结构</text>
+      </navLabel>
+      <content src="6844733770046636046.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_6">
+      <navLabel>
+        <text>快速查询的秘籍 —— B+ 树索引</text>
+      </navLabel>
+      <content src="6844733770046668814.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_7">
+      <navLabel>
+        <text>好东西也得先学会怎么用 —— B+ 树索引的使用</text>
+      </navLabel>
+      <content src="6844733770046636045.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_8">
+      <navLabel>
+        <text>数据的家 —— MySQL 的数据目录</text>
+      </navLabel>
+      <content src="6844733770050863111.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_9">
+      <navLabel>
+        <text>存放页面的大池子 —— InnoDB 的表空间</text>
+      </navLabel>
+      <content src="6844733770050830344.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_10">
+      <navLabel>
+        <text>条条大路通罗马 —— 单表访问方法</text>
+      </navLabel>
+      <content src="6844733770050830350.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_11">
+      <navLabel>
+        <text>两个表的亲密接触 —— 连接的原理</text>
+      </navLabel>
+      <content src="6844733770055024654.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_12">
+      <navLabel>
+        <text>谁最便宜就选谁 —— MySQL 基于成本的优化</text>
+      </navLabel>
+      <content src="6844733770055024647.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_13">
+      <navLabel>
+        <text>兵马未动，粮草先行 —— InnoDB 统计数据是如何收集的</text>
+      </navLabel>
+      <content src="6844733770055041031.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_14">
+      <navLabel>
+        <text>不好看就要多整容 —— MySQL 基于规则的优化（内含关于子查询优化二三事儿）</text>
+      </navLabel>
+      <content src="6844733770059218951.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_15">
+      <navLabel>
+        <text>查询优化的百科全书 —— Explain 详解（上）</text>
+      </navLabel>
+      <content src="6844733770059235335.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_16">
+      <navLabel>
+        <text>查询优化的百科全书 —— Explain 详解（下）</text>
+      </navLabel>
+      <content src="6844733770059218952.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_17">
+      <navLabel>
+        <text>神兵利器 —— optimizer trace 的神奇功效</text>
+      </navLabel>
+      <content src="6844733770063413262.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_18">
+      <navLabel>
+        <text>调节磁盘和CPU的矛盾 —— InnoDB 的 Buffer Pool</text>
+      </navLabel>
+      <content src="6844733770063429646.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_19">
+      <navLabel>
+        <text>从猫爷被杀说起 —— 事务简介</text>
+      </navLabel>
+      <content src="6844733770063609869.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_20">
+      <navLabel>
+        <text>说过的话就一定要办到 —— redo 日志（上）</text>
+      </navLabel>
+      <content src="6844733770063626253.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_21">
+      <navLabel>
+        <text>说过的话就一定要办到 —— redo 日志（下）</text>
+      </navLabel>
+      <content src="6844733770067607560.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_22">
+      <navLabel>
+        <text>后悔了怎么办 —— undo 日志 (上)</text>
+      </navLabel>
+      <content src="6844733770067607566.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_23">
+      <navLabel>
+        <text>后悔了怎么办 —— undo 日志 (下)</text>
+      </navLabel>
+      <content src="6844733770071801869.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_24">
+      <navLabel>
+        <text>一条记录的多幅面孔 —— 事务的隔离级别与MVCC</text>
+      </navLabel>
+      <content src="6844733770071801870.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_25">
+      <navLabel>
+        <text>工作面试老大难 —— 锁</text>
+      </navLabel>
+      <content src="6844733770071801864.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_26">
+      <navLabel>
+        <text>补充资料——专题式讲解</text>
+      </navLabel>
+      <content src="7062267951231008799.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_27">
+      <navLabel>
+        <text>专题式讲解 —— MySQL的server层和存储引擎层是如何交互的</text>
+      </navLabel>
+      <content src="7074778390695247903.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_28">
+      <navLabel>
+        <text> 专题式讲解 —— MySQL查询成本和扫描区间(MySQL中IS NULL、IS NOT NULL、!=不能用索引？胡扯！)</text>
+      </navLabel>
+      <content src="7074952302352121894.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_29">
+      <navLabel>
+        <text>专题式讲解 —— 听说有一个最左原则？这回终于讲清楚了</text>
+      </navLabel>
+      <content src="7074952302477443076.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_30">
+      <navLabel>
+        <text>专题式讲解 —— 设计MySQL的大叔为何偏爱ref</text>
+      </navLabel>
+      <content src="7075312191041175563.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_31">
+      <navLabel>
+        <text>专题式讲解 —— MySQL中NULL值引起的小锅</text>
+      </navLabel>
+      <content src="7075312554041409548.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_32">
+      <navLabel>
+        <text>专题式讲解 —— MySQL使用索引执行IN子句</text>
+      </navLabel>
+      <content src="7074952361159950348.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_33">
+      <navLabel>
+        <text>专题式讲解 —— MySQL的COUNT语句是怎么执行的</text>
+      </navLabel>
+      <content src="7075311818087858179.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_34">
+      <navLabel>
+        <text>专题式讲解 —— MySQL的LIMIT这么差劲的吗</text>
+      </navLabel>
+      <content src="7075313189730287654.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_35">
+      <navLabel>
+        <text>专题式讲解 —— MySQL：为什么查询列表中多了它，GROUP BY语句就会报错呢？</text>
+      </navLabel>
+      <content src="7075313816568856614.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_36">
+      <navLabel>
+        <text>专题式讲解 —— MySQL冷知识：t1.id=t2.id=t3.id看着咋这么怪呢？</text>
+      </navLabel>
+      <content src="7075313966884323332.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_37">
+      <navLabel>
+        <text>专题式讲解 —— MySQL乱码</text>
+      </navLabel>
+      <content src="7075314344262631456.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_38">
+      <navLabel>
+        <text>专题式讲解 —— 字符从UTF-8转成GBK发生了什么？</text>
+      </navLabel>
+      <content src="7075314546268864551.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_39">
+      <navLabel>
+        <text>专题式讲解 —— MySQL的定点数类型</text>
+      </navLabel>
+      <content src="7075314850766782467.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_40">
+      <navLabel>
+        <text>专题式讲解 —— Innodb到底是怎么加锁的</text>
+      </navLabel>
+      <content src="7075314992534257675.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_41">
+      <navLabel>
+        <text>专题式讲解 —— 语句加锁分析实例</text>
+      </navLabel>
+      <content src="7075315104593477665.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_42">
+      <navLabel>
+        <text>专题式讲解 —— MySQL如何查看事务加锁情况</text>
+      </navLabel>
+      <content src="7075315444134969356.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_43">
+      <navLabel>
+        <text>专题式讲解 —— MySQL介于普通读和锁定读的加锁方式—— semi-consistent read</text>
+      </navLabel>
+      <content src="7075313398631628811.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_44">
+      <navLabel>
+        <text>专题式讲解 —— 两条一样的INSERT语句竟然引发了死锁？</text>
+      </navLabel>
+      <content src="7075315859752747047.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_45">
+      <navLabel>
+        <text>专题式讲解 —— binlog那些事儿（一）</text>
+      </navLabel>
+      <content src="7075316307297566724.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_46">
+      <navLabel>
+        <text>专题式讲解 —— binlog那些事儿（二）</text>
+      </navLabel>
+      <content src="7075313597315809284.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_47">
+      <navLabel>
+        <text>专题式讲解 —— redo、undo、buffer pool、binlog，谁先谁后，有点儿乱</text>
+      </navLabel>
+      <content src="7075316605378363425.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_48">
+      <navLabel>
+        <text>专题式讲解 —— XA事务与两阶段提交</text>
+      </navLabel>
+      <content src="7075316824065196044.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_49">
+      <navLabel>
+        <text>给小孩子的书打个广告</text>
+      </navLabel>
+      <content src="7040323399163314209.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_50">
+      <navLabel>
+        <text>写作本书时用到的一些重要的参考资料</text>
+      </navLabel>
+      <content src="6844733770071818253.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_51">
+      <navLabel>
+        <text>小册答疑指南</text>
+      </navLabel>
+      <content src="6844733770075996168.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_52">
+      <navLabel>
+        <text>后记 —— 关于写技术书籍_文章的四个指导原则</text>
+      </navLabel>
+      <content src="6844733770076012551.xhtml"/>
+    </navPoint>
+  </navMap>
+</ncx>
