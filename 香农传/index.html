@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>香农传</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <script type="text/javascript" src="./jquery.min.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="stylesheet.css" />
+
+    <!-- <link rel="stylesheet" href="./stylesheet.css" /> -->
+    <script
+            src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"
+    ></script>
+    <style type="text/css">
+        html body {
+            font-family: Consolas, FangSong, Lantinghei SC, Helvetica Neue,
+            Helvetica, Arial, Microsoft YaHei, \\5fae\8f6f\96c5\9ed1,
+            STHeitiSC-Light, simsun, \\5b8b\4f53, WenQuanYi Zen Hei,
+            WenQuanYi Micro Hei, "sans-serif" !important;
+            /* -webkit-font-smoothing: antialiased  !important; */
+            font-size: 18px !important;
+            height: 100% !important;
+        }
+
+        pre {
+            font-size: 20px !important;
+        }
+
+        .sidebar {
+            font-size: 15px !important;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: block;
+            background-color: #324057;
+            background-color: #f5f5f5;
+            border-right: 1px solid #eee;
+            width: 300px;
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+            -webkit-box-shadow: #ccc 0 0 10px;
+            box-shadow: #ccc 0 0 10px;
+            box-sizing: border-box;
+        }
+
+        .main {
+            margin-left: 0;
+            height: 100%;
+        }
+
+        /*菜单显示按钮*/
+        .sidebar > .closeMenu > span {
+            opacity: 0;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            font-size: 25px;
+            color: #bfcbd9;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -25px;
+            padding-top: 3px;
+            padding-left: 9px;
+            transform-origin: 20px 20px;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .sidebar > .closeMenu > span {
+            opacity: 0;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            font-size: 25px;
+            color: #bfcbd9;
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            margin-top: -25px;
+            padding-top: 3px;
+            padding-left: 9px;
+            transform-origin: 20px 20px;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+
+        .sidebar > .closeMenu > span:last-child {
+            display: none;
+        }
+
+        /* Sidebar navigation */
+        .nav-sidebar {
+            margin-right: 30px;
+            padding: 20px 0;
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+
+        .nav-sidebar > li > a {
+            color: #337ab7;
+        }
+
+        .menuItem:hover > a {
+            background-color: #eee;
+        }
+
+        .nav .active > a,
+        .nav-sidebar .active:hover > a {
+            background-color: #428bca;
+            color: #fff;
+        }
+
+        .lightli {
+
+            color: red;
+        }
+
+        .index {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar" id="list_left">
+    <ul class="nav nav-sidebar ">
+<li><a href="#" onClick="showDiv('text/part0000.html')">扉页</a></li>
+<li><a href="#" onClick="showDiv('text/part0001.html')">目录</a></li>
+<li><a href="#" onClick="showDiv('text/part0002.html')">文前插图</a></li>
+<li><a href="#" onClick="showDiv('text/part0003.html')">题记</a></li>
+<li><a href="#" onClick="showDiv('text/part0004.html')">推荐语</a></li>
+<li><a href="#" onClick="showDiv('text/part0005.html')">引言 一个天才的游戏人生</a></li>
+<li><a href="#" onClick="showDiv('text/part0006.html')">第1章 小镇男孩的科学基因</a></li>
+<li><a href="#" onClick="showDiv('text/part0007.html')">第2章 安娜堡的大学生活</a></li>
+<li><a href="#" onClick="showDiv('text/part0008.html')">第3章 机械大脑</a></li>
+<li><a href="#" onClick="showDiv('text/part0009.html')">第4章 麻省理工学院里的开关</a></li>
+<li><a href="#" onClick="showDiv('text/part0010.html')">第5章 与众不同的年轻人</a></li>
+<li><a href="#" onClick="showDiv('text/part0011.html')">第6章 放弃遗传学研究</a></li>
+<li><a href="#" onClick="showDiv('text/part0012.html')">第7章 贝尔实验室中一流的应用数学家</a></li>
+<li><a href="#" onClick="showDiv('text/part0013.html')">第8章 生活中的挣扎</a></li>
+<li><a href="#" onClick="showDiv('text/part0014.html')">第9章 火力控制研究</a></li>
+<li><a href="#" onClick="showDiv('text/part0015.html')">第10章 战时研究</a></li>
+<li><a href="#" onClick="showDiv('text/part0016.html')">第11章 密码学研究</a></li>
+<li><a href="#" onClick="showDiv('text/part0017.html')">第12章 与图灵的友谊</a></li>
+<li><a href="#" onClick="showDiv('text/part0018.html')">第13章 贝尔实验室的三人组</a></li>
+<li><a href="#" onClick="showDiv('text/part0019.html')">第14章 无尽的黑暗</a></li>
+<li><a href="#" onClick="showDiv('text/part0020.html')">第15章 从情报到信息</a></li>
+<li><a href="#" onClick="showDiv('text/part0021.html')">第16章 信息论炸弹</a></li>
+<li><a href="#" onClick="showDiv('text/part0022.html')">第17章 信息论史上的里程碑</a></li>
+<li><a href="#" onClick="showDiv('text/part0023.html')">第18章 杜博的批评</a></li>
+<li><a href="#" onClick="showDiv('text/part0024.html')">第19章 维纳的控制论</a></li>
+<li><a href="#" onClick="showDiv('text/part0025.html')">第20章 终身伴侣</a></li>
+<li><a href="#" onClick="showDiv('text/part0026.html')">第21章 信息狂热</a></li>
+<li><a href="#" onClick="showDiv('text/part0027.html')">第22章 服务于美国国家安全</a></li>
+<li><a href="#" onClick="showDiv('text/part0028.html')">第23章 人造机器</a></li>
+<li><a href="#" onClick="showDiv('text/part0029.html')">第24章 游戏之王</a></li>
+<li><a href="#" onClick="showDiv('text/part0030.html')">第25章 建设性不满</a></li>
+<li><a href="#" onClick="showDiv('text/part0031.html')">第26章 香农教授</a></li>
+<li><a href="#" onClick="showDiv('text/part0032.html')">第27章 股市“密码”</a></li>
+<li><a href="#" onClick="showDiv('text/part0033.html')">第28章 发明家的天堂</a></li>
+<li><a href="#" onClick="showDiv('text/part0034.html')">第29章 关于杂技的研究</a></li>
+<li><a href="#" onClick="showDiv('text/part0035.html')">第30章 京都奖</a></li>
+<li><a href="#" onClick="showDiv('text/part0036.html')">第31章 阿尔茨海默病</a></li>
+<li><a href="#" onClick="showDiv('text/part0037.html')">第32章 余震</a></li>
+<li><a href="#" onClick="showDiv('text/part0038.html')">致谢</a></li>
+<li><a href="#" onClick="showDiv('text/part0039.html')">参考文献</a></li>
+<li><a href="#" onClick="showDiv('text/part0040.html')">版权页</a></li>
+</ul>
+    <div class="closeMenu">
+        <span class="glyphicon glyphicon-triangle-left"></span>
+        <span class="glyphicon glyphicon-triangle-right"></span>
+    </div>
+</div>
+<div class="main">
+    <div id="content" class="index">
+        <div class="calibre" id="0-02dfb519d3814af6aa028bcc39d19c2b">
+  <h2 class="sigil_not_in_toc" hidden="hidden" id="calibre_pb_0" title="&#25161;&#39029;"></h2>
+
+  <div class="shuming">
+    <div class="calibre1">
+      &#39321;&#20892;&#20256;
+    </div>
+
+    <div class="kaiti">
+      
+    </div>
+
+    <div class="calibre2">
+      <br class="calibre2">
+    </div>
+
+    <div class="kaiti1">
+      [&#32654;]&#21513;&#31859;&#183;&#32034;&#23612; [&#32654;]&#32599;&#20271;&#183;&#21476;&#24503;&#26364; &#33879;
+    </div>
+
+    <div class="kaiti1">
+      &#26472;&#26196; &#35793;
+    </div>
+
+    <div class="chubanshe">
+      &#20013;&#20449;&#20986;&#29256;&#38598;&#22242;
+    </div>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function showDiv(pageid) {
+        $("#content").load(pageid, function () {
+            console.log(pageid)
+            if (pageid.indexOf('#') !== -1) {
+                id = pageid.split('#')[1]
+                $("body,html").animate(
+                    {scrollTop: $("#" + id).offset().top},
+                    0
+                );
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        window.addEventListener("beforeprint", function (event) {
+            $(".main").animate({margin: "0 auto", marginLeft: 0}, "linear");
+            $(".sidebar").hide()
+
+        });
+        window.addEventListener("afterprint", function (event) {
+            $(".sidebar").show()
+            $(".main").animate({marginLeft: moveLeft + 15}, "linear");
+        });
+        //fixed定位 高度满屏
+        $(".sidebar").height($(window).height());
+
+        //实现显示隐藏可以删除
+        $(".sidebar").on("mouseover", function () {
+            $(".closeMenu > span").css({
+                opacity: 1
+            });
+        });
+        $(".sidebar").on("mouseleave blur", function () {
+            $(".closeMenu > span").css({
+                opacity: 0
+            });
+        });
+
+        var moveLeft = $("#list_left").width();
+
+        //设置内容快初始位置
+        $(".main").css({marginLeft: moveLeft});
+
+        //判断隐藏显示核心代码
+        var isShow = true;
+        $(".closeMenu span").click(function () {
+            $(this)
+                .hide()
+                .siblings()
+                .show();
+            if (isShow) {
+                $("#list_left").animate(
+                    {
+                        marginLeft: -(moveLeft - 30) //30 刚好显示icon图标
+                    },
+                    200,
+                    "linear",
+                    function () {
+                        isShow = false;
+                        $(".closeMenu > span").css({
+                            opacity: 1
+                        });
+                    }
+                );
+                $(".main").animate({margin: "0 auto", marginLeft: 15}, "linear");
+            } else {
+                $("#list_left").animate(
+                    {
+                        marginLeft: 0
+                    },
+                    200,
+                    "linear",
+                    function () {
+                        isShow = true;
+                    }
+                );
+                $(".main").animate({marginLeft: moveLeft + 15}, "linear");
+            }
+        });
+
+        $(window).resize(function () {
+            $("#list_left").height($(window).height());
+        });
+    });
+
+
+</script>
+</body>
+</html>

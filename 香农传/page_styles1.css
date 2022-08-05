@@ -1,0 +1,36 @@
+@page {
+    margin-bottom: 5pt;
+    margin-top: 5pt
+    }
+@font-face {
+    font-family: "fzlth";
+    src: url(styles/styles/XXXXXXXXXXXXXXXX)
+    }
+@font-face {
+    font-family: "songti";
+    src: url(styles/styles/XXXXXXXXXXXXXXXX)
+    }
+@font-face {
+    font-family: "kaiti";
+    src: url(styles/styles/XXXXXXXXXXXXXXXX)
+    }
+@font-face {
+    font-family: "fzlth";
+    src: local("微软雅黑"), local("黑体"), local("hei"), local("MYing Hei S"), /* local("MYing Hei T"),local("TBGothic"), */ url(../Fonts/fzlth.ttf), local("Heiti"), local("Heiti SC"), local("Heiti TC"), local("STHeiti"), local("DK-HEITI"), local("Sans-serif")
+    }
+@font-face {
+    font-family: "heiti";
+    src: local("微软雅黑"), local("黑体"), local("hei"), local("MYing Hei S"), /* local("MYing Hei T"),local("TBGothic"), */ local("Helvetica"), local("Heiti"), local("Heiti SC"), local("Heiti TC"), local("STHeiti"), local("DroidSansFallback"), local("DK-HEITI"), local("Sans-serif"), local("Monospace")
+    }
+@font-face {
+    font-family: "songti";
+    src: local("华文中宋"), local("宋体"), local("STSong"), local("song"), local("STSong"), local("Song S"), /* local("STBShusong"),local("Song T"),local("TBMincho"),local("HYMyeongJo"), */ local("Songti"), local("Songti SC"), local("Songti TC"), local("Times New Roman"), url(../Fonts/fzss.ttf), local("DK-SONGTI"), local("Serif")
+    }
+@font-face {
+    font-family: "kaiti";
+    src: local("楷体"), local("楷体_GB2312"), local("kai"), local("MKai PRC"), local("STKai"), local("STKaiTi"), local("Kaiti"), local("Kaiti SC"), local("Kaiti TC"), local("Georgia"), url(styles/styles/XXXXXXXXXXXXXXXX), local("DK-KAITI")
+    }
+@font-face {
+    font-family: "yuanti";
+    src: local("幼圆"), local("仿宋"), local("仿宋_GB2312"), local("yuan"), local("STYuan"), local("Yuanti"), local("Yuanti SC"), local("Yuanti TC"), local("DK-XIHEITI"), local("DK-FANGSONG")
+    }

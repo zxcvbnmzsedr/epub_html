@@ -1,0 +1,264 @@
+.bodytext {
+    display: block;
+    font-size: 1.14286em;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: justify;
+    text-indent: 2em;
+    text-justify: inter-ideograph;
+    margin: 1em 0 0
+    }
+.bodytext1 {
+    display: block;
+    font-size: 1.14286em;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: justify;
+    text-indent: 2em;
+    text-justify: inter-ideograph;
+    margin: 1.5em 0 0
+    }
+.calibre {
+    display: block;
+    font-size: 0.875em;
+    line-height: 1.2;
+    margin: 0 5pt;
+    padding: 0
+    }
+.calibre1 {
+    display: block;
+    font-size: 1.71429em;
+    line-height: 1.2;
+    margin: 0.5em
+    }
+.calibre2 {
+    display: block
+    }
+.calibre3 {
+    color: black;
+    line-height: 1.2
+    }
+.calibre4 {
+    height: auto;
+    width: auto;
+    margin: 0;
+    padding: 0
+    }
+.calibre5 {
+    display: block;
+    font-size: 1.57143em;
+    font-weight: normal;
+    line-height: 1.2;
+    text-align: center;
+    text-indent: 0;
+    margin: 2em 0 1em
+    }
+.calibre6 {
+    font-size: 1em;
+    line-height: 1.2;
+    vertical-align: super
+    }
+.calibre7 {
+    display: block;
+    font-size: 1em;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: justify;
+    text-indent: 2em;
+    text-justify: inter-ideograph;
+    margin: 0
+    }
+.calibre8 {
+    font-family: heiti;
+    font-size: 1em;
+    font-weight: 800;
+    line-height: 1.2
+    }
+.calibre9 {
+    font-style: italic
+    }
+.calibre10 {
+    font-size: 1em;
+    line-height: 1.2;
+    vertical-align: sub
+    }
+.calibre11 {
+    display: block;
+    font-size: 1em;
+    line-height: 1.2;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 5pt
+    }
+.calibre12 {
+    display: block;
+    font-size: 1.375em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0.83em 0
+    }
+.calibre13 {
+    display: block;
+    list-style-type: disc;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-top: 1em
+    }
+.calibre14 {
+    display: list-item;
+    list-style-type: none
+    }
+.calibre15 {
+    text-decoration: none
+    }
+.center {
+    display: block;
+    font-size: 1.14286em;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: center;
+    text-indent: 0;
+    text-justify: inter-ideograph;
+    margin: 1em 0 0
+    }
+.chatu {
+    display: block;
+    font-family: songti;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center
+    }
+.chatu1 {
+    display: block;
+    font-family: songti;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5em;
+    text-align: center
+    }
+.chubanshe {
+    bottom: 12%;
+    display: block;
+    font-family: fzlth;
+    font-size: 1em;
+    left: 0%;
+    line-height: 1.2;
+    margin-left: 0%;
+    margin-top: 2em;
+    position: absolute;
+    text-align: center;
+    width: 100%
+    }
+.fnote {
+    display: block;
+    font-size: 0.85714em;
+    line-height: 1.2;
+    margin-bottom: 0;
+    margin-top: 1em;
+    padding-top: 0.5em;
+    text-align: justify;
+    text-indent: 2em;
+    border-top: gray solid 1px
+    }
+.fnote1 {
+    display: block;
+    font-size: 0.85714em;
+    line-height: 1.2;
+    margin-bottom: 0;
+    margin-top: 0.5em;
+    padding-top: 0;
+    text-align: justify;
+    text-indent: 2em;
+    border-top: currentColor none 0
+    }
+.hangz-illustrations {
+    font-size: 0.875em;
+    height: 1.2em;
+    vertical-align: duokan-middle-line;
+    width: auto;
+    margin: 0 -0.2em;
+    padding: 0
+    }
+.kaiti {
+    display: block;
+    font-family: kaiti;
+    font-size: 1.42857em;
+    line-height: 1.2;
+    text-indent: 2em
+    }
+.kaiti1 {
+    display: block;
+    font-family: kaiti
+    }
+.kaiti2 {
+    display: block;
+    font-family: kaiti;
+    font-size: 1.14286em;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: justify;
+    text-indent: 2em;
+    text-justify: inter-ideograph;
+    margin: 1.5em 0 0
+    }
+.kaiti3 {
+    display: block;
+    font-family: kaiti;
+    font-size: 1.14286em;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: right;
+    text-indent: 2em;
+    text-justify: inter-ideograph;
+    margin: 1em 0 0
+    }
+.kaiti4 {
+    display: block;
+    font-family: kaiti;
+    font-size: 1.14286em;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: justify;
+    text-indent: 2em;
+    text-justify: inter-ideograph;
+    margin: 1em 0 0
+    }
+.noindent {
+    display: block;
+    font-family: kaiti;
+    font-size: 1.14286em;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-align: justify;
+    text-indent: 0;
+    text-justify: inter-ideograph;
+    margin: 1em 0 0
+    }
+.sgc-toc-level {
+    display: block;
+    font-family: heiti;
+    font-size: 1.42857em;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 1em 0
+    }
+.shuming {
+    display: block;
+    font-family: songti;
+    padding-top: 30%;
+    text-align: center;
+    text-indent: 0
+    }
+.sigil_not_in_toc {
+    color: #03C;
+    display: block;
+    font-size: 1.57143em;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    text-indent: 0;
+    margin: 2em 0 1.3em
+    }
+.pcalibre:hover {
+    color: red
+    }
