@@ -153,7 +153,16 @@
 
 <script type="text/javascript">
     function showDiv(pageid) {
-        $("#content").load(pageid);
+        $("#content").load(pageid, function () {
+            console.log(pageid)
+            if (pageid.indexOf('#') !== -1) {
+                id = pageid.split('#')[1]
+                $("body,html").animate(
+                    {scrollTop: $("#" + id).offset().top},
+                    0
+                );
+            }
+        });
     }
 
     $(document).ready(function () {

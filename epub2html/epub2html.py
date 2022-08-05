@@ -100,8 +100,7 @@ class Epub2Html():
             link = cc.find("./content")
             src = urllib.parse.unquote(link.attrib["src"])
             no_hash_name = src
-            if src.find('#') != -1:
-                no_hash_name = src[:src.find("#")]
+
 
             if not self.is_gen:
                 unified_src = self.opf_a_dir.replace(self.root_a_path + '/', '') + '/' + no_hash_name
@@ -114,7 +113,8 @@ class Epub2Html():
             #     continue
 
             self.alread_gen_html.add(no_hash_name)
-
+            if src.find('#') != -1:
+                no_hash_name = src[:src.find("#")]
             washed_content = self.gen_content(join(dirname(self.ncx_a_path), no_hash_name))
 
             contents.append(washed_content)
@@ -236,5 +236,5 @@ def parse_dir(dir, out_path):
 if __name__ == '__main__':
     PROJECT_ABSOLUTE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     print(PROJECT_ABSOLUTE_PATH)
-    # parse_dir(PROJECT_ABSOLUTE_PATH + '/book', PROJECT_ABSOLUTE_PATH + '/docs/')
-    main(PROJECT_ABSOLUTE_PATH + '/book/大型网站技术架构.epub', PROJECT_ABSOLUTE_PATH + '/docs/')
+    parse_dir(PROJECT_ABSOLUTE_PATH + '/book', PROJECT_ABSOLUTE_PATH + '/docs/')
+    # main(PROJECT_ABSOLUTE_PATH + '/book/大型网站技术架构.epub', PROJECT_ABSOLUTE_PATH + '/docs/')
