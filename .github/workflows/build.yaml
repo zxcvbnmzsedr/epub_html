@@ -1,20 +1,29 @@
-name: Deploy GitHub Pages
-
-# 触发条件：在 push 到 master 分支后
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches:
-      - main
+    branches: ["main"]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
-# 任务
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          ref: main
       - uses: actions/setup-python@v4
         with:
           python-version: '3.9'
@@ -22,12 +31,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest lxml
-      - run: pip install -r requirements.txt
       - run: python epub2html/epub2html.py
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v1
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          REPOSITORY_NAME: zxcvbnmzsedr/epub_html
-          BRANCH: gh-page
-          FOLDER: docs
+          # Upload entire repository
+          path: 'docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@gh-page
