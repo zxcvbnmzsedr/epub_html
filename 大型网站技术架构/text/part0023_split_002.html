@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>13　大型网站典型故障案例分析</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="calibre7" id="calibre_pb_2"><a id="sec002" class="calibre8"></a>
+ 13.2　高并发访问数据库引发的故障</h2>
+<p class="calibre1">
+<span class="kindle-cn-bold">故障现象：</span>
+ 某应用发布后，数据库Load居高不下，远超过正常水平，持续报警。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">原因分析：</span>
+ 检查数据库，发现报警是因为某条SQL引起的，这条SQL是一条简单的有索引的数据查询，不应该引发报警。继续检查，发现这条SQL执行频率非常高，远远超过正常水平。追查这条SQL，发现被网站首页应用调用，首页是被访问最频繁的网页，这条SQL被首页调用，也就被频繁执行了。</p>
+<p class="kindle-cn-bold1">经验教训：</p>
+<ul class="kindle-cn-ul-disc">
+<li class="calibre11">首页不应该访问数据库，首页需要的数据可以从缓存服务器或者搜索引擎服务器获取。</li>
+<li class="calibre11">首页最好是静态的。</li>
+</ul>
+</body>
+</html>

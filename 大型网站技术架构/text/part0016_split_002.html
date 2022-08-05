@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>7　随需应变：网站的可扩展架构</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="calibre7" id="calibre_pb_2"><a id="sec002" class="calibre8"></a>
+ 7.2　利用分布式消息队列降低系统耦合性</h2>
+<p class="calibre1">如果模块之间不存在直接调用，那么新增模块或者修改模块就对其他模块影响最小，这样系统的可扩展性无疑更好一些。</p>
+<h3 class="calibre9"><a id="sec003"></a>
+ 7.2.1　事件驱动架构</h3>
+<p class="calibre1">事件驱动架构（Event Driven Architecture）：通过在低耦合的模块之间传输事件消息，以保持模块的松散耦合，并借助事件消息的通信完成模块间合作，典型的EDA架构就是操作系统中常见的生产者消费者模式。在大型网站架构中，具体实现手段有很多，最常用的是分布式消息队列，如图7.1所示。</p>
+<div class="kindle-cn-bodycontent-div-alone"><img class="kindle-cn-bodycontent-image-alone80-withnote" alt="" src="../images/00080.jpeg"/>
+<p class="kindle-cn-picture-txt-withfewcharactors">图7.1　利用消息队列实现的事件驱动架构</p>
+</div>
+<p class="calibre1">消息队列利用发布—订阅模式工作，消息发送者发布消息，一个或者多个消息接收者订阅消息。消息发送者是消息源，在对消息进行处理后将消息发送至分布式消息队列，消息接受者从分布式消息队列获取该消息后继续进行处理。可以看到，消息发送者和消息接受者之间没有直接耦合，消息发送者将消息发送至分布式消息队列即结束对消息的处理，而消息接受者只需要从分布式消息队列获取消息后进行处理，不需要知道该消息从何而来。对新增业务，只要对该类消息感兴趣，即可订阅该消息，对原有系统和业务没有任何影响，从而实现网站业务的可扩展设计。</p>
+<p class="calibre1">消息接受者在对消息进行过滤、处理、包装后，构造成一个新的消息类型，将消息继续发送出去，等待其他消息接受者订阅处理该消息。因此基于事件（消息对象）驱动的业务架构可以是一系列的流程。</p>
+<p class="calibre1">由于消息发送者不需要等待消息接受者处理数据就可以返回，系统具有更好的响应延迟；同时，在网站访问高峰，消息可以暂时存储在消息队列中等待消息接受者根据自身负载处理能力控制消息处理速度，减轻数据库等后端存储的负载压力。</p>
+<h3 class="calibre9"><a id="sec004"></a>
+ 7.2.2　分布式消息队列</h3>
+<p class="calibre1">队列是一种先进先出的数据结构，分布式消息队列可以看作将这种数据结构部署到独立的服务器上，应用程序可以通过远程访问接口使用分布式消息队列，进行消息存取操作，进而实现分布式的异步调用，基本原理如图7.2所示。</p>
+<div class="kindle-cn-bodycontent-div-alone"><img class="kindle-cn-bodycontent-image-alone80-withnote" alt="" src="../images/00081.jpeg"/>
+<p class="kindle-cn-picture-txt-withfewcharactors">图7.2　分布式消息队列架构原理</p>
+</div>
+<p class="calibre1">消息生产者应用程序通过远程访问接口将消息推送给消息队列服务器，消息队列服务器将消息写入本地内存队列后立即返回成功响应给消息生产者。消息队列服务器根据消息订阅列表查找订阅该消息的消息消费者应用程序，将消息队列中的消息按照先进先出（FIFO）的原则将消息通过远程通信接口发送给消息消费者程序。</p>
+<p class="calibre1">目前开源的和商业的分布式消息队列产品有很多，比较著名的如Apache ActiveMQ等，这些产品除了实现分布式消息队列的一般功能，在可用性、伸缩性、数据一致性、性能和可管理性方面也做了很多改善。</p>
+<p class="calibre1">在<span class="kindle-cn-bold">伸缩性</span>
+ 方面，由于消息队列服务器上的数据可以看作是被即时处理的，因此类似于无状态的服务器，伸缩性设计比较简单。将新服务器加入分布式消息队列集群中，通知生产者服务器更改消息队列服务器列表即可。</p>
+<p class="calibre1">在<span class="kindle-cn-bold">可用性</span>
+ 方面，为了避免消费者进程处理缓慢，分布式消息队列服务器内存空间不足造成的问题，如果内存队列已满，会将消息写入磁盘，消息推送模块在将内存队列消息处理完以后，将磁盘内容加载到内存队列继续处理。</p>
+<p class="calibre1">为了避免消息队列服务器宕机造成消息丢失，会将消息成功发送到消息队列的消息存储在消息生产者服务器，等消息真正被消息消费者服务器处理后才删除消息。在消息队列服务器宕机后，生产者服务器会选择分布式消息队列服务器集群中其他的服务器发布消息。</p>
+<p class="calibre1">分布式消息队列可以很复杂，比如可以支持ESB（企业服务总线）、支持SOA（面向服务的架构）等；也可以很简单，比如用MySQL也可以当作分布式消息队列：消息生产者程序将消息当作数据记录写入数据库，消息消费者程序查询数据库并按记录写入时间戳排序，就实现了一个事实上的分布式消息队列，而且这个消息队列使用成熟的MySQL运维手段，也可以达到较高的可用性和性能指标。</p>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+  <head>
+    <title>13　大型网站典型故障案例分析</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link href="../stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="../page_styles1.css" rel="stylesheet" type="text/css"/>
+</head>
+  <body class="calibre">
+<h2 class="calibre7" id="calibre_pb_3"><a id="sec003" class="calibre8"></a>
+ 13.3　高并发情况下锁引发的故障</h2>
+<p class="calibre1">
+<span class="kindle-cn-bold">故障现象：</span>
+ 某应用服务器不定时地因为响应超时而报警，但是很快又超时解除，恢复正常，如此反复，让运维人员非常苦恼。</p>
+<p class="calibre1">
+<span class="kindle-cn-bold">原因分析：</span>
+ 程序中某个单例对象（singleton object）中多处使用了synchronized（this），由于this对象只有一个，所有的并发请求都要排队获得这唯一的一把锁。一般情况下，都是一些简单操作，获得锁，迅速完成操作，释放锁，不会引起线程排队。但是某个需要远程调用的操作也被加了synchronized（this），这个操作只是偶尔会被执行，但是每次执行都需要较长的时间才能完成，这段时间锁被占用，所有的用户线程都要等待，响应超时，这个操作执行完后释放锁，其他线程迅速执行，超时解除。</p>
+<p class="kindle-cn-bold1">经验教训：</p>
+<ul class="kindle-cn-ul-disc">
+<li class="calibre11">使用锁操作要谨慎。</li>
+</ul>
+</body>
+</html>

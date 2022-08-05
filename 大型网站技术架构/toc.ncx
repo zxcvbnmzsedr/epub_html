@@ -1,0 +1,1245 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1" xml:lang="zho">
+  <head>
+    <meta content="05a68c36-285d-4363-a40d-bc5887a2a1e7" name="dtb:uid"/>
+    <meta content="5" name="dtb:depth"/>
+    <meta content="calibre (2.18.0)" name="dtb:generator"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>大型网站技术架构:核心原理与案例分析</text>
+  </docTitle>
+  <navMap>
+    <navPoint class="chapter" id="num_1" playOrder="1">
+      <navLabel>
+        <text>书名页</text>
+      </navLabel>
+      <content src="text/part0001.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_2" playOrder="1">
+      <navLabel>
+        <text>版权页</text>
+      </navLabel>
+      <content src="text/part0001.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_3" playOrder="2">
+      <navLabel>
+        <text>好评袭来</text>
+      </navLabel>
+      <content src="text/part0002.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_4" playOrder="3">
+      <navLabel>
+        <text>推荐序一</text>
+      </navLabel>
+      <content src="text/part0003.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_5" playOrder="4">
+      <navLabel>
+        <text>推荐序二</text>
+      </navLabel>
+      <content src="text/part0004.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_6" playOrder="5">
+      <navLabel>
+        <text>序　我为什么要写这本书</text>
+      </navLabel>
+      <content src="text/part0005.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_7" playOrder="6">
+      <navLabel>
+        <text>致谢</text>
+      </navLabel>
+      <content src="text/part0006.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_8" playOrder="7">
+      <navLabel>
+        <text>目录</text>
+      </navLabel>
+      <content src="text/part0007.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_9" playOrder="7">
+      <navLabel>
+        <text>第1篇　概述</text>
+      </navLabel>
+      <content src="text/part0007.html"/>
+      <navPoint class="chapter" id="num_10" playOrder="7">
+        <navLabel>
+          <text>1　大型网站架构演化</text>
+        </navLabel>
+        <content src="text/part0007.html"/>
+        <navPoint class="chapter" id="num_11" playOrder="9">
+          <navLabel>
+            <text>1.1　大型网站软件系统的特点</text>
+          </navLabel>
+          <content src="text/part0009_split_001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_12" playOrder="10">
+          <navLabel>
+            <text>1.2　大型网站架构演化发展历程</text>
+          </navLabel>
+          <content src="text/part0009_split_002.html"/>
+          <navPoint class="chapter" id="num_13" playOrder="11">
+            <navLabel>
+              <text>1.2.1　初始阶段的网站架构</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec003"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_14" playOrder="12">
+            <navLabel>
+              <text>1.2.2　应用服务和数据服务分离</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec004"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_15" playOrder="13">
+            <navLabel>
+              <text>1.2.3　使用缓存改善网站性能</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec005"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_16" playOrder="14">
+            <navLabel>
+              <text>1.2.4　使用应用服务器集群改善网站的并发处理能力</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec006"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_17" playOrder="15">
+            <navLabel>
+              <text>1.2.5　数据库读写分离</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec007"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_18" playOrder="16">
+            <navLabel>
+              <text>1.2.6　使用反向代理和CDN加速网站响应</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec008"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_19" playOrder="17">
+            <navLabel>
+              <text>1.2.7　使用分布式文件系统和分布式数据库系统</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec009"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_20" playOrder="18">
+            <navLabel>
+              <text>1.2.8　使用NoSQL和搜索引擎</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec010"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_21" playOrder="19">
+            <navLabel>
+              <text>1.2.9　业务拆分</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec011"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_22" playOrder="20">
+            <navLabel>
+              <text>1.2.10　分布式服务</text>
+            </navLabel>
+            <content src="text/part0009_split_002.html#sec012"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_23" playOrder="21">
+          <navLabel>
+            <text>1.3　大型网站架构演化的价值观</text>
+          </navLabel>
+          <content src="text/part0009_split_003.html"/>
+          <navPoint class="chapter" id="num_24" playOrder="22">
+            <navLabel>
+              <text>1.3.1　大型网站架构技术的核心价值是随网站所需灵活应对</text>
+            </navLabel>
+            <content src="text/part0009_split_003.html#sec014"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_25" playOrder="23">
+            <navLabel>
+              <text>1.3.2　驱动大型网站技术发展的主要力量是网站的业务发展</text>
+            </navLabel>
+            <content src="text/part0009_split_003.html#sec015"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_26" playOrder="24">
+          <navLabel>
+            <text>1.4　网站架构设计误区</text>
+          </navLabel>
+          <content src="text/part0009_split_004.html"/>
+          <navPoint class="chapter" id="num_27" playOrder="25">
+            <navLabel>
+              <text>1.4.1　一味追随大公司的解决方案</text>
+            </navLabel>
+            <content src="text/part0009_split_004.html#sec017"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_28" playOrder="26">
+            <navLabel>
+              <text>1.4.2　为了技术而技术</text>
+            </navLabel>
+            <content src="text/part0009_split_004.html#sec018"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_29" playOrder="27">
+            <navLabel>
+              <text>1.4.3　企图用技术解决所有问题</text>
+            </navLabel>
+            <content src="text/part0009_split_004.html#sec019"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_30" playOrder="28">
+          <navLabel>
+            <text>1.5　小结</text>
+          </navLabel>
+          <content src="text/part0009_split_005.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_31" playOrder="7">
+        <navLabel>
+          <text>2　大型网站架构模式</text>
+        </navLabel>
+        <content src="text/part0007.html"/>
+        <navPoint class="chapter" id="num_32" playOrder="29">
+          <navLabel>
+            <text>2.1　网站架构模式</text>
+          </navLabel>
+          <content src="text/part0010_split_001.html"/>
+          <navPoint class="chapter" id="num_33" playOrder="30">
+            <navLabel>
+              <text>2.1.1　分层</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec002"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_34" playOrder="31">
+            <navLabel>
+              <text>2.1.2　分割</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec003"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_35" playOrder="32">
+            <navLabel>
+              <text>2.1.3　分布式</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec004"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_36" playOrder="33">
+            <navLabel>
+              <text>2.1.4　集群</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec005"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_37" playOrder="34">
+            <navLabel>
+              <text>2.1.5　缓存</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec006"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_38" playOrder="35">
+            <navLabel>
+              <text>2.1.6　异步</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec007"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_39" playOrder="36">
+            <navLabel>
+              <text>2.1.7　冗余</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec008"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_40" playOrder="37">
+            <navLabel>
+              <text>2.1.8　自动化</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec009"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_41" playOrder="38">
+            <navLabel>
+              <text>2.1.9　安全</text>
+            </navLabel>
+            <content src="text/part0010_split_001.html#sec010"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_42" playOrder="39">
+          <navLabel>
+            <text>2.2　架构模式在新浪微博的应用</text>
+          </navLabel>
+          <content src="text/part0010_split_002.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_43" playOrder="40">
+          <navLabel>
+            <text>2.3　小结</text>
+          </navLabel>
+          <content src="text/part0010_split_003.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_44" playOrder="7">
+        <navLabel>
+          <text>3　大型网站核心架构要素</text>
+        </navLabel>
+        <content src="text/part0007.html"/>
+        <navPoint class="chapter" id="num_45" playOrder="41">
+          <navLabel>
+            <text>3.1　性能</text>
+          </navLabel>
+          <content src="text/part0011_split_001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_46" playOrder="42">
+          <navLabel>
+            <text>3.2　可用性</text>
+          </navLabel>
+          <content src="text/part0011_split_002.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_47" playOrder="43">
+          <navLabel>
+            <text>3.3　伸缩性</text>
+          </navLabel>
+          <content src="text/part0011_split_003.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_48" playOrder="44">
+          <navLabel>
+            <text>3.4　扩展性</text>
+          </navLabel>
+          <content src="text/part0011_split_004.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_49" playOrder="45">
+          <navLabel>
+            <text>3.5　安全性</text>
+          </navLabel>
+          <content src="text/part0011_split_005.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_50" playOrder="46">
+          <navLabel>
+            <text>3.6　小结</text>
+          </navLabel>
+          <content src="text/part0011_split_006.html"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_51" playOrder="7">
+      <navLabel>
+        <text>第2篇　架构</text>
+      </navLabel>
+      <content src="text/part0007.html"/>
+      <navPoint class="chapter" id="num_52" playOrder="7">
+        <navLabel>
+          <text>4　瞬时响应：网站的高性能架构</text>
+        </navLabel>
+        <content src="text/part0007.html"/>
+        <navPoint class="chapter" id="num_53" playOrder="47">
+          <navLabel>
+            <text>4.1　网站性能测试</text>
+          </navLabel>
+          <content src="text/part0013_split_001.html"/>
+          <navPoint class="chapter" id="num_54" playOrder="48">
+            <navLabel>
+              <text>4.1.1　不同视角下的网站性能</text>
+            </navLabel>
+            <content src="text/part0013_split_001.html#sec002"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_55" playOrder="49">
+            <navLabel>
+              <text>4.1.2　性能测试指标</text>
+            </navLabel>
+            <content src="text/part0013_split_001.html#sec003"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_56" playOrder="50">
+            <navLabel>
+              <text>4.1.3　性能测试方法</text>
+            </navLabel>
+            <content src="text/part0013_split_001.html#sec004"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_57" playOrder="51">
+            <navLabel>
+              <text>4.1.4　性能测试报告</text>
+            </navLabel>
+            <content src="text/part0013_split_001.html#sec005"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_58" playOrder="52">
+            <navLabel>
+              <text>4.1.5　性能优化策略</text>
+            </navLabel>
+            <content src="text/part0013_split_001.html#sec006"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_59" playOrder="53">
+          <navLabel>
+            <text>4.2　Web前端性能优化</text>
+          </navLabel>
+          <content src="text/part0013_split_002.html"/>
+          <navPoint class="chapter" id="num_60" playOrder="54">
+            <navLabel>
+              <text>4.2.1　浏览器访问优化</text>
+            </navLabel>
+            <content src="text/part0013_split_002.html#sec008"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_61" playOrder="55">
+            <navLabel>
+              <text>4.2.2　CDN加速</text>
+            </navLabel>
+            <content src="text/part0013_split_002.html#sec009"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_62" playOrder="56">
+            <navLabel>
+              <text>4.2.3　反向代理</text>
+            </navLabel>
+            <content src="text/part0013_split_002.html#sec010"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_63" playOrder="57">
+          <navLabel>
+            <text>4.3　应用服务器性能优化</text>
+          </navLabel>
+          <content src="text/part0013_split_003.html"/>
+          <navPoint class="chapter" id="num_64" playOrder="58">
+            <navLabel>
+              <text>4.3.1　分布式缓存</text>
+            </navLabel>
+            <content src="text/part0013_split_003.html#sec012"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_65" playOrder="59">
+            <navLabel>
+              <text>4.3.2　异步操作</text>
+            </navLabel>
+            <content src="text/part0013_split_003.html#sec013"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_66" playOrder="60">
+            <navLabel>
+              <text>4.3.3　使用集群</text>
+            </navLabel>
+            <content src="text/part0013_split_003.html#sec014"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_67" playOrder="61">
+            <navLabel>
+              <text>4.3.4　代码优化</text>
+            </navLabel>
+            <content src="text/part0013_split_003.html#sec015"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_68" playOrder="62">
+          <navLabel>
+            <text>4.4　存储性能优化</text>
+          </navLabel>
+          <content src="text/part0013_split_004.html"/>
+          <navPoint class="chapter" id="num_69" playOrder="63">
+            <navLabel>
+              <text>4.4.1　机械硬盘vs. 固态硬盘</text>
+            </navLabel>
+            <content src="text/part0013_split_004.html#sec017"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_70" playOrder="64">
+            <navLabel>
+              <text>4.4.2　B＋树 vs. LSM树</text>
+            </navLabel>
+            <content src="text/part0013_split_004.html#sec018"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_71" playOrder="65">
+            <navLabel>
+              <text>4.4.3　RAID vs. HDFS</text>
+            </navLabel>
+            <content src="text/part0013_split_004.html#sec019"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_72" playOrder="66">
+          <navLabel>
+            <text>4.5　小结</text>
+          </navLabel>
+          <content src="text/part0013_split_005.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_73" playOrder="71">
+          <navLabel>
+            <text>5.3　高可用的应用</text>
+          </navLabel>
+          <content src="text/part0014_split_003.html"/>
+          <navPoint class="chapter" id="num_74" playOrder="72">
+            <navLabel>
+              <text>5.3.1　通过负载均衡进行无状态服务的失效转移</text>
+            </navLabel>
+            <content src="text/part0014_split_003.html#sec006"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_75" playOrder="73">
+            <navLabel>
+              <text>5.3.2　应用服务器集群的Session管理</text>
+            </navLabel>
+            <content src="text/part0014_split_003.html#sec007"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_76" playOrder="74">
+          <navLabel>
+            <text>5.4　高可用的服务</text>
+          </navLabel>
+          <content src="text/part0014_split_004.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_77" playOrder="13">
+        <navLabel>
+          <text>5　万无一失：网站的高可用架构</text>
+        </navLabel>
+        <content src="text/part0009_split_002.html#sec005"/>
+        <navPoint class="chapter" id="num_78" playOrder="67">
+          <navLabel>
+            <text>5.1　网站可用性的度量与考核</text>
+          </navLabel>
+          <content src="text/part0014_split_001.html"/>
+          <navPoint class="chapter" id="num_79" playOrder="68">
+            <navLabel>
+              <text>5.1.1　网站可用性度量</text>
+            </navLabel>
+            <content src="text/part0014_split_001.html#sec002"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_80" playOrder="69">
+            <navLabel>
+              <text>5.1.2　网站可用性考核</text>
+            </navLabel>
+            <content src="text/part0014_split_001.html#sec003"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_81" playOrder="70">
+          <navLabel>
+            <text>5.2　高可用的网站架构</text>
+          </navLabel>
+          <content src="text/part0014_split_002.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_82" playOrder="20">
+        <navLabel>
+          <text>6　永无止境：网站的伸缩性架构</text>
+        </navLabel>
+        <content src="text/part0009_split_002.html#sec012"/>
+        <navPoint class="chapter" id="num_83" playOrder="90">
+          <navLabel>
+            <text>6.1　网站架构的伸缩性设计</text>
+          </navLabel>
+          <content src="text/part0015_split_001.html"/>
+          <navPoint class="chapter" id="num_84" playOrder="91">
+            <navLabel>
+              <text>6.1.1　不同功能进行物理分离实现伸缩</text>
+            </navLabel>
+            <content src="text/part0015_split_001.html#sec002"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_85" playOrder="92">
+            <navLabel>
+              <text>6.1.2　单一功能通过集群规模实现伸缩</text>
+            </navLabel>
+            <content src="text/part0015_split_001.html#sec003"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_86" playOrder="93">
+          <navLabel>
+            <text>6.2　应用服务器集群的伸缩性设计</text>
+          </navLabel>
+          <content src="text/part0015_split_002.html"/>
+          <navPoint class="chapter" id="num_87" playOrder="94">
+            <navLabel>
+              <text>6.2.1　HTTP重定向负载均衡</text>
+            </navLabel>
+            <content src="text/part0015_split_002.html#sec005"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_88" playOrder="95">
+            <navLabel>
+              <text>6.2.2　DNS域名解析负载均衡</text>
+            </navLabel>
+            <content src="text/part0015_split_002.html#sec006"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_89" playOrder="96">
+            <navLabel>
+              <text>6.2.3　反向代理负载均衡</text>
+            </navLabel>
+            <content src="text/part0015_split_002.html#sec007"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_90" playOrder="97">
+            <navLabel>
+              <text>6.2.4　IP负载均衡</text>
+            </navLabel>
+            <content src="text/part0015_split_002.html#sec008"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_91" playOrder="98">
+            <navLabel>
+              <text>6.2.5　数据链路层负载均衡</text>
+            </navLabel>
+            <content src="text/part0015_split_002.html#sec009"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_92" playOrder="99">
+            <navLabel>
+              <text>6.2.6　负载均衡算法</text>
+            </navLabel>
+            <content src="text/part0015_split_002.html#sec010"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_93" playOrder="100">
+          <navLabel>
+            <text>6.3　分布式缓存集群的伸缩性设计</text>
+          </navLabel>
+          <content src="text/part0015_split_003.html"/>
+          <navPoint class="chapter" id="num_94" playOrder="101">
+            <navLabel>
+              <text>6.3.1　Memcached分布式缓存集群的访问模型</text>
+            </navLabel>
+            <content src="text/part0015_split_003.html#sec012"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_95" playOrder="102">
+            <navLabel>
+              <text>6.3.2　Memcached分布式缓存集群的伸缩性挑战</text>
+            </navLabel>
+            <content src="text/part0015_split_003.html#sec013"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_96" playOrder="103">
+            <navLabel>
+              <text>6.3.3　分布式缓存的一致性Hash算法</text>
+            </navLabel>
+            <content src="text/part0015_split_003.html#sec014"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_97" playOrder="104">
+          <navLabel>
+            <text>6.4　数据存储服务器集群的伸缩性设计</text>
+          </navLabel>
+          <content src="text/part0015_split_004.html"/>
+          <navPoint class="chapter" id="num_98" playOrder="105">
+            <navLabel>
+              <text>6.4.1　关系数据库集群的伸缩性设计</text>
+            </navLabel>
+            <content src="text/part0015_split_004.html#sec016"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_99" playOrder="106">
+            <navLabel>
+              <text>6.4.2　NoSQL数据库的伸缩性设计</text>
+            </navLabel>
+            <content src="text/part0015_split_004.html#sec017"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_100" playOrder="107">
+          <navLabel>
+            <text>6.5　小结</text>
+          </navLabel>
+          <content src="text/part0015_split_005.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_101" playOrder="7">
+        <navLabel>
+          <text>7　随需应变：网站的可扩展架构</text>
+        </navLabel>
+        <content src="text/part0007.html"/>
+        <navPoint class="chapter" id="num_102" playOrder="108">
+          <navLabel>
+            <text>7.1　构建可扩展的网站架构</text>
+          </navLabel>
+          <content src="text/part0016_split_001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_103" playOrder="109">
+          <navLabel>
+            <text>7.2　利用分布式消息队列降低系统耦合性</text>
+          </navLabel>
+          <content src="text/part0016_split_002.html"/>
+          <navPoint class="chapter" id="num_104" playOrder="110">
+            <navLabel>
+              <text>7.2.1　事件驱动架构</text>
+            </navLabel>
+            <content src="text/part0016_split_002.html#sec003"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_105" playOrder="111">
+            <navLabel>
+              <text>7.2.2　分布式消息队列</text>
+            </navLabel>
+            <content src="text/part0016_split_002.html#sec004"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_106" playOrder="112">
+          <navLabel>
+            <text>7.3　利用分布式服务打造可复用的业务平台</text>
+          </navLabel>
+          <content src="text/part0016_split_003.html"/>
+          <navPoint class="chapter" id="num_107" playOrder="113">
+            <navLabel>
+              <text>7.3.1　Web Service与企业级分布式服务</text>
+            </navLabel>
+            <content src="text/part0016_split_003.html#sec006"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_108" playOrder="114">
+            <navLabel>
+              <text>7.3.2　大型网站分布式服务的需求与特点</text>
+            </navLabel>
+            <content src="text/part0016_split_003.html#sec007"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_109" playOrder="115">
+            <navLabel>
+              <text>7.3.3　分布式服务框架设计</text>
+            </navLabel>
+            <content src="text/part0016_split_003.html#sec008"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_110" playOrder="116">
+          <navLabel>
+            <text>7.4　可扩展的数据结构</text>
+          </navLabel>
+          <content src="text/part0016_split_004.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_111" playOrder="117">
+          <navLabel>
+            <text>7.5　利用开放平台建设网站生态圈</text>
+          </navLabel>
+          <content src="text/part0016_split_005.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_112" playOrder="118">
+          <navLabel>
+            <text>7.6　小结</text>
+          </navLabel>
+          <content src="text/part0016_split_006.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_113" playOrder="33">
+        <navLabel>
+          <text>8　固若金汤：网站的安全架构</text>
+        </navLabel>
+        <content src="text/part0010_split_001.html#sec005"/>
+        <navPoint class="chapter" id="num_114" playOrder="119">
+          <navLabel>
+            <text>8.1　道高一尺魔高一丈的网站应用攻击与防御</text>
+          </navLabel>
+          <content src="text/part0017_split_001.html"/>
+          <navPoint class="chapter" id="num_115" playOrder="120">
+            <navLabel>
+              <text>8.1.1　XSS攻击</text>
+            </navLabel>
+            <content src="text/part0017_split_001.html#sec002"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_116" playOrder="121">
+            <navLabel>
+              <text>8.1.2　注入攻击</text>
+            </navLabel>
+            <content src="text/part0017_split_001.html#sec003"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_117" playOrder="122">
+            <navLabel>
+              <text>8.1.3　CSRF攻击</text>
+            </navLabel>
+            <content src="text/part0017_split_001.html#sec004"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_118" playOrder="123">
+            <navLabel>
+              <text>8.1.4　其他攻击和漏洞</text>
+            </navLabel>
+            <content src="text/part0017_split_001.html#sec005"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_119" playOrder="124">
+            <navLabel>
+              <text>8.1.5　Web应用防火墙</text>
+            </navLabel>
+            <content src="text/part0017_split_001.html#sec006"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_120" playOrder="125">
+            <navLabel>
+              <text>8.1.6　网站安全漏洞扫描</text>
+            </navLabel>
+            <content src="text/part0017_split_001.html#sec007"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_121" playOrder="126">
+          <navLabel>
+            <text>8.2　信息加密技术及密钥安全管理</text>
+          </navLabel>
+          <content src="text/part0017_split_002.html"/>
+          <navPoint class="chapter" id="num_122" playOrder="127">
+            <navLabel>
+              <text>8.2.1　单向散列加密</text>
+            </navLabel>
+            <content src="text/part0017_split_002.html#sec009"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_123" playOrder="128">
+            <navLabel>
+              <text>8.2.2　对称加密</text>
+            </navLabel>
+            <content src="text/part0017_split_002.html#sec010"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_124" playOrder="129">
+            <navLabel>
+              <text>8.2.3　非对称加密</text>
+            </navLabel>
+            <content src="text/part0017_split_002.html#sec011"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_125" playOrder="130">
+            <navLabel>
+              <text>8.2.4　密钥安全管理</text>
+            </navLabel>
+            <content src="text/part0017_split_002.html#sec012"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_126" playOrder="131">
+          <navLabel>
+            <text>8.3　信息过滤与反垃圾</text>
+          </navLabel>
+          <content src="text/part0017_split_003.html"/>
+          <navPoint class="chapter" id="num_127" playOrder="132">
+            <navLabel>
+              <text>8.3.1　文本匹配</text>
+            </navLabel>
+            <content src="text/part0017_split_003.html#sec014"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_128" playOrder="133">
+            <navLabel>
+              <text>8.3.2　分类算法</text>
+            </navLabel>
+            <content src="text/part0017_split_003.html#sec015"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_129" playOrder="134">
+            <navLabel>
+              <text>8.3.3　黑名单</text>
+            </navLabel>
+            <content src="text/part0017_split_003.html#sec016"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_130" playOrder="135">
+          <navLabel>
+            <text>8.4　电子商务风险控制</text>
+          </navLabel>
+          <content src="text/part0017_split_004.html"/>
+          <navPoint class="chapter" id="num_131" playOrder="136">
+            <navLabel>
+              <text>8.4.1　风险</text>
+            </navLabel>
+            <content src="text/part0017_split_004.html#sec018"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_132" playOrder="137">
+            <navLabel>
+              <text>8.4.2　风控</text>
+            </navLabel>
+            <content src="text/part0017_split_004.html#sec019"/>
+          </navPoint>
+        </navPoint>
+        <navPoint class="chapter" id="num_133" playOrder="138">
+          <navLabel>
+            <text>8.5　小结</text>
+          </navLabel>
+          <content src="text/part0017_split_005.html"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_134" playOrder="40">
+      <navLabel>
+        <text>第3篇　案例</text>
+      </navLabel>
+      <content src="text/part0010_split_003.html"/>
+      <navPoint class="chapter" id="num_135" playOrder="40">
+        <navLabel>
+          <text>9　淘宝网的架构演化案例分析</text>
+        </navLabel>
+        <content src="text/part0010_split_003.html"/>
+        <navPoint class="chapter" id="num_136" playOrder="139">
+          <navLabel>
+            <text>9.1　淘宝网的业务发展历程</text>
+          </navLabel>
+          <content src="text/part0019_split_001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_137" playOrder="140">
+          <navLabel>
+            <text>9.2　淘宝网技术架构演化</text>
+          </navLabel>
+          <content src="text/part0019_split_002.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_138" playOrder="141">
+          <navLabel>
+            <text>9.3　小结</text>
+          </navLabel>
+          <content src="text/part0019_split_003.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_139" playOrder="7">
+        <navLabel>
+          <text>10　维基百科的高性能架构设计分析</text>
+        </navLabel>
+        <content src="text/part0007.html"/>
+        <navPoint class="chapter" id="num_140" playOrder="142">
+          <navLabel>
+            <text>10.1　Wikipedia网站整体架构</text>
+          </navLabel>
+          <content src="text/part0020_split_001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_141" playOrder="143">
+          <navLabel>
+            <text>10.2　Wikipedia性能优化策略</text>
+          </navLabel>
+          <content src="text/part0020_split_002.html"/>
+          <navPoint class="chapter" id="num_142" playOrder="144">
+            <navLabel>
+              <text>10.2.1　Wikipedia前端性能优化</text>
+            </navLabel>
+            <content src="text/part0020_split_002.html#sec003"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_143" playOrder="145">
+            <navLabel>
+              <text>10.2.2　Wikipedia服务端性能优化</text>
+            </navLabel>
+            <content src="text/part0020_split_002.html#sec004"/>
+          </navPoint>
+          <navPoint class="chapter" id="num_144" playOrder="146">
+            <navLabel>
+              <text>10.2.3　Wikipedia后端性能优化</text>
+            </navLabel>
+            <content src="text/part0020_split_002.html#sec005"/>
+          </navPoint>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_145" playOrder="52">
+      <navLabel>
+        <text>第4篇　架构师</text>
+      </navLabel>
+      <content src="text/part0013_split_001.html#sec006"/>
+      <navPoint class="chapter" id="num_146" playOrder="52">
+        <navLabel>
+          <text>14　架构师领导艺术</text>
+        </navLabel>
+        <content src="text/part0013_split_001.html#sec006"/>
+        <navPoint class="chapter" id="num_147" playOrder="168">
+          <navLabel>
+            <text>14.1　关注人而不是产品</text>
+          </navLabel>
+          <content src="text/part0025_split_001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_148" playOrder="169">
+          <navLabel>
+            <text>14.2　发掘人的优秀</text>
+          </navLabel>
+          <content src="text/part0025_split_002.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_149" playOrder="170">
+          <navLabel>
+            <text>14.3　共享美好蓝图</text>
+          </navLabel>
+          <content src="text/part0025_split_003.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_150" playOrder="171">
+          <navLabel>
+            <text>14.4　共同参与架构</text>
+          </navLabel>
+          <content src="text/part0025_split_004.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_151" playOrder="172">
+          <navLabel>
+            <text>14.5　学会妥协</text>
+          </navLabel>
+          <content src="text/part0025_split_005.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_152" playOrder="173">
+          <navLabel>
+            <text>14.6　成就他人</text>
+          </navLabel>
+          <content src="text/part0025_split_006.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_153" playOrder="58">
+        <navLabel>
+          <text>15　网站架构师职场攻略</text>
+        </navLabel>
+        <content src="text/part0013_split_003.html#sec012"/>
+        <navPoint class="chapter" id="num_154" playOrder="174">
+          <navLabel>
+            <text>15.1　发现问题，寻找突破</text>
+          </navLabel>
+          <content src="text/part0026_split_001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_155" playOrder="175">
+          <navLabel>
+            <text>15.2　提出问题，寻求支持</text>
+          </navLabel>
+          <content src="text/part0026_split_002.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_156" playOrder="176">
+          <navLabel>
+            <text>15.3　解决问题，达成绩效</text>
+          </navLabel>
+          <content src="text/part0026_split_003.html"/>
+        </navPoint>
+      </navPoint>
+      <navPoint class="chapter" id="num_157" playOrder="59">
+        <navLabel>
+          <text>16　漫话网站架构师</text>
+        </navLabel>
+        <content src="text/part0013_split_003.html#sec013"/>
+        <navPoint class="chapter" id="num_158" playOrder="177">
+          <navLabel>
+            <text>16.1　按作用划分架构师</text>
+          </navLabel>
+          <content src="text/part0027_split_001.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_159" playOrder="178">
+          <navLabel>
+            <text>16.2　按效果划分架构师</text>
+          </navLabel>
+          <content src="text/part0027_split_002.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_160" playOrder="179">
+          <navLabel>
+            <text>16.3　按职责角色划分架构师</text>
+          </navLabel>
+          <content src="text/part0027_split_003.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_161" playOrder="180">
+          <navLabel>
+            <text>16.4　按关注层次划分架构师</text>
+          </navLabel>
+          <content src="text/part0027_split_004.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_162" playOrder="181">
+          <navLabel>
+            <text>16.5　按口碑划分架构师</text>
+          </navLabel>
+          <content src="text/part0027_split_005.html"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_163" playOrder="182">
+          <navLabel>
+            <text>16.6　非主流方式划分架构师</text>
+          </navLabel>
+          <content src="text/part0027_split_006.html"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_164" playOrder="60">
+      <navLabel>
+        <text>附录A　大型网站架构技术一览</text>
+      </navLabel>
+      <content src="text/part0013_split_003.html#sec014"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_165" playOrder="62">
+      <navLabel>
+        <text>附录B　Web开发技术发展历程</text>
+      </navLabel>
+      <content src="text/part0013_split_004.html"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_166" playOrder="65">
+      <navLabel>
+        <text>后记</text>
+      </navLabel>
+      <content src="text/part0013_split_004.html#sec019"/>
+    </navPoint>
+    <navPoint class="chapter" id="num_167" playOrder="44">
+      <navLabel>
+        <text>11　海量分布式存储系统Doris的高可用架构设计分析</text>
+      </navLabel>
+      <content src="text/part0011_split_004.html"/>
+      <navPoint class="chapter" id="num_168" playOrder="147">
+        <navLabel>
+          <text>11.1　分布式存储系统的高可用架构</text>
+        </navLabel>
+        <content src="text/part0021_split_001.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_169" playOrder="148">
+        <navLabel>
+          <text>11.2　不同故障情况下的高可用解决方案</text>
+        </navLabel>
+        <content src="text/part0021_split_002.html"/>
+        <navPoint class="chapter" id="num_170" playOrder="149">
+          <navLabel>
+            <text>11.2.1　分布式存储系统的故障分类</text>
+          </navLabel>
+          <content src="text/part0021_split_002.html#sec003"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_171" playOrder="150">
+          <navLabel>
+            <text>11.2.2　正常情况下系统访问结构</text>
+          </navLabel>
+          <content src="text/part0021_split_002.html#sec004"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_172" playOrder="151">
+          <navLabel>
+            <text>11.2.3　瞬时故障的高可用解决方案</text>
+          </navLabel>
+          <content src="text/part0021_split_002.html#sec005"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_173" playOrder="152">
+          <navLabel>
+            <text>11.2.4　临时故障的高可用解决方案</text>
+          </navLabel>
+          <content src="text/part0021_split_002.html#sec006"/>
+        </navPoint>
+        <navPoint class="chapter" id="num_174" playOrder="153">
+          <navLabel>
+            <text>11.2.5　永久故障的高可用解决方案</text>
+          </navLabel>
+          <content src="text/part0021_split_002.html#sec007"/>
+        </navPoint>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_175" playOrder="8">
+      <navLabel>
+        <text>12　网购秒杀系统架构设计案例分析</text>
+      </navLabel>
+      <content src="text/part0009_split_000.html"/>
+      <navPoint class="chapter" id="num_176" playOrder="154">
+        <navLabel>
+          <text>12.1　秒杀活动的技术挑战</text>
+        </navLabel>
+        <content src="text/part0022_split_001.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_177" playOrder="155">
+        <navLabel>
+          <text>12.2　秒杀系统的应对策略</text>
+        </navLabel>
+        <content src="text/part0022_split_002.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_178" playOrder="156">
+        <navLabel>
+          <text>12.3　秒杀系统架构设计</text>
+        </navLabel>
+        <content src="text/part0022_split_003.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_179" playOrder="157">
+        <navLabel>
+          <text>12.4　小结</text>
+        </navLabel>
+        <content src="text/part0022_split_004.html"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_180" playOrder="8">
+      <navLabel>
+        <text>13　大型网站典型故障案例分析</text>
+      </navLabel>
+      <content src="text/part0009_split_000.html"/>
+      <navPoint class="chapter" id="num_181" playOrder="158">
+        <navLabel>
+          <text>13.1　写日志也会引发故障</text>
+        </navLabel>
+        <content src="text/part0023_split_001.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_182" playOrder="159">
+        <navLabel>
+          <text>13.2　高并发访问数据库引发的故障</text>
+        </navLabel>
+        <content src="text/part0023_split_002.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_183" playOrder="160">
+        <navLabel>
+          <text>13.3　高并发情况下锁引发的故障</text>
+        </navLabel>
+        <content src="text/part0023_split_003.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_184" playOrder="161">
+        <navLabel>
+          <text>13.4　缓存引发的故障</text>
+        </navLabel>
+        <content src="text/part0023_split_004.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_185" playOrder="162">
+        <navLabel>
+          <text>13.5　应用启动不同步引发的故障</text>
+        </navLabel>
+        <content src="text/part0023_split_005.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_186" playOrder="163">
+        <navLabel>
+          <text>13.6　大文件读写独占磁盘引发的故障</text>
+        </navLabel>
+        <content src="text/part0023_split_006.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_187" playOrder="164">
+        <navLabel>
+          <text>13.7　滥用生产环境引发的故障</text>
+        </navLabel>
+        <content src="text/part0023_split_007.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_188" playOrder="165">
+        <navLabel>
+          <text>13.8　不规范的流程引发的故障</text>
+        </navLabel>
+        <content src="text/part0023_split_008.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_189" playOrder="166">
+        <navLabel>
+          <text>13.9　不好的编程习惯引发的故障</text>
+        </navLabel>
+        <content src="text/part0023_split_009.html"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_190" playOrder="167">
+        <navLabel>
+          <text>13.10　小结</text>
+        </navLabel>
+        <content src="text/part0023_split_010.html"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_191" playOrder="75">
+      <navLabel>
+        <text>5.5　高可用的数据</text>
+      </navLabel>
+      <content src="text/part0014_split_005.html"/>
+      <navPoint class="chapter" id="num_192" playOrder="76">
+        <navLabel>
+          <text>5.5.1　CAP原理</text>
+        </navLabel>
+        <content src="text/part0014_split_005.html#sec010"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_193" playOrder="77">
+        <navLabel>
+          <text>5.5.2　数据备份</text>
+        </navLabel>
+        <content src="text/part0014_split_005.html#sec011"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_194" playOrder="78">
+        <navLabel>
+          <text>5.5.3　失效转移</text>
+        </navLabel>
+        <content src="text/part0014_split_005.html#sec012"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_195" playOrder="79">
+      <navLabel>
+        <text>5.6　高可用网站的软件质量保证</text>
+      </navLabel>
+      <content src="text/part0014_split_006.html"/>
+      <navPoint class="chapter" id="num_196" playOrder="80">
+        <navLabel>
+          <text>5.6.1　网站发布</text>
+        </navLabel>
+        <content src="text/part0014_split_006.html#sec014"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_197" playOrder="81">
+        <navLabel>
+          <text>5.6.2　自动化测试</text>
+        </navLabel>
+        <content src="text/part0014_split_006.html#sec015"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_198" playOrder="82">
+        <navLabel>
+          <text>5.6.3　预发布验证</text>
+        </navLabel>
+        <content src="text/part0014_split_006.html#sec016"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_199" playOrder="83">
+        <navLabel>
+          <text>5.6.4　代码控制</text>
+        </navLabel>
+        <content src="text/part0014_split_006.html#sec017"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_200" playOrder="84">
+        <navLabel>
+          <text>5.6.5　自动化发布</text>
+        </navLabel>
+        <content src="text/part0014_split_006.html#sec018"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_201" playOrder="85">
+        <navLabel>
+          <text>5.6.6　灰度发布</text>
+        </navLabel>
+        <content src="text/part0014_split_006.html#sec019"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_202" playOrder="86">
+      <navLabel>
+        <text>5.7　网站运行监控</text>
+      </navLabel>
+      <content src="text/part0014_split_007.html"/>
+      <navPoint class="chapter" id="num_203" playOrder="87">
+        <navLabel>
+          <text>5.7.1　监控数据采集</text>
+        </navLabel>
+        <content src="text/part0014_split_007.html#sec021"/>
+      </navPoint>
+      <navPoint class="chapter" id="num_204" playOrder="88">
+        <navLabel>
+          <text>5.7.2　监控管理</text>
+        </navLabel>
+        <content src="text/part0014_split_007.html#sec022"/>
+      </navPoint>
+    </navPoint>
+    <navPoint class="chapter" id="num_205" playOrder="89">
+      <navLabel>
+        <text>5.8　小结</text>
+      </navLabel>
+      <content src="text/part0014_split_008.html"/>
+    </navPoint>
+  </navMap>
+</ncx>
