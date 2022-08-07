@@ -1,0 +1,676 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>Java&#24182;&#21457;</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="u936a5258">
+  <strong>
+   <span class="ne-text">
+    &#20160;&#20040;&#26159;&#32447;&#31243;&#21644;&#36827;&#31243;?&#32447;&#31243;&#19982;&#36827;&#31243;&#30340;&#20851;&#31995;,&#21306;&#21035;&#21450;&#20248;&#32570;&#28857;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="ud22ea56a">
+  <br>
+ </p>
+ <p class="ne-p" id="u6912241b">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306;&#21487;&#20197;&#20174;&#20174; JVM &#35282;&#24230;&#35828;&#36827;&#31243;&#21644;&#32447;&#31243;&#20043;&#38388;&#30340;&#20851;&#31995;
+  </span>
+ </p>
+ <p class="ne-p" id="ucfc64c61">
+  <br>
+ </p>
+ <p class="ne-p" id="uc3e4748e">
+  <strong>
+   <span class="ne-text">
+    &#20026;&#20160;&#20040;&#35201;&#20351;&#29992;&#22810;&#32447;&#31243;&#21602;?
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u4338dd3b">
+  <br>
+ </p>
+ <p class="ne-p" id="u8dcb9f3a">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306;&#20174;&#35745;&#31639;&#26426;&#35282;&#24230;&#26469;&#35828;&#20027;&#35201;&#26159;&#20026;&#20102;&#20805;&#20998;&#21033;&#29992;&#22810;&#26680; CPU &#30340;&#33021;&#21147;&#65292;&#20174;&#39033;&#30446;&#35282;&#24230;&#26469;&#35828;&#20027;&#35201;&#26159;&#20026;&#20102;&#25552;&#21319;&#31995;&#32479;&#30340;&#24615;&#33021;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u485187f8">
+  <br>
+ </p>
+ <p class="ne-p" id="u576186d7">
+  <strong>
+   <span class="ne-text">
+    &#35828;&#35828;&#32447;&#31243;&#30340;&#29983;&#21629;&#21608;&#26399;&#21644;&#29366;&#24577;?
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u34722062">
+  <br>
+ </p>
+ <p class="ne-p" id="u9ff4bbab">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306; 6 &#31181;&#29366;&#24577;&#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NEW
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RUNNABLE
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    BLOCKED
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    WAITING
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    TIME_WAITING
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    TERMINATED
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf9c13779">
+  <br>
+ </p>
+ <p class="ne-p" id="u839ae15c">
+  <span class="ne-text">
+    &#25299;&#23637;&#65306;&#22312;&#25805;&#20316;&#31995;&#32479;&#20013;&#23618;&#38754;&#32447;&#31243;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    READY
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RUNNING
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29366;&#24577;&#65292;&#32780;&#22312; JVM &#23618;&#38754;&#21482;&#33021;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RUNNABLE
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29366;&#24577;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u2575aa16">
+  <br>
+ </p>
+ <p class="ne-p" id="u6cbd9e52">
+  <strong>
+   <span class="ne-text">
+    &#20160;&#20040;&#26159;&#32447;&#31243;&#27515;&#38145;?&#22914;&#20309;&#36991;&#20813;&#27515;&#38145;?&#22914;&#20309;&#39044;&#38450;&#21644;&#36991;&#20813;&#32447;&#31243;&#27515;&#38145;?
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u024308ec">
+  <br>
+ </p>
+ <p class="ne-p" id="uc82d7b2a">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306; &#36825;&#37324;&#26368;&#22909;&#33021;&#22815;&#32467;&#21512;&#20195;&#30721;&#26469;&#32842;&#65292;&#20320;&#35201;&#30830;&#20445;&#33258;&#24049;&#21487;&#20197;&#20889;&#20986;&#26377;&#27515;&#38145;&#38382;&#39064;&#30340;&#20195;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u052deec5">
+  <br>
+ </p>
+ <p class="ne-p" id="u3a1208a9">
+  <span class="ne-text">
+    &#25299;&#23637;&#65306;&#39033;&#30446;&#20013;&#36935;&#21040;&#27515;&#38145;&#38382;&#39064;&#26159;&#27604;&#36739;&#24120;&#35265;&#30340;&#65292;&#38500;&#20102;&#35201;&#25630;&#25026;&#19978;&#38754;&#36825;&#20123;&#27515;&#38145;&#30340;&#22522;&#26412;&#27010;&#24565;&#20043;&#22806;&#65292;&#20320;&#36824;&#35201;&#30693;&#36947;&#32447;&#19978;&#39033;&#30446;&#36935;&#21040;&#27515;&#38145;&#38382;&#39064;&#35813;&#22914;&#20309;&#25490;&#26597;&#21644;&#35299;&#20915;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u50331850">
+  <br>
+ </p>
+ <p class="ne-p" id="u43018919">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     synchronized
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#20851;&#38190;&#23383;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u06d9dce5">
+  <br>
+ </p>
+ <p class="ne-p" id="uc23961c1">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    synchronized
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#38190;&#23383;&#20960;&#20046;&#26159;&#38754;&#35797;&#24517;&#38382;&#65292;&#20320;&#38656;&#35201;&#25630;&#25026;&#19979;&#38754;&#36825;&#20123;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    synchronized
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#38190;&#23383;&#30456;&#20851;&#30340;&#38382;&#39064;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud8b24634">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u3ad7ad31">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     synchronized
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20851;&#38190;&#23383;&#30340;&#20316;&#29992;&#65292;&#33258;&#24049;&#26159;&#24590;&#20040;&#20351;&#29992;&#30340;&#12290;
+   </span>
+  </li>
+  <li id="u2f6f5352">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     synchronized
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20851;&#38190;&#23383;&#30340;&#24213;&#23618;&#21407;&#29702;&#65288;&#37325;&#28857;&#65281;&#65281;&#65281;&#65289;
+   </span>
+  </li>
+  <li id="ucf107077">
+   <span class="ne-text">
+    JDK1.6 &#20043;&#21518;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     synchronized
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20851;&#38190;&#23383;&#24213;&#23618;&#20570;&#20102;&#21738;&#20123;&#20248;&#21270;&#12290;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     synchronized
+    </span>
+   </code>
+   <span class="ne-text">
+    &#38145;&#21319;&#32423;&#27969;&#31243;&#12290;
+   </span>
+  </li>
+  <li id="u847406f1">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     synchronized
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ReentrantLock
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#21306;&#21035;&#12290;
+   </span>
+  </li>
+  <li id="uae224ade">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     synchronized
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     volatile
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#21306;&#21035;&#12290;
+    <br>
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#24182;&#21457;&#32534;&#31243;&#30340;&#19977;&#20010;&#37325;&#35201;&#29305;&#24615;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#11088;&#11088;&#11088;&#11088;&#11088;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u9d4a7bd6">
+  <br>
+ </p>
+ <p class="ne-p" id="ub44dcf5c">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306; &#21407;&#23376;&#24615;&#12289;&#21487;&#35265;&#24615;&#12289;&#26377;&#24207;&#24615;
+  </span>
+ </p>
+ <p class="ne-p" id="u3cf42e2a">
+  <br>
+ </p>
+ <p class="ne-p" id="u95eec16d">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     JMM
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#65288;Java Memory Model&#65292;Java &#20869;&#23384;&#27169;&#22411;&#65289;&#21644;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     happens-before
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#21407;&#21017;&#12290;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u5d04f850">
+  <br>
+ </p>
+ <p class="ne-p" id="uaf797ba9">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     volatile
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#20851;&#38190;&#23383;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u9679c7af">
+  <br>
+ </p>
+ <p class="ne-p" id="ue7fdafe1">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    volatile
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#38190;&#23383;&#21516;&#26679;&#26159;&#19968;&#20010;&#37325;&#28857;&#65281;&#32467;&#21512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    JMM
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65288;Java Memory Model&#65292;Java &#20869;&#23384;&#27169;&#22411;&#65289;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    happens-before
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21407;&#21017;&#26469;&#22238;&#31572;&#23601;&#34892;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u9311176c">
+  <br>
+ </p>
+ <p class="ne-p" id="uaa164d3c">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     ThreadLocal
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#20851;&#38190;&#23383;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u6a238981">
+  <br>
+ </p>
+ <p class="ne-p" id="ub6139d9d">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306;&#20851;&#27880;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ThreadLocal
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#24213;&#23618;&#21407;&#29702;&#12289;&#20869;&#23384;&#27844;&#38706;&#38382;&#39064;&#20197;&#21450;&#33258;&#24049;&#26159;&#22914;&#20309;&#22312;&#39033;&#30446;&#20013;&#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ThreadLocal
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#38190;&#23383;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1c8f7925">
+  <br>
+ </p>
+ <p class="ne-p" id="uc7850def">
+  <strong>
+   <span class="ne-text">
+    &#32447;&#31243;&#27744;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u3e6bbb95">
+  <br>
+ </p>
+ <p class="ne-p" id="u339a22e2">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306;&#32447;&#31243;&#27744;&#26377;&#21738;&#20960;&#31181;&#65292;&#21508;&#31181;&#32447;&#31243;&#27744;&#30340;&#20248;&#32570;&#28857;&#65292;&#32447;&#31243;&#27744;&#30340;&#37325;&#35201;&#21442;&#25968;&#12289;&#32447;&#31243;&#27744;&#30340;&#25191;&#34892;&#27969;&#31243;&#12289;&#32447;&#31243;&#27744;&#30340;&#39281;&#21644;&#31574;&#30053;&#12289;&#22914;&#20309;&#35774;&#32622;&#32447;&#31243;&#27744;&#30340;&#22823;&#23567;&#31561;&#31561;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8c9ccb9c">
+  <br>
+ </p>
+ <p class="ne-p" id="u48cdb775">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     ReentrantLock
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#21644;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     AQS
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u3fadb81c">
+  <br>
+ </p>
+ <p class="ne-p" id="u758b9d4c">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ReentrantLock
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#29305;&#24615;&#12289;&#23454;&#29616;&#21407;&#29702;&#65288;&#22522;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AQS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#12290;&#21487;&#20197;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ReentrantLock
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23454;&#29616;&#26469;&#29702;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AQS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ud032462e">
+  <br>
+ </p>
+ <p class="ne-p" id="u203d248d">
+  <strong>
+   <span class="ne-text">
+    &#20048;&#35266;&#38145;&#21644;&#24754;&#35266;&#38145;&#30340;&#21306;&#21035;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="u664dfb3b">
+  <br>
+ </p>
+ <p class="ne-p" id="u8e04570f">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     CAS
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#20102;&#35299;&#20040;&#65311;&#21407;&#29702;&#65311;&#20160;&#20040;&#26159; ABA &#38382;&#39064;&#65311;ABA &#38382;&#39064;&#24590;&#20040;&#35299;&#20915;&#65311;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;&#11088;&#11088;&#11088;
+  </span>
+ </p>
+ <p class="ne-p" id="uf6c206c2">
+  <br>
+ </p>
+ <p class="ne-p" id="u75999a3b">
+  <span class="ne-text">
+    &#25552;&#31034;&#65306;&#22810;&#22320;&#26041;&#37117;&#29992;&#21040;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CAS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27604;&#22914;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConcurrentHashMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37319;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CAS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    synchronized
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#20445;&#35777;&#24182;&#21457;&#23433;&#20840;&#65292;&#20877;&#27604;&#22914;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    java.util.concurrent.atomic
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21253;&#20013;&#30340;&#31867;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    volatile+CAS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37325;&#35797;&#20445;&#35777;&#32447;&#31243;&#23433;&#20840;&#24615;&#12290;&#21644;&#38754;&#35797;&#23448;&#32842;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CAS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26102;&#20505;&#65292;&#20320;&#21487;&#20197;&#32467;&#21512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CAS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#19968;&#20123;&#23454;&#38469;&#24212;&#29992;&#26469;&#35828;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u64efed1e">
+  <br>
+ </p>
+ <p class="ne-p" id="u94e2f4af">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     Atomic
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#21407;&#23376;&#31867;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#11088;&#11088;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        
