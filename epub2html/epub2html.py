@@ -18,7 +18,7 @@ class Epub2Html():
         self.epubpath = epubpath
 
         script_dir = dirname(abspath(__file__))
-        template_path = join(script_dir, "template.html")
+        template_path = join(script_dir, "template2.html")
 
         self.template = Path(template_path).read_text(encoding='utf-8')
         (epub_name_without_ext, _) = splitext(basename(self.epubpath))
@@ -94,20 +94,20 @@ class Epub2Html():
     def getIndexLoc(self):
         return self.index_a_path
 
-    def _gen_menu_content(self, node, menus, contents, depth=0):
+    def _gen_menu_content(self, node, menus, contents, depth=0, hrefs=[]):
         for cc in node.findall("."):
             name = cc.find("./navLabel/text").text.strip()
             link = cc.find("./content")
             src = urllib.parse.unquote(link.attrib["src"])
             no_hash_name = src
 
-
             if not self.is_gen:
                 unified_src = self.opf_a_dir.replace(self.root_a_path + '/', '') + '/' + no_hash_name
             else:
                 unified_src = no_hash_name
-
-            menus.append(f"<li><a href=\"#\" onClick=\"showDiv('{unified_src}')\">{name}</a></li>")
+            href = unified_src.replace('xhtml', 'html')
+            hrefs.append(href)
+            menus.append(f"<li><span></span><a href=\"{href}\">{name}</a></li>")
 
             # if no_hash_name in self.alread_gen_html:
             #     continue
@@ -120,24 +120,25 @@ class Epub2Html():
 
             subs = cc.findall("./navPoint")
             if len(subs) > 0:
+                menus.append("<ul>")
                 for d in subs:
-                    menus.append("<ul>")
-                    self._gen_menu_content(d, menus, contents, depth + 1)
-                    menus.append("</ul>")
+                    self._gen_menu_content(d, menus, contents, depth + 1, hrefs)
+                menus.append("</ul>")
 
     def gen_menu_content(self):
         menus = []
         contents = []
         root = self.get_xml_root(self.ncx_a_path)
 
-        menus.append("<ul class=\"nav nav-sidebar \">")
+        menus.append("<ul>")
 
+        hrefs = []
         for c in root.findall("./navMap/navPoint"):
-            self._gen_menu_content(c, menus, contents, 0)
+            self._gen_menu_content(c, menus, contents, 0, hrefs)
 
         menus.append("</ul>")
 
-        return "\n".join(menus), contents[0]
+        return "\n".join(menus), contents[0], hrefs
 
     def unzip(self):
         with zipfile.ZipFile(self.epubpath, 'r') as zip_ref:
@@ -152,7 +153,19 @@ class Epub2Html():
         content = etree.tostring(raw_content_dom.xpath("//body")[0], method='html').decode('utf-8')
         washed_content = self.wash_body(content)
         washed_content = self.wash_img_link(path, washed_content)
-        open(path, 'w').write(washed_content)
+        t = """
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        {0}
+        </body>
+        
+        """.format(washed_content)
+        open(path, 'w').write(t)
+
+        os.rename(path, path.replace('xhtml', 'html'))
         return washed_content
 
     def wash_body(self, sub_content):
@@ -183,10 +196,11 @@ class Epub2Html():
             return f'<link rel="stylesheet" href="" />'
 
     def gen(self):
-        menu, full_content = self.gen_menu_content()
+        menu, full_content, hrefs = self.gen_menu_content()
         self.template = self.template.replace("${menu}$", menu)
         self.template = self.template.replace("${title}$", self.epub_name_without_ext)
         self.template = self.template.replace("${content}$", full_content)
+        self.template = self.template.replace("${firstUrl}$", hrefs[0])
         self.template = self.template.replace("${css}$", self.gen_r_css())
         Path(join(self.outputdir, self.epub_name_without_ext, "./index.html")).write_text(self.template,
                                                                                           encoding='utf-8')
@@ -197,6 +211,8 @@ class Epub2Html():
         script_dir = dirname(abspath(__file__))
         shutil.copy(join(script_dir, "jquery.min.js"), self.root_a_path)
         shutil.copy(join(script_dir, "leader-line.min.js"), self.root_a_path)
+        shutil.copytree(join(script_dir + "/static"), self.root_a_path + "/static", dirs_exist_ok=True)
+        shutil.copytree(join(script_dir + "/fonts"), self.root_a_path + "/fonts", dirs_exist_ok=True)
 
 
 def main(filepath, outputdir):
