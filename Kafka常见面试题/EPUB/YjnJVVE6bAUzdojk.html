@@ -1,0 +1,785 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>&#22914;&#20309;&#20445;&#35777;Kafka&#19981;&#20002;&#22833;&#28040;&#24687;?</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="a20d224c568e48b9d67847a2c66a8c01_p_0">
+  <span class="ne-text">
+   &#20002;&#22833;&#28040;&#24687;&#26377; 3 &#31181;&#19981;&#21516;&#30340;&#24773;&#20917;&#65292;&#38024;&#23545;&#27599;&#19968;&#31181;&#24773;&#20917;&#26377;&#19981;&#21516;&#30340;&#35299;&#20915;&#26041;&#26696;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="556eff1d76820a0857700cdd9075bde8">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="cf4eba2f2c8c6813443b4308abdcc50a">
+   <span class="ne-text">
+    &#29983;&#20135;&#32773;&#20002;&#22833;&#28040;&#24687;&#30340;&#24773;&#20917;
+   </span>
+  </li>
+  <li id="471e032db03a36d0a3600395cf977dd3">
+   <span class="ne-text">
+    &#28040;&#36153;&#32773;&#20002;&#22833;&#28040;&#24687;&#30340;&#24773;&#20917;
+   </span>
+  </li>
+  <li id="aed78425ffdfe2118e9287665913e294">
+   <span class="ne-text">
+    Kafka &#24324;&#20002;&#20102;&#28040;&#24687;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="64adb36d9448d08647349e4b68b3a6d1">
+  <br>
+ </p>
+ <h3 id="9733d490">
+  <span class="ne-text">
+   &#29983;&#20135;&#32773;&#20002;&#22833;&#28040;&#24687;&#30340;&#24773;&#20917;
+  </span>
+ </h3>
+ <p class="ne-p" id="5787e517f76ca399c2f5a3d3f12f103d">
+  <br>
+ </p>
+ <p class="ne-p" id="4c617fc994a52de2664f1cd5f7e6224f">
+  <span class="ne-text">
+   &#29983;&#20135;&#32773;(
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Producer
+   </span>
+  </code>
+  <span class="ne-text">
+   ) &#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    send
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21457;&#36865;&#28040;&#24687;&#20043;&#21518;&#65292;&#28040;&#24687;&#21487;&#33021;&#22240;&#20026;&#32593;&#32476;&#38382;&#39064;&#24182;&#27809;&#26377;&#21457;&#36865;&#36807;&#21435;&#12290;&#25152;&#20197;&#65292;&#25105;&#20204;&#19981;&#33021;&#40664;&#35748;&#22312;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    send()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21457;&#36865;&#28040;&#24687;&#20043;&#21518;&#28040;&#24687;&#28040;&#24687;&#21457;&#36865;&#25104;&#21151;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="8dfacfcce4696d4b1dbf19877546cfc7">
+  <br>
+ </p>
+ <p class="ne-p" id="f64ecf9d9cb0e46ac5038f1a69c487e2">
+  <span class="ne-text">
+   &#20026;&#20102;&#30830;&#23450;&#28040;&#24687;&#26159;&#21457;&#36865;&#25104;&#21151;&#65292;&#25105;&#20204;&#35201;&#21028;&#26029;&#28040;&#24687;&#21457;&#36865;&#30340;&#32467;&#26524;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="0fbfabf8a4ec94c52b2bb973c38d0966">
+  <br>
+ </p>
+ <p class="ne-p" id="a03aeb49c086c88c150d9ee4898623e3">
+  <span class="ne-text">
+   &#20294;&#26159;&#65292;&#35201;&#27880;&#24847;&#30340;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Producer
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    send()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21457;&#36865;&#28040;&#24687;&#23454;&#38469;&#19978;&#26159;&#24322;&#27493;&#30340;&#25805;&#20316;&#65292;&#25105;&#20204;&#21487;&#20197;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    get()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#33719;&#21462;&#35843;&#29992;&#32467;&#26524;&#65292;&#20294;&#26159;&#36825;&#26679;&#20063;&#35753;&#23427;&#21464;&#20026;&#20102;&#21516;&#27493;&#25805;&#20316;&#65292;&#31034;&#20363;&#20195;&#30721;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="d6231f450c5b3a933e616229976f247f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b7de78e3">SendResult&lt;String, Object&gt; sendResult = kafkaTemplate.send(topic, o).get();
+if (sendResult.getRecordMetadata() != null) {
+  logger.info("&#29983;&#20135;&#32773;&#25104;&#21151;&#21457;&#36865;&#28040;&#24687;&#21040;" + sendResult.getProducerRecord().topic() + "-&gt; " + sendRe
+              sult.getProducerRecord().value().toString());
+}</pre>
+ <p class="ne-p" id="8b5748d9d172666312cc9e6dec7083e6">
+  <br>
+ </p>
+ <p class="ne-p" id="e302da6eecc44b831e11f8fba52609c8">
+  <span class="ne-text">
+   &#20294;&#26159;&#19968;&#33324;&#19981;&#25512;&#33616;&#36825;&#20040;&#20570;&#65281;&#21487;&#20197;&#37319;&#29992;&#20026;&#20854;&#28155;&#21152;&#22238;&#35843;&#20989;&#25968;&#30340;&#24418;&#24335;&#65292;&#31034;&#20363;&#20195;&#30721;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="bd24be4da1e07791a71afed8b4acb22f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="653e4a21">        ListenableFuture&lt;SendResult&lt;String, Object&gt;&gt; future = kafkaTemplate.send(topic, o);
+        future.addCallback(result -&gt; logger.info("&#29983;&#20135;&#32773;&#25104;&#21151;&#21457;&#36865;&#28040;&#24687;&#21040;topic:{} partition:{}&#30340;&#28040;&#24687;", result.getRecordMetadata().topic(), result.getRecordMetadata().partition()),
+                ex -&gt; logger.error("&#29983;&#20135;&#32773;&#21457;&#36865;&#28040;&#22833;&#36133;&#65292;&#21407;&#22240;&#65306;{}", ex.getMessage()));</pre>
+ <p class="ne-p" id="bffabd1a518982150df2238048cbcdc5">
+  <br>
+ </p>
+ <p class="ne-p" id="1f57906001b4feb7eb1dd23499e6ed23">
+  <span class="ne-text">
+   &#22914;&#26524;&#28040;&#24687;&#21457;&#36865;&#22833;&#36133;&#30340;&#35805;&#65292;&#25105;&#20204;&#26816;&#26597;&#22833;&#36133;&#30340;&#21407;&#22240;&#20043;&#21518;&#37325;&#26032;&#21457;&#36865;&#21363;&#21487;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="a529fc5d035a5c3ddea57828d435e8a0">
+  <br>
+ </p>
+ <p class="ne-p" id="4c8817fe452f1c60b4872486b9ff0e12">
+  <span class="ne-text">
+   &#21478;&#22806;&#65292;&#36825;&#37324;&#25512;&#33616;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Producer
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    retries
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65288;&#37325;&#35797;&#27425;&#25968;&#65289;&#35774;&#32622;&#19968;&#20010;&#27604;&#36739;&#21512;&#29702;&#30340;&#20540;&#65292;&#19968;&#33324;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    3
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#20294;&#26159;&#20026;&#20102;&#20445;&#35777;&#28040;&#24687;&#19981;&#20002;&#22833;&#30340;&#35805;&#19968;&#33324;&#20250;&#35774;&#32622;&#27604;&#36739;&#22823;&#19968;&#28857;&#12290;&#35774;&#32622;&#23436;&#25104;&#20043;&#21518;&#65292;&#24403;&#20986;&#29616;&#32593;&#32476;&#38382;&#39064;&#20043;&#21518;&#33021;&#22815;&#33258;&#21160;&#37325;&#35797;&#28040;&#24687;&#21457;&#36865;&#65292;&#36991;&#20813;&#28040;&#24687;&#20002;&#22833;&#12290;&#21478;&#22806;&#65292;&#24314;&#35758;&#36824;&#35201;&#35774;&#32622;&#37325;&#35797;&#38388;&#38548;&#65292;&#22240;&#20026;&#38388;&#38548;&#22826;&#23567;&#30340;&#35805;&#37325;&#35797;&#30340;&#25928;&#26524;&#23601;&#19981;&#26126;&#26174;&#20102;&#65292;&#32593;&#32476;&#27874;&#21160;&#19968;&#27425;&#20320; 3 &#27425;&#19968;&#19979;&#23376;&#23601;&#37325;&#35797;&#23436;&#20102;
+  </span>
+ </p>
+ <p class="ne-p" id="11413345b75208594b2ed5ad8397c9a5">
+  <br>
+ </p>
+ <h3 id="a80fdcc2">
+  <span class="ne-text">
+   &#28040;&#36153;&#32773;&#20002;&#22833;&#28040;&#24687;&#30340;&#24773;&#20917;
+  </span>
+ </h3>
+ <p class="ne-p" id="6dc8153a66a37d71e0858f0cedf17fa7">
+  <br>
+ </p>
+ <p class="ne-p" id="038053c6b3144a1e05ca77bb659c33f1">
+  <span class="ne-text">
+   &#25105;&#20204;&#30693;&#36947;&#28040;&#24687;&#22312;&#34987;&#36861;&#21152;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Partition
+   </span>
+  </code>
+  <span class="ne-text">
+   (&#20998;&#21306;)&#30340;&#26102;&#20505;&#37117;&#20250;&#20998;&#37197;&#19968;&#20010;&#29305;&#23450;&#30340;&#20559;&#31227;&#37327;&#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    offset
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    offset
+   </span>
+  </code>
+  <span class="ne-text">
+   &#34920;&#31034;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Consumer
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24403;&#21069;&#28040;&#36153;&#21040;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Partition
+   </span>
+  </code>
+  <span class="ne-text">
+   (&#20998;&#21306;)&#30340;&#25152;&#22312;&#30340;&#20301;&#32622;&#12290;Kafka &#36890;&#36807;&#20559;&#31227;&#37327;&#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    offset
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#21487;&#20197;&#20445;&#35777;&#28040;&#24687;&#22312;&#20998;&#21306;&#20869;&#30340;&#39034;&#24207;&#24615;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="3d63d41612f6e4727cc2058b35a6427a">
+  <br>
+ </p>
+ <p class="ne-p" id="9b732a89a5cb925a9701f3f988685b5c">
+  <img class="ne-image" id="TdFIa" src="EPUB/imgTdFIa" width="1080">
+ </p>
+ <p class="ne-p" id="d0407d46b252b3796fe265bc027bb7ad">
+  <br>
+ </p>
+ <p class="ne-p" id="c4149d81b1b21b7098762d355179a32e">
+  <span class="ne-text">
+   &#24403;&#28040;&#36153;&#32773;&#25289;&#21462;&#21040;&#20102;&#20998;&#21306;&#30340;&#26576;&#20010;&#28040;&#24687;&#20043;&#21518;&#65292;&#28040;&#36153;&#32773;&#20250;&#33258;&#21160;&#25552;&#20132;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    offset
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#33258;&#21160;&#25552;&#20132;&#30340;&#35805;&#20250;&#26377;&#19968;&#20010;&#38382;&#39064;&#65292;&#35797;&#24819;&#19968;&#19979;&#65292;&#24403;&#28040;&#36153;&#32773;&#21018;&#25343;&#21040;&#36825;&#20010;&#28040;&#24687;&#20934;&#22791;&#36827;&#34892;&#30495;&#27491;&#28040;&#36153;&#30340;&#26102;&#20505;&#65292;&#31361;&#28982;&#25346;&#25481;&#20102;&#65292;&#28040;&#24687;&#23454;&#38469;&#19978;&#24182;&#27809;&#26377;&#34987;&#28040;&#36153;&#65292;&#20294;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    offset
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21364;&#34987;&#33258;&#21160;&#25552;&#20132;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="8eb37acfc6c855d4cdca504e43f2f1b0">
+  <br>
+ </p>
+ <p class="ne-p" id="a4e7dd9cd6cafed46fb4756ea2943455">
+  <span class="ne-text">
+   &#36825;&#31181;&#24773;&#20917;&#30340;&#35299;&#20915;&#21150;&#27861;&#20063;&#27604;&#36739;&#31895;&#26292;&#65292;&#25105;&#20204;&#25163;&#21160;&#20851;&#38381;&#33258;&#21160;&#25552;&#20132;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    offset
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#27599;&#27425;&#22312;&#30495;&#27491;&#28040;&#36153;&#23436;&#28040;&#24687;&#20043;&#21518;&#20043;&#21518;&#20877;&#33258;&#24049;&#25163;&#21160;&#25552;&#20132;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    offset
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#20294;&#26159;&#65292;&#32454;&#24515;&#30340;&#26379;&#21451;&#19968;&#23450;&#20250;&#21457;&#29616;&#65292;&#36825;&#26679;&#20250;&#24102;&#26469;&#28040;&#24687;&#34987;&#37325;&#26032;&#28040;&#36153;&#30340;&#38382;&#39064;&#12290;&#27604;&#22914;&#20320;&#21018;&#21018;&#28040;&#36153;&#23436;&#28040;&#24687;&#20043;&#21518;&#65292;&#36824;&#27809;&#25552;&#20132;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    offset
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#32467;&#26524;&#33258;&#24049;&#25346;&#25481;&#20102;&#65292;&#37027;&#20040;&#36825;&#20010;&#28040;&#24687;&#29702;&#35770;&#19978;&#23601;&#20250;&#34987;&#28040;&#36153;&#20004;&#27425;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="41e93f57593c708a84e0ed5bbe915c05">
+  <br>
+ </p>
+ <h3 id="20acbb1f">
+  <span class="ne-text">
+   Kafka &#24324;&#20002;&#20102;&#28040;&#24687;
+  </span>
+ </h3>
+ <p class="ne-p" id="bf4ea7d0dc857c7c501d99cde54e9f9d">
+  <br>
+ </p>
+ <p class="ne-p" id="36c9af0d33db6f8a3c3cad9ca1f3d715">
+  <span class="ne-text">
+   &#25105;&#20204;&#30693;&#36947;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Kafka
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Partition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24341;&#20837;&#20102;&#22810;&#21103;&#26412;&#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Replica
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#26426;&#21046;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Partition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#22810;&#20010;&#21103;&#26412;&#20043;&#38388;&#20250;&#26377;&#19968;&#20010;&#21483;&#20570;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23478;&#20249;&#65292;&#20854;&#20182;&#21103;&#26412;&#31216;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Follower
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#25105;&#20204;&#21457;&#36865;&#30340;&#28040;&#24687;&#20250;&#34987;&#21457;&#36865;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#65292;&#28982;&#21518;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Follower
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#25165;&#33021;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#20013;&#25289;&#21462;&#28040;&#24687;&#36827;&#34892;&#21516;&#27493;&#12290;&#29983;&#20135;&#32773;&#21644;&#28040;&#36153;&#32773;&#21482;&#19982;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#20132;&#20114;&#12290;&#20320;&#21487;&#20197;&#29702;&#35299;&#20026;&#20854;&#20182;&#21103;&#26412;&#21482;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#30340;&#25335;&#36125;&#65292;&#23427;&#20204;&#30340;&#23384;&#22312;&#21482;&#26159;&#20026;&#20102;&#20445;&#35777;&#28040;&#24687;&#23384;&#20648;&#30340;&#23433;&#20840;&#24615;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="fdd03b5c6ea2da3f68f46452d09378e5">
+  <br>
+ </p>
+ <p class="ne-p" id="8638a42f5751f0c6e459b5f33b1953e5">
+  <span class="ne-text">
+   &#35797;&#24819;&#19968;&#31181;&#24773;&#20917;&#65306;&#20551;&#22914;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#25152;&#22312;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Broker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31361;&#28982;&#25346;&#25481;&#65292;&#37027;&#20040;&#23601;&#35201;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Fllower
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#37325;&#26032;&#36873;&#20986;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#20294;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#25968;&#25454;&#36824;&#26377;&#19968;&#20123;&#27809;&#26377;&#34987;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Follower
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#30340;&#21516;&#27493;&#30340;&#35805;&#65292;&#23601;&#20250;&#36896;&#25104;&#28040;&#24687;&#20002;&#22833;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="80a3f6019e1ab81a80ecb1d2585c66ae">
+  <br>
+ </p>
+ <h4 id="6d7e567d">
+  <span class="ne-text">
+   &#35774;&#32622; acks = all
+  </span>
+ </h4>
+ <p class="ne-p" id="9a6e5d56811ae3adfe0ed06a28567fba">
+  <br>
+ </p>
+ <p class="ne-p" id="6cb86674eb2aa978c48074a911ff1c0c">
+  <span class="ne-text">
+   &#35299;&#20915;&#21150;&#27861;&#23601;&#26159;&#25105;&#20204;&#35774;&#32622;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     acks = all
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#12290;acks &#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Producer
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24456;&#37325;&#35201;&#30340;&#19968;&#20010;&#21442;&#25968;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="44359d9a617374dcf6a0495c41cc57a8">
+  <br>
+ </p>
+ <p class="ne-p" id="c4d7ecbfee5b0264b5aa31e774450ba9">
+  <code class="ne-code">
+   <span class="ne-text">
+    acks
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#40664;&#35748;&#20540;&#21363;&#20026; 1&#65292;&#20195;&#34920;&#25105;&#20204;&#30340;&#28040;&#24687;&#34987;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#25509;&#25910;&#20043;&#21518;&#23601;&#31639;&#34987;&#25104;&#21151;&#21457;&#36865;&#12290;&#24403;&#25105;&#20204;&#37197;&#32622;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     acks = all
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#20195;&#34920;&#21017;&#25152;&#26377;&#21103;&#26412;&#37117;&#35201;&#25509;&#25910;&#21040;&#35813;&#28040;&#24687;&#20043;&#21518;&#35813;&#28040;&#24687;&#25165;&#31639;&#30495;&#27491;&#25104;&#21151;&#34987;&#21457;&#36865;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="c3a7c4c57a8e099f9cbbe51f4ba58d4d">
+  <br>
+ </p>
+ <h4 id="ced77834">
+  <span class="ne-text">
+   &#35774;&#32622; replication.factor &gt;= 3
+  </span>
+ </h4>
+ <p class="ne-p" id="7cf7e1499a4620d6c0c2113ea57c9470">
+  <br>
+ </p>
+ <p class="ne-p" id="785df57ae244b3c4688ed2767d15fa26">
+  <span class="ne-text">
+   &#20026;&#20102;&#20445;&#35777;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#33021;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Follower
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#33021;&#21516;&#27493;&#28040;&#24687;&#65292;&#25105;&#20204;&#19968;&#33324;&#20250;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Topic
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35774;&#32622;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     replication.factor &gt;= 3
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#12290;&#36825;&#26679;&#23601;&#21487;&#20197;&#20445;&#35777;&#27599;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Partition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33267;&#23569;&#26377; 3 &#20010;&#21103;&#26412;&#12290;&#34429;&#28982;&#36896;&#25104;&#20102;&#25968;&#25454;&#20887;&#20313;&#65292;&#20294;&#26159;&#24102;&#26469;&#20102;&#25968;&#25454;&#30340;&#23433;&#20840;&#24615;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="e962e61cae129925b1c95bc065a3410e">
+  <br>
+ </p>
+ <h4 id="de97b2c1">
+  <span class="ne-text">
+   &#35774;&#32622; min.insync.replicas &gt; 1
+  </span>
+ </h4>
+ <p class="ne-p" id="046801f2a61c1e08e9f2d3c672c60c36">
+  <br>
+ </p>
+ <p class="ne-p" id="897f5f9a72d4661796305a3e08e1000a">
+  <span class="ne-text">
+   &#19968;&#33324;&#24773;&#20917;&#19979;&#25105;&#20204;&#36824;&#38656;&#35201;&#35774;&#32622;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     min.insync.replicas&gt; 1
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#26679;&#37197;&#32622;&#20195;&#34920;&#28040;&#24687;&#33267;&#23569;&#35201;&#34987;&#20889;&#20837;&#21040; 2 &#20010;&#21103;&#26412;&#25165;&#31639;&#26159;&#34987;&#25104;&#21151;&#21457;&#36865;&#12290;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     min.insync.replicas
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#30340;&#40664;&#35748;&#20540;&#20026; 1 &#65292;&#22312;&#23454;&#38469;&#29983;&#20135;&#20013;&#24212;&#23613;&#37327;&#36991;&#20813;&#40664;&#35748;&#20540; 1&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="95ef53b30efcdb8d5072df21c921d26c">
+  <br>
+ </p>
+ <p class="ne-p" id="587df26c7a33ef6e3d6f576bdfb18c5d">
+  <span class="ne-text">
+   &#20294;&#26159;&#65292;&#20026;&#20102;&#20445;&#35777;&#25972;&#20010; Kafka &#26381;&#21153;&#30340;&#39640;&#21487;&#29992;&#24615;&#65292;&#20320;&#38656;&#35201;&#30830;&#20445;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     replication.factor &gt; min.insync.replicas
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#12290;&#20026;&#20160;&#20040;&#21602;&#65311;&#35774;&#24819;&#19968;&#19979;&#20551;&#22914;&#20004;&#32773;&#30456;&#31561;&#30340;&#35805;&#65292;&#21482;&#35201;&#26159;&#26377;&#19968;&#20010;&#21103;&#26412;&#25346;&#25481;&#65292;&#25972;&#20010;&#20998;&#21306;&#23601;&#26080;&#27861;&#27491;&#24120;&#24037;&#20316;&#20102;&#12290;&#36825;&#26126;&#26174;&#36829;&#21453;&#39640;&#21487;&#29992;&#24615;&#65281;&#19968;&#33324;&#25512;&#33616;&#35774;&#32622;&#25104;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     replication.factor = min.insync.replicas + 1
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="abdc09a1a6a924aef00f9d12b0a5dc68">
+  <br>
+ </p>
+ <h4 id="22dc0ebb">
+  <span class="ne-text">
+   &#35774;&#32622; unclean.leader.election.enable = false
+  </span>
+ </h4>
+ <p class="ne-p" id="b8b3d5ed0dcd65a7b044f7f9fd4f9211">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="3a612789ed0bcb06d23950f821483856">
+   <strong>
+    <span class="ne-text">
+     Kafka 0.11.0.0 &#29256;&#26412;&#24320;&#22987; unclean.leader.election.enable &#21442;&#25968;&#30340;&#40664;&#35748;&#20540;&#30001;&#21407;&#26469;&#30340; true &#25913;&#20026; false
+    </span>
+   </strong>
+  </p>
+ </div>
+ <p class="ne-p" id="d62dd061a9abbc5e15ec0ce9603ac2d0">
+  <br>
+ </p>
+ <p class="ne-p" id="21471d200e44e26731e4e40255e950ef">
+  <span class="ne-text">
+   &#25105;&#20204;&#26368;&#24320;&#22987;&#20063;&#35828;&#20102;&#25105;&#20204;&#21457;&#36865;&#30340;&#28040;&#24687;&#20250;&#34987;&#21457;&#36865;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#65292;&#28982;&#21518;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Follower
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#25165;&#33021;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#20013;&#25289;&#21462;&#28040;&#24687;&#36827;&#34892;&#21516;&#27493;&#12290;&#22810;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Follower
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#20043;&#38388;&#30340;&#28040;&#24687;&#21516;&#27493;&#24773;&#20917;&#19981;&#19968;&#26679;&#65292;&#24403;&#25105;&#20204;&#37197;&#32622;&#20102;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     unclean.leader.election.enable = false
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#30340;&#35805;&#65292;&#24403;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#21457;&#29983;&#25925;&#38556;&#26102;&#23601;&#19981;&#20250;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Follower
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21103;&#26412;&#20013;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21516;&#27493;&#31243;&#24230;&#36798;&#19981;&#21040;&#35201;&#27714;&#30340;&#21103;&#26412;&#20013;&#36873;&#25321;&#20986;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Leader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#26679;&#38477;&#20302;&#20102;&#28040;&#24687;&#20002;&#22833;&#30340;&#21487;&#33021;&#24615;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="a0723b2667f3083e313af9cecf7443be">
+  <br>
+ </p>
+ <h3 id="Reference">
+  <span class="ne-text">
+   Reference
+  </span>
+ </h3>
+ <p class="ne-p" id="ceb0c07cd9621af44962daf2c7c68944">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="e2b019452a501bafd707475af82c875d">
+   <span class="ne-text">
+    Kafka &#23448;&#26041;&#25991;&#26723;&#65306;
+   </span>
+   <a class="ne-link" data-href="https://kafka.apache.org/documentation/" href="https://kafka.apache.org/documentation/" target="_blank">
+    <span class="ne-text">
+     https://kafka.apache.org/documentation/
+    </span>
+   </a>
+  </li>
+  <li id="6cc9dc809da96ac29873cd31daf91c16">
+   <span class="ne-text">
+    &#26497;&#23458;&#26102;&#38388;&#8212;&#12298;Kafka &#26680;&#24515;&#25216;&#26415;&#19982;&#23454;&#25112;&#12299;&#31532; 11 &#33410;&#65306;&#26080;&#28040;&#24687;&#20002;&#22833;&#37197;&#32622;&#24590;&#20040;&#23454;&#29616;&#65311;
+   </span>
+  </li>
+ </ul>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

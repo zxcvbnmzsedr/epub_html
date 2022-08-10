@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="Guide的读书笔记与文章精选集" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Guide的读书笔记与文章精选集</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="sep_0">
+      <navLabel>
+        <text>程序员</text>
+      </navLabel>
+      <content src="-zoXfkuRUxq0VdYx.xhtml"/>
+      <navPoint id="SPZ1cwdjIubi6hJd">
+        <navLabel>
+          <text>《软技能2软件开发者职业生涯指南》</text>
+        </navLabel>
+        <content src="SPZ1cwdjIubi6hJd.xhtml"/>
+      </navPoint>
+      <navPoint id="FlLw9RbeZN3vw5iU">
+        <navLabel>
+          <text>《技术人生》阿里巴巴中间件</text>
+        </navLabel>
+        <content src="FlLw9RbeZN3vw5iU.xhtml"/>
+      </navPoint>
+      <navPoint id="QEOgRAFqmmR42BSj">
+        <navLabel>
+          <text>《如何成为一名黑客》</text>
+        </navLabel>
+        <content src="QEOgRAFqmmR42BSj.xhtml"/>
+      </navPoint>
+      <navPoint id="MNN4lqD5zbr5e5Zu">
+        <navLabel>
+          <text>《10x程序员工作法》</text>
+        </navLabel>
+        <content src="MNN4lqD5zbr5e5Zu.xhtml"/>
+      </navPoint>
+      <navPoint id="55KJJql1ZichNTEK">
+        <navLabel>
+          <text>《极客与团队》</text>
+        </navLabel>
+        <content src="55KJJql1ZichNTEK.xhtml"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_1">
+      <navLabel>
+        <text>代码质量</text>
+      </navLabel>
+      <content src="VKi2D7_pAEkKW5QJ.xhtml"/>
+      <navPoint id="VWzEk-artIVH-GEX">
+        <navLabel>
+          <text>《深入剖析 Java 新特性》</text>
+        </navLabel>
+        <content src="VWzEk-artIVH-GEX.xhtml"/>
+      </navPoint>
+      <navPoint id="vDaSTsHjiXbD8WNQ">
+        <navLabel>
+          <text>《代码整洁之道:程序员的职业素养》</text>
+        </navLabel>
+        <content src="vDaSTsHjiXbD8WNQ.xhtml"/>
+      </navPoint>
+      <navPoint id="ob5WMnltSV4M-91K">
+        <navLabel>
+          <text>《代码整洁之道:敏捷软件开发手册》</text>
+        </navLabel>
+        <content src="ob5WMnltSV4M-91K.xhtml"/>
+      </navPoint>
+      <navPoint id="chtGxQpz9OcJ9zUE">
+        <navLabel>
+          <text>《软件设计之美》</text>
+        </navLabel>
+        <content src="chtGxQpz9OcJ9zUE.xhtml"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_2">
+      <navLabel>
+        <text>高并发系统设计</text>
+      </navLabel>
+      <content src="1bC1oIqZdsMgUbOw.xhtml"/>
+      <navPoint id="VEw4SXEdRU2WrQtX">
+        <navLabel>
+          <text>《高并发系统设计40问》</text>
+        </navLabel>
+        <content src="VEw4SXEdRU2WrQtX.xhtml"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_3">
+      <navLabel>
+        <text>架构</text>
+      </navLabel>
+      <content src="LR75kFdXrYr-JUrE.xhtml"/>
+      <navPoint id="l2IgR5U70tEH4Vw8">
+        <navLabel>
+          <text>《架构整洁之道》</text>
+        </navLabel>
+        <content src="l2IgR5U70tEH4Vw8.xhtml"/>
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

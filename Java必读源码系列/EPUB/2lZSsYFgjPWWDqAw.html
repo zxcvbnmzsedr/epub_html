@@ -1,0 +1,2434 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>&#12300;&#28304;&#30721;&#35299;&#35835;&#12301;&#32447;&#31243;&#27744;&#65306;EventLoopGroup</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="uedff5c26">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#26469;&#20998;&#26512; Netty &#20013;&#30340;&#32447;&#31243;&#27744;&#12290;Netty &#20013;&#30340;&#32447;&#31243;&#27744;&#27604;&#36739;&#19981;&#22909;&#29702;&#35299;&#65292;&#22240;&#20026;&#23427;&#30340;&#31867;&#27604;&#36739;&#22810;&#65292;&#32780;&#19988;&#23427;&#20204;&#20043;&#38388;&#30340;&#20851;&#31995;&#38169;&#32508;&#22797;&#26434;&#12290;&#30475;&#19979;&#22270;&#65292;&#24863;&#21463;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#30340;&#32487;&#25215;&#32467;&#26500;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ua288f4b4">
+  <br>
+ </p>
+ <p class="ne-p" id="ua13affb3">
+  <img class="ne-image" id="sa2A1" src="EPUB/imgsa2A1" width="2228">
+ </p>
+ <p class="ne-p" id="ubf97bf76">
+  <br>
+ </p>
+ <p class="ne-p" id="u47388ce5">
+  <span class="ne-text">
+   &#36825;&#24352;&#22270;&#25105;&#25353;&#29031;&#32487;&#25215;&#20851;&#31995;&#25972;&#29702;&#32780;&#26469;&#65292;&#22823;&#23478;&#20180;&#32454;&#30475;&#19968;&#19979;&#23601;&#20250;&#21457;&#29616;&#65292;&#28041;&#21450;&#21040;&#30340;&#31867;&#30830;&#23454;&#25402;&#22810;&#30340;&#12290;&#26412;&#33410;&#26469;&#32473;&#22823;&#23478;&#29702;&#29702;&#28165;&#26970;&#36825;&#37096;&#20998;&#20869;&#23481;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="udbfe5dc4">
+  <br>
+ </p>
+ <p class="ne-p" id="ufbe1ae89">
+  <span class="ne-text">
+   &#39318;&#20808;&#65292;&#25105;&#20204;&#35828;&#30340; Netty &#30340;&#32447;&#31243;&#27744;&#65292;&#25351;&#30340;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23454;&#20363;&#65307;&#32447;&#31243;&#27744;&#20013;&#30340;&#21333;&#20010;&#32447;&#31243;&#65292;&#25351;&#30340;&#26159;&#21491;&#36793;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23454;&#20363;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u7bb040eb">
+  <br>
+ </p>
+ <p class="ne-p" id="u1f26fd25">
+  <span class="ne-text">
+   &#22238;&#39038;&#19979;&#25105;&#20204;&#31532;&#19968;&#33410;&#20171;&#32461;&#30340; Echo &#20363;&#23376;&#65292;&#23458;&#25143;&#31471;&#21644;&#26381;&#21153;&#31471;&#30340;&#21551;&#21160;&#20195;&#30721;&#20013;&#65292;&#26368;&#24320;&#22987;&#25105;&#20204;&#24635;&#26159;&#20808;&#23454;&#20363;&#21270;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u07e60017">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="0f5d38ef">// EchoClient &#20195;&#30721;&#26368;&#24320;&#22987;&#65306;
+EventLoopGroup group = new NioEventLoopGroup();
+
+// EchoServer &#20195;&#30721;&#26368;&#24320;&#22987;&#65306;
+EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+EventLoopGroup workerGroup = new NioEventLoopGroup();</pre>
+ <p class="ne-p" id="uc2076ce5">
+  <br>
+ </p>
+ <p class="ne-p" id="u82b6550c">
+  <span class="ne-text">
+   &#19979;&#38754;&#65292;&#25105;&#20204;&#23601;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#24320;&#22987;&#36827;&#34892;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc13d9017">
+  <br>
+ </p>
+ <h2 id="4d7bff76">
+  <span class="ne-text">
+   NioEventLoopGroup &#30340;&#21019;&#24314;
+  </span>
+ </h2>
+ <p class="ne-p" id="u37931d24">
+  <br>
+ </p>
+ <p class="ne-p" id="u9de37eaf">
+  <span class="ne-text">
+   &#25105;&#20204;&#25171;&#24320;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#65292;&#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26377;&#22810;&#20010;&#26500;&#36896;&#26041;&#27861;&#29992;&#20110;&#21442;&#25968;&#35774;&#32622;&#65292;&#26368;&#31616;&#21333;&#22320;&#65292;&#25105;&#20204;&#37319;&#29992;&#26080;&#21442;&#26500;&#36896;&#20989;&#25968;&#65292;&#25110;&#20165;&#20165;&#35774;&#32622;&#32447;&#31243;&#25968;&#37327;&#23601;&#21487;&#20197;&#20102;&#65292;&#20854;&#20182;&#30340;&#21442;&#25968;&#37319;&#29992;&#40664;&#35748;&#20540;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u01ed3f35">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uf3a6c785">
+   <span class="ne-text">
+    &#27604;&#22914;&#19978;&#38754;&#30340;&#20195;&#30721;&#20013;&#65292;&#25105;&#20204;&#21482;&#22312;&#23454;&#20363;&#21270;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bossGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#26102;&#20505;&#25351;&#23450;&#20102;&#21442;&#25968;&#65292;&#20195;&#34920;&#35813;&#32447;&#31243;&#27744;&#38656;&#35201;&#19968;&#20010;&#32447;&#31243;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u5b9628eb">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="68d785a2">public NioEventLoopGroup() {
+    this(0);
+}
+public NioEventLoopGroup(int nThreads) {
+    this(nThreads, (Executor) null);
+}
+
+...
+
+// &#21442;&#25968;&#26368;&#20840;&#30340;&#26500;&#36896;&#26041;&#27861;
+public NioEventLoopGroup(int nThreads, Executor executor, EventExecutorChooserFactory chooserFactory,
+                         final SelectorProvider selectorProvider,
+                         final SelectStrategyFactory selectStrategyFactory,
+                         final RejectedExecutionHandler rejectedExecutionHandler) {
+    // &#35843;&#29992;&#29238;&#31867;&#30340;&#26500;&#36896;&#26041;&#27861;
+    super(nThreads, executor, chooserFactory, selectorProvider, selectStrategyFactory, rejectedExecutionHandler);
+}</pre>
+ <p class="ne-p" id="u9211dea1">
+  <br>
+ </p>
+ <p class="ne-p" id="u59089e73">
+  <span class="ne-text">
+   &#25105;&#20204;&#26469;&#31245;&#24494;&#30475;&#19968;&#19979;&#26500;&#36896;&#26041;&#27861;&#20013;&#30340;&#21508;&#20010;&#21442;&#25968;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u2d2bf938">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u26a4b1ae">
+   <code class="ne-code">
+    <span class="ne-text">
+     nThreads
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#36825;&#20010;&#26368;&#31616;&#21333;&#65292;&#23601;&#26159;&#32447;&#31243;&#27744;&#20013;&#30340;&#32447;&#31243;&#25968;&#65292;&#20063;&#23601;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#23454;&#20363;&#25968;&#37327;&#12290;
+   </span>
+  </li>
+  <li id="u1f1c2b5a">
+   <code class="ne-code">
+    <span class="ne-text">
+     executor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#25105;&#20204;&#30693;&#36947;&#65292;&#25105;&#20204;&#26412;&#36523;&#23601;&#26159;&#35201;&#26500;&#36896;&#19968;&#20010;&#32447;&#31243;&#27744;&#65288;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Executor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65289;&#65292;&#20026;&#20160;&#20040;&#36825;&#37324;&#20256;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     executor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#21602;&#65311;&#23427;&#20854;&#23454;&#19981;&#26159;&#32473;&#32447;&#31243;&#27744;&#29992;&#30340;&#65292;&#32780;&#26159;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#29992;&#30340;&#65292;&#20197;&#21518;&#20877;&#35828;&#12290;
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="u8cadfd29">
+   <code class="ne-code">
+    <span class="ne-text">
+     chooserFactory
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#24403;&#25105;&#20204;&#25552;&#20132;&#19968;&#20010;&#20219;&#21153;&#21040;&#32447;&#31243;&#27744;&#30340;&#26102;&#20505;&#65292;&#32447;&#31243;&#27744;&#38656;&#35201;&#36873;&#25321;&#65288;choose&#65289;&#20854;&#20013;&#30340;&#19968;&#20010;&#32447;&#31243;&#26469;&#25191;&#34892;&#36825;&#20010;&#20219;&#21153;&#65292;&#36825;&#20010;&#23601;&#26159;&#29992;&#26469;&#23454;&#29616;&#36873;&#25321;&#31574;&#30053;&#30340;&#12290;
+   </span>
+  </li>
+  <li id="ue06e6d2d">
+   <code class="ne-code">
+    <span class="ne-text">
+     selectorProvider
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#36825;&#20010;&#31616;&#21333;&#65292;&#25105;&#20204;&#38656;&#35201;&#36890;&#36807;&#23427;&#26469;&#23454;&#20363;&#21270; JDK &#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#21487;&#20197;&#30475;&#21040;&#27599;&#20010;&#32447;&#31243;&#27744;&#37117;&#25345;&#26377;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectorProvider
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#12290;
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="u30a0f457">
+   <code class="ne-code">
+    <span class="ne-text">
+     selectStrategyFactory
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#36825;&#20010;&#28041;&#21450;&#21040;&#30340;&#26159;&#32447;&#31243;&#27744;&#20013;&#32447;&#31243;&#30340;&#24037;&#20316;&#27969;&#31243;&#65292;&#22312;&#20171;&#32461; NioEventLoop &#30340;&#26102;&#20505;&#20250;&#35828;&#12290;
+   </span>
+  </li>
+  <li id="uc3b3a562">
+   <code class="ne-code">
+    <span class="ne-text">
+     rejectedExecutionHandler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#36825;&#20010;&#20063;&#26159;&#32447;&#31243;&#27744;&#30340;&#22909;&#26379;&#21451;&#20102;&#65292;&#29992;&#20110;&#22788;&#29702;&#32447;&#31243;&#27744;&#20013;&#27809;&#26377;&#21487;&#29992;&#30340;&#32447;&#31243;&#26469;&#25191;&#34892;&#20219;&#21153;&#30340;&#24773;&#20917;&#12290;&#22312; Netty &#20013;&#31245;&#24494;&#26377;&#19968;&#28857;&#28857;&#19981;&#19968;&#26679;&#65292;&#36825;&#20010;&#26159;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#29992;&#30340;&#65292;&#20197;&#21518;&#25105;&#20204;&#20877;&#35814;&#32454;&#20171;&#32461;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u33def590">
+  <br>
+ </p>
+ <p class="ne-p" id="u400941e4">
+  <span class="ne-text">
+   &#36825;&#37324;&#20171;&#32461;&#36825;&#20123;&#21442;&#25968;&#26159;&#24076;&#26395;&#22823;&#23478;&#26377;&#20010;&#21360;&#35937;&#32780;&#24050;&#65292;&#22823;&#23478;&#21457;&#29616;&#27809;&#26377;&#65292;&#22312;&#26500;&#36896;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#26102;&#30340;&#22909;&#20960;&#20010;&#21442;&#25968;&#65292;&#37117;&#26159;&#29992;&#26469;&#26500;&#36896;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29992;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u66ce877b">
+  <br>
+ </p>
+ <p class="ne-p" id="ud5723324">
+  <span class="ne-text">
+   &#19979;&#38754;&#65292;&#25105;&#20204;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26080;&#21442;&#26500;&#36896;&#26041;&#27861;&#24320;&#22987;&#65292;&#36319;&#30528;&#28304;&#30721;&#36208;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ubd7b7864">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="9a29d837">public NioEventLoopGroup() {
+    this(0);
+}</pre>
+ <p class="ne-p" id="u0042b24a">
+  <br>
+ </p>
+ <p class="ne-p" id="u88095f69">
+  <span class="ne-text">
+   &#28982;&#21518;&#19968;&#27493;&#27493;&#36208;&#19979;&#21435;&#65292;&#21040;&#36825;&#20010;&#26500;&#36896;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u5ac3329a">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="8b8439a5">public NioEventLoopGroup(int nThreads, ThreadFactory threadFactory, final SelectorProvider selectorProvider, final SelectStrategyFactory selectStrategyFactory) {
+
+    super(nThreads, threadFactory, selectorProvider, selectStrategyFactory, RejectedExecutionHandlers.reject());
+}</pre>
+ <p class="ne-p" id="u113c419b">
+  <br>
+ </p>
+ <p class="ne-p" id="ue883a474">
+  <span class="ne-text">
+   &#22823;&#23478;&#33258;&#24049;&#35201;&#21435;&#36319;&#19968;&#19979;&#28304;&#30721;&#65292;&#36825;&#26679;&#25165;&#30693;&#36947;&#20013;&#38388;&#35774;&#32622;&#20102;&#21738;&#20123;&#40664;&#35748;&#20540;&#65292;&#19979;&#38754;&#36825;&#20960;&#20010;&#21442;&#25968;&#37117;&#34987;&#35774;&#32622;&#20102;&#40664;&#35748;&#20540;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u3b1e8e00">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="uadab7609">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectorProvider = SelectorProvider.provider()
+    </span>
+   </code>
+   <span class="ne-text">
+   </span>
+   <span class="ne-text">
+   </span>
+  </li>
+ </ul>
+ <div class="ne-quote">
+  <p class="ne-p" id="uc0e5db07">
+   <span class="ne-text">
+    &#36825;&#20010;&#27809;&#20160;&#20040;&#22909;&#35828;&#30340;&#65292;&#35843;&#29992;&#20102; JDK &#25552;&#20379;&#30340;&#26041;&#27861;
+   </span>
+  </p>
+ </div>
+ <ul class="ne-ul">
+  <li id="u0cd6ca69">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectStrategyFactory = DefaultSelectStrategyFactory.INSTANCE
+    </span>
+   </code>
+   <span class="ne-text">
+   </span>
+   <span class="ne-text">
+   </span>
+  </li>
+ </ul>
+ <div class="ne-quote">
+  <p class="ne-p" id="u8783ff59">
+   <span class="ne-text">
+    &#36825;&#20010;&#28041;&#21450;&#21040;&#30340;&#26159;&#32447;&#31243;&#22312;&#20570; select &#25805;&#20316;&#21644;&#25191;&#34892;&#20219;&#21153;&#36807;&#31243;&#20013;&#30340;&#31574;&#30053;&#36873;&#25321;&#38382;&#39064;&#65292;&#22312;&#20171;&#32461; NioEventLoop &#30340;&#26102;&#20505;&#20250;&#29992;&#21040;&#12290;
+   </span>
+  </p>
+ </div>
+ <ul class="ne-ul">
+  <li id="u1a293e7c">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     rejectedExecutionHandler = RejectedExecutionHandlers.reject()
+    </span>
+   </code>
+   <span class="ne-text">
+   </span>
+   <span class="ne-text">
+   </span>
+  </li>
+ </ul>
+ <div class="ne-quote">
+  <p class="ne-p" id="ub9e38bd2">
+   <span class="ne-text">
+    &#22823;&#23478;&#36827;&#21435;&#30475;&#19968;&#19979; reject() &#26041;&#27861;&#65292;&#20063;&#23601;&#26159;&#35828;&#65292;Netty &#36873;&#25321;&#30340;&#40664;&#35748;&#25298;&#32477;&#31574;&#30053;&#26159;&#65306;&#25243;&#20986;&#24322;&#24120;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="uedfedc45">
+  <br>
+ </p>
+ <p class="ne-p" id="uefdec393">
+  <span class="ne-text">
+   &#36319;&#30528;&#28304;&#30721;&#36208;&#65292;&#25105;&#20204;&#20250;&#26469;&#21040;&#29238;&#31867; MultithreadEventLoopGroup &#30340;&#26500;&#36896;&#26041;&#27861;&#20013;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ub1ae97b0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="03ecc8e9">protected MultithreadEventLoopGroup(int nThreads, ThreadFactory threadFactory, Object... args) {
+    super(nThreads == 0 ? DEFAULT_EVENT_LOOP_THREADS : nThreads, threadFactory, args);
+}</pre>
+ <p class="ne-p" id="uce3d8b58">
+  <br>
+ </p>
+ <p class="ne-p" id="u69f68879">
+  <span class="ne-text">
+   &#36825;&#37324;&#25105;&#20204;&#21457;&#29616;&#65292;&#22914;&#26524;&#37319;&#29992;&#26080;&#21442;&#26500;&#36896;&#20989;&#25968;&#65292;&#37027;&#20040;&#21040;&#36825;&#37324;&#30340;&#26102;&#20505;&#65292;&#40664;&#35748;&#22320;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    nThreads
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20250;&#34987;&#35774;&#32622;&#20026;
+  </span>
+  <strong>
+   <span class="ne-text">
+    CPU &#26680;&#24515;&#25968; *2
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#12290;&#22823;&#23478;&#21487;&#20197;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DEFAULT_EVENT_LOOP_THREADS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#40664;&#35748;&#20540;&#65292;&#20197;&#21450;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    static
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20195;&#30721;&#22359;&#30340;&#35774;&#20540;&#36923;&#36753;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua43fe0b9">
+  <br>
+ </p>
+ <p class="ne-p" id="u71f9639d">
+  <span class="ne-text">
+   &#25105;&#20204;&#32487;&#32493;&#24448;&#19979;&#36208;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ufc5e8355">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="213fcdea">protected MultithreadEventExecutorGroup(int nThreads, ThreadFactory threadFactory, Object...args) {
+    this(nThreads, threadFactory == null ? null : new ThreadPerTaskExecutor(threadFactory), args);
+}</pre>
+ <p class="ne-p" id="u5b2c98ef">
+  <br>
+ </p>
+ <p class="ne-p" id="uc264994e">
+  <span class="ne-text">
+   &#21040;&#36825;&#19968;&#27493;&#30340;&#26102;&#20505;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    new ThreadPerTaskExecutor(threadFactory)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20250;&#26500;&#36896;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    executor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u62679120">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ued2e0e8b">
+   <span class="ne-text">
+    &#25105;&#20204;&#29616;&#22312;&#36824;&#19981;&#30693;&#36947;&#36825;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     executor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#24590;&#20040;&#29992;&#12290;&#36825;&#37324;&#25105;&#20204;&#20808;&#30475;&#19979;&#23427;&#30340;&#28304;&#30721;&#65306;
+   </span>
+  </p>
+  <p class="ne-p" id="u7f47460e">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u9c770d3d">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u596130a4">
+   <code class="ne-code">
+    <span class="ne-text">
+     Executor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20316;&#20026;&#32447;&#31243;&#27744;&#30340;&#26368;&#39030;&#23618;&#25509;&#21475;&#65292; &#25105;&#20204;&#30693;&#36947;&#65292;&#23427;&#21482;&#26377;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     execute(runnable)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#65292;&#20174;&#19978;&#38754;&#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#65292;&#23454;&#29616;&#31867;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ThreadPerTaskExecutor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#36923;&#36753;&#23601;&#26159;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#27599;&#26469;&#19968;&#20010;&#20219;&#21153;&#65292;&#26032;&#24314;&#19968;&#20010;&#32447;&#31243;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="ud1823af8">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u0e252f81">
+   <span class="ne-text">
+    &#25105;&#20204;&#20808;&#35760;&#20303;&#36825;&#20010;&#65292;&#21069;&#38754;&#20063;&#35828;&#20102;&#65292;&#23427;&#26159;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#29992;&#30340;&#65292;&#19981;&#26159;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#29992;&#30340;&#12290;
+   </span>
+  </p>
+ </div>
+ <pre class="ne-codeblock language-java" data-language="java" id="7651bb99">public final class ThreadPerTaskExecutor implements Executor {
+     private final ThreadFactory threadFactory;
+
+     public ThreadPerTaskExecutor(ThreadFactory threadFactory) {
+           if (threadFactory == null) {
+               throw new NullPointerException("threadFactory");
+           }
+           this.threadFactory = threadFactory;
+     }
+
+     @Override
+     public void execute(Runnable command) {
+           // &#20026;&#27599;&#20010;&#20219;&#21153;&#26032;&#24314;&#19968;&#20010;&#32447;&#31243;
+           threadFactory.newThread(command).start();
+     }
+}</pre>
+ <p class="ne-p" id="ud9600e5b">
+  <br>
+ </p>
+ <p class="ne-p" id="u56a3be76">
+  <span class="ne-text">
+   &#19978;&#19968;&#27493;&#35774;&#32622;&#23436;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    executor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#25105;&#20204;&#32487;&#32493;&#24448;&#19979;&#30475;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u0005463a">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="03d74766">protected MultithreadEventExecutorGroup(int nThreads, Executor executor, Object...args) {
+    this(nThreads, executor, DefaultEventExecutorChooserFactory.INSTANCE, args);
+}</pre>
+ <p class="ne-p" id="u8a39a2e6">
+  <br>
+ </p>
+ <p class="ne-p" id="u81beb8ff">
+  <span class="ne-text">
+   &#36825;&#19968;&#27493;&#35774;&#32622;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    chooserFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#29992;&#26469;&#23454;&#29616;&#20174;&#32447;&#31243;&#27744;&#20013;&#36873;&#25321;&#19968;&#20010;&#32447;&#31243;&#30340;&#36873;&#25321;&#31574;&#30053;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8b426817">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uea959506">
+   <code class="ne-code">
+    <span class="ne-text">
+     ChooserFactory
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#36923;&#36753;&#27604;&#36739;&#31616;&#21333;&#65292;&#25105;&#20204;&#30475;&#19979;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     DefaultEventExecutorChooserFactory
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#23454;&#29616;&#65306;
+   </span>
+  </p>
+  <p class="ne-p" id="u4127fb52">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u0d6c6793">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u631abd7e">
+   <span class="ne-text">
+    &#36825;&#37324;&#35774;&#32622;&#30340;&#31574;&#30053;&#20063;&#24456;&#31616;&#21333;&#65306;
+   </span>
+  </p>
+  <p class="ne-p" id="ua2ddccd5">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="ue71d0067">
+   <span class="ne-text">
+    1&#12289;&#22914;&#26524;&#32447;&#31243;&#27744;&#30340;&#32447;&#31243;&#25968;&#37327;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     2^n
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#37319;&#29992;&#19979;&#38754;&#30340;&#26041;&#24335;&#20250;&#39640;&#25928;&#19968;&#20123;&#65306;
+   </span>
+  </p>
+  <p class="ne-p" id="u5ace682b">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u92992d5a">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="uc29af34a">
+   <span class="ne-text">
+    2&#12289;&#22914;&#26524;&#19981;&#26159;&#65292;&#29992;&#21462;&#27169;&#30340;&#26041;&#24335;&#65306;
+   </span>
+  </p>
+  <p class="ne-p" id="uc767d064">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u7bf85a60">
+   <span class="ne-text">
+   </span>
+  </p>
+ </div>
+ <pre class="ne-codeblock language-java" data-language="java" id="5b50463c">@Override
+public EventExecutorChooser newChooser(EventExecutor[] executors) {
+     if (isPowerOfTwo(executors.length)) {
+           return new PowerOfTwoEventExecutorChooser(executors);
+     } else {
+           return new GenericEventExecutorChooser(executors);
+     }
+}</pre>
+ <pre class="ne-codeblock language-java" data-language="java" id="5145c9e5">@Override
+public EventExecutor next() {
+     return executors[idx.getAndIncrement() &amp; executors.length - 1];
+}</pre>
+ <pre class="ne-codeblock language-java" data-language="java" id="d4d342fb">@Override
+public EventExecutor next() {
+     return executors[Math.abs(idx.getAndIncrement() % executors.length)];
+}</pre>
+ <p class="ne-p" id="ude8460f3">
+  <br>
+ </p>
+ <p class="ne-p" id="u220ac239">
+  <span class="ne-text">
+   &#36208;&#20102;&#36825;&#20040;&#20037;&#65292;&#25105;&#20204;&#32456;&#20110;&#21040;&#20102;&#19968;&#20010;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#24178;&#23454;&#20107;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#26041;&#27861;&#20013;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6874ea48">
+  <br>
+ </p>
+ <p class="ne-p" id="u62597dbc">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.util.concurrent.MultithreadEventExecutorGroup
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="ucec9cfe8">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="33b46c56">protected MultithreadEventExecutorGroup(int nThreads, Executor executor,
+                                        EventExecutorChooserFactory chooserFactory, Object... args) {
+    if (nThreads &lt;= 0) {
+        throw new IllegalArgumentException(String.format("nThreads: %d (expected: &gt; 0)", nThreads));
+    }
+
+    // executor &#22914;&#26524;&#26159; null&#65292;&#20570;&#19968;&#27425;&#21644;&#21069;&#38754;&#19968;&#26679;&#30340;&#40664;&#35748;&#35774;&#32622;&#12290;
+    if (executor == null) {
+        executor = new ThreadPerTaskExecutor(newDefaultThreadFactory());
+    }
+
+    // &#36825;&#37324;&#30340; children &#25968;&#32452;&#38750;&#24120;&#37325;&#35201;&#65292;&#23427;&#23601;&#26159;&#32447;&#31243;&#27744;&#20013;&#30340;&#32447;&#31243;&#25968;&#32452;&#65292;&#36825;&#20040;&#35828;&#19981;&#22826;&#20005;&#35880;&#65292;&#20294;&#26159;&#23601;&#22823;&#27010;&#36825;&#20010;&#24847;&#24605;
+    children = new EventExecutor[nThreads];
+
+    // &#19979;&#38754;&#36825;&#20010; for &#24490;&#29615;&#23558;&#23454;&#20363;&#21270; children &#25968;&#32452;&#20013;&#30340;&#27599;&#19968;&#20010;&#20803;&#32032;
+    for (int i = 0; i &lt; nThreads; i ++) {
+        boolean success = false;
+        try {
+            // &#23454;&#20363;&#21270;&#65281;&#65281;&#65281;&#65281;&#65281;&#65281;
+            children[i] = newChild(executor, args);
+            success = true;
+        } catch (Exception e) {
+            // TODO: Think about if this is a good exception type
+            throw new IllegalStateException("failed to create a child event loop", e);
+        } finally {
+            // &#22914;&#26524;&#26377;&#19968;&#20010; child &#23454;&#20363;&#21270;&#22833;&#36133;&#65292;&#37027;&#20040; success &#23601;&#20250;&#20026; false&#65292;&#28982;&#21518;&#36827;&#20837;&#19979;&#38754;&#30340;&#22833;&#36133;&#22788;&#29702;&#36923;&#36753;
+            if (!success) {
+                // &#25226;&#24050;&#32463;&#25104;&#21151;&#23454;&#20363;&#21270;&#30340;&#8220;&#32447;&#31243;&#8221; shutdown&#65292;shutdown &#26159;&#24322;&#27493;&#25805;&#20316;
+                for (int j = 0; j &lt; i; j ++) {
+                    children[j].shutdownGracefully();
+                }
+
+                // &#31561;&#24453;&#36825;&#20123;&#32447;&#31243;&#25104;&#21151; shutdown
+                for (int j = 0; j &lt; i; j ++) {
+                    EventExecutor e = children[j];
+                    try {
+                        while (!e.isTerminated()) {
+                            e.awaitTermination(Integer.MAX_VALUE, TimeUnit.SECONDS);
+                        }
+                    } catch (InterruptedException interrupted) {
+                        // &#25226;&#20013;&#26029;&#29366;&#24577;&#35774;&#32622;&#22238;&#21435;&#65292;&#20132;&#32473;&#20851;&#24515;&#30340;&#32447;&#31243;&#26469;&#22788;&#29702;.
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    // ================================================
+    // === &#21040;&#36825;&#37324;&#65292;&#23601;&#26159;&#20195;&#34920;&#19978;&#38754;&#30340;&#23454;&#20363;&#21270;&#25152;&#26377;&#32447;&#31243;&#24050;&#32463;&#25104;&#21151;&#32467;&#26463; ===
+    // ================================================
+
+    // &#36890;&#36807;&#20043;&#21069;&#35774;&#32622;&#30340; chooserFactory &#26469;&#23454;&#20363;&#21270; Chooser&#65292;&#25226;&#32447;&#31243;&#27744;&#25968;&#32452;&#20256;&#36827;&#21435;&#65292;
+    //     &#36825;&#23601;&#19981;&#24517;&#20877;&#35828;&#20102;&#21543;&#65292;&#23454;&#29616;&#32447;&#31243;&#36873;&#25321;&#31574;&#30053;
+    chooser = chooserFactory.newChooser(children);
+
+    // &#35774;&#32622;&#19968;&#20010; Listener &#29992;&#26469;&#30417;&#21548;&#35813;&#32447;&#31243;&#27744;&#30340; termination &#20107;&#20214;
+    // &#19979;&#38754;&#30340;&#20195;&#30721;&#36923;&#36753;&#26159;&#65306;&#32473;&#27744;&#20013;&#27599;&#19968;&#20010;&#32447;&#31243;&#37117;&#35774;&#32622;&#36825;&#20010; listener&#65292;&#24403;&#30417;&#21548;&#21040;&#25152;&#26377;&#32447;&#31243;&#37117; terminate &#20197;&#21518;&#65292;&#36825;&#20010;&#32447;&#31243;&#27744;&#23601;&#31639;&#30495;&#27491;&#30340; terminate &#20102;&#12290;
+    final FutureListener&lt;Object&gt; terminationListener = new FutureListener&lt;Object&gt;() {
+        @Override
+        public void operationComplete(Future&lt;Object&gt; future) throws Exception {
+            if (terminatedChildren.incrementAndGet() == children.length) {
+                terminationFuture.setSuccess(null);
+            }
+        }
+    };
+    for (EventExecutor e: children) {
+        e.terminationFuture().addListener(terminationListener);
+    }
+
+    // &#35774;&#32622; readonlyChildren&#65292;&#23427;&#26159;&#21482;&#35835;&#38598;&#21512;&#65292;&#20197;&#21518;&#29992;&#21040;&#20877;&#35828;
+    Set&lt;EventExecutor&gt; childrenSet = new LinkedHashSet&lt;EventExecutor&gt;(children.length);
+    Collections.addAll(childrenSet, children);
+    readonlyChildren = Collections.unmodifiableSet(childrenSet);
+}</pre>
+ <p class="ne-p" id="u431c53ed">
+  <br>
+ </p>
+ <p class="ne-p" id="uc1c5ce3b">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;&#20195;&#30721;&#38750;&#24120;&#31616;&#21333;&#21543;&#65292;&#27809;&#26377;&#20160;&#20040;&#38656;&#35201;&#29305;&#21035;&#35828;&#30340;&#65292;&#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#26469;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    newChild()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#65292;&#36825;&#20010;&#26041;&#27861;&#38750;&#24120;&#37325;&#35201;&#65292;&#23427;&#23558;&#21019;&#24314;&#32447;&#31243;&#27744;&#20013;&#30340;&#32447;&#31243;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1b48d719">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ua7bdc0df">
+   <span class="ne-text">
+    &#25105;&#19978;&#38754;&#24050;&#32463;&#29992;&#36807;&#24456;&#22810;&#27425;"&#32447;&#31243;"&#36825;&#20010;&#35789;&#20102;&#65292;&#23427;&#21487;&#19981;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Thread
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#24847;&#24605;&#65292;&#32780;&#26159;&#25351;&#27744;&#20013;&#30340;&#20010;&#20307;&#65292;&#21518;&#38754;&#25105;&#20204;&#20250;&#30475;&#21040;&#27599;&#20010;"&#32447;&#31243;"&#22312;&#20160;&#20040;&#26102;&#20505;&#20250;&#30495;&#27491;&#21019;&#24314;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Thread
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#12290;&#21453;&#27491;&#27599;&#20010; NioEventLoop &#23454;&#20363;&#20869;&#37096;&#37117;&#20250;&#26377;&#19968;&#20010;&#33258;&#24049;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Thread
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#65292;&#25152;&#20197;&#25226;&#36825;&#20004;&#20010;&#27010;&#24565;&#28151;&#22312;&#19968;&#36215;&#20063;&#26080;&#25152;&#35859;&#21543;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u133d1071">
+  <br>
+ </p>
+ <p class="ne-p" id="u9bdd2688">
+  <code class="ne-code">
+   <span class="ne-text">
+    newChild(&#8230;)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#35206;&#20889;&#20102;&#65292;&#19978;&#38754;&#35828;&#30340;"&#32447;&#31243;"&#20854;&#23454;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u7b856b3b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="2134c0f4">@Override
+protected EventLoop newChild(Executor executor, Object... args) throws Exception {
+    return new NioEventLoop(this, executor, (SelectorProvider) args[0],
+        ((SelectStrategyFactory) args[1]).newSelectStrategy(), (RejectedExecutionHandler) args[2]);
+}</pre>
+ <p class="ne-p" id="u5eb06cf4">
+  <br>
+ </p>
+ <p class="ne-p" id="udee879dc">
+  <span class="ne-text">
+   &#23427;&#35843;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u7561a65c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="0ef72a52">NioEventLoop(NioEventLoopGroup parent, Executor executor, SelectorProvider selectorProvider,
+             SelectStrategy strategy, RejectedExecutionHandler rejectedExecutionHandler) {
+    // &#35843;&#29992;&#29238;&#31867;&#26500;&#36896;&#22120;
+    super(parent, executor, false, DEFAULT_MAX_PENDING_TASKS, rejectedExecutionHandler);
+    if (selectorProvider == null) {
+        throw new NullPointerException("selectorProvider");
+    }
+    if (strategy == null) {
+        throw new NullPointerException("selectStrategy");
+    }
+    provider = selectorProvider;
+    // &#24320;&#21551; NIO &#20013;&#26368;&#37325;&#35201;&#30340;&#32452;&#20214;&#65306;Selector
+    final SelectorTuple selectorTuple = openSelector();
+    selector = selectorTuple.selector;
+    unwrappedSelector = selectorTuple.unwrappedSelector;
+    selectStrategy = strategy;
+}</pre>
+ <p class="ne-p" id="u3fa738d6">
+  <br>
+ </p>
+ <p class="ne-p" id="ub6689e6b">
+  <span class="ne-text">
+   &#25105;&#20204;&#20808;&#31895;&#30053;&#35266;&#23519;&#19968;&#19979;&#65292;&#28982;&#21518;&#20877;&#24448;&#19979;&#30475;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u242b40db">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u310f49d7">
+   <span class="ne-text">
+    &#22312; Netty &#20013;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20195;&#34920;&#32447;&#31243;&#27744;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23601;&#26159;&#20854;&#20013;&#30340;&#32447;&#31243;&#12290;
+   </span>
+  </li>
+  <li id="ue5cd3566">
+   <span class="ne-text">
+    &#32447;&#31243;&#27744;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26159;&#27744;&#20013;&#30340;&#32447;&#31243;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;
+   </span>
+   <strong>
+    <span class="ne-text">
+     parent
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65292;&#20174;&#19978;&#38754;&#30340;&#20195;&#30721;&#20013;&#30340;&#21462;&#21517;&#21487;&#20197;&#30475;&#20986;&#12290;
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="u94d48cac">
+   <span class="ne-text">
+    &#27599;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#37117;&#26377;&#33258;&#24049;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#19978;&#38754;&#30340;&#20195;&#30721;&#20063;&#21453;&#24212;&#20102;&#36825;&#19968;&#28857;&#65292;&#36825;&#21644; Tomcat &#20013;&#30340; NIO &#27169;&#22411;&#26377;&#28857;&#21306;&#21035;&#12290;
+   </span>
+  </li>
+  <li id="u0c558580">
+   <code class="ne-code">
+    <span class="ne-text">
+     executor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12289;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectStrategy
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     rejectedExecutionHandler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20174;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#19968;&#36335;&#20256;&#21040;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="ud5511fce">
+  <br>
+ </p>
+ <p class="ne-p" id="ue8dc98ae">
+  <span class="ne-text">
+   &#36825;&#20010;&#26102;&#20505;&#65292;&#25105;&#20204;&#26469;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#30340;&#23646;&#24615;&#37117;&#26377;&#21738;&#20123;&#65292;&#25105;&#20204;&#20808;&#24573;&#30053;&#23427;&#32487;&#25215;&#33258;&#29238;&#31867;&#30340;&#23646;&#24615;&#65292;&#21333;&#21333;&#30475;&#23427;&#33258;&#24049;&#30340;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u86fce833">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="83658367">private Selector selector;
+private Selector unwrappedSelector;
+private SelectedSelectionKeySet selectedKeys;
+
+private final SelectorProvider provider;
+
+private final AtomicBoolean wakenUp = new AtomicBoolean();
+
+private final SelectStrategy selectStrategy;
+
+private volatile int ioRatio = 50;
+private int cancelledKeys;
+private boolean needsToSelectAgain;</pre>
+ <p class="ne-p" id="u8ed12d57">
+  <br>
+ </p>
+ <p class="ne-p" id="u4ea7ab6f">
+  <span class="ne-text">
+   &#32467;&#21512;&#23427;&#30340;&#26500;&#36896;&#26041;&#27861;&#25105;&#20204;&#26469;&#24635;&#32467;&#19968;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u40799510">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="ud6516f2d">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     provider
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#23427;&#30001;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20256;&#36827;&#26469;&#65292;&#21069;&#38754;&#25105;&#20204;&#35828;&#20102;&#19968;&#20010;&#32447;&#31243;&#27744;&#26377;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectorProvider
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#29992;&#20110;&#21019;&#24314;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;
+   </span>
+  </li>
+  <li id="u0ffe0233">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#34429;&#28982;&#25105;&#20204;&#36824;&#27809;&#30475;&#21019;&#24314;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#20195;&#30721;&#65292;&#20294;&#25105;&#20204;&#24050;&#32463;&#30693;&#36947;&#65292;&#22312; Netty &#20013;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26159;&#36319;&#30528;&#32447;&#31243;&#27744;&#20013;&#30340;&#32447;&#31243;&#36208;&#30340;&#12290;&#20063;&#23601;&#26159;&#35828;&#65292;&#24182;&#38750;&#19968;&#20010;&#32447;&#31243;&#27744;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#65292;&#32780;&#26159;&#32447;&#31243;&#27744;&#20013;&#27599;&#19968;&#20010;&#32447;&#31243;&#37117;&#26377;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#12290;
+   </span>
+   <span class="ne-text">
+   </span>
+  </li>
+ </ul>
+ <div class="ne-quote">
+  <p class="ne-p" id="ube631522">
+   <span class="ne-text">
+    &#22312;&#26080;&#21442;&#26500;&#36896;&#36807;&#31243;&#20013;&#65292;&#25105;&#20204;&#21457;&#29616;&#65292;Netty &#35774;&#32622;&#32447;&#31243;&#20010;&#25968;&#26159; CPU &#26680;&#24515;&#25968;&#30340;&#20004;&#20493;&#65292;&#20551;&#35774;&#25105;&#20204;&#30340;&#26426;&#22120; CPU &#26159; 4 &#26680;&#65292;&#37027;&#20040;&#23545;&#24212;&#30340;&#23601;&#20250;&#26377; 8 &#20010; Selector &#23454;&#20363;&#12290;
+   </span>
+  </p>
+ </div>
+ <ul class="ne-ul">
+  <li id="u5048488f">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectStrategy
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     select
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25805;&#20316;&#30340;&#31574;&#30053;&#65292;&#36825;&#20010;&#19981;&#24613;&#12290;
+   </span>
+  </li>
+  <li id="uf8da722d">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ioRatio
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#36825;&#26159; IO &#20219;&#21153;&#30340;&#25191;&#34892;&#26102;&#38388;&#27604;&#20363;&#65292;&#22240;&#20026;&#27599;&#20010;&#32447;&#31243;&#26082;&#26377; IO &#20219;&#21153;&#25191;&#34892;&#65292;&#20063;&#26377;&#38750; IO &#20219;&#21153;&#38656;&#35201;&#25191;&#34892;&#65292;&#25152;&#20197;&#35813;&#21442;&#25968;&#20026;&#20102;&#20445;&#35777;&#26377;&#36275;&#22815;&#26102;&#38388;&#26159;&#32473; IO &#30340;&#12290;&#36825;&#37324;&#20063;&#19981;&#38656;&#35201;&#24613;&#30528;&#21435;&#29702;&#35299;&#20160;&#20040; IO &#20219;&#21153;&#12289;&#20160;&#20040;&#38750; IO &#20219;&#21153;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u4c005bf4">
+  <br>
+ </p>
+ <p class="ne-p" id="u9ab786ea">
+  <span class="ne-text">
+   &#28982;&#21518;&#25105;&#20204;&#32487;&#32493;&#36208;&#23427;&#30340;&#26500;&#36896;&#26041;&#27861;&#65292;&#25105;&#20204;&#30475;&#21040;&#19978;&#38754;&#30340;&#26500;&#36896;&#26041;&#27861;&#35843;&#29992;&#20102;&#29238;&#31867;&#30340;&#26500;&#36896;&#22120;&#65292;&#23427;&#30340;&#29238;&#31867;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SingleThreadEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u70b498eb">
+  <br>
+ </p>
+ <p class="ne-p" id="ucc066dd2">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.SingleThreadEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   :
+  </span>
+ </p>
+ <p class="ne-p" id="u01551367">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b058eaf4">protected static final int DEFAULT_MAX_PENDING_TASKS = Math.max(16,
+        SystemPropertyUtil.getInt("io.netty.eventLoop.maxPendingTasks", Integer.MAX_VALUE));
+
+protected SingleThreadEventLoop(EventLoopGroup parent, ThreadFactory threadFactory,
+                                boolean addTaskWakesUp, int maxPendingTasks,
+                                RejectedExecutionHandler rejectedExecutionHandler) {
+    super(parent, threadFactory, addTaskWakesUp, maxPendingTasks, rejectedExecutionHandler);
+    tailTasks = newTaskQueue(maxPendingTasks);
+}</pre>
+ <p class="ne-p" id="ud2b954fb">
+  <br>
+ </p>
+ <p class="ne-p" id="u3c62f7df">
+  <code class="ne-code">
+   <span class="ne-text">
+    SingleThreadEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#21517;&#23383;&#24456;&#35809;&#24322;&#26377;&#27809;&#26377;&#65311;&#28982;&#21518;&#23427;&#30340;&#26500;&#36896;&#26041;&#27861;&#21448;&#35843;&#29992;&#20102;&#29238;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SingleThreadEventExecutor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#26041;&#27861;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u18161bc2">
+  <br>
+ </p>
+ <p class="ne-p" id="u5f51117b">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.util.concurrent.SingleThreadEventExecutor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ua31b0c4e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b7262882">protected SingleThreadEventExecutor(EventExecutorGroup parent, Executor executor,
+                                    boolean addTaskWakesUp, int maxPendingTasks,
+                                    RejectedExecutionHandler rejectedHandler) {
+    super(parent);
+    this.addTaskWakesUp = addTaskWakesUp;
+    this.maxPendingTasks = Math.max(16, maxPendingTasks);
+    this.executor = ObjectUtil.checkNotNull(executor, "executor");
+    // taskQueue&#65292;&#36825;&#20010;&#19996;&#35199;&#24456;&#37325;&#35201;&#65292;&#25552;&#20132;&#32473; NioEventLoop &#30340;&#20219;&#21153;&#37117;&#20250;&#36827;&#20837;&#21040;&#36825;&#20010; taskQueue &#20013;&#31561;&#24453;&#34987;&#25191;&#34892;
+    // &#36825;&#20010; queue &#30340;&#40664;&#35748;&#23481;&#37327;&#26159; 16
+    taskQueue = newTaskQueue(this.maxPendingTasks);
+    rejectedExecutionHandler = ObjectUtil.checkNotNull(rejectedHandler, "rejectedHandler");
+}
+
+protected Queue&lt;Runnable&gt; newTaskQueue(int maxPendingTasks) {
+  	return new LinkedBlockingQueue&lt;Runnable&gt;(maxPendingTasks);
+}</pre>
+ <p class="ne-p" id="u11f0037e">
+  <br>
+ </p>
+ <p class="ne-p" id="uc4bced51">
+  <span class="ne-text">
+   &#21040;&#36825;&#37324;&#23601;&#26356;&#21152;&#35809;&#24322;&#20102;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#29238;&#31867;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SingleThreadEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SingleThreadEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#29238;&#31867;&#26159;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     SingleThreadEventExecutor
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#65292;&#23427;&#30340;&#21517;&#23383;&#21578;&#35785;&#25105;&#20204;&#65292;&#23427;&#26159;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Executor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#26159;&#19968;&#20010;&#32447;&#31243;&#27744;&#65292;&#32780;&#19988;&#26159; Single Thread &#21333;&#32447;&#31243;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u157a2dc3">
+  <br>
+ </p>
+ <p class="ne-p" id="ue03942e6">
+  <span class="ne-text">
+   &#20063;&#23601;&#26159;&#35828;&#65292;&#32447;&#31243;&#27744;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#27599;&#19968;&#20010;&#32447;&#31243;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20063;&#21487;&#20197;&#24403;&#20570;&#19968;&#20010;&#32447;&#31243;&#27744;&#26469;&#29992;&#65292;&#21482;&#19981;&#36807;&#23427;&#21482;&#26377;&#19968;&#20010;&#32447;&#31243;&#12290;&#36825;&#31181;&#35774;&#35745;&#34429;&#28982;&#30475;&#19978;&#21435;&#24456;&#24039;&#22937;&#65292;&#19981;&#36807;&#26377;&#28857;&#21453;&#20154;&#31867;&#30340;&#26679;&#23376;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="udb975b77">
+  <br>
+ </p>
+ <p class="ne-p" id="ua48fccb6">
+  <span class="ne-text">
+   &#19978;&#38754;&#36825;&#20010;&#26500;&#36896;&#20989;&#25968;&#27604;&#36739;&#31616;&#21333;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u758a1035">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="ud07bcdad">
+   <span class="ne-text">
+    &#35774;&#32622;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     parent
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#20063;&#23601;&#26159;&#20043;&#21069;&#21019;&#24314;&#30340;&#32447;&#31243;&#27744;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;
+   </span>
+  </li>
+  <li id="uaa5ddfc4">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     executor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#23427;&#26159;&#25105;&#20204;&#20043;&#21069;&#23454;&#20363;&#21270;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ThreadPerTaskExecutor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#25105;&#20204;&#35828;&#36807;&#65292;&#36825;&#20010;&#19996;&#35199;&#22312;&#32447;&#31243;&#27744;&#20013;&#27809;&#26377;&#29992;&#65292;&#23427;&#26159;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#29992;&#30340;&#65292;&#39532;&#19978;&#25105;&#20204;&#23601;&#35201;&#30475;&#21040;&#23427;&#20102;&#12290;&#25552;&#21069;&#36879;&#38706;&#19968;&#19979;&#65292;&#23427;&#29992;&#26469;&#24320;&#21551;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#30340;&#32447;&#31243;&#65288;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Thread
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#65289;&#12290;
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="uf2e54263">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     taskQueue
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#36825;&#31639;&#26159;&#35813;&#26500;&#36896;&#26041;&#27861;&#20013;&#26032;&#30340;&#19996;&#35199;&#65292;&#23427;&#26159;&#20219;&#21153;&#38431;&#21015;&#12290;&#25105;&#20204;&#21069;&#38754;&#35828;&#36807;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#38656;&#35201;&#36127;&#36131; IO &#20107;&#20214;&#21644;&#38750; IO &#20107;&#20214;&#65292;&#36890;&#24120;&#23427;&#37117;&#22312;&#25191;&#34892;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     select
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#25110;&#32773;&#27491;&#22312;&#22788;&#29702;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectedKeys
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#22914;&#26524;&#25105;&#20204;&#35201;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     submit
+    </span>
+   </code>
+   <span class="ne-text">
+    &#19968;&#20010;&#20219;&#21153;&#32473;&#23427;&#65292;&#20219;&#21153;&#23601;&#20250;&#34987;&#25918;&#21040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     taskQueue
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#65292;&#31561;&#23427;&#26469;&#36718;&#35810;&#12290;
+   </span>
+  </li>
+  <li id="u47eae5c2">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     rejectedExecutionHandler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     taskQueue
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#40664;&#35748;&#23481;&#37327;&#26159; 16&#65292;&#25152;&#20197;&#65292;&#22914;&#26524;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     submit
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#20219;&#21153;&#22534;&#31215;&#20102;&#21040;&#20102; 16&#65292;&#20877;&#24448;&#37324;&#38754;&#25552;&#20132;&#20219;&#21153;&#20250;&#35302;&#21457;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     rejectedExecutionHandler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#25191;&#34892;&#31574;&#30053;&#12290;
+   </span>
+   <span class="ne-text">
+   </span>
+  </li>
+ </ul>
+ <div class="ne-quote">
+  <p class="ne-p" id="u0151f93c">
+   <span class="ne-text">
+    &#36824;&#35760;&#24471;&#40664;&#35748;&#31574;&#30053;&#21527;&#65306;&#25243;&#20986;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     RejectedExecutionException
+    </span>
+   </code>
+   <span class="ne-text">
+    &#24322;&#24120;&#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="u67a0bae0">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="ub8543fc9">
+   <span class="ne-text">
+    &#22312;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#40664;&#35748;&#26500;&#36896;&#20013;&#65292;&#23427;&#30340;&#23454;&#29616;&#26159;&#36825;&#26679;&#30340;&#65306;
+   </span>
+  </p>
+  <p class="ne-p" id="ucb4653c9">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u9b16f43f">
+   <span class="ne-text">
+   </span>
+  </p>
+ </div>
+ <pre class="ne-codeblock language-java" data-language="java" id="5aa17b19">private static final RejectedExecutionHandler REJECT = new RejectedExecutionHandler() {
+    @Override
+    public void rejected(Runnable task, SingleThreadEventExecutor executor) {
+        throw new RejectedExecutionException();
+    }
+};</pre>
+ <p class="ne-p" id="uc299a318">
+  <br>
+ </p>
+ <p class="ne-p" id="u9d0ced7c">
+  <span class="ne-text">
+   &#28982;&#21518;&#65292;&#25105;&#20204;&#20877;&#22238;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u1b6a66a9">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="10c673c4">NioEventLoop(NioEventLoopGroup parent, Executor executor, SelectorProvider selectorProvider,
+             SelectStrategy strategy, RejectedExecutionHandler rejectedExecutionHandler) {
+    // &#25105;&#20204;&#21018;&#21018;&#35828;&#23436;&#20102;&#36825;&#20010;
+    super(parent, executor, false, DEFAULT_MAX_PENDING_TASKS, rejectedExecutionHandler);
+    if (selectorProvider == null) {
+        throw new NullPointerException("selectorProvider");
+    }
+    if (strategy == null) {
+        throw new NullPointerException("selectStrategy");
+    }
+    provider = selectorProvider;
+    // &#21019;&#24314; selector &#23454;&#20363;
+    final SelectorTuple selectorTuple = openSelector();
+    selector = selectorTuple.selector;
+    unwrappedSelector = selectorTuple.unwrappedSelector;
+
+    selectStrategy = strategy;
+}</pre>
+ <p class="ne-p" id="u2af401a0">
+  <br>
+ </p>
+ <p class="ne-p" id="u6059fe40">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#65292;&#26368;&#37325;&#35201;&#30340;&#26041;&#27861;&#20854;&#23454;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    openSelector()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#23427;&#23558;&#21019;&#24314; NIO &#20013;&#26368;&#37325;&#35201;&#30340;&#19968;&#20010;&#32452;&#20214;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     Selector
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#12290;&#22312;&#36825;&#20010;&#26041;&#27861;&#20013;&#65292;Netty &#20063;&#20570;&#20102;&#19968;&#20123;&#20248;&#21270;&#65292;&#36825;&#37096;&#20998;&#25105;&#20204;&#23601;&#19981;&#21435;&#20998;&#26512;&#23427;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4937c1f8">
+  <br>
+ </p>
+ <p class="ne-p" id="u44c6bdf0">
+  <span class="ne-text">
+   &#21040;&#36825;&#37324;&#65292;&#25105;&#20204;&#30340;&#32447;&#31243;&#27744;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21019;&#24314;&#23436;&#25104;&#20102;&#65292;&#24182;&#19988;&#23454;&#20363;&#21270;&#20102;&#27744;&#20013;&#30340;&#25152;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u457cbdb5">
+  <br>
+ </p>
+ <p class="ne-p" id="u5ddf71a9">
+  <span class="ne-text">
+   &#21516;&#26102;&#65292;&#22823;&#23478;&#24212;&#35813;&#24050;&#32463;&#30475;&#21040;&#65292;&#19978;&#38754;&#24182;&#27809;&#26377;&#30495;&#27491;&#21019;&#24314;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#32447;&#31243;&#65288;&#27809;&#26377;&#21019;&#24314;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Thread
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1aa88da7">
+  <br>
+ </p>
+ <p class="ne-p" id="u505aa554">
+  <span class="ne-text">
+   &#25552;&#21069;&#36879;&#38706;&#19968;&#19979;&#65292;&#21019;&#24314;&#32447;&#31243;&#30340;&#26102;&#26426;&#22312;&#31532;&#19968;&#20010;&#20219;&#21153;&#25552;&#20132;&#36807;&#26469;&#30340;&#26102;&#20505;&#65292;&#37027;&#20040;&#31532;&#19968;&#20010;&#20219;&#21153;&#26159;&#20160;&#20040;&#21602;&#65311;&#23601;&#26159;&#25105;&#20204;&#21069;&#38754;&#35828;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     register
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ud56e2335">
+  <br>
+ </p>
+ <h2 id="f5c08dc5">
+  <span class="ne-text">
+   NioEventLoop &#30340;&#24037;&#20316;&#27969;&#31243;
+  </span>
+ </h2>
+ <p class="ne-p" id="u60c6ef4d">
+  <br>
+ </p>
+ <p class="ne-p" id="u6b1c08f9">
+  <span class="ne-text">
+   &#21069;&#38754;&#65292;&#25105;&#20204;&#22312;&#20998;&#26512;&#32447;&#31243;&#27744;&#30340;&#23454;&#20363;&#21270;&#30340;&#26102;&#20505;&#35828;&#36807;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#24182;&#27809;&#26377;&#21551;&#21160; Java &#32447;&#31243;&#12290;&#36825;&#37324;&#25105;&#20204;&#26469;&#20180;&#32454;&#20998;&#26512;&#19979;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36807;&#31243;&#20013;&#35843;&#29992;&#30340;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     eventLoop.execute(runnable)
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#65292;&#36825;&#20010;&#20195;&#30721;&#22312;&#29238;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SingleThreadEventExecutor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub6bb306d">
+  <br>
+ </p>
+ <p class="ne-p" id="u07af127d">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.util.concurrent.SingleThreadEventExecutor#execute
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u9b312100">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="33e8a4c7">@Override
+public void execute(Runnable task) {
+    if (task == null) {
+        throw new NullPointerException("task");
+    }
+    // &#21028;&#26029;&#28155;&#21152;&#20219;&#21153;&#30340;&#32447;&#31243;&#26159;&#21542;&#23601;&#26159;&#24403;&#21069; EventLoop &#20013;&#30340;&#32447;&#31243;
+    boolean inEventLoop = inEventLoop();
+
+    // &#28155;&#21152;&#20219;&#21153;&#21040;&#20043;&#21069;&#20171;&#32461;&#30340; taskQueue &#20013;&#65292;
+    //     &#22914;&#26524; taskQueue &#28385;&#20102;(&#40664;&#35748;&#22823;&#23567; 16)&#65292;&#26681;&#25454;&#25105;&#20204;&#20043;&#21069;&#35828;&#30340;&#65292;&#40664;&#35748;&#30340;&#31574;&#30053;&#26159;&#25243;&#20986;&#24322;&#24120;
+    addTask(task);
+
+    if (!inEventLoop) {
+        // &#22914;&#26524;&#19981;&#26159; NioEventLoop &#20869;&#37096;&#32447;&#31243;&#25552;&#20132;&#30340; task&#65292;&#37027;&#20040;&#21028;&#26029;&#19979;&#32447;&#31243;&#26159;&#21542;&#24050;&#32463;&#21551;&#21160;&#65292;&#27809;&#26377;&#30340;&#35805;&#65292;&#23601;&#21551;&#21160;&#32447;&#31243;
+        startThread();
+        if (isShutdown() &amp;&amp; removeTask(task)) {
+            reject();
+        }
+    }
+
+    if (!addTaskWakesUp &amp;&amp; wakesUpForTask(task)) {
+        wakeup(inEventLoop);
+    }
+}</pre>
+ <p class="ne-p" id="u7e61609a">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u1188e87f">
+   <span class="ne-text">
+    &#21407;&#26469;&#21551;&#21160;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#30340;&#32447;&#31243;&#30340;&#26041;&#27861;&#22312;&#36825;&#37324;&#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="ub53eb1c3">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u37c7c713">
+   <span class="ne-text">
+    &#21478;&#22806;&#65292;&#19978;&#33410;&#25105;&#20204;&#35828;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     register
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25805;&#20316;&#36827;&#21040;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     taskQueue
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#65292;&#25152;&#20197;&#23427;&#20854;&#23454;&#26159;&#34987;&#24402;&#31867;&#21040;&#20102;&#38750; IO &#25805;&#20316;&#30340;&#33539;&#30068;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u2d80c95d">
+  <br>
+ </p>
+ <p class="ne-p" id="u98610133">
+  <span class="ne-text">
+   &#19979;&#38754;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    startThread
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#65292;&#21028;&#26029;&#32447;&#31243;&#26159;&#21542;&#24050;&#32463;&#21551;&#21160;&#26469;&#20915;&#23450;&#26159;&#21542;&#35201;&#36827;&#34892;&#21551;&#21160;&#25805;&#20316;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6c74d960">
+  <br>
+ </p>
+ <p class="ne-p" id="ud7200308">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.util.concurrent.SingleThreadEventExecutor#startThread
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u1e40c063">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="7371931e">private void startThread() {
+    if (state == ST_NOT_STARTED) {
+        if (STATE_UPDATER.compareAndSet(this, ST_NOT_STARTED, ST_STARTED)) {
+            try {
+                doStartThread();
+            } catch (Throwable cause) {
+                STATE_UPDATER.set(this, ST_NOT_STARTED);
+                PlatformDependent.throwException(cause);
+            }
+        }
+    }
+}</pre>
+ <p class="ne-p" id="u408f7dd7">
+  <br>
+ </p>
+ <p class="ne-p" id="u3736c034">
+  <span class="ne-text">
+   &#25105;&#20204;&#25353;&#29031;&#21069;&#38754;&#30340;&#24605;&#36335;&#65292;&#26681;&#25454;&#32447;&#31243;&#27809;&#26377;&#21551;&#21160;&#30340;&#24773;&#20917;&#65292;&#26469;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doStartThread()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6a2bcfd3">
+  <br>
+ </p>
+ <p class="ne-p" id="ubb685c2a">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.util.concurrent.SingleThreadEventExecutor#doStartThread
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u561b8fba">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="0d3626ab">private void doStartThread() {
+    assert thread == null;
+    // &#36825;&#37324;&#30340; executor &#22823;&#23478;&#26159;&#19981;&#26159;&#26377;&#28857;&#29087;&#24713;&#30340;&#24863;&#35273;&#65292;&#23427;&#23601;&#26159;&#19968;&#24320;&#22987;&#25105;&#20204;&#23454;&#20363;&#21270; NioEventLoop &#30340;&#26102;&#20505;&#20256;&#36827;&#26469;&#30340; ThreadPerTaskExecutor &#30340;&#23454;&#20363;&#12290;&#23427;&#26159;&#27599;&#27425;&#26469;&#19968;&#20010;&#20219;&#21153;&#65292;&#21019;&#24314;&#19968;&#20010;&#32447;&#31243;&#30340;&#37027;&#31181; executor&#12290;
+    // &#19968;&#26086;&#25105;&#20204;&#35843;&#29992;&#23427;&#30340; execute &#26041;&#27861;&#65292;&#23427;&#23601;&#20250;&#21019;&#24314;&#19968;&#20010;&#26032;&#30340;&#32447;&#31243;&#65292;&#25152;&#20197;&#36825;&#37324;&#32456;&#20110;&#20250;&#21019;&#24314; Thread &#23454;&#20363;
+    executor.execute(new Runnable() {
+        @Override
+        public void run() {
+            // &#30475;&#36825;&#37324;&#65292;&#23558; &#8220;executor&#8221; &#20013;&#21019;&#24314;&#30340;&#36825;&#20010;&#32447;&#31243;&#35774;&#32622;&#20026; NioEventLoop &#30340;&#32447;&#31243;&#65281;&#65281;&#65281;
+            thread = Thread.currentThread();
+
+            if (interrupted) {
+                thread.interrupt();
+            }
+
+            boolean success = false;
+            updateLastExecutionTime();
+            try {
+                // &#25191;&#34892; SingleThreadEventExecutor &#30340; run() &#26041;&#27861;&#65292;&#23427;&#22312; NioEventLoop &#20013;&#23454;&#29616;&#20102;
+                SingleThreadEventExecutor.this.run();
+                success = true;
+            } catch (Throwable t) {
+                logger.warn("Unexpected exception from an event executor: ", t);
+            } finally {
+                // ... &#25105;&#20204;&#30452;&#25509;&#24573;&#30053;&#25481;&#36825;&#37324;&#30340;&#20195;&#30721;
+            }
+        }
+    });
+}</pre>
+ <p class="ne-p" id="u42696cfa">
+  <br>
+ </p>
+ <p class="ne-p" id="u9d8f7e53">
+  <span class="ne-text">
+   &#19978;&#38754;&#32447;&#31243;&#21551;&#21160;&#20197;&#21518;&#65292;&#20250;&#25191;&#34892;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    run()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#36825;&#26159;&#19968;&#20010;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#38750;&#24120;&#37325;&#35201;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#30340;&#26041;&#27861;&#65292;&#36825;&#20010;&#26041;&#27861;&#32943;&#23450;&#26159;&#27809;&#37027;&#20040;&#23481;&#26131;&#32467;&#26463;&#30340;&#65292;&#24517;&#28982;&#26159;&#20687; JDK &#32447;&#31243;&#27744;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Worker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37027;&#26679;&#65292;&#19981;&#26029;&#22320;&#24490;&#29615;&#33719;&#21462;&#26032;&#30340;&#20219;&#21153;&#30340;&#12290;&#23427;&#38656;&#35201;&#19981;&#26029;&#22320;&#20570;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    select
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#21644;&#36718;&#35810;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    taskQueue
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#38431;&#21015;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u51191d3a">
+  <br>
+ </p>
+ <p class="ne-p" id="u8c922162">
+  <span class="ne-text">
+   &#25105;&#20204;&#20808;&#26469;&#31616;&#21333;&#22320;&#30475;&#19968;&#19979;&#23427;&#30340;&#28304;&#30721;&#65292;&#36825;&#37324;&#20808;&#19981;&#20570;&#28145;&#20837;&#22320;&#20171;&#32461;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ubd0b5bd6">
+  <br>
+ </p>
+ <p class="ne-p" id="u92b834e9">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.nio.NioEventLoop#run
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u75c61562">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="89261e7a">@Override
+protected void run() {
+    // &#20195;&#30721;&#23884;&#22871;&#22312; for &#24490;&#29615;&#20013;
+    for (;;) {
+        try {
+            // selectStrategy &#32456;&#20110;&#35201;&#27966;&#19978;&#29992;&#22330;&#20102;
+            // &#23427;&#26377;&#20004;&#20010;&#20540;&#65292;&#19968;&#20010;&#26159; CONTINUE &#19968;&#20010;&#26159; SELECT
+            // &#38024;&#23545;&#36825;&#22359;&#20195;&#30721;&#65292;&#25105;&#20204;&#20998;&#26512;&#19968;&#19979;&#12290;
+            // 1. &#22914;&#26524; taskQueue &#19981;&#20026;&#31354;&#65292;&#20063;&#23601;&#26159; hasTasks() &#36820;&#22238; true&#65292;
+            //         &#37027;&#20040;&#25191;&#34892;&#19968;&#27425; selectNow()&#65292;&#35813;&#26041;&#27861;&#19981;&#20250;&#38459;&#22622;
+            // 2. &#22914;&#26524; hasTasks() &#36820;&#22238; false&#65292;&#37027;&#20040;&#25191;&#34892; SelectStrategy.SELECT &#20998;&#25903;&#65292;
+            //    &#36827;&#34892; select(...)&#65292;&#36825;&#22359;&#26159;&#24102;&#38459;&#22622;&#30340;
+            // &#36825;&#20010;&#24456;&#22909;&#29702;&#35299;&#65292;&#23601;&#26159;&#25353;&#29031;&#26159;&#21542;&#26377;&#20219;&#21153;&#22312;&#25490;&#38431;&#26469;&#20915;&#23450;&#26159;&#21542;&#21487;&#20197;&#36827;&#34892;&#38459;&#22622;
+            switch (selectStrategy.calculateStrategy(selectNowSupplier, hasTasks())) {
+                case SelectStrategy.CONTINUE:
+                    continue;
+                case SelectStrategy.SELECT:
+                    // &#22914;&#26524; !hasTasks()&#65292;&#37027;&#20040;&#36827;&#21040;&#36825;&#20010; select &#20998;&#25903;&#65292;&#36825;&#37324; select &#24102;&#38459;&#22622;&#30340;
+                    select(wakenUp.getAndSet(false));
+                    if (wakenUp.get()) {
+                        selector.wakeup();
+                    }
+                default:
+            }
+
+
+            cancelledKeys = 0;
+            needsToSelectAgain = false;
+            // &#40664;&#35748;&#22320;&#65292;ioRatio &#30340;&#20540;&#26159; 50
+            final int ioRatio = this.ioRatio;
+
+            if (ioRatio == 100) {
+                // &#22914;&#26524; ioRatio &#35774;&#32622;&#20026; 100&#65292;&#37027;&#20040;&#20808;&#25191;&#34892; IO &#25805;&#20316;&#65292;&#28982;&#21518;&#22312; finally &#22359;&#20013;&#25191;&#34892; taskQueue &#20013;&#30340;&#20219;&#21153;
+                try {
+                    // 1. &#25191;&#34892; IO &#25805;&#20316;&#12290;&#22240;&#20026;&#21069;&#38754; select &#20197;&#21518;&#65292;&#21487;&#33021;&#26377;&#20123; channel &#26159;&#38656;&#35201;&#22788;&#29702;&#30340;&#12290;
+                    processSelectedKeys();
+                } finally {
+                    // 2. &#25191;&#34892;&#38750; IO &#20219;&#21153;&#65292;&#20063;&#23601;&#26159; taskQueue &#20013;&#30340;&#20219;&#21153;
+                    runAllTasks();
+                }
+            } else {
+                // &#22914;&#26524; ioRatio &#19981;&#26159; 100&#65292;&#37027;&#20040;&#26681;&#25454; IO &#25805;&#20316;&#32791;&#26102;&#65292;&#38480;&#21046;&#38750; IO &#25805;&#20316;&#32791;&#26102;
+                final long ioStartTime = System.nanoTime();
+                try {
+                    // &#25191;&#34892; IO &#25805;&#20316;
+                    processSelectedKeys();
+                } finally {
+                    // &#26681;&#25454; IO &#25805;&#20316;&#28040;&#32791;&#30340;&#26102;&#38388;&#65292;&#35745;&#31639;&#25191;&#34892;&#38750; IO &#25805;&#20316;&#65288;runAllTasks&#65289;&#21487;&#20197;&#29992;&#22810;&#23569;&#26102;&#38388;.
+                    final long ioTime = System.nanoTime() - ioStartTime;
+                    runAllTasks(ioTime * (100 - ioRatio) / ioRatio);
+                }
+            }
+        } catch (Throwable t) {
+            handleLoopException(t);
+        }
+        // Always handle shutdown even if the loop processing threw an exception.
+        try {
+            if (isShuttingDown()) {
+                closeAll();
+                if (confirmShutdown()) {
+                    return;
+                }
+            }
+        } catch (Throwable t) {
+            handleLoopException(t);
+        }
+    }
+}</pre>
+ <p class="ne-p" id="uf706a980">
+  <br>
+ </p>
+ <p class="ne-p" id="u13f7805e">
+  <span class="ne-text">
+   &#19978;&#38754;&#36825;&#27573;&#20195;&#30721;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26680;&#24515;&#65292;&#36825;&#37324;&#20171;&#32461;&#20004;&#28857;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u3fcb15b7">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u5ea2552a">
+   <span class="ne-text">
+    &#39318;&#20808;&#65292;&#20250;&#26681;&#25454;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     hasTasks()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#32467;&#26524;&#26469;&#20915;&#23450;&#26159;&#25191;&#34892;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectNow()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36824;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     select(oldWakenUp)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#36825;&#20010;&#24212;&#35813;&#22909;&#29702;&#35299;&#12290;&#22914;&#26524;&#26377;&#20219;&#21153;&#27491;&#22312;&#31561;&#24453;&#65292;&#37027;&#20040;&#24212;&#35813;&#20351;&#29992;&#26080;&#38459;&#22622;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectNow()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#22914;&#26524;&#27809;&#26377;&#20219;&#21153;&#22312;&#31561;&#24453;&#65292;&#37027;&#20040;&#23601;&#21487;&#20197;&#20351;&#29992;&#24102;&#38459;&#22622;&#30340; select &#25805;&#20316;&#12290;
+   </span>
+  </li>
+  <li id="u9536d479">
+   <code class="ne-code">
+    <span class="ne-text">
+     ioRatio
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25511;&#21046; IO &#25805;&#20316;&#25152;&#21344;&#30340;&#26102;&#38388;&#27604;&#37325;&#65306;
+   </span>
+  </li>
+ </ol>
+ <ul class="ne-list-wrap">
+  <ul class="ne-ul" ne-level="1">
+   <li id="u5ce97504">
+    <span class="ne-text">
+     &#22914;&#26524;&#35774;&#32622;&#20026; 100%&#65292;&#37027;&#20040;&#20808;&#25191;&#34892; IO &#25805;&#20316;&#65292;&#28982;&#21518;&#20877;&#25191;&#34892;&#20219;&#21153;&#38431;&#21015;&#20013;&#30340;&#20219;&#21153;&#12290;
+    </span>
+   </li>
+   <li id="u380f30f6">
+    <span class="ne-text">
+     &#22914;&#26524;&#19981;&#26159; 100%&#65292;&#37027;&#20040;&#20808;&#25191;&#34892; IO &#25805;&#20316;&#65292;&#28982;&#21518;&#25191;&#34892;
+    </span>
+    <code class="ne-code">
+     <span class="ne-text">
+      taskQueue
+     </span>
+    </code>
+    <span class="ne-text">
+     &#20013;&#30340;&#20219;&#21153;&#65292;&#20294;&#26159;&#38656;&#35201;&#25511;&#21046;&#25191;&#34892;&#20219;&#21153;&#30340;&#24635;&#26102;&#38388;&#12290;&#20063;&#23601;&#26159;&#35828;&#65292;&#38750; IO &#25805;&#20316;&#21487;&#20197;&#21344;&#29992;&#30340;&#26102;&#38388;&#65292;&#36890;&#36807;
+    </span>
+    <code class="ne-code">
+     <span class="ne-text">
+      ioRatio
+     </span>
+    </code>
+    <span class="ne-text">
+     &#20197;&#21450;&#36825;&#27425; IO &#25805;&#20316;&#32791;&#26102;&#35745;&#31639;&#24471;&#20986;&#12290;
+    </span>
+   </li>
+  </ul>
+ </ul>
+ <p class="ne-p" id="u4eb9ddbd">
+  <br>
+ </p>
+ <p class="ne-p" id="uc537cf3e">
+  <span class="ne-text">
+   &#25105;&#20204;&#36825;&#37324;&#20808;&#19981;&#35201;&#21435;&#20851;&#24515;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    select(oldWakenUp)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    processSelectedKeys()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    runAllTasks(&#8230;)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#32454;&#33410;&#65292;&#21482;&#35201;&#20808;&#29702;&#35299;&#23427;&#20204;&#20998;&#21035;&#20570;&#20160;&#20040;&#20107;&#24773;&#23601;&#21487;&#20197;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5746bc66">
+  <br>
+ </p>
+ <p class="ne-p" id="u05dd117c">
+  <span class="ne-text">
+   &#22238;&#36807;&#31070;&#26469;&#65292;&#25105;&#20204;&#21069;&#38754;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26102;&#20505;&#25552;&#20132;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20219;&#21153;&#32473;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#25910;&#21040;&#30340;&#31532;&#19968;&#20010;&#20219;&#21153;&#65292;&#25152;&#20197;&#36825;&#37324;&#20250;&#23454;&#20363;&#21270;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Thread
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24182;&#19988;&#21551;&#21160;&#65292;&#28982;&#21518;&#36827;&#20837;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    run
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u3bc8ea0b">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uf62544b1">
+   <span class="ne-text">
+    &#24403;&#28982;&#20102;&#65292;&#23454;&#38469;&#24773;&#20917;&#21487;&#33021;&#26159;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#34987;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     register
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21040;&#19968;&#20010;&#24050;&#32463;&#21551;&#21160;&#32447;&#31243;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#20013;&#12290;
+   </span>
+  </p>
+ </div>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

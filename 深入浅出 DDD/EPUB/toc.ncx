@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="深入浅出 DDD" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>深入浅出 DDD</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="chapter_0">
+      <navLabel>
+        <text>开篇词：扬帆起航</text>
+      </navLabel>
+      <content src="7049661680644522023.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_1">
+      <navLabel>
+        <text>DDD 是什么？为什么我们用 DDD？</text>
+      </navLabel>
+      <content src="7049661680761962507.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_2">
+      <navLabel>
+        <text>战略设计：业务内聚与解耦</text>
+      </navLabel>
+      <content src="7049661680908763168.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_3">
+      <navLabel>
+        <text>战术设计：战略思想的落地与实践</text>
+      </navLabel>
+      <content src="7049662337921318945.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_4">
+      <navLabel>
+        <text>什么是事件风暴？</text>
+      </navLabel>
+      <content src="7049662434730065923.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_5">
+      <navLabel>
+        <text>分层架构：功能实现的技术指导</text>
+      </navLabel>
+      <content src="7049662366673272835.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_6">
+      <navLabel>
+        <text>分层详解：如何明确各层级的使用场景与方式</text>
+      </navLabel>
+      <content src="7049662636023087142.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_7">
+      <navLabel>
+        <text>仓储落地：串联数据模型与领域模型的桥梁</text>
+      </navLabel>
+      <content src="7049662602401546272.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_8">
+      <navLabel>
+        <text>事件驱动模型踩坑实践</text>
+      </navLabel>
+      <content src="7049662725185781792.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_9">
+      <navLabel>
+        <text>如何落地 CQRS？</text>
+      </navLabel>
+      <content src="7049662670416379915.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_10">
+      <navLabel>
+        <text>如何落地防腐思想？</text>
+      </navLabel>
+      <content src="7049662751219646503.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_11">
+      <navLabel>
+        <text>DDD-Demo 演示（一）：分包与分层</text>
+      </navLabel>
+      <content src="7049662812179660811.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_12">
+      <navLabel>
+        <text>DDD-Demo 演示（二）：建模与建仓</text>
+      </navLabel>
+      <content src="7049662849332805670.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_13">
+      <navLabel>
+        <text>DDD-Demo 演示（三）：增删改查</text>
+      </navLabel>
+      <content src="7049662777190776844.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_14">
+      <navLabel>
+        <text>DDD-Demo 演示（四）：复杂逻辑处理</text>
+      </navLabel>
+      <content src="7049662895591784480.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_15">
+      <navLabel>
+        <text>MVC 迁移 DDD 技术方案与思考</text>
+      </navLabel>
+      <content src="7049662922426941479.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_16">
+      <navLabel>
+        <text>结束语：一些碎碎念</text>
+      </navLabel>
+      <content src="7049662946250588164.xhtml"/>
+    </navPoint>
+  </navMap>
+</ncx>

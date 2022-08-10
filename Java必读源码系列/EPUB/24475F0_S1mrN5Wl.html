@@ -1,0 +1,2083 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>&#12300;&#28304;&#30721;&#35299;&#35835;&#12301;&#26381;&#21153;&#30446;&#24405;</h1><div class="lake-content" typography="classic">
+ <div class="ne-quote">
+  <p class="ne-p" id="u480aa87b">
+   <span class="ne-text">
+    &#21407;&#25991;&#22320;&#22336;&#65306;
+   </span>
+   <a class="ne-link" data-href="https://dubbo.apache.org/zh/docsv2.7/dev/source/directory/" href="https://dubbo.apache.org/zh/docsv2.7/dev/source/directory/" target="_blank">
+    <span class="ne-text">
+     https://dubbo.apache.org/zh/docsv2.7/dev/source/directory/
+    </span>
+   </a>
+  </p>
+  <p class="ne-p" id="u4cb7bc04">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u76a13793">
+   <span class="ne-text">
+    &#20316;&#32773;&#65306; Dubbo &#23448;&#26041;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u3ff58e65">
+  <br>
+ </p>
+ <p class="ne-p" id="u7d21c677">
+  <span class="ne-text">
+   &#26412;&#25991;&#20171;&#32461;&#20102;&#26381;&#21153;&#30446;&#24405;&#30340;&#21407;&#29702;&#21644;&#23454;&#29616;&#32454;&#33410;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u2e0a9aec">
+  <br>
+ </p>
+ <h2 id="25970172">
+  <span class="ne-text">
+   1. &#31616;&#20171;
+  </span>
+ </h2>
+ <p class="ne-p" id="ub4eb4539">
+  <br>
+ </p>
+ <p class="ne-p" id="u5aa197a5">
+  <span class="ne-text">
+   &#26412;&#31687;&#25991;&#31456;&#65292;&#23558;&#24320;&#22987;&#20998;&#26512; Dubbo &#38598;&#32676;&#23481;&#38169;&#26041;&#38754;&#30340;&#28304;&#30721;&#12290;&#38598;&#32676;&#23481;&#38169;&#28304;&#30721;&#21253;&#21547;&#22235;&#20010;&#37096;&#20998;&#65292;&#20998;&#21035;&#26159;:
+  </span>
+ </p>
+ <p class="ne-p" id="ua80cafc1">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="udc1145ac">
+   <span class="ne-text">
+    &#26381;&#21153;&#30446;&#24405; Directory
+   </span>
+  </li>
+  <li id="u74d43128">
+   <span class="ne-text">
+    &#26381;&#21153;&#36335;&#30001; Router
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="u8ecbd17b">
+   <span class="ne-text">
+    &#38598;&#32676; Cluster
+   </span>
+  </li>
+  <li id="u74e49d63">
+   <span class="ne-text">
+    &#36127;&#36733;&#22343;&#34913; LoadBalance&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u98cdd4bd">
+  <br>
+ </p>
+ <p class="ne-p" id="u5c962a9c">
+  <span class="ne-text">
+   &#36825;&#20960;&#20010;&#37096;&#20998;&#30340;&#28304;&#30721;&#36923;&#36753;&#30456;&#23545;&#27604;&#36739;&#29420;&#31435;&#65292;&#25105;&#20204;&#23558;&#20250;&#20998;&#22235;&#31687;&#25991;&#31456;&#36827;&#34892;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u24028b7f">
+  <br>
+ </p>
+ <p class="ne-p" id="u52ea81c8">
+  <span class="ne-text">
+   &#26412;&#31687;&#25991;&#31456;&#20316;&#20026;&#38598;&#32676;&#23481;&#38169;&#30340;&#24320;&#31687;&#25991;&#31456;&#65292;&#23558;&#21644;&#22823;&#23478;&#19968;&#36215;&#20998;&#26512;&#26381;&#21153;&#30446;&#24405;&#30456;&#20851;&#30340;&#28304;&#30721;&#12290;&#22312;&#36827;&#34892;&#28145;&#20837;&#20998;&#26512;&#20043;&#21069;&#65292;&#25105;&#20204;&#20808;&#26469;&#20102;&#35299;&#19968;&#19979;&#65306;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#26381;&#21153;&#30446;&#24405;&#26159;&#20160;&#20040;&#65311;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u697b630e">
+  <br>
+ </p>
+ <p class="ne-p" id="u9bccc36d">
+  <strong>
+   <span class="ne-text">
+    &#26381;&#21153;&#30446;&#24405;&#20013;&#23384;&#20648;&#20102;&#19968;&#20123;&#21644;&#26381;&#21153;&#25552;&#20379;&#32773;&#26377;&#20851;&#30340;&#20449;&#24687;&#65292;&#36890;&#36807;&#26381;&#21153;&#30446;&#24405;&#65292;&#26381;&#21153;&#28040;&#36153;&#32773;&#21487;&#33719;&#21462;&#21040;&#26381;&#21153;&#25552;&#20379;&#32773;&#30340;&#20449;&#24687;&#65292;&#27604;&#22914; ip&#12289;&#31471;&#21475;&#12289;&#26381;&#21153;&#21327;&#35758;&#31561;&#12290;&#36890;&#36807;&#36825;&#20123;&#20449;&#24687;&#65292;&#26381;&#21153;&#28040;&#36153;&#32773;&#23601;&#21487;&#36890;&#36807; Netty &#31561;&#23458;&#25143;&#31471;&#36827;&#34892;&#36828;&#31243;&#35843;&#29992;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u46723ed7">
+  <br>
+ </p>
+ <p class="ne-p" id="u43bc72a7">
+  <span class="ne-text">
+   &#22312;&#19968;&#20010;&#26381;&#21153;&#38598;&#32676;&#20013;&#65292;&#26381;&#21153;&#25552;&#20379;&#32773;&#25968;&#37327;&#24182;&#19981;&#26159;&#19968;&#25104;&#19981;&#21464;&#30340;&#65292;&#22914;&#26524;&#38598;&#32676;&#20013;&#26032;&#22686;&#20102;&#19968;&#21488;&#26426;&#22120;&#65292;&#30456;&#24212;&#22320;&#22312;&#26381;&#21153;&#30446;&#24405;&#20013;&#23601;&#35201;&#26032;&#22686;&#19968;&#26465;&#26381;&#21153;&#25552;&#20379;&#32773;&#35760;&#24405;&#12290;&#25110;&#32773;&#65292;&#22914;&#26524;&#26381;&#21153;&#25552;&#20379;&#32773;&#30340;&#37197;&#32622;&#20462;&#25913;&#20102;&#65292;&#26381;&#21153;&#30446;&#24405;&#20013;&#30340;&#35760;&#24405;&#20063;&#35201;&#20570;&#30456;&#24212;&#30340;&#26356;&#26032;&#12290;&#22914;&#26524;&#36825;&#26679;&#35828;&#65292;&#26381;&#21153;&#30446;&#24405;&#21644;&#27880;&#20876;&#20013;&#24515;&#30340;&#21151;&#33021;&#19981;&#23601;&#38647;&#21516;&#20102;&#21527;&#65311;&#30830;&#23454;&#22914;&#27492;&#65292;&#36825;&#37324;&#36825;&#20040;&#35828;&#26159;&#20026;&#20102;&#26041;&#20415;&#22823;&#23478;&#29702;&#35299;&#12290;&#23454;&#38469;&#19978;&#26381;&#21153;&#30446;&#24405;&#22312;&#33719;&#21462;&#27880;&#20876;&#20013;&#24515;&#30340;&#26381;&#21153;&#37197;&#32622;&#20449;&#24687;&#21518;&#65292;&#20250;&#20026;&#27599;&#26465;&#37197;&#32622;&#20449;&#24687;&#29983;&#25104;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#65292;&#24182;&#25226;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#23384;&#20648;&#36215;&#26469;&#65292;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25165;&#26159;&#26381;&#21153;&#30446;&#24405;&#26368;&#32456;&#25345;&#26377;&#30340;&#23545;&#35937;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26377;&#20160;&#20040;&#29992;&#21602;&#65311;&#30475;&#21517;&#23383;&#23601;&#30693;&#36947;&#20102;&#65292;&#36825;&#26159;&#19968;&#20010;&#20855;&#26377;&#36828;&#31243;&#35843;&#29992;&#21151;&#33021;&#30340;&#23545;&#35937;&#12290;&#35762;&#21040;&#36825;&#22823;&#23478;&#24212;&#35813;&#30693;&#36947;&#20102;&#20160;&#20040;&#26159;&#26381;&#21153;&#30446;&#24405;&#20102;&#65292;&#23427;&#21487;&#20197;&#30475;&#20570;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#38598;&#21512;&#65292;&#19988;&#36825;&#20010;&#38598;&#21512;&#20013;&#30340;&#20803;&#32032;&#20250;&#38543;&#27880;&#20876;&#20013;&#24515;&#30340;&#21464;&#21270;&#32780;&#36827;&#34892;&#21160;&#24577;&#35843;&#25972;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc6dfc873">
+  <br>
+ </p>
+ <p class="ne-p" id="u7c34a994">
+  <span class="ne-text">
+   &#20851;&#20110;&#26381;&#21153;&#30446;&#24405;&#36825;&#37324;&#23601;&#20808;&#20171;&#32461;&#36825;&#20123;&#65292;&#22823;&#23478;&#20808;&#26377;&#20010;&#22823;&#33268;&#21360;&#35937;&#12290;&#25509;&#19979;&#26469;&#25105;&#20204;&#36890;&#36807;&#32487;&#25215;&#20307;&#31995;&#22270;&#26469;&#20102;&#35299;&#19968;&#19979;&#26381;&#21153;&#30446;&#24405;&#30340;&#23478;&#26063;&#25104;&#21592;&#37117;&#26377;&#21738;&#20123;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u203f2997">
+  <br>
+ </p>
+ <h2 id="7cea8d27">
+  <span class="ne-text">
+   2. &#32487;&#25215;&#20307;&#31995;
+  </span>
+ </h2>
+ <p class="ne-p" id="u569eae2c">
+  <br>
+ </p>
+ <p class="ne-p" id="u20931ceb">
+  <span class="ne-text">
+   &#26381;&#21153;&#30446;&#24405;&#30446;&#21069;&#20869;&#32622;&#30340;&#23454;&#29616;&#26377;&#20004;&#20010;&#65292;&#20998;&#21035;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StaticDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#23427;&#20204;&#22343;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AbstractDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23376;&#31867;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AbstractDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Directory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#36825;&#20010;&#25509;&#21475;&#21253;&#21547;&#20102;&#19968;&#20010;&#37325;&#35201;&#30340;&#26041;&#27861;&#23450;&#20041;&#65292;&#21363;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    list(Invocation)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#29992;&#20110;&#21015;&#20030;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#19979;&#38754;&#25105;&#20204;&#26469;&#30475;&#19968;&#19979;&#20182;&#20204;&#30340;&#32487;&#25215;&#20307;&#31995;&#22270;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u15a030d3">
+  <br>
+ </p>
+ <p class="ne-p" id="u8f0dc765">
+  <img class="ne-image" id="kqxsw" src="EPUB/imgkqxsw">
+ </p>
+ <p class="ne-p" id="u0c5dce0f">
+  <br>
+ </p>
+ <p class="ne-p" id="u0b845b6f">
+  <span class="ne-text">
+   &#22914;&#19978;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Directory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#32487;&#25215;&#33258;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Node
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Node
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#25509;&#21475;&#32487;&#25215;&#32773;&#27604;&#36739;&#22810;&#65292;&#20687;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Registry
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Monitor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#22343;&#32487;&#25215;&#20102;&#36825;&#20010;&#25509;&#21475;&#12290;&#36825;&#20010;&#25509;&#21475;&#21253;&#21547;&#20102;&#19968;&#20010;&#33719;&#21462;&#37197;&#32622;&#20449;&#24687;&#30340;&#26041;&#27861;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getUrl
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#23454;&#29616;&#35813;&#25509;&#21475;&#30340;&#31867;&#21487;&#20197;&#21521;&#22806;&#25552;&#20379;&#37197;&#32622;&#20449;&#24687;&#12290;&#21478;&#22806;&#65292;&#22823;&#23478;&#27880;&#24847;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NotifyListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#24403;&#27880;&#20876;&#20013;&#24515;&#33410;&#28857;&#20449;&#24687;&#21457;&#29983;&#21464;&#21270;&#21518;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21487;&#20197;&#36890;&#36807;&#27492;&#25509;&#21475;&#26041;&#27861;&#24471;&#21040;&#21464;&#26356;&#20449;&#24687;&#65292;&#24182;&#26681;&#25454;&#21464;&#26356;&#20449;&#24687;&#21160;&#24577;&#35843;&#25972;&#20869;&#37096;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u81b1253d">
+  <br>
+ </p>
+ <h2 id="b89d4cc5">
+  <span class="ne-text">
+   3. &#28304;&#30721;&#20998;&#26512;
+  </span>
+ </h2>
+ <p class="ne-p" id="u0d28200c">
+  <br>
+ </p>
+ <p class="ne-p" id="ua325fead">
+  <span class="ne-text">
+   &#26412;&#31456;&#23558;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AbstractDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;&#23427;&#20004;&#20010;&#23376;&#31867;&#30340;&#28304;&#30721;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AbstractDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23553;&#35013;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#20030;&#27969;&#31243;&#65292;&#20855;&#20307;&#30340;&#21015;&#20030;&#36923;&#36753;&#21017;&#30001;&#23376;&#31867;&#23454;&#29616;&#65292;&#36825;&#26159;&#20856;&#22411;&#30340;&#27169;&#26495;&#27169;&#24335;&#12290;&#25152;&#20197;&#65292;&#25509;&#19979;&#26469;&#25105;&#20204;&#20808;&#26469;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AbstractDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="udeedd30e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="e5cc39b0">public List&lt;Invoker&lt;T&gt;&gt; list(Invocation invocation) throws RpcException {
+    if (destroyed) {
+        throw new RpcException("Directory already destroyed...");
+    }
+    
+    // &#35843;&#29992; doList &#26041;&#27861;&#21015;&#20030; Invoker&#65292;doList &#26159;&#27169;&#26495;&#26041;&#27861;&#65292;&#30001;&#23376;&#31867;&#23454;&#29616;
+    List&lt;Invoker&lt;T&gt;&gt; invokers = doList(invocation);
+    
+    // &#33719;&#21462;&#36335;&#30001; Router &#21015;&#34920;
+    List&lt;Router&gt; localRouters = this.routers;
+    if (localRouters != null &amp;&amp; !localRouters.isEmpty()) {
+        for (Router router : localRouters) {
+            try {
+                // &#33719;&#21462; runtime &#21442;&#25968;&#65292;&#24182;&#26681;&#25454;&#21442;&#25968;&#20915;&#23450;&#26159;&#21542;&#36827;&#34892;&#36335;&#30001;
+                if (router.getUrl() == null || router.getUrl().getParameter(Constants.RUNTIME_KEY, false)) {
+                    // &#36827;&#34892;&#26381;&#21153;&#36335;&#30001;
+                    invokers = router.route(invokers, getConsumerUrl(), invocation);
+                }
+            } catch (Throwable t) {
+                logger.error("Failed to execute router: ...");
+            }
+        }
+    }
+    return invokers;
+}
+
+// &#27169;&#26495;&#26041;&#27861;&#65292;&#30001;&#23376;&#31867;&#23454;&#29616;
+protected abstract List&lt;Invoker&lt;T&gt;&gt; doList(Invocation invocation) throws RpcException;</pre>
+ <p class="ne-p" id="u9b45fb7a">
+  <br>
+ </p>
+ <p class="ne-p" id="ue4fdf82b">
+  <span class="ne-text">
+   &#19978;&#38754;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AbstractDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    list
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#28304;&#30721;&#65292;&#36825;&#20010;&#26041;&#27861;&#23553;&#35013;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21015;&#20030;&#36807;&#31243;&#12290;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6b78a5b9">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u75a18eb5">
+   <span class="ne-text">
+    &#35843;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     doList
+    </span>
+   </code>
+   <span class="ne-text">
+    &#33719;&#21462;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Invoker
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21015;&#34920;
+   </span>
+  </li>
+  <li id="u6399c8cc">
+   <span class="ne-text">
+    &#26681;&#25454;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Router
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     getUrl
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36820;&#22238;&#20540;&#20026;&#31354;&#19982;&#21542;&#65292;&#20197;&#21450;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     runtime
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21442;&#25968;&#20915;&#23450;&#26159;&#21542;&#36827;&#34892;&#26381;&#21153;&#36335;&#30001;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u5ebb9642">
+  <br>
+ </p>
+ <p class="ne-p" id="uc3a51bb0">
+  <span class="ne-text">
+   &#20197;&#19978;&#27493;&#39588;&#20013;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doList
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#27169;&#26495;&#26041;&#27861;&#65292;&#38656;&#30001;&#23376;&#31867;&#23454;&#29616;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Router
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    runtime
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21442;&#25968;&#36825;&#37324;&#31616;&#21333;&#35828;&#26126;&#19968;&#19979;&#65292;&#36825;&#20010;&#21442;&#25968;&#20915;&#23450;&#20102;&#26159;&#21542;&#22312;&#27599;&#27425;&#35843;&#29992;&#26381;&#21153;&#26102;&#37117;&#25191;&#34892;&#36335;&#30001;&#35268;&#21017;&#12290;&#22914;&#26524;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    runtime
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20026; true
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#65292;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37027;&#20040;&#27599;&#27425;&#35843;&#29992;&#26381;&#21153;&#21069;&#65292;&#37117;&#38656;&#35201;&#36827;&#34892;&#26381;&#21153;&#36335;&#30001;&#12290;&#36825;&#20010;&#23545;&#24615;&#33021;&#36896;&#25104;&#24433;&#21709;&#65292;&#37197;&#32622;&#26102;&#38656;&#35201;&#27880;&#24847;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6e83e5e7">
+  <br>
+ </p>
+ <p class="ne-p" id="u81cf57bd">
+  <span class="ne-text">
+   &#20851;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AbstractDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23601;&#20998;&#26512;&#36825;&#20040;&#22810;&#65292;&#19979;&#38754;&#24320;&#22987;&#20998;&#26512;&#23376;&#31867;&#30340;&#28304;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u2ad4c9bf">
+  <br>
+ </p>
+ <h3 id="20a6a882">
+  <span class="ne-text">
+   3.1 StaticDirectory:&#38745;&#24577;&#30446;&#24405;&#26381;&#21153;
+  </span>
+ </h3>
+ <p class="ne-p" id="uf49a5037">
+  <br>
+ </p>
+ <p class="ne-p" id="ua9542b9a">
+  <code class="ne-code">
+   <span class="ne-text">
+    StaticDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21363;&#38745;&#24577;&#26381;&#21153;&#30446;&#24405;&#65292;&#39038;&#21517;&#24605;&#20041;&#65292;&#23427;&#20869;&#37096;&#23384;&#25918;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#19981;&#20250;&#21464;&#21160;&#30340;&#12290;&#25152;&#20197;&#65292;&#29702;&#35770;&#19978;&#23427;&#21644;&#19981;&#21487;&#21464;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    List
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21151;&#33021;&#24456;&#30456;&#20284;&#12290;&#19979;&#38754;&#25105;&#20204;&#26469;&#30475;&#19968;&#19979;&#36825;&#20010;&#31867;&#30340;&#23454;&#29616;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u3e2e4bb4">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="233b1d44">public class StaticDirectory&lt;T&gt; extends AbstractDirectory&lt;T&gt; {
+
+    // Invoker &#21015;&#34920;
+    private final List&lt;Invoker&lt;T&gt;&gt; invokers;
+    // &#30465;&#30053;&#26500;&#36896;&#26041;&#27861;
+    @Override
+    public Class&lt;T&gt; getInterface() {
+        // &#33719;&#21462;&#25509;&#21475;&#31867;
+        return invokers.get(0).getInterface();
+    }
+    
+    // &#26816;&#27979;&#26381;&#21153;&#30446;&#24405;&#26159;&#21542;&#21487;&#29992;
+    @Override
+    public boolean isAvailable() {
+        if (isDestroyed()) {
+            return false;
+        }
+        for (Invoker&lt;T&gt; invoker : invokers) {
+            if (invoker.isAvailable()) {
+                // &#21482;&#35201;&#26377;&#19968;&#20010; Invoker &#26159;&#21487;&#29992;&#30340;&#65292;&#23601;&#35748;&#20026;&#24403;&#21069;&#30446;&#24405;&#26159;&#21487;&#29992;&#30340;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void destroy() {
+        if (isDestroyed()) {
+            return;
+        }
+        // &#35843;&#29992;&#29238;&#31867;&#38144;&#27585;&#36923;&#36753;
+        super.destroy();
+        // &#36941;&#21382; Invoker &#21015;&#34920;&#65292;&#24182;&#25191;&#34892;&#30456;&#24212;&#30340;&#38144;&#27585;&#36923;&#36753;
+        for (Invoker&lt;T&gt; invoker : invokers) {
+            invoker.destroy();
+        }
+        invokers.clear();
+    }
+
+    @Override
+    protected List&lt;Invoker&lt;T&gt;&gt; doList(Invocation invocation) throws RpcException {
+        // &#21015;&#20030; Inovker&#65292;&#20063;&#23601;&#26159;&#30452;&#25509;&#36820;&#22238; invokers &#25104;&#21592;&#21464;&#37327;
+        return invokers;
+    }
+}</pre>
+ <p class="ne-p" id="u48358d33">
+  <br>
+ </p>
+ <p class="ne-p" id="u91875521">
+  <span class="ne-text">
+   &#20197;&#19978;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StaticDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20195;&#30721;&#36923;&#36753;&#65292;&#24456;&#31616;&#21333;&#65292;&#23601;&#19981;&#22810;&#35828;&#20102;&#12290;&#19979;&#38754;&#26469;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#20010;&#31867;&#30340;&#36923;&#36753;&#27604;&#36739;&#22797;&#26434;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u64980b94">
+  <br>
+ </p>
+ <h3 id="f96163b4">
+  <span class="ne-text">
+   3.2 RegistryDirectory:&#21160;&#24577;&#26381;&#21153;&#30446;&#24405;
+  </span>
+ </h3>
+ <p class="ne-p" id="u27e345c0">
+  <br>
+ </p>
+ <p class="ne-p" id="u744e4260">
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#19968;&#31181;&#21160;&#24577;&#26381;&#21153;&#30446;&#24405;&#65292;&#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NotifyListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#12290;&#24403;&#27880;&#20876;&#20013;&#24515;&#26381;&#21153;&#37197;&#32622;&#21457;&#29983;&#21464;&#21270;&#21518;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21487;&#25910;&#21040;&#19982;&#24403;&#21069;&#26381;&#21153;&#30456;&#20851;&#30340;&#21464;&#21270;&#12290;&#25910;&#21040;&#21464;&#26356;&#36890;&#30693;&#21518;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21487;&#26681;&#25454;&#37197;&#32622;&#21464;&#26356;&#20449;&#24687;&#21047;&#26032;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#26377;&#20960;&#20010;&#27604;&#36739;&#37325;&#35201;&#30340;&#36923;&#36753;&#65292;&#31532;&#19968;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21015;&#20030;&#36923;&#36753;&#65292;&#31532;&#20108;&#26159;&#25509;&#25910;&#26381;&#21153;&#37197;&#32622;&#21464;&#26356;&#30340;&#36923;&#36753;&#65292;&#31532;&#19977;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#30340;&#21047;&#26032;&#36923;&#36753;&#12290;&#25509;&#19979;&#26469;&#25353;&#39034;&#24207;&#23545;&#36825;&#19977;&#22359;&#36923;&#36753;&#36827;&#34892;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u3ed4d734">
+  <br>
+ </p>
+ <h4 id="f4a4ce17">
+  <span class="ne-text">
+   3.2.1 &#21015;&#20030; Invoker
+  </span>
+ </h4>
+ <p class="ne-p" id="u94a8e01d">
+  <br>
+ </p>
+ <p class="ne-p" id="uac089b8a">
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#20030;&#36923;&#36753;&#23553;&#35013;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doList
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#65292;&#30456;&#20851;&#20195;&#30721;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u19dda775">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="170bbac7">public List&lt;Invoker&lt;T&gt;&gt; doList(Invocation invocation) {
+    if (forbidden) {
+        // &#26381;&#21153;&#25552;&#20379;&#32773;&#20851;&#38381;&#25110;&#31105;&#29992;&#20102;&#26381;&#21153;&#65292;&#27492;&#26102;&#25243;&#20986; No provider &#24322;&#24120;
+        throw new RpcException(RpcException.FORBIDDEN_EXCEPTION,
+            "No provider available from registry ...");
+    }
+    List&lt;Invoker&lt;T&gt;&gt; invokers = null;
+    // &#33719;&#21462; Invoker &#26412;&#22320;&#32531;&#23384;
+    Map&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; localMethodInvokerMap = this.methodInvokerMap;
+    if (localMethodInvokerMap != null &amp;&amp; localMethodInvokerMap.size() &gt; 0) {
+        // &#33719;&#21462;&#26041;&#27861;&#21517;&#21644;&#21442;&#25968;&#21015;&#34920;
+        String methodName = RpcUtils.getMethodName(invocation);
+        Object[] args = RpcUtils.getArguments(invocation);
+        // &#26816;&#27979;&#21442;&#25968;&#21015;&#34920;&#30340;&#31532;&#19968;&#20010;&#21442;&#25968;&#26159;&#21542;&#20026; String &#25110; enum &#31867;&#22411;
+        if (args != null &amp;&amp; args.length &gt; 0 &amp;&amp; args[0] != null
+                &amp;&amp; (args[0] instanceof String || args[0].getClass().isEnum())) {
+            // &#36890;&#36807; &#26041;&#27861;&#21517; + &#31532;&#19968;&#20010;&#21442;&#25968;&#21517;&#31216; &#26597;&#35810; Invoker &#21015;&#34920;&#65292;&#20855;&#20307;&#30340;&#20351;&#29992;&#22330;&#26223;&#26242;&#26102;&#27809;&#24819;&#21040;
+            invokers = localMethodInvokerMap.get(methodName + "." + args[0]);
+        }
+        if (invokers == null) {
+            // &#36890;&#36807;&#26041;&#27861;&#21517;&#33719;&#21462; Invoker &#21015;&#34920;
+            invokers = localMethodInvokerMap.get(methodName);
+        }
+        if (invokers == null) {
+            // &#36890;&#36807;&#26143;&#21495; * &#33719;&#21462; Invoker &#21015;&#34920;
+            invokers = localMethodInvokerMap.get(Constants.ANY_VALUE);
+        }
+        
+        // &#20887;&#20313;&#36923;&#36753;&#65292;pull request #2861 &#31227;&#38500;&#20102;&#19979;&#38754;&#30340; if &#20998;&#25903;&#20195;&#30721;
+        if (invokers == null) {
+            Iterator&lt;List&lt;Invoker&lt;T&gt;&gt;&gt; iterator = localMethodInvokerMap.values().iterator();
+            if (iterator.hasNext()) {
+                invokers = iterator.next();
+            }
+        }
+    }
+
+	// &#36820;&#22238; Invoker &#21015;&#34920;
+    return invokers == null ? new ArrayList&lt;Invoker&lt;T&gt;&gt;(0) : invokers;
+}</pre>
+ <p class="ne-p" id="u5a15f82d">
+  <br>
+ </p>
+ <p class="ne-p" id="u94df440e">
+  <span class="ne-text">
+   &#20197;&#19978;&#20195;&#30721;&#36827;&#34892;&#22810;&#27425;&#23581;&#35797;&#65292;&#20197;&#26399;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    localMethodInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#33719;&#21462;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#12290;&#19968;&#33324;&#24773;&#20917;&#19979;&#65292;&#26222;&#36890;&#30340;&#35843;&#29992;&#21487;&#36890;&#36807;&#26041;&#27861;&#21517;&#33719;&#21462;&#21040;&#23545;&#24212;&#30340; Invoker &#21015;&#34920;&#65292;&#27867;&#21270;&#35843;&#29992;&#21487;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    *
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33719;&#21462;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    localMethodInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#28304;&#33258;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#30340;&#25104;&#21592;&#21464;&#37327;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    methodInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doList
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21487;&#20197;&#30475;&#20570;&#26159;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    methodInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21464;&#37327;&#30340;&#35835;&#25805;&#20316;&#65292;&#33267;&#20110;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    methodInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21464;&#37327;&#30340;&#20889;&#25805;&#20316;&#65292;&#19979;&#19968;&#33410;&#36827;&#34892;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u0669d89c">
+  <br>
+ </p>
+ <h4 id="e2742464">
+  <span class="ne-text">
+   3.2.2 &#25509;&#25910;&#26381;&#21153;&#21464;&#26356;&#36890;&#30693;
+  </span>
+ </h4>
+ <p class="ne-p" id="u2f231879">
+  <br>
+ </p>
+ <p class="ne-p" id="ub15be1fc">
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#19968;&#20010;&#21160;&#24577;&#26381;&#21153;&#30446;&#24405;&#65292;&#20250;&#38543;&#27880;&#20876;&#20013;&#24515;&#37197;&#32622;&#30340;&#21464;&#21270;&#36827;&#34892;&#21160;&#24577;&#35843;&#25972;&#12290;&#22240;&#27492;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NotifyListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#36890;&#36807;&#36825;&#20010;&#25509;&#21475;&#33719;&#21462;&#27880;&#20876;&#20013;&#24515;&#21464;&#26356;&#36890;&#30693;&#12290;&#19979;&#38754;&#25105;&#20204;&#26469;&#30475;&#19968;&#19979;&#20855;&#20307;&#30340;&#36923;&#36753;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u2c430c37">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="f0babe3a">public synchronized void notify(List&lt;URL&gt; urls) {
+    // &#23450;&#20041;&#19977;&#20010;&#38598;&#21512;&#65292;&#20998;&#21035;&#29992;&#20110;&#23384;&#25918;&#26381;&#21153;&#25552;&#20379;&#32773; url&#65292;&#36335;&#30001; url&#65292;&#37197;&#32622;&#22120; url
+    List&lt;URL&gt; invokerUrls = new ArrayList&lt;URL&gt;();
+    List&lt;URL&gt; routerUrls = new ArrayList&lt;URL&gt;();
+    List&lt;URL&gt; configuratorUrls = new ArrayList&lt;URL&gt;();
+    for (URL url : urls) {
+        String protocol = url.getProtocol();
+        // &#33719;&#21462; category &#21442;&#25968;
+        String category = url.getParameter(Constants.CATEGORY_KEY, Constants.DEFAULT_CATEGORY);
+        // &#26681;&#25454; category &#21442;&#25968;&#23558; url &#20998;&#21035;&#25918;&#21040;&#19981;&#21516;&#30340;&#21015;&#34920;&#20013;
+        if (Constants.ROUTERS_CATEGORY.equals(category)
+                || Constants.ROUTE_PROTOCOL.equals(protocol)) {
+            // &#28155;&#21152;&#36335;&#30001;&#22120; url
+            routerUrls.add(url);
+        } else if (Constants.CONFIGURATORS_CATEGORY.equals(category)
+                || Constants.OVERRIDE_PROTOCOL.equals(protocol)) {
+            // &#28155;&#21152;&#37197;&#32622;&#22120; url
+            configuratorUrls.add(url);
+        } else if (Constants.PROVIDERS_CATEGORY.equals(category)) {
+            // &#28155;&#21152;&#26381;&#21153;&#25552;&#20379;&#32773; url
+            invokerUrls.add(url);
+        } else {
+            // &#24573;&#30053;&#19981;&#25903;&#25345;&#30340; category
+            logger.warn("Unsupported category ...");
+        }
+    }
+    if (configuratorUrls != null &amp;&amp; !configuratorUrls.isEmpty()) {
+        // &#23558; url &#36716;&#25104; Configurator
+        this.configurators = toConfigurators(configuratorUrls);
+    }
+    if (routerUrls != null &amp;&amp; !routerUrls.isEmpty()) {
+        // &#23558; url &#36716;&#25104; Router
+        List&lt;Router&gt; routers = toRouters(routerUrls);
+        if (routers != null) {
+            setRouters(routers);
+        }
+    }
+    List&lt;Configurator&gt; localConfigurators = this.configurators;
+    this.overrideDirectoryUrl = directoryUrl;
+    if (localConfigurators != null &amp;&amp; !localConfigurators.isEmpty()) {
+        for (Configurator configurator : localConfigurators) {
+            // &#37197;&#32622; overrideDirectoryUrl
+            this.overrideDirectoryUrl = configurator.configure(overrideDirectoryUrl);
+        }
+    }
+
+    // &#21047;&#26032; Invoker &#21015;&#34920;
+    refreshInvoker(invokerUrls);
+}</pre>
+ <p class="ne-p" id="ue272642f">
+  <br>
+ </p>
+ <p class="ne-p" id="u87d7026d">
+  <span class="ne-text">
+   &#22914;&#19978;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    notify
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#39318;&#20808;&#26159;&#26681;&#25454;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    url
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    category
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21442;&#25968;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    url
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36827;&#34892;&#20998;&#38376;&#21035;&#31867;&#23384;&#20648;&#65292;&#28982;&#21518;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    toRouters
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    toConfigurators
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23558; url &#21015;&#34920;&#36716;&#25104;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Router
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Configurator
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#12290;&#26368;&#21518;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    refreshInvoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21047;&#26032;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#12290;&#36825;&#37324;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    toRouters
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    toConfigurators
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36923;&#36753;&#19981;&#22797;&#26434;&#65292;&#22823;&#23478;&#33258;&#34892;&#20998;&#26512;&#12290;&#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#25226;&#37325;&#28857;&#25918;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    refreshInvoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#19978;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc623801b">
+  <br>
+ </p>
+ <h4 id="07ae100e">
+  <span class="ne-text">
+   3.2.3 &#21047;&#26032; Invoker &#21015;&#34920;
+  </span>
+ </h4>
+ <p class="ne-p" id="ued381167">
+  <br>
+ </p>
+ <p class="ne-p" id="u389556d5">
+  <code class="ne-code">
+   <span class="ne-text">
+    refreshInvoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26159;&#20445;&#35777;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#38543;&#27880;&#20876;&#20013;&#24515;&#21464;&#21270;&#32780;&#21464;&#21270;&#30340;&#20851;&#38190;&#25152;&#22312;&#12290;&#36825;&#19968;&#22359;&#36923;&#36753;&#27604;&#36739;&#22810;&#65292;&#25509;&#19979;&#26469;&#19968;&#19968;&#36827;&#34892;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf86850b0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="940128ed">private void refreshInvoker(List&lt;URL&gt; invokerUrls) {
+    // invokerUrls &#20165;&#26377;&#19968;&#20010;&#20803;&#32032;&#65292;&#19988; url &#21327;&#35758;&#22836;&#20026; empty&#65292;&#27492;&#26102;&#34920;&#31034;&#31105;&#29992;&#25152;&#26377;&#26381;&#21153;
+    if (invokerUrls != null &amp;&amp; invokerUrls.size() == 1 &amp;&amp; invokerUrls.get(0) != null
+            &amp;&amp; Constants.EMPTY_PROTOCOL.equals(invokerUrls.get(0).getProtocol())) {
+        // &#35774;&#32622; forbidden &#20026; true
+        this.forbidden = true;
+        this.methodInvokerMap = null;
+        // &#38144;&#27585;&#25152;&#26377; Invoker
+        destroyAllInvokers();
+    } else {
+        this.forbidden = false;
+        Map&lt;String, Invoker&lt;T&gt;&gt; oldUrlInvokerMap = this.urlInvokerMap;
+        if (invokerUrls.isEmpty() &amp;&amp; this.cachedInvokerUrls != null) {
+            // &#28155;&#21152;&#32531;&#23384; url &#21040; invokerUrls &#20013;
+            invokerUrls.addAll(this.cachedInvokerUrls);
+        } else {
+            this.cachedInvokerUrls = new HashSet&lt;URL&gt;();
+            // &#32531;&#23384; invokerUrls
+            this.cachedInvokerUrls.addAll(invokerUrls);
+        }
+        if (invokerUrls.isEmpty()) {
+            return;
+        }
+        // &#23558; url &#36716;&#25104; Invoker
+        Map&lt;String, Invoker&lt;T&gt;&gt; newUrlInvokerMap = toInvokers(invokerUrls);
+        // &#23558; newUrlInvokerMap &#36716;&#25104;&#26041;&#27861;&#21517;&#21040; Invoker &#21015;&#34920;&#30340;&#26144;&#23556;
+        Map&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; newMethodInvokerMap = toMethodInvokers(newUrlInvokerMap);
+        // &#36716;&#25442;&#20986;&#38169;&#65292;&#30452;&#25509;&#25171;&#21360;&#24322;&#24120;&#65292;&#24182;&#36820;&#22238;
+        if (newUrlInvokerMap == null || newUrlInvokerMap.size() == 0) {
+            logger.error(new IllegalStateException("urls to invokers error ..."));
+            return;
+        }
+        // &#21512;&#24182;&#22810;&#20010;&#32452;&#30340; Invoker
+        this.methodInvokerMap = multiGroup ? toMergeMethodInvokerMap(newMethodInvokerMap) : newMethodInvokerMap;
+        this.urlInvokerMap = newUrlInvokerMap;
+        try {
+            // &#38144;&#27585;&#26080;&#29992; Invoker
+            destroyUnusedInvokers(oldUrlInvokerMap, newUrlInvokerMap);
+        } catch (Exception e) {
+            logger.warn("destroyUnusedInvokers error. ", e);
+        }
+    }
+}</pre>
+ <p class="ne-p" id="u3dd1fa66">
+  <br>
+ </p>
+ <p class="ne-p" id="uf92d4386">
+  <code class="ne-code">
+   <span class="ne-text">
+    refreshInvoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#39318;&#20808;&#20250;&#26681;&#25454;&#20837;&#21442;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    invokerUrls
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#25968;&#37327;&#21644;&#21327;&#35758;&#22836;&#21028;&#26029;&#26159;&#21542;&#31105;&#29992;&#25152;&#26377;&#30340;&#26381;&#21153;&#65292;&#22914;&#26524;&#31105;&#29992;&#65292;&#21017;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    forbidden
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35774;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    true
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#24182;&#38144;&#27585;&#25152;&#26377;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#33509;&#19981;&#31105;&#29992;&#65292;&#21017;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    url
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36716;&#25104;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#24471;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &lt;url, Invoker&gt;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26144;&#23556;&#20851;&#31995;&#12290;&#28982;&#21518;&#36827;&#19968;&#27493;&#36827;&#34892;&#36716;&#25442;&#65292;&#24471;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &lt;methodName, Invoker &#21015;&#34920;&gt;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26144;&#23556;&#20851;&#31995;&#12290;&#20043;&#21518;&#36827;&#34892;&#22810;&#32452;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21512;&#24182;&#25805;&#20316;&#65292;&#24182;&#23558;&#21512;&#24182;&#32467;&#26524;&#36171;&#20540;&#32473;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    methodInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    methodInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21464;&#37327;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doList
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#20250;&#34987;&#29992;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doList
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20250;&#23545;&#35813;&#21464;&#37327;&#36827;&#34892;&#35835;&#25805;&#20316;&#65292;&#22312;&#36825;&#37324;&#26159;&#20889;&#25805;&#20316;&#12290;&#24403;&#26032;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#29983;&#25104;&#21518;&#65292;&#36824;&#35201;&#19968;&#20010;&#37325;&#35201;&#30340;&#24037;&#20316;&#35201;&#20570;&#65292;&#23601;&#26159;&#38144;&#27585;&#26080;&#29992;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36991;&#20813;&#26381;&#21153;&#28040;&#36153;&#32773;&#35843;&#29992;&#24050;&#19979;&#32447;&#30340;&#26381;&#21153;&#30340;&#26381;&#21153;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u0664fed2">
+  <br>
+ </p>
+ <p class="ne-p" id="u6cc52fc7">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    refreshInvoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#28041;&#21450;&#21040;&#30340;&#35843;&#29992;&#19968;&#19968;&#36827;&#34892;&#20998;&#26512;&#12290;&#25353;&#29031;&#39034;&#24207;&#65292;&#20808;&#26469;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    url
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#36716;&#25442;&#36807;&#31243;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6f9d318f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="fb02d432">private Map&lt;String, Invoker&lt;T&gt;&gt; toInvokers(List&lt;URL&gt; urls) {
+    Map&lt;String, Invoker&lt;T&gt;&gt; newUrlInvokerMap = new HashMap&lt;String, Invoker&lt;T&gt;&gt;();
+    if (urls == null || urls.isEmpty()) {
+        return newUrlInvokerMap;
+    }
+    Set&lt;String&gt; keys = new HashSet&lt;String&gt;();
+    // &#33719;&#21462;&#26381;&#21153;&#28040;&#36153;&#31471;&#37197;&#32622;&#30340;&#21327;&#35758;
+    String queryProtocols = this.queryMap.get(Constants.PROTOCOL_KEY);
+    for (URL providerUrl : urls) {
+        if (queryProtocols != null &amp;&amp; queryProtocols.length() &gt; 0) {
+            boolean accept = false;
+            String[] acceptProtocols = queryProtocols.split(",");
+            // &#26816;&#27979;&#26381;&#21153;&#25552;&#20379;&#32773;&#21327;&#35758;&#26159;&#21542;&#34987;&#26381;&#21153;&#28040;&#36153;&#32773;&#25152;&#25903;&#25345;
+            for (String acceptProtocol : acceptProtocols) {
+                if (providerUrl.getProtocol().equals(acceptProtocol)) {
+                    accept = true;
+                    break;
+                }
+            }
+            if (!accept) {
+                // &#33509;&#26381;&#21153;&#25552;&#20379;&#32773;&#21327;&#35758;&#22836;&#19981;&#34987;&#28040;&#36153;&#32773;&#25152;&#25903;&#25345;&#65292;&#21017;&#24573;&#30053;&#24403;&#21069; providerUrl
+                continue;
+            }
+        }
+        // &#24573;&#30053; empty &#21327;&#35758;
+        if (Constants.EMPTY_PROTOCOL.equals(providerUrl.getProtocol())) {
+            continue;
+        }
+        // &#36890;&#36807; SPI &#26816;&#27979;&#26381;&#21153;&#31471;&#21327;&#35758;&#26159;&#21542;&#34987;&#28040;&#36153;&#31471;&#25903;&#25345;&#65292;&#19981;&#25903;&#25345;&#21017;&#25243;&#20986;&#24322;&#24120;
+        if (!ExtensionLoader.getExtensionLoader(Protocol.class).hasExtension(providerUrl.getProtocol())) {
+            logger.error(new IllegalStateException("Unsupported protocol..."));
+            continue;
+        }
+        
+        // &#21512;&#24182; url
+        URL url = mergeUrl(providerUrl);
+
+        String key = url.toFullString();
+        if (keys.contains(key)) {
+            // &#24573;&#30053;&#37325;&#22797; url
+            continue;
+        }
+        keys.add(key);
+        // &#23558;&#26412;&#22320; Invoker &#32531;&#23384;&#36171;&#20540;&#32473; localUrlInvokerMap
+        Map&lt;String, Invoker&lt;T&gt;&gt; localUrlInvokerMap = this.urlInvokerMap;
+        // &#33719;&#21462;&#19982; url &#23545;&#24212;&#30340; Invoker
+        Invoker&lt;T&gt; invoker = localUrlInvokerMap == null ? null : localUrlInvokerMap.get(key);
+        // &#32531;&#23384;&#26410;&#21629;&#20013;
+        if (invoker == null) {
+            try {
+                boolean enabled = true;
+                if (url.hasParameter(Constants.DISABLED_KEY)) {
+                    // &#33719;&#21462; disable &#37197;&#32622;&#65292;&#21462;&#21453;&#65292;&#28982;&#21518;&#36171;&#20540;&#32473; enable &#21464;&#37327;
+                    enabled = !url.getParameter(Constants.DISABLED_KEY, false);
+                } else {
+                    // &#33719;&#21462; enable &#37197;&#32622;&#65292;&#24182;&#36171;&#20540;&#32473; enable &#21464;&#37327;
+                    enabled = url.getParameter(Constants.ENABLED_KEY, true);
+                }
+                if (enabled) {
+                    // &#35843;&#29992; refer &#33719;&#21462; Invoker
+                    invoker = new InvokerDelegate&lt;T&gt;(protocol.refer(serviceType, url), url, providerUrl);
+                }
+            } catch (Throwable t) {
+                logger.error("Failed to refer invoker for interface...");
+            }
+            if (invoker != null) {
+                // &#32531;&#23384; Invoker &#23454;&#20363;
+                newUrlInvokerMap.put(key, invoker);
+            }
+            
+        // &#32531;&#23384;&#21629;&#20013;
+        } else {
+            // &#23558; invoker &#23384;&#20648;&#21040; newUrlInvokerMap &#20013;
+            newUrlInvokerMap.put(key, invoker);
+        }
+    }
+    keys.clear();
+    return newUrlInvokerMap;
+}</pre>
+ <p class="ne-p" id="u9cab75ae">
+  <br>
+ </p>
+ <p class="ne-p" id="u748e63aa">
+  <code class="ne-code">
+   <span class="ne-text">
+    toInvokers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#19968;&#24320;&#22987;&#20250;&#23545;&#26381;&#21153;&#25552;&#20379;&#32773;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    url
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36827;&#34892;&#26816;&#27979;&#65292;&#33509;&#26381;&#21153;&#28040;&#36153;&#31471;&#30340;&#37197;&#32622;&#19981;&#25903;&#25345;&#26381;&#21153;&#31471;&#30340;&#21327;&#35758;&#65292;&#25110;&#26381;&#21153;&#31471; url &#21327;&#35758;&#22836;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    empty
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26102;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    toInvokers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22343;&#20250;&#24573;&#30053;&#26381;&#21153;&#25552;&#20379;&#26041; url&#12290;&#24517;&#35201;&#30340;&#26816;&#27979;&#20570;&#23436;&#21518;&#65292;&#32039;&#25509;&#30528;&#26159;&#21512;&#24182; url&#65292;&#28982;&#21518;&#35775;&#38382;&#32531;&#23384;&#65292;&#23581;&#35797;&#33719;&#21462;&#19982; url &#23545;&#24212;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#22914;&#26524;&#32531;&#23384;&#21629;&#20013;&#65292;&#30452;&#25509;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23384;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    newUrlInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#21363;&#21487;&#12290;&#22914;&#26524;&#26410;&#21629;&#20013;&#65292;&#21017;&#38656;&#26032;&#24314;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u38ae6005">
+  <br>
+ </p>
+ <p class="ne-p" id="u79d0f16e">
+  <code class="ne-code">
+   <span class="ne-text">
+    toInvokers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36820;&#22238;&#30340;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &lt;url, Invoker&gt;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26144;&#23556;&#20851;&#31995;&#34920;&#65292;&#25509;&#19979;&#26469;&#36824;&#35201;&#23545;&#36825;&#20010;&#32467;&#26524;&#36827;&#34892;&#36827;&#19968;&#27493;&#22788;&#29702;&#65292;&#24471;&#21040;&#26041;&#27861;&#21517;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#30340;&#26144;&#23556;&#20851;&#31995;&#12290;&#36825;&#20010;&#36807;&#31243;&#30001;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    toMethodInvokers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#23436;&#25104;&#65292;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u29f31194">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="fd555baa">private Map&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; toMethodInvokers(Map&lt;String, Invoker&lt;T&gt;&gt; invokersMap) {
+    // &#26041;&#27861;&#21517; -&gt; Invoker &#21015;&#34920;
+    Map&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; newMethodInvokerMap = new HashMap&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt;();
+    List&lt;Invoker&lt;T&gt;&gt; invokersList = new ArrayList&lt;Invoker&lt;T&gt;&gt;();
+    if (invokersMap != null &amp;&amp; invokersMap.size() &gt; 0) {
+        for (Invoker&lt;T&gt; invoker : invokersMap.values()) {
+            // &#33719;&#21462; methods &#21442;&#25968;
+            String parameter = invoker.getUrl().getParameter(Constants.METHODS_KEY);
+            if (parameter != null &amp;&amp; parameter.length() &gt; 0) {
+                // &#20999;&#20998; methods &#21442;&#25968;&#20540;&#65292;&#24471;&#21040;&#26041;&#27861;&#21517;&#25968;&#32452;
+                String[] methods = Constants.COMMA_SPLIT_PATTERN.split(parameter);
+                if (methods != null &amp;&amp; methods.length &gt; 0) {
+                    for (String method : methods) {
+                        // &#26041;&#27861;&#21517;&#19981;&#20026; *
+                        if (method != null &amp;&amp; method.length() &gt; 0
+                                &amp;&amp; !Constants.ANY_VALUE.equals(method)) {
+                            // &#26681;&#25454;&#26041;&#27861;&#21517;&#33719;&#21462; Invoker &#21015;&#34920;
+                            List&lt;Invoker&lt;T&gt;&gt; methodInvokers = newMethodInvokerMap.get(method);
+                            if (methodInvokers == null) {
+                                methodInvokers = new ArrayList&lt;Invoker&lt;T&gt;&gt;();
+                                newMethodInvokerMap.put(method, methodInvokers);
+                            }
+                            // &#23384;&#20648; Invoker &#21040;&#21015;&#34920;&#20013;
+                            methodInvokers.add(invoker);
+                        }
+                    }
+                }
+            }
+            invokersList.add(invoker);
+        }
+    }
+    
+    // &#36827;&#34892;&#26381;&#21153;&#32423;&#21035;&#36335;&#30001;&#65292;&#21442;&#32771; pull request #749
+    List&lt;Invoker&lt;T&gt;&gt; newInvokersList = route(invokersList, null);
+    // &#23384;&#20648; &lt;*, newInvokersList&gt; &#26144;&#23556;&#20851;&#31995;
+    newMethodInvokerMap.put(Constants.ANY_VALUE, newInvokersList);
+    if (serviceMethods != null &amp;&amp; serviceMethods.length &gt; 0) {
+        for (String method : serviceMethods) {
+            List&lt;Invoker&lt;T&gt;&gt; methodInvokers = newMethodInvokerMap.get(method);
+            if (methodInvokers == null || methodInvokers.isEmpty()) {
+                methodInvokers = newInvokersList;
+            }
+            // &#36827;&#34892;&#26041;&#27861;&#32423;&#21035;&#36335;&#30001;
+            newMethodInvokerMap.put(method, route(methodInvokers, method));
+        }
+    }
+    // &#25490;&#24207;&#65292;&#36716;&#25104;&#19981;&#21487;&#21464;&#21015;&#34920;
+    for (String method : new HashSet&lt;String&gt;(newMethodInvokerMap.keySet())) {
+        List&lt;Invoker&lt;T&gt;&gt; methodInvokers = newMethodInvokerMap.get(method);
+        Collections.sort(methodInvokers, InvokerComparator.getComparator());
+        newMethodInvokerMap.put(method, Collections.unmodifiableList(methodInvokers));
+    }
+    return Collections.unmodifiableMap(newMethodInvokerMap);
+}</pre>
+ <p class="ne-p" id="uafd5537c">
+  <br>
+ </p>
+ <p class="ne-p" id="u82b16b43">
+  <span class="ne-text">
+   &#19978;&#38754;&#26041;&#27861;&#20027;&#35201;&#20570;&#20102;&#19977;&#20214;&#20107;&#24773;&#65292; &#31532;&#19968;&#26159;&#23545;&#20837;&#21442;&#36827;&#34892;&#36941;&#21382;&#65292;&#28982;&#21518;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    url
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25104;&#21592;&#21464;&#37327;&#20013;&#33719;&#21462;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    methods
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21442;&#25968;&#65292;&#24182;&#20999;&#20998;&#25104;&#25968;&#32452;&#12290;&#38543;&#21518;&#20197;&#26041;&#27861;&#21517;&#20026;&#38190;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#20026;&#20540;&#65292;&#23558;&#26144;&#23556;&#20851;&#31995;&#23384;&#20648;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    newMethodInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#12290;&#31532;&#20108;&#26159;&#20998;&#21035;&#22522;&#20110;&#31867;&#21644;&#26041;&#27861;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#36827;&#34892;&#36335;&#30001;&#25805;&#20316;&#12290;&#31532;&#19977;&#26159;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#36827;&#34892;&#25490;&#24207;&#65292;&#24182;&#36716;&#25104;&#19981;&#21487;&#21464;&#21015;&#34920;&#12290;&#20851;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    toMethodInvokers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#23601;&#20808;&#20998;&#26512;&#21040;&#36825;&#65292;&#25105;&#20204;&#32487;&#32493;&#21521;&#19979;&#20998;&#26512;&#65292;&#36825;&#27425;&#35201;&#20998;&#26512;&#30340;&#22810;&#32452;&#26381;&#21153;&#30340;&#21512;&#24182;&#36923;&#36753;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u70f3c03d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="d8c93570">private Map&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; toMergeMethodInvokerMap(Map&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; methodMap) {
+    Map&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; result = new HashMap&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt;();
+    // &#36941;&#21382;&#20837;&#21442;
+    for (Map.Entry&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; entry : methodMap.entrySet()) {
+        String method = entry.getKey();
+        List&lt;Invoker&lt;T&gt;&gt; invokers = entry.getValue();
+        // group -&gt; Invoker &#21015;&#34920;
+        Map&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt; groupMap = new HashMap&lt;String, List&lt;Invoker&lt;T&gt;&gt;&gt;();
+        // &#36941;&#21382; Invoker &#21015;&#34920;
+        for (Invoker&lt;T&gt; invoker : invokers) {
+            // &#33719;&#21462;&#20998;&#32452;&#37197;&#32622;
+            String group = invoker.getUrl().getParameter(Constants.GROUP_KEY, "");
+            List&lt;Invoker&lt;T&gt;&gt; groupInvokers = groupMap.get(group);
+            if (groupInvokers == null) {
+                groupInvokers = new ArrayList&lt;Invoker&lt;T&gt;&gt;();
+                // &#32531;&#23384; &lt;group, List&lt;Invoker&gt;&gt; &#21040; groupMap &#20013;
+                groupMap.put(group, groupInvokers);
+            }
+            // &#23384;&#20648; invoker &#21040; groupInvokers
+            groupInvokers.add(invoker);
+        }
+        if (groupMap.size() == 1) {
+            // &#22914;&#26524; groupMap &#20013;&#20165;&#21253;&#21547;&#19968;&#32452;&#38190;&#20540;&#23545;&#65292;&#27492;&#26102;&#30452;&#25509;&#21462;&#20986;&#35813;&#38190;&#20540;&#23545;&#30340;&#20540;&#21363;&#21487;
+            result.put(method, groupMap.values().iterator().next());
+        
+        // groupMap.size() &gt; 1 &#25104;&#31435;&#65292;&#34920;&#31034; groupMap &#20013;&#21253;&#21547;&#22810;&#32452;&#38190;&#20540;&#23545;&#65292;&#27604;&#22914;&#65306;
+        // {
+        //     "dubbo": [invoker1, invoker2, invoker3, ...],
+        //     "hello": [invoker4, invoker5, invoker6, ...]
+        // }
+        } else if (groupMap.size() &gt; 1) {
+            List&lt;Invoker&lt;T&gt;&gt; groupInvokers = new ArrayList&lt;Invoker&lt;T&gt;&gt;();
+            for (List&lt;Invoker&lt;T&gt;&gt; groupList : groupMap.values()) {
+                // &#36890;&#36807;&#38598;&#32676;&#31867;&#21512;&#24182;&#27599;&#20010;&#20998;&#32452;&#23545;&#24212;&#30340; Invoker &#21015;&#34920;
+                groupInvokers.add(cluster.join(new StaticDirectory&lt;T&gt;(groupList)));
+            }
+            // &#32531;&#23384;&#32467;&#26524;
+            result.put(method, groupInvokers);
+        } else {
+            result.put(method, invokers);
+        }
+    }
+    return result;
+}</pre>
+ <p class="ne-p" id="uc2ab44ef">
+  <br>
+ </p>
+ <p class="ne-p" id="ue92b58c1">
+  <span class="ne-text">
+   &#19978;&#38754;&#26041;&#27861;&#39318;&#20808;&#26159;&#29983;&#25104;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    group
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#30340;&#26144;&#23556;&#20851;&#31995;&#34920;&#65292;&#33509;&#20851;&#31995;&#34920;&#20013;&#30340;&#26144;&#23556;&#20851;&#31995;&#25968;&#37327;&#22823;&#20110;1&#65292;&#34920;&#31034;&#26377;&#22810;&#32452;&#26381;&#21153;&#12290;&#27492;&#26102;&#36890;&#36807;&#38598;&#32676;&#31867;&#21512;&#24182;&#27599;&#32452;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#24182;&#23558;&#21512;&#24182;&#32467;&#26524;&#23384;&#20648;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    groupInvokers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#12290;&#20043;&#21518;&#23558;&#26041;&#27861;&#21517;&#19982;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    groupInvokers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23384;&#21040;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    result
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#24182;&#36820;&#22238;&#65292;&#25972;&#20010;&#36923;&#36753;&#32467;&#26463;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u112e64fc">
+  <br>
+ </p>
+ <p class="ne-p" id="uba05edfb">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#25105;&#20204;&#20877;&#26469;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#21047;&#26032;&#36923;&#36753;&#30340;&#26368;&#21518;&#19968;&#20010;&#21160;&#20316; &#8212; &#21024;&#38500;&#26080;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u7c806958">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="d393d3d4">private void destroyUnusedInvokers(Map&lt;String, Invoker&lt;T&gt;&gt; oldUrlInvokerMap, Map&lt;String, Invoker&lt;T&gt;&gt; newUrlInvokerMap) {
+    if (newUrlInvokerMap == null || newUrlInvokerMap.size() == 0) {
+        destroyAllInvokers();
+        return;
+    }
+   
+    List&lt;String&gt; deleted = null;
+    if (oldUrlInvokerMap != null) {
+        // &#33719;&#21462;&#26032;&#29983;&#25104;&#30340; Invoker &#21015;&#34920;
+        Collection&lt;Invoker&lt;T&gt;&gt; newInvokers = newUrlInvokerMap.values();
+        // &#36941;&#21382;&#32769;&#30340; &lt;url, Invoker&gt; &#26144;&#23556;&#34920;
+        for (Map.Entry&lt;String, Invoker&lt;T&gt;&gt; entry : oldUrlInvokerMap.entrySet()) {
+            // &#26816;&#27979; newInvokers &#20013;&#26159;&#21542;&#21253;&#21547;&#32769;&#30340; Invoker
+            if (!newInvokers.contains(entry.getValue())) {
+                if (deleted == null) {
+                    deleted = new ArrayList&lt;String&gt;();
+                }
+                // &#33509;&#19981;&#21253;&#21547;&#65292;&#21017;&#23558;&#32769;&#30340; Invoker &#23545;&#24212;&#30340; url &#23384;&#20837; deleted &#21015;&#34920;&#20013;
+                deleted.add(entry.getKey());
+            }
+        }
+    }
+
+    if (deleted != null) {
+        // &#36941;&#21382; deleted &#38598;&#21512;&#65292;&#24182;&#21040;&#32769;&#30340; &lt;url, Invoker&gt; &#26144;&#23556;&#20851;&#31995;&#34920;&#26597;&#20986; Invoker&#65292;&#38144;&#27585;&#20043;
+        for (String url : deleted) {
+            if (url != null) {
+                // &#20174; oldUrlInvokerMap &#20013;&#31227;&#38500; url &#23545;&#24212;&#30340; Invoker
+                Invoker&lt;T&gt; invoker = oldUrlInvokerMap.remove(url);
+                if (invoker != null) {
+                    try {
+                        // &#38144;&#27585; Invoker
+                        invoker.destroy();
+                    } catch (Exception e) {
+                        logger.warn("destroy invoker...");
+                    }
+                }
+            }
+        }
+    }
+}</pre>
+ <p class="ne-p" id="uc350c687">
+  <br>
+ </p>
+ <p class="ne-p" id="ub2bb4b1c">
+  <code class="ne-code">
+   <span class="ne-text">
+    destroyUnusedInvokers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#20027;&#35201;&#36923;&#36753;&#26159;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    newUrlInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25214;&#20986;&#24453;&#21024;&#38500; Invoker &#23545;&#24212;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    url
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#24182;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    url
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23384;&#20837;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    deleted
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#20013;&#12290;&#28982;&#21518;&#20877;&#36941;&#21382;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    deleted
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#65292;&#24182;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    oldUrlInvokerMap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#31227;&#38500;&#30456;&#24212;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#38144;&#27585;&#20043;&#12290;&#25972;&#20010;&#36923;&#36753;&#22823;&#33268;&#22914;&#27492;&#65292;&#19981;&#26159;&#24456;&#38590;&#29702;&#35299;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u783c1c01">
+  <br>
+ </p>
+ <p class="ne-p" id="u3a00b127">
+  <span class="ne-text">
+   &#21040;&#27492;&#20851;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#30340;&#21047;&#26032;&#36923;&#36753;&#23601;&#20998;&#26512;&#20102;&#65292;&#36825;&#37324;&#23545;&#25972;&#20010;&#36807;&#31243;&#36827;&#34892;&#31616;&#21333;&#24635;&#32467;&#12290;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ue2c7c1d3">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="ua672b38b">
+   <span class="ne-text">
+    &#26816;&#27979;&#20837;&#21442;&#26159;&#21542;&#20165;&#21253;&#21547;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     url
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#19988;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     url
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21327;&#35758;&#22836;&#20026;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     empty
+    </span>
+   </code>
+  </li>
+  <li id="uf770e05c">
+   <span class="ne-text">
+    &#33509;&#31532;&#19968;&#27493;&#26816;&#27979;&#32467;&#26524;&#20026;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     true
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#34920;&#31034;&#31105;&#29992;&#25152;&#26377;&#26381;&#21153;&#65292;&#27492;&#26102;&#38144;&#27585;&#25152;&#26377;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Invoker
+    </span>
+   </code>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="ucd5a5c5c">
+   <span class="ne-text">
+    &#33509;&#31532;&#19968;&#27493;&#26816;&#27979;&#32467;&#26524;&#20026;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     false
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#27492;&#26102;&#23558;&#20837;&#21442;&#36716;&#20026;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Invoker
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21015;&#34920;
+   </span>
+  </li>
+  <li id="ua1dc5191">
+   <span class="ne-text">
+    &#23545;&#19978;&#19968;&#27493;&#36923;&#36753;&#29983;&#25104;&#30340;&#32467;&#26524;&#36827;&#34892;&#36827;&#19968;&#27493;&#22788;&#29702;&#65292;&#24471;&#21040;&#26041;&#27861;&#21517;&#21040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Invoker
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#26144;&#23556;&#20851;&#31995;&#34920;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="5">
+  <li id="u2299dbce">
+   <span class="ne-text">
+    &#21512;&#24182;&#22810;&#32452;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Invoker
+    </span>
+   </code>
+  </li>
+  <li id="u5b8a5997">
+   <span class="ne-text">
+    &#38144;&#27585;&#26080;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Invoker
+    </span>
+   </code>
+  </li>
+ </ol>
+ <p class="ne-p" id="ub9e848e8">
+  <br>
+ </p>
+ <p class="ne-p" id="ubb34e082">
+  <code class="ne-code">
+   <span class="ne-text">
+    Invoker
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21047;&#26032;&#36923;&#36753;&#36824;&#26159;&#27604;&#36739;&#22797;&#26434;&#30340;&#65292;&#22823;&#23478;&#22312;&#30475;&#30340;&#36807;&#31243;&#20013;&#22810;&#20889;&#28857; demo &#36827;&#34892;&#35843;&#35797;&#65292;&#20197;&#21152;&#28145;&#29702;&#35299;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u65928d93">
+  <br>
+ </p>
+ <h2 id="e5ee893c">
+  <span class="ne-text">
+   4. &#24635;&#32467;
+  </span>
+ </h2>
+ <p class="ne-p" id="uc2d9e84f">
+  <br>
+ </p>
+ <p class="ne-p" id="u0c7eb0e1">
+  <span class="ne-text">
+   &#26412;&#31687;&#25991;&#31456;&#23545; Dubbo &#26381;&#21153;&#30446;&#24405;&#36827;&#34892;&#20102;&#36739;&#20026;&#35814;&#32454;&#30340;&#20998;&#26512;&#65292;&#31687;&#24133;&#20027;&#35201;&#38598;&#20013;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RegistryDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#20998;&#26512;&#19978;&#12290;&#20174;&#20195;&#30721;&#37327;&#19978;&#21487;&#20197;&#30475;&#20986;&#65292;&#24819;&#35753;&#26412;&#22320;&#26381;&#21153;&#30446;&#24405;&#21644;&#27880;&#20876;&#20013;&#24515;&#20445;&#25345;&#19968;&#33268;&#36824;&#26159;&#38656;&#35201;&#20570;&#24456;&#22810;&#20107;&#24773;&#30340;&#65292;&#24182;&#19981;&#31616;&#21333;&#12290;&#26381;&#21153;&#30446;&#24405;&#26159; Dubbo &#38598;&#32676;&#23481;&#38169;&#30340;&#19968;&#37096;&#20998;&#65292;&#20063;&#26159;&#27604;&#36739;&#22522;&#30784;&#30340;&#37096;&#20998;&#65292;&#25152;&#20197;&#22823;&#23478;&#24212;&#23613;&#37327;&#25630;&#25026;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

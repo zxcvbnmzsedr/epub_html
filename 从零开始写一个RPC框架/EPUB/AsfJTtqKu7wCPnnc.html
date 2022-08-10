@@ -1,0 +1,646 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>05 Socket &#32593;&#32476;&#36890;&#20449;&#23454;&#25112;</h1><div class="lake-content" typography="classic">
+ <h1 id="50e475d2">
+  <span class="ne-text">
+   05 Socket &#32593;&#32476;&#36890;&#20449;&#23454;&#25112;
+  </span>
+ </h1>
+ <p class="ne-p" id="uf5328d69">
+  <br>
+ </p>
+ <h2 id="4b954e6d">
+  <span class="ne-text">
+   1. &#21069;&#35328;
+  </span>
+ </h2>
+ <p class="ne-p" id="u4ff666dd">
+  <br>
+ </p>
+ <p class="ne-p" id="u81f492ba">
+  <a class="ne-link" data-href="https://github.com/Snailclimb/guide-rpc-framework" href="https://github.com/Snailclimb/guide-rpc-framework" target="_blank">
+   <span class="ne-text">
+    guide-rpc-framework
+   </span>
+  </a>
+  <span class="ne-text">
+   &#30340;&#31532;&#19968;&#29256;&#20351;&#29992;&#30340;&#26159; JDK &#25552;&#20379;&#20102; socket &#36827;&#34892;&#32593;&#32476;&#32534;&#31243;&#12290;&#20026;&#20102;&#25630;&#25026;&#20855;&#20307;&#21407;&#29702;&#65292;&#25105;&#20204;&#39318;&#20808;&#35201;&#23398;&#20250;&#20351;&#29992; Socket &#36827;&#34892;&#32593;&#32476;&#36890;&#20449;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ud5375259">
+  <br>
+ </p>
+ <p class="ne-p" id="u45fe1457">
+  <img class="ne-image" id="OZZMN" src="EPUB/imgOZZMN" width="982">
+ </p>
+ <p class="ne-p" id="u931f6d77">
+  <br>
+ </p>
+ <h2 id="6d5c3675">
+  <span class="ne-text">
+   2. &#20160;&#20040;&#26159; Socket(&#22871;&#25509;&#23383;)
+  </span>
+ </h2>
+ <p class="ne-p" id="u6816ec88">
+  <br>
+ </p>
+ <p class="ne-p" id="u80f8be4c">
+  <span class="ne-text">
+   Socket &#26159;&#19968;&#20010;&#25277;&#35937;&#27010;&#24565;&#65292;&#24212;&#29992;&#31243;&#24207;&#21487;&#20197;&#36890;&#36807;&#23427;&#21457;&#36865;&#25110;&#25509;&#25910;&#25968;&#25454;&#12290;&#22312;&#20351;&#29992; Socket &#36827;&#34892;&#32593;&#32476;&#36890;&#20449;&#30340;&#26102;&#20505;&#65292;&#36890;&#36807; Socket &#23601;&#21487;&#20197;&#35753;&#25105;&#20204;&#30340;&#25968;&#25454;&#22312;&#32593;&#32476;&#20013;&#20256;&#36755;&#12290;&#25805;&#20316;&#22871;&#25509;&#23383;&#30340;&#26102;&#20505;&#65292;&#21644;&#25105;&#20204;&#35835;&#20889;&#25991;&#20214;&#24456;&#20687;&#12290;&#22871;&#25509;&#23383;&#26159; IP &#22320;&#22336;&#19982;&#31471;&#21475;&#30340;&#32452;&#21512;&#65292;&#22871;&#25509;&#23383; Socket=&#65288;IP &#22320;&#22336;&#65306;&#31471;&#21475;&#21495;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufb1776ce">
+  <br>
+ </p>
+ <p class="ne-p" id="udc6f76c7">
+  <span class="ne-text">
+   &#35201;&#36890;&#36807;&#20114;&#32852;&#32593;&#36827;&#34892;&#36890;&#20449;&#65292;&#33267;&#23569;&#38656;&#35201;&#19968;&#23545;&#22871;&#25509;&#23383;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ua199ed34">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="ue9b83f68">
+   <span class="ne-text">
+    &#36816;&#34892;&#20110;&#26381;&#21153;&#22120;&#31471;&#30340; Server Socket&#12290;
+   </span>
+  </li>
+  <li id="ud425a16e">
+   <span class="ne-text">
+    &#36816;&#34892;&#20110;&#23458;&#25143;&#26426;&#31471;&#30340; Client Socket
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="ueb52f4ff">
+  <br>
+ </p>
+ <p class="ne-p" id="uac9966a8">
+  <span class="ne-text">
+   &#22312; Java &#24320;&#21457;&#20013;&#20351;&#29992; Socket &#26102;&#20250;&#24120;&#29992;&#21040;&#20004;&#20010;&#31867;&#65292;&#37117;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    java.net
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21253;&#20013;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u9a2d6073">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u10435fdc">
+   <code class="ne-code">
+    <span class="ne-text">
+     Socket
+    </span>
+   </code>
+   <span class="ne-text">
+    : &#19968;&#33324;&#29992;&#20110;&#23458;&#25143;&#31471;
+   </span>
+  </li>
+  <li id="u91d819b5">
+   <code class="ne-code">
+    <span class="ne-text">
+     ServerSocket
+    </span>
+   </code>
+   <span class="ne-text">
+    :&#29992;&#20110;&#26381;&#21153;&#31471;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u7bd27c70">
+  <br>
+ </p>
+ <h2 id="599a214f">
+  <span class="ne-text">
+   3. Socket &#32593;&#32476;&#36890;&#20449;&#36807;&#31243;
+  </span>
+ </h2>
+ <p class="ne-p" id="uae9f7bb1">
+  <br>
+ </p>
+ <p class="ne-p" id="u3d77478a">
+  <span class="ne-text">
+   Socket &#32593;&#32476;&#36890;&#20449;&#36807;&#31243;&#22914;&#19979;&#22270;&#25152;&#31034;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ue6519ab8">
+  <br>
+ </p>
+ <p class="ne-p" id="u816b63ae">
+  <img class="ne-image" id="hxZbf" src="EPUB/imghxZbf" width="700">
+ </p>
+ <p class="ne-p" id="ufb9e6aac">
+  <br>
+ </p>
+ <p class="ne-p" id="u2c06ef79" style="text-align: right">
+  <span class="ne-text" style="color: gray">
+   https://www.javatpoint.com/socket-programming
+  </span>
+ </p>
+ <p class="ne-p" id="uf2a08a97">
+  <br>
+ </p>
+ <p class="ne-p" id="u9e4acc26">
+  <strong>
+   <span class="ne-text">
+    Socket &#32593;&#32476;&#36890;&#20449;&#36807;&#31243;&#31616;&#21333;&#26469;&#35828;&#20998;&#20026;&#19979;&#38754; 4 &#27493;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ud2bff3d5">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u1fcf5f70">
+   <span class="ne-text">
+    &#24314;&#31435;&#26381;&#21153;&#31471;&#24182;&#19988;&#30417;&#21548;&#23458;&#25143;&#31471;&#35831;&#27714;
+   </span>
+  </li>
+  <li id="ub76cdb25">
+   <span class="ne-text">
+    &#23458;&#25143;&#31471;&#35831;&#27714;&#65292;&#26381;&#21153;&#31471;&#21644;&#23458;&#25143;&#31471;&#24314;&#31435;&#36830;&#25509;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u53179d2e">
+   <span class="ne-text">
+    &#20004;&#31471;&#20043;&#38388;&#21487;&#20197;&#20256;&#36882;&#25968;&#25454;
+   </span>
+  </li>
+  <li id="u62a4f3d6">
+   <span class="ne-text">
+    &#20851;&#38381;&#36164;&#28304;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u20fdd100">
+  <br>
+ </p>
+ <p class="ne-p" id="u76518895">
+  <span class="ne-text">
+   &#23545;&#24212;&#21040;&#26381;&#21153;&#31471;&#21644;&#23458;&#25143;&#31471;&#30340;&#35805;&#65292;&#26159;&#19979;&#38754;&#36825;&#26679;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub6866229">
+  <br>
+ </p>
+ <p class="ne-p" id="u78b2f4be">
+  <strong>
+   <span class="ne-text">
+    &#26381;&#21153;&#22120;&#31471;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u7b9147fa">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u945285d6">
+   <span class="ne-text">
+    &#21019;&#24314;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ServerSocket
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#24182;&#19988;&#32465;&#23450;&#22320;&#22336;&#65288;ip&#65289;&#21644;&#31471;&#21475;&#21495;(port)&#65306;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     server.bind(new InetSocketAddress(host, port))
+    </span>
+   </code>
+  </li>
+  <li id="u1dcf3c0f">
+   <span class="ne-text">
+    &#36890;&#36807;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     accept()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#30417;&#21548;&#23458;&#25143;&#31471;&#35831;&#27714;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u3778352f">
+   <span class="ne-text">
+    &#36830;&#25509;&#24314;&#31435;&#21518;&#65292;&#36890;&#36807;&#36755;&#20837;&#27969;&#35835;&#21462;&#23458;&#25143;&#31471;&#21457;&#36865;&#30340;&#35831;&#27714;&#20449;&#24687;
+   </span>
+  </li>
+  <li id="uf6cb4e30">
+   <span class="ne-text">
+    &#36890;&#36807;&#36755;&#20986;&#27969;&#21521;&#23458;&#25143;&#31471;&#21457;&#36865;&#21709;&#24212;&#20449;&#24687;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="5">
+  <li id="u38b0bc82">
+   <span class="ne-text">
+    &#20851;&#38381;&#30456;&#20851;&#36164;&#28304;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u0edbfdf4">
+  <br>
+ </p>
+ <p class="ne-p" id="uacff80fb">
+  <strong>
+   <span class="ne-text">
+    &#23458;&#25143;&#31471;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="uedb36f8e">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u1bdf330f">
+   <span class="ne-text">
+    &#21019;&#24314;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Socket
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#24182;&#19988;&#36830;&#25509;&#25351;&#23450;&#30340;&#26381;&#21153;&#22120;&#30340;&#22320;&#22336;&#65288;ip&#65289;&#21644;&#31471;&#21475;&#21495;(port)&#65306;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     socket.connect(inetSocketAddress)
+    </span>
+   </code>
+  </li>
+  <li id="u5e87a95a">
+   <span class="ne-text">
+    &#36830;&#25509;&#24314;&#31435;&#21518;&#65292;&#36890;&#36807;&#36755;&#20986;&#27969;&#21521;&#26381;&#21153;&#22120;&#31471;&#21457;&#36865;&#35831;&#27714;&#20449;&#24687;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u0549de74">
+   <span class="ne-text">
+    &#36890;&#36807;&#36755;&#20837;&#27969;&#33719;&#21462;&#26381;&#21153;&#22120;&#21709;&#24212;&#30340;&#20449;&#24687;
+   </span>
+  </li>
+  <li id="u40083575">
+   <span class="ne-text">
+    &#20851;&#38381;&#30456;&#20851;&#36164;&#28304;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u7757ef05">
+  <br>
+ </p>
+ <h2 id="f10026f0">
+  <span class="ne-text">
+   4. Socket &#32593;&#32476;&#36890;&#20449;&#23454;&#25112;
+  </span>
+ </h2>
+ <p class="ne-p" id="uf4f88528">
+  <br>
+ </p>
+ <h3 id="f4ea2b0e">
+  <span class="ne-text">
+   4.1. &#26381;&#21153;&#31471;
+  </span>
+ </h3>
+ <p class="ne-p" id="uf52f322e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="cMbN1">public class HelloServer {
+    private static final Logger logger = LoggerFactory.getLogger(HelloServer.class);
+
+    public void start(int port) {
+        //1.&#21019;&#24314; ServerSocket &#23545;&#35937;&#24182;&#19988;&#32465;&#23450;&#19968;&#20010;&#31471;&#21475;
+        try (ServerSocket server = new ServerSocket(port);) {
+            Socket socket;
+            //2.&#36890;&#36807; accept()&#26041;&#27861;&#30417;&#21548;&#23458;&#25143;&#31471;&#35831;&#27714;
+            while ((socket = server.accept()) != null) {
+                logger.info("client connected");
+                try (ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+                     ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream())) {
+                   //3.&#36890;&#36807;&#36755;&#20837;&#27969;&#35835;&#21462;&#23458;&#25143;&#31471;&#21457;&#36865;&#30340;&#35831;&#27714;&#20449;&#24687;
+                    Message message = (Message) objectInputStream.readObject();
+                    logger.info("server receive message:" + message.getContent());
+                    message.setContent("new content");
+                    //4.&#36890;&#36807;&#36755;&#20986;&#27969;&#21521;&#23458;&#25143;&#31471;&#21457;&#36865;&#21709;&#24212;&#20449;&#24687;
+                    objectOutputStream.writeObject(message);
+                    objectOutputStream.flush();
+                } catch (IOException | ClassNotFoundException e) {
+                    logger.error("occur exception:", e);
+                }
+            }
+        } catch (IOException e) {
+            logger.error("occur IOException:", e);
+        }
+    }
+
+    public static void main(String[] args) {
+        HelloServer helloServer = new HelloServer();
+        helloServer.start(6666);
+    }
+}</pre>
+ <p class="ne-p" id="uc5e18e77">
+  <br>
+ </p>
+ <p class="ne-p" id="uf11974e2">
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerSocket
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    accept&#65288;&#65289;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26159;&#38459;&#22622;&#26041;&#27861;&#65292;&#20063;&#23601;&#26159;&#35828;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerSocket
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22312;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    accept&#65288;)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#24453;&#23458;&#25143;&#31471;&#30340;&#36830;&#25509;&#35831;&#27714;&#26102;&#20250;&#38459;&#22622;&#65292;&#30452;&#21040;&#25910;&#21040;&#23458;&#25143;&#31471;&#21457;&#36865;&#30340;&#36830;&#25509;&#35831;&#27714;&#25165;&#20250;&#32487;&#32493;&#24448;&#19979;&#25191;&#34892;&#20195;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5b3d4e8b">
+  <br>
+ </p>
+ <p class="ne-p" id="ufbf58fe3">
+  <span class="ne-text">
+   &#24456;&#26126;&#26174;&#65292;&#25105;&#19978;&#38754;&#28436;&#31034;&#30340;&#20195;&#30721;&#29255;&#27573;&#26377;&#19968;&#20010;&#24456;&#20005;&#37325;&#30340;&#38382;&#39064;&#65306;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#21482;&#33021;&#21516;&#26102;&#22788;&#29702;&#19968;&#20010;&#23458;&#25143;&#31471;&#30340;&#36830;&#25509;&#65292;&#22914;&#26524;&#38656;&#35201;&#31649;&#29702;&#22810;&#20010;&#23458;&#25143;&#31471;&#30340;&#35805;&#65292;&#23601;&#38656;&#35201;&#20026;&#25105;&#20204;&#35831;&#27714;&#30340;&#23458;&#25143;&#31471;&#21333;&#29420;&#21019;&#24314;&#19968;&#20010;&#32447;&#31243;&#12290;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#22914;&#19979;&#22270;&#25152;&#31034;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ufc2ad119">
+  <br>
+ </p>
+ <p class="ne-p" id="u1f36724e">
+  <img class="ne-image" id="XROVB" src="EPUB/imgXROVB" width="861">
+ </p>
+ <p class="ne-p" id="ua26c8271">
+  <br>
+ </p>
+ <p class="ne-p" id="ucafcac7e">
+  <span class="ne-text">
+   &#23545;&#24212;&#30340; Java &#20195;&#30721;&#21487;&#33021;&#26159;&#19979;&#38754;&#36825;&#26679;&#30340;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u106c66ef">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="WvLeU">new Thread(() -&gt; {
+   // &#21019;&#24314; socket &#36830;&#25509;
+}).start();</pre>
+ <p class="ne-p" id="uaf725311">
+  <br>
+ </p>
+ <p class="ne-p" id="u6e138e9b">
+  <span class="ne-text">
+   &#20294;&#26159;&#65292;&#36825;&#26679;&#20250;&#23548;&#33268;&#19968;&#20010;&#24456;&#20005;&#37325;&#30340;&#38382;&#39064;&#65306;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#36164;&#28304;&#28010;&#36153;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ueb55ef10">
+  <br>
+ </p>
+ <p class="ne-p" id="u819d55fa">
+  <span class="ne-text">
+   &#25105;&#20204;&#30693;&#36947;&#32447;&#31243;&#26159;&#24456;&#23453;&#36149;&#30340;&#36164;&#28304;&#65292;&#22914;&#26524;&#25105;&#20204;&#20026;&#27599;&#19968;&#27425;&#36830;&#25509;&#37117;&#29992;&#19968;&#20010;&#32447;&#31243;&#22788;&#29702;&#30340;&#35805;&#65292;&#23601;&#20250;&#23548;&#33268;&#32447;&#31243;&#36234;&#26469;&#36234;&#22810;&#65292;&#26368;&#21518;&#36798;&#21040;&#20102;&#26497;&#38480;&#20043;&#21518;&#65292;&#23601;&#26080;&#27861;&#20877;&#21019;&#24314;&#32447;&#31243;&#22788;&#29702;&#35831;&#27714;&#20102;&#12290;&#22788;&#29702;&#30340;&#19981;&#22909;&#30340;&#35805;&#65292;&#29978;&#33267;&#21487;&#33021;&#30452;&#25509;&#23601;&#23445;&#26426;&#25481;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1694ada2">
+  <br>
+ </p>
+ <p class="ne-p" id="u4acf1b2a">
+  <span class="ne-text">
+   &#24456;&#22810;&#20154;&#23601;&#20250;&#38382;&#20102;&#65306;&#37027;&#26377;&#27809;&#26377;&#25913;&#36827;&#30340;&#26041;&#27861;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u32475ae7">
+  <br>
+ </p>
+ <p class="ne-p" id="uf5d33d68">
+  <span class="ne-text">
+   &#24403;&#28982;&#26377;&#65281; &#27604;&#36739;&#31616;&#21333;&#24182;&#19988;&#23454;&#38469;&#30340;&#25913;&#36827;&#26041;&#27861;&#23601;&#26159;&#20351;&#29992;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#32447;&#31243;&#27744;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#12290;&#32447;&#31243;&#27744;&#36824;&#21487;&#20197;&#35753;&#32447;&#31243;&#30340;&#21019;&#24314;&#21644;&#22238;&#25910;&#25104;&#26412;&#30456;&#23545;&#36739;&#20302;&#65292;&#24182;&#19988;&#25105;&#20204;&#21487;&#20197;&#25351;&#23450;&#32447;&#31243;&#27744;&#30340;&#21487;&#21019;&#24314;&#32447;&#31243;&#30340;&#26368;&#22823;&#25968;&#37327;&#65292;&#36825;&#26679;&#23601;&#19981;&#20250;&#23548;&#33268;&#32447;&#31243;&#21019;&#24314;&#36807;&#22810;&#65292;&#26426;&#22120;&#36164;&#28304;&#34987;&#19981;&#21512;&#29702;&#28040;&#32791;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u7ae4743f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="LFJxY">ThreadFactory threadFactory = Executors.defaultThreadFactory();
+ExecutorService threadPool = new ThreadPoolExecutor(10, 100, 1, TimeUnit.MINUTES, new ArrayBlockingQueue&lt;&gt;(100), threadFactory);
+threadPool.execute(() -&gt; {
+     // &#21019;&#24314; socket &#36830;&#25509;
+ });</pre>
+ <p class="ne-p" id="u50d611f9">
+  <br>
+ </p>
+ <p class="ne-p" id="u0330f751">
+  <strong>
+   <span class="ne-text">
+    &#20294;&#26159;&#65292;&#21363;&#20351;&#20320;&#20877;&#24590;&#20040;&#20248;&#21270;&#21644;&#25913;&#21464;&#12290;&#20063;&#25913;&#21464;&#19981;&#20102;&#23427;&#30340;&#24213;&#23618;&#20173;&#28982;&#26159;&#21516;&#27493;&#38459;&#22622;&#30340; BIO &#27169;&#22411;&#30340;&#20107;&#23454;&#65292;&#22240;&#27492;&#26080;&#27861;&#20174;&#26681;&#26412;&#19978;&#35299;&#20915;&#38382;&#39064;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u4a695bc9">
+  <br>
+ </p>
+ <p class="ne-p" id="u8143f4b1">
+  <strong>
+   <span class="ne-text">
+    &#20026;&#20102;&#35299;&#20915;&#19978;&#36848;&#30340;&#38382;&#39064;&#65292;Java 1.4 &#20013;&#24341;&#20837;&#20102; NIO &#65292;&#19968;&#31181;&#21516;&#27493;&#38750;&#38459;&#22622;&#30340; I/O &#27169;&#22411;&#12290;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#30001;&#20110;&#20351;&#29992;&#21516;&#27493;&#38750;&#38459;&#22622;&#30340; I/O &#27169;&#22411;
+  </span>
+  <strong>
+   <span class="ne-text">
+    NIO
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#26469;&#36827;&#34892;&#32593;&#32476;&#32534;&#31243;&#30495;&#30340;&#22826;&#40635;&#28902;&#20102;&#12290;&#20320;&#21487;&#20197;&#20351;&#29992;&#22522;&#20110; NIO &#30340;&#32593;&#32476;&#32534;&#31243;&#26694;&#26550; Netty &#65292;&#23427;&#23558;&#26159;&#20320;&#26368;&#22909;&#30340;&#36873;&#25321;&#65288;&#21069;&#38754;&#30340;&#31456;&#33410;&#25552;&#21040;&#36807;&#65292;&#21518;&#38754;&#30340;&#31456;&#33410;&#20250;&#35814;&#32454;&#35762;&#35299;&#22914;&#20309;&#20351;&#29992; Netty &#36827;&#34892;&#32593;&#32476;&#32534;&#31243;&#65289;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="uef5764d2">
+  <br>
+ </p>
+ <h3 id="2dfe8563">
+  <span class="ne-text">
+   4.2. &#23458;&#25143;&#31471;
+  </span>
+ </h3>
+ <p class="ne-p" id="ud6659707">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="vYET2">/**
+ * @author shuang.kou
+ * @createTime 2020&#24180;05&#26376;11&#26085; 16:56:00
+ */
+public class HelloClient {
+
+    private static final Logger logger = LoggerFactory.getLogger(HelloClient.class);
+
+    public Object send(Message message, String host, int port) {
+        //1. &#21019;&#24314;Socket&#23545;&#35937;&#24182;&#19988;&#25351;&#23450;&#26381;&#21153;&#22120;&#30340;&#22320;&#22336;&#21644;&#31471;&#21475;&#21495;
+        try (Socket socket = new Socket(host, port)) {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            //2.&#36890;&#36807;&#36755;&#20986;&#27969;&#21521;&#26381;&#21153;&#22120;&#31471;&#21457;&#36865;&#35831;&#27714;&#20449;&#24687;
+            objectOutputStream.writeObject(message);
+            //3.&#36890;&#36807;&#36755;&#20837;&#27969;&#33719;&#21462;&#26381;&#21153;&#22120;&#21709;&#24212;&#30340;&#20449;&#24687;
+            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+            return objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            logger.error("occur exception:", e);
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        HelloClient helloClient = new HelloClient();
+        helloClient.send(new Message("content from client"), "127.0.0.1", 6666);
+        System.out.println("client receive message:" + message.getContent());
+    }
+}</pre>
+ <p class="ne-p" id="u069ba692">
+  <br>
+ </p>
+ <p class="ne-p" id="ud4fc28d1">
+  <strong>
+   <span class="ne-text">
+    &#21457;&#36865;&#30340;&#28040;&#24687;&#23454;&#20307;&#31867;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ub1e3fb94">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="YM1w1">/**
+ * @author shuang.kou
+ * @createTime 2020&#24180;05&#26376;11&#26085; 17:02:00
+ */
+@Data
+@AllArgsConstructor
+public class Message implements Serializable {
+
+    private String content;
+}</pre>
+ <p class="ne-p" id="u0f8a1205">
+  <br>
+ </p>
+ <p class="ne-p" id="u8a815a04">
+  <strong>
+   <span class="ne-text">
+    &#39318;&#20808;&#36816;&#34892;&#26381;&#21153;&#31471;&#65292;&#28982;&#21518;&#20877;&#36816;&#34892;&#23458;&#25143;&#31471;&#65292;&#25511;&#21046;&#21488;&#36755;&#20986;&#22914;&#19979;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u35998b4d">
+  <br>
+ </p>
+ <p class="ne-p" id="uabe4f895">
+  <span class="ne-text">
+   &#26381;&#21153;&#31471;:
+  </span>
+ </p>
+ <p class="ne-p" id="u074f808d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="lXzwf">[main] INFO github.javaguide.socket.HelloServer - client connected
+[main] INFO github.javaguide.socket.HelloServer - server receive message:content from client</pre>
+ <p class="ne-p" id="u250865a3">
+  <br>
+ </p>
+ <p class="ne-p" id="u3365543a">
+  <span class="ne-text">
+   &#23458;&#25143;&#31471;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u1dc696df">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="dJUhN">client receive message:new content</pre>
+ <p class="ne-p" id="udb797294">
+  <br>
+ </p>
+ <p class="ne-p" id="u55fa8654">
+  <span class="ne-text">
+   &#22909;&#30340;&#65281;&#25105;&#20204;&#30340;&#31532;&#19968;&#20010;&#20351;&#29992; Socket &#36827;&#34892;&#32593;&#32476;&#32534;&#31243;&#30340;&#26696;&#20363;&#24050;&#32463;&#23436;&#25104;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc039d6e0">
+  <br>
+ </p>
+ <p class="ne-p" id="u35d9dc05">
+  <span class="ne-text">
+   &#19979;&#19968;&#31687;&#25105;&#20204;&#26469;&#30475;&#30475;&#22914;&#20309;&#20351;&#29992; Netty &#36827;&#34892;&#32593;&#32476;&#32534;&#31243;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

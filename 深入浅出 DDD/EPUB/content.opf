@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="id" version="3.0" prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <meta property="dcterms:modified">2022-08-09T19:48:03Z</meta>
+    <meta name="generator" content="Ebook-lib 0.17.1"/>
+    <dc:identifier id="id">深入浅出 DDD</dc:identifier>
+    <dc:title>深入浅出 DDD</dc:title>
+    <dc:language>cn</dc:language>
+    <dc:creator id="creator">深入浅出 DDD</dc:creator>
+    <meta name="cover" content="cover-img"></meta>
+  </metadata>
+  <manifest>
+    <item href="cover" id="cover-img" media-type="application/octet-stream" properties="cover-image"/>
+    <item href="cover.xhtml" id="cover" media-type="application/xhtml+xml"/>
+    <item href="0d4dedbe-17d9-11ed-92a9-acde48001122" id="0d4dedbe-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049661680644522023.xhtml" id="chapter_0" media-type="application/xhtml+xml"/>
+    <item href="0e962344-17d9-11ed-92a9-acde48001122" id="0e962344-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="0f3097d0-17d9-11ed-92a9-acde48001122" id="0f3097d0-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1028741e-17d9-11ed-92a9-acde48001122" id="1028741e-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="10999004-17d9-11ed-92a9-acde48001122" id="10999004-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049661680761962507.xhtml" id="chapter_1" media-type="application/xhtml+xml"/>
+    <item href="11ae1e2e-17d9-11ed-92a9-acde48001122" id="11ae1e2e-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="12934d1e-17d9-11ed-92a9-acde48001122" id="12934d1e-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="12f4a65e-17d9-11ed-92a9-acde48001122" id="12f4a65e-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="13c9019c-17d9-11ed-92a9-acde48001122" id="13c9019c-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="140bf15a-17d9-11ed-92a9-acde48001122" id="140bf15a-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="15d10926-17d9-11ed-92a9-acde48001122" id="15d10926-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="16205daa-17d9-11ed-92a9-acde48001122" id="16205daa-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="164772f0-17d9-11ed-92a9-acde48001122" id="164772f0-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="16640186-17d9-11ed-92a9-acde48001122" id="16640186-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="168f075a-17d9-11ed-92a9-acde48001122" id="168f075a-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049661680908763168.xhtml" id="chapter_2" media-type="application/xhtml+xml"/>
+    <item href="16ed14d0-17d9-11ed-92a9-acde48001122" id="16ed14d0-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="16f83086-17d9-11ed-92a9-acde48001122" id="16f83086-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662337921318945.xhtml" id="chapter_3" media-type="application/xhtml+xml"/>
+    <item href="1746ce76-17d9-11ed-92a9-acde48001122" id="1746ce76-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="175b7650-17d9-11ed-92a9-acde48001122" id="175b7650-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1784b344-17d9-11ed-92a9-acde48001122" id="1784b344-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="17d8ad96-17d9-11ed-92a9-acde48001122" id="17d8ad96-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662434730065923.xhtml" id="chapter_4" media-type="application/xhtml+xml"/>
+    <item href="183e8404-17d9-11ed-92a9-acde48001122" id="183e8404-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="185791b0-17d9-11ed-92a9-acde48001122" id="185791b0-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1888ec88-17d9-11ed-92a9-acde48001122" id="1888ec88-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="18b1270c-17d9-11ed-92a9-acde48001122" id="18b1270c-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="18cebc5e-17d9-11ed-92a9-acde48001122" id="18cebc5e-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="18e4f23a-17d9-11ed-92a9-acde48001122" id="18e4f23a-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="192446c4-17d9-11ed-92a9-acde48001122" id="192446c4-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="193e5492-17d9-11ed-92a9-acde48001122" id="193e5492-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="19543316-17d9-11ed-92a9-acde48001122" id="19543316-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662366673272835.xhtml" id="chapter_5" media-type="application/xhtml+xml"/>
+    <item href="19c4ddf0-17d9-11ed-92a9-acde48001122" id="19c4ddf0-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="19db2fc4-17d9-11ed-92a9-acde48001122" id="19db2fc4-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="19fbb8ca-17d9-11ed-92a9-acde48001122" id="19fbb8ca-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1a32ee9e-17d9-11ed-92a9-acde48001122" id="1a32ee9e-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662636023087142.xhtml" id="chapter_6" media-type="application/xhtml+xml"/>
+    <item href="1aafb80c-17d9-11ed-92a9-acde48001122" id="1aafb80c-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1acd56c8-17d9-11ed-92a9-acde48001122" id="1acd56c8-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1aeb92e6-17d9-11ed-92a9-acde48001122" id="1aeb92e6-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662602401546272.xhtml" id="chapter_7" media-type="application/xhtml+xml"/>
+    <item href="1b7ab46c-17d9-11ed-92a9-acde48001122" id="1b7ab46c-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1bb3a6d2-17d9-11ed-92a9-acde48001122" id="1bb3a6d2-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1bd8b4ae-17d9-11ed-92a9-acde48001122" id="1bd8b4ae-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662725185781792.xhtml" id="chapter_8" media-type="application/xhtml+xml"/>
+    <item href="1c37fdba-17d9-11ed-92a9-acde48001122" id="1c37fdba-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1c56ceca-17d9-11ed-92a9-acde48001122" id="1c56ceca-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1c6f37b2-17d9-11ed-92a9-acde48001122" id="1c6f37b2-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1c98a9c6-17d9-11ed-92a9-acde48001122" id="1c98a9c6-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662670416379915.xhtml" id="chapter_9" media-type="application/xhtml+xml"/>
+    <item href="1d167c3e-17d9-11ed-92a9-acde48001122" id="1d167c3e-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662751219646503.xhtml" id="chapter_10" media-type="application/xhtml+xml"/>
+    <item href="1d88a5ca-17d9-11ed-92a9-acde48001122" id="1d88a5ca-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1db9a602-17d9-11ed-92a9-acde48001122" id="1db9a602-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1e132b5a-17d9-11ed-92a9-acde48001122" id="1e132b5a-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1e2809b2-17d9-11ed-92a9-acde48001122" id="1e2809b2-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1e5299e8-17d9-11ed-92a9-acde48001122" id="1e5299e8-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="1e70574e-17d9-11ed-92a9-acde48001122" id="1e70574e-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662812179660811.xhtml" id="chapter_11" media-type="application/xhtml+xml"/>
+    <item href="1edfa478-17d9-11ed-92a9-acde48001122" id="1edfa478-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662849332805670.xhtml" id="chapter_12" media-type="application/xhtml+xml"/>
+    <item href="7049662777190776844.xhtml" id="chapter_13" media-type="application/xhtml+xml"/>
+    <item href="1fa04e08-17d9-11ed-92a9-acde48001122" id="1fa04e08-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662895591784480.xhtml" id="chapter_14" media-type="application/xhtml+xml"/>
+    <item href="201ff4be-17d9-11ed-92a9-acde48001122" id="201ff4be-17d9-11ed-92a9-acde48001122" media-type="image/jpg"/>
+    <item href="7049662922426941479.xhtml" id="chapter_15" media-type="application/xhtml+xml"/>
+    <item href="7049662946250588164.xhtml" id="chapter_16" media-type="application/xhtml+xml"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="nav.xhtml" id="nav" media-type="application/xhtml+xml" properties="nav"/>
+    <item href="style/style.css" id="style" media-type="text/css"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="nav"/>
+    <itemref idref="chapter_0"/>
+    <itemref idref="chapter_1"/>
+    <itemref idref="chapter_2"/>
+    <itemref idref="chapter_3"/>
+    <itemref idref="chapter_4"/>
+    <itemref idref="chapter_5"/>
+    <itemref idref="chapter_6"/>
+    <itemref idref="chapter_7"/>
+    <itemref idref="chapter_8"/>
+    <itemref idref="chapter_9"/>
+    <itemref idref="chapter_10"/>
+    <itemref idref="chapter_11"/>
+    <itemref idref="chapter_12"/>
+    <itemref idref="chapter_13"/>
+    <itemref idref="chapter_14"/>
+    <itemref idref="chapter_15"/>
+    <itemref idref="chapter_16"/>
+  </spine>
+</package>

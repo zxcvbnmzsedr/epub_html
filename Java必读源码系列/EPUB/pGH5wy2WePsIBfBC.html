@@ -1,0 +1,1661 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>&#12300;&#28304;&#30721;&#35299;&#35835;&#12301;&#24322;&#27493;&#25805;&#20316;&#65306;Future &#21644; Promise</h1><div class="lake-content" typography="classic">
+ <div class="ne-quote">
+  <p class="ne-p" id="u8063b9ae">
+   <span class="ne-text">
+    &#27880;&#65306;&#25105;&#23545;&#21407;&#25991;&#36827;&#34892;&#20102;&#26684;&#24335;&#35268;&#33539;&#21644;&#20869;&#23481;&#23436;&#21892;&#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="ua8280533">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u95edb3d4">
+   <span class="ne-text">
+    &#21407;&#25991;&#22320;&#22336;&#65306;
+   </span>
+   <a class="ne-link" data-href="https://www.javadoop.com/post/netty-part-3" href="https://www.javadoop.com/post/netty-part-3" target="_blank">
+    <span class="ne-text">
+     https://www.javadoop.com/post/netty-part-3
+    </span>
+   </a>
+  </p>
+  <p class="ne-p" id="u86d2d42d">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u1a87ba24">
+   <span class="ne-text">
+    &#20316;&#32773;&#65306;JavaDoop
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u51ac5a33">
+  <br>
+ </p>
+ <p class="ne-p" id="uf4a25644">
+  <span class="ne-text">
+   Netty &#20013;&#38750;&#24120;&#22810;&#30340;&#24322;&#27493;&#35843;&#29992;&#65292;&#25152;&#20197;&#22312;&#20171;&#32461;&#26356;&#22810; NIO &#30456;&#20851;&#30340;&#20869;&#23481;&#20043;&#21069;&#65292;&#25105;&#20204;&#26469;&#30475;&#30475;&#23427;&#30340;&#24322;&#27493;&#25509;&#21475;&#26159;&#24590;&#20040;&#20351;&#29992;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u647ee9e9">
+  <br>
+ </p>
+ <p class="ne-p" id="ue45bf211">
+  <span class="ne-text">
+   &#21069;&#38754;&#25105;&#20204;&#22312;&#20171;&#32461; Echo &#20363;&#23376;&#30340;&#26102;&#20505;&#65292;&#24050;&#32463;&#29992;&#36807;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#25509;&#21475;&#20102;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uda2057ec">
+  <br>
+ </p>
+ <p class="ne-p" id="ue4b108a6">
+  <img class="ne-image" id="JbDJH" src="EPUB/imgJbDJH" width="1952">
+ </p>
+ <p class="ne-p" id="u2bd2a0d3">
+  <br>
+ </p>
+ <p class="ne-p" id="u361e44d1">
+  <span class="ne-text">
+   &#20105;&#21462;&#22312;&#30475;&#23436;&#26412;&#33410;&#21518;&#65292;&#35835;&#32773;&#33021;&#25630;&#28165;&#26970;&#19978;&#38754;&#30340;&#36825;&#20960;&#34892;&#21010;&#32447;&#37096;&#20998;&#26159;&#24590;&#20040;&#36208;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ucd999874">
+  <br>
+ </p>
+ <p class="ne-p" id="u843e2219">
+  <span class="ne-text">
+   &#20851;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#25105;&#24819;&#22823;&#23478;&#24212;&#35813;&#37117;&#24456;&#29087;&#24713;&#65292;&#29992;&#24471;&#26368;&#22810;&#30340;&#23601;&#26159;&#22312;&#20351;&#29992; Java &#30340;&#32447;&#31243;&#27744;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ThreadPoolExecutor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26102;&#20505;&#20102;&#12290;&#22312;
+  </span>
+  <strong>
+   <span class="ne-text">
+    submit
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#19968;&#20010;&#20219;&#21153;&#21040;&#32447;&#31243;&#27744;&#20013;&#30340;&#26102;&#20505;&#65292;&#36820;&#22238;&#30340;&#23601;&#26159;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     Future
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65292;&#36890;&#36807;&#23427;&#26469;&#33719;&#21462;&#25552;&#20132;&#30340;&#20219;&#21153;&#30340;&#25191;&#34892;&#29366;&#24577;&#21644;&#26368;&#32456;&#30340;&#25191;&#34892;&#32467;&#26524;&#65292;&#25105;&#20204;&#26368;&#24120;&#29992;&#23427;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    isDone()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    get()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8683ce39">
+  <br>
+ </p>
+ <p class="ne-p" id="u001aa990">
+  <span class="ne-text">
+   &#19979;&#38754;&#26159; JDK &#160;&#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    java.util.concurrent.Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ucb63ca97">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="5f2e79bc">public interface Future&lt;V&gt; {
+    // &#21462;&#28040;&#35813;&#20219;&#21153;
+    boolean cancel(boolean mayInterruptIfRunning);
+    // &#20219;&#21153;&#26159;&#21542;&#24050;&#21462;&#28040;
+    boolean isCancelled();
+    // &#20219;&#21153;&#26159;&#21542;&#24050;&#23436;&#25104;
+    boolean isDone();
+    // &#38459;&#22622;&#33719;&#21462;&#20219;&#21153;&#25191;&#34892;&#32467;&#26524;
+    V get() throws InterruptedException, ExecutionException;
+    // &#24102;&#36229;&#26102;&#21442;&#25968;&#30340;&#33719;&#21462;&#20219;&#21153;&#25191;&#34892;&#32467;&#26524;
+    V get(long timeout, TimeUnit unit)
+        throws InterruptedException, ExecutionException, TimeoutException;
+}</pre>
+ <p class="ne-p" id="u868aa618">
+  <br>
+ </p>
+ <p class="ne-p" id="u1201f60c">
+  <span class="ne-text">
+   Netty &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65288;&#21516;&#21517;&#65289;&#32487;&#25215;&#20102; JDK &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#28982;&#21518;&#28155;&#21152;&#20102;&#19968;&#20123;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6054f6d8">
+  <br>
+ </p>
+ <p class="ne-p" id="u1b737bd4">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.util.concurrent.Future
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u2c366b82">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="c69a61fa">public interface Future&lt;V&gt; extends java.util.concurrent.Future&lt;V&gt; {
+
+    // &#26159;&#21542;&#25104;&#21151;
+    boolean isSuccess();
+
+    // &#26159;&#21542;&#21487;&#21462;&#28040;
+    boolean isCancellable();
+
+    // &#22914;&#26524;&#20219;&#21153;&#25191;&#34892;&#22833;&#36133;&#65292;&#36825;&#20010;&#26041;&#27861;&#36820;&#22238;&#24322;&#24120;&#20449;&#24687;
+    Throwable cause();
+
+    // &#28155;&#21152; Listener &#26469;&#36827;&#34892;&#22238;&#35843;
+    Future&lt;V&gt; addListener(GenericFutureListener&lt;? extends Future&lt;? super V&gt;&gt; listener);
+    Future&lt;V&gt; addListeners(GenericFutureListener&lt;? extends Future&lt;? super V&gt;&gt;... listeners);
+
+    Future&lt;V&gt; removeListener(GenericFutureListener&lt;? extends Future&lt;? super V&gt;&gt; listener);
+    Future&lt;V&gt; removeListeners(GenericFutureListener&lt;? extends Future&lt;? super V&gt;&gt;... listeners);
+
+    // &#38459;&#22622;&#31561;&#24453;&#20219;&#21153;&#32467;&#26463;&#65292;&#22914;&#26524;&#20219;&#21153;&#22833;&#36133;&#65292;&#23558;&#8220;&#23548;&#33268;&#22833;&#36133;&#30340;&#24322;&#24120;&#8221;&#37325;&#26032;&#25243;&#20986;&#26469;
+    Future&lt;V&gt; sync() throws InterruptedException;
+    // &#19981;&#21709;&#24212;&#20013;&#26029;&#30340; sync()&#65292;&#36825;&#20010;&#22823;&#23478;&#24212;&#35813;&#37117;&#24456;&#29087;&#20102;
+    Future&lt;V&gt; syncUninterruptibly();
+
+    // &#38459;&#22622;&#31561;&#24453;&#20219;&#21153;&#32467;&#26463;&#65292;&#21644; sync() &#21151;&#33021;&#26159;&#19968;&#26679;&#30340;&#65292;&#19981;&#36807;&#22914;&#26524;&#20219;&#21153;&#22833;&#36133;&#65292;&#23427;&#19981;&#20250;&#25243;&#20986;&#25191;&#34892;&#36807;&#31243;&#20013;&#30340;&#24322;&#24120;
+    Future&lt;V&gt; await() throws InterruptedException;
+    Future&lt;V&gt; awaitUninterruptibly();
+    boolean await(long timeout, TimeUnit unit) throws InterruptedException;
+    boolean await(long timeoutMillis) throws InterruptedException;
+    boolean awaitUninterruptibly(long timeout, TimeUnit unit);
+    boolean awaitUninterruptibly(long timeoutMillis);
+
+    // &#33719;&#21462;&#25191;&#34892;&#32467;&#26524;&#65292;&#19981;&#38459;&#22622;&#12290;&#25105;&#20204;&#37117;&#30693;&#36947; java.util.concurrent.Future &#20013;&#30340; get() &#26159;&#38459;&#22622;&#30340;
+    V getNow();
+
+    // &#21462;&#28040;&#20219;&#21153;&#25191;&#34892;&#65292;&#22914;&#26524;&#21462;&#28040;&#25104;&#21151;&#65292;&#20219;&#21153;&#20250;&#22240;&#20026; CancellationException &#24322;&#24120;&#32780;&#23548;&#33268;&#22833;&#36133;
+    //      &#20063;&#23601;&#26159; isSuccess()==false&#65292;&#21516;&#26102;&#19978;&#38754;&#30340; cause() &#26041;&#27861;&#36820;&#22238; CancellationException &#30340;&#23454;&#20363;&#12290;
+    // mayInterruptIfRunning &#35828;&#30340;&#26159;&#65306;&#26159;&#21542;&#23545;&#27491;&#22312;&#25191;&#34892;&#35813;&#20219;&#21153;&#30340;&#32447;&#31243;&#36827;&#34892;&#20013;&#26029;(&#36825;&#26679;&#25165;&#33021;&#20572;&#27490;&#35813;&#20219;&#21153;&#30340;&#25191;&#34892;)&#65292;
+    //       &#20284;&#20046; Netty &#20013; Future &#25509;&#21475;&#30340;&#21508;&#20010;&#23454;&#29616;&#31867;&#65292;&#37117;&#27809;&#26377;&#20351;&#29992;&#36825;&#20010;&#21442;&#25968;
+    @Override
+    boolean cancel(boolean mayInterruptIfRunning);
+}</pre>
+ <p class="ne-p" id="u55508b29">
+  <br>
+ </p>
+ <p class="ne-p" id="ud1269e8d">
+  <span class="ne-text">
+   &#30475;&#23436;&#19978;&#38754;&#30340; Netty &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#25105;&#20204;&#21487;&#20197;&#21457;&#29616;&#65292;&#23427;&#21152;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    await()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29992;&#20110;&#38459;&#22622;&#31561;&#24453;&#65292;&#36824;&#21152;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Listeners
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21482;&#35201;&#20219;&#21153;&#32467;&#26463;&#21435;&#22238;&#35843;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Listener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20204;&#23601;&#21487;&#20197;&#20102;&#65292;&#37027;&#20040;&#25105;&#20204;&#23601;&#19981;&#19968;&#23450;&#35201;&#20027;&#21160;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    isDone()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#33719;&#21462;&#29366;&#24577;&#65292;&#25110;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    get()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#38459;&#22622;&#26041;&#27861;&#26469;&#33719;&#21462;&#20540;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uabd2e120">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ue60e3ac2">
+   <span class="ne-text">
+    &#25152;&#20197;&#23427;&#20854;&#23454;&#26377;&#20004;&#31181;&#20351;&#29992;&#33539;&#24335;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="uf43a3f95">
+  <br>
+ </p>
+ <p class="ne-p" id="u08800f16">
+  <span class="ne-text">
+   &#39034;&#20415;&#35828;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    await()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21306;&#21035;&#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20869;&#37096;&#20250;&#20808;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    await()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#31561;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    await()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36820;&#22238;&#21518;&#65292;&#20250;&#26816;&#26597;&#19979;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#36825;&#20010;&#20219;&#21153;&#26159;&#21542;&#22833;&#36133;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#22914;&#26524;&#22833;&#36133;&#65292;&#37325;&#26032;&#23558;&#23548;&#33268;&#22833;&#36133;&#30340;&#24322;&#24120;&#25243;&#20986;&#26469;&#12290;&#20063;&#23601;&#26159;&#35828;&#65292;&#22914;&#26524;&#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    await()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#20219;&#21153;&#25243;&#20986;&#24322;&#24120;&#21518;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    await()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20250;&#36820;&#22238;&#65292;&#20294;&#26159;&#19981;&#20250;&#25243;&#20986;&#24322;&#24120;&#65292;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36820;&#22238;&#30340;&#21516;&#26102;&#20250;&#25243;&#20986;&#24322;&#24120;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf83ba429">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ua2784eaf">
+   <span class="ne-text">
+    &#25105;&#20204;&#20063;&#21487;&#20197;&#30475;&#21040;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Future
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25509;&#21475;&#27809;&#26377;&#21644; IO &#25805;&#20316;&#20851;&#32852;&#22312;&#19968;&#36215;&#65292;&#36824;&#26159;&#27604;&#36739;
+   </span>
+   <em>
+    <span class="ne-text">
+     &#32431;&#20928;
+    </span>
+   </em>
+   <span class="ne-text">
+    &#30340;&#25509;&#21475;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u77ab7d99">
+  <br>
+ </p>
+ <p class="ne-p" id="u79b70e9d">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#26469;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#23376;&#25509;&#21475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#20010;&#25509;&#21475;&#29992;&#24471;&#26368;&#22810;&#65292;&#23427;&#23558;&#21644; IO &#25805;&#20316;&#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#32852;&#22312;&#19968;&#36215;&#20102;&#65292;&#29992;&#20110;&#24322;&#27493;&#22788;&#29702;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#20107;&#20214;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u10c47204">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="54ec4877">public interface ChannelFuture extends Future&lt;Void&gt; {
+
+    // ChannelFuture &#20851;&#32852;&#30340; Channel
+    Channel channel();
+
+    // &#35206;&#20889;&#20197;&#19979;&#20960;&#20010;&#26041;&#27861;&#65292;&#20351;&#24471;&#23427;&#20204;&#36820;&#22238;&#20540;&#20026; ChannelFuture &#31867;&#22411; 
+    @Override
+    ChannelFuture addListener(GenericFutureListener&lt;? extends Future&lt;? super Void&gt;&gt; listener);
+    @Override
+    ChannelFuture addListeners(GenericFutureListener&lt;? extends Future&lt;? super Void&gt;&gt;... listeners);
+    @Override
+    ChannelFuture removeListener(GenericFutureListener&lt;? extends Future&lt;? super Void&gt;&gt; listener);
+    @Override
+    ChannelFuture removeListeners(GenericFutureListener&lt;? extends Future&lt;? super Void&gt;&gt;... listeners);
+
+    @Override
+    ChannelFuture sync() throws InterruptedException;
+    @Override
+    ChannelFuture syncUninterruptibly();
+
+    @Override
+    ChannelFuture await() throws InterruptedException;
+    @Override
+    ChannelFuture awaitUninterruptibly();
+
+    // &#29992;&#26469;&#26631;&#35760;&#35813; future &#26159; void &#30340;&#65292;
+    // &#36825;&#26679;&#23601;&#19981;&#20801;&#35768;&#20351;&#29992; addListener(...), sync(), await() &#20197;&#21450;&#23427;&#20204;&#30340;&#20960;&#20010;&#37325;&#36733;&#26041;&#27861;
+    boolean isVoid();
+}</pre>
+ <p class="ne-p" id="u8f49f826">
+  <br>
+ </p>
+ <p class="ne-p" id="u6e782ab3">
+  <span class="ne-text">
+   &#25105;&#20204;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30456;&#23545;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#38500;&#20102;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#32852;&#36827;&#26469;&#65292;&#27809;&#26377;&#22686;&#21152;&#20160;&#20040;&#19996;&#35199;&#12290;&#36824;&#26377;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    isVoid()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#31639;&#26159;&#19981;&#37027;&#20040;&#37325;&#35201;&#30340;&#23384;&#22312;&#21543;&#12290;&#20854;&#20182;&#20960;&#20010;&#37117;&#26159;&#26041;&#27861;&#35206;&#20889;&#65292;&#20026;&#20102;&#35753;&#36820;&#22238;&#20540;&#31867;&#22411;&#21464;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#32780;&#19981;&#26159;&#21407;&#26469;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uadab956d">
+  <br>
+ </p>
+ <p class="ne-p" id="u790b749d">
+  <span class="ne-text">
+   &#36825;&#37324;&#26377;&#28857;&#36339;&#65292;&#25105;&#20204;&#26469;&#20171;&#32461;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#23427;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#26080;&#20851;&#65292;&#32780;&#26159;&#21644;&#21069;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30456;&#20851;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#25509;&#21475;&#38750;&#24120;&#37325;&#35201;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ud94ce49f">
+  <br>
+ </p>
+ <p class="ne-p" id="u0dae78ef">
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19968;&#26679;&#65292;&#20063;&#32487;&#25215;&#20102; Netty &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#28982;&#21518;&#21152;&#20102;&#19968;&#20123;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20869;&#23481;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uff455eff">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="3a408f94">public interface Promise&lt;V&gt; extends Future&lt;V&gt; {
+
+    // &#26631;&#35760;&#35813; future &#25104;&#21151;&#21450;&#35774;&#32622;&#20854;&#25191;&#34892;&#32467;&#26524;&#65292;&#24182;&#19988;&#20250;&#36890;&#30693;&#25152;&#26377;&#30340; listeners&#12290;
+    // &#22914;&#26524;&#35813;&#25805;&#20316;&#22833;&#36133;&#65292;&#23558;&#25243;&#20986;&#24322;&#24120;(&#22833;&#36133;&#25351;&#30340;&#26159;&#35813; future &#24050;&#32463;&#26377;&#20102;&#32467;&#26524;&#20102;&#65292;&#25104;&#21151;&#30340;&#32467;&#26524;&#65292;&#25110;&#32773;&#22833;&#36133;&#30340;&#32467;&#26524;)
+    Promise&lt;V&gt; setSuccess(V result);
+
+    // &#21644; setSuccess &#26041;&#27861;&#19968;&#26679;&#65292;&#21482;&#19981;&#36807;&#22914;&#26524;&#22833;&#36133;&#65292;&#23427;&#19981;&#25243;&#24322;&#24120;&#65292;&#36820;&#22238; false
+    boolean trySuccess(V result);
+
+    // &#26631;&#35760;&#35813; future &#22833;&#36133;&#65292;&#21450;&#20854;&#22833;&#36133;&#21407;&#22240;&#12290;
+    // &#22914;&#26524;&#22833;&#36133;&#65292;&#23558;&#25243;&#20986;&#24322;&#24120;(&#22833;&#36133;&#25351;&#30340;&#26159;&#24050;&#32463;&#26377;&#20102;&#32467;&#26524;&#20102;)
+    Promise&lt;V&gt; setFailure(Throwable cause);
+
+    // &#26631;&#35760;&#35813; future &#22833;&#36133;&#65292;&#21450;&#20854;&#22833;&#36133;&#21407;&#22240;&#12290;
+    // &#22914;&#26524;&#24050;&#32463;&#26377;&#32467;&#26524;&#65292;&#36820;&#22238; false&#65292;&#19981;&#25243;&#20986;&#24322;&#24120;
+    boolean tryFailure(Throwable cause);
+
+    // &#26631;&#35760;&#35813; future &#19981;&#21487;&#20197;&#34987;&#21462;&#28040;
+    boolean setUncancellable();
+
+    // &#36825;&#37324;&#21644; ChannelFuture &#19968;&#26679;&#65292;&#23545;&#36825;&#20960;&#20010;&#26041;&#27861;&#36827;&#34892;&#35206;&#20889;&#65292;&#30446;&#30340;&#26159;&#20026;&#20102;&#36820;&#22238; Promise &#31867;&#22411;&#30340;&#23454;&#20363;
+    @Override
+    Promise&lt;V&gt; addListener(GenericFutureListener&lt;? extends Future&lt;? super V&gt;&gt; listener);
+    @Override
+    Promise&lt;V&gt; addListeners(GenericFutureListener&lt;? extends Future&lt;? super V&gt;&gt;... listeners);
+
+    @Override
+    Promise&lt;V&gt; removeListener(GenericFutureListener&lt;? extends Future&lt;? super V&gt;&gt; listener);
+    @Override
+    Promise&lt;V&gt; removeListeners(GenericFutureListener&lt;? extends Future&lt;? super V&gt;&gt;... listeners);
+
+    @Override
+    Promise&lt;V&gt; await() throws InterruptedException;
+    @Override
+    Promise&lt;V&gt; awaitUninterruptibly();
+
+    @Override
+    Promise&lt;V&gt; sync() throws InterruptedException;
+    @Override
+    Promise&lt;V&gt; syncUninterruptibly();
+}</pre>
+ <p class="ne-p" id="u8bb6c98d">
+  <br>
+ </p>
+ <p class="ne-p" id="u6742eda8">
+  <span class="ne-text">
+   &#21487;&#33021;&#26377;&#20123;&#35835;&#32773;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#27010;&#24565;&#19981;&#26159;&#24456;&#29087;&#24713;&#65292;&#36825;&#37324;&#31616;&#21333;&#35828;&#20004;&#21477;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u51c60413">
+  <br>
+ </p>
+ <p class="ne-p" id="u71b31077">
+  <span class="ne-text">
+   &#25105;&#35273;&#24471;&#21482;&#35201;&#26126;&#30333;&#19968;&#28857;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#20869;&#37096;&#26159;&#19968;&#20010;&#20219;&#21153;&#65292;&#20219;&#21153;&#30340;&#25191;&#34892;&#24448;&#24448;&#26159;&#24322;&#27493;&#30340;&#65292;&#36890;&#24120;&#26159;&#19968;&#20010;&#32447;&#31243;&#27744;&#26469;&#22788;&#29702;&#20219;&#21153;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25552;&#20379;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setSuccess(V result)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setFailure(Throwable t)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23558;&#26469;&#20250;&#34987;&#26576;&#20010;&#25191;&#34892;&#20219;&#21153;&#30340;&#32447;&#31243;&#22312;&#25191;&#34892;&#23436;&#25104;&#20197;&#21518;&#35843;&#29992;&#65292;&#21516;&#26102;&#37027;&#20010;&#32447;&#31243;&#22312;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setSuccess(result)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setFailure(t)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21518;&#20250;&#22238;&#35843;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    listeners
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#22238;&#35843;&#20989;&#25968;&#65288;&#24403;&#28982;&#65292;&#22238;&#35843;&#30340;&#20855;&#20307;&#20869;&#23481;&#19981;&#19968;&#23450;&#35201;&#30001;&#25191;&#34892;&#20219;&#21153;&#30340;&#32447;&#31243;&#33258;&#24049;&#26469;&#25191;&#34892;&#65292;&#23427;&#21487;&#20197;&#21019;&#24314;&#26032;&#30340;&#32447;&#31243;&#26469;&#25191;&#34892;&#65292;&#20063;&#21487;&#20197;&#23558;&#22238;&#35843;&#20219;&#21153;&#25552;&#20132;&#21040;&#26576;&#20010;&#32447;&#31243;&#27744;&#26469;&#25191;&#34892;&#65289;&#12290;&#32780;&#19988;&#65292;&#19968;&#26086;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setSuccess(...)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setFailure(...)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21518;&#65292;&#37027;&#20123;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    await()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#32447;&#31243;&#23601;&#20250;&#20174;&#31561;&#24453;&#20013;&#36820;&#22238;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uac8e9f6f">
+  <br>
+ </p>
+ <p class="ne-p" id="u1ef90cfb">
+  <strong>
+   <span class="ne-text">
+    &#25152;&#20197;&#36825;&#37324;&#23601;&#26377;&#20004;&#31181;&#32534;&#31243;&#26041;&#24335;&#65292;&#19968;&#31181;&#26159;&#29992;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     await()
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#65292;&#31561;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     await()
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#26041;&#27861;&#36820;&#22238;&#21518;&#65292;&#24471;&#21040;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     promise
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#30340;&#25191;&#34892;&#32467;&#26524;&#65292;&#28982;&#21518;&#22788;&#29702;&#23427;&#65307;&#21478;&#19968;&#31181;&#23601;&#26159;&#25552;&#20379;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     Listener
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#23454;&#20363;&#65292;&#25105;&#20204;&#19981;&#22826;&#20851;&#24515;&#20219;&#21153;&#20160;&#20040;&#26102;&#20505;&#20250;&#25191;&#34892;&#23436;&#65292;&#21482;&#35201;&#23427;&#25191;&#34892;&#23436;&#20102;&#20197;&#21518;&#20250;&#21435;&#25191;&#34892; listener &#20013;&#30340;&#22788;&#29702;&#26041;&#27861;&#23601;&#34892;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ud6d20359">
+  <br>
+ </p>
+ <p class="ne-p" id="u82d92fb9">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#20877;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     ChannelPromise
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#65292;&#23427;&#32487;&#25215;&#20102;&#21069;&#38754;&#20171;&#32461;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4842ab96">
+  <br>
+ </p>
+ <p class="ne-p" id="ua4030eeb">
+  <img class="ne-image" id="FfXc8" src="EPUB/imgFfXc8" width="1450">
+ </p>
+ <p class="ne-p" id="uaf8f23ee">
+  <br>
+ </p>
+ <p class="ne-p" id="ua1ff70ed">
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelPromise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#22312; Netty &#20013;&#20351;&#29992;&#24471;&#27604;&#36739;&#22810;&#65292;&#22240;&#20026;&#23427;&#32508;&#21512;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20004;&#20010;&#25509;&#21475;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u31a85f13">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="3ef70c98">/**
+ * Special {@link ChannelFuture} which is writable.
+ */
+public interface ChannelPromise extends ChannelFuture, Promise&lt;Void&gt; {
+
+    // &#35206;&#20889; ChannelFuture &#20013;&#30340; channel() &#26041;&#27861;&#65292;&#20854;&#23454;&#36825;&#20010;&#26041;&#27861;&#19968;&#28857;&#27809;&#21464;
+    @Override
+    Channel channel();
+
+    // &#19979;&#38754;&#20960;&#20010;&#26041;&#27861;&#26159;&#35206;&#20889; Promise &#20013;&#30340;&#25509;&#21475;&#65292;&#20026;&#20102;&#36820;&#22238;&#20540;&#31867;&#22411;&#26159; ChannelPromise
+    @Override
+    ChannelPromise setSuccess(Void result);
+    ChannelPromise setSuccess();
+    boolean trySuccess();
+    @Override
+    ChannelPromise setFailure(Throwable cause);
+
+    // &#21040;&#36825;&#37324;&#22823;&#23478;&#24212;&#35813;&#37117;&#29087;&#24713;&#20102;&#65292;&#19979;&#38754;&#20960;&#20010;&#26041;&#27861;&#30340;&#35206;&#20889;&#20063;&#26159;&#20026;&#20102;&#24471;&#21040; ChannelPromise &#31867;&#22411;&#30340;&#23454;&#20363;
+    @Override
+    ChannelPromise addListener(GenericFutureListener&lt;? extends Future&lt;? super Void&gt;&gt; listener);
+    @Override
+    ChannelPromise addListeners(GenericFutureListener&lt;? extends Future&lt;? super Void&gt;&gt;... listeners);
+    @Override
+    ChannelPromise removeListener(GenericFutureListener&lt;? extends Future&lt;? super Void&gt;&gt; listener);
+    @Override
+    ChannelPromise removeListeners(GenericFutureListener&lt;? extends Future&lt;? super Void&gt;&gt;... listeners);
+
+    @Override
+    ChannelPromise sync() throws InterruptedException;
+    @Override
+    ChannelPromise syncUninterruptibly();
+    @Override
+    ChannelPromise await() throws InterruptedException;
+    @Override
+    ChannelPromise awaitUninterruptibly();
+
+    /**
+     * Returns a new {@link ChannelPromise} if {@link #isVoid()} returns {@code true} otherwise itself.
+     */
+    // &#25105;&#20204;&#24573;&#30053;&#36825;&#20010;&#26041;&#27861;&#21543;&#12290;
+    ChannelPromise unvoid();
+}</pre>
+ <p class="ne-p" id="ud36cc14b">
+  <br>
+ </p>
+ <p class="ne-p" id="u78d0057d">
+  <span class="ne-text">
+   &#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#65292;&#23427;&#32508;&#21512;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#26041;&#27861;&#65292;&#21482;&#19981;&#36807;&#36890;&#36807;&#35206;&#20889;&#23558;&#36820;&#22238;&#20540;&#37117;&#21464;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelPromise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20102;&#32780;&#24050;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#27809;&#26377;&#22686;&#21152;&#20160;&#20040;&#26032;&#30340;&#21151;&#33021;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua41a97a4">
+  <br>
+ </p>
+ <p class="ne-p" id="ub7b5bd18">
+  <span class="ne-text">
+   &#23567;&#32467;&#19968;&#19979;&#65292;&#25105;&#20204;&#19978;&#38754;&#20171;&#32461;&#20102;&#20960;&#20010;&#25509;&#21475;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20197;&#21450;&#23427;&#30340;&#23376;&#25509;&#21475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#28982;&#21518;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelPromise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#21516;&#26102;&#32487;&#25215;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ued598ab4">
+  <br>
+ </p>
+ <p class="ne-p" id="u3a1bd5f7">
+  <span class="ne-text">
+   &#25105;&#25226;&#36825;&#20960;&#20010;&#25509;&#21475;&#30340;&#20027;&#35201;&#26041;&#27861;&#21015;&#22312;&#19968;&#36215;&#65292;&#36825;&#26679;&#22823;&#23478;&#30475;&#24471;&#28165;&#26224;&#20123;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u9af51979">
+  <br>
+ </p>
+ <p class="ne-p" id="udbbf78dd">
+  <img class="ne-image" id="yTcxb" src="EPUB/imgyTcxb" width="1942">
+ </p>
+ <p class="ne-p" id="ufb270e14">
+  <br>
+ </p>
+ <p class="ne-p" id="ue6117296">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#38656;&#35201;&#26469;&#19968;&#20010;&#23454;&#29616;&#31867;&#65292;&#36825;&#26679;&#25165;&#33021;&#27604;&#36739;&#30452;&#35266;&#22320;&#30475;&#20986;&#23427;&#20204;&#26159;&#24590;&#20040;&#20351;&#29992;&#30340;&#65292;&#22240;&#20026;&#19978;&#38754;&#30340;&#36825;&#20123;&#37117;&#26159;&#25509;&#21475;&#23450;&#20041;&#65292;&#20855;&#20307;&#36824;&#24471;&#30475;&#23454;&#29616;&#31867;&#26159;&#24590;&#20040;&#24037;&#20316;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u06c2db4f">
+  <br>
+ </p>
+ <p class="ne-p" id="u883ca550">
+  <span class="ne-text">
+   &#19979;&#38754;&#65292;&#25105;&#20204;&#26469;&#20171;&#32461;&#19979;
+  </span>
+  <strong>
+   <span class="ne-text">
+    DefaultPromise
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#36825;&#20010;&#23454;&#29616;&#31867;&#65292;&#36825;&#20010;&#31867;&#24456;&#24120;&#29992;&#65292;&#23427;&#30340;&#28304;&#30721;&#20063;&#19981;&#30701;&#65292;&#25105;&#20204;&#20808;&#20171;&#32461;&#20960;&#20010;&#20851;&#38190;&#30340;&#20869;&#23481;&#65292;&#28982;&#21518;&#20171;&#32461;&#19968;&#20010;&#31034;&#20363;&#20351;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u651cb2f0">
+  <br>
+ </p>
+ <p class="ne-p" id="uf62d1f91">
+  <span class="ne-text">
+   &#39318;&#20808;&#65292;&#25105;&#20204;&#30475;&#19979;&#23427;&#26377;&#21738;&#20123;&#23646;&#24615;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ubb930172">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="ce339e5a">public class DefaultPromise&lt;V&gt; extends AbstractFuture&lt;V&gt; implements Promise&lt;V&gt; {
+      // &#20445;&#23384;&#25191;&#34892;&#32467;&#26524;
+    private volatile Object result;
+    // &#25191;&#34892;&#20219;&#21153;&#30340;&#32447;&#31243;&#27744;&#65292;promise &#25345;&#26377; executor &#30340;&#24341;&#29992;&#65292;&#36825;&#20010;&#20854;&#23454;&#26377;&#28857;&#22855;&#24618;&#20102;
+    // &#22240;&#20026;&#8220;&#20219;&#21153;&#8221;&#20854;&#23454;&#27809;&#24517;&#35201;&#30693;&#36947;&#33258;&#24049;&#22312;&#21738;&#37324;&#34987;&#25191;&#34892;&#30340;
+    private final EventExecutor executor;
+      // &#30417;&#21548;&#32773;&#65292;&#22238;&#35843;&#20989;&#25968;&#65292;&#20219;&#21153;&#32467;&#26463;&#21518;&#65288;&#27491;&#24120;&#25110;&#24322;&#24120;&#32467;&#26463;&#65289;&#25191;&#34892;
+    private Object listeners;
+
+    // &#31561;&#24453;&#36825;&#20010; promise &#30340;&#32447;&#31243;&#25968;(&#35843;&#29992;sync()/await()&#36827;&#34892;&#31561;&#24453;&#30340;&#32447;&#31243;&#25968;&#37327;)
+    private short waiters;
+
+    // &#26159;&#21542;&#27491;&#22312;&#21796;&#37266;&#31561;&#24453;&#32447;&#31243;&#65292;&#29992;&#20110;&#38450;&#27490;&#37325;&#22797;&#25191;&#34892;&#21796;&#37266;&#65292;&#19981;&#28982;&#20250;&#37325;&#22797;&#25191;&#34892; listeners &#30340;&#22238;&#35843;&#26041;&#27861;
+    private boolean notifyingListeners;
+    ......
+}</pre>
+ <p class="ne-p" id="u1fcd8210">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u206dac14">
+   <span class="ne-text">
+    &#21487;&#20197;&#30475;&#20986;&#65292;&#27492;&#31867;&#23454;&#29616;&#20102; Promise&#65292;&#20294;&#26159;&#27809;&#26377;&#23454;&#29616; ChannelFuture&#65292;&#25152;&#20197;&#23427;&#21644; Channel &#32852;&#31995;&#19981;&#36215;&#26469;&#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="uc6ec7ae1">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u24b99651">
+   <span class="ne-text">
+    &#21035;&#24613;&#65292;&#25105;&#20204;&#21518;&#38754;&#20250;&#30896;&#21040;&#21478;&#19968;&#20010;&#31867; DefaultChannelPromise &#30340;&#20351;&#29992;&#65292;&#36825;&#20010;&#31867;&#26159;&#32508;&#21512;&#20102; ChannelFuture &#21644; Promise &#30340;&#65292;&#20294;&#26159;&#23427;&#30340;&#23454;&#29616;&#20854;&#23454;&#22823;&#37096;&#20998;&#37117;&#26159;&#32487;&#25215;&#33258;&#36825;&#37324;&#30340; DefaultPromise &#31867;&#30340;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="ud9872c3c">
+  <br>
+ </p>
+ <p class="ne-p" id="ufa0166fc">
+  <span class="ne-text">
+   &#35828;&#23436;&#19978;&#38754;&#30340;&#23646;&#24615;&#20197;&#21518;&#65292;&#22823;&#23478;&#21487;&#20197;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setSuccess(V result)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    trySuccess(V result)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setFailure(Throwable cause)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    tryFailure(Throwable cause)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20960;&#20010;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u38819a39">
+  <br>
+ </p>
+ <p class="ne-p" id="u2388a3e1">
+  <img class="ne-image" id="ys3k2" src="EPUB/imgys3k2" width="1954">
+ </p>
+ <p class="ne-p" id="u869ca336">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u87e63a66">
+   <span class="ne-text">
+    &#30475;&#20986; setSuccess(result) &#21644; trySuccess(result) &#30340;&#21306;&#21035;&#20102;&#21527;&#65311;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u3fca76ba">
+  <br>
+ </p>
+ <p class="ne-p" id="u1cc2723f">
+  <span class="ne-text">
+   &#19978;&#38754;&#20960;&#20010;&#26041;&#27861;&#37117;&#38750;&#24120;&#31616;&#21333;&#65292;&#20808;&#35774;&#32622;&#22909;&#20540;&#65292;&#28982;&#21518;&#25191;&#34892;&#30417;&#21548;&#32773;&#20204;&#30340;&#22238;&#35843;&#26041;&#27861;&#12290;notifyListeners() &#26041;&#27861;&#24863;&#20852;&#36259;&#30340;&#35835;&#32773;&#20063;&#21487;&#20197;&#30475;&#19968;&#30475;&#65292;&#19981;&#36807;&#23427;&#36824;&#28041;&#21450;&#21040; Netty &#32447;&#31243;&#27744;&#30340;&#19968;&#20123;&#20869;&#23481;&#65292;&#25105;&#20204;&#36824;&#27809;&#26377;&#20171;&#32461;&#21040;&#32447;&#31243;&#27744;&#65292;&#36825;&#37324;&#23601;&#19981;&#23637;&#24320;&#20102;&#12290;&#19978;&#38754;&#30340;&#20195;&#30721;&#65292;&#22312; setSuccess0 &#25110; setFailure0 &#26041;&#27861;&#20013;&#37117;&#20250;&#21796;&#37266;&#38459;&#22622;&#22312; sync() &#25110; await() &#30340;&#32447;&#31243;
+  </span>
+ </p>
+ <p class="ne-p" id="u0068451b">
+  <br>
+ </p>
+ <p class="ne-p" id="u46c2ccfd">
+  <span class="ne-text">
+   &#21478;&#22806;&#65292;&#23601;&#26159;&#21487;&#20197;&#30475;&#19979; sync() &#21644; await() &#30340;&#21306;&#21035;&#65292;&#20854;&#20182;&#30340;&#25105;&#35273;&#24471;&#38543;&#20415;&#30475;&#30475;&#23601;&#22909;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uae98b3f4">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="71558c8e">@Override
+public Promise&lt;V&gt; sync() throws InterruptedException {
+    await();
+    // &#22914;&#26524;&#20219;&#21153;&#26159;&#22833;&#36133;&#30340;&#65292;&#37325;&#26032;&#25243;&#20986;&#30456;&#24212;&#30340;&#24322;&#24120;
+    rethrowIfFailed();
+    return this;
+}</pre>
+ <p class="ne-p" id="u7df7c1bf">
+  <br>
+ </p>
+ <p class="ne-p" id="u2efbfa4e">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#26469;&#20889;&#20010;&#23454;&#20363;&#20195;&#30721;&#21543;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u71bb8730">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="65d3c7a3">    public static void main(String[] args) {
+
+        // &#26500;&#36896;&#32447;&#31243;&#27744;
+        EventExecutor executor = new DefaultEventExecutor();
+
+        // &#21019;&#24314; DefaultPromise &#23454;&#20363;
+        Promise promise = new DefaultPromise(executor);
+
+        // &#19979;&#38754;&#32473;&#36825;&#20010; promise &#28155;&#21152;&#20004;&#20010; listener
+        promise.addListener(new GenericFutureListener&lt;Future&lt;Integer&gt;&gt;() {
+            @Override
+            public void operationComplete(Future future) throws Exception {
+                if (future.isSuccess()) {
+                    System.out.println("&#20219;&#21153;&#32467;&#26463;&#65292;&#32467;&#26524;&#65306;" + future.get());
+                } else {
+                    System.out.println("&#20219;&#21153;&#22833;&#36133;&#65292;&#24322;&#24120;&#65306;" + future.cause());
+                }
+            }
+        }).addListener(new GenericFutureListener&lt;Future&lt;Integer&gt;&gt;() {
+            @Override
+            public void operationComplete(Future future) throws Exception {
+                System.out.println("&#20219;&#21153;&#32467;&#26463;&#65292;balabala...");
+            }
+        });
+
+        // &#25552;&#20132;&#20219;&#21153;&#21040;&#32447;&#31243;&#27744;&#65292;&#20116;&#31186;&#21518;&#25191;&#34892;&#32467;&#26463;&#65292;&#35774;&#32622;&#25191;&#34892; promise &#30340;&#32467;&#26524;
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                }
+                // &#35774;&#32622; promise &#30340;&#32467;&#26524;
+                // promise.setFailure(new RuntimeException());
+                promise.setSuccess(123456);
+            }
+        });
+
+        // main &#32447;&#31243;&#38459;&#22622;&#31561;&#24453;&#25191;&#34892;&#32467;&#26524;
+        try {
+            promise.sync();
+        } catch (InterruptedException e) {
+        }
+    }</pre>
+ <p class="ne-p" id="u0ca4b729">
+  <br>
+ </p>
+ <p class="ne-p" id="udb623150">
+  <span class="ne-text">
+   &#36816;&#34892;&#20195;&#30721;&#65292;&#20004;&#20010; listener &#23558;&#22312; 5 &#31186;&#21518;&#23558;&#36755;&#20986;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u93372e3e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-plain" data-language="plain" id="472d80f1">&#20219;&#21153;&#32467;&#26463;&#65292;&#32467;&#26524;&#65306;123456
+&#20219;&#21153;&#32467;&#26463;&#65292;balabala...</pre>
+ <p class="ne-p" id="u79c29eb7">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uf4b1cbb9">
+   <span class="ne-text">
+    &#35835;&#32773;&#36825;&#37324;&#21487;&#20197;&#35797;&#19968;&#19979;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     sync()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     await()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#21306;&#21035;&#65292;&#22312;&#20219;&#21153;&#20013;&#35843;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     promise.setFailure(new RuntimeException())
+    </span>
+   </code>
+   <span class="ne-text">
+    &#35797;&#35797;&#30475;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="udc88779e">
+  <br>
+ </p>
+ <p class="ne-p" id="uc88150a6">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;&#20195;&#30721;&#20013;&#65292;&#22823;&#23478;&#21487;&#33021;&#20250;&#23545;&#32447;&#31243;&#27744;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    executor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20043;&#38388;&#30340;&#20851;&#31995;&#24863;&#21040;&#26377;&#28857;&#36855;&#24785;&#12290;&#35835;&#32773;&#24212;&#35813;&#20063;&#35201;&#28165;&#26970;&#65292;&#20855;&#20307;&#30340;&#20219;&#21153;&#19981;&#19968;&#23450;&#23601;&#35201;&#22312;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    executor
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#34987;&#25191;&#34892;&#12290;&#20219;&#21153;&#32467;&#26463;&#20197;&#21518;&#65292;&#38656;&#35201;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    promise.setSuccess(result)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20316;&#20026;&#36890;&#30693;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u9fcfe4e3">
+  <br>
+ </p>
+ <p class="ne-p" id="u4f192ce4">
+  <span class="ne-text">
+   &#36890;&#24120;&#26469;&#35828;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20195;&#34920;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#19981;&#38656;&#35201;&#21644;&#32447;&#31243;&#27744;&#25605;&#22312;&#19968;&#36215;&#30340;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21482;&#20851;&#24515;&#20219;&#21153;&#26159;&#21542;&#32467;&#26463;&#20197;&#21450;&#20219;&#21153;&#30340;&#25191;&#34892;&#32467;&#26524;&#65292;&#33267;&#20110;&#26159;&#21738;&#20010;&#32447;&#31243;&#25110;&#21738;&#20010;&#32447;&#31243;&#27744;&#25191;&#34892;&#30340;&#20219;&#21153;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20854;&#23454;&#26159;&#19981;&#20851;&#24515;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ud18315f5">
+  <br>
+ </p>
+ <p class="ne-p" id="u30ac24d1">
+  <span class="ne-text">
+   &#19981;&#36807; Netty &#27605;&#31455;&#19981;&#26159;&#35201;&#21019;&#24314;&#19968;&#20010;&#36890;&#29992;&#30340;&#32447;&#31243;&#27744;&#23454;&#29616;&#65292;&#32780;&#26159;&#21644;&#23427;&#35201;&#22788;&#29702;&#30340; IO &#24687;&#24687;&#30456;&#20851;&#30340;&#65292;&#25152;&#20197;&#25105;&#20204;&#21482;&#19981;&#36807;&#35201;&#29702;&#35299;&#23427;&#23601;&#22909;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u367523a6">
+  <br>
+ </p>
+ <p class="ne-p" id="u34ed6f45">
+  <span class="ne-text">
+   &#36825;&#33410;&#23601;&#35828;&#36825;&#20040;&#22810;&#21543;&#65292;&#25105;&#20204;&#22238;&#36807;&#22836;&#26469;&#20877;&#30475;&#19968;&#19979;&#36825;&#24352;&#22270;&#65292;&#30475;&#30475;&#22823;&#23478;&#26159;&#19981;&#26159;&#30475;&#25026;&#20102;&#36825;&#33410;&#20869;&#23481;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ubf976867">
+  <br>
+ </p>
+ <p class="ne-p" id="u539e97d1">
+  <img class="ne-image" id="Tm2cU" src="EPUB/imgTm2cU" width="1952">
+ </p>
+ <p class="ne-p" id="u0ae3fca1">
+  <br>
+ </p>
+ <p class="ne-p" id="ud40f6bb1">
+  <span class="ne-text">
+   &#25105;&#20204;&#23601;&#35828;&#35828;&#19978;&#22270;&#24038;&#36793;&#30340;&#37096;&#20998;&#21543;&#65292;&#34429;&#28982;&#25105;&#20204;&#36824;&#19981;&#30693;&#36947;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#20013;&#20855;&#20307;&#20250;&#20570;&#20160;&#20040;&#24037;&#20316;&#65292;&#20294;&#26159;&#25105;&#20204;&#24212;&#35813;&#21487;&#20197;&#29468;&#20986;&#19968;&#20108;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ubb4a41f2">
+  <br>
+ </p>
+ <p class="ne-p" id="ub1a7153a">
+  <span class="ne-text">
+   &#26174;&#28982;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    main
+   </span>
+  </code>
+  <span class="ne-text">
+   &#32447;&#31243;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    b.bind(port)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#20250;&#36820;&#22238;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#19968;&#20010;&#24322;&#27493;&#26041;&#27861;&#65292;&#24403;&#26576;&#20010;&#25191;&#34892;&#32447;&#31243;&#25191;&#34892;&#20102;&#30495;&#27491;&#30340;&#32465;&#23450;&#25805;&#20316;&#21518;&#65292;&#37027;&#20010;&#25191;&#34892;&#32447;&#31243;&#19968;&#23450;&#20250;&#26631;&#35760;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20026;&#25104;&#21151;&#65288;&#25105;&#20204;&#20551;&#23450; bind &#20250;&#25104;&#21151;&#65289;&#65292;&#28982;&#21518;&#36825;&#37324;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65288;main &#32447;&#31243;&#65289;&#23601;&#20250;&#36820;&#22238;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufa0dc741">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u11ceaca6">
+   <span class="ne-text">
+    &#22914;&#26524;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bind(port)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#22833;&#36133;&#65292;&#25105;&#20204;&#30693;&#36947;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     sync()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#20250;&#23558;&#24322;&#24120;&#25243;&#20986;&#26469;&#65292;&#28982;&#21518;&#23601;&#20250;&#25191;&#34892;&#21040; finally &#22359;&#20102;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="ua067248e">
+  <br>
+ </p>
+ <p class="ne-p" id="u47410fbf">
+  <span class="ne-text">
+   &#19968;&#26086;&#32465;&#23450;&#31471;&#21475; bind &#25104;&#21151;&#65292;&#36827;&#20837;&#19979;&#38754;&#19968;&#34892;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    f.channel()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20250;&#36820;&#22238;&#35813;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#32852;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub22281f7">
+  <br>
+ </p>
+ <p class="ne-p" id="u64cc0b13">
+  <code class="ne-code">
+   <span class="ne-text">
+    channel.closeFuture()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20063;&#20250;&#36820;&#22238;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFuture
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#28982;&#21518;&#35843;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36820;&#22238;&#30340;&#26465;&#20214;&#26159;&#65306;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#26377;&#20854;&#20182;&#30340;&#32447;&#31243;&#20851;&#38381;&#20102;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     NioServerSocketChannel
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#65292;&#24448;&#24448;&#26159;&#22240;&#20026;&#38656;&#35201;&#20572;&#25481;&#26381;&#21153;&#20102;&#65292;&#28982;&#21518;&#37027;&#20010;&#32447;&#31243;&#20250;&#35774;&#32622;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    future
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#29366;&#24577;&#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setSuccess(result)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setFailure(cause)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#65292;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    sync()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#25165;&#20250;&#36820;&#22238;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u29db37b3">
+  <br>
+ </p>
+ <p class="ne-p" id="ud2c81403">
+  <span class="ne-text">
+   &#36825;&#33410;&#23601;&#21040;&#36825;&#37324;&#65292;&#24076;&#26395;&#22823;&#23478;&#23545; Netty &#20013;&#30340;&#24322;&#27493;&#32534;&#31243;&#26377;&#20123;&#20102;&#35299;&#65292;&#21518;&#32493;&#30896;&#21040;&#28304;&#30721;&#30340;&#26102;&#20505;&#33021;&#30693;&#36947;&#26159;&#24590;&#20040;&#20351;&#29992;&#30340;&#20102;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

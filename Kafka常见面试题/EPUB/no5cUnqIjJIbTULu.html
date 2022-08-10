@@ -1,0 +1,442 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>Kafka &#22914;&#20309;&#20445;&#35777;&#39640;&#21487;&#29992;&#65311;</h1><div class="lake-content-editor-core lake-engine lake-typography-classic" data-lake-element="root" data-selection-undefined="%7B%22path%22%3A%5B%5B0%2C0%2C0%5D%2C%5B0%2C0%2C0%5D%5D%2C%22active%22%3Atrue%7D">
+ <p data-lake-id="a20d224c568e48b9d67847a2c66a8c01_p_0" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#20316;&#32773;&#65306;&#26376;&#20276;&#39134;&#40060;
+ </p>
+ <p data-lake-id="90ccd1f2ea3e975526e040a385b3eb7f" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="812b95c4f20a74bc9262b65613bd9bce" id="a9b17537" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  <strong>
+   &#20160;&#20040;&#26159;&#39640;&#21487;&#29992;
+  </strong>
+ </h2>
+ <p data-lake-id="0321b5619adaab9e0b8ea73d0ba843cc" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="3da4e95799cdbe37a3b8a88a62866b80" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#12300;&#39640;&#21487;&#29992;&#24615;&#12301;
+  </strong>
+  &#65292;&#25351;&#31995;&#32479;&#26080;&#38388;&#26029;&#22320;&#25191;&#34892;&#20854;&#21151;&#33021;&#30340;&#33021;&#21147;&#65292;&#20195;&#34920;&#31995;&#32479;&#30340;&#21487;&#29992;&#24615;&#31243;&#24230;
+ </p>
+ <p data-lake-id="a647f87bb41e68759297e3a0145eefbe" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="36a924276d27bbf706d73edecb946f60" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Kafka &#20174; 0.8 &#29256;&#26412;&#24320;&#22987;&#25552;&#20379;&#20102;&#39640;&#21487;&#29992;&#26426;&#21046;&#65292;&#21487;&#20445;&#38556;&#19968;&#20010;&#25110;&#22810;&#20010; Broker &#23445;&#26426;&#21518;&#65292;&#20854;&#20182; Broker &#33021;&#32487;&#32493;&#25552;&#20379;&#26381;&#21153;
+ </p>
+ <p data-lake-id="f5969579325357b7c576d3de69f70037" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="6b9bdc1cfc00ded833e89bdee4aa965a" id="ee1601c6" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  <strong>
+   &#22791;&#20221;&#26426;&#21046;
+  </strong>
+ </h2>
+ <p data-lake-id="b098d772c9791dc08974248d2dc45a47" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="8caa296bb3e2b4aab22b4d530420034c" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Kafka &#20801;&#35768;&#21516;&#19968;&#20010; Partition &#23384;&#22312;&#22810;&#20010;&#28040;&#24687;&#21103;&#26412;&#65292;&#27599;&#20010; Partition &#30340;&#21103;&#26412;&#36890;&#24120;&#30001; 1 &#20010; Leader &#21450; 0 &#20010;&#20197;&#19978;&#30340; Follower &#32452;&#25104;&#65292;&#29983;&#20135;&#32773;&#23558;&#28040;&#24687;&#30452;&#25509;&#21457;&#24448;&#23545;&#24212; Partition &#30340; Leader&#65292;Follower &#20250;&#21608;&#26399;&#22320;&#21521; Leader &#21457;&#36865;&#21516;&#27493;&#35831;&#27714;
+ </p>
+ <p data-lake-id="7a4c62a8a9057acf773060992d2c6dd9" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="0d45deda29def4c0f9cf76b4d4729db0" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21516;&#19968; Partition &#30340; Replica &#19981;&#24212;&#23384;&#20648;&#22312;&#21516;&#19968;&#20010; Broker &#19978;&#65292;&#22240;&#20026;&#19968;&#26086;&#35813; Broker &#23445;&#26426;&#65292;&#23545;&#24212; Partition &#30340;&#25152;&#26377; Replica &#37117;&#26080;&#27861;&#24037;&#20316;&#65292;&#36825;&#23601;&#36798;&#19981;&#21040;&#39640;&#21487;&#29992;&#30340;&#25928;&#26524;
+ </p>
+ <p data-lake-id="d571361602a4fafe65382875d8359860" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="b20dc5341791950411ec0fe819624c44" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#25152;&#20197; Kafka &#20250;&#23613;&#37327;&#23558;&#25152;&#26377;&#30340; Partition &#20197;&#21450;&#21508; Partition &#30340;&#21103;&#26412;&#22343;&#21248;&#22320;&#20998;&#37197;&#21040;&#25972;&#20010;&#38598;&#32676;&#30340;&#21508;&#20010; Broker &#19978;
+ </p>
+ <p data-lake-id="e39922cdb87f594d50fafd09b80e3997" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="e54caea0acf1497bb47722a5d6f35acb" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#12300;&#22914;&#19979;&#22270;&#20030;&#20010;&#20363;&#23376;&#65306;&#12301;
+  </strong>
+ </p>
+ <p data-lake-id="c23d32b40550522114d2f212d50886f3" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="8c6f31f1be96f7efbdfe9526f21f96af" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="372px" data-raw-src="EPUB/" data-role="image" src="d023df96-17da-11ed-9785-acde48001122" style="visibility: visible; width: 1080px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="16b39b42463414b6be2705c0c32c5a33" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="9ea7451e7e1acd6bd882a74514103b5d" id="ae5ae6a6" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  <strong>
+   ISR &#26426;&#21046;
+  </strong>
+ </h2>
+ <p data-lake-id="cf0caa7757dc86633c251c1fac89d1a3" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="10b70618142ca68acdce663773a3c41c" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#12300;ISR &#21103;&#26412;&#38598;&#21512;&#12301;
+  </strong>
+ </p>
+ <p data-lake-id="ee9178a10f6935da027386ac8948a28e" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="4715a95d5d9f9381886b06bfdbf67ef5" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  ISR &#20013;&#30340;&#21103;&#26412;&#37117;&#26159;&#19982; Leader &#21516;&#27493;&#30340;&#21103;&#26412;&#65292;&#30456;&#21453;&#65292;&#19981;&#22312; ISR &#20013;&#30340;&#36861;&#38543;&#32773;&#21103;&#26412;&#23601;&#34987;&#35748;&#20026;&#26159;&#19982; Leader &#19981;&#21516;&#27493;&#30340;
+ </p>
+ <p data-lake-id="974d2ca70cdd867b10074efd8767390d" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="c8a5f10cc8e6e4f5e03b1bfff832e349" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#36825;&#37324;&#30340;&#20445;&#25345;&#21516;&#27493;&#19981;&#26159;&#25351;&#19982; Leader &#25968;&#25454;&#20445;&#25345;&#23436;&#20840;&#19968;&#33268;&#65292;&#21482;&#38656;&#22312;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   replica.lag.time.max.ms
+  </code>
+  &#26102;&#38388;&#20869;&#19982; Leader &#20445;&#25345;&#26377;&#25928;&#36830;&#25509;
+ </p>
+ <p data-lake-id="96605a33abf0d9b6d57fa740a8a74db6" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="e28726305435cbdccf15fb66e10dfd5d" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Follower &#21608;&#26399;&#24615;&#22320;&#21521; Leader &#21457;&#36865; FetchRequest &#35831;&#27714;&#65292;&#21457;&#36865;&#26102;&#38388;&#38388;&#38548;&#37197;&#32622;&#22312;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   replica.fetch.wait.max.ms
+  </code>
+  &#20013;&#65292;&#40664;&#35748;&#20540;&#20026; 500
+ </p>
+ <p data-lake-id="7c824e3128de1e975978a8f43294aed2" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <div data-card-type="block" data-lake-card="codeblock" data-language="javascript" id="782cecbf">
+  <div class="lake-codeblock-content" style="border: 1px solid rgb(232, 232, 232); max-width: 750px; color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: rgb(249, 249, 249);">
+   <div class="CodeMirror-sizer" style="color: rgb(89, 89, 89); margin: 0px; padding: 16px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">
+    <pre class="cm-s-default" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="cm-variable" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">public</span> <span class="cm-keyword" style="color: rgb(215, 58, 73); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">class</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">FetchRequest</span> {
+</span></span><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">    <span class="cm-property" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">private</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">final</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">short</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">versionId</span>;
+</span></span><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">    <span class="cm-property" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">private</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">final</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">int</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">correlationId</span>;
+</span></span><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">    <span class="cm-property" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">private</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">final</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">String</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">clientId</span>;
+</span></span><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">    <span class="cm-property" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">private</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">final</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">int</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">replicaId</span>;
+</span></span><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">    <span class="cm-property" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">private</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">final</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">int</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">maxWait</span>;    <span class="cm-comment" style="color: rgb(106, 115, 125); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">// Follower&#23481;&#24525;&#30340;&#26368;&#22823;&#31561;&#24453;&#26102;&#38388;: &#21040;&#28857;Leader&#31435;&#21363;&#36820;&#22238;&#32467;&#26524;&#65292;&#40664;&#35748;&#20540;500</span>
+</span></span><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">    <span class="cm-property" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">private</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">final</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">int</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">minBytes</span>;   <span class="cm-comment" style="color: rgb(106, 115, 125); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">// Follower&#23481;&#24525;&#30340;&#26368;&#23567;&#36820;&#22238;&#25968;&#25454;&#22823;&#23567;&#65306;&#24403;Leader&#26377;&#36275;&#22815;&#25968;&#25454;&#26102;&#31435;&#21363;&#36820;&#22238;&#65292;&#20828;&#24213;&#31561;&#24453;maxWait&#36820;&#22238;&#65292;&#40664;&#35748;&#20540;1</span>
+</span></span><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">    <span class="cm-property" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">private</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">final</span> <span class="cm-def" style="color: rgb(0, 92, 197); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">Map</span><span class="cm-operator" style="color: rgb(215, 58, 73); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">&lt;</span><span class="cm-variable" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">TopicAndPartition</span>, <span class="cm-variable" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">PartitionFetchInfo</span><span class="cm-operator" style="color: rgb(215, 58, 73); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">&gt;</span> <span class="cm-variable" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">requestInfo</span>;  <span class="cm-comment" style="color: rgb(106, 115, 125); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">// Follower&#20013;&#21508;Partititon&#23545;&#24212;&#30340;LEO&#21450;&#33719;&#21462;&#25968;&#37327;</span>
+</span></span><span class="lake-preview-line" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"><span class="lake-preview-line-number lake-lm-pad-level-0" style="color: rgb(191, 191, 191); margin: 0px 8px 0px 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);"></span><span class="lake-preview-codeblock-content" style="color: rgb(89, 89, 89); margin: 0px; padding: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);">}</span></span></pre>
+   </div>
+  </div>
+ </div>
+ <p data-lake-id="fe82916528777ec8e635d6da0f7515a6" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="9c662ec5dd508c6ff333b3074755b03b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21508; Partition &#30340; Leader &#36127;&#36131;&#32500;&#25252; ISR &#21015;&#34920;&#24182;&#23558; ISR &#30340;&#21464;&#26356;&#21516;&#27493;&#33267; ZooKeeper&#65292;&#34987;&#31227;&#20986; ISR &#30340; Follower &#20250;&#32487;&#32493;&#21521; Leader &#21457; FetchRequest &#35831;&#27714;&#65292;&#35797;&#22270;&#20877;&#27425;&#36319;&#19978; Leader &#37325;&#26032;&#36827;&#20837; ISR
+ </p>
+ <p data-lake-id="add9a398fe56428761946782f86d3526" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="e0e7b2acfc85455114900a73ab28ca0e" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  ISR &#20013;&#25152;&#26377;&#21103;&#26412;&#37117;&#36319;&#19978;&#20102; Leader&#65292;&#36890;&#24120;&#21482;&#26377; ISR &#37324;&#30340;&#25104;&#21592;&#25165;&#21487;&#33021;&#34987;&#36873;&#20026; Leader
+ </p>
+ <p data-lake-id="839e4fef07f1cf2646c590c37a3526a9" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="315f03201d9c617ea19d3ad0231fa11d" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#12300;Unclean &#39046;&#23548;&#32773;&#36873;&#20030;&#12301;
+  </strong>
+ </p>
+ <p data-lake-id="78cda0657708fbdcf98ea49689640bed" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="61d0bce5f9eb7c6b8cca08e9e33f433a" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#24403; Kafka &#20013;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   unclean.leader.election.enable
+  </code>
+  &#37197;&#32622;&#20026; true(&#40664;&#35748;&#20540;&#20026; false)&#19988; ISR &#20013;&#25152;&#26377;&#21103;&#26412;&#22343;&#23445;&#26426;&#30340;&#24773;&#20917;&#19979;&#65292;&#25165;&#20801;&#35768; ISR &#22806;&#30340;&#21103;&#26412;&#34987;&#36873;&#20026; Leader&#65292;&#27492;&#26102;&#20250;&#20002;&#22833;&#37096;&#20998;&#24050;&#24212;&#31572;&#30340;&#25968;&#25454;
+ </p>
+ <p data-lake-id="7a64cf365f54677e41460c59a71f069c" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="db848e68c04c3787d497d3f454025080" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#24320;&#21551; Unclean &#39046;&#23548;&#32773;&#36873;&#20030;&#21487;&#33021;&#20250;&#36896;&#25104;&#25968;&#25454;&#20002;&#22833;&#65292;&#20294;&#22909;&#22788;&#26159;&#65292;&#23427;&#20351;&#24471;&#20998;&#21306; Leader &#21103;&#26412;&#19968;&#30452;&#23384;&#22312;&#65292;&#19981;&#33267;&#20110;&#20572;&#27490;&#23545;&#22806;&#25552;&#20379;&#26381;&#21153;&#65292;&#22240;&#27492;&#25552;&#21319;&#20102;&#39640;&#21487;&#29992;&#24615;&#65292;&#21453;&#20043;&#65292;&#31105;&#27490; Unclean &#39046;&#23548;&#32773;&#36873;&#20030;&#30340;&#22909;&#22788;&#22312;&#20110;&#32500;&#25252;&#20102;&#25968;&#25454;&#30340;&#19968;&#33268;&#24615;&#65292;&#36991;&#20813;&#20102;&#28040;&#24687;&#20002;&#22833;&#65292;&#20294;&#29306;&#29298;&#20102;&#39640;&#21487;&#29992;&#24615;
+ </p>
+ <p data-lake-id="22b7e42855f041019616bb859e53703d" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="722fa0cba8e236fe887c98b57da13160" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="715px" data-raw-src="EPUB/" data-role="image" src="d0745d18-17da-11ed-9785-acde48001122" style="visibility: visible; width: 1080px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="178215b32f94071b4f4449af896332f5" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="6161e3747c0f3b0ecc3b73cdcc5803a8" id="18f5e7a7" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  <strong>
+   ACK &#26426;&#21046;
+  </strong>
+ </h2>
+ <p data-lake-id="a0eb92b2de69e130a8be038bd5d722e2" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="017fdf2fb148c81312b724593cf435e3" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#29983;&#20135;&#32773;&#21457;&#36865;&#28040;&#24687;&#20013;&#21253;&#21547; acks &#23383;&#27573;&#65292;&#35813;&#23383;&#27573;&#20195;&#34920; Leader &#24212;&#31572;&#29983;&#20135;&#32773;&#21069; Leader &#25910;&#21040;&#30340;&#24212;&#31572;&#25968;
+ </p>
+ <p data-lake-id="0c44ca046c78e83785626774caaacce8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ul data-lake-id="a956a4742e00e10a8beed77611436d64" lake-indent="0" style="list-style-type: disc; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="b175cab43bd0372b83bb7fe699f9586d">
+   <strong>
+    &#12300;acks=0&#12301;
+   </strong>
+  </li>
+ </ul>
+ <p data-lake-id="fe578c951b10a5b55022c5f14f244402" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="055290863566124becca78f613a28b15" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#29983;&#20135;&#32773;&#26080;&#38656;&#31561;&#24453;&#26381;&#21153;&#31471;&#30340;&#20219;&#20309;&#30830;&#35748;&#65292;&#28040;&#24687;&#34987;&#28155;&#21152;&#21040;&#29983;&#20135;&#32773;&#22871;&#25509;&#23383;&#32531;&#20914;&#21306;&#21518;&#23601;&#35270;&#20026;&#24050;&#21457;&#36865;&#65292;&#22240;&#27492; acks=0 &#19981;&#33021;&#20445;&#35777;&#26381;&#21153;&#31471;&#24050;&#25910;&#21040;&#28040;&#24687;
+ </p>
+ <p data-lake-id="0aabfa41fa4e2e67f6895b3c8849fe9b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ul data-lake-id="9715bd48317ceadc1c68394d9f419eee" lake-indent="0" style="list-style-type: disc; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="41f71a8bde96cd4cd89849875e57a106">
+   <strong>
+    &#12300;acks=1&#12301;
+   </strong>
+  </li>
+ </ul>
+ <p data-lake-id="8b5b8b2057a8d57cfbf212b4a1d54de0" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="a002ef42925b33c943e99b78b5883c43" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21482;&#35201;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   Partition Leader
+  </code>
+  &#25509;&#25910;&#21040;&#28040;&#24687;&#32780;&#19988;&#20889;&#20837;&#26412;&#22320;&#30913;&#30424;&#20102;&#65292;&#23601;&#35748;&#20026;&#25104;&#21151;&#20102;&#65292;&#19981;&#31649;&#23427;&#20854;&#20182;&#30340; Follower &#26377;&#27809;&#26377;&#21516;&#27493;&#36807;&#21435;&#36825;&#26465;&#28040;&#24687;&#20102;
+ </p>
+ <p data-lake-id="1c720c40c7a876a877882ccd2e67aa4f" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ul data-lake-id="7f6055f57adf94230db243ff36a1f8b7" lake-indent="0" style="list-style-type: disc; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="54783b405dd4b70135238bc3dc431e52">
+   <strong>
+    &#12300;acks=all&#12301;
+   </strong>
+  </li>
+ </ul>
+ <p data-lake-id="cc637cb7f012dfeea7f38e5c3e43c70a" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="3ceb2a23fef063049e162d24656e4999" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Leader &#23558;&#31561;&#24453; ISR &#20013;&#30340;&#25152;&#26377;&#21103;&#26412;&#30830;&#35748;&#21518;&#20877;&#20570;&#20986;&#24212;&#31572;&#65292;&#22240;&#27492;&#21482;&#35201; ISR &#20013;&#20219;&#20309;&#19968;&#20010;&#21103;&#26412;&#36824;&#23384;&#27963;&#30528;&#65292;&#36825;&#26465;&#24212;&#31572;&#36807;&#30340;&#28040;&#24687;&#23601;&#19981;&#20250;&#20002;&#22833;
+ </p>
+ <p data-lake-id="cd9a7c6f79bf40c28431396f0c869e19" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="48ea189a4f24bb10c42f09e2a6469014" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  acks=all &#26159;&#21487;&#29992;&#24615;&#26368;&#39640;&#30340;&#36873;&#25321;&#65292;&#20294;&#31561;&#24453; Follower &#24212;&#31572;&#24341;&#20837;&#20102;&#39069;&#22806;&#30340;&#21709;&#24212;&#26102;&#38388;&#12290;Leader &#38656;&#35201;&#31561;&#24453; ISR &#20013;&#25152;&#26377;&#21103;&#26412;&#20570;&#20986;&#24212;&#31572;&#65292;&#27492;&#26102;&#21709;&#24212;&#26102;&#38388;&#21462;&#20915;&#20110; ISR &#20013;&#26368;&#24930;&#30340;&#37027;&#21488;&#26426;&#22120;
+ </p>
+ <p data-lake-id="1adc74d03ac8489ee2f661b9206d89f4" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="345224f2b5bf63fbf28474f70b0c55fd" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#22914;&#26524;&#35828; Partition Leader &#21018;&#25509;&#25910;&#21040;&#20102;&#28040;&#24687;&#65292;&#20294;&#26159;&#32467;&#26524;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   Follower
+  </code>
+  &#27809;&#26377;&#25910;&#21040;&#28040;&#24687;&#65292;&#27492;&#26102; Leader &#23445;&#26426;&#20102;&#65292;&#37027;&#20040;&#23458;&#25143;&#31471;&#20250;&#24863;&#30693;&#21040;&#36825;&#20010;&#28040;&#24687;&#27809;&#21457;&#36865;&#25104;&#21151;&#65292;&#20182;&#20250;&#37325;&#35797;&#20877;&#27425;&#21457;&#36865;&#28040;&#24687;&#36807;&#21435;
+ </p>
+ <p data-lake-id="6d61fe9974df168b61ab508b24f2b625" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="0f7e57f99272f92ace102e658c815bf2" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Broker &#26377;&#20010;&#37197;&#32622;&#39033;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   min.insync.replicas
+  </code>
+  (&#40664;&#35748;&#20540;&#20026; 1)&#20195;&#34920;&#20102;&#27491;&#24120;&#20889;&#20837;&#29983;&#20135;&#32773;&#25968;&#25454;&#25152;&#38656;&#35201;&#30340;&#26368;&#23569; ISR &#20010;&#25968;
+ </p>
+ <p data-lake-id="e3c58b68e5ec855f87f7fa8903cc8ce5" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="994a56b1e393804f82d22cf8e061a9df" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#24403; ISR &#20013;&#30340;&#21103;&#26412;&#25968;&#37327;&#23567;&#20110;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   min.insync.replicas
+  </code>
+  &#26102;&#65292;Leader &#20572;&#27490;&#20889;&#20837;&#29983;&#20135;&#32773;&#29983;&#20135;&#30340;&#28040;&#24687;&#65292;&#24182;&#21521;&#29983;&#20135;&#32773;&#25243;&#20986; NotEnoughReplicas &#24322;&#24120;&#65292;&#38459;&#22622;&#31561;&#24453;&#26356;&#22810;&#30340; Follower &#36214;&#19978;&#24182;&#37325;&#26032;&#36827;&#20837; ISR
+ </p>
+ <p data-lake-id="07bc3263db52d769d5ad607a6579bf6c" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="433de94b76aa9eea6a15bd9517cccccb" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#34987; Leader &#24212;&#31572;&#30340;&#28040;&#24687;&#37117;&#33267;&#23569;&#26377;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   min.insync.replicas
+  </code>
+  &#20010;&#21103;&#26412;&#65292;&#22240;&#27492;&#33021;&#22815;&#23481;&#24525;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   min.insync.replicas-1
+  </code>
+  &#20010;&#21103;&#26412;&#21516;&#26102;&#23445;&#26426;
+ </p>
+ <p data-lake-id="26c8a7df5727f4036a94f60bb1862b77" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="ba930b7363cce4d6af64c5587106bfcc" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#12300;&#32467;&#35770;&#65306;&#12301;
+  </strong>
+ </p>
+ <p data-lake-id="103b990925ed73efb298b1524c6caaf3" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="8f687ce78e8d1ea542bae0421279ad6a" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21457;&#36865;&#30340; acks=1 &#21644; 0 &#28040;&#24687;&#20250;&#20986;&#29616;&#20002;&#22833;&#24773;&#20917;&#65292;&#20026;&#19981;&#20002;&#22833;&#28040;&#24687;&#21487;&#37197;&#32622;&#29983;&#20135;&#32773;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   acks=all &amp; min.insync.replicas &gt;= 2
+  </code>
+ </p>
+ <p data-lake-id="e6ba384ecc1f0816d79e22d22ca5d92d" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="1be0f67258517995315367f3cd089baa" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="636px" data-raw-src="EPUB/" data-role="image" src="d0b53496-17da-11ed-9785-acde48001122" style="visibility: visible; width: 724px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="1950c66b78fab5e75f4357c121203d5c" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="69419d111252af29b0c8fbf39129e370" id="1e794f2a" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  <strong>
+   &#25925;&#38556;&#24674;&#22797;&#26426;&#21046;
+  </strong>
+ </h2>
+ <p data-lake-id="492a2965dbea05fb619568aae567fc1a" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="e935537fb6ec806253fc1ca4c7531841" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#12300;Kafka &#20174; 0.8 &#29256;&#26412;&#24320;&#22987;&#24341;&#20837;&#20102;&#19968;&#22871; Leader &#36873;&#20030;&#21450;&#22833;&#36133;&#24674;&#22797;&#26426;&#21046;&#12301;
+  </strong>
+ </p>
+ <p data-lake-id="074067375ac7c2e52d185a70a93ecb70" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="e1f57eb264180cce9ee24f938d2a1c4e" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#39318;&#20808;&#38656;&#35201;&#22312;&#38598;&#32676;&#25152;&#26377; Broker &#20013;&#36873;&#20986;&#19968;&#20010; Controller&#65292;&#36127;&#36131;&#21508; Partition &#30340; Leader &#36873;&#20030;&#20197;&#21450; Replica &#30340;&#37325;&#26032;&#20998;&#37197;
+ </p>
+ <p data-lake-id="c9c567262632fe2e82d201a30e81a3a8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ul data-lake-id="5c356141803277a8e36a45525366d8b9" lake-indent="0" style="list-style-type: disc; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="1d5ce513d39dc91ad53b6b86d8796627">
+   &#24403;&#20986;&#29616; Leader &#25925;&#38556;&#21518;&#65292;Controller &#20250;&#23558; Leader/Follower &#30340;&#21464;&#21160;&#36890;&#30693;&#21040;&#38656;&#20026;&#27492;&#20316;&#20986;&#21709;&#24212;&#30340; Broker&#12290;
+  </li>
+ </ul>
+ <p data-lake-id="bd1a362ce013479efa6a81a462cb6340" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="b7ae880ecbb829653ad1fdee0b41d1ce" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Kafka &#20351;&#29992; ZooKeeper &#23384;&#20648; Broker&#12289;Topic &#31561;&#29366;&#24577;&#25968;&#25454;&#65292;Kafka &#38598;&#32676;&#20013;&#30340; Controller &#21644; Broker &#20250;&#22312; ZooKeeper &#25351;&#23450;&#33410;&#28857;&#19978;&#27880;&#20876; Watcher(&#20107;&#20214;&#30417;&#21548;&#22120;)&#65292;&#20197;&#20415;&#22312;&#29305;&#23450;&#20107;&#20214;&#35302;&#21457;&#26102;&#65292;&#30001; ZooKeeper &#23558;&#20107;&#20214;&#36890;&#30693;&#21040;&#23545;&#24212; Broker
+ </p>
+ <p data-lake-id="7375791659013f9aa9a23c0aa8e941e3" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h3 data-lake-id="0f5e609cec2bc9ca3b7b12c06dbe0af9" id="7d5bd253" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 20px; line-height: 28px;">
+  <strong>
+   Broker
+  </strong>
+ </h3>
+ <p data-lake-id="26f1b7c31015b08d9429dd4fb2958d52" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="3889c8246d989606b06beda161aec609" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#12300;&#24403; Broker &#21457;&#29983;&#25925;&#38556;&#21518;&#65292;&#30001; Controller &#36127;&#36131;&#36873;&#20030;&#21463;&#24433;&#21709; Partition &#30340;&#26032; Leader &#24182;&#36890;&#30693;&#21040;&#30456;&#20851; Broker&#12301;
+  </strong>
+ </p>
+ <p data-lake-id="e51169576ae9b0205e1851fe5cf040f2" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ul data-lake-id="9cac33bd06747ebeeb4f1c392bc788e3" lake-indent="0" style="list-style-type: disc; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="2fcd19804652128855f73a9194676f1e">
+   &#24403; Broker &#20986;&#29616;&#25925;&#38556;&#19982; ZooKeeper &#26029;&#24320;&#36830;&#25509;&#21518;&#65292;&#35813; Broker &#22312; ZooKeeper &#23545;&#24212;&#30340; znode &#20250;&#33258;&#21160;&#34987;&#21024;&#38500;&#65292;ZooKeeper &#20250;&#35302;&#21457; Controller &#27880;&#20876;&#22312;&#35813;&#33410;&#28857;&#30340; Watcher&#65307;
+  </li>
+  <li data-lake-id="afdc64a386fef1ef9b9e1a623703db0c">
+   Controller &#20174; ZooKeeper &#30340;
+   <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+    /brokers/ids
+   </code>
+   &#33410;&#28857;&#19978;&#33719;&#21462;&#23445;&#26426; Broker &#19978;&#30340;&#25152;&#26377; Partition&#65307;
+  </li>
+  <li data-lake-id="01039d4b7b77e95090c38bcae4498939">
+   Controller &#20877;&#20174; ZooKeeper &#30340;
+   <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+    /brokers/topics
+   </code>
+   &#33719;&#21462;&#25152;&#26377; Partition &#24403;&#21069;&#30340; ISR&#65307;
+  </li>
+  <li data-lake-id="058a9599e09d76fff4c4c3c6afe569f3">
+   &#23545;&#20110;&#23445;&#26426; Broker &#26159; Leader &#30340; Partition&#65292;Controller &#20174; ISR &#20013;&#36873;&#25321;&#24184;&#23384;&#30340; Broker &#20316;&#20026;&#26032; Leader&#65307;
+  </li>
+  <li data-lake-id="d0bcbc4ba13635259b129dde75e12f24">
+   &#26368;&#21518; Controller &#36890;&#36807; LeaderAndIsrRequest &#35831;&#27714;&#21521;&#30340; Broker &#21457;&#36865; LeaderAndISRRequest &#35831;&#27714;&#12290;
+  </li>
+ </ul>
+ <p data-lake-id="92ca7703143d1f14e35ea9a850dcfaa3" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="e4841d5204e1655dc6516a5f7607f997" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="663px" data-raw-src="EPUB/" data-role="image" src="d12c8b68-17da-11ed-9785-acde48001122" style="visibility: visible; width: 1080px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="29411235b9b1aa84a74e012b2f84e6f2" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h3 data-lake-id="e345b39db427effe8350ee1732050387" id="b82d5fb5" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 20px; line-height: 28px;">
+  <strong>
+   Controller
+  </strong>
+ </h3>
+ <p data-lake-id="0dd22f174432f64cda602aeff63ea428" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="81a839fcf0c00b2eb661107ff859e0bf" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#38598;&#32676;&#20013;&#30340; Controller &#20063;&#20250;&#20986;&#29616;&#25925;&#38556;&#65292;&#22240;&#27492; Kafka &#35753;&#25152;&#26377; Broker &#37117;&#22312; ZooKeeper &#30340; Controller &#33410;&#28857;&#19978;&#27880;&#20876;&#19968;&#20010; Watcher
+ </p>
+ <p data-lake-id="a526a47921cf1cfe7f4e9a1e1d31993d" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="aae62dd85f46cb570e4aac0e8d0d5844" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Controller &#21457;&#29983;&#25925;&#38556;&#26102;&#23545;&#24212;&#30340; Controller &#20020;&#26102;&#33410;&#28857;&#20250;&#33258;&#21160;&#21024;&#38500;&#65292;&#27492;&#26102;&#27880;&#20876;&#22312;&#20854;&#19978;&#30340; Watcher &#20250;&#34987;&#35302;&#21457;&#65292;&#25152;&#26377;&#27963;&#30528;&#30340; Broker &#37117;&#20250;&#21435;&#31454;&#36873;&#25104;&#20026;&#26032;&#30340; Controller(&#21363;&#21019;&#24314;&#26032;&#30340; Controller &#33410;&#28857;&#65292;&#30001; ZooKeeper &#20445;&#35777;&#21482;&#20250;&#26377;&#19968;&#20010;&#21019;&#24314;&#25104;&#21151;)
+ </p>
+ <p data-lake-id="b421407373275afca03dfc2c6cd6e44a" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="9cbc489e4c38f28194576c035a6ed6f4" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#31454;&#36873;&#25104;&#21151;&#32773;&#21363;&#20026;&#26032;&#30340; Controller&#12290;
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

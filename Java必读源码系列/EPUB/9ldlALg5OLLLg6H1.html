@@ -1,0 +1,1097 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>&#12300;&#28304;&#30721;&#35299;&#35835;&#12301;Dubbo SPI</h1><div class="lake-content" typography="classic">
+ <h2 id="8814759b">
+  <span class="ne-text">
+   1.&#31616;&#20171;
+  </span>
+ </h2>
+ <p class="ne-p" id="u990a4a31">
+  <br>
+ </p>
+ <p class="ne-p" id="ueab8d6c4">
+  <span class="ne-text">
+   SPI &#20840;&#31216;&#20026; Service Provider Interface&#65292;&#26159;&#19968;&#31181;&#26381;&#21153;&#21457;&#29616;&#26426;&#21046;&#12290;SPI &#30340;&#26412;&#36136;&#26159;&#23558;&#25509;&#21475;&#23454;&#29616;&#31867;&#30340;&#20840;&#38480;&#23450;&#21517;&#37197;&#32622;&#22312;&#25991;&#20214;&#20013;&#65292;&#24182;&#30001;&#26381;&#21153;&#21152;&#36733;&#22120;&#35835;&#21462;&#37197;&#32622;&#25991;&#20214;&#65292;&#21152;&#36733;&#23454;&#29616;&#31867;&#12290;&#36825;&#26679;&#21487;&#20197;&#22312;&#36816;&#34892;&#26102;&#65292;&#21160;&#24577;&#20026;&#25509;&#21475;&#26367;&#25442;&#23454;&#29616;&#31867;&#12290;&#27491;&#22240;&#27492;&#29305;&#24615;&#65292;&#25105;&#20204;&#21487;&#20197;&#24456;&#23481;&#26131;&#30340;&#36890;&#36807; SPI &#26426;&#21046;&#20026;&#25105;&#20204;&#30340;&#31243;&#24207;&#25552;&#20379;&#25299;&#23637;&#21151;&#33021;&#12290;SPI &#26426;&#21046;&#22312;&#31532;&#19977;&#26041;&#26694;&#26550;&#20013;&#20063;&#26377;&#25152;&#24212;&#29992;&#65292;&#27604;&#22914; Dubbo &#23601;&#26159;&#36890;&#36807; SPI &#26426;&#21046;&#21152;&#36733;&#25152;&#26377;&#30340;&#32452;&#20214;&#12290;&#19981;&#36807;&#65292;Dubbo &#24182;&#26410;&#20351;&#29992; Java &#21407;&#29983;&#30340; SPI &#26426;&#21046;&#65292;&#32780;&#26159;&#23545;&#20854;&#36827;&#34892;&#20102;&#22686;&#24378;&#65292;&#20351;&#20854;&#33021;&#22815;&#26356;&#22909;&#30340;&#28385;&#36275;&#38656;&#27714;&#12290;&#22312; Dubbo &#20013;&#65292;SPI &#26159;&#19968;&#20010;&#38750;&#24120;&#37325;&#35201;&#30340;&#27169;&#22359;&#12290;&#22522;&#20110; SPI&#65292;&#25105;&#20204;&#21487;&#20197;&#24456;&#23481;&#26131;&#30340;&#23545; Dubbo &#36827;&#34892;&#25299;&#23637;&#12290;&#22914;&#26524;&#22823;&#23478;&#24819;&#35201;&#23398;&#20064; Dubbo &#30340;&#28304;&#30721;&#65292;SPI &#26426;&#21046;&#21153;&#24517;&#24324;&#25026;&#12290;&#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#20808;&#26469;&#20102;&#35299;&#19968;&#19979; Java SPI &#19982; Dubbo SPI &#30340;&#29992;&#27861;&#65292;&#28982;&#21518;&#20877;&#26469;&#20998;&#26512; Dubbo SPI &#30340;&#28304;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc84799cc">
+  <br>
+ </p>
+ <p class="ne-p" id="u181e9a81">
+  <span class="ne-text">
+   &#38656;&#35201;&#29305;&#21035;&#35828;&#26126;&#30340;&#26159;&#65292;&#26412;&#31687;&#25991;&#31456;&#20197;&#21450;&#26412;&#31995;&#21015;&#20854;&#20182;&#25991;&#31456;&#25152;&#20998;&#26512;&#30340;&#28304;&#30721;&#29256;&#26412;&#22343;&#20026;
+  </span>
+  <strong>
+   <span class="ne-text">
+    dubbo-2.6.4
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#12290;&#22240;&#27492;&#22823;&#23478;&#22312;&#38405;&#35835;&#25991;&#31456;&#30340;&#36807;&#31243;&#20013;&#65292;&#38656;&#27880;&#24847;&#23558;&#20195;&#30721;&#29256;&#26412;&#20999;&#25442;&#21040; dubbo-2.6.4 tag &#19978;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uda0e38de">
+  <br>
+ </p>
+ <h2 id="9c86b611">
+  <span class="ne-text">
+   2.SPI &#31034;&#20363;
+  </span>
+ </h2>
+ <p class="ne-p" id="u01da9cc5">
+  <br>
+ </p>
+ <h3 id="62bd51c4">
+  <span class="ne-text">
+   2.1 Java SPI &#31034;&#20363;
+  </span>
+ </h3>
+ <p class="ne-p" id="u9ef3f61f">
+  <br>
+ </p>
+ <p class="ne-p" id="u50a83163">
+  <span class="ne-text">
+   &#21069;&#38754;&#31616;&#21333;&#20171;&#32461;&#20102; SPI &#26426;&#21046;&#30340;&#21407;&#29702;&#65292;&#26412;&#33410;&#36890;&#36807;&#19968;&#20010;&#31034;&#20363;&#28436;&#31034; Java SPI &#30340;&#20351;&#29992;&#26041;&#27861;&#12290;&#39318;&#20808;&#65292;&#25105;&#20204;&#23450;&#20041;&#19968;&#20010;&#25509;&#21475;&#65292;&#21517;&#31216;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Robot
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc0cbb202">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="88b0ecb3">public interface Robot {
+    void sayHello();
+}</pre>
+ <p class="ne-p" id="ub085c72c">
+  <br>
+ </p>
+ <p class="ne-p" id="u1a3fd4b5">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#23450;&#20041;&#20004;&#20010;&#23454;&#29616;&#31867;&#65292;&#20998;&#21035;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OptimusPrime
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Bumblebee
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8a78ac54">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="ad6c9ca4">public class OptimusPrime implements Robot {
+    
+    @Override
+    public void sayHello() {
+        System.out.println("Hello, I am Optimus Prime.");
+    }
+}
+
+public class Bumblebee implements Robot {
+
+    @Override
+    public void sayHello() {
+        System.out.println("Hello, I am Bumblebee.");
+    }
+}</pre>
+ <p class="ne-p" id="udb88e75c">
+  <br>
+ </p>
+ <p class="ne-p" id="u448e3354">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    META-INF/services
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25991;&#20214;&#22841;&#19979;&#21019;&#24314;&#19968;&#20010;&#25991;&#20214;&#65292;&#21517;&#31216;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Robot
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20840;&#38480;&#23450;&#21517;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    org.apache.spi.Robot
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#25991;&#20214;&#20869;&#23481;&#20026;&#23454;&#29616;&#31867;&#30340;&#20840;&#38480;&#23450;&#30340;&#31867;&#21517;&#65292;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u01ea378a">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-fallback" data-language="fallback" id="ee0a2ab2">org.apache.spi.OptimusPrime
+org.apache.spi.Bumblebee</pre>
+ <p class="ne-p" id="u2a70f262">
+  <br>
+ </p>
+ <p class="ne-p" id="u0ab38b5c">
+  <span class="ne-text">
+   &#20570;&#22909;&#25152;&#38656;&#30340;&#20934;&#22791;&#24037;&#20316;&#65292;&#25509;&#19979;&#26469;&#32534;&#20889;&#20195;&#30721;&#36827;&#34892;&#27979;&#35797;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u99869a65">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="3b8212b2">public class JavaSPITest {
+
+    @Test
+    public void sayHello() throws Exception {
+        ServiceLoader&lt;Robot&gt; serviceLoader = ServiceLoader.load(Robot.class);
+        System.out.println("Java SPI");
+        serviceLoader.forEach(Robot::sayHello);
+    }
+}</pre>
+ <p class="ne-p" id="ud6fb11d5">
+  <br>
+ </p>
+ <p class="ne-p" id="u820307a9">
+  <span class="ne-text">
+   &#26368;&#21518;&#26469;&#30475;&#19968;&#19979;&#27979;&#35797;&#32467;&#26524;&#65292;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ucf6a3b6a">
+  <br>
+ </p>
+ <p class="ne-p" id="udfcf8f3b">
+  <img class="ne-image" id="RqLE4" src="EPUB/imgRqLE4" width="1288">
+ </p>
+ <p class="ne-p" id="uc8114e75">
+  <br>
+ </p>
+ <p class="ne-p" id="ua0ec20bf">
+  <span class="ne-text">
+   &#20174;&#27979;&#35797;&#32467;&#26524;&#21487;&#20197;&#30475;&#20986;&#65292;&#25105;&#20204;&#30340;&#20004;&#20010;&#23454;&#29616;&#31867;&#34987;&#25104;&#21151;&#30340;&#21152;&#36733;&#65292;&#24182;&#36755;&#20986;&#20102;&#30456;&#24212;&#30340;&#20869;&#23481;&#12290;&#20851;&#20110; Java SPI &#30340;&#28436;&#31034;&#20808;&#21040;&#36825;&#37324;&#65292;&#25509;&#19979;&#26469;&#28436;&#31034; Dubbo SPI&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1b6493d3">
+  <br>
+ </p>
+ <h3 id="a2cafd01">
+  <span class="ne-text">
+   2.2 Dubbo SPI &#31034;&#20363;
+  </span>
+ </h3>
+ <p class="ne-p" id="ue06a7488">
+  <br>
+ </p>
+ <p class="ne-p" id="ubf1397ab">
+  <span class="ne-text">
+   Dubbo &#24182;&#26410;&#20351;&#29992; Java SPI&#65292;&#32780;&#26159;&#37325;&#26032;&#23454;&#29616;&#20102;&#19968;&#22871;&#21151;&#33021;&#26356;&#24378;&#30340; SPI &#26426;&#21046;&#12290;Dubbo SPI &#30340;&#30456;&#20851;&#36923;&#36753;&#34987;&#23553;&#35013;&#22312;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#20013;&#65292;&#36890;&#36807; ExtensionLoader&#65292;&#25105;&#20204;&#21487;&#20197;&#21152;&#36733;&#25351;&#23450;&#30340;&#23454;&#29616;&#31867;&#12290;Dubbo SPI &#25152;&#38656;&#30340;&#37197;&#32622;&#25991;&#20214;&#38656;&#25918;&#32622;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    META-INF/dubbo
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36335;&#24452;&#19979;&#65292;&#37197;&#32622;&#20869;&#23481;&#22914;&#19979;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u30a6d83f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-fallback" data-language="fallback" id="ca04cf7b">optimusPrime = org.apache.spi.OptimusPrime
+bumblebee = org.apache.spi.Bumblebee</pre>
+ <p class="ne-p" id="u9a54c6b1">
+  <br>
+ </p>
+ <p class="ne-p" id="u1d085597">
+  <span class="ne-text">
+   &#19982; Java SPI &#23454;&#29616;&#31867;&#37197;&#32622;&#19981;&#21516;&#65292;Dubbo SPI &#26159;&#36890;&#36807;&#38190;&#20540;&#23545;&#30340;&#26041;&#24335;&#36827;&#34892;&#37197;&#32622;&#65292;&#36825;&#26679;&#25105;&#20204;&#21487;&#20197;&#25353;&#38656;&#21152;&#36733;&#25351;&#23450;&#30340;&#23454;&#29616;&#31867;&#12290;&#21478;&#22806;&#65292;&#22312;&#27979;&#35797; Dubbo SPI &#26102;&#65292;&#38656;&#35201;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Robot
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#19978;&#26631;&#27880;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @SPI
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#12290;&#19979;&#38754;&#26469;&#28436;&#31034; Dubbo SPI &#30340;&#29992;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u62798504">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="3a66d358">public class DubboSPITest {
+
+    @Test
+    public void sayHello() throws Exception {
+        ExtensionLoader&lt;Robot&gt; extensionLoader = 
+            ExtensionLoader.getExtensionLoader(Robot.class);
+        Robot optimusPrime = extensionLoader.getExtension("optimusPrime");
+        optimusPrime.sayHello();
+        Robot bumblebee = extensionLoader.getExtension("bumblebee");
+        bumblebee.sayHello();
+    }
+}</pre>
+ <p class="ne-p" id="ufa931c6f">
+  <br>
+ </p>
+ <p class="ne-p" id="u39ab0a4b">
+  <span class="ne-text">
+   &#27979;&#35797;&#32467;&#26524;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u25645087">
+  <br>
+ </p>
+ <p class="ne-p" id="u4862e58c">
+  <img class="ne-image" id="qmmOz" src="EPUB/imgqmmOz" width="1198">
+ </p>
+ <p class="ne-p" id="u22d25d57">
+  <br>
+ </p>
+ <p class="ne-p" id="u8f4bde87">
+  <span class="ne-text">
+   Dubbo SPI &#38500;&#20102;&#25903;&#25345;&#25353;&#38656;&#21152;&#36733;&#25509;&#21475;&#23454;&#29616;&#31867;&#65292;&#36824;&#22686;&#21152;&#20102; IOC &#21644; AOP &#31561;&#29305;&#24615;&#65292;&#36825;&#20123;&#29305;&#24615;&#23558;&#20250;&#22312;&#25509;&#19979;&#26469;&#30340;&#28304;&#30721;&#20998;&#26512;&#31456;&#33410;&#20013;&#19968;&#19968;&#36827;&#34892;&#20171;&#32461;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u0f232d1b">
+  <br>
+ </p>
+ <h2 id="20bcd844">
+  <span class="ne-text">
+   3. Dubbo SPI &#28304;&#30721;&#20998;&#26512;
+  </span>
+ </h2>
+ <p class="ne-p" id="u6873cf92">
+  <br>
+ </p>
+ <p class="ne-p" id="u60472be9">
+  <span class="ne-text">
+   &#19978;&#38754;&#31616;&#21333;&#28436;&#31034;&#20102; Dubbo SPI &#30340;&#20351;&#29992;&#26041;&#27861;&#12290;&#25105;&#20204;&#39318;&#20808;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getExtensionLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#33719;&#21462;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65292;&#28982;&#21518;&#20877;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getExtension
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#33719;&#21462;&#25299;&#23637;&#31867;&#23545;&#35937;&#12290;&#36825;&#20854;&#20013;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getExtensionLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#29992;&#20110;&#20174;&#32531;&#23384;&#20013;&#33719;&#21462;&#19982;&#25299;&#23637;&#31867;&#23545;&#24212;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#33509;&#32531;&#23384;&#26410;&#21629;&#20013;&#65292;&#21017;&#21019;&#24314;&#19968;&#20010;&#26032;&#30340;&#23454;&#20363;&#12290;&#35813;&#26041;&#27861;&#30340;&#36923;&#36753;&#27604;&#36739;&#31616;&#21333;&#65292;&#26412;&#31456;&#23601;&#19981;&#36827;&#34892;&#20998;&#26512;&#20102;&#12290;&#19979;&#38754;&#25105;&#20204;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getExtension
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20316;&#20026;&#20837;&#21475;&#65292;&#23545;&#25299;&#23637;&#31867;&#23545;&#35937;&#30340;&#33719;&#21462;&#36807;&#31243;&#36827;&#34892;&#35814;&#32454;&#30340;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufa04ca5c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="5d707cf6">public T getExtension(String name) {
+    if (name == null || name.length() == 0)
+        throw new IllegalArgumentException("Extension name == null");
+    if ("true".equals(name)) {
+        // &#33719;&#21462;&#40664;&#35748;&#30340;&#25299;&#23637;&#23454;&#29616;&#31867;
+        return getDefaultExtension();
+    }
+    // Holder&#65292;&#39038;&#21517;&#24605;&#20041;&#65292;&#29992;&#20110;&#25345;&#26377;&#30446;&#26631;&#23545;&#35937;
+    Holder&lt;Object&gt; holder = cachedInstances.get(name);
+    if (holder == null) {
+        cachedInstances.putIfAbsent(name, new Holder&lt;Object&gt;());
+        holder = cachedInstances.get(name);
+    }
+    Object instance = holder.get();
+    // &#21452;&#37325;&#26816;&#26597;
+    if (instance == null) {
+        synchronized (holder) {
+            instance = holder.get();
+            if (instance == null) {
+                // &#21019;&#24314;&#25299;&#23637;&#23454;&#20363;
+                instance = createExtension(name);
+                // &#35774;&#32622;&#23454;&#20363;&#21040; holder &#20013;
+                holder.set(instance);
+            }
+        }
+    }
+    return (T) instance;
+}</pre>
+ <p class="ne-p" id="u8d182102">
+  <br>
+ </p>
+ <p class="ne-p" id="u7d05fc8d">
+  <span class="ne-text">
+   &#19978;&#38754;&#20195;&#30721;&#30340;&#36923;&#36753;&#27604;&#36739;&#31616;&#21333;&#65292;&#39318;&#20808;&#26816;&#26597;&#32531;&#23384;&#65292;&#32531;&#23384;&#26410;&#21629;&#20013;&#21017;&#21019;&#24314;&#25299;&#23637;&#23545;&#35937;&#12290;&#19979;&#38754;&#25105;&#20204;&#26469;&#30475;&#19968;&#19979;&#21019;&#24314;&#25299;&#23637;&#23545;&#35937;&#30340;&#36807;&#31243;&#26159;&#24590;&#26679;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u92a2ccd1">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="f5a8c095">private T createExtension(String name) {
+    // &#20174;&#37197;&#32622;&#25991;&#20214;&#20013;&#21152;&#36733;&#25152;&#26377;&#30340;&#25299;&#23637;&#31867;&#65292;&#21487;&#24471;&#21040;&#8220;&#37197;&#32622;&#39033;&#21517;&#31216;&#8221;&#21040;&#8220;&#37197;&#32622;&#31867;&#8221;&#30340;&#26144;&#23556;&#20851;&#31995;&#34920;
+    Class&lt;?&gt; clazz = getExtensionClasses().get(name);
+    if (clazz == null) {
+        throw findException(name);
+    }
+    try {
+        T instance = (T) EXTENSION_INSTANCES.get(clazz);
+        if (instance == null) {
+            // &#36890;&#36807;&#21453;&#23556;&#21019;&#24314;&#23454;&#20363;
+            EXTENSION_INSTANCES.putIfAbsent(clazz, clazz.newInstance());
+            instance = (T) EXTENSION_INSTANCES.get(clazz);
+        }
+        // &#21521;&#23454;&#20363;&#20013;&#27880;&#20837;&#20381;&#36182;
+        injectExtension(instance);
+        Set&lt;Class&lt;?&gt;&gt; wrapperClasses = cachedWrapperClasses;
+        if (wrapperClasses != null &amp;&amp; !wrapperClasses.isEmpty()) {
+            // &#24490;&#29615;&#21019;&#24314; Wrapper &#23454;&#20363;
+            for (Class&lt;?&gt; wrapperClass : wrapperClasses) {
+                // &#23558;&#24403;&#21069; instance &#20316;&#20026;&#21442;&#25968;&#20256;&#32473; Wrapper &#30340;&#26500;&#36896;&#26041;&#27861;&#65292;&#24182;&#36890;&#36807;&#21453;&#23556;&#21019;&#24314; Wrapper &#23454;&#20363;&#12290;
+                // &#28982;&#21518;&#21521; Wrapper &#23454;&#20363;&#20013;&#27880;&#20837;&#20381;&#36182;&#65292;&#26368;&#21518;&#23558; Wrapper &#23454;&#20363;&#20877;&#27425;&#36171;&#20540;&#32473; instance &#21464;&#37327;
+                instance = injectExtension(
+                    (T) wrapperClass.getConstructor(type).newInstance(instance));
+            }
+        }
+        return instance;
+    } catch (Throwable t) {
+        throw new IllegalStateException("...");
+    }
+}</pre>
+ <p class="ne-p" id="u6acecfc5">
+  <br>
+ </p>
+ <p class="ne-p" id="u3da59e67">
+  <code class="ne-code">
+   <span class="ne-text">
+    createExtension
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#36923;&#36753;&#31245;&#22797;&#26434;&#19968;&#19979;&#65292;&#21253;&#21547;&#20102;&#22914;&#19979;&#30340;&#27493;&#39588;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u9ba3e542">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u9d672315">
+   <span class="ne-text">
+    &#36890;&#36807;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     getExtensionClasses
+    </span>
+   </code>
+   <span class="ne-text">
+    &#33719;&#21462;&#25152;&#26377;&#30340;&#25299;&#23637;&#31867;
+   </span>
+  </li>
+  <li id="ue193ea00">
+   <span class="ne-text">
+    &#36890;&#36807;&#21453;&#23556;&#21019;&#24314;&#25299;&#23637;&#23545;&#35937;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u067be56b">
+   <span class="ne-text">
+    &#21521;&#25299;&#23637;&#23545;&#35937;&#20013;&#27880;&#20837;&#20381;&#36182;
+   </span>
+  </li>
+  <li id="u3ef90500">
+   <span class="ne-text">
+    &#23558;&#25299;&#23637;&#23545;&#35937;&#21253;&#35065;&#22312;&#30456;&#24212;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Wrapper
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#20013;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="uda9b6323">
+  <br>
+ </p>
+ <p class="ne-p" id="u4e8ecece">
+  <span class="ne-text">
+   &#20197;&#19978;&#27493;&#39588;&#20013;&#65292;&#31532;&#19968;&#20010;&#27493;&#39588;&#26159;&#21152;&#36733;&#25299;&#23637;&#31867;&#30340;&#20851;&#38190;&#65292;&#31532;&#19977;&#21644;&#31532;&#22235;&#20010;&#27493;&#39588;&#26159; Dubbo IOC &#19982; AOP &#30340;&#20855;&#20307;&#23454;&#29616;&#12290;&#22312;&#25509;&#19979;&#26469;&#30340;&#31456;&#33410;&#20013;&#65292;&#23558;&#20250;&#37325;&#28857;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getExtensionClasses
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#36923;&#36753;&#65292;&#20197;&#21450;&#31616;&#21333;&#20171;&#32461; Dubbo IOC &#30340;&#20855;&#20307;&#23454;&#29616;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc1b843fa">
+  <br>
+ </p>
+ <h3 id="9d0ec2e8">
+  <span class="ne-text">
+   3.1 &#33719;&#21462;&#25152;&#26377;&#30340;&#25299;&#23637;&#31867;
+  </span>
+ </h3>
+ <p class="ne-p" id="u4b0a6857">
+  <br>
+ </p>
+ <p class="ne-p" id="u8af45136">
+  <span class="ne-text">
+   &#25105;&#20204;&#22312;&#36890;&#36807;&#21517;&#31216;&#33719;&#21462;&#25299;&#23637;&#31867;&#20043;&#21069;&#65292;&#39318;&#20808;&#38656;&#35201;&#26681;&#25454;&#37197;&#32622;&#25991;&#20214;&#35299;&#26512;&#20986;&#25299;&#23637;&#39033;&#21517;&#31216;&#21040;&#25299;&#23637;&#31867;&#30340;&#26144;&#23556;&#20851;&#31995;&#34920;&#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Map&lt;&#21517;&#31216;, &#25299;&#23637;&#31867;&gt;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65289;&#65292;&#20043;&#21518;&#20877;&#26681;&#25454;&#25299;&#23637;&#39033;&#21517;&#31216;&#20174;&#26144;&#23556;&#20851;&#31995;&#34920;&#20013;&#21462;&#20986;&#30456;&#24212;&#30340;&#25299;&#23637;&#31867;&#21363;&#21487;&#12290;&#30456;&#20851;&#36807;&#31243;&#30340;&#20195;&#30721;&#20998;&#26512;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ucc6c8453">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="d3c63db3">private Map&lt;String, Class&lt;?&gt;&gt; getExtensionClasses() {
+    // &#20174;&#32531;&#23384;&#20013;&#33719;&#21462;&#24050;&#21152;&#36733;&#30340;&#25299;&#23637;&#31867;
+    Map&lt;String, Class&lt;?&gt;&gt; classes = cachedClasses.get();
+    // &#21452;&#37325;&#26816;&#26597;
+    if (classes == null) {
+        synchronized (cachedClasses) {
+            classes = cachedClasses.get();
+            if (classes == null) {
+                // &#21152;&#36733;&#25299;&#23637;&#31867;
+                classes = loadExtensionClasses();
+                cachedClasses.set(classes);
+            }
+        }
+    }
+    return classes;
+}</pre>
+ <p class="ne-p" id="ufa41556c">
+  <br>
+ </p>
+ <p class="ne-p" id="u7bf9862c">
+  <span class="ne-text">
+   &#36825;&#37324;&#20063;&#26159;&#20808;&#26816;&#26597;&#32531;&#23384;&#65292;&#33509;&#32531;&#23384;&#26410;&#21629;&#20013;&#65292;&#21017;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    synchronized
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21152;&#38145;&#12290;&#21152;&#38145;&#21518;&#20877;&#27425;&#26816;&#26597;&#32531;&#23384;&#65292;&#24182;&#21028;&#31354;&#12290;&#27492;&#26102;&#22914;&#26524;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20173;&#20026; null&#65292;&#21017;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    loadExtensionClasses
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21152;&#36733;&#25299;&#23637;&#31867;&#12290;&#19979;&#38754;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    loadExtensionClasses
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#36923;&#36753;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u0be6f6ea">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="7cedbb63">private Map&lt;String, Class&lt;?&gt;&gt; loadExtensionClasses() {
+    // &#33719;&#21462; SPI &#27880;&#35299;&#65292;&#36825;&#37324;&#30340; type &#21464;&#37327;&#26159;&#22312;&#35843;&#29992; getExtensionLoader &#26041;&#27861;&#26102;&#20256;&#20837;&#30340;
+    final SPI defaultAnnotation = type.getAnnotation(SPI.class);
+    if (defaultAnnotation != null) {
+        String value = defaultAnnotation.value();
+        if ((value = value.trim()).length() &gt; 0) {
+            // &#23545; SPI &#27880;&#35299;&#20869;&#23481;&#36827;&#34892;&#20999;&#20998;
+            String[] names = NAME_SEPARATOR.split(value);
+            // &#26816;&#27979; SPI &#27880;&#35299;&#20869;&#23481;&#26159;&#21542;&#21512;&#27861;&#65292;&#19981;&#21512;&#27861;&#21017;&#25243;&#20986;&#24322;&#24120;
+            if (names.length &gt; 1) {
+                throw new IllegalStateException("more than 1 default extension name on extension...");
+            }
+
+            // &#35774;&#32622;&#40664;&#35748;&#21517;&#31216;&#65292;&#21442;&#32771; getDefaultExtension &#26041;&#27861;
+            if (names.length == 1) {
+                cachedDefaultName = names[0];
+            }
+        }
+    }
+
+    Map&lt;String, Class&lt;?&gt;&gt; extensionClasses = new HashMap&lt;String, Class&lt;?&gt;&gt;();
+    // &#21152;&#36733;&#25351;&#23450;&#25991;&#20214;&#22841;&#19979;&#30340;&#37197;&#32622;&#25991;&#20214;
+    loadDirectory(extensionClasses, DUBBO_INTERNAL_DIRECTORY);
+    loadDirectory(extensionClasses, DUBBO_DIRECTORY);
+    loadDirectory(extensionClasses, SERVICES_DIRECTORY);
+    return extensionClasses;
+}</pre>
+ <p class="ne-p" id="ue360e1e1">
+  <br>
+ </p>
+ <p class="ne-p" id="u297a75a1">
+  <code class="ne-code">
+   <span class="ne-text">
+    loadExtensionClasses
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#24635;&#20849;&#20570;&#20102;&#20004;&#20214;&#20107;&#24773;&#65292;&#19968;&#26159;&#23545; SPI &#27880;&#35299;&#36827;&#34892;&#35299;&#26512;&#65292;&#20108;&#26159;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    loadDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21152;&#36733;&#25351;&#23450;&#25991;&#20214;&#22841;&#37197;&#32622;&#25991;&#20214;&#12290;SPI &#27880;&#35299;&#35299;&#26512;&#36807;&#31243;&#27604;&#36739;&#31616;&#21333;&#65292;&#26080;&#38656;&#22810;&#35828;&#12290;&#19979;&#38754;&#25105;&#20204;&#26469;&#30475;&#19968;&#19979; loadDirectory &#20570;&#20102;&#21738;&#20123;&#20107;&#24773;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc27dc820">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="7425c524">private void loadDirectory(Map&lt;String, Class&lt;?&gt;&gt; extensionClasses, String dir) {
+    // fileName = &#25991;&#20214;&#22841;&#36335;&#24452; + type &#20840;&#38480;&#23450;&#21517; 
+    String fileName = dir + type.getName();
+    try {
+        Enumeration&lt;java.net.URL&gt; urls;
+        ClassLoader classLoader = findClassLoader();
+        // &#26681;&#25454;&#25991;&#20214;&#21517;&#21152;&#36733;&#25152;&#26377;&#30340;&#21516;&#21517;&#25991;&#20214;
+        if (classLoader != null) {
+            urls = classLoader.getResources(fileName);
+        } else {
+            urls = ClassLoader.getSystemResources(fileName);
+        }
+        if (urls != null) {
+            while (urls.hasMoreElements()) {
+                java.net.URL resourceURL = urls.nextElement();
+                // &#21152;&#36733;&#36164;&#28304;
+                loadResource(extensionClasses, classLoader, resourceURL);
+            }
+        }
+    } catch (Throwable t) {
+        logger.error("...");
+    }
+}</pre>
+ <p class="ne-p" id="ucadd4eb7">
+  <br>
+ </p>
+ <p class="ne-p" id="ua47e24be">
+  <code class="ne-code">
+   <span class="ne-text">
+    loadDirectory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20808;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33719;&#21462;&#25152;&#26377;&#36164;&#28304;&#38142;&#25509;&#65292;&#28982;&#21518;&#20877;&#36890;&#36807; loadResource &#26041;&#27861;&#21152;&#36733;&#36164;&#28304;&#12290;&#25105;&#20204;&#32487;&#32493;&#36319;&#19979;&#21435;&#65292;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    loadResource
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#23454;&#29616;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u44e407b0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="94742e4a">private void loadResource(Map&lt;String, Class&lt;?&gt;&gt; extensionClasses, 
+	ClassLoader classLoader, java.net.URL resourceURL) {
+    try {
+        BufferedReader reader = new BufferedReader(
+            new InputStreamReader(resourceURL.openStream(), "utf-8"));
+        try {
+            String line;
+            // &#25353;&#34892;&#35835;&#21462;&#37197;&#32622;&#20869;&#23481;
+            while ((line = reader.readLine()) != null) {
+                // &#23450;&#20301; # &#23383;&#31526;
+                final int ci = line.indexOf('#');
+                if (ci &gt;= 0) {
+                    // &#25130;&#21462; # &#20043;&#21069;&#30340;&#23383;&#31526;&#20018;&#65292;# &#20043;&#21518;&#30340;&#20869;&#23481;&#20026;&#27880;&#37322;&#65292;&#38656;&#35201;&#24573;&#30053;
+                    line = line.substring(0, ci);
+                }
+                line = line.trim();
+                if (line.length() &gt; 0) {
+                    try {
+                        String name = null;
+                        int i = line.indexOf('=');
+                        if (i &gt; 0) {
+                            // &#20197;&#31561;&#20110;&#21495; = &#20026;&#30028;&#65292;&#25130;&#21462;&#38190;&#19982;&#20540;
+                            name = line.substring(0, i).trim();
+                            line = line.substring(i + 1).trim();
+                        }
+                        if (line.length() &gt; 0) {
+                            // &#21152;&#36733;&#31867;&#65292;&#24182;&#36890;&#36807; loadClass &#26041;&#27861;&#23545;&#31867;&#36827;&#34892;&#32531;&#23384;
+                            loadClass(extensionClasses, resourceURL, 
+                                      Class.forName(line, true, classLoader), name);
+                        }
+                    } catch (Throwable t) {
+                        IllegalStateException e = new IllegalStateException("Failed to load extension class...");
+                    }
+                }
+            }
+        } finally {
+            reader.close();
+        }
+    } catch (Throwable t) {
+        logger.error("Exception when load extension class...");
+    }
+}</pre>
+ <p class="ne-p" id="u6333d73f">
+  <br>
+ </p>
+ <p class="ne-p" id="uf6d750ad">
+  <code class="ne-code">
+   <span class="ne-text">
+    loadResource
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#29992;&#20110;&#35835;&#21462;&#21644;&#35299;&#26512;&#37197;&#32622;&#25991;&#20214;&#65292;&#24182;&#36890;&#36807;&#21453;&#23556;&#21152;&#36733;&#31867;&#65292;&#26368;&#21518;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    loadClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36827;&#34892;&#20854;&#20182;&#25805;&#20316;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    loadClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#29992;&#20110;&#20027;&#35201;&#29992;&#20110;&#25805;&#20316;&#32531;&#23384;&#65292;&#35813;&#26041;&#27861;&#30340;&#36923;&#36753;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u99eee68e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b2fd82d2">private void loadClass(Map&lt;String, Class&lt;?&gt;&gt; extensionClasses, java.net.URL resourceURL, 
+    Class&lt;?&gt; clazz, String name) throws NoSuchMethodException {
+    
+    if (!type.isAssignableFrom(clazz)) {
+        throw new IllegalStateException("...");
+    }
+
+    // &#26816;&#27979;&#30446;&#26631;&#31867;&#19978;&#26159;&#21542;&#26377; Adaptive &#27880;&#35299;
+    if (clazz.isAnnotationPresent(Adaptive.class)) {
+        if (cachedAdaptiveClass == null) {
+            // &#35774;&#32622; cachedAdaptiveClass&#32531;&#23384;
+            cachedAdaptiveClass = clazz;
+        } else if (!cachedAdaptiveClass.equals(clazz)) {
+            throw new IllegalStateException("...");
+        }
+        
+    // &#26816;&#27979; clazz &#26159;&#21542;&#26159; Wrapper &#31867;&#22411;
+    } else if (isWrapperClass(clazz)) {
+        Set&lt;Class&lt;?&gt;&gt; wrappers = cachedWrapperClasses;
+        if (wrappers == null) {
+            cachedWrapperClasses = new ConcurrentHashSet&lt;Class&lt;?&gt;&gt;();
+            wrappers = cachedWrapperClasses;
+        }
+        // &#23384;&#20648; clazz &#21040; cachedWrapperClasses &#32531;&#23384;&#20013;
+        wrappers.add(clazz);
+        
+    // &#31243;&#24207;&#36827;&#20837;&#27492;&#20998;&#25903;&#65292;&#34920;&#26126; clazz &#26159;&#19968;&#20010;&#26222;&#36890;&#30340;&#25299;&#23637;&#31867;
+    } else {
+        // &#26816;&#27979; clazz &#26159;&#21542;&#26377;&#40664;&#35748;&#30340;&#26500;&#36896;&#26041;&#27861;&#65292;&#22914;&#26524;&#27809;&#26377;&#65292;&#21017;&#25243;&#20986;&#24322;&#24120;
+        clazz.getConstructor();
+        if (name == null || name.length() == 0) {
+            // &#22914;&#26524; name &#20026;&#31354;&#65292;&#21017;&#23581;&#35797;&#20174; Extension &#27880;&#35299;&#20013;&#33719;&#21462; name&#65292;&#25110;&#20351;&#29992;&#23567;&#20889;&#30340;&#31867;&#21517;&#20316;&#20026; name
+            name = findAnnotationName(clazz);
+            if (name.length() == 0) {
+                throw new IllegalStateException("...");
+            }
+        }
+        // &#20999;&#20998; name
+        String[] names = NAME_SEPARATOR.split(name);
+        if (names != null &amp;&amp; names.length &gt; 0) {
+            Activate activate = clazz.getAnnotation(Activate.class);
+            if (activate != null) {
+                // &#22914;&#26524;&#31867;&#19978;&#26377; Activate &#27880;&#35299;&#65292;&#21017;&#20351;&#29992; names &#25968;&#32452;&#30340;&#31532;&#19968;&#20010;&#20803;&#32032;&#20316;&#20026;&#38190;&#65292;
+                // &#23384;&#20648; name &#21040; Activate &#27880;&#35299;&#23545;&#35937;&#30340;&#26144;&#23556;&#20851;&#31995;
+                cachedActivates.put(names[0], activate);
+            }
+            for (String n : names) {
+                if (!cachedNames.containsKey(clazz)) {
+                    // &#23384;&#20648; Class &#21040;&#21517;&#31216;&#30340;&#26144;&#23556;&#20851;&#31995;
+                    cachedNames.put(clazz, n);
+                }
+                Class&lt;?&gt; c = extensionClasses.get(n);
+                if (c == null) {
+                    // &#23384;&#20648;&#21517;&#31216;&#21040; Class &#30340;&#26144;&#23556;&#20851;&#31995;
+                    extensionClasses.put(n, clazz);
+                } else if (c != clazz) {
+                    throw new IllegalStateException("...");
+                }
+            }
+        }
+    }
+}</pre>
+ <p class="ne-p" id="u1d51eaff">
+  <br>
+ </p>
+ <p class="ne-p" id="u94deb664">
+  <span class="ne-text">
+   &#22914;&#19978;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    loadClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#25805;&#20316;&#20102;&#19981;&#21516;&#30340;&#32531;&#23384;&#65292;&#27604;&#22914;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    cachedAdaptiveClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    cachedWrapperClasses
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    cachedNames
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#31561;&#12290;&#38500;&#27492;&#20043;&#22806;&#65292;&#35813;&#26041;&#27861;&#27809;&#26377;&#20854;&#20182;&#20160;&#20040;&#36923;&#36753;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u12ab5349">
+  <br>
+ </p>
+ <p class="ne-p" id="u80737e7e">
+  <span class="ne-text">
+   &#21040;&#27492;&#65292;&#20851;&#20110;&#32531;&#23384;&#31867;&#21152;&#36733;&#30340;&#36807;&#31243;&#23601;&#20998;&#26512;&#23436;&#20102;&#12290;&#25972;&#20010;&#36807;&#31243;&#27809;&#20160;&#20040;&#29305;&#21035;&#22797;&#26434;&#30340;&#22320;&#26041;&#65292;&#22823;&#23478;&#25353;&#37096;&#23601;&#29677;&#30340;&#20998;&#26512;&#21363;&#21487;&#65292;&#19981;&#25026;&#30340;&#22320;&#26041;&#21487;&#20197;&#35843;&#35797;&#19968;&#19979;&#12290;&#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#26469;&#32842;&#32842; Dubbo IOC &#26041;&#38754;&#30340;&#20869;&#23481;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub196ea56">
+  <br>
+ </p>
+ <h3 id="d3b4ccec">
+  <span class="ne-text">
+   3.2 Dubbo IOC
+  </span>
+ </h3>
+ <p class="ne-p" id="u865b35b8">
+  <br>
+ </p>
+ <p class="ne-p" id="udf6d6bf6">
+  <span class="ne-text">
+   Dubbo IOC &#26159;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#27880;&#20837;&#20381;&#36182;&#12290;Dubbo &#39318;&#20808;&#20250;&#36890;&#36807;&#21453;&#23556;&#33719;&#21462;&#21040;&#23454;&#20363;&#30340;&#25152;&#26377;&#26041;&#27861;&#65292;&#28982;&#21518;&#20877;&#36941;&#21382;&#26041;&#27861;&#21015;&#34920;&#65292;&#26816;&#27979;&#26041;&#27861;&#21517;&#26159;&#21542;&#20855;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#29305;&#24449;&#12290;&#33509;&#26377;&#65292;&#21017;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ObjectFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33719;&#21462;&#20381;&#36182;&#23545;&#35937;&#65292;&#26368;&#21518;&#36890;&#36807;&#21453;&#23556;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#23558;&#20381;&#36182;&#35774;&#32622;&#21040;&#30446;&#26631;&#23545;&#35937;&#20013;&#12290;&#25972;&#20010;&#36807;&#31243;&#23545;&#24212;&#30340;&#20195;&#30721;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u994f3365">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="efb25551">private T injectExtension(T instance) {
+    try {
+        if (objectFactory != null) {
+            // &#36941;&#21382;&#30446;&#26631;&#31867;&#30340;&#25152;&#26377;&#26041;&#27861;
+            for (Method method : instance.getClass().getMethods()) {
+                // &#26816;&#27979;&#26041;&#27861;&#26159;&#21542;&#20197; set &#24320;&#22836;&#65292;&#19988;&#26041;&#27861;&#20165;&#26377;&#19968;&#20010;&#21442;&#25968;&#65292;&#19988;&#26041;&#27861;&#35775;&#38382;&#32423;&#21035;&#20026; public
+                if (method.getName().startsWith("set")
+                    &amp;&amp; method.getParameterTypes().length == 1
+                    &amp;&amp; Modifier.isPublic(method.getModifiers())) {
+                    // &#33719;&#21462; setter &#26041;&#27861;&#21442;&#25968;&#31867;&#22411;
+                    Class&lt;?&gt; pt = method.getParameterTypes()[0];
+                    try {
+                        // &#33719;&#21462;&#23646;&#24615;&#21517;&#65292;&#27604;&#22914; setName &#26041;&#27861;&#23545;&#24212;&#23646;&#24615;&#21517; name
+                        String property = method.getName().length() &gt; 3 ? 
+                            method.getName().substring(3, 4).toLowerCase() + 
+                            	method.getName().substring(4) : "";
+                        // &#20174; ObjectFactory &#20013;&#33719;&#21462;&#20381;&#36182;&#23545;&#35937;
+                        Object object = objectFactory.getExtension(pt, property);
+                        if (object != null) {
+                            // &#36890;&#36807;&#21453;&#23556;&#35843;&#29992; setter &#26041;&#27861;&#35774;&#32622;&#20381;&#36182;
+                            method.invoke(instance, object);
+                        }
+                    } catch (Exception e) {
+                        logger.error("fail to inject via method...");
+                    }
+                }
+            }
+        }
+    } catch (Exception e) {
+        logger.error(e.getMessage(), e);
+    }
+    return instance;
+}</pre>
+ <p class="ne-p" id="ub7f21c06">
+  <br>
+ </p>
+ <p class="ne-p" id="ue60305bd">
+  <span class="ne-text">
+   &#22312;&#19978;&#38754;&#20195;&#30721;&#20013;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    objectFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21464;&#37327;&#30340;&#31867;&#22411;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AdaptiveExtensionFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AdaptiveExtensionFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20869;&#37096;&#32500;&#25252;&#20102;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21015;&#34920;&#65292;&#29992;&#20110;&#23384;&#20648;&#20854;&#20182;&#31867;&#22411;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;Dubbo &#30446;&#21069;&#25552;&#20379;&#20102;&#20004;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ExtensionFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#20998;&#21035;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpiExtensionFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringExtensionFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#21069;&#32773;&#29992;&#20110;&#21019;&#24314;&#33258;&#36866;&#24212;&#30340;&#25299;&#23637;&#65292;&#21518;&#32773;&#26159;&#29992;&#20110;&#20174; Spring &#30340; IOC &#23481;&#22120;&#20013;&#33719;&#21462;&#25152;&#38656;&#30340;&#25299;&#23637;&#12290;&#36825;&#20004;&#20010;&#31867;&#30340;&#31867;&#30340;&#20195;&#30721;&#19981;&#26159;&#24456;&#22797;&#26434;&#65292;&#36825;&#37324;&#23601;&#19981;&#19968;&#19968;&#20998;&#26512;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6d03e695">
+  <br>
+ </p>
+ <p class="ne-p" id="u68174b86">
+  <span class="ne-text">
+   Dubbo IOC &#30446;&#21069;&#20165;&#25903;&#25345; setter &#26041;&#24335;&#27880;&#20837;&#65292;&#24635;&#30340;&#26469;&#35828;&#65292;&#36923;&#36753;&#27604;&#36739;&#31616;&#21333;&#26131;&#25026;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc5e274ea">
+  <br>
+ </p>
+ <h2 id="76304aaf">
+  <span class="ne-text">
+   4.&#24635;&#32467;
+  </span>
+ </h2>
+ <p class="ne-p" id="u20b46a29">
+  <br>
+ </p>
+ <p class="ne-p" id="u467239e9">
+  <span class="ne-text">
+   &#26412;&#31687;&#25991;&#31456;&#31616;&#21333;&#20998;&#21035;&#20171;&#32461;&#20102; Java SPI &#19982; Dubbo SPI &#29992;&#27861;&#65292;&#24182;&#23545; Dubbo SPI &#30340;&#21152;&#36733;&#25299;&#23637;&#31867;&#30340;&#36807;&#31243;&#36827;&#34892;&#20102;&#20998;&#26512;&#12290;&#21478;&#22806;&#65292;&#22312; Dubbo SPI &#20013;&#36824;&#26377;&#19968;&#22359;&#37325;&#35201;&#30340;&#36923;&#36753;&#36825;&#37324;&#27809;&#26377;&#36827;&#34892;&#20998;&#26512;&#65292;&#21363; Dubbo SPI &#30340;&#25193;&#23637;&#28857;&#33258;&#36866;&#24212;&#26426;&#21046;&#12290;&#35813;&#26426;&#21046;&#30340;&#36923;&#36753;&#36739;&#20026;&#22797;&#26434;&#65292;&#25105;&#20204;&#23558;&#20250;&#22312;&#19979;&#19968;&#31687;&#25991;&#31456;&#20013;&#36827;&#34892;&#35814;&#32454;&#30340;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u663fe0e3">
+  <br>
+ </p>
+ <p class="ne-p" id="ue55e6fe4">
+  <span class="ne-text">
+   &#22909;&#20102;&#65292;&#26412;&#31687;&#25991;&#31456;&#23601;&#20808;&#21040;&#36825;&#37324;&#20102;&#12290;&#22914;&#26524;&#25991;&#31456;&#20013;&#26377;&#38169;&#35823;&#19981;&#22949;&#20043;&#22788;&#65292;&#27426;&#36814;&#22823;&#23478;&#25552; issue &#36827;&#34892;&#21453;&#39304;&#65292;&#25110;&#32773;&#25552; pull request &#36827;&#34892;&#20462;&#27491;&#12290;&#35753;&#25105;&#20204;&#25658;&#25163;&#20849;&#24314; Dubbo &#31038;&#21306;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

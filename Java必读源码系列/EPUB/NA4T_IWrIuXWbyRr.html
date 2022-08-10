@@ -1,0 +1,2315 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>6 SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;Starter&#26159;&#24590;&#26679;&#26500;&#24314;&#30340;&#65311;</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="u2c71dc74">
+  <strong>
+   <span class="ne-text">
+    &#27880;&#65306;&#35813;&#28304;&#30721;&#20998;&#26512;&#23545;&#24212;SpringBoot&#29256;&#26412;&#20026;2.1.0.RELEASE
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u6bcbca1d">
+  <br>
+ </p>
+ <h2 id="a6397be7">
+  <span class="ne-text">
+   1 &#28201;&#25925;&#32780;&#30693;&#26032;
+  </span>
+ </h2>
+ <p class="ne-p" id="u4d69e315">
+  <br>
+ </p>
+ <p class="ne-p" id="u3a34b6a1">
+  <span class="ne-text">
+   &#26412;&#31687;&#25509;
+  </span>
+  <a class="ne-link" data-href="https://juejin.cn/post/6844904090439270408" href="https://juejin.cn/post/6844904090439270408" target="_blank">
+   <span class="ne-text">
+    &#22806;&#37096;&#37197;&#32622;&#23646;&#24615;&#20540;&#26159;&#22914;&#20309;&#34987;&#32465;&#23450;&#21040;XxxProperties&#31867;&#23646;&#24615;&#19978;&#30340;&#65311;--SpringBoot&#28304;&#30721;&#65288;&#20116;&#65289;
+   </span>
+  </a>
+ </p>
+ <p class="ne-p" id="ud7cdf990">
+  <br>
+ </p>
+ <p class="ne-p" id="ua32b9c76">
+  <span class="ne-text">
+   &#28201;&#25925;&#32780;&#30693;&#26032;&#65292;&#25105;&#20204;&#26469;&#31616;&#21333;&#22238;&#39038;&#19968;&#19979;&#19978;&#31687;&#30340;&#20869;&#23481;&#65292;&#19978;&#19968;&#31687;&#25105;&#20204;&#20998;&#26512;&#20102;SpringBoot
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#22806;&#37096;&#37197;&#32622;&#23646;&#24615;&#20540;&#26159;&#22914;&#20309;&#34987;&#32465;&#23450;&#21040;XxxProperties&#31867;&#23646;&#24615;&#19978;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#30340;&#30456;&#20851;&#28304;&#30721;&#65292;&#29616;&#23558;&#22806;&#37096;&#23646;&#24615;&#32465;&#23450;&#30340;&#37325;&#35201;&#27493;&#39588;&#24635;&#32467;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u2e42f21c">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u98eb2afc">
+   <span class="ne-text">
+    &#39318;&#20808;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @EnableConfigurationProperties
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27880;&#35299;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     import
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     EnableConfigurationPropertiesImportSelector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21518;&#32622;&#22788;&#29702;&#22120;&#65307;
+   </span>
+  </li>
+  <li id="u5ee6a435">
+   <code class="ne-code">
+    <span class="ne-text">
+     EnableConfigurationPropertiesImportSelector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21518;&#32622;&#22788;&#29702;&#22120;&#21448;&#21521;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Spring
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23481;&#22120;&#20013;&#27880;&#20876;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationPropertiesBeanRegistrar
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationPropertiesBindingPostProcessorRegistrar
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36825;&#20004;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bean
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65307;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u5968ea37">
+   <span class="ne-text">
+    &#20854;&#20013;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationPropertiesBeanRegistrar
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21521;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Spring
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23481;&#22120;&#20013;&#27880;&#20876;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     XxxProperties
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31867;&#22411;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bean
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65307;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationPropertiesBindingPostProcessorRegistrar
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21521;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Spring
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23481;&#22120;&#20013;&#27880;&#20876;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationBeanFactoryMetadata
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationPropertiesBindingPostProcessor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20004;&#20010;&#21518;&#32622;&#22788;&#29702;&#22120;&#65307;
+   </span>
+  </li>
+  <li id="u458f76cc">
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationBeanFactoryMetadata
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21518;&#32622;&#22788;&#29702;&#22120;&#22312;&#21021;&#22987;&#21270;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bean
+    </span>
+   </code>
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     factory
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26102;&#23558;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Bean
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27880;&#35299;&#30340;&#20803;&#25968;&#25454;&#23384;&#20648;&#36215;&#26469;&#65292;&#20197;&#20415;&#22312;&#21518;&#32493;&#30340;&#22806;&#37096;&#37197;&#32622;&#23646;&#24615;&#32465;&#23450;&#30340;&#30456;&#20851;&#36923;&#36753;&#20013;&#20351;&#29992;&#65307;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="5">
+  <li id="u63342782">
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationPropertiesBindingPostProcessor
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21518;&#32622;&#22788;&#29702;&#22120;&#23558;&#22806;&#37096;&#37197;&#32622;&#23646;&#24615;&#20540;&#32465;&#23450;&#21040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     XxxProperties
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31867;&#23646;&#24615;&#30340;&#36923;&#36753;&#22996;&#25176;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationPropertiesBinder
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#65292;&#28982;&#21518;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConfigurationPropertiesBinder
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#21448;&#26368;&#32456;&#23558;&#23646;&#24615;&#32465;&#23450;&#30340;&#36923;&#36753;&#22996;&#25176;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Binder
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#26469;&#23436;&#25104;&#12290;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u9f52784e">
+  <br>
+ </p>
+ <p class="ne-p" id="ud870334b">
+  <span class="ne-text">
+   &#21487;&#35265;&#65292;&#37325;&#35201;&#30340;&#26159;&#19978;&#38754;&#30340;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#31532;5&#27493;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ucccc072e">
+  <br>
+ </p>
+ <h2 id="cd1f626d">
+  <span class="ne-text">
+   2 &#24341;&#35328;
+  </span>
+ </h2>
+ <p class="ne-p" id="u353d813a">
+  <br>
+ </p>
+ <p class="ne-p" id="ud6265ea6">
+  <span class="ne-text">
+   &#25105;&#20204;&#37117;&#30693;&#36947;&#65292;SpringBoot&#20869;&#32622;&#20102;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;&#65292;&#25105;&#20204;&#20351;&#29992;&#38750;&#24120;&#26041;&#20415;&#65292;&#22823;&#22823;&#20943;&#36731;&#20102;&#25105;&#20204;&#30340;&#24320;&#21457;&#24037;&#20316;&#12290;&#26377;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;&#65292;&#25105;&#20204;&#19981;&#29992;&#21435;&#32771;&#34385;&#36825;&#20010;&#39033;&#30446;&#38656;&#35201;&#20160;&#20040;&#24211;&#65292;&#36825;&#20010;&#24211;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    groupId
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    artifactId
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#20160;&#20040;&#65311;&#26356;&#19981;&#29992;&#25285;&#24515;&#24341;&#20837;&#36825;&#20010;&#29256;&#26412;&#30340;&#24211;&#21518;&#20250;&#19981;&#20250;&#36319;&#20854;&#20182;&#20381;&#36182;&#26377;&#27809;&#26377;&#20914;&#31361;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u537c696b">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ufebe24a5">
+   <strong>
+    <span class="ne-text">
+     &#20030;&#20010;&#26647;&#23376;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306;&#29616;&#22312;&#25105;&#20204;&#24819;&#24320;&#21457;&#19968;&#20010;web&#39033;&#30446;&#65292;&#37027;&#20040;&#21482;&#35201;&#24341;&#20837;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-boot-starter-web
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36825;&#20010;&#36215;&#27493;&#20381;&#36182;&#23601;&#21487;&#20197;&#20102;&#65292;&#19981;&#29992;&#32771;&#34385;&#35201;&#24341;&#20837;&#21738;&#20123;&#29256;&#26412;&#30340;&#21738;&#20123;&#20381;&#36182;&#20102;&#12290;&#20687;&#20197;&#21069;&#25105;&#20204;&#36824;&#35201;&#32771;&#34385;&#24341;&#20837;&#21738;&#20123;&#20381;&#36182;&#24211;&#65292;&#27604;&#22914;&#35201;&#24341;&#20837;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-web
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-webmvc
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20381;&#36182;&#31561;&#65307;&#27492;&#22806;&#65292;&#36824;&#35201;&#32771;&#34385;&#24341;&#20837;&#36825;&#20123;&#24211;&#30340;&#21738;&#20123;&#29256;&#26412;&#25165;&#19981;&#20250;&#36319;&#20854;&#20182;&#24211;&#20914;&#31361;&#31561;&#38382;&#39064;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u74255348">
+  <br>
+ </p>
+ <p class="ne-p" id="ubbdbb527">
+  <span class="ne-text">
+   &#37027;&#20040;&#25105;&#20204;&#20170;&#22825;&#26242;&#26102;&#19981;&#20998;&#26512;SpringBoot&#33258;&#21160;&#37197;&#32622;&#30340;&#28304;&#30721;&#65292;&#30001;&#20110;&#36215;&#27493;&#20381;&#36182;&#36319;&#33258;&#21160;&#37197;&#32622;&#30340;&#20851;&#31995;&#26159;&#22914;&#24433;&#38543;&#24418;&#30340;&#20851;&#31995;&#65292;&#22240;&#27492;&#26412;&#31687;&#20808;&#31449;&#22312;maven&#39033;&#30446;&#26500;&#24314;&#30340;&#35282;&#24230;&#26469;&#23439;&#35266;&#20998;&#26512;&#19979;&#25105;&#20204;&#24179;&#26102;&#20351;&#29992;&#30340;
+  </span>
+  <strong>
+   <span class="ne-text">
+    SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     Starter
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#26159;&#24590;&#26679;&#26500;&#24314;&#30340;&#65311;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u72c28a5f">
+  <br>
+ </p>
+ <h2 id="e01f2902">
+  <span class="ne-text">
+   3 Maven&#20256;&#36882;&#20381;&#36182;&#30340;optional&#26631;&#31614;
+  </span>
+ </h2>
+ <p class="ne-p" id="u811e16f7">
+  <br>
+ </p>
+ <p class="ne-p" id="u868ef8d0">
+  <span class="ne-text">
+   &#22312;&#20998;&#26512;SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26500;&#24314;&#21407;&#29702;&#21069;&#65292;&#25105;&#20204;&#20808;&#26469;&#35748;&#35782;&#19979;Maven&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    optional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26631;&#31614;&#65292;&#22240;&#20026;&#36825;&#20010;&#26631;&#31614;&#36215;&#21040;&#33267;&#20851;&#37325;&#35201;&#30340;&#20316;&#29992;&#12290; Maven&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    optional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26631;&#31614;&#34920;&#31034;&#21487;&#36873;&#20381;&#36182;&#21363;&#19981;&#21487;&#20256;&#36882;&#30340;&#24847;&#24605;&#65292;&#19979;&#38754;&#30452;&#25509;&#20030;&#20010;&#26647;&#23376;&#26469;&#35828;&#26126;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ubd2d13ef">
+  <br>
+ </p>
+ <p class="ne-p" id="uab5b4935">
+  <span class="ne-text">
+   &#27604;&#22914;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    A
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    B
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    C
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19977;&#20010;&#24211;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    C
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20381;&#36182;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    B
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    B
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20381;&#36182;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    A
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#19979;&#38754;&#30475;&#19979;&#36825;&#19977;&#20010;&#24211;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25991;&#20214;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ue1b3df62">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="5f029ae8">// A&#30340;pom.xml
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+
+	&lt;groupId&gt;com.ymbj&lt;/groupId&gt;
+        &lt;artifactId&gt;A&lt;/artifactId&gt;
+	&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+&lt;/project&gt;
+&#22797;&#21046;&#20195;&#30721;
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+
+	&lt;groupId&gt;com.ymbj&lt;/groupId&gt;
+        &lt;artifactId&gt;B&lt;/artifactId&gt;
+	&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;!--&#27880;&#24847;&#26159;&#21487;&#36873;&#20381;&#36182;--&gt;
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.ymbj&lt;/groupId&gt;
+            &lt;artifactId&gt;A&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+	    &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;
+&#22797;&#21046;&#20195;&#30721;
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+
+	&lt;groupId&gt;com.ymbj&lt;/groupId&gt;
+        &lt;artifactId&gt;C&lt;/artifactId&gt;
+	&lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.ymbj&lt;/groupId&gt;
+            &lt;artifactId&gt;B&lt;/artifactId&gt;
+            &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+&lt;/project&gt;</pre>
+ <p class="ne-p" id="ubbeb37cd">
+  <br>
+ </p>
+ <p class="ne-p" id="ue9823477">
+  <span class="ne-text">
+   &#19978;&#38754;&#19977;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    A
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    B
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    C
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21487;&#30693;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    B
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#20381;&#36182;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    A
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#65292;&#28982;&#21518;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    C
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#21448;&#20381;&#36182;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    B
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#65292;&#37027;&#20040;&#35831;&#24819;&#19968;&#19979;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    Maven&#25171;&#21253;&#26500;&#24314;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     C
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#24211;&#21518;&#65292;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     A
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#24211;&#26377;&#27809;&#26377;&#34987;&#24341;&#36827;&#26469;&#65311;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ud9f2237c">
+  <br>
+ </p>
+ <p class="ne-p" id="u962d3d7a">
+  <span class="ne-text">
+   &#31572;&#26696;&#32943;&#23450;&#26159;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#27809;&#26377;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#22240;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    B
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#24341;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    A
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#20381;&#36182;&#26102;&#20351;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &lt;optional&gt;true&lt;/optional&gt;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21363;&#23558;Maven&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    optional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26631;&#31614;&#20540;&#35774;&#20026;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    true
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#27492;&#26102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    C
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#20877;&#24341;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    B
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#20381;&#36182;&#26102;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    A
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#26159;&#19981;&#20250;&#34987;&#24341;&#20837;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    C
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24211;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u2f5a6b64">
+  <br>
+ </p>
+ <p class="ne-p" id="u943c5661">
+  <span class="ne-text">
+   &#21516;&#26102;&#36319;Maven&#20256;&#36882;&#20381;&#36182;&#26377;&#20851;&#30340;&#36824;&#26377;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    exclusions
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26631;&#31614;&#65292;&#36825;&#20010;&#34920;&#31034;&#23558;&#26576;&#20010;&#24211;&#30340;&#26576;&#20010;&#23376;&#20381;&#36182;&#25490;&#38500;&#25481;&#65292;&#36825;&#37324;&#19981;&#20877;&#35814;&#36848;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u07178d9e">
+  <br>
+ </p>
+ <h2 id="ebbce736">
+  <span class="ne-text">
+   4 SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;Starter&#26159;&#24590;&#26679;&#26500;&#24314;&#30340;&#65311;
+  </span>
+ </h2>
+ <p class="ne-p" id="ue35ed336">
+  <br>
+ </p>
+ <p class="ne-p" id="ubf62763d">
+  <span class="ne-text">
+   &#25105;&#20204;&#29616;&#22312;&#26469;&#25506;&#31350;SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21040;&#24213;&#26159;&#24590;&#26679;&#26500;&#24314;&#30340;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u6bd12aaf">
+  <br>
+ </p>
+ <p class="ne-p" id="uc61cda35">
+  <span class="ne-text">
+   &#36824;&#35760;&#24471;
+  </span>
+  <a class="ne-link" data-href="https://juejin.cn/post/6844904070818463751" href="https://juejin.cn/post/6844904070818463751" target="_blank">
+   <span class="ne-text">
+    &#22914;&#20309;&#20998;&#26512;SpringBoot&#28304;&#30721;&#27169;&#22359;&#21450;&#32467;&#26500;&#65311;
+   </span>
+  </a>
+  <span class="ne-text">
+   &#36825;&#31687;&#25991;&#31456;&#20998;&#26512;&#30340;SpringBoot&#20869;&#37096;&#30340;&#27169;&#22359;&#20043;&#38388;&#30340;&#20851;&#31995;&#21527;&#65311;&#20808;&#26469;&#22238;&#39038;&#19968;&#19979;SpringBoot&#28304;&#30721;&#20869;&#37096;&#27169;&#22359;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u5ae1c117">
+  <br>
+ </p>
+ <p class="ne-p" id="u5db4f1fb" style="text-align: center">
+  <img class="ne-image" id="N7tji" src="EPUB/imgN7tji" width="447">
+ </p>
+ <p class="ne-p" id="u5c44caf7" style="text-align: center">
+  <span class="ne-text">
+   &#22270;1
+  </span>
+ </p>
+ <p class="ne-p" id="uad446ade">
+  <br>
+ </p>
+ <p class="ne-p" id="u77779ae9">
+  <span class="ne-text">
+   &#25105;&#20204;&#37117;&#30693;&#36947;&#65292;SpringBoot&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#24314;&#30340;&#21407;&#29702;&#23454;&#36136;&#23601;&#26159;&#33258;&#21160;&#37197;&#32622;&#65292;&#22240;&#27492;&#30001;&#22270;1&#21487;&#20197;&#30475;&#21040;SpringBoot&#28304;&#30721;&#39033;&#30446;&#20869;&#37096;&#36319;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21450;&#20854;&#33258;&#21160;&#37197;&#32622;&#26377;&#20851;&#30340;&#27169;&#22359;&#26377;&#22235;&#20010;&#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starters
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-actuator-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-test-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290; &#27599;&#20010;&#27169;&#22359;&#30340;&#20316;&#29992;&#35831;&#30475;
+  </span>
+  <a class="ne-link" data-href="https://juejin.cn/post/6844904070818463751" href="https://juejin.cn/post/6844904070818463751" target="_blank">
+   <span class="ne-text">
+    &#22914;&#20309;&#20998;&#26512;SpringBoot&#28304;&#30721;&#27169;&#22359;&#21450;&#32467;&#26500;&#65311;
+   </span>
+  </a>
+  <span class="ne-text">
+   &#36825;&#31687;&#25991;&#31456;&#65292;&#36825;&#37324;&#19981;&#20877;&#36184;&#36848;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uddb89b8d">
+  <br>
+ </p>
+ <p class="ne-p" id="u1c27d8c2">
+  <span class="ne-text">
+   &#37027;&#20040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starters
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#36319;&#21518;&#38754;&#19977;&#20010;&#33258;&#21160;&#37197;&#32622;&#26377;&#20851;&#30340;&#27169;&#22359;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    xxx-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#30340;&#20851;&#31995;&#26159;&#24590;&#26679;&#30340;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u11a99b68">
+  <br>
+ </p>
+ <p class="ne-p" id="uf849800c">
+  <span class="ne-text">
+   &#27492;&#26102;&#25105;&#20204;&#20808;&#26469;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starters
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#37324;&#38754;&#30340;&#32467;&#26500;&#26159;&#24590;&#26679;&#30340;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u88e84a89">
+  <br>
+ </p>
+ <p class="ne-p" id="udd9640e6" style="text-align: center">
+  <img class="ne-image" id="eARLa" src="EPUB/imgeARLa" width="429">
+ </p>
+ <p class="ne-p" id="ud7d979cc" style="text-align: center">
+  <span class="ne-text">
+   &#22270;2
+  </span>
+ </p>
+ <p class="ne-p" id="u7ef24544">
+  <br>
+ </p>
+ <p class="ne-p" id="u2c9ce8dc">
+  <span class="ne-text">
+   &#30001;&#22270;2&#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starters
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#21253;&#21547;&#20102;SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-xxx
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#30001;&#20110;SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22826;&#22810;&#65292;&#20197;&#25105;&#20204;&#24120;&#29992;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;&#26469;&#25506;&#31350;&#22909;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5a0504cd">
+  <br>
+ </p>
+ <p class="ne-p" id="u1f060ce1">
+  <span class="ne-text">
+   &#25105;&#20204;&#39318;&#20808;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#20869;&#37096;&#32467;&#26500;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u378b989f">
+  <br>
+ </p>
+ <p class="ne-p" id="ue8747b93" style="text-align: center">
+  <img class="ne-image" id="U909P" src="EPUB/imgU909P" width="503">
+ </p>
+ <p class="ne-p" id="ude47d83b" style="text-align: center">
+  <span class="ne-text">
+   &#22270;3
+  </span>
+ </p>
+ <p class="ne-p" id="u1ee9953c">
+  <br>
+ </p>
+ <p class="ne-p" id="ud516e5e4">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#37324;&#38754;&#21482;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    .flattened-pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25991;&#20214;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#32780;&#27809;&#26377;&#20219;&#20309;&#20195;&#30721;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65281;&#26377;&#28857;&#20986;&#20046;&#25105;&#20204;&#24847;&#26009;&#12290;&#25105;&#20204;&#37117;&#30693;&#36947;&#33509;&#35201;&#29992;&#21040;SpringBoot&#30340;web&#21151;&#33021;&#26102;&#24341;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;&#21363;&#21487;&#65292;&#32780;&#29616;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#37324;&#38754;&#27809;&#26377;&#19968;&#34892;&#20195;&#30721;&#65292;&#37027;&#20040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31350;&#31455;&#26159;&#22914;&#20309;&#26500;&#24314;&#30340;&#21602;&#65311;&#20250;&#19981;&#20250;&#36319;&#22270;1&#25152;&#31034;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;&#26377;&#20851;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u5d81fe82">
+  <br>
+ </p>
+ <p class="ne-p" id="u2a774bdd">
+  <span class="ne-text">
+   &#27492;&#26102;&#25105;&#20204;&#23601;&#38656;&#35201;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25991;&#20214;&#20869;&#23481;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6d3bfdd0">
+  <br>
+ </p>
+ <p class="ne-p" id="ub0207538" style="text-align: center">
+  <img class="ne-image" id="gzLX6" src="EPUB/imggzLX6" width="1168">
+ </p>
+ <p class="ne-p" id="u870db1a8" style="text-align: center">
+  <span class="ne-text">
+   &#22270;4
+  </span>
+ </p>
+ <p class="ne-p" id="ucb53a31d">
+  <br>
+ </p>
+ <p class="ne-p" id="u7da67d5a">
+  <span class="ne-text">
+   &#30001;&#22270;4&#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#20381;&#36182;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-tomcat
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#27169;&#22359;&#65292;&#23621;&#28982;&#27809;&#26377;&#20381;&#36182;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;!
+  </span>
+ </p>
+ <p class="ne-p" id="uc66bd325">
+  <br>
+ </p>
+ <p class="ne-p" id="u0b5c4bc3">
+  <span class="ne-text">
+   &#30001;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#32943;&#23450;&#36319;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;&#26377;&#20851;&#65292;&#25152;&#20197;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#32943;&#23450;&#26159;&#38388;&#25509;&#20381;&#36182;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1af4d366">
+  <br>
+ </p>
+ <p class="ne-p" id="ud4e614a3">
+  <span class="ne-text">
+   &#22270;4&#26631;&#26377;&#26631;&#27880;"&#37325;&#28857;&#20851;&#27880;"&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#26159;&#32477;&#22823;&#37096;&#20998;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-xxx
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#20381;&#36182;&#30340;&#22522;&#30784;&#27169;&#22359;&#65292;&#26159;&#26680;&#24515;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21253;&#25324;&#20102;&#33258;&#21160;&#37197;&#32622;&#65292;&#26085;&#24535;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    YAML
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25903;&#25345;&#12290;&#25105;&#20204;&#27492;&#26102;&#26469;&#20851;&#27880;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25991;&#20214;&#65292;&#20063;&#35768;&#20854;&#20381;&#36182;&#20102;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6e65575d">
+  <br>
+ </p>
+ <p class="ne-p" id="u293e4204" style="text-align: center">
+  <img class="ne-image" id="sHp1I" src="EPUB/imgsHp1I" width="1147">
+ </p>
+ <p class="ne-p" id="u514c5de4" style="text-align: center">
+  <span class="ne-text">
+   &#22270;5
+  </span>
+ </p>
+ <p class="ne-p" id="uc8e32fe4">
+  <br>
+ </p>
+ <p class="ne-p" id="uf980efce">
+  <span class="ne-text">
+   &#30001;&#22270;5&#21487;&#20197;&#30475;&#21040;&#65292;&#25105;&#20204;&#21069;&#38754;&#30340;&#29468;&#24819;&#27809;&#26377;&#38169;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#27491;&#26159;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     spring-boot-starter
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#27169;&#22359;&#20381;&#36182;&#20102;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     spring-boot-autoconfigure
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;&#65281;*
+   </span>
+  </strong>
+  <em>
+   <strong>
+    <span class="ne-text">
+     &#22240;&#27492;&#65292;&#21040;&#20102;&#36825;&#37324;&#25105;&#20204;&#23601;&#21487;&#20197;&#24471;&#20986;&#32467;&#35770;&#20102;&#65306;
+    </span>
+   </strong>
+  </em>
+  <code class="ne-code">
+   <em>
+    <strong>
+     <span class="ne-text">
+      spring-boot-starter-web
+     </span>
+    </strong>
+   </em>
+  </code>
+  <em>
+   <strong>
+    <span class="ne-text">
+     &#27169;&#22359;&#27809;&#26377;&#19968;&#34892;&#20195;&#30721;&#65292;&#20294;&#26159;&#20854;&#36890;&#36807;
+    </span>
+   </strong>
+  </em>
+  <code class="ne-code">
+   <em>
+    <strong>
+     <span class="ne-text">
+      spring-boot-starter
+     </span>
+    </strong>
+   </em>
+  </code>
+  <em>
+   <strong>
+    <span class="ne-text">
+     &#27169;&#22359;*
+    </span>
+   </strong>
+  </em>
+  <strong>
+   <span class="ne-text">
+    &#38388;&#25509;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#20381;&#36182;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;&#65292;&#20174;&#32780;&#23454;&#29616;&#20102;&#20854;&#36215;&#27493;&#20381;&#36182;&#30340;&#21151;&#33021;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u60c5ec9a">
+  <br>
+ </p>
+ <p class="ne-p" id="ue0326f37">
+  <span class="ne-text">
+   &#27492;&#26102;&#25105;&#20204;&#20877;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;&#30340;&#20869;&#37096;&#21253;&#32467;&#26500;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ubcdb64e3">
+  <br>
+ </p>
+ <p class="ne-p" id="ude8b2627" style="text-align: center">
+  <img class="ne-image" id="wttdC" src="EPUB/imgwttdC" width="415">
+ </p>
+ <p class="ne-p" id="u28a4f41f" style="text-align: center">
+  <span class="ne-text">
+   &#22270;6
+  </span>
+ </p>
+ <p class="ne-p" id="u6b3a6dbe">
+  <br>
+ </p>
+ <p class="ne-p" id="u6ae851e2">
+  <span class="ne-text">
+   &#30001;&#22270;6&#32418;&#26694;&#22788;&#65292;&#25105;&#20204;&#21487;&#20197;&#30693;&#36947;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;&#30340;&#33258;&#21160;&#37197;&#32622;&#21151;&#33021;&#21407;&#26469;&#26159;&#30001;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21253;&#19979;&#30340;&#31867;&#23454;&#29616;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua5aa67af">
+  <br>
+ </p>
+ <p class="ne-p" id="udb8436a6">
+  <span class="ne-text">
+   &#21040;&#20102;&#36825;&#37324;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;&#30340;&#26500;&#24314;&#22522;&#26412;&#21407;&#29702;&#25105;&#20204;&#23601;&#25630;&#28165;&#26970;&#20102;&#65292;&#20294;&#26159;&#36824;&#26377;&#19968;&#20010;&#29305;&#21035;&#37325;&#35201;&#30340;&#20851;&#38190;&#28857;&#25105;&#20204;&#36824;&#27809;Get&#21040;&#12290;&#36825;&#20010;&#20851;&#38190;&#28857;&#36319;Maven&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    optional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26631;&#31614;&#26377;&#30340;&#20316;&#29992;&#26377;&#20851;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4509a6ee">
+  <br>
+ </p>
+ <p class="ne-p" id="u69e8c82c">
+  <span class="ne-text">
+   &#20026;&#20102;Get&#21040;&#36825;&#20010;&#28857;&#65292;&#25105;&#20204;&#20808;&#26469;&#24605;&#32771;&#19968;&#20010;&#38382;&#39064;&#65306;&#24179;&#26102;&#25105;&#20204;&#24320;&#21457;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#39033;&#30446;&#20026;&#20160;&#20040;&#24341;&#20837;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#36215;&#27493;&#20381;&#36182;&#21518;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30456;&#20851;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#23601;&#20250;&#36215;&#33258;&#21160;&#36215;&#20316;&#29992;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="ub7681cf9">
+  <br>
+ </p>
+ <p class="ne-p" id="u93020022">
+  <span class="ne-text">
+   &#25105;&#20204;&#24212;&#35813;&#30693;&#36947;&#65292;&#26576;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;&#36215;&#20316;&#29992;&#24448;&#24448;&#26159;&#30001;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classpath
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#23384;&#22312;&#26576;&#20010;&#31867;&#65292;&#36825;&#37324;&#20197;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServletAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;&#20026;&#20999;&#20837;&#28857;&#21435;Get&#36825;&#20010;&#28857;&#22909;&#20102;&#12290; &#20808;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServletAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33021;&#22815;&#33258;&#21160;&#37197;&#32622;&#30340;&#26465;&#20214;&#26159;&#21861;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="ucadbe9d7">
+  <br>
+ </p>
+ <p class="ne-p" id="ufa369380" style="text-align: center">
+  <img class="ne-image" id="Xk3ES" src="EPUB/imgXk3ES" width="702">
+ </p>
+ <p class="ne-p" id="u20103821" style="text-align: center">
+  <span class="ne-text">
+   &#22270;7
+  </span>
+ </p>
+ <p class="ne-p" id="u5700ed1c">
+  <br>
+ </p>
+ <p class="ne-p" id="u5faecf2f">
+  <span class="ne-text">
+   &#30001;&#22270;7&#25152;&#31034;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServletAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33021;&#22815;&#33258;&#21160;&#37197;&#32622;&#30340;&#26465;&#20214;&#20043;&#19968;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass(DispatcherServlet.class)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21363;&#21482;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classpath
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#23384;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServlet.class
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#31867;&#65292;&#37027;&#20040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServletAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#30456;&#20851;&#36923;&#36753;&#25165;&#33021;&#36215;&#20316;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5f9c691e">
+  <br>
+ </p>
+ <p class="ne-p" id="u7e814198">
+  <span class="ne-text">
+   &#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServlet
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#31867;&#26159;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#20381;&#36182;&#24211;&#20013;&#30340;&#65292;&#22914;&#19979;&#22270;&#25152;&#31034;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud98f3f8c">
+  <br>
+ </p>
+ <p class="ne-p" id="u09310907" style="text-align: center">
+  <img class="ne-image" id="CE3z9" src="EPUB/imgCE3z9" width="500">
+ </p>
+ <p class="ne-p" id="u5971ba6a" style="text-align: center">
+  <span class="ne-text">
+   &#22270;8
+  </span>
+ </p>
+ <p class="ne-p" id="u21559b4d">
+  <br>
+ </p>
+ <p class="ne-p" id="u6852f0e8">
+  <span class="ne-text">
+   &#27492;&#26102;&#25105;&#20204;&#20877;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25991;&#20214;&#24341;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#20381;&#36182;&#30340;&#24773;&#20917;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="udf323b6a">
+  <br>
+ </p>
+ <p class="ne-p" id="u04e667f1" style="text-align: center">
+  <img class="ne-image" id="TxUdI" src="EPUB/imgTxUdI" width="722">
+ </p>
+ <p class="ne-p" id="u37508c7d" style="text-align: center">
+  <span class="ne-text">
+   &#22270;9
+  </span>
+ </p>
+ <p class="ne-p" id="u0ea51868">
+  <span class="ne-text">
+  </span>
+ </p>
+ <p class="ne-p" id="u04a9e800">
+  <span class="ne-text">
+   &#30001;&#22270;9&#25152;&#31034;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#24341;&#20837;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#20381;&#36182;&#26102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    optional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#34987;&#35774;&#32622;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    true
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21407;&#26469;&#26159;&#21487;&#36873;&#20381;&#36182;&#12290;&#21363;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#20381;&#36182;&#24211;&#21482;&#20250;&#34987;&#23548;&#20837;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#20013;&#65292;&#32780;&#19981;&#20250;&#34987;&#23548;&#20837;&#21040;&#38388;&#25509;&#20381;&#36182;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#36215;&#27493;&#20381;&#36182;&#20013;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1b9951a7">
+  <br>
+ </p>
+ <p class="ne-p" id="u7b0c5c5c">
+  <span class="ne-text">
+   &#27492;&#26102;&#65292;&#25105;&#20204;&#20877;&#26469;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pom.xml
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25991;&#20214;&#30340;&#20381;&#36182;&#24773;&#20917;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u642232b5">
+  <br>
+ </p>
+ <p class="ne-p" id="u8f492329" style="text-align: center">
+  <img class="ne-image" id="PEkBZ" src="EPUB/imgPEkBZ" width="944">
+ </p>
+ <p class="ne-p" id="u2e516602" style="text-align: center">
+  <span class="ne-text">
+   &#22270;10
+  </span>
+ </p>
+ <p class="ne-p" id="u41143d26">
+  <br>
+ </p>
+ <p class="ne-p" id="ubef7c51f">
+  <span class="ne-text">
+   &#30001;&#22270;10&#25152;&#31034;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#26174;&#24335;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#24341;&#20837;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#20381;&#36182;&#24211;&#65292;&#21363;&#24341;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26102;&#27809;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    optional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26631;&#31614;&#65292;&#21448;&#22240;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServlet
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#31867;&#26159;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#20381;&#36182;&#24211;&#20013;&#30340;,&#20174;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classpath
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#23384;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServlet
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#31867;&#65292;&#22240;&#27492;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DispatcherServletAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;&#23601;&#29983;&#25928;&#20102;&#12290;&#24403;&#28982;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30456;&#20851;&#30340;&#20854;&#20182;&#33258;&#21160;&#37197;&#32622;&#31867;&#29983;&#25928;&#20063;&#26159;&#36825;&#20010;&#21407;&#29702;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ud4bc9b94">
+  <br>
+ </p>
+ <p class="ne-p" id="u45c330ec">
+  <span class="ne-text">
+   &#33267;&#27492;&#65292;&#25105;&#20204;&#20063;&#26126;&#30333;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#20026;&#20160;&#20040;&#35201;&#25226;&#24341;&#20837;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#20381;&#36182;&#20316;&#20026;&#21487;&#36873;&#20381;&#36182;&#20102;&#65292;&#20854;&#30446;&#30340;&#23601;&#26159;&#20026;&#20102;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;&#20013;&#33021;&#26174;&#24335;&#24341;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-webmvc
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#20381;&#36182;&#65288;&#36825;&#20010;&#36215;&#20915;&#23450;&#24615;&#20316;&#29992;&#65289;&#65292;&#20174;&#32780;&#25105;&#20204;&#24320;&#21457;web&#39033;&#30446;&#21482;&#35201;&#24341;&#20837;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36215;&#27493;&#20381;&#36182;&#65292;&#37027;&#20040;web&#30456;&#20851;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#23601;&#29983;&#25928;&#65292;&#20174;&#32780;&#21487;&#20197;&#24320;&#31665;&#21363;&#29992;&#36825;&#20010;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-web
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#36215;&#27493;&#20381;&#36182;&#30340;&#26500;&#24314;&#21407;&#29702;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua35f3561">
+  <br>
+ </p>
+ <p class="ne-p" id="u60d9933e">
+  <span class="ne-text">
+   &#21069;&#38754;&#25552;&#21040;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-actuator
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-test
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21450;&#20854;&#20182;&#20869;&#32622;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-xxx
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#36215;&#27493;&#20381;&#36182;&#30340;&#26500;&#24314;&#21407;&#29702;&#20063;&#26159;&#22914;&#27492;&#65292;&#21482;&#19981;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-actuator
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20381;&#36182;&#30340;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-actuator-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-starter-test
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20381;&#36182;&#30340;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring-boot-test-autoconfigure
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#22359;&#32610;&#20102;&#65292;&#36825;&#37324;&#19981;&#20877;&#35814;&#36848;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="udabc6c3c">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ud9d02b3d">
+   <strong>
+    <span class="ne-text">
+     &#24605;&#32771;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-boot-actuator-autoconfigure
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pom.xml
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25991;&#20214;&#24341;&#20837;&#20102;20&#22810;&#20010;&#21487;&#36873;&#20381;&#36182;&#65292;&#32780;&#20026;&#20160;&#20040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-boot-starter-actuator
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36215;&#27493;&#20381;&#36182;&#21482;&#24341;&#20837;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     micrometer-core
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36825;&#20010;&#20381;&#36182;&#21602;&#65311;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u3b94f713">
+  <br>
+ </p>
+ <h2 id="cd6274eb">
+  <span class="ne-text">
+   5 &#27169;&#20223;SpringBoot&#21253;&#32467;&#26500;&#33258;&#23450;&#20041;&#19968;&#20010;Starter
+  </span>
+ </h2>
+ <p class="ne-p" id="u65a0e3d0">
+  <br>
+ </p>
+ <p class="ne-p" id="u7c39ac9a">
+  <span class="ne-text">
+   &#21069;&#38754;&#20998;&#26512;&#20102;SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#24314;&#21407;&#29702;&#65292;&#29702;&#35770;&#32852;&#31995;&#23454;&#36341;&#65292;&#37027;&#20040;&#22914;&#26524;&#33021;&#22815;&#21160;&#25163;&#23454;&#36341;&#19968;&#19979;&#33258;&#23450;&#20041;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37027;&#23601;&#26356;&#22909;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6bdde60e">
+  <br>
+ </p>
+ <p class="ne-p" id="ude2e1f78">
+  <span class="ne-text">
+   &#19979;&#38754;&#25552;&#20379;&#19968;&#20010;&#33258;&#23450;&#20041;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#19968;&#20010;&#31616;&#21333;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Demo
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Demo
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23436;&#20840;&#27169;&#20223;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBoot
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20869;&#32622;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20869;&#37096;&#21253;&#32467;&#26500;&#26469;&#32534;&#20889;&#65292;&#23545;&#20110;&#36827;&#19968;&#27493;&#20102;&#35299;SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#24314;&#21407;&#29702;&#24456;&#26377;&#24110;&#21161;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u3e2c6474">
+  <br>
+ </p>
+ <p class="ne-p" id="ub97a00d6">
+  <span class="ne-text">
+   &#19979;&#38754;&#26159;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Demo
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;github&#22320;&#22336;&#65292;&#25512;&#33616;&#32473;&#26377;&#20852;&#36259;&#30340;&#23567;&#20249;&#20276;&#20204;&#12290;
+  </span>
+  <a class="ne-link" data-href="https://github.com/jinyue233/mock-spring-boot-autoconfiguration" href="https://github.com/jinyue233/mock-spring-boot-autoconfiguration" target="_blank">
+   <span class="ne-text">
+    &#27169;&#20223;springboot&#20869;&#37096;&#32467;&#26500;&#33258;&#23450;&#20041;Starter
+   </span>
+  </a>
+  <span class="ne-text">
+   &#12290;&#27492;&#22806;&#65292;&#22914;&#20309;&#33258;&#23450;&#20041;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21487;&#20197;&#21442;&#32771;&#19979;Mybatis&#30340;
+  </span>
+  <a class="ne-link" data-href="https://github.com/mybatis/spring-boot-starter" href="https://github.com/mybatis/spring-boot-starter" target="_blank">
+   <span class="ne-text">
+    spring-boot-starter
+   </span>
+  </a>
+  <span class="ne-text">
+   &#26159;&#22914;&#20309;&#32534;&#20889;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u3b23dad2">
+  <br>
+ </p>
+ <h2 id="2c7aed2d">
+  <span class="ne-text">
+   6 &#23567;&#32467;
+  </span>
+ </h2>
+ <p class="ne-p" id="u56da2405">
+  <br>
+ </p>
+ <p class="ne-p" id="u77916c6f">
+  <span class="ne-text">
+   &#22909;&#20102;&#65292;SpringBoot&#20869;&#32622;&#30340;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#24314;&#21407;&#29702;&#20998;&#26512;&#23601;&#21040;&#27492;&#32467;&#26463;&#20102;&#65292;&#29616;&#23558;&#20851;&#38190;&#28857;&#24635;&#32467;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud3e0c0b5">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u3a35bc57">
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-boot-starter-xxx
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36215;&#27493;&#20381;&#36182;&#27809;&#26377;&#19968;&#34892;&#20195;&#30721;&#65292;&#32780;&#26159;&#30452;&#25509;&#25110;&#38388;&#25509;&#20381;&#36182;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     xxx-autoconfigure
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27169;&#22359;&#65292;&#32780;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     xxx-autoconfigure
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27169;&#22359;&#25215;&#25285;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-boot-starter-xxx
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36215;&#27493;&#20381;&#36182;&#33258;&#21160;&#37197;&#32622;&#30340;&#23454;&#29616;&#65307;
+   </span>
+  </li>
+  <li id="u444ed080">
+   <code class="ne-code">
+    <span class="ne-text">
+     xxx-autoconfigure
+    </span>
+   </code>
+   <span class="ne-text">
+    &#33258;&#21160;&#37197;&#32622;&#27169;&#22359;&#24341;&#20837;&#20102;&#19968;&#20123;&#21487;&#36873;&#20381;&#36182;&#65292;&#36825;&#20123;&#21487;&#36873;&#20381;&#36182;&#19981;&#20250;&#34987;&#20256;&#36882;&#21040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-boot-starter-xxx
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36215;&#27493;&#20381;&#36182;&#20013;&#65292;&#36825;&#26159;&#36215;&#27493;&#20381;&#36182;&#26500;&#24314;&#30340;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#20851;&#38190;&#28857;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65307;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="ua5354b2a">
+   <code class="ne-code">
+    <span class="ne-text">
+     spring-boot-starter-xxx
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36215;&#27493;&#20381;&#36182;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#26174;&#24335;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#24341;&#20837;&#20102;&#19968;&#20123;&#23545;&#33258;&#21160;&#37197;&#32622;&#36215;&#20316;&#29992;&#30340;&#21487;&#36873;&#20381;&#36182;&#65307;
+   </span>
+  </li>
+  <li id="ubb19d79b">
+   <span class="ne-text">
+    &#32463;&#36807;&#21069;&#38754;3&#27493;&#30340;&#20934;&#22791;&#65292;&#25105;&#20204;&#39033;&#30446;&#21482;&#35201;&#24341;&#20837;&#20102;&#26576;&#20010;&#36215;&#27493;&#20381;&#36182;&#21518;&#65292;&#23601;&#21487;&#20197;&#24320;&#31665;&#21363;&#29992;&#20102;&#65292;&#32780;&#19981;&#29992;&#25163;&#21160;&#21435;&#21019;&#24314;&#19968;&#20123;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bean
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31561;&#12290;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u739cc97b">
+  <br>
+ </p>
+ <p class="ne-p" id="u69db4c04">
+  <span class="ne-text">
+   &#30001;&#20110;&#31508;&#32773;&#27700;&#24179;&#26377;&#38480;&#65292;&#33509;&#25991;&#20013;&#26377;&#38169;&#35823;&#36824;&#35831;&#25351;&#20986;&#65292;&#35874;&#35874;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

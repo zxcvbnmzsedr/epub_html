@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="Java开发者的RPC实战课" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Java开发者的RPC实战课</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="chapter_0">
+      <navLabel>
+        <text>开篇词：从0到1动手实现RPC框架</text>
+      </navLabel>
+      <content src="7047522878496964620.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_1">
+      <navLabel>
+        <text>RPC框架的整体设计分析</text>
+      </navLabel>
+      <content src="7047522878673125415.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_2">
+      <navLabel>
+        <text>深入理解网络通讯模型的核心</text>
+      </navLabel>
+      <content src="7047523788749012996.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_3">
+      <navLabel>
+        <text>代理层的开发实战</text>
+      </navLabel>
+      <content src="7051183484601106447.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_4">
+      <navLabel>
+        <text>注册中心的接入与实现</text>
+      </navLabel>
+      <content src="7051184600931893248.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_5">
+      <navLabel>
+        <text>服务提供者太多怎么办，路由层登场</text>
+      </navLabel>
+      <content src="7053297546025762855.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_6">
+      <navLabel>
+        <text>序列化技术实战整合</text>
+      </navLabel>
+      <content src="7060339521090486309.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_7">
+      <navLabel>
+        <text>责任链模式在IRPC框架中的实现</text>
+      </navLabel>
+      <content src="7060339521128235022.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_8">
+      <navLabel>
+        <text>可插拔式扩展组件设计的实现</text>
+      </navLabel>
+      <content src="7069263855196569631.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_9">
+      <navLabel>
+        <text>高并发利器--队列和多线程应用</text>
+      </navLabel>
+      <content src="7068669262897872899.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_10">
+      <navLabel>
+        <text>容错层该考虑些什么？</text>
+      </navLabel>
+      <content src="7068669263023702048.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_11">
+      <navLabel>
+        <text>接入层引入--如何与Spring融合？</text>
+      </navLabel>
+      <content src="7069606682745126951.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_12">
+      <navLabel>
+        <text>框架性能调优测试</text>
+      </navLabel>
+      <content src="7068669262885289996.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_13">
+      <navLabel>
+        <text>尾声：这些设计思想你都掌握了吗？</text>
+      </navLabel>
+      <content src="7069607206529794086.xhtml"/>
+    </navPoint>
+  </navMap>
+</ncx>

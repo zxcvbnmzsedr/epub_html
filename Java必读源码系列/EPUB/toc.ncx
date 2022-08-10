@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="Java必读源码系列" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Java必读源码系列</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="sep_0">
+      <navLabel>
+        <text>Spring Boot</text>
+      </navLabel>
+      <content src="cC9xmSThrxKfoYVM.xhtml"/>
+      <navPoint id="y8c2uKoRZZh6U4Tu">
+        <navLabel>
+          <text>1 如何搭建自己的SpringBoot源码调试环境？</text>
+        </navLabel>
+        <content src="y8c2uKoRZZh6U4Tu.xhtml"/>
+      </navPoint>
+      <navPoint id="hVHPC6mYiSTmxknZ">
+        <navLabel>
+          <text>2 如何分析SpringBoot源码模块及结构？</text>
+        </navLabel>
+        <content src="hVHPC6mYiSTmxknZ.xhtml"/>
+      </navPoint>
+      <navPoint id="nXzntkH1JgFnwsNC">
+        <navLabel>
+          <text>3 助力SpringBoot自动配置的条件注解原理揭秘</text>
+        </navLabel>
+        <content src="nXzntkH1JgFnwsNC.xhtml"/>
+      </navPoint>
+      <navPoint id="rwmn8K91VEOsJhNx">
+        <navLabel>
+          <text>4 SpringBoot是如何实现自动配置的？</text>
+        </navLabel>
+        <content src="rwmn8K91VEOsJhNx.xhtml"/>
+      </navPoint>
+      <navPoint id="YeK2l3kZL6blmPTF">
+        <navLabel>
+          <text>5 SpringBoot的配置属性值是如何绑定的？</text>
+        </navLabel>
+        <content src="YeK2l3kZL6blmPTF.xhtml"/>
+      </navPoint>
+      <navPoint id="NA4T_IWrIuXWbyRr">
+        <navLabel>
+          <text>6 SpringBoot内置的各种Starter是怎样构建的？</text>
+        </navLabel>
+        <content src="NA4T_IWrIuXWbyRr.xhtml"/>
+      </navPoint>
+      <navPoint id="XDilHos-Eal3gzs5">
+        <navLabel>
+          <text>7 SpringBoot的启动流程是怎样的？</text>
+        </navLabel>
+        <content src="XDilHos-Eal3gzs5.xhtml"/>
+      </navPoint>
+      <navPoint id="-gMxrhTf0srQgYwR">
+        <navLabel>
+          <text>8 SpringApplication对象是如何构建的？</text>
+        </navLabel>
+        <content src="-gMxrhTf0srQgYwR.xhtml"/>
+      </navPoint>
+      <navPoint id="j0m48vKXr557ALhY">
+        <navLabel>
+          <text>9 SpringBoot事件监听机制</text>
+        </navLabel>
+        <content src="j0m48vKXr557ALhY.xhtml"/>
+      </navPoint>
+      <navPoint id="dLq0vy8R38AR5qMx">
+        <navLabel>
+          <text>10 SpringBoot内置生命周期事件详解</text>
+        </navLabel>
+        <content src="dLq0vy8R38AR5qMx.xhtml"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_1">
+      <navLabel>
+        <text>Netty</text>
+      </navLabel>
+      <content src="BHhkYNa89l9CQUEA.xhtml"/>
+      <navPoint id="5A8aqRYgVeiXZ2Kj">
+        <navLabel>
+          <text>「准备工作」Netty入门</text>
+        </navLabel>
+        <content src="5A8aqRYgVeiXZ2Kj.xhtml"/>
+      </navPoint>
+      <navPoint id="A2Lifr29roLtrJ63">
+        <navLabel>
+          <text>「源码解读」网络操作抽象类: Channel</text>
+        </navLabel>
+        <content src="A2Lifr29roLtrJ63.xhtml"/>
+      </navPoint>
+      <navPoint id="jX40SR85Gk5BbBc7">
+        <navLabel>
+          <text>「源码解读」消息处理器链表：ChannelPipeline</text>
+        </navLabel>
+        <content src="jX40SR85Gk5BbBc7.xhtml"/>
+      </navPoint>
+      <navPoint id="pGH5wy2WePsIBfBC">
+        <navLabel>
+          <text>「源码解读」异步操作：Future 和 Promise</text>
+        </navLabel>
+        <content src="pGH5wy2WePsIBfBC.xhtml"/>
+      </navPoint>
+      <navPoint id="2lZSsYFgjPWWDqAw">
+        <navLabel>
+          <text>「源码解读」线程池：EventLoopGroup</text>
+        </navLabel>
+        <content src="2lZSsYFgjPWWDqAw.xhtml"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_2">
+      <navLabel>
+        <text>Dubbo</text>
+      </navLabel>
+      <content src="5P1f-pZ1pKnb6pPv.xhtml"/>
+      <navPoint id="K0GCOj-lx1JQ6I9j">
+        <navLabel>
+          <text>「准备工作」Dubbo 概览</text>
+        </navLabel>
+        <content src="K0GCOj-lx1JQ6I9j.xhtml"/>
+      </navPoint>
+      <navPoint id="MR2ROk7gV8pHJhoM">
+        <navLabel>
+          <text>「准备工作」Dubbo 源码全局概览</text>
+        </navLabel>
+        <content src="MR2ROk7gV8pHJhoM.xhtml"/>
+      </navPoint>
+      <navPoint id="iL5AHyg3rG6LeEPz">
+        <navLabel>
+          <text>「准备工作」Dubbo源码阅读环境搭建</text>
+        </navLabel>
+        <content src="iL5AHyg3rG6LeEPz.xhtml"/>
+      </navPoint>
+      <navPoint id="9ldlALg5OLLLg6H1">
+        <navLabel>
+          <text>「源码解读」Dubbo SPI👍</text>
+        </navLabel>
+        <content src="9ldlALg5OLLLg6H1.xhtml"/>
+      </navPoint>
+      <navPoint id="k1hIgR1Ki3hRVFCM">
+        <navLabel>
+          <text>「源码解读」Dubbo SPI自适应扩展</text>
+        </navLabel>
+        <content src="k1hIgR1Ki3hRVFCM.xhtml"/>
+      </navPoint>
+      <navPoint id="24475F0_S1mrN5Wl">
+        <navLabel>
+          <text>「源码解读」服务目录</text>
+        </navLabel>
+        <content src="24475F0_S1mrN5Wl.xhtml"/>
+      </navPoint>
+      <navPoint id="sAm9jBIRs3BbNnwi">
+        <navLabel>
+          <text>「源码解读」服务路由</text>
+        </navLabel>
+        <content src="sAm9jBIRs3BbNnwi.xhtml"/>
+      </navPoint>
+      <navPoint id="B3vBEre-fh0JqJsP">
+        <navLabel>
+          <text>「源码解读」集群</text>
+        </navLabel>
+        <content src="B3vBEre-fh0JqJsP.xhtml"/>
+      </navPoint>
+      <navPoint id="I5GCZR8NCU9RrgOn">
+        <navLabel>
+          <text>「源码解读」负载均衡👍</text>
+        </navLabel>
+        <content src="I5GCZR8NCU9RrgOn.xhtml"/>
+      </navPoint>
+      <navPoint id="ElHQOd1m4P_ZCl_2">
+        <navLabel>
+          <text>「源码解读」服务导出</text>
+        </navLabel>
+        <content src="ElHQOd1m4P_ZCl_2.xhtml"/>
+      </navPoint>
+      <navPoint id="MnCIFdXekQ0cSviH">
+        <navLabel>
+          <text>「源码解读」服务引用</text>
+        </navLabel>
+        <content src="MnCIFdXekQ0cSviH.xhtml"/>
+      </navPoint>
+      <navPoint id="2rkx5AtBDoT6iAST">
+        <navLabel>
+          <text>「源码解读」服务调用过程👍</text>
+        </navLabel>
+        <content src="2rkx5AtBDoT6iAST.xhtml"/>
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

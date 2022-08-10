@@ -1,0 +1,800 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>&#12300;&#20934;&#22791;&#24037;&#20316;&#12301;Netty&#20837;&#38376;</h1><div class="lake-content" typography="classic">
+ <div class="ne-quote">
+  <p class="ne-p" id="u603bac77">
+   <span class="ne-text">
+    &#27880;&#65306;&#25105;&#23545;&#21407;&#25991;&#36827;&#34892;&#20102;&#26684;&#24335;&#35268;&#33539;&#21644;&#20869;&#23481;&#23436;&#21892;&#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="ue94033db">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="ue9cb67df">
+   <span class="ne-text">
+    &#21407;&#25991;&#22320;&#22336;&#65306;https://www.javadoop.com/post/netty-part-1
+   </span>
+  </p>
+  <p class="ne-p" id="u9d66691e">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="uba6b70fe">
+   <span class="ne-text">
+    &#20316;&#32773;&#65306;JavaDoop
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u8a9d8665">
+  <br>
+ </p>
+ <p class="ne-p" id="ud3dc5aac">
+  <span class="ne-text">
+   &#26412;&#25991;&#23558;&#20171;&#32461; Netty&#65292;Java &#24179;&#21488;&#19978;&#20351;&#29992;&#26368;&#24191;&#27867;&#30340; NIO &#21253;&#65292;&#23427;&#26159;&#23545; JDK &#20013;&#30340; NIO &#23454;&#29616;&#30340;&#19968;&#23618;&#23553;&#35013;&#65292;&#35753;&#25105;&#20204;&#33021;&#26356;&#26041;&#20415;&#22320;&#24320;&#21457; NIO &#31243;&#24207;&#12290;&#20854;&#23454;&#65292;Netty &#19981;&#20165;&#20165;&#26159; NIO &#21543;&#65292;&#20294;&#26159;&#65292;&#22522;&#26412;&#19978;&#22823;&#23478;&#37117;&#20914;&#30528; NIO &#26469;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub8db49dc">
+  <br>
+ </p>
+ <p class="ne-p" id="ud5403c9c">
+  <span class="ne-text">
+   &#20010;&#20154;&#24863;&#35273;&#22269;&#20869;&#23545;&#20110; Netty &#30340;&#21561;&#22040;&#26159;&#26377;&#28857;&#36807;&#20102;&#65292;&#20027;&#35201;&#26159;&#24456;&#22810;&#20154;&#38752;&#23427;&#21507;&#39277;&#65292;&#35201;&#20040;&#26159;&#25630;&#22521;&#35757;&#30340;&#65292;&#35201;&#20040;&#26159;&#20986;&#20070;&#30340;&#65292;&#24680;&#19981;&#24471;&#25226; Netty &#21561;&#19978;&#22825;&#21435;&#65292;&#36825;&#31181;&#29616;&#35937;&#20063;&#26159;&#25402;&#19981;&#22909;&#30340;&#65292;&#21453;&#32780;&#20351;&#24471;&#21021;&#23398;&#32773;&#35273;&#24471; Netty &#26159;&#20160;&#20040;&#39640;&#28145;&#30340;&#25216;&#26415;&#19968;&#26679;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua3a4bd9b">
+  <br>
+ </p>
+ <p class="ne-p" id="u5a94dabe">
+  <span class="ne-text">
+   Netty &#30340;&#28304;&#30721;&#19981;&#26159;&#24456;&#31616;&#21333;&#65292;&#22240;&#20026;&#23427;&#27604;&#36739;&#22810;&#65292;&#32780;&#19988;&#21508;&#20010;&#31867;&#20043;&#38388;&#30340;&#20851;&#31995;&#38169;&#32508;&#22797;&#26434;&#65292;&#24456;&#22810;&#20154;&#35828;&#23427;&#30340;&#28304;&#30721;&#24456;&#22909;&#65292;&#36825;&#28857;&#25105;&#35273;&#24471;&#19968;&#33324;&#65292;&#30495;&#35201;&#35828;&#22909;&#20195;&#30721;&#65292;&#36824;&#24471; Doug Lea &#30340;&#24182;&#21457;&#28304;&#30721;&#27604;&#36739;&#28418;&#20142;&#65292;&#19968;&#34892;&#34892;&#37117;&#26159;&#31934;&#21326;&#65292;&#19981;&#36807;&#23427;&#20204;&#26159;&#19981;&#21516;&#31867;&#22411;&#30340;&#65292;&#20063;&#27809;&#20160;&#20040;&#22909;&#23545;&#27604;&#30340;&#12290;Netty &#28304;&#30721;&#22909;&#23601;&#22909;&#22312;&#23427;&#30340;&#25509;&#21475;&#20351;&#29992;&#27604;&#36739;&#28789;&#27963;&#65292;&#24448;&#24448;&#25509;&#21475;&#22909;&#29992;&#30340;&#26694;&#26550;&#65292;&#28304;&#30721;&#37117;&#19981;&#20250;&#22826;&#31616;&#21333;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u9f1d211a">
+  <br>
+ </p>
+ <p class="ne-p" id="u868a7fd0">
+  <span class="ne-text">
+   &#26412;&#25991;&#23558;&#31435;&#36275;&#20110;&#28304;&#30721;&#20998;&#26512;&#65292;&#25152;&#20197;&#35835;&#32773;&#38656;&#35201;&#20808;&#25484;&#25569; NIO &#30340;&#22522;&#30784;&#30693;&#35782;&#65292;&#33267;&#23569;&#25105;&#20043;&#21069;&#20889;&#30340;
+  </span>
+  <a class="ne-link" data-href="https://www.javadoop.com/post/java-nio" href="https://www.javadoop.com/post/java-nio" target="_blank">
+   <span class="ne-text">
+    &#12298;Java NIO&#65306;Buffer&#12289;Channel &#21644; Selector&#12299;
+   </span>
+  </a>
+  <span class="ne-text">
+   &#20013;&#20171;&#32461;&#30340;&#22522;&#30784;&#30693;&#35782;&#35201;&#28165;&#26970;&#65292;&#22914;&#26524;&#35835;&#32773;&#24050;&#32463;&#23545; Netty &#26377;&#20123;&#20102;&#35299;&#65292;&#25110;&#32773;&#20351;&#29992;&#36807;&#65292;&#37027;&#23601;&#26356;&#22909;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u9302c4af">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u7403b98c">
+   <span class="ne-text">
+    &#26412;&#25991;&#21482;&#20171;&#32461; TCP &#30456;&#20851;&#30340;&#20869;&#23481;&#65292;Netty &#23545;&#20110;&#20854;&#20182;&#21327;&#35758;&#30340;&#25903;&#25345;&#65292;&#19981;&#22312;&#26412;&#25991;&#30340;&#35752;&#35770;&#33539;&#22260;&#20869;&#12290;
+   </span>
+  </li>
+  <li id="u69237b58">
+   <span class="ne-text">
+    &#21644;&#24182;&#21457;&#21253;&#30340;&#28304;&#30721;&#20998;&#26512;&#19981;&#19968;&#26679;&#65292;&#25105;&#19981;&#21487;&#33021;&#19968;&#34892;&#19968;&#34892;&#28304;&#30721;&#35828;&#65292;&#25152;&#20197;&#26377;&#20123;&#24322;&#24120;&#20998;&#25903;&#26159;&#20250;&#30452;&#25509;&#30053;&#36807;&#65292;&#38500;&#38750;&#25105;&#35273;&#24471;&#38656;&#35201;&#20171;&#32461;&#12290;
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="u69d916a9">
+   <span class="ne-text">
+    Netty &#28304;&#30721;&#19968;&#30452;&#22312;&#26356;&#26032;&#65292;&#21508;&#29256;&#26412;&#20043;&#38388;&#26377;&#20123;&#24046;&#24322;&#65292;&#25105;&#26159;&#25353;&#29031;
+   </span>
+   <strong>
+    <span class="ne-text">
+     4.1.25.Final
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#29256;&#26412;&#26469;&#36827;&#34892;&#20171;&#32461;&#30340;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="ubc004c28">
+  <br>
+ </p>
+ <p class="ne-p" id="ud55e4734">
+  <span class="ne-text">
+   &#24314;&#35758;&#21021;&#23398;&#32773;&#22312;&#30475;&#23436;&#26412;&#25991;&#20197;&#21518;&#65292;&#21487;&#20197;&#21435;&#32763;&#32763;&#12298;Netty In Action&#12299;&#65292;&#32593;&#19978;&#20063;&#21487;&#20197;&#25214;&#21040;&#20013;&#25991;&#25991;&#23383;&#29256;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub9d14c10">
+  <br>
+ </p>
+ <h2 id="424a2ad8">
+  <span class="ne-text">
+   &#20934;&#22791;
+  </span>
+ </h2>
+ <p class="ne-p" id="u32eae7ce">
+  <br>
+ </p>
+ <p class="ne-p" id="u45747263">
+  <span class="ne-text">
+   &#23398;&#20064;&#28304;&#30721;&#65292;&#19968;&#24320;&#22987;&#32943;&#23450;&#26159;&#20934;&#22791;&#29615;&#22659;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ubc9fb4bf">
+  <br>
+ </p>
+ <p class="ne-p" id="ucd942a87">
+  <span class="ne-text">
+   &#25105;&#21916;&#27426;&#29992; maven&#65292;&#20063;&#21916;&#27426; Spring Boot&#65292;&#25152;&#20197;&#25105;&#19968;&#33324;&#20808;&#21040;
+  </span>
+  <a class="ne-link" data-href="https://start.spring.io/" href="https://start.spring.io/" target="_blank">
+   <span class="ne-text">
+    https://start.spring.io/
+   </span>
+  </a>
+  <span class="ne-text">
+   &#20934;&#22791;&#19968;&#20010;&#26368;&#31616;&#21333;&#30340;&#33050;&#25163;&#26550;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua4067673">
+  <br>
+ </p>
+ <p class="ne-p" id="u84728dd1">
+  <span class="ne-text">
+   10 &#31186;&#25630;&#23450;&#33050;&#25163;&#26550;&#65292;&#28982;&#21518;&#23601;&#26159;&#23548;&#20837;&#21040; Intellij &#20013;&#65292;&#22914;&#26524;&#29992;&#26032;&#29256;&#26412;&#30340; Spring Boot&#65292;&#21487;&#33021;&#36824;&#38656;&#35201;&#31561;&#24453;&#19979;&#36733;&#20381;&#36182;&#65292;&#26399;&#38388;&#25171;&#24320;
+  </span>
+  <a class="ne-link" data-href="https://mvnrepository.com/" href="https://mvnrepository.com/" target="_blank">
+   <span class="ne-text">
+    https://mvnrepository.com/
+   </span>
+  </a>
+  <span class="ne-text">
+   &#25628;&#32034;&#39532;&#19978;&#35201;&#29992;&#21040;&#30340; maven &#20381;&#36182;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5219680a">
+  <br>
+ </p>
+ <p class="ne-p" id="ub9226eed">
+  <span class="ne-text">
+   Netty &#20998;&#20026;&#22909;&#20123;&#27169;&#22359;&#65292;&#26377;
+  </span>
+  <a class="ne-link" data-href="https://mvnrepository.com/artifact/io.netty/netty-handler" href="https://mvnrepository.com/artifact/io.netty/netty-handler" target="_blank">
+   <span class="ne-text">
+    netty-handler
+   </span>
+  </a>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <a class="ne-link" data-href="https://mvnrepository.com/artifact/io.netty/netty-buffer" href="https://mvnrepository.com/artifact/io.netty/netty-buffer" target="_blank">
+   <span class="ne-text">
+    netty-buffer
+   </span>
+  </a>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <a class="ne-link" data-href="https://mvnrepository.com/artifact/io.netty/netty-transport" href="https://mvnrepository.com/artifact/io.netty/netty-transport" target="_blank">
+   <span class="ne-text">
+    netty-transport
+   </span>
+  </a>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <a class="ne-link" data-href="https://mvnrepository.com/artifact/io.netty/netty-common" href="https://mvnrepository.com/artifact/io.netty/netty-common" target="_blank">
+   <span class="ne-text">
+    netty-common
+   </span>
+  </a>
+  <span class="ne-text">
+   &#31561;&#31561;&#65292;&#20063;&#26377;&#19968;&#20010;
+  </span>
+  <a class="ne-link" data-href="https://mvnrepository.com/artifact/io.netty/netty-all" href="https://mvnrepository.com/artifact/io.netty/netty-all" target="_blank">
+   <span class="ne-text">
+    netty-all
+   </span>
+  </a>
+  <span class="ne-text">
+   &#65292;&#23427;&#21253;&#21547;&#20102;&#25152;&#26377;&#30340;&#27169;&#22359;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1aa79022">
+  <br>
+ </p>
+ <p class="ne-p" id="udeda7944">
+  <span class="ne-text">
+   &#26082;&#28982;&#25105;&#20204;&#26159;&#28304;&#30721;&#20998;&#26512;&#65292;&#37027;&#20040;&#33258;&#28982;&#26159;&#29992;&#19968;&#20010;&#26368;&#31616;&#21333;&#30340;&#12290;netty-all &#19981;&#26159;&#26368;&#22909;&#30340;&#36873;&#25321;&#65292;netty-example &#25165;&#26159;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ue8ba08b0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-xml" data-language="xml" id="254c5a91">&lt;dependency&gt;
+   &lt;groupId&gt;io.netty&lt;/groupId&gt;
+   &lt;artifactId&gt;netty-example&lt;/artifactId&gt;
+   &lt;version&gt;4.1.25.Final&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+ <p class="ne-p" id="u9c30dfb1">
+  <br>
+ </p>
+ <p class="ne-p" id="u1bc29fa9">
+  <span class="ne-text">
+   &#23427;&#19981;&#20165;&#21487;&#20197;&#35299;&#20915;&#25105;&#20204;&#30340;&#20381;&#36182;&#65292;&#32780;&#19988; example &#37324;&#38754;&#30340;&#31034;&#20363;&#38750;&#24120;&#36866;&#21512;&#25105;&#20204;&#23398;&#20064;&#20351;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u9acb7797">
+  <br>
+ </p>
+ <h2 id="22e7b12b">
+  <span class="ne-text">
+   Echo &#20363;&#23376;
+  </span>
+ </h2>
+ <p class="ne-p" id="u60915688">
+  <br>
+ </p>
+ <p class="ne-p" id="ufc417336">
+  <span class="ne-text">
+   Netty &#20316;&#20026; NIO &#30340;&#24211;&#65292;&#33258;&#28982;&#26082;&#21487;&#20197;&#20316;&#20026;&#26381;&#21153;&#31471;&#25509;&#21463;&#35831;&#27714;&#65292;&#20063;&#21487;&#20197;&#20316;&#20026;&#23458;&#25143;&#31471;&#21457;&#36215;&#35831;&#27714;&#12290;&#20351;&#29992; Netty &#24320;&#21457;&#23458;&#25143;&#31471;&#25110;&#26381;&#21153;&#31471;&#37117;&#26159;&#38750;&#24120;&#31616;&#21333;&#30340;&#65292;Netty &#20570;&#20102;&#24456;&#22909;&#30340;&#23553;&#35013;&#65292;&#25105;&#20204;&#36890;&#24120;&#21482;&#35201;&#24320;&#21457;&#19968;&#20010;&#25110;&#22810;&#20010;
+  </span>
+  <strong>
+   <span class="ne-text">
+    handler
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#29992;&#26469;&#22788;&#29702;&#25105;&#20204;&#30340;&#33258;&#23450;&#20041;&#36923;&#36753;&#23601;&#21487;&#20197;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue485bf01">
+  <br>
+ </p>
+ <p class="ne-p" id="u71e1b43c">
+  <span class="ne-text">
+   &#19979;&#38754;&#65292;&#25105;&#20204;&#26469;&#30475;&#19968;&#20010;&#32463;&#24120;&#20250;&#35265;&#21040;&#30340;&#20363;&#23376;&#65292;&#23427;&#21483;
+  </span>
+  <strong>
+   <span class="ne-text">
+    Echo
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#20063;&#23601;&#26159;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#22238;&#22768;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#23458;&#25143;&#31471;&#20256;&#36807;&#21435;&#20160;&#20040;&#20540;&#65292;&#26381;&#21153;&#31471;&#21407;&#26679;&#36820;&#22238;&#20160;&#20040;&#20540;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u154a284b">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uf5e92a1b">
+   <span class="ne-text">
+    &#25171;&#24320; netty-example &#30340;&#28304;&#30721;&#65292;&#25226;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     echo
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21253;&#19979;&#38754;&#30340;&#20195;&#30721;&#22797;&#21046;&#20986;&#26469;&#29609;&#19968;&#29609;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="udd4704f7">
+  <br>
+ </p>
+ <p class="ne-p" id="ue70b0a47">
+  <img class="ne-image" id="Mc738" src="EPUB/imgMc738" width="2436">
+ </p>
+ <p class="ne-p" id="u53bc4039">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ua07c2598">
+   <span class="ne-text">
+    &#24038;&#36793;&#26159;&#26381;&#21153;&#31471;&#20195;&#30721;&#65292;&#21491;&#36793;&#26159;&#23458;&#25143;&#31471;&#20195;&#30721;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="uc64832b7">
+  <br>
+ </p>
+ <p class="ne-p" id="ucfffc9b7">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;&#20195;&#30721;&#22522;&#26412;&#23601;&#26159;&#27169;&#26495;&#20195;&#30721;&#65292;&#27599;&#27425;&#20351;&#29992;&#37117;&#26159;&#36825;&#19968;&#20010;&#22871;&#36335;&#65292;&#21807;&#19968;&#38656;&#35201;&#25105;&#20204;&#24320;&#21457;&#30340;&#37096;&#20998;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handler(&#8230;)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    childHandler(&#8230;)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#25351;&#23450;&#30340;&#21508;&#20010; handler&#65292;&#22914;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     EchoServerHandler
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     EchoClientHandler
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#65292;&#24403;&#28982; Netty &#28304;&#30721;&#20063;&#32473;&#25105;&#20204;&#25552;&#20379;&#20102;&#24456;&#22810;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handler
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#27604;&#22914;&#19978;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    LoggingHandler
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#23427;&#23601;&#26159; Netty &#28304;&#30721;&#20013;&#20026;&#25105;&#20204;&#25552;&#20379;&#30340;&#65292;&#38656;&#35201;&#30340;&#26102;&#20505;&#30452;&#25509;&#25343;&#36807;&#26469;&#29992;&#23601;&#22909;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uafe56398">
+  <br>
+ </p>
+ <p class="ne-p" id="ucfef6c9a">
+  <span class="ne-text">
+   &#25105;&#20204;&#20808;&#26469;&#30475;&#19968;&#19979;&#19978;&#36848;&#20195;&#30721;&#20013;&#28041;&#21450;&#21040;&#30340;&#19968;&#20123;&#20869;&#23481;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u29a4b912">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u1110c90b">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ServerBootstrap
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31867;&#29992;&#20110;&#21019;&#24314;&#26381;&#21153;&#31471;&#23454;&#20363;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Bootstrap
+    </span>
+   </code>
+   <span class="ne-text">
+    &#29992;&#20110;&#21019;&#24314;&#23458;&#25143;&#31471;&#23454;&#20363;&#12290;
+   </span>
+  </li>
+  <li id="uadf4c53e">
+   <span class="ne-text">
+    &#20004;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     EventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bossGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     workerGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#23427;&#20204;&#28041;&#21450;&#30340;&#26159; Netty &#30340;&#32447;&#31243;&#27169;&#22411;&#65292;&#21487;&#20197;&#30475;&#21040;&#26381;&#21153;&#31471;&#26377;&#20004;&#20010; group&#65292;&#32780;&#23458;&#25143;&#31471;&#21482;&#26377;&#19968;&#20010;&#65292;&#23427;&#20204;&#23601;&#26159; Netty &#20013;&#30340;&#32447;&#31243;&#27744;&#12290;
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="u19000fdf">
+   <span class="ne-text">
+    Netty &#20013;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#27809;&#26377;&#30452;&#25509;&#20351;&#29992; Java &#21407;&#29983;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ServerSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#32780;&#26159;&#21253;&#35013;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioServerSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#19982;&#20043;&#23545;&#24212;&#12290;
+   </span>
+   <span class="ne-text">
+   </span>
+  </li>
+ </ul>
+ <div class="ne-quote">
+  <p class="ne-p" id="u3bcea3a4">
+   <span class="ne-text">
+    &#24403;&#28982;&#65292;&#20063;&#26377;&#23545;&#20854;&#20182;&#21327;&#35758;&#30340;&#25903;&#25345;&#65292;&#22914;&#25903;&#25345; UDP &#21327;&#35758;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioDatagramChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#26412;&#25991;&#21482;&#20851;&#24515; TCP &#30456;&#20851;&#30340;&#12290;
+   </span>
+  </p>
+ </div>
+ <ul class="ne-ul">
+  <li id="u28130928">
+   <span class="ne-text">
+    &#24038;&#36793;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler(&#8230;)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#25351;&#23450;&#20102;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler&#65288;LoggingHandler&#65289;
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#36825;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26159;&#32473;&#26381;&#21153;&#31471;&#25910;&#21040;&#26032;&#30340;&#35831;&#27714;&#30340;&#26102;&#20505;&#22788;&#29702;&#29992;&#30340;&#12290;&#21491;&#36793;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler(...)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#25351;&#23450;&#20102;&#23458;&#25143;&#31471;&#22788;&#29702;&#35831;&#27714;&#36807;&#31243;&#20013;&#38656;&#35201;&#20351;&#29992;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handlers
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12290;
+   </span>
+   <span class="ne-text">
+   </span>
+  </li>
+ </ul>
+ <div class="ne-quote">
+  <p class="ne-p" id="u10d86a7a">
+   <span class="ne-text">
+    &#22914;&#26524;&#20320;&#24819;&#22312;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     EchoServer
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#20063;&#25351;&#23450;&#22810;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#20063;&#21487;&#20197;&#20687;&#21491;&#36793;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     EchoClient
+    </span>
+   </code>
+   <span class="ne-text">
+    &#19968;&#26679;&#20351;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ChannelInitializer
+    </span>
+   </code>
+  </p>
+ </div>
+ <ul class="ne-ul">
+  <li id="uda4ae33e">
+   <span class="ne-text">
+    &#24038;&#36793;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     childHandler(&#8230;)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25351;&#23450;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     childHandler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#36825;&#36793;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handlers
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26159;&#32473;&#26032;&#21019;&#24314;&#30340;&#36830;&#25509;&#29992;&#30340;&#65292;&#25105;&#20204;&#30693;&#36947;&#26381;&#21153;&#31471;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ServerSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#22312;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     accept
+    </span>
+   </code>
+   <span class="ne-text">
+    &#19968;&#20010;&#36830;&#25509;&#20197;&#21518;&#65292;&#38656;&#35201;&#21019;&#24314;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#23454;&#20363;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     childHandler(&#8230;)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#35774;&#32622;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23601;&#26159;&#29992;&#20110;&#22788;&#29702;&#26032;&#21019;&#24314;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#65292;&#32780;&#19981;&#26159;&#29992;&#26469;&#22788;&#29702;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ServerSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#30340;&#12290;
+   </span>
+  </li>
+  <li id="u23ce93e3">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21487;&#20197;&#25351;&#23450;&#22810;&#20010;&#65288;&#38656;&#35201;&#19978;&#38754;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ChannelInitializer
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31867;&#36741;&#21161;&#65289;&#65292;&#23427;&#20204;&#20250;&#32452;&#25104;&#20102;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#23427;&#20204;&#20854;&#23454;&#23601;&#31867;&#20284;&#25318;&#25130;&#22120;&#30340;&#27010;&#24565;&#65292;&#29616;&#22312;&#21482;&#35201;&#35760;&#20303;&#19968;&#28857;&#65292;&#27599;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25110;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioServerSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#20869;&#37096;&#37117;&#20250;&#26377;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#12290;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#36824;&#28041;&#21450;&#21040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#25191;&#34892;&#39034;&#24207;&#12290;
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="u5e7bb5d2">
+   <span class="ne-text">
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ChannelFuture
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#36825;&#20010;&#28041;&#21450;&#21040; Netty &#20013;&#30340;&#24322;&#27493;&#32534;&#31243;&#65292;&#21644; JDK &#20013;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Future
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25509;&#21475;&#31867;&#20284;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="ub0eb5935">
+  <br>
+ </p>
+ <p class="ne-p" id="u139cc955">
+  <span class="ne-text">
+   &#23545;&#20110;&#19981;&#20102;&#35299; Netty &#30340;&#35835;&#32773;&#65292;&#20063;&#19981;&#35201;&#26377;&#20160;&#20040;&#21387;&#21147;&#65292;&#25105;&#20250;&#19968;&#19968;&#20171;&#32461;&#23427;&#20204;&#65292;&#26412;&#25991;&#20027;&#35201;&#38754;&#21521;&#26032;&#25163;&#65292;&#25105;&#35273;&#24471;&#27604;&#36739;&#38590;&#29702;&#35299;&#25110;&#27604;&#36739;&#37325;&#35201;&#30340;&#37096;&#20998;&#65292;&#20250;&#33457;&#27604;&#36739;&#22823;&#30340;&#31687;&#24133;&#26469;&#20171;&#32461;&#28165;&#26970;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4cfca630">
+  <br>
+ </p>
+ <p class="ne-p" id="ue13476f5">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;&#28304;&#30721;&#20013;&#27809;&#26377;&#23637;&#31034;&#28040;&#24687;&#21457;&#36865;&#21644;&#28040;&#24687;&#25509;&#25910;&#30340;&#22788;&#29702;&#65292;&#27492;&#37096;&#20998;&#25105;&#20250;&#22312;&#20171;&#32461;&#23436;&#19978;&#38754;&#30340;&#36825;&#20123;&#20869;&#23481;&#20197;&#21518;&#20877;&#36827;&#34892;&#20171;&#32461;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u35545be1">
+  <br>
+ </p>
+ <p class="ne-p" id="ua953dc39">
+  <span class="ne-text">
+   &#19979;&#38754;&#65292;&#23558;&#20998;&#22359;&#26469;&#20171;&#32461;&#36825;&#20123;&#20869;&#23481;&#12290;&#37492;&#20110;&#35835;&#32773;&#23545; NIO &#25110; Netty &#30340;&#20102;&#35299;&#31243;&#24230;&#21487;&#33021;&#21442;&#24046;&#19981;&#40784;&#65292;&#20026;&#20102;&#29031;&#39038;&#21021;&#23398;&#32773;&#65292;&#24456;&#22810;&#22320;&#26041;&#38656;&#35201;&#21872;&#21990;&#19968;&#20123;&#65292;&#25152;&#20197;&#24076;&#26395;&#35835;&#32773;&#19968;&#33410;&#19968;&#33410;&#24448;&#19979;&#30475;&#65292;&#23545;&#20110;&#33258;&#24049;&#29087;&#24713;&#30340;&#20869;&#23481;&#21487;&#20197;&#36866;&#24403;&#30475;&#24555;&#19968;&#20123;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

@@ -1,0 +1,1434 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>09 RPC &#26694;&#26550;&#20195;&#30721;&#20998;&#26512;&#20043;&#32593;&#32476;&#20256;&#36755;&#27169;&#22359;</h1><div class="lake-content" typography="classic">
+ <h1 id="v4OMB">
+  <span class="ne-text">
+   09 RPC &#26694;&#26550;&#20195;&#30721;&#20998;&#26512;&#20043;&#32593;&#32476;&#20256;&#36755;&#27169;&#22359;
+  </span>
+ </h1>
+ <p class="ne-p" id="u3dbb245a">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u56f8bae7">
+   <span class="ne-text">
+    &#20197;&#19979;&#25552;&#21040;&#30340;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#26381;&#21153;&#31471;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#25351;&#30340;&#26159;&#25552;&#20379;&#26381;&#21153;/&#26041;&#27861;&#30340;&#19968;&#31471;&#65292;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#23458;&#25143;&#31471;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#25351;&#30340;&#26159;&#35843;&#29992;&#36828;&#31243;(&#26381;&#21153;&#31471;)&#26381;&#21153;/&#26041;&#27861;&#30340;&#19968;&#31471;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u889dbc7a">
+  <br>
+ </p>
+ <p class="ne-p" id="u042c1810">
+  <span class="ne-text">
+   &#25105;&#20204;&#20043;&#21069;&#22312;&#8220;&#22914;&#20309;&#33258;&#24049;&#23454;&#29616;&#19968;&#20010; RPC &#26694;&#26550;&#65311;&#8221;&#36825;&#31687;&#25991;&#31456;&#20013;&#20171;&#32461;&#21040;&#35828;&#65306;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#26082;&#28982;&#25105;&#20204;&#35201;&#35843;&#29992;&#36828;&#31243;&#30340;&#26041;&#27861;&#65292;&#23601;&#35201;&#21457;&#36865;&#32593;&#32476;&#35831;&#27714;&#26469;&#20256;&#36882;&#30446;&#26631;&#31867;&#21644;&#26041;&#27861;&#30340;&#20449;&#24687;&#20197;&#21450;&#26041;&#27861;&#30340;&#21442;&#25968;&#31561;&#25968;&#25454;&#21040;&#26381;&#21153;&#31471;&#12290;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#36825;&#23601;&#28041;&#21450;&#21040;&#20102;&#32593;&#32476;&#20256;&#36755;&#65281;&#32593;&#32476;&#20256;&#36755;&#20855;&#20307;&#23454;&#29616;&#20320;&#21487;&#20197;&#20351;&#29992;
+  </span>
+  <strong>
+   <span class="ne-text">
+    Socket
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65288; Java &#20013;&#26368;&#21407;&#22987;&#12289;&#26368;&#22522;&#30784;&#30340;&#32593;&#32476;&#36890;&#20449;&#26041;&#24335;&#12290;&#20294;&#26159;&#65292;Socket &#26159;&#38459;&#22622; IO&#12289;&#24615;&#33021;&#20302;&#24182;&#19988;&#21151;&#33021;&#21333;&#19968;&#65289;&#12290;&#20320;&#20063;&#21487;&#20197;&#20351;&#29992;&#21516;&#27493;&#38750;&#38459;&#22622;&#30340; I/O &#27169;&#22411;
+  </span>
+  <strong>
+   <span class="ne-text">
+    NIO
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#20294;&#26159;&#29992;&#23427;&#26469;&#36827;&#34892;&#32593;&#32476;&#32534;&#31243;&#30495;&#30340;&#22826;&#40635;&#28902;&#20102;&#12290;&#19981;&#36807;&#27809;&#20851;&#31995;&#65292;&#20320;&#21487;&#20197;&#20351;&#29992;&#22522;&#20110; NIO &#30340;&#32593;&#32476;&#32534;&#31243;&#26694;&#26550; Netty &#65292;&#23427;&#23558;&#26159;&#20320;&#26368;&#22909;&#30340;&#36873;&#25321;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="u9dcaf255">
+  <br>
+ </p>
+ <p class="ne-p" id="ucd87dfe6">
+  <a class="ne-link" data-href="https://github.com/Snailclimb/guide-rpc-framework" href="https://github.com/Snailclimb/guide-rpc-framework" target="_blank">
+   <span class="ne-text">
+    guide-rpc-framework
+   </span>
+  </a>
+  <span class="ne-text">
+   &#20351;&#29992;&#20102;&#19968;&#31181;&#22522;&#20110; Socket&#65292;&#19968;&#31181;&#22522;&#20110; Netty &#30340;&#26041;&#24335;&#65288;&#24490;&#24207;&#28176;&#36827;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue7b9a9b6">
+  <br>
+ </p>
+ <p class="ne-p" id="u8af774a6">
+  <strong>
+   <span class="ne-text">
+    &#32593;&#32476;&#20256;&#36755;&#27169;&#22359;&#25972;&#20307;&#32467;&#26500;&#22914;&#19979;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u5ee4d9ed">
+  <br>
+ </p>
+ <p class="ne-p" id="u4d064d6d">
+  <img class="ne-image" id="qWofY" src="EPUB/imgqWofY" width="1094">
+ </p>
+ <p class="ne-p" id="u7452cb17">
+  <br>
+ </p>
+ <p class="ne-p" id="u41c1c6d1">
+  <span class="ne-text">
+   &#19968;&#20849;&#34987;&#20998;&#20026;&#20102; 4 &#20010;&#21253;
+  </span>
+ </p>
+ <p class="ne-p" id="ueb0dd52b">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="ue2974f81">
+   <strong>
+    <span class="ne-text">
+     constants :
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#23384;&#25918;&#19968;&#20123;&#32593;&#32476;&#20256;&#36755;&#27169;&#22359;&#20849;&#29992;&#30340;&#24120;&#37327;
+   </span>
+  </li>
+  <li id="u3340078a">
+   <strong>
+    <span class="ne-text">
+     dto
+    </span>
+   </strong>
+   <span class="ne-text">
+    : &#29992;&#20110;&#32593;&#32476;&#20256;&#36755;&#30340;&#31867;&#12290;
+   </span>
+  </li>
+  <li id="u85e92f18">
+   <strong>
+    <span class="ne-text">
+     handler
+    </span>
+   </strong>
+   <span class="ne-text">
+    : &#37324;&#38754;&#21482;&#26377;&#19968;&#20010;&#29992;&#20110;&#22788;&#29702; rpc &#35831;&#27714;&#30340;&#31867;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     RpcRequestHandler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65288;&#26681;&#25454; rpc &#35831;&#27714;&#35843;&#29992;&#30446;&#26631;&#31867;&#30340;&#30446;&#26631;&#26041;&#27861;&#65289;&#12290;
+   </span>
+  </li>
+  <li id="u062ea79a">
+   <strong>
+    <span class="ne-text">
+     transport
+    </span>
+   </strong>
+   <span class="ne-text">
+    : &#29992;&#25143;&#32593;&#32476;&#20256;&#36755;&#30456;&#20851;&#31867;&#65288;&#30495;&#27491;&#20256;&#36755;&#32593;&#32476;&#35831;&#27714;&#30340;&#22320;&#26041;&#12290;&#25552;&#20379;&#20102; Socket &#21644; Netty &#20004;&#31181;&#32593;&#32476;&#20256;&#36755;&#26041;&#24335;&#65289;&#12290;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u99ee8632">
+  <br>
+ </p>
+ <h2 id="b5208c03">
+  <span class="ne-text">
+   1. &#32593;&#32476;&#20256;&#36755;&#23454;&#20307;&#31867;
+  </span>
+ </h2>
+ <p class="ne-p" id="u96a09be2">
+  <br>
+ </p>
+ <p class="ne-p" id="u34e9dd0b">
+  <span class="ne-text">
+   &#32593;&#32476;&#20256;&#36755;&#23454;&#20307;&#31867;&#22312;
+  </span>
+  <strong>
+   <span class="ne-text">
+    dto
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#21253;&#19979;&#65292;&#20027;&#35201;&#26377;&#20004;&#20010;&#31867;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u0bcf977e">
+  <br>
+ </p>
+ <p class="ne-p" id="u89ea7140">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     RpcRequest.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="uda5d2a02">
+  <br>
+ </p>
+ <p class="ne-p" id="u136a4802">
+  <span class="ne-text">
+   rpc &#35831;&#27714;&#23454;&#20307;&#31867;&#12290;&#24403;&#20320;&#35201;&#35843;&#29992;&#36828;&#31243;&#26041;&#27861;&#30340;&#26102;&#20505;&#65292;&#20320;&#38656;&#35201;&#20808;&#20256;&#36755;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequest
+   </span>
+  </code>
+  <span class="ne-text">
+   &#32473;&#23545;&#26041;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequest
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37324;&#38754;&#21253;&#21547;&#20102;&#35201;&#35843;&#29992;&#30340;&#30446;&#26631;&#26041;&#27861;&#21644;&#31867;&#30340;&#21517;&#31216;&#12289;&#21442;&#25968;&#31561;&#25968;&#25454;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua7721724">
+  <br>
+ </p>
+ <p class="ne-p" id="u14cc6ef7">
+  <span class="ne-text">
+   &#21478;&#22806;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    version
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23383;&#27573;&#65288;&#26381;&#21153;&#29256;&#26412;&#65289;&#20027;&#35201;&#26159;&#20026;&#21518;&#32493;&#19981;&#20860;&#23481;&#21319;&#32423;&#25552;&#20379;&#21487;&#33021;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    group
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23383;&#27573;&#20027;&#35201;&#29992;&#20110;&#22788;&#29702;&#19968;&#20010;&#25509;&#21475;&#26377;&#22810;&#20010;&#31867;&#23454;&#29616;&#30340;&#24773;&#20917;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc014e22b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="UdF9d">@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Builder
+@ToString
+public class RpcRequest implements Serializable {
+    private static final long serialVersionUID = 1905122041950251207L;
+    private String requestId;
+    private String interfaceName;
+    private String methodName;
+    private Object[] parameters;
+    private Class&lt;?&gt;[] paramTypes;
+    private RpcMessageType rpcMessageType;
+    private String version;
+    private String group;
+
+    public RpcServiceProperties toRpcProperties() {
+        return RpcServiceProperties.builder().serviceName(this.getInterfaceName())
+                .version(this.getVersion())
+                .group(this.getGroup()).build();
+    }
+}</pre>
+ <p class="ne-p" id="u5646b52c">
+  <br>
+ </p>
+ <p class="ne-p" id="u51baf053">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     RpcResponse.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="u63fe87da">
+  <br>
+ </p>
+ <p class="ne-p" id="u5eac48d0">
+  <span class="ne-text">
+   &#26082;&#28982;&#26377;&#20102; rpc &#35831;&#27714;&#23454;&#20307;&#31867;&#65292;&#37027;&#32943;&#23450;&#23601;&#35201;&#26377; rpc &#21709;&#24212;&#23454;&#20307;&#31867;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5e1ef336">
+  <br>
+ </p>
+ <p class="ne-p" id="uc58c7842">
+  <span class="ne-text">
+   &#24403;&#26381;&#21153;&#31471;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequest
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#30456;&#20851;&#25968;&#25454;&#35843;&#29992;&#21040;&#30446;&#26631;&#26381;&#21153;&#30340;&#30446;&#26631;&#26041;&#27861;&#20043;&#21518;&#65292;&#35843;&#29992;&#32467;&#26524;&#23601;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcResponse
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36820;&#22238;&#32473;&#23458;&#25143;&#31471;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u80220148">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="O6B26">@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
+@ToString
+public class RpcResponse&lt;T&gt; implements Serializable {
+
+    private static final long serialVersionUID = 715745410605631233L;
+    private String requestId;
+    /**
+     * response code
+     */
+    private Integer code;
+    /**
+     * response message
+     */
+    private String message;
+    /**
+     * response body
+     */
+    private T data;
+
+    public static &lt;T&gt; RpcResponse&lt;T&gt; success(T data, String requestId) {
+        RpcResponse&lt;T&gt; response = new RpcResponse&lt;&gt;();
+        response.setCode(RpcResponseCode.SUCCESS.getCode());
+        response.setMessage(RpcResponseCode.SUCCESS.getMessage());
+        response.setRequestId(requestId);
+        if (null != data) {
+            response.setData(data);
+        }
+        return response;
+    }
+
+    public static &lt;T&gt; RpcResponse&lt;T&gt; fail(RpcResponseCode rpcResponseCode) {
+        RpcResponse&lt;T&gt; response = new RpcResponse&lt;&gt;();
+        response.setCode(rpcResponseCode.getCode());
+        response.setMessage(rpcResponseCode.getMessage());
+        return response;
+    }
+
+}</pre>
+ <p class="ne-p" id="ucb0880d9">
+  <br>
+ </p>
+ <h2 id="b6b1cb80">
+  <span class="ne-text">
+   2. &#32593;&#32476;&#20256;&#36755;
+  </span>
+ </h2>
+ <p class="ne-p" id="u561e77ce">
+  <br>
+ </p>
+ <p class="ne-p" id="ubf2f2f72">
+  <strong>
+   <span class="ne-text">
+    &#30001;&#20110;&#65292;&#36825;&#37096;&#20998;&#25105;&#25552;&#20379;&#20102;&#19968;&#31181;&#22522;&#20110; Socket&#65292;&#19968;&#31181;&#22522;&#20110; Netty &#30340;&#32593;&#32476;&#20256;&#36755;&#26041;&#24335;&#65288;&#24490;&#24207;&#28176;&#36827;&#65289;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u4287bfda">
+  <br>
+ </p>
+ <p class="ne-p" id="ub01033b8">
+  <span class="ne-text">
+   &#22240;&#27492;&#65292;&#25105;&#20808;&#23450;&#20041;&#20102;&#19968;&#20010;&#21457;&#36865; RPC &#35831;&#27714;&#30340;&#39030;&#23618;&#25509;&#21475;&#65292;&#28982;&#21518;&#25105;&#20204;&#20998;&#21035;&#20351;&#29992; Socket &#21644; Netty &#20004;&#31181;&#26041;&#24335;&#23545;&#36825;&#20010;&#25509;&#21475;&#36827;&#34892;&#23454;&#29616;&#21363;&#21487;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="u0306110b">
+  <br>
+ </p>
+ <p class="ne-p" id="uabcc7cdd">
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequestTransport.java
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20256;&#36755;&#35831;&#27714;&#30340;&#25509;&#21475;
+  </span>
+ </p>
+ <p class="ne-p" id="u0f5fee9d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="65cc9609">/**
+ * send RpcRequest&#12290;
+ *
+ * @author shuang.kou
+ * @createTime 2020&#24180;05&#26376;29&#26085; 13:26:00
+ */
+@SPI
+public interface RpcRequestTransport {
+    /**
+     * send rpc request to server and get result
+     *
+     * @param rpcRequest message body
+     * @return data from server
+     */
+    Object sendRpcRequest(RpcRequest rpcRequest);
+}</pre>
+ <p class="ne-p" id="u920e7ca9">
+  <br>
+ </p>
+ <p class="ne-p" id="ue010a466">
+  <span class="ne-text">
+   &#19979;&#38754;&#65292;&#25105;&#20204;&#20808;&#26469;&#30475;&#19968;&#19979;&#27604;&#36739;&#31616;&#21333;&#28857;&#30340;&#20351;&#29992; Socket &#36827;&#34892;&#32593;&#32476;&#20256;&#36755;&#30340;&#26041;&#24335;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u27cb65e1">
+  <br>
+ </p>
+ <h3 id="5831033c">
+  <span class="ne-text">
+   2.1. Socket
+  </span>
+ </h3>
+ <p class="ne-p" id="u3ff9bec4">
+  <br>
+ </p>
+ <h4 id="7531f312">
+  <span class="ne-text">
+   2.1.1. &#23458;&#25143;&#31471;
+  </span>
+ </h4>
+ <p class="ne-p" id="u16eca429">
+  <br>
+ </p>
+ <p class="ne-p" id="u65440487">
+  <span class="ne-text">
+   &#36825;&#37324;&#30340;&#23458;&#25143;&#31471;&#23454;&#38469;&#23601;&#26159;&#21457;&#36865; RPC &#35831;&#27714;&#30340;&#19968;&#31471;&#65292;&#21487;&#20197;&#23545;&#29031;&#25105;&#20204;&#20043;&#38388;&#30011;&#30340; RPC &#35843;&#29992;&#30340;&#21407;&#29702;&#22270;&#26469;&#29702;&#35299;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufd5889e2">
+  <br>
+ </p>
+ <p class="ne-p" id="u1d55dda2">
+  <span class="ne-text">
+   &#23458;&#25143;&#31471;&#20027;&#35201;&#29992;&#20110;&#21457;&#36865;&#32593;&#32476;&#35831;&#27714;&#21040;&#26381;&#21153;&#31471;&#65288;&#30446;&#26631;&#26041;&#27861;&#25152;&#22312;&#30340;&#26381;&#21153;&#22120;&#65289;&#12290;&#24403;&#25105;&#20204;&#30693;&#36947;&#20102;&#26381;&#21153;&#31471;&#30340;&#22320;&#22336;&#20043;&#21518;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketRpcClient
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21457;&#36865; rpc &#35831;&#27714;(
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequest
+   </span>
+  </code>
+  <span class="ne-text">
+   ) &#21040;&#26381;&#21153;&#31471;&#20102;(&#22914;&#26524;&#25105;&#20204;&#35201;&#25214;&#21040;&#26381;&#21153;&#31471;&#30340;&#22320;&#22336;&#65292;&#28041;&#21450;&#21040;&#20102;&#27880;&#20876;&#20013;&#24515;&#30456;&#20851;&#30340;&#30693;&#35782;&#12290;&#19979;&#19968;&#33410;&#20250;&#25552;&#21040;&#12290;)&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1bfa5209">
+  <br>
+ </p>
+ <p class="ne-p" id="u4497e377">
+  <span class="ne-text">
+   &#25105;&#20204;&#30452;&#25509;&#23454;&#29616;&#19978;&#38754;&#23450;&#20041;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequestTransport.java
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21363;&#21487;&#12290;&#36825;&#26679;&#30340;&#35805;&#65292;&#36890;&#36807; Socket &#26469;&#20256;&#36755;&#28040;&#24687;&#30340;&#27169;&#22359;&#23601;&#20889;&#22909;&#20102;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="u87433112">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="fc1b8010">/**
+ * &#22522;&#20110; Socket &#20256;&#36755; RpcRequest
+ *
+ * @author shuang.kou
+ * @createTime 2020&#24180;05&#26376;10&#26085; 18:40:00
+ */
+@AllArgsConstructor
+@Slf4j
+public class SocketRpcClient implements RpcRequestTransport {
+    private final ServiceDiscovery serviceDiscovery;
+
+    public SocketRpcClient() {
+        this.serviceDiscovery = ExtensionLoader.getExtensionLoader(ServiceDiscovery.class).getExtension("zk");
+    }
+
+    @Override
+    public Object sendRpcRequest(RpcRequest rpcRequest) {
+        // build rpc service name by rpcRequest
+        String rpcServiceName = RpcServiceProperties.builder().serviceName(rpcRequest.getInterfaceName())
+                .group(rpcRequest.getGroup()).version(rpcRequest.getVersion()).build().toRpcServiceName();
+        InetSocketAddress inetSocketAddress = serviceDiscovery.lookupService(rpcServiceName);
+        try (Socket socket = new Socket()) {
+            socket.connect(inetSocketAddress);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+            // Send data to the server through the output stream
+            objectOutputStream.writeObject(rpcRequest);
+            ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
+            // Read RpcResponse from the input stream
+            return objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RpcException("&#35843;&#29992;&#26381;&#21153;&#22833;&#36133;:", e);
+        }
+    }
+}</pre>
+ <p class="ne-p" id="u059d73da">
+  <br>
+ </p>
+ <p class="ne-p" id="uf4bedd9f">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;&#36923;&#36753;&#24456;&#31616;&#21333;&#65292;&#23601;&#26159;&#23545; Socket &#21457;&#36865;&#32593;&#32476;&#35831;&#27714;&#36825;&#20010;&#22522;&#30784;&#30693;&#35782;&#30340;&#36816;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ueabb35ea">
+  <br>
+ </p>
+ <p class="ne-p" id="u945e3fb0">
+  <span class="ne-text">
+   &#25105;&#36825;&#37324;&#23601;&#19981;&#20877;&#23545;&#19978;&#38754;&#30340;&#20195;&#30721;&#36827;&#34892;&#35299;&#26512;&#20102;&#65292;&#30475;&#19981;&#25026;&#30340;&#23567;&#20249;&#20276;&#33258;&#34892;&#32763;&#30475;&#20043;&#21069;&#20851;&#20110; Socket &#35762;&#35299;&#30340;&#31456;&#33410;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6a16d867">
+  <br>
+ </p>
+ <h4 id="a13ed005">
+  <span class="ne-text">
+   2.1.2. &#26381;&#21153;&#31471;
+  </span>
+ </h4>
+ <p class="ne-p" id="ucfc3e10c">
+  <br>
+ </p>
+ <p class="ne-p" id="u4ac1ec72">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     SocketRpcServer.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="ud679a10a">
+  <br>
+ </p>
+ <p class="ne-p" id="uf68c5f2f">
+  <span class="ne-text">
+   Socket &#26381;&#21153;&#31471;&#12290;&#29992;&#20110;&#31561;&#24453;&#23458;&#25143;&#31471;&#36830;&#25509;&#12290;&#24403;&#23458;&#25143;&#31471;&#25104;&#21151;&#36830;&#25509;&#20043;&#21518;&#65292;&#23601;&#21487;&#20197;&#21457;&#36865; rpc &#35831;&#27714;(
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequest
+   </span>
+  </code>
+  <span class="ne-text">
+   ) &#21040;&#26381;&#21153;&#31471;&#20102;&#12290;&#28982;&#21518;&#65292;&#26381;&#21153;&#31471;&#25343;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequest
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23601;&#20250;&#21435;&#25191;&#34892;&#23545;&#24212;&#30340;&#26041;&#27861;&#12290;&#25191;&#34892;&#23436;&#23545;&#24212;&#30340;&#26041;&#27861;&#20043;&#21518;&#65292;&#23601;&#25226;&#25191;&#34892;&#24471;&#21040;&#30340;&#32467;&#26524;&#25918;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcResponse
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#36820;&#22238;&#32473;&#23458;&#25143;&#31471;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf12234aa">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="1c592c33">/**
+ * @author shuang.kou
+ * @createTime 2020&#24180;05&#26376;10&#26085; 08:01:00
+ */
+@Slf4j
+public class SocketRpcServer {
+
+    private final ExecutorService threadPool;
+    private final ServiceProvider serviceProvider;
+
+
+    public SocketRpcServer() {
+        threadPool = ThreadPoolFactoryUtils.createCustomThreadPoolIfAbsent("socket-server-rpc-pool");
+        serviceProvider = SingletonFactory.getInstance(ServiceProviderImpl.class);
+    }
+
+    public void registerService(Object service) {
+        serviceProvider.publishService(service);
+    }
+
+    public void registerService(Object service, RpcServiceProperties rpcServiceProperties) {
+        serviceProvider.publishService(service, rpcServiceProperties);
+    }
+
+    public void start() {
+        try (ServerSocket server = new ServerSocket()) {
+            String host = InetAddress.getLocalHost().getHostAddress();
+            server.bind(new InetSocketAddress(host, PORT));
+            CustomShutdownHook.getCustomShutdownHook().clearAll();
+            Socket socket;
+            while ((socket = server.accept()) != null) {
+                log.info("client connected [{}]", socket.getInetAddress());
+                threadPool.execute(new SocketRpcRequestHandlerRunnable(socket));
+            }
+            threadPool.shutdown();
+        } catch (IOException e) {
+            log.error("occur IOException:", e);
+        }
+    }
+
+}</pre>
+ <p class="ne-p" id="u6de6359d">
+  <br>
+ </p>
+ <h3 id="97e32e50">
+  <span class="ne-text">
+   2.2. Netty
+  </span>
+ </h3>
+ <p class="ne-p" id="ub5c60d6d">
+  <br>
+ </p>
+ <p class="ne-p" id="u68a52be2">
+  <span class="ne-text">
+   Netty &#36825;&#37096;&#20998;&#30340;&#21407;&#29702;&#20063;&#24046;&#19981;&#22810;&#65292;&#19981;&#36807;&#23454;&#29616;&#20195;&#30721;&#24046;&#21035;&#24456;&#22823;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf243b36d">
+  <br>
+ </p>
+ <h4 id="3205a8de">
+  <span class="ne-text">
+   2.2.1. &#23458;&#25143;&#31471;
+  </span>
+ </h4>
+ <p class="ne-p" id="u654c560d">
+  <br>
+ </p>
+ <p class="ne-p" id="u4308324c">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     NettyClient.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="u8b6e9115">
+  <br>
+ </p>
+ <p class="ne-p" id="u94716c73">
+  <span class="ne-text">
+   Netty &#23458;&#25143;&#31471;&#20027;&#35201;&#25552;&#20379;&#20102;:
+  </span>
+ </p>
+ <p class="ne-p" id="uef1ca16a">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u8e979e9a">
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      doConnect()
+     </span>
+    </strong>
+   </code>
+   <span class="ne-text">
+    :&#29992;&#20110;&#36830;&#25509;&#26381;&#21153;&#31471;&#65288;&#30446;&#26631;&#26041;&#27861;&#25152;&#22312;&#30340;&#26381;&#21153;&#22120;&#65289;&#24182;&#36820;&#22238;&#23545;&#24212;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12290;&#24403;&#25105;&#20204;&#30693;&#36947;&#20102;&#26381;&#21153;&#31471;&#30340;&#22320;&#22336;&#20043;&#21518;&#65292;&#25105;&#20204;&#23601;&#21487;&#20197;&#36890;&#36807;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NettyClient
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25104;&#21151;&#36830;&#25509;&#26381;&#21153;&#31471;&#20102;&#12290;&#65288;&#26377;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20043;&#21518;&#23601;&#33021;&#21457;&#36865;&#25968;&#25454;&#21040;&#26381;&#21153;&#31471;&#20102;&#65289;
+   </span>
+  </li>
+  <li id="u4031b46c">
+   <code class="ne-code">
+    <strong>
+     <span class="ne-text">
+      sendRpcRequest()
+     </span>
+    </strong>
+   </code>
+   <span class="ne-text">
+   </span>
+   <strong>
+    <span class="ne-text">
+     :
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#29992;&#20110;&#20256;&#36755; rpc &#35831;&#27714;(
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     RpcRequest
+    </span>
+   </code>
+   <span class="ne-text">
+    ) &#21040;&#26381;&#21153;&#31471;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="uc44477d0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="59a8658f">@Slf4j
+public final class NettyRpcClient implements RpcRequestTransport {
+    private final ServiceDiscovery serviceDiscovery;
+    private final UnprocessedRequests unprocessedRequests;
+    private final ChannelProvider channelProvider;
+    private final Bootstrap bootstrap;
+    private final EventLoopGroup eventLoopGroup;
+
+    @SneakyThrows
+    public Channel doConnect(InetSocketAddress inetSocketAddress) {
+        CompletableFuture&lt;Channel&gt; completableFuture = new CompletableFuture&lt;&gt;();
+        bootstrap.connect(inetSocketAddress).addListener((ChannelFutureListener) future -&gt; {
+            if (future.isSuccess()) {
+                log.info("The client has connected [{}] successful!", inetSocketAddress.toString());
+                completableFuture.complete(future.channel());
+            } else {
+                throw new IllegalStateException();
+            }
+        });
+        return completableFuture.get();
+    }
+
+    @Override
+    public Object sendRpcRequest(RpcRequest rpcRequest) {
+        // build return value
+        CompletableFuture&lt;RpcResponse&lt;Object&gt;&gt; resultFuture = new CompletableFuture&lt;&gt;();
+        // build rpc service name by rpcRequest
+        String rpcServiceName = rpcRequest.toRpcProperties().toRpcServiceName();
+        // get server address
+        InetSocketAddress inetSocketAddress = serviceDiscovery.lookupService(rpcServiceName);
+        // get  server address related channel
+        Channel channel = getChannel(inetSocketAddress);
+        if (channel.isActive()) {
+            // put unprocessed request
+            unprocessedRequests.put(rpcRequest.getRequestId(), resultFuture);
+            RpcMessage rpcMessage = new RpcMessage();
+            rpcMessage.setData(rpcRequest);
+            rpcMessage.setCodec(SerializationTypeEnum.PROTOSTUFF.getCode());
+            rpcMessage.setCompress(CompressTypeEnum.GZIP.getCode());
+            rpcMessage.setMessageType(RpcConstants.REQUEST_TYPE);
+            channel.writeAndFlush(rpcMessage).addListener((ChannelFutureListener) future -&gt; {
+                if (future.isSuccess()) {
+                    log.info("client send message: [{}]", rpcMessage);
+                } else {
+                    future.channel().close();
+                    resultFuture.completeExceptionally(future.cause());
+                    log.error("Send failed:", future.cause());
+                }
+            });
+        } else {
+            throw new IllegalStateException();
+        }
+
+        return resultFuture;
+    }
+}</pre>
+ <p class="ne-p" id="ucab2f2a0">
+  <br>
+ </p>
+ <p class="ne-p" id="udb2329d3">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     UnprocessedRequests.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="u1028574c">
+  <br>
+ </p>
+ <p class="ne-p" id="ua31b9b3d">
+  <span class="ne-text">
+   &#29992;&#20110;&#23384;&#25918;&#26410;&#34987;&#26381;&#21153;&#31471;&#22788;&#29702;&#30340;&#35831;&#27714;&#65288;&#24314;&#35758;&#38480;&#21046; map &#23481;&#22120;&#22823;&#23567;&#65292;&#36991;&#20813;&#26410;&#22788;&#29702;&#35831;&#27714;&#36807;&#22810; OOM)&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u321847e6">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="o5ilr">public class UnprocessedRequests {
+    private static final Map&lt;String, CompletableFuture&lt;RpcResponse&lt;Object&gt;&gt;&gt; UNPROCESSED_RESPONSE_FUTURES = new ConcurrentHashMap&lt;&gt;();
+
+    public void put(String requestId, CompletableFuture&lt;RpcResponse&lt;Object&gt;&gt; future) {
+        UNPROCESSED_RESPONSE_FUTURES.put(requestId, future);
+    }
+
+    public void complete(RpcResponse&lt;Object&gt; rpcResponse) {
+        CompletableFuture&lt;RpcResponse&lt;Object&gt;&gt; future = UNPROCESSED_RESPONSE_FUTURES.remove(rpcResponse.getRequestId());
+        if (null != future) {
+            future.complete(rpcResponse);
+        } else {
+            throw new IllegalStateException();
+        }
+    }
+}</pre>
+ <p class="ne-p" id="uc8072f09">
+  <br>
+ </p>
+ <p class="ne-p" id="u158803c5">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     NettyClientHandler
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="uce85fe40">
+  <br>
+ </p>
+ <p class="ne-p" id="u1ba0e176">
+  <span class="ne-text">
+   &#33258;&#23450;&#20041;&#23458;&#25143;&#31471;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelHandler
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29992;&#20110;&#22788;&#29702;&#26381;&#21153;&#22120;&#21457;&#36865;&#30340;&#25968;&#25454;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4ce2dce5">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="V4MNM">@Slf4j
+public class NettyClientHandler extends ChannelInboundHandlerAdapter {
+    private final UnprocessedRequests unprocessedRequests;
+    private final ChannelProvider channelProvider;
+
+    public NettyClientHandler() {
+        this.unprocessedRequests = SingletonFactory.getInstance(UnprocessedRequests.class);
+        this.channelProvider = SingletonFactory.getInstance(ChannelProvider.class);
+    }
+
+    /**
+     * &#35835;&#21462;&#20174;&#26381;&#21153;&#31471;&#36820;&#22238;&#30340;&#28040;&#24687;
+     */
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        try {
+            log.info("client receive msg: [{}]", msg);
+            if (msg instanceof RpcResponse) {
+                RpcResponse&lt;Object&gt; rpcResponse = (RpcResponse&lt;Object&gt;) msg;
+                unprocessedRequests.complete(rpcResponse);
+            }
+        } finally {
+            ReferenceCountUtil.release(msg);
+        }
+    }
+
+    // Netty &#24515;&#36339;&#26426;&#21046;&#30456;&#20851;&#12290;&#20445;&#35777;&#23458;&#25143;&#31471;&#21644;&#26381;&#21153;&#31471;&#30340;&#36830;&#25509;&#19981;&#34987;&#26029;&#25481;&#65292;&#36991;&#20813;&#37325;&#36830;&#12290;
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+       //&#30465;&#30053;&#37096;&#20998;&#20195;&#30721;
+    }
+
+
+}</pre>
+ <p class="ne-p" id="u206faee4">
+  <br>
+ </p>
+ <p class="ne-p" id="u503f11bb">
+  <span class="ne-text">
+   &#20174;&#20195;&#30721;&#20013;&#65292;&#21487;&#20197;&#30475;&#20986;&#24403; rpc &#35831;&#27714;&#34987;&#25104;&#21151;&#22788;&#29702;&#65288;&#23458;&#25143;&#31471;&#25910;&#21040;&#26381;&#21153;&#31471;&#30340;&#25191;&#34892;&#32467;&#26524;&#65289;&#20043;&#21518;&#65292;&#25105;&#20204;&#35843;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    unprocessedRequests.complete(rpcResponse)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#36825;&#26679;&#30340;&#35805;&#65292;&#20320;&#21482;&#38656;&#35201;&#36890;&#36807;&#19979;&#38754;&#30340;&#26041;&#24335;&#23601;&#33021;&#25104;&#21151;&#25509;&#25910;&#21040;&#26381;&#21153;&#31471;&#36820;&#22238;&#30340;&#32467;&#26524;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u393b274d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="S2c9v">CompletableFuture&lt;RpcResponse&gt; completableFuture = (CompletableFuture&lt;RpcResponse&gt;) clientTransport.sendRpcRequest(rpcRequest);
+rpcResponse = completableFuture.get();</pre>
+ <p class="ne-p" id="u3bc7cf2d">
+  <br>
+ </p>
+ <p class="ne-p" id="u022aff33">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     ChannelProvider.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="ua08c38f5">
+  <br>
+ </p>
+ <p class="ne-p" id="uf9010356">
+  <span class="ne-text">
+   &#29992;&#20110;&#23384;&#25918;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65288;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29992;&#20110;&#22312;&#26381;&#21153;&#31471;&#21644;&#23458;&#25143;&#31471;&#20043;&#38388;&#20256;&#36755;&#25968;&#25454;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u16c59424">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="9096b41a">@Slf4j
+public class ChannelProvider {
+
+    private final Map&lt;String, Channel&gt; channelMap;
+
+    public ChannelProvider() {
+        channelMap = new ConcurrentHashMap&lt;&gt;();
+    }
+
+    public Channel get(InetSocketAddress inetSocketAddress) {
+        String key = inetSocketAddress.toString();
+        // determine if there is a connection for the corresponding address
+        if (channelMap.containsKey(key)) {
+            Channel channel = channelMap.get(key);
+            // if so, determine if the connection is available, and if so, get it directly
+            if (channel != null &amp;&amp; channel.isActive()) {
+                return channel;
+            } else {
+                channelMap.remove(key);
+            }
+        }
+        return null;
+    }
+
+    public void set(InetSocketAddress inetSocketAddress, Channel channel) {
+        String key = inetSocketAddress.toString();
+        channelMap.put(key, channel);
+    }
+
+    public void remove(InetSocketAddress inetSocketAddress) {
+        String key = inetSocketAddress.toString();
+        channelMap.remove(key);
+        log.info("Channel map size :[{}]", channelMap.size());
+    }
+}</pre>
+ <p class="ne-p" id="u6763af73">
+  <br>
+ </p>
+ <h4 id="88d4fdf7">
+  <span class="ne-text">
+   2.2.2. &#26381;&#21153;&#31471;&#30456;&#20851;
+  </span>
+ </h4>
+ <p class="ne-p" id="u50f8ebab">
+  <br>
+ </p>
+ <p class="ne-p" id="ufa5b065e">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     NettyRpcServer.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="u78f7a556">
+  <br>
+ </p>
+ <p class="ne-p" id="u2fe7704c">
+  <span class="ne-text">
+   Netty &#26381;&#21153;&#31471;&#12290;&#24182;&#30417;&#21548;&#23458;&#25143;&#31471;&#30340;&#36830;&#25509;&#12290;&#21478;&#22806;&#65292;&#36824;&#25552;&#20379;&#20102;&#20004;&#20010;&#29992;&#25143;&#25163;&#21160;&#27880;&#20876;&#26381;&#21153;&#30340;&#26041;&#27861;&#65288;
+  </span>
+  <em>
+   <span class="ne-text">
+    &#36824;&#21487;&#20197;&#36890;&#36807;&#27880;&#35299;
+   </span>
+  </em>
+  <code class="ne-code">
+   <em>
+    <span class="ne-text">
+     RpcService
+    </span>
+   </em>
+  </code>
+  <em>
+   <span class="ne-text">
+    &#27880;&#20876;&#26381;&#21153;&#65292;&#36825;&#20010;&#21518;&#38754;&#20063;&#20250;&#20171;&#32461;&#21040;
+   </span>
+  </em>
+  <span class="ne-text">
+   &#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua1474a2c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="304ec51c">@Slf4j
+@Component
+public class NettyRpcServer {
+
+    public static final int PORT = 9998;
+
+    private final ServiceProvider serviceProvider = SingletonFactory.getInstance(ServiceProviderImpl.class);
+
+    public void registerService(Object service, RpcServiceProperties rpcServiceProperties) {
+        serviceProvider.publishService(service, rpcServiceProperties);
+    }
+
+    @SneakyThrows
+    public void start() {
+        CustomShutdownHook.getCustomShutdownHook().clearAll();
+        String host = InetAddress.getLocalHost().getHostAddress();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        DefaultEventExecutorGroup serviceHandlerGroup = new DefaultEventExecutorGroup(
+                RuntimeUtil.cpus() * 2,
+                ThreadPoolFactoryUtils.createThreadFactory("service-handler-group", false)
+        );
+        try {
+            ServerBootstrap b = new ServerBootstrap();
+            b.group(bossGroup, workerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    // TCP&#40664;&#35748;&#24320;&#21551;&#20102; Nagle &#31639;&#27861;&#65292;&#35813;&#31639;&#27861;&#30340;&#20316;&#29992;&#26159;&#23613;&#21487;&#33021;&#30340;&#21457;&#36865;&#22823;&#25968;&#25454;&#24555;&#65292;&#20943;&#23569;&#32593;&#32476;&#20256;&#36755;&#12290;TCP_NODELAY &#21442;&#25968;&#30340;&#20316;&#29992;&#23601;&#26159;&#25511;&#21046;&#26159;&#21542;&#21551;&#29992; Nagle &#31639;&#27861;&#12290;
+                    .childOption(ChannelOption.TCP_NODELAY, true)
+                    // &#26159;&#21542;&#24320;&#21551; TCP &#24213;&#23618;&#24515;&#36339;&#26426;&#21046;
+                    .childOption(ChannelOption.SO_KEEPALIVE, true)
+                    //&#34920;&#31034;&#31995;&#32479;&#29992;&#20110;&#20020;&#26102;&#23384;&#25918;&#24050;&#23436;&#25104;&#19977;&#27425;&#25569;&#25163;&#30340;&#35831;&#27714;&#30340;&#38431;&#21015;&#30340;&#26368;&#22823;&#38271;&#24230;,&#22914;&#26524;&#36830;&#25509;&#24314;&#31435;&#39057;&#32321;&#65292;&#26381;&#21153;&#22120;&#22788;&#29702;&#21019;&#24314;&#26032;&#36830;&#25509;&#36739;&#24930;&#65292;&#21487;&#20197;&#36866;&#24403;&#35843;&#22823;&#36825;&#20010;&#21442;&#25968;
+                    .option(ChannelOption.SO_BACKLOG, 128)
+                    .handler(new LoggingHandler(LogLevel.INFO))
+                    // &#24403;&#23458;&#25143;&#31471;&#31532;&#19968;&#27425;&#36827;&#34892;&#35831;&#27714;&#30340;&#26102;&#20505;&#25165;&#20250;&#36827;&#34892;&#21021;&#22987;&#21270;
+                    .childHandler(new ChannelInitializer&lt;SocketChannel&gt;() {
+                        @Override
+                        protected void initChannel(SocketChannel ch) {
+                            // 30 &#31186;&#20043;&#20869;&#27809;&#26377;&#25910;&#21040;&#23458;&#25143;&#31471;&#35831;&#27714;&#30340;&#35805;&#23601;&#20851;&#38381;&#36830;&#25509;
+                            ChannelPipeline p = ch.pipeline();
+                            p.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
+                            p.addLast(new RpcMessageEncoder());
+                            p.addLast(new RpcMessageDecoder());
+                            p.addLast(serviceHandlerGroup, new NettyRpcServerHandler());
+                        }
+                    });
+
+            // &#32465;&#23450;&#31471;&#21475;&#65292;&#21516;&#27493;&#31561;&#24453;&#32465;&#23450;&#25104;&#21151;
+            ChannelFuture f = b.bind(host, PORT).sync();
+            // &#31561;&#24453;&#26381;&#21153;&#31471;&#30417;&#21548;&#31471;&#21475;&#20851;&#38381;
+            f.channel().closeFuture().sync();
+        } catch (InterruptedException e) {
+            log.error("occur exception when start server:", e);
+        } finally {
+            log.error("shutdown bossGroup and workerGroup");
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
+            serviceHandlerGroup.shutdownGracefully();
+        }
+    }
+
+
+}</pre>
+ <p class="ne-p" id="ud2c13e48">
+  <br>
+ </p>
+ <p class="ne-p" id="ua168af4e">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     NettyServerHandler.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="u111e3787">
+  <br>
+ </p>
+ <p class="ne-p" id="uecb008e9">
+  <span class="ne-text">
+   &#33258;&#23450;&#20041;&#26381;&#21153;&#31471;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelHandler
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29992;&#20110;&#22788;&#29702;&#23458;&#25143;&#31471;&#21457;&#36865;&#30340;&#25968;&#25454;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u774bd71e">
+  <br>
+ </p>
+ <p class="ne-p" id="u29da2f3f">
+  <span class="ne-text">
+   &#24403;&#23458;&#25143;&#31471;&#21457;&#30340; rpc &#35831;&#27714;(
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequest
+   </span>
+  </code>
+  <span class="ne-text">
+   ) &#26469;&#20102;&#20043;&#21518;&#65292;&#26381;&#21153;&#31471;&#23601;&#20250;&#22788;&#29702; rpc &#35831;&#27714;(
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcRequest
+   </span>
+  </code>
+  <span class="ne-text">
+   ) &#65292;&#22788;&#29702;&#23436;&#20043;&#21518;&#23601;&#25226;&#24471;&#21040; rpc &#30456;&#24212;(
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    RpcResponse
+   </span>
+  </code>
+  <span class="ne-text">
+   )&#20256;&#36755;&#32473;&#23458;&#25143;&#31471;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6fe74433">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="uRtCJ">@Slf4j
+public class NettyServerHandler extends ChannelInboundHandlerAdapter {
+
+    private final RpcRequestHandler rpcRequestHandler;
+
+    public NettyServerHandler() {
+        this.rpcRequestHandler = SingletonFactory.getInstance(RpcRequestHandler.class);
+    }
+
+     /**
+     * &#35835;&#21462;&#20174;&#23458;&#25143;&#31471;&#28040;&#24687;&#65292;&#28982;&#21518;&#35843;&#29992;&#30446;&#26631;&#26381;&#21153;&#30340;&#30446;&#26631;&#26041;&#27861;&#24182;&#36820;&#22238;&#32473;&#23458;&#25143;&#31471;&#12290;
+     */
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+      // &#30465;&#30053;&#37096;&#20998;&#20195;&#30721;
+    }
+
+
+    // Netty &#24515;&#36339;&#26426;&#21046;&#30456;&#20851;&#12290;&#20445;&#35777;&#23458;&#25143;&#31471;&#21644;&#26381;&#21153;&#31471;&#30340;&#36830;&#25509;&#19981;&#34987;&#26029;&#25481;&#65292;&#36991;&#20813;&#37325;&#36830;&#12290;
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+     // &#30465;&#30053;&#37096;&#20998;&#20195;&#30721;
+    }
+
+}</pre>
+ <p class="ne-p" id="ucdb4d338">
+  <br>
+ </p>
+ <h3 id="2c963462">
+  <span class="ne-text">
+   2.3. &#20256;&#36755;&#21327;&#35758;
+  </span>
+ </h3>
+ <p class="ne-p" id="uddbd7948">
+  <br>
+ </p>
+ <p class="ne-p" id="ue8d90493">
+  <span class="ne-text">
+   &#22312;&#12298;&#22914;&#20309;&#33258;&#24049;&#23454;&#29616;&#19968;&#20010; RPC &#26694;&#26550;&#12299;&#36825;&#19968;&#33410;&#65292;&#25105;&#20204;&#23601;&#25552;&#21040;&#20102;&#20256;&#36755;&#21327;&#35758;&#30340;&#20316;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u45ef9e09">
+  <br>
+ </p>
+ <p class="ne-p" id="u5c47bcc5">
+  <span class="ne-text">
+   &#31616;&#21333;&#26469;&#35828;&#65306;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#36890;&#36807;&#35774;&#35745;&#21327;&#35758;&#65292;&#25105;&#20204;&#23450;&#20041;&#38656;&#35201;&#20256;&#36755;&#21738;&#20123;&#31867;&#22411;&#30340;&#25968;&#25454;&#65292; &#24182;&#19988;&#36824;&#20250;&#35268;&#23450;&#27599;&#19968;&#31181;&#31867;&#22411;&#30340;&#25968;&#25454;&#24212;&#35813;&#21344;&#22810;&#23569;&#23383;&#33410;&#12290;&#36825;&#26679;&#25105;&#20204;&#22312;&#25509;&#25910;&#21040;&#20108;&#32423;&#21046;&#25968;&#25454;&#20043;&#21518;&#65292;&#23601;&#21487;&#20197;&#27491;&#30830;&#30340;&#35299;&#26512;&#20986;&#25105;&#20204;&#38656;&#35201;&#30340;&#25968;&#25454;&#12290;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#36825;&#26377;&#19968;&#28857;&#20687;&#23494;&#25991;&#20256;&#36755;&#30340;&#24863;&#35273;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua8eda24e">
+  <br>
+ </p>
+ <p class="ne-p" id="uc4ef3e30">
+  <span class="ne-text">
+   &#20197;&#19979;&#20415;&#26159;&#25105;&#20204;&#35774;&#35745;&#30340;&#20256;&#36755;&#21327;&#35758;&#65288;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#32534;&#35299;&#30721;&#22120;&#36825;&#37324;&#20250;&#29992;&#21040;&#65281;&#65281;&#65281;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65289;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uc2559dc0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="e5c2de62"> *   0     1     2     3     4        5     6     7     8         9          10      11     12  13  14   15 16
+ *   +-----+-----+-----+-----+--------+----+----+----+------+-----------+-------+----- --+-----+-----+-------+
+ *   |   magic   code        |version | full length         | messageType| codec|compress|    RequestId       |
+ *   +-----------------------+--------+---------------------+-----------+-----------+-----------+------------+
+ *   |                                                                                                       |
+ *   |                                         body                                                          |
+ *   |                                                                                                       |
+ *   |                                        ... ...                                                        |
+ *   +-------------------------------------------------------------------------------------------------------+
+ * 4B  magic code&#65288;&#39764;&#27861;&#25968;&#65289;   1B version&#65288;&#29256;&#26412;&#65289;   4B full length&#65288;&#28040;&#24687;&#38271;&#24230;&#65289;    1B messageType&#65288;&#28040;&#24687;&#31867;&#22411;&#65289;
+ * 1B compress&#65288;&#21387;&#32553;&#31867;&#22411;&#65289; 1B codec&#65288;&#24207;&#21015;&#21270;&#31867;&#22411;&#65289;    4B  requestId&#65288;&#35831;&#27714;&#30340;Id&#65289;</pre>
+ <p class="ne-p" id="ua442804e">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u3a5d4f82">
+   <strong>
+    <span class="ne-text">
+     &#39764;&#27861;&#25968;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306; &#36890;&#24120;&#26159; 4 &#20010;&#23383;&#33410;&#12290;&#36825;&#20010;&#39764;&#25968;&#20027;&#35201;&#26159;&#20026;&#20102;&#31579;&#36873;&#26469;&#21040;&#26381;&#21153;&#31471;&#30340;&#25968;&#25454;&#21253;&#65292;&#26377;&#20102;&#36825;&#20010;&#39764;&#25968;&#20043;&#21518;&#65292;&#26381;&#21153;&#31471;&#39318;&#20808;&#21462;&#20986;&#21069;&#38754;&#22235;&#20010;&#23383;&#33410;&#36827;&#34892;&#27604;&#23545;&#65292;&#33021;&#22815;&#22312;&#31532;&#19968;&#26102;&#38388;&#35782;&#21035;&#20986;&#36825;&#20010;&#25968;&#25454;&#21253;&#24182;&#38750;&#26159;&#36981;&#24490;&#33258;&#23450;&#20041;&#21327;&#35758;&#30340;&#65292;&#20063;&#23601;&#26159;&#26080;&#25928;&#25968;&#25454;&#21253;&#65292;&#20026;&#20102;&#23433;&#20840;&#32771;&#34385;&#21487;&#20197;&#30452;&#25509;&#20851;&#38381;&#36830;&#25509;&#20197;&#33410;&#30465;&#36164;&#28304;&#12290;
+   </span>
+  </li>
+  <li id="u1e002c9a">
+   <strong>
+    <span class="ne-text">
+     &#24207;&#21015;&#21270;&#22120;&#31867;&#22411;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306;&#26631;&#35782;&#24207;&#21015;&#21270;&#30340;&#26041;&#24335;&#65292;&#27604;&#22914;&#26159;&#20351;&#29992; Java &#33258;&#24102;&#30340;&#24207;&#21015;&#21270;&#65292;&#36824;&#26159; json&#65292;kyro &#31561;&#24207;&#21015;&#21270;&#26041;&#24335;&#12290;
+   </span>
+  </li>
+  <li id="u1deedd68">
+   <strong>
+    <span class="ne-text">
+     &#28040;&#24687;&#38271;&#24230;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306; &#36816;&#34892;&#26102;&#35745;&#31639;&#20986;&#26469;&#12290;
+   </span>
+  </li>
+  <li id="u3c7b09e5">
+   <span class="ne-text">
+    ......
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u8887fc03">
+  <br>
+ </p>
+ <h3 id="e805fe33">
+  <span class="ne-text">
+   2.4. &#32534;&#35299;&#30721;&#22120;
+  </span>
+ </h3>
+ <p class="ne-p" id="u0cf8c8b3">
+  <br>
+ </p>
+ <p class="ne-p" id="u4b98a50a">
+  <span class="ne-text">
+   &#32534;&#35299;&#30721;&#22120;&#36825;&#37324;&#20027;&#35201;&#29992;&#21040;&#20102; Kryo &#24207;&#21015;&#21270;&#21644;&#21453;&#24207;&#21015;&#21270;&#20197;&#21450; Netty &#32593;&#32476;&#20256;&#36755;&#23383;&#33410;&#23481;&#22120;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ByteBuf
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30456;&#20851;&#30340;&#30693;&#35782;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf49dee4a">
+  <br>
+ </p>
+ <p class="ne-p" id="u7028e07e">
+  <span class="ne-text">
+   &#32534;&#35299;&#30721;&#22120;&#30340;&#20316;&#29992;&#20027;&#35201;&#26159;&#35753;&#25105;&#20204;&#22312; Netty &#36827;&#34892;&#32593;&#32476;&#20256;&#36755;&#25152;&#29992;&#30340;&#23545;&#35937;&#31867;&#22411;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ByteBuf
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19982; &#25105;&#20204;&#20195;&#30721;&#23618;&#38754;&#38656;&#35201;&#30340;&#19994;&#21153;&#23545;&#35937;&#20043;&#38388;&#36716;&#25442;&#12290;&#36825;&#37096;&#20998;&#30340;&#20195;&#30721;&#36824;&#26159;&#27604;&#36739;&#22810;&#30340;&#65292;&#23567;&#20249;&#20276;&#20204;&#21487;&#20197;&#33258;&#24049;&#38405;&#35835;&#20197;&#19979;&#65292;&#25972;&#20307;&#36923;&#36753;&#36824;&#26159;&#27604;&#36739;&#31616;&#21333;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u724160a7">
+  <br>
+ </p>
+ <p class="ne-p" id="u81d0fc1b">
+  <strong>
+   <span class="ne-text">
+    &#19968;&#23450;&#35201;&#20808;&#25630;&#25026;&#20256;&#36755;&#21327;&#35758;&#20043;&#21518;&#20877;&#21435;&#30475;&#36825;&#37096;&#20998;&#20195;&#30721;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ufcf1e3d8">
+  <br>
+ </p>
+ <p class="ne-p" id="u5d3c3141">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     RpcMessageDecoder.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="uc2658abc">
+  <br>
+ </p>
+ <p class="ne-p" id="ucabaed71">
+  <span class="ne-text">
+   &#33258;&#23450;&#20041;&#35299;&#30721;&#22120;&#12290;&#36127;&#36131;&#22788;&#29702;"&#20837;&#31449;"&#28040;&#24687;&#65292;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ByteBuf
+   </span>
+  </code>
+  <span class="ne-text">
+   &#28040;&#24687;&#26684;&#24335;&#30340;&#23545;&#35937;&#36716;&#25442;&#20026;&#25105;&#20204;&#38656;&#35201;&#30340;&#19994;&#21153;&#23545;&#35937;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="udcd3d310">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ubebee3c7">
+   <span class="ne-text">
+    &#32593;&#32476;&#20256;&#36755;&#38656;&#35201;&#36890;&#36807;&#23383;&#33410;&#27969;&#26469;&#23454;&#29616;&#65292;ByteBuf &#21487;&#20197;&#30475;&#20316;&#26159; Netty &#25552;&#20379;&#30340;&#23383;&#33410;&#25968;&#25454;&#30340;&#23481;&#22120;&#65292;&#20351;&#29992;&#23427;&#20250;&#35753;&#25105;&#20204;&#26356;&#21152;&#26041;&#20415;&#22320;&#22788;&#29702;&#23383;&#33410;&#25968;&#25454;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="ub1b26244">
+  <br>
+ </p>
+ <p class="ne-p" id="ub51cacc3">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     RpcMessageEncoder.java
+    </span>
+   </strong>
+  </code>
+ </p>
+ <p class="ne-p" id="ud97673b5">
+  <br>
+ </p>
+ <p class="ne-p" id="u34f999b3">
+  <span class="ne-text">
+   &#33258;&#23450;&#20041;&#32534;&#30721;&#22120;&#12290;&#36127;&#36131;&#22788;&#29702;"&#20986;&#31449;"&#28040;&#24687;&#65292;&#23558;&#28040;&#24687;&#26684;&#24335;&#36716;&#25442;&#23383;&#33410;&#25968;&#32452;&#28982;&#21518;&#20889;&#20837;&#21040;&#23383;&#33410;&#25968;&#25454;&#30340;&#23481;&#22120;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ByteBuf
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#20013;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

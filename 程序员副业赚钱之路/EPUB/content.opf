@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="id" version="3.0" prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <meta property="dcterms:modified">2022-08-09T20:07:53Z</meta>
+    <meta name="generator" content="Ebook-lib 0.17.1"/>
+    <dc:identifier id="id">程序员副业赚钱之路</dc:identifier>
+    <dc:title>程序员副业赚钱之路</dc:title>
+    <dc:language>cn</dc:language>
+    <dc:creator id="creator">程序员副业赚钱之路</dc:creator>
+    <meta name="cover" content="cover-img"></meta>
+  </metadata>
+  <manifest>
+    <item href="cover" id="cover-img" media-type="application/octet-stream" properties="cover-image"/>
+    <item href="cover.xhtml" id="cover" media-type="application/xhtml+xml"/>
+    <item href="Xl6G_UuL0aSQH_JT.xhtml" id="chapter_0" media-type="application/xhtml+xml"/>
+    <item href="imgnLnax" id="imgnLnax" media-type="image/jpg"/>
+    <item href="fl7pI3tdZLMPW92l.xhtml" id="chapter_1" media-type="application/xhtml+xml"/>
+    <item href="imgUmDJy" id="imgUmDJy" media-type="image/jpg"/>
+    <item href="imgT0sHA" id="imgT0sHA" media-type="image/jpg"/>
+    <item href="imgapGUM" id="imgapGUM" media-type="image/jpg"/>
+    <item href="GobufNZAnbBptKGA.xhtml" id="chapter_2" media-type="application/xhtml+xml"/>
+    <item href="c898cd08-17db-11ed-9d73-acde48001122" id="c898cd08-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="c9851e6a-17db-11ed-9d73-acde48001122" id="c9851e6a-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="zFap7CIWrdae7554.xhtml" id="chapter_3" media-type="application/xhtml+xml"/>
+    <item href="cad4ab28-17db-11ed-9d73-acde48001122" id="cad4ab28-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="cb45eb58-17db-11ed-9d73-acde48001122" id="cb45eb58-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="cba2486c-17db-11ed-9d73-acde48001122" id="cba2486c-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="cbf71b4e-17db-11ed-9d73-acde48001122" id="cbf71b4e-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="cc7138d4-17db-11ed-9d73-acde48001122" id="cc7138d4-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="ccdde966-17db-11ed-9d73-acde48001122" id="ccdde966-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="cd53cee2-17db-11ed-9d73-acde48001122" id="cd53cee2-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="cdbf9f96-17db-11ed-9d73-acde48001122" id="cdbf9f96-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="ce4e669a-17db-11ed-9d73-acde48001122" id="ce4e669a-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="cf2fe7fa-17db-11ed-9d73-acde48001122" id="cf2fe7fa-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="yz6TR7WnROxhPq1j.xhtml" id="chapter_4" media-type="application/xhtml+xml"/>
+    <item href="cfe2e63e-17db-11ed-9d73-acde48001122" id="cfe2e63e-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="d0adb4c2-17db-11ed-9d73-acde48001122" id="d0adb4c2-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="d13b1e84-17db-11ed-9d73-acde48001122" id="d13b1e84-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="d2050a0a-17db-11ed-9d73-acde48001122" id="d2050a0a-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="cJ3sQv2ltAc5XCY_.xhtml" id="chapter_5" media-type="application/xhtml+xml"/>
+    <item href="d2faad52-17db-11ed-9d73-acde48001122" id="d2faad52-17db-11ed-9d73-acde48001122" media-type="image/jpg"/>
+    <item href="_czEbwX8Cg5QsuPk.xhtml" id="chapter_6" media-type="application/xhtml+xml"/>
+    <item href="c7Js5q6q_y4QwdE4.xhtml" id="chapter_7" media-type="application/xhtml+xml"/>
+    <item href="ZwNgK2gm_UKB13bg.xhtml" id="chapter_8" media-type="application/xhtml+xml"/>
+    <item href="imgu23a65336" id="imgu23a65336" media-type="image/jpg"/>
+    <item href="imguca067945" id="imguca067945" media-type="image/jpg"/>
+    <item href="imgu809a68cb" id="imgu809a68cb" media-type="image/jpg"/>
+    <item href="imgu0909f9e1" id="imgu0909f9e1" media-type="image/jpg"/>
+    <item href="imgu3077f5a9" id="imgu3077f5a9" media-type="image/jpg"/>
+    <item href="imgu10cff57c" id="imgu10cff57c" media-type="image/jpg"/>
+    <item href="imgub6d02e5b" id="imgub6d02e5b" media-type="image/jpg"/>
+    <item href="imgucc1fa725" id="imgucc1fa725" media-type="image/jpg"/>
+    <item href="imgubebeac9b" id="imgubebeac9b" media-type="image/jpg"/>
+    <item href="imgu1a55a41d" id="imgu1a55a41d" media-type="image/jpg"/>
+    <item href="imgua3ccdfa0" id="imgua3ccdfa0" media-type="image/jpg"/>
+    <item href="imgu0f292188" id="imgu0f292188" media-type="image/jpg"/>
+    <item href="imgu07c908dc" id="imgu07c908dc" media-type="image/jpg"/>
+    <item href="imguc362e6d7" id="imguc362e6d7" media-type="image/jpg"/>
+    <item href="imguf12ebf9e" id="imguf12ebf9e" media-type="image/jpg"/>
+    <item href="imgud4229013" id="imgud4229013" media-type="image/jpg"/>
+    <item href="YJeZv6yEDWynpYt1.xhtml" id="chapter_9" media-type="application/xhtml+xml"/>
+    <item href="imgub8541d3e" id="imgub8541d3e" media-type="image/jpg"/>
+    <item href="imgua805f5c9" id="imgua805f5c9" media-type="image/jpg"/>
+    <item href="imgu0c8f520a" id="imgu0c8f520a" media-type="image/jpg"/>
+    <item href="imgue8475caa" id="imgue8475caa" media-type="image/jpg"/>
+    <item href="imgub848b96a" id="imgub848b96a" media-type="image/jpg"/>
+    <item href="imgubc48e27b" id="imgubc48e27b" media-type="image/jpg"/>
+    <item href="imgu0a24a945" id="imgu0a24a945" media-type="image/jpg"/>
+    <item href="imgAouDZ" id="imgAouDZ" media-type="image/jpg"/>
+    <item href="imgu0ebad516" id="imgu0ebad516" media-type="image/jpg"/>
+    <item href="imgu5c5ef170" id="imgu5c5ef170" media-type="image/jpg"/>
+    <item href="imgu85cfb45a" id="imgu85cfb45a" media-type="image/jpg"/>
+    <item href="imgu36dc928f" id="imgu36dc928f" media-type="image/jpg"/>
+    <item href="imgu66e934e0" id="imgu66e934e0" media-type="image/jpg"/>
+    <item href="imgu2627f230" id="imgu2627f230" media-type="image/jpg"/>
+    <item href="imgud8614b5e" id="imgud8614b5e" media-type="image/jpg"/>
+    <item href="imgua3a059fe" id="imgua3a059fe" media-type="image/jpg"/>
+    <item href="imgub8dcd51b" id="imgub8dcd51b" media-type="image/jpg"/>
+    <item href="imgubc52674f" id="imgubc52674f" media-type="image/jpg"/>
+    <item href="imgu3a96e61b" id="imgu3a96e61b" media-type="image/jpg"/>
+    <item href="0MrokDxJmDJh-Miy.xhtml" id="chapter_10" media-type="application/xhtml+xml"/>
+    <item href="imgu79aa5401" id="imgu79aa5401" media-type="image/jpg"/>
+    <item href="imgu8c8eb261" id="imgu8c8eb261" media-type="image/jpg"/>
+    <item href="imgu3d7726aa" id="imgu3d7726aa" media-type="image/jpg"/>
+    <item href="imgu591c5ae9" id="imgu591c5ae9" media-type="image/jpg"/>
+    <item href="imgu554c32b9" id="imgu554c32b9" media-type="image/jpg"/>
+    <item href="imguf1136cb1" id="imguf1136cb1" media-type="image/jpg"/>
+    <item href="imgue71c4b06" id="imgue71c4b06" media-type="image/jpg"/>
+    <item href="imgu80b0bbc8" id="imgu80b0bbc8" media-type="image/jpg"/>
+    <item href="imgu942a4b60" id="imgu942a4b60" media-type="image/jpg"/>
+    <item href="imgu106ecf80" id="imgu106ecf80" media-type="image/jpg"/>
+    <item href="imgud1889df2" id="imgud1889df2" media-type="image/jpg"/>
+    <item href="imgu240003aa" id="imgu240003aa" media-type="image/jpg"/>
+    <item href="4y9rjEpGNGXzVA8j.xhtml" id="chapter_11" media-type="application/xhtml+xml"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="nav.xhtml" id="nav" media-type="application/xhtml+xml" properties="nav"/>
+    <item href="style/style.css" id="style" media-type="text/css"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="nav"/>
+    <itemref idref="chapter_0"/>
+    <itemref idref="chapter_1"/>
+    <itemref idref="chapter_2"/>
+    <itemref idref="chapter_3"/>
+    <itemref idref="chapter_4"/>
+    <itemref idref="chapter_5"/>
+    <itemref idref="chapter_6"/>
+    <itemref idref="chapter_7"/>
+    <itemref idref="chapter_8"/>
+    <itemref idref="chapter_9"/>
+    <itemref idref="chapter_10"/>
+    <itemref idref="chapter_11"/>
+  </spine>
+</package>

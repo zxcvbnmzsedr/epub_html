@@ -1,0 +1,1509 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>9 SpringBoot&#20107;&#20214;&#30417;&#21548;&#26426;&#21046;</h1><div class="lake-content" typography="classic">
+ <h2 id="a6397be7">
+  <span class="ne-text">
+   1 &#28201;&#25925;&#32780;&#30693;&#26032;
+  </span>
+ </h2>
+ <p class="ne-p" id="uea149045">
+  <br>
+ </p>
+ <p class="ne-p" id="u704e36cc">
+  <span class="ne-text">
+   &#28201;&#25925;&#32780;&#30693;&#26032;&#65292;&#25105;&#20204;&#26469;&#31616;&#21333;&#22238;&#39038;&#19968;&#19979;&#19978;&#31687;&#30340;&#20869;&#23481;&#65292;&#19978;&#19968;&#31687;&#25105;&#20204;&#20998;&#26512;&#20102;
+  </span>
+  <strong>
+   <span class="ne-text">
+    SpringApplication &#23545;&#35937;&#30340;&#26500;&#24314;&#36807;&#31243;&#21450; SpringBoot &#33258;&#24049;&#23454;&#29616;&#30340;&#19968;&#22871; SPI &#26426;&#21046;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#29616;&#23558;&#20851;&#38190;&#27493;&#39588;&#20877;&#27987;&#32553;&#24635;&#32467;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u185af867">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="ub52bff6f">
+   <code class="ne-code">
+    <span class="ne-text">
+     SpringApplication
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#30340;&#26500;&#36896;&#36807;&#31243;&#20854;&#23454;&#23601;&#26159;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SpringApplication
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31867;&#30340;
+   </span>
+   <strong>
+    <span class="ne-text">
+     6
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#20010;&#25104;&#21592;&#21464;&#37327;&#36171;&#20540;&#65307;
+   </span>
+  </li>
+  <li id="u3d968862">
+   <span class="ne-text">
+    SpringBoot &#36890;&#36807;&#20197;&#19979;&#27493;&#39588;&#23454;&#29616;&#33258;&#24049;&#30340; SPI &#26426;&#21046;&#65306;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u6edb3434">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u068a4d34">
+   <span class="ne-text">
+    1)&#39318;&#20808;&#33719;&#21462;&#32447;&#31243;&#19978;&#19979;&#25991;&#31867;&#21152;&#36733;&#22120;;
+   </span>
+  </li>
+  <li id="u8633d0fb">
+   <span class="ne-text">
+    2)&#28982;&#21518;&#21033;&#29992;&#19978;&#19979;&#25991;&#31867;&#21152;&#36733;&#22120;&#20174;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring.factories
+    </span>
+   </code>
+   <span class="ne-text">
+    &#37197;&#32622;&#25991;&#20214;&#20013;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#21152;&#36733;&#25152;&#26377;&#30340; SPI &#25193;&#23637;&#23454;&#29616;&#31867;&#24182;&#25918;&#20837;&#32531;&#23384;&#20013;
+    </span>
+   </strong>
+   <span class="ne-text">
+    ;
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="ua02f2f2b">
+   <span class="ne-text">
+    3)&#26681;&#25454; SPI &#25509;&#21475;&#20174;&#32531;&#23384;&#20013;&#21462;&#20986;&#30456;&#24212;&#30340; SPI &#25193;&#23637;&#23454;&#29616;&#31867;;
+   </span>
+  </li>
+  <li id="ua7660df3">
+   <span class="ne-text">
+    4)&#23454;&#20363;&#21270;&#20174;&#32531;&#23384;&#20013;&#21462;&#20986;&#30340; SPI &#25193;&#23637;&#23454;&#29616;&#31867;&#24182;&#36820;&#22238;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u6ae87f12">
+  <br>
+ </p>
+ <h2 id="cd1f626d">
+  <span class="ne-text">
+   2 &#24341;&#35328;
+  </span>
+ </h2>
+ <p class="ne-p" id="u31dfb811">
+  <br>
+ </p>
+ <p class="ne-p" id="ub8f46da2">
+  <span class="ne-text">
+   &#22312; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#65292;&#27599;&#20010;&#19981;&#21516;&#30340;&#21551;&#21160;&#38454;&#27573;&#20250;&#20998;&#21035;&#24191;&#25773;&#19981;&#21516;&#30340;&#20869;&#32622;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;&#28982;&#21518;&#30456;&#24212;&#30340;&#30417;&#21548;&#22120;&#20250;&#30417;&#21548;&#36825;&#20123;&#20107;&#20214;&#26469;&#25191;&#34892;&#19968;&#20123;&#21021;&#22987;&#21270;&#36923;&#36753;&#24037;&#20316;&#27604;&#22914;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConfigFileApplicationListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20250;&#30417;&#21548;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    onApplicationEnvironmentPreparedEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20107;&#20214;&#26469;&#21152;&#36733;&#37197;&#32622;&#25991;&#20214;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    application.properties
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#29615;&#22659;&#21464;&#37327;&#31561;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue2b4ce43">
+  <br>
+ </p>
+ <p class="ne-p" id="ua7f00e04">
+  <span class="ne-text">
+   &#22240;&#27492;&#26412;&#31687;&#20869;&#23481;&#23558;&#26469;&#20998;&#26512;&#19979; SpringBoot &#30340;&#20107;&#20214;&#30417;&#21548;&#26426;&#21046;&#30340;&#28304;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u70a1ceed">
+  <br>
+ </p>
+ <h2 id="10d4372d">
+  <span class="ne-text">
+   3 SpringBoot &#24191;&#25773;&#20869;&#32622;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#27969;&#31243;&#20998;&#26512;
+  </span>
+ </h2>
+ <p class="ne-p" id="u9ba0d841">
+  <br>
+ </p>
+ <p class="ne-p" id="u71302940">
+  <span class="ne-text">
+   &#20026;&#20102;&#25506;&#31350; SpringBoot &#24191;&#25773;&#20869;&#32622;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#27969;&#31243;&#65292;&#25105;&#20204;&#20877;&#26469;&#22238;&#39038;&#19968;&#19979; SpringBoot &#30340;&#21551;&#21160;&#27969;&#31243;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud0ad609c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="d1dd1e7e">// SpringApplication.java
+
+public ConfigurableApplicationContext run(String... args) {
+	StopWatch stopWatch = new StopWatch();
+	stopWatch.start();
+	ConfigurableApplicationContext context = null;
+	Collection&lt;SpringBootExceptionReporter&gt; exceptionReporters = new ArrayList&lt;&gt;();
+	configureHeadlessProperty();
+	// &#12304;0&#12305;&#26032;&#24314;&#19968;&#20010;SpringApplicationRunListeners&#23545;&#35937;&#29992;&#20110;&#21457;&#23556;SpringBoot&#21551;&#21160;&#36807;&#31243;&#20013;&#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;
+	SpringApplicationRunListeners listeners = getRunListeners(args);
+	// &#12304;1&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationStartingEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;SpringApplication&#24320;&#22987;&#21551;&#21160;
+	listeners.starting();
+	try {
+		ApplicationArguments applicationArguments = new DefaultApplicationArguments(
+				args);
+		// &#12304;2&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationEnvironmentPreparedEvent&#12305;&#20107;&#20214;&#65292;&#27492;&#26102;&#20250;&#21435;&#21152;&#36733;application.properties&#31561;&#37197;&#32622;&#25991;&#20214;&#30340;&#29615;&#22659;&#21464;&#37327;&#65292;&#21516;&#26102;&#20063;&#26377;&#26631;&#24535;&#29615;&#22659;&#21464;&#37327;&#24050;&#32463;&#20934;&#22791;&#22909;&#30340;&#24847;&#24605;
+		ConfigurableEnvironment environment = prepareEnvironment(listeners,
+				applicationArguments);
+		configureIgnoreBeanInfo(environment);
+		Banner printedBanner = printBanner(environment);
+		context = createApplicationContext();
+		exceptionReporters = getSpringFactoriesInstances(
+				SpringBootExceptionReporter.class,
+				new Class[] { ConfigurableApplicationContext.class }, context);
+		// &#12304;3&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationContextInitializedEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;context&#23481;&#22120;&#34987;&#21019;&#24314;&#19988;&#24050;&#20934;&#22791;&#22909;
+		// &#12304;4&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationPreparedEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;Context&#23481;&#22120;&#24050;&#32463;&#20934;&#22791;&#23436;&#25104;
+		prepareContext(context, environment, listeners, applicationArguments,
+				printedBanner);
+		refreshContext(context);
+		afterRefresh(context, applicationArguments);
+		stopWatch.stop();
+		if (this.logStartupInfo) {
+			new StartupInfoLogger(this.mainApplicationClass)
+					.logStarted(getApplicationLog(), stopWatch);
+		}
+		// &#12304;5&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationStartedEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;spring&#23481;&#22120;&#24050;&#32463;&#21047;&#26032;&#65292;&#27492;&#26102;&#25152;&#26377;&#30340;bean&#23454;&#20363;&#37117;&#24050;&#32463;&#21152;&#36733;&#23436;&#27605;
+		listeners.started(context);
+		callRunners(context, applicationArguments);
+	}
+	// &#12304;6&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationFailedEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;SpringBoot&#21551;&#21160;&#22833;&#36133;
+	catch (Throwable ex) {
+		handleRunFailure(context, ex, exceptionReporters, listeners);
+		throw new IllegalStateException(ex);
+	}
+	try {
+		// &#12304;7&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationReadyEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;SpringApplication&#24050;&#32463;&#27491;&#22312;&#36816;&#34892;&#21363;&#24050;&#32463;&#25104;&#21151;&#21551;&#21160;&#65292;&#21487;&#20197;&#25509;&#25910;&#26381;&#21153;&#35831;&#27714;&#20102;&#12290;
+		listeners.running(context);
+	}
+	catch (Throwable ex) {
+		handleRunFailure(context, ex, exceptionReporters, null);
+		throw new IllegalStateException(ex);
+	}
+	return context;
+}</pre>
+ <p class="ne-p" id="u77b387c1">
+  <br>
+ </p>
+ <p class="ne-p" id="ua1e1e080">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040; SpringBoot &#22312;&#21551;&#21160;&#36807;&#31243;&#20013;&#39318;&#20808;&#20250;&#20808;&#26032;&#24314;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListeners
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#29992;&#20110;&#21457;&#23556; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#30340;&#21508;&#31181;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;&#27604;&#22914;&#21457;&#23556;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationStartingEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationEnvironmentPreparedEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationContextInitializedEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#20107;&#20214;&#65292;&#28982;&#21518;&#30456;&#24212;&#30340;&#30417;&#21548;&#22120;&#20250;&#25191;&#34892;&#19968;&#20123; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#30340;&#21021;&#22987;&#21270;&#36923;&#36753;&#12290;&#37027;&#20040;&#65292;&#30417;&#21548;&#36825;&#20123; SpringBoot &#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#30340;&#30417;&#21548;&#22120;&#20204;&#26159;&#20309;&#26102;&#34987;&#21152;&#36733;&#23454;&#20363;&#21270;&#30340;&#21602;&#65311;&#36824;&#35760;&#24471;&#19978;&#31687;&#25991;&#31456;&#22312;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#24314;&#36807;&#31243;&#21527;&#65311;&#27809;&#38169;&#65292;&#36825;&#20123;&#25191;&#34892;&#21021;&#22987;&#21270;&#36923;&#36753;&#30340;&#30417;&#21548;&#22120;&#20204;&#27491;&#26159;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#24314;&#36807;&#31243;&#20013;&#26681;&#25454;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#21435;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37197;&#32622;&#25991;&#20214;&#20013;&#21152;&#36733;&#24182;&#23454;&#20363;&#21270;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc0ce84dc">
+  <br>
+ </p>
+ <h2 id="5141660d">
+  <span class="ne-text">
+   3.1 &#20026;&#24191;&#25773; SpringBoot &#20869;&#32622;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#20570;&#21069;&#26399;&#20934;&#22791;
+  </span>
+ </h2>
+ <p class="ne-p" id="u11f480d3">
+  <br>
+ </p>
+ <h3 id="fff4764a">
+  <span class="ne-text">
+   3.1.1 &#21152;&#36733; ApplicationListener &#30417;&#21548;&#22120;&#23454;&#29616;&#31867;
+  </span>
+ </h3>
+ <p class="ne-p" id="uba3dc417">
+  <br>
+ </p>
+ <p class="ne-p" id="uf1e2b9a4">
+  <span class="ne-text">
+   &#25105;&#20204;&#20877;&#26469;&#22238;&#39038;&#19979;
+  </span>
+  <a class="ne-link" data-href="https://juejin.im/post/5e82bac9518825737a314096" href="https://juejin.im/post/5e82bac9518825737a314096" target="_blank">
+   <span class="ne-text">
+    SpringApplication &#23545;&#35937;&#26159;&#22914;&#20309;&#26500;&#24314;&#30340;&#65311; SpringBoot &#28304;&#30721;&#65288;&#20843;&#65289;
+   </span>
+  </a>
+  <span class="ne-text">
+   &#19968;&#25991;&#20013;&#35762;&#21040;&#22312;&#26500;&#24314;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#26102;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#21477;&#20195;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u9feb62e3">
+  <br>
+ </p>
+ <p class="ne-p" id="u747e9205">
+  <span class="ne-text">
+   &#36825;&#21477;&#20195;&#30721;&#20570;&#30340;&#20107;&#24773;&#23601;&#26159;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#21152;&#36733;&#20986;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20107;&#20214;&#30417;&#21548;&#25509;&#21475;&#30340; SPI &#25193;&#23637;&#23454;&#29616;&#31867;&#28982;&#21518;&#28155;&#21152;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    listeners
+   </span>
+  </code>
+  <span class="ne-text">
+   &#38598;&#21512;&#20013;&#65292;&#29992;&#20110;&#21518;&#32493;&#30417;&#21548; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#30340;&#20107;&#20214;&#65292;&#26469;&#25191;&#34892;&#19968;&#20123;&#21021;&#22987;&#21270;&#36923;&#36753;&#24037;&#20316;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u900ef934">
+  <br>
+ </p>
+ <p class="ne-p" id="uddc86769">
+  <span class="ne-text">
+   SpringBoot &#21551;&#21160;&#26102;&#30340;&#20855;&#20307;&#30417;&#21548;&#22120;&#20204;&#37117;&#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#20854;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37096;&#20998;&#37197;&#32622;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ue4094f9a">
+  <br>
+ </p>
+ <p class="ne-p" id="ubdd19242">
+  <img class="ne-image" id="mTZzW" src="EPUB/imgmTZzW" width="1150">
+ </p>
+ <p class="ne-p" id="u8baff67f">
+  <br>
+ </p>
+ <p class="ne-p" id="ud0663516">
+  <span class="ne-text">
+   &#19981;&#36807;&#22312;&#35843;&#35797;&#26102;&#65292;&#20250;&#20174;&#25152;&#26377;&#30340; spring.factories &#37197;&#32622;&#25991;&#20214;&#20013;&#21152;&#36733;&#30417;&#21548;&#22120;&#65292;&#26368;&#32456;&#21152;&#36733;&#20102; 10 &#20010;&#30417;&#21548;&#22120;&#12290;&#22914;&#19979;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6428a0b5">
+  <br>
+ </p>
+ <p class="ne-p" id="ua178fd33">
+  <img class="ne-image" id="HmiWh" src="EPUB/imgHmiWh" width="712">
+ </p>
+ <p class="ne-p" id="u00013ceb">
+  <br>
+ </p>
+ <h3 id="92a43663">
+  <span class="ne-text">
+   3.1.2 &#21152;&#36733; SPI &#25193;&#23637;&#31867; EventPublishingRunListener
+  </span>
+ </h3>
+ <p class="ne-p" id="u2f23b16e">
+  <br>
+ </p>
+ <p class="ne-p" id="uaee4d9d0">
+  <span class="ne-text">
+   &#21069;&#38754;&#35762;&#21040;&#65292;&#22312; SpringBoot &#30340;&#21551;&#21160;&#36807;&#31243;&#20013;&#39318;&#20808;&#20250;&#20808;&#26032;&#24314;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListeners
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#29992;&#20110;&#21457;&#23556; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;&#21363;&#25105;&#20204;&#29616;&#22312;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListeners listeners = getRunListeners(args);
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#21477;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uc240ed17">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="f87f24c5">// SpringApplication.java
+
+private SpringApplicationRunListeners getRunListeners(String[] args) {
+	// &#26500;&#36896;&#19968;&#20010;&#30001;SpringApplication.class&#21644;String[].class&#32452;&#25104;&#30340;types
+	Class&lt;?&gt;[] types = new Class&lt;?&gt;[] { SpringApplication.class, String[].class };
+	// 1) &#26681;&#25454;SpringApplicationRunListener&#25509;&#21475;&#21435;spring.factories&#37197;&#32622;&#25991;&#20214;&#20013;&#21152;&#36733;&#20854;SPI&#25193;&#23637;&#23454;&#29616;&#31867;
+	// 2) &#26500;&#24314;&#19968;&#20010;SpringApplicationRunListeners&#23545;&#35937;&#24182;&#36820;&#22238;
+	return new SpringApplicationRunListeners(logger, getSpringFactoriesInstances(
+			SpringApplicationRunListener.class, types, this, args));
+}</pre>
+ <p class="ne-p" id="u4c1cc24c">
+  <br>
+ </p>
+ <p class="ne-p" id="ua16c4bc9">
+  <span class="ne-text">
+   &#25105;&#20204;&#23558;&#37325;&#28857;&#25918;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getSpringFactoriesInstances( SpringApplicationRunListener.class, types, this, args)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#21477;&#20195;&#30721;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getSpringFactoriesInstances
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#25105;&#20204;&#24050;&#32463;&#24456;&#29087;&#24713;&#65292;&#22312;&#19978;&#19968;&#31687;&#20998;&#26512; SpringBoot &#30340; SPI &#26426;&#21046;&#26102;&#24050;&#32463;&#35814;&#32454;&#20998;&#26512;&#36807;&#36825;&#20010;&#26041;&#27861;&#12290;&#21487;&#20197;&#30475;&#21040; SpringBoot &#27492;&#26102;&#21448;&#26159;&#26681;&#25454;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010; SPI &#25509;&#21475;&#21435;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#21152;&#36733;&#30456;&#24212;&#30340; SPI &#25193;&#23637;&#23454;&#29616;&#31867;&#65292;&#25105;&#20204;&#30452;&#25509;&#21435;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26377;&#21738;&#20123; SPI &#23454;&#29616;&#31867;&#65306;
+   <br>
+  </span>
+  <img class="ne-image" id="XR3ny" src="EPUB/imgXR3ny" width="692">
+ </p>
+ <p class="ne-p" id="ubcdcf38c">
+  <br>
+ </p>
+ <p class="ne-p" id="u36decaf0">
+  <span class="ne-text">
+   &#30001;&#19978;&#22270;&#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21482;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010; SPI &#23454;&#29616;&#31867;
+   <br>
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#21733;&#20204;&#22312; SpringBoot &#30340;&#21551;&#21160;&#36807;&#31243;&#20013;&#23588;&#20854;&#37325;&#35201;&#65292;&#30001;&#20854;&#22312; SpringBoot &#21551;&#21160;&#36807;&#31243;&#30340;&#19981;&#21516;&#38454;&#27573;&#21457;&#23556;&#19981;&#21516;&#30340; SpringBoot &#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#21363;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     SpringApplicationRunListeners
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#23545;&#35937;&#27809;&#26377;&#25215;&#25285;&#24191;&#25773;&#20107;&#20214;&#30340;&#32844;&#36131;&#65292;&#32780;&#26368;&#32456;&#26159;&#22996;&#25176;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     EventPublishingRunListener
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#36825;&#20010;&#21733;&#20204;&#26469;&#24191;&#25773;&#20107;&#20214;&#30340;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u7094e37b">
+  <br>
+ </p>
+ <p class="ne-p" id="u4a16b7f9">
+  <span class="ne-text">
+   &#22240;&#20026;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#21152;&#36733;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#21518;&#36824;&#20250;&#23454;&#20363;&#21270;&#35813;&#31867;&#65292;&#37027;&#20040;&#25105;&#20204;&#20877;&#36319;&#36827;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#65292;&#30475;&#30475;&#20854;&#26159;&#22914;&#20309;&#25215;&#25285;&#21457;&#23556; SpringBoot &#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#36825;&#19968;&#32844;&#36131;&#30340;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="ua4509da3">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b932300e">// EventPublishingRunListener.java
+
+public class EventPublishingRunListener implements SpringApplicationRunListener, Ordered {
+
+	private final SpringApplication application;
+
+	private final String[] args;
+	/**
+	 * &#25317;&#26377;&#19968;&#20010;SimpleApplicationEventMulticaster&#20107;&#20214;&#24191;&#25773;&#22120;&#26469;&#24191;&#25773;&#20107;&#20214;
+	 */
+	private final SimpleApplicationEventMulticaster initialMulticaster;
+
+	public EventPublishingRunListener(SpringApplication application, String[] args) {
+		this.application = application;
+		this.args = args;
+		// &#26032;&#24314;&#19968;&#20010;&#20107;&#20214;&#24191;&#25773;&#22120;SimpleApplicationEventMulticaster&#23545;&#35937;
+		this.initialMulticaster = new SimpleApplicationEventMulticaster();
+		// &#36941;&#21382;&#22312;&#26500;&#36896;SpringApplication&#23545;&#35937;&#26102;&#20174;spring.factories&#37197;&#32622;&#25991;&#20214;&#20013;&#33719;&#21462;&#30340;&#20107;&#20214;&#30417;&#21548;&#22120;
+		for (ApplicationListener&lt;?&gt; listener : application.getListeners()) {
+			// &#23558;&#20174;spring.factories&#37197;&#32622;&#25991;&#20214;&#20013;&#33719;&#21462;&#30340;&#20107;&#20214;&#30417;&#21548;&#22120;&#20204;&#28155;&#21152;&#21040;&#20107;&#20214;&#24191;&#25773;&#22120;initialMulticaster&#23545;&#35937;&#30340;&#30456;&#20851;&#38598;&#21512;&#20013;
+			this.initialMulticaster.addApplicationListener(listener);
+		}
+	}
+
+	@Override
+	public int getOrder() {
+		return 0;
+	}
+	// &#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationStartingEvent&#12305;&#20107;&#20214;
+	@Override
+	public void starting() {
+		this.initialMulticaster.multicastEvent(
+				new ApplicationStartingEvent(this.application, this.args));
+	}
+	// &#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationEnvironmentPreparedEvent&#12305;&#20107;&#20214;
+	@Override
+	public void environmentPrepared(ConfigurableEnvironment environment) {
+		this.initialMulticaster.multicastEvent(new ApplicationEnvironmentPreparedEvent(
+				this.application, this.args, environment));
+	}
+	// &#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationContextInitializedEvent&#12305;&#20107;&#20214;
+	@Override
+	public void contextPrepared(ConfigurableApplicationContext context) {
+		this.initialMulticaster.multicastEvent(new ApplicationContextInitializedEvent(
+				this.application, this.args, context));
+	}
+	// &#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationPreparedEvent&#12305;&#20107;&#20214;
+	@Override
+	public void contextLoaded(ConfigurableApplicationContext context) {
+		for (ApplicationListener&lt;?&gt; listener : this.application.getListeners()) {
+			if (listener instanceof ApplicationContextAware) {
+				((ApplicationContextAware) listener).setApplicationContext(context);
+			}
+			context.addApplicationListener(listener);
+		}
+		this.initialMulticaster.multicastEvent(
+				new ApplicationPreparedEvent(this.application, this.args, context));
+	}
+	// &#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationStartedEvent&#12305;&#20107;&#20214;
+	@Override
+	public void started(ConfigurableApplicationContext context) {
+		context.publishEvent(
+				new ApplicationStartedEvent(this.application, this.args, context));
+	}
+	// &#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationReadyEvent&#12305;&#20107;&#20214;
+	@Override
+	public void running(ConfigurableApplicationContext context) {
+		context.publishEvent(
+				new ApplicationReadyEvent(this.application, this.args, context));
+	}
+	// &#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationFailedEvent&#12305;&#20107;&#20214;
+	@Override
+	public void failed(ConfigurableApplicationContext context, Throwable exception) {
+		ApplicationFailedEvent event = new ApplicationFailedEvent(this.application,
+				this.args, context, exception);
+		if (context != null &amp;&amp; context.isActive()) {
+			// Listeners have been registered to the application context so we should
+			// use it at this point if we can
+			context.publishEvent(event);
+		}
+		else {
+			// An inactive context may not have a multicaster so we use our multicaster to
+			// call all of the context's listeners instead
+			if (context instanceof AbstractApplicationContext) {
+				for (ApplicationListener&lt;?&gt; listener : ((AbstractApplicationContext) context)
+						.getApplicationListeners()) {
+					this.initialMulticaster.addApplicationListener(listener);
+				}
+			}
+			this.initialMulticaster.setErrorHandler(new LoggingErrorHandler());
+			this.initialMulticaster.multicastEvent(event);
+		}
+	}
+
+	// ...&#30465;&#30053;&#38750;&#20851;&#38190;&#20195;&#30721;
+}</pre>
+ <p class="ne-p" id="uaf3096af">
+  <br>
+ </p>
+ <p class="ne-p" id="uc9c258b7">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#23450;&#20041;&#20102; SpringBoot &#21551;&#21160;&#26102;&#21457;&#23556;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#30340;&#25509;&#21475;&#26041;&#27861;&#65292;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#27491;&#26159;&#36890;&#36807;&#23454;&#29616;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    starting
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    environmentPrepared
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    contextPrepared
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#26041;&#27861;&#26469;&#24191;&#25773; SpringBoot &#19981;&#21516;&#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;&#25105;&#20204;&#30452;&#25509;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringApplicationRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#28304;&#30721;&#22909;&#20102;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uf7f6e9a7">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="0df45358">// SpringApplicationRunListener.java
+
+public interface SpringApplicationRunListener {
+
+	void starting();
+
+	void environmentPrepared(ConfigurableEnvironment environment);
+
+	void contextPrepared(ConfigurableApplicationContext context);
+
+	void contextLoaded(ConfigurableApplicationContext context);
+
+	void started(ConfigurableApplicationContext context);
+
+	void running(ConfigurableApplicationContext context);
+
+	void failed(ConfigurableApplicationContext context, Throwable exception);
+}</pre>
+ <p class="ne-p" id="uc26abfe5">
+  <br>
+ </p>
+ <p class="ne-p" id="uc2143b73">
+  <span class="ne-text">
+   &#25105;&#20204;&#20877;&#25509;&#30528;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#31867;&#65292;&#21487;&#20197;&#30475;&#21040;&#20854;&#26377;&#19968;&#20010;&#37325;&#35201;&#30340;&#25104;&#21592;&#23646;&#24615;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    initialMulticaster
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#35813;&#25104;&#21592;&#23646;&#24615;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SimpleApplicationEventMulticaster
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#23545;&#35937;&#65292;&#35813;&#31867;&#27491;&#26159;&#25215;&#25285;&#20102;&#24191;&#25773; SpringBoot &#21551;&#21160;&#26102;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#30340;&#32844;&#36131;,
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#21363;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     EventPublishingRunListener
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#23545;&#35937;&#27809;&#26377;&#25215;&#25285;&#24191;&#25773;&#20107;&#20214;&#30340;&#32844;&#36131;&#65292;&#32780;&#26368;&#32456;&#26159;&#22996;&#25176;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     SimpleApplicationEventMulticaster
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#36825;&#20010;&#21733;&#20204;&#26469;&#24191;&#25773;&#20107;&#20214;&#30340;&#12290;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#20013;&#20063;&#21487;&#20197;&#30475;&#21040;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    starting
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    environmentPrepared
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    contextPrepared
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#26041;&#27861;&#20013;&#20063;&#27491;&#26159;&#36890;&#36807;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SimpleApplicationEventMulticaster
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#23545;&#35937;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    multicastEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26469;&#24191;&#25773;&#20107;&#20214;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue8d89fa0">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u14dadedf">
+   <strong>
+    <span class="ne-text">
+     &#24605;&#32771;
+    </span>
+   </strong>
+   <span class="ne-text">
+    SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#21457;&#23556;&#20107;&#20214;&#26102;&#20107;&#20214;&#24191;&#25773;&#32773;&#26159;&#23618;&#23618;&#22996;&#25176;&#32844;&#36131;&#30340;&#65292;&#36215;&#21021;&#30001;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SpringApplicationRunListeners
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#25215;&#25285;&#65292;&#28982;&#21518;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SpringApplicationRunListeners
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#23558;&#24191;&#25773;&#20107;&#20214;&#32844;&#36131;&#22996;&#25176;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     EventPublishingRunListener
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#65292;&#26368;&#32456;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     EventPublishingRunListener
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#23558;&#24191;&#25773;&#20107;&#20214;&#30340;&#32844;&#36131;&#22996;&#25176;&#32473;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SimpleApplicationEventMulticaster
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#12290;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#20026;&#20160;&#20040;&#35201;&#23618;&#23618;&#22996;&#25176;&#36825;&#20040;&#20570;&#21602;&#65311;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#36825;&#20010;&#20540;&#24471;&#22823;&#23478;&#24605;&#32771;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u7dcbe78c">
+  <br>
+ </p>
+ <p class="ne-p" id="ua15235dd">
+  <span class="ne-text">
+   &#21069;&#38754;&#35762;&#21040;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#21152;&#36733;&#20986;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#21518;&#20250;&#23454;&#20363;&#21270;&#65292;&#32780;&#23454;&#20363;&#21270;&#24517;&#28982;&#20250;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#20989;&#25968;&#26469;&#36827;&#34892;&#23454;&#20363;&#21270;&#65292;&#22240;&#27492;&#25105;&#20204;&#25509;&#19979;&#26469;&#20998;&#26512;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#20989;&#25968;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uf6193f2c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="6dc060ec">// EventPublishingRunListener.java
+
+public EventPublishingRunListener(SpringApplication application, String[] args) {
+	this.application = application;
+	this.args = args;
+	// &#26032;&#24314;&#19968;&#20010;&#20107;&#20214;&#24191;&#25773;&#22120;SimpleApplicationEventMulticaster&#23545;&#35937;
+	this.initialMulticaster = new SimpleApplicationEventMulticaster();
+	// &#36941;&#21382;&#22312;&#26500;&#36896;SpringApplication&#23545;&#35937;&#26102;&#20174;spring.factories&#37197;&#32622;&#25991;&#20214;&#20013;&#33719;&#21462;&#30340;&#20107;&#20214;&#30417;&#21548;&#22120;
+	for (ApplicationListener&lt;?&gt; listener : application.getListeners()) {
+		// &#23558;&#20174;spring.factories&#37197;&#32622;&#25991;&#20214;&#20013;&#33719;&#21462;&#30340;&#20107;&#20214;&#30417;&#21548;&#22120;&#20204;&#28155;&#21152;&#21040;&#20107;&#20214;&#24191;&#25773;&#22120;initialMulticaster&#23545;&#35937;&#30340;&#30456;&#20851;&#38598;&#21512;&#20013;
+		this.initialMulticaster.addApplicationListener(listener);
+	}
+}</pre>
+ <p class="ne-p" id="uc11c3603">
+  <br>
+ </p>
+ <p class="ne-p" id="ue371ec33">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#20989;&#25968;&#20013;&#26377;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    for
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24490;&#29615;&#20250;&#36941;&#21382;&#20043;&#21069;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#21152;&#36733;&#30340;&#30417;&#21548;&#22120;&#20204;&#65292;&#28982;&#21518;&#28155;&#21152;&#21040;&#38598;&#21512;&#20013;&#32531;&#23384;&#36215;&#26469;&#65292;&#29992;&#20110;&#20197;&#21518;&#24191;&#25773;&#21508;&#31181;&#20107;&#20214;&#26102;&#30452;&#25509;&#20174;&#36825;&#20010;&#38598;&#21512;&#20013;&#21462;&#20986;&#26469;&#21363;&#21487;&#65292;&#32780;&#19981;&#29992;&#20877;&#21435;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#21152;&#36733;&#65292;&#25552;&#39640;&#25928;&#29575;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf485105c">
+  <br>
+ </p>
+ <h3 id="7a35eac0">
+  <span class="ne-text">
+   3.2 &#24191;&#25773; SpringBoot &#30340;&#20869;&#32622;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;
+  </span>
+ </h3>
+ <p class="ne-p" id="ud00c5d6e">
+  <br>
+ </p>
+ <p class="ne-p" id="u34b5da60">
+  <span class="ne-text">
+   &#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37197;&#32622;&#25991;&#20214;&#20013;&#21152;&#36733;&#24182;&#23454;&#20363;&#21270;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#21518;&#65292;&#37027;&#20040;&#22312;&#22312; SpringBoot &#30340;&#21551;&#21160;&#36807;&#31243;&#20013;&#20250;&#21457;&#23556;&#19968;&#31995;&#21015; SpringBoot &#20869;&#32622;&#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;&#25105;&#20204;&#20877;&#26469;&#22238;&#39038;&#19979; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#30340;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u40f02416">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="d1dd1e7e-1">// SpringApplication.java
+
+public ConfigurableApplicationContext run(String... args) {
+	StopWatch stopWatch = new StopWatch();
+	stopWatch.start();
+	ConfigurableApplicationContext context = null;
+	Collection&lt;SpringBootExceptionReporter&gt; exceptionReporters = new ArrayList&lt;&gt;();
+	configureHeadlessProperty();
+	// &#12304;0&#12305;&#26032;&#24314;&#19968;&#20010;SpringApplicationRunListeners&#23545;&#35937;&#29992;&#20110;&#21457;&#23556;SpringBoot&#21551;&#21160;&#36807;&#31243;&#20013;&#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;
+	SpringApplicationRunListeners listeners = getRunListeners(args);
+	// &#12304;1&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationStartingEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;SpringApplication&#24320;&#22987;&#21551;&#21160;
+	listeners.starting();
+	try {
+		ApplicationArguments applicationArguments = new DefaultApplicationArguments(
+				args);
+		// &#12304;2&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationEnvironmentPreparedEvent&#12305;&#20107;&#20214;&#65292;&#27492;&#26102;&#20250;&#21435;&#21152;&#36733;application.properties&#31561;&#37197;&#32622;&#25991;&#20214;&#30340;&#29615;&#22659;&#21464;&#37327;&#65292;&#21516;&#26102;&#20063;&#26377;&#26631;&#24535;&#29615;&#22659;&#21464;&#37327;&#24050;&#32463;&#20934;&#22791;&#22909;&#30340;&#24847;&#24605;
+		ConfigurableEnvironment environment = prepareEnvironment(listeners,
+				applicationArguments);
+		configureIgnoreBeanInfo(environment);
+		Banner printedBanner = printBanner(environment);
+		context = createApplicationContext();
+		exceptionReporters = getSpringFactoriesInstances(
+				SpringBootExceptionReporter.class,
+				new Class[] { ConfigurableApplicationContext.class }, context);
+		// &#12304;3&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationContextInitializedEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;context&#23481;&#22120;&#34987;&#21019;&#24314;&#19988;&#24050;&#20934;&#22791;&#22909;
+		// &#12304;4&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationPreparedEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;Context&#23481;&#22120;&#24050;&#32463;&#20934;&#22791;&#23436;&#25104;
+		prepareContext(context, environment, listeners, applicationArguments,
+				printedBanner);
+		refreshContext(context);
+		afterRefresh(context, applicationArguments);
+		stopWatch.stop();
+		if (this.logStartupInfo) {
+			new StartupInfoLogger(this.mainApplicationClass)
+					.logStarted(getApplicationLog(), stopWatch);
+		}
+		// &#12304;5&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationStartedEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;spring&#23481;&#22120;&#24050;&#32463;&#21047;&#26032;&#65292;&#27492;&#26102;&#25152;&#26377;&#30340;bean&#23454;&#20363;&#37117;&#24050;&#32463;&#21152;&#36733;&#23436;&#27605;
+		listeners.started(context);
+		callRunners(context, applicationArguments);
+	}
+	// &#12304;6&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationFailedEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;SpringBoot&#21551;&#21160;&#22833;&#36133;
+	catch (Throwable ex) {
+		handleRunFailure(context, ex, exceptionReporters, listeners);
+		throw new IllegalStateException(ex);
+	}
+	try {
+		// &#12304;7&#12305;&#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationReadyEvent&#12305;&#20107;&#20214;&#65292;&#26631;&#24535;SpringApplication&#24050;&#32463;&#27491;&#22312;&#36816;&#34892;&#21363;&#24050;&#32463;&#25104;&#21151;&#21551;&#21160;&#65292;&#21487;&#20197;&#25509;&#25910;&#26381;&#21153;&#35831;&#27714;&#20102;&#12290;
+		listeners.running(context);
+	}
+	catch (Throwable ex) {
+		handleRunFailure(context, ex, exceptionReporters, null);
+		throw new IllegalStateException(ex);
+	}
+	return context;
+}</pre>
+ <p class="ne-p" id="u3294539f">
+  <br>
+ </p>
+ <p class="ne-p" id="u447bbb3e">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#22312; SpringBoot &#30340;&#21551;&#21160;&#36807;&#31243;&#20013;&#24635;&#20849;&#20250;&#21457;&#23556; 7 &#31181;&#19981;&#21516;&#31867;&#22411;&#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;&#26469;&#26631;&#24535; SpringBoot &#30340;&#19981;&#21516;&#21551;&#21160;&#38454;&#27573;&#65292;&#21516;&#26102;&#65292;&#36825;&#20123;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#30340;&#30417;&#21548;&#22120;&#20204;&#20063;&#20250;&#25191;&#34892;&#19968;&#20123;&#21551;&#21160;&#36807;&#31243;&#20013;&#30340;&#21021;&#22987;&#21270;&#36923;&#36753;&#65292;&#20851;&#20110;&#36825;&#20123;&#30417;&#21548;&#22120;&#30340;&#21021;&#22987;&#21270;&#36923;&#36753;&#23558;&#22312;&#19979;&#19968;&#31687;&#20869;&#23481;&#20013;&#20250;&#20998;&#26512;&#12290;&#20197;&#19979;&#26159; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#35201;&#21457;&#23556;&#30340;&#20107;&#20214;&#31867;&#22411;&#65292;&#20854;&#20013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationFailedEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22312; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#36935;&#21040;&#24322;&#24120;&#25165;&#20250;&#21457;&#23556;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6ba722ef">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="ubc7b95bb">
+   <code class="ne-code">
+    <span class="ne-text">
+     ApplicationStartingEvent
+    </span>
+   </code>
+  </li>
+  <li id="u6f6735b3">
+   <code class="ne-code">
+    <span class="ne-text">
+     ApplicationEnvironmentPreparedEvent
+    </span>
+   </code>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u38731644">
+   <code class="ne-code">
+    <span class="ne-text">
+     ApplicationContextInitializedEvent
+    </span>
+   </code>
+  </li>
+  <li id="u0cd5d9e7">
+   <code class="ne-code">
+    <span class="ne-text">
+     ApplicationPreparedEvent
+    </span>
+   </code>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="5">
+  <li id="u47bf59a2">
+   <code class="ne-code">
+    <span class="ne-text">
+     ApplicationStartedEvent
+    </span>
+   </code>
+  </li>
+  <li id="u8afcd325">
+   <code class="ne-code">
+    <span class="ne-text">
+     ApplicationFailedEvent
+    </span>
+   </code>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="7">
+  <li id="u5df1b627">
+   <code class="ne-code">
+    <span class="ne-text">
+     ApplicationReadyEvent
+    </span>
+   </code>
+  </li>
+ </ol>
+ <p class="ne-p" id="ud63c76e9">
+  <br>
+ </p>
+ <p class="ne-p" id="u4f0fab4a">
+  <span class="ne-text">
+   &#25105;&#20204;&#20197;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    listeners.starting();
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#21477;&#20195;&#30721;&#20026;&#20363;&#65292;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#21457;&#23556;&#20107;&#20214;&#30340;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u39a31619">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="abd8e09c">// SpringApplicationRunListeners.java
+
+public void starting() {
+	// &#36941;&#21382;listeners&#38598;&#21512;&#65292;&#36825;&#37324;&#23454;&#36136;&#21462;&#20986;&#30340;&#23601;&#26159;&#21018;&#25165;&#20174;spring.factories&#20013;&#21462;&#20986;&#30340;SPI&#23454;&#29616;&#31867;EventPublishingRunListener
+	// &#32780;EventPublishingRunListener&#23545;&#35937;&#25215;&#25285;&#20102;SpringBoot&#21551;&#21160;&#36807;&#31243;&#20013;&#36127;&#36131;&#24191;&#25773;&#19981;&#21516;&#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;
+	for (SpringApplicationRunListener listener : this.listeners) {
+	        // &#35843;&#29992;EventPublishingRunListener&#30340;starting&#26041;&#27861;&#26469;&#24191;&#25773;ApplicationStartingEvent&#20107;&#20214;
+		listener.starting();
+	}
+}</pre>
+ <p class="ne-p" id="u0935dc42">
+  <br>
+ </p>
+ <p class="ne-p" id="uffd70e2b">
+  <span class="ne-text">
+   &#32487;&#32493;&#36319;&#36827;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    listener.starting();
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;:
+  </span>
+ </p>
+ <p class="ne-p" id="u5db1a8d2">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="c730ba1e">EventPublishingRunListener.java
+
+// &#12299;&#12299;&#12299;&#12299;&#12299;&#21457;&#23556;&#12304;ApplicationStartingEvent&#12305;&#20107;&#20214;
+public void starting() {
+	// EventPublishingRunListener&#23545;&#35937;&#23558;&#21457;&#24067;ApplicationStartingEvent&#36825;&#20214;&#20107;&#24773;&#22996;&#25176;&#32473;&#20102;initialMulticaster&#23545;&#35937;
+	// &#35843;&#29992;initialMulticaster&#30340;multicastEvent&#26041;&#27861;&#26469;&#21457;&#23556;ApplicationStartingEvent&#20107;&#20214;
+	this.initialMulticaster.multicastEvent(
+			new ApplicationStartingEvent(this.application, this.args));
+}</pre>
+ <p class="ne-p" id="ucda4ab6e">
+  <br>
+ </p>
+ <p class="ne-p" id="u9d76a3b0">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EventPublishingRunListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#23558;&#21457;&#24067;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationStartingEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20214;&#20107;&#24773;&#22996;&#25176;&#32473;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SimpleApplicationEventMulticaster
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    initialMulticaster
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+   <br>
+  </span>
+  <span class="ne-text">
+   ,&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    initialMulticaster
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#26368;&#32456;&#20250;&#35843;&#29992;&#20854;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    multicastEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26469;&#21457;&#23556;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ApplicationStartingEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20107;&#20214;&#12290;&#20851;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SimpleApplicationEventMulticaster
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#22914;&#20309;&#24191;&#25773;&#20107;&#20214;&#65292;&#31508;&#32773;&#24050;&#32463;&#22312;
+  </span>
+  <a class="ne-link" data-href="https://juejin.im/post/5e421bfc6fb9a07cd80f1354" href="https://juejin.im/post/5e421bfc6fb9a07cd80f1354" target="_blank">
+   <span class="ne-text">
+    Spring &#26159;&#22914;&#20309;&#23454;&#29616;&#20107;&#20214;&#30417;&#21548;&#26426;&#21046;&#30340;&#65311; Spring &#28304;&#30721;&#65288;&#20108;&#65289;
+   </span>
+  </a>
+  <span class="ne-text">
+   &#36825;&#31687;&#25991;&#31456;&#24050;&#32463;&#35814;&#32454;&#20998;&#26512;&#65292;&#36825;&#37324;&#19981;&#20877;&#36184;&#36848;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc232deb2">
+  <br>
+ </p>
+ <p class="ne-p" id="ua60820d7">
+  <span class="ne-text">
+   &#20851;&#20110; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#21457;&#23556;&#20854;&#20182;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#30340;&#28304;&#30721;&#36825;&#37324;&#19981;&#20877;&#20998;&#26512;
+  </span>
+ </p>
+ <p class="ne-p" id="u48183e22">
+  <br>
+ </p>
+ <h2 id="e9c3e3d6">
+  <span class="ne-text">
+   4 SpringBoot &#30340;&#20869;&#32622;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#24635;&#32467;
+  </span>
+ </h2>
+ <p class="ne-p" id="u54cd369f">
+  <br>
+ </p>
+ <p class="ne-p" id="ub8b6ae29">
+  <span class="ne-text">
+   &#22909;&#20102;&#65292;&#21069;&#38754;&#24050;&#32463;&#20998;&#26512;&#20102; SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#35201;&#21457;&#23556;&#30340;&#21508;&#31181;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;&#19979;&#38754;&#21015;&#19968;&#20010;&#34920;&#26684;&#24635;&#32467;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ucaee43e3">
+  <br>
+ </p>
+ <p class="ne-p" id="ud4975bb2">
+  <img class="ne-image" id="XP6kV" src="EPUB/imgXP6kV" width="881">
+ </p>
+ <p class="ne-p" id="u104fedbb">
+  <br>
+ </p>
+ <h2 id="71cd23f3">
+  <span class="ne-text">
+   5 &#23567;&#32467;
+  </span>
+ </h2>
+ <p class="ne-p" id="ud6aa66ad">
+  <br>
+ </p>
+ <p class="ne-p" id="u69db36cc">
+  <span class="ne-text">
+   SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#24191;&#25773;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#30340;&#28304;&#30721;&#20998;&#26512;&#23601;&#21040;&#27492;&#32467;&#26463;&#20102;&#65292;&#19979;&#19968;&#31687;&#20250;&#32487;&#32493;&#20171;&#32461;&#30417;&#21548;&#36825;&#20123;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#30340;&#30417;&#21548;&#22120;&#20204;&#12290;&#25105;&#20204;&#20877;&#22238;&#39038;&#26412;&#31687;&#20869;&#23481;&#24635;&#32467;&#19979;&#20851;&#38190;&#28857;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uc03dbe2f">
+  <br>
+ </p>
+ <p class="ne-p" id="u385fbdbe">
+  <span class="ne-text">
+   SpringBoot &#21551;&#21160;&#36807;&#31243;&#20013;&#20250;&#21457;&#23556; 7 &#31181;&#31867;&#22411;&#30340;&#29983;&#21629;&#21608;&#26399;&#20107;&#20214;&#65292;&#26631;&#24535;&#19981;&#21516;&#30340;&#21551;&#21160;&#38454;&#27573;&#65292;&#28982;&#21518;&#30456;&#24212;&#30340;&#30417;&#21548;&#22120;&#20250;&#30417;&#21548;&#36825;&#20123;&#20107;&#20214;&#26469;&#25191;&#34892;&#19968;&#20123;&#21021;&#22987;&#21270;&#36923;&#36753;&#24037;&#20316;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u58880900">
+  <br>
+ </p>
+ <p class="ne-p" id="uf72c2d37">
+  <strong>
+   <span class="ne-text">
+    &#12304;&#28304;&#30721;&#31508;&#35760;&#12305;Github &#28304;&#30721;&#20998;&#26512;&#39033;&#30446;&#19978;&#32447;&#21862;&#65281;&#65281;&#65281;&#19979;&#38754;&#26159;&#31508;&#35760;&#30340; Github &#22320;&#22336;&#65306;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="udc0bdba5">
+  <br>
+ </p>
+ <p class="ne-p" id="ufe524021">
+  <a class="ne-link" data-href="https://github.com/yuanmabiji/Java-SourceCode-Blogs" href="https://github.com/yuanmabiji/Java-SourceCode-Blogs" target="_blank">
+   <span class="ne-text">
+    https://github.com/yuanmabiji/Java-SourceCode-Blogs
+   </span>
+  </a>
+ </p>
+ <p class="ne-p" id="u2420ec29">
+  <br>
+ </p>
+ <p class="ne-p" id="u1aa5838a">
+  <strong>
+   <span class="ne-text">
+    &#21407;&#21019;&#19981;&#26131;&#65292;&#24110;&#24537; Star &#19968;&#19979;&#21591;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65281;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

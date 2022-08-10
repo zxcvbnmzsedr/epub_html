@@ -1,0 +1,3124 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>3 &#21161;&#21147;SpringBoot&#33258;&#21160;&#37197;&#32622;&#30340;&#26465;&#20214;&#27880;&#35299;&#21407;&#29702;&#25581;&#31192;</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="ue5402441">
+  <strong>
+   <span class="ne-text">
+    &#27880;&#65306;&#35813;&#28304;&#30721;&#20998;&#26512;&#23545;&#24212; SpringBoot &#29256;&#26412;&#20026; 2.1.0.RELEASE
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u8f70be5c">
+  <br>
+ </p>
+ <h2 id="uKI0p">
+  <span class="ne-text">
+   1 &#21069;&#35328;
+  </span>
+ </h2>
+ <p class="ne-p" id="uf3f46606">
+  <br>
+ </p>
+ <p class="ne-p" id="uc44eeb3a">
+  <span class="ne-text">
+   &#19978;&#19968;&#31687;&#65292;&#25105;&#20204;&#20998;&#26512;&#20102; SpringBoot &#28304;&#30721;&#32467;&#26500;&#21450;&#21508;&#20010;&#27169;&#22359; pom &#20043;&#38388;&#30340;&#20851;&#31995;&#21518;&#65292;&#37027;&#20040;&#27492;&#31687;&#24320;&#22987;&#23601;&#24320;&#22987;&#35299;&#24320; SpringBoot &#26032;&#29305;&#24615;&#20043;&#19968;--&#33258;&#21160;&#37197;&#32622;&#30340;&#31070;&#31192;&#38754;&#32433;&#20102;&#12290;&#22240;&#20026; SpringBoot &#33258;&#21160;&#37197;&#32622;&#21407;&#29702;&#26159;&#22522;&#20110;&#20854;&#22823;&#37327;&#30340;&#26465;&#20214;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionalOnXXX
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#22240;&#27492;&#65292;&#26412;&#33410;&#25105;&#20204;&#20808;&#26469;&#25784;&#19979; Spring &#30340;&#26465;&#20214;&#27880;&#35299;&#30340;&#30456;&#20851;&#28304;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u54dd5331">
+  <br>
+ </p>
+ <h2 id="kWh9E">
+  <span class="ne-text">
+   2 SpringBoot &#30340;&#27966;&#29983;&#26465;&#20214;&#27880;&#35299;
+  </span>
+ </h2>
+ <p class="ne-p" id="u6e0d1143">
+  <br>
+ </p>
+ <p class="ne-p" id="u2d17055c">
+  <span class="ne-text">
+   &#25105;&#20204;&#37117;&#30693;&#36947;&#65292;SpringBoot &#33258;&#21160;&#37197;&#32622;&#26159;&#38656;&#35201;&#28385;&#36275;&#30456;&#24212;&#30340;&#26465;&#20214;&#25165;&#20250;&#33258;&#21160;&#37197;&#32622;,&#22240;&#27492; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#22823;&#37327;&#24212;&#29992;&#20102;&#26465;&#20214;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionalOnXXX
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#22914;&#19979;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ub190932e">
+  <br>
+ </p>
+ <p class="ne-p" id="u6b12b49d">
+  <img class="ne-image" id="WuQgY" src="EPUB/imgWuQgY" width="1217">
+ </p>
+ <p class="ne-p" id="ua6daa570">
+  <br>
+ </p>
+ <p class="ne-p" id="ubde78af8">
+  <span class="ne-text">
+   &#37027;&#20040;&#19978;&#22270;&#30340;&#26465;&#20214;&#27880;&#35299;&#22914;&#20309;&#20351;&#29992;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="udfed39b9">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u82e3a3a9">
+   <span class="ne-text">
+    &#20030;&#20010;&#26647;&#23376;&#65292;&#25105;&#20204;&#26469;&#30475;&#19979;&#22914;&#20309;&#20351;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnClass
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnProperty
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36825;&#20004;&#20010;&#27880;&#35299;&#65292;&#20808;&#30475;&#19979;&#22270;&#20195;&#30721;&#65306;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u34a8019b">
+  <br>
+ </p>
+ <p class="ne-p" id="ubded2427">
+  <img class="ne-image" id="T88pS" src="EPUB/imgT88pS" width="991">
+  <span class="ne-text">
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    HelloWorldEnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;&#24212;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionalOnProperty
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20004;&#20010;&#26465;&#20214;&#27880;&#35299;&#65292;&#37027;&#20040;&#21482;&#26377;&#22312;&#28385;&#36275;:
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classpath
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#23384;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    HelloWorldComponent.class
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;&#37197;&#32622;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    hello.world.name
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    hello.world.age
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23646;&#24615;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#36825;&#20004;&#20010;&#26465;&#20214;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#30340;&#24773;&#20917;&#19979;&#25165;&#20250;&#21019;&#24314;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    HelloWorldComponent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u0368e4de">
+  <br>
+ </p>
+ <p class="ne-p" id="uc0c765e2">
+  <span class="ne-text">
+   &#20854;&#23454; SpringBoot &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnXXX
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#26465;&#20214;&#27880;&#35299;&#37117;&#26159;&#27966;&#29983;&#27880;&#35299;&#65292;&#37027;&#20040;&#20160;&#20040;&#26159;&#27966;&#29983;&#27880;&#35299;&#21602;&#65311; &#23601;&#25343;&#19978;&#38754;&#30340;&#26647;&#23376;&#26469;&#35828;&#65292;&#20197;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass(HelloWorldComponent.class)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20026;&#20363;&#65292;&#25105;&#20204;&#25171;&#24320;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#28304;&#30721;&#65292;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u1d1f4431">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="dfySr">@Target({
+    ElementType.TYPE,
+    ElementType.METHOD
+})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Conditional(OnClassCondition.class)
+public @interface ConditionalOnClass {
+    Class &lt;&lt; ? &gt; [] value() default {};
+    String[] name() default {};
+}</pre>
+ <p class="ne-p" id="u7d90bbd9">
+  <br>
+ </p>
+ <p class="ne-p" id="u217d83c9">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#19978;&#38754;&#21448;&#26631;&#27880;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Conditional(OnClassCondition.class)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#65292;&#22240;&#27492;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Conditional
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#27966;&#29983;&#27880;&#35299;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Conditional(OnClassCondition.class)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#26159;&#31561;&#20215;&#30340;&#65292;&#21363;&#36825;&#20004;&#20010;&#27880;&#35299;&#26631;&#27880;&#22312;&#26576;&#20010;&#37197;&#32622;&#31867;&#19978;&#30340;&#25928;&#26524;&#26159;&#31561;&#20215;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u08affc03">
+  <br>
+ </p>
+ <p class="ne-p" id="uf6446886">
+  <span class="ne-text">
+   &#32780; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#21407;&#29702;&#27491;&#26159;&#24314;&#31435;&#22312;&#36825;&#20123;&#22823;&#37327;&#30340;&#27966;&#29983;&#26465;&#20214;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnXXX
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20043;&#19978;&#65292;&#32780;&#36825;&#20123;&#26465;&#20214;&#27880;&#35299;&#30340;&#21407;&#29702;&#36319; Spring &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#26377;&#20851;&#12290;&#22240;&#27492;&#25105;&#20204;&#20808;&#26469;&#30740;&#31350;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#30456;&#20851;&#28304;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua9f1d2de">
+  <br>
+ </p>
+ <h2 id="pJ72D">
+  <span class="ne-text">
+   3 Condition &#25509;&#21475;
+  </span>
+ </h2>
+ <p class="ne-p" id="u935c3a81">
+  <br>
+ </p>
+ <h3 id="faF37">
+  <span class="ne-text">
+   3.1 Condition &#25509;&#21475;&#28304;&#30721;&#20998;&#26512;
+  </span>
+ </h3>
+ <p class="ne-p" id="ua77c4998">
+  <br>
+ </p>
+ <p class="ne-p" id="u959ac32e">
+  <span class="ne-text">
+   &#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#28304;&#30721;&#21069;&#20808;&#30475;&#19979;&#22914;&#20309;&#33258;&#23450;&#20041;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionalOnXXX
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;,&#20030;&#20010;&#26647;&#23376;&#65292;&#27604;&#22914;&#33258;&#23450;&#20041;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnLinux
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#65292;&#35813;&#27880;&#35299;&#21482;&#26377;&#22312;&#20854;&#23646;&#24615;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    environment
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;"linux"&#25165;&#20250;&#21019;&#24314;&#30456;&#20851;&#30340; bean&#12290;&#23450;&#20041;&#20102;&#20197;&#19979;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u5a224faf">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="gIeta">/**
+ * &#23454;&#29616;spring &#30340;Condition&#25509;&#21475;&#65292;&#24182;&#19988;&#37325;&#20889;matches()&#26041;&#27861;&#65292;&#22914;&#26524;@ConditionalOnLinux&#30340;&#27880;&#35299;&#23646;&#24615;environment&#26159;linux&#23601;&#36820;&#22238;true
+ *
+ */
+public class LinuxCondition implements Condition {
+
+    @Override
+    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+        // &#33719;&#24471;&#27880;&#35299;@ConditionalOnLinux&#30340;&#25152;&#26377;&#23646;&#24615;
+        List &lt; AnnotationAttributes &gt; allAnnotationAttributes = annotationAttributesFromMultiValueMap(
+            metadata.getAllAnnotationAttributes(
+                ConditionalOnLinux.class.getName()));
+        for (AnnotationAttributes annotationAttributes: allAnnotationAttributes) {
+            // &#33719;&#24471;&#27880;&#35299;@ConditionalOnLinux&#30340;environment&#23646;&#24615;
+            String environment = annotationAttributes.getString("environment");
+            // &#33509;environment&#31561;&#20110;linux&#65292;&#21017;&#36820;&#22238;true
+            if ("linux".equals(environment)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+@Target({
+    ElementType.TYPE,
+    ElementType.METHOD
+})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Conditional(LinuxCondition.class)
+public @interface ConditionalOnLinux {
+    // &#26631;&#27880;&#26159;&#21738;&#20010;&#29615;&#22659;
+    String environment() default "";
+
+}
+
+@Configuration
+public class ConditionConfig {
+    // &#21482;&#26377;`@ConditionalOnLinux`&#30340;&#27880;&#35299;&#23646;&#24615;`environment`&#26159;"linux"&#26102;&#25165;&#20250;&#21019;&#24314;bean
+    @Bean
+    @ConditionalOnLinux(environment = "linux")
+    public Environment linuxEnvironment() {
+        return new LinuxEnvironment();
+    }
+}</pre>
+ <p class="ne-p" id="ub34f698b">
+  <br>
+ </p>
+ <p class="ne-p" id="u9fb2cd13">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;&#20195;&#30721;&#25105;&#20204;&#25419;&#19968;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u4962df2c">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u128ca882">
+   <code class="ne-code">
+    <span class="ne-text">
+     LinuxCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#29616;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Condition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25509;&#21475;&#24182;&#23454;&#29616;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     matches
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#65292;&#32780;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     matches
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#21017;&#21028;&#26029;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnLinux
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#27880;&#35299;&#23646;&#24615;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     environment
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26159;&#21542;"linux"&#65292;&#26159;&#21017;&#36820;&#22238; true&#65292;&#21542;&#21017; false&#12290;
+   </span>
+  </li>
+  <li id="u11fae3eb">
+   <span class="ne-text">
+    &#28982;&#21518;&#25105;&#20204;&#20877;&#23450;&#20041;&#20102;&#19968;&#20010;&#27880;&#35299;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnLinux
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#36825;&#20010;&#27880;&#35299;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Conditional
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#27966;&#29983;&#27880;&#35299;&#65292;&#19982;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @Conditional(LinuxCondition.class)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31561;&#20215;&#65292;&#27880;&#24847;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnLinux
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27880;&#35299;&#23450;&#20041;&#20102;&#19968;&#20010;&#23646;&#24615;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     environment
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12290;&#32780;&#25105;&#20204;&#26368;&#32456;&#21487;&#20197;&#21033;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     LinuxCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     matches
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#20013;&#30340;&#21442;&#25968;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     AnnotatedTypeMetadata
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26469;&#33719;&#21462;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnLinux
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#27880;&#35299;&#23646;&#24615;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     environment
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#20540;&#65292;&#20174;&#32780;&#29992;&#26469;&#21028;&#26029;&#20540;&#26159;&#21542;&#20026; linux"&#12290;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u441db6ea">
+   <span class="ne-text">
+    &#26368;&#21518;&#25105;&#20204;&#21448;&#23450;&#20041;&#20102;&#19968;&#20010;&#37197;&#32622;&#31867;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConditionConfig
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#22312;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     linuxEnvironment
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#19978;&#26631;&#27880;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnLinux(environment = "linux")
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12290;&#22240;&#27492;&#65292;&#36825;&#37324;&#21482;&#26377;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     LinuxCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     matches
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#36820;&#22238; true &#25165;&#20250;&#21019;&#24314;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bean
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12290;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="ub5c3eb8e">
+  <br>
+ </p>
+ <p class="ne-p" id="u2404a86c">
+  <span class="ne-text">
+   &#23398;&#20250;&#20102;&#22914;&#20309;&#33258;&#23450;&#20041;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnXXX
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#21518;&#65292;&#25105;&#20204;&#29616;&#22312;&#20877;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ucb868f61">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="QQevg">@FunctionalInterface
+public interface Condition {
+	boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata);
+}</pre>
+ <p class="ne-p" id="u038d3d0c">
+  <br>
+ </p>
+ <p class="ne-p" id="ufce98ce6">
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#20027;&#35201;&#26377;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#35813;&#26041;&#27861;&#20915;&#23450;&#20102;&#26159;&#21542;&#35201;&#27880;&#20876;&#30456;&#24212;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#12290;&#20854;&#20013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#26377;&#20004;&#20010;&#21442;&#25968;&#65292;&#21442;&#25968;&#31867;&#22411;&#20998;&#21035;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionContext
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AnnotatedTypeMetadata
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#20004;&#20010;&#21442;&#25968;&#38750;&#24120;&#37325;&#35201;&#12290;&#23427;&#20204;&#20998;&#21035;&#29992;&#26469;&#33719;&#21462;&#19968;&#20123;&#29615;&#22659;&#20449;&#24687;&#21644;&#27880;&#35299;&#20803;&#25968;&#25454;&#20174;&#32780;&#29992;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#21028;&#26029;&#26159;&#21542;&#31526;&#21512;&#26465;&#20214;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u98198214">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="udbf9fc37">
+   <code class="ne-code">
+    <span class="ne-text">
+     ConditionContext
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#39038;&#21517;&#24605;&#20041;&#65292;&#20027;&#35201;&#26159;&#36319;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Condition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#19978;&#19979;&#25991;&#26377;&#20851;&#65292;&#20027;&#35201;&#29992;&#26469;&#33719;&#21462;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Registry
+    </span>
+   </code>
+   <span class="ne-text">
+    ,
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     BeanFactory
+    </span>
+   </code>
+   <span class="ne-text">
+    ,
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Environment
+    </span>
+   </code>
+   <span class="ne-text">
+    ,
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ResourceLoader
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ClassLoader
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31561;&#12290;&#37027;&#20040;&#33719;&#21462;&#36825;&#20123;&#29992;&#26469;&#24178;&#20160;&#20040;&#21602;&#65311;&#20030;&#20010;&#26647;&#23376;&#65292;&#27604;&#22914;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     OnResourceCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#38656;&#35201;&#38752;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConditionContext
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26469;&#33719;&#21462;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ResourceLoader
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26469;&#21152;&#36733;&#25351;&#23450;&#36164;&#28304;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     OnClassCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#38656;&#35201;&#38752;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConditionContext
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26469;&#33719;&#21462;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ClassLoader
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26469;&#21152;&#36733;&#25351;&#23450;&#31867;&#31561;&#65292;&#19979;&#38754;&#30475;&#19979;&#20854;&#28304;&#30721;&#65306;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u722dce7d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="ihA6y">public interface ConditionContext {
+    BeanDefinitionRegistry getRegistry();
+    @Nullable
+    ConfigurableListableBeanFactory getBeanFactory();
+    Environment getEnvironment();
+    ResourceLoader getResourceLoader();
+    @Nullable
+    ClassLoader getClassLoader();
+}</pre>
+ <p class="ne-p" id="u7ee3826e">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u55d4b8c2">
+   <code class="ne-code">
+    <span class="ne-text">
+     AnnotatedTypeMetadata
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#36825;&#20010;&#36319;&#27880;&#35299;&#20803;&#25968;&#25454;&#26377;&#20851;&#65292;&#21033;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     AnnotatedTypeMetadata
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21487;&#20197;&#25343;&#21040;&#26576;&#20010;&#27880;&#35299;&#30340;&#19968;&#20123;&#20803;&#25968;&#25454;&#65292;&#32780;&#36825;&#20123;&#20803;&#25968;&#25454;&#23601;&#21253;&#21547;&#20102;&#26576;&#20010;&#27880;&#35299;&#37324;&#38754;&#30340;&#23646;&#24615;&#65292;&#27604;&#22914;&#21069;&#38754;&#30340;&#26647;&#23376;&#65292;&#21033;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     AnnotatedTypeMetadata
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21487;&#20197;&#25343;&#21040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnLinux
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#27880;&#35299;&#23646;&#24615;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     environment
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#20540;&#12290;&#19979;&#38754;&#30475;&#19979;&#20854;&#28304;&#30721;&#65306;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="udacf18b5">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="g67Wr">public interface AnnotatedTypeMetadata {
+	boolean isAnnotated(String annotationName);
+	Map&lt;String, Object&gt; getAnnotationAttributes(String annotationName);
+	Map&lt;String, Object&gt; getAnnotationAttributes(String annotationName, boolean classValuesAsString);
+	MultiValueMap&lt;String, Object&gt; getAllAnnotationAttributes(String annotationName);
+	MultiValueMap&lt;String, Object&gt; getAllAnnotationAttributes(String annotationName, boolean classValuesAsString);
+}</pre>
+ <p class="ne-p" id="u37b18101">
+  <br>
+ </p>
+ <p class="ne-p" id="uc096f9e2">
+  <span class="ne-text">
+   &#22238;&#21040;&#21018;&#25165;&#30340;&#26647;&#23376;&#65292;&#25105;&#20204;&#30693;&#36947;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnLinux
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30495;&#27491;&#36215;&#20316;&#29992;&#30340;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#20855;&#20307;&#23454;&#29616;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    LinuxCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#37027;&#20040;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26159;&#22312;&#20309;&#26102;&#34987;&#35843;&#29992;&#30340;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u14994737">
+  <br>
+ </p>
+ <p class="ne-p" id="uf92156de">
+  <span class="ne-text">
+   &#36890;&#36807; idea &#35843;&#35797;&#30475;&#35843;&#29992;&#30340;&#26632;&#24103;&#65292;&#22914;&#19979;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ubd33bb44">
+  <br>
+ </p>
+ <p class="ne-p" id="u0a2053da">
+  <img class="ne-image" id="CGIzi" src="EPUB/imgCGIzi" width="539">
+ </p>
+ <p class="ne-p" id="ucc00480b">
+  <br>
+ </p>
+ <p class="ne-p" id="ua72c31fa">
+  <span class="ne-text">
+   &#21457;&#29616;&#26159;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionEvaluator
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    shouldSkip
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#35843;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    LinuxCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#33258;&#28982;&#25105;&#20204;&#20877;&#21435;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionEvaluator
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    shouldSkip
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26041;&#27861;&#25191;&#34892;&#20102;&#20160;&#20040;&#36923;&#36753;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u30015431">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="JB66W">// &#36825;&#20010;&#26041;&#27861;&#20027;&#35201;&#26159;&#22914;&#26524;&#26159;&#35299;&#26512;&#38454;&#27573;&#21017;&#36339;&#36807;&#65292;&#22914;&#26524;&#26159;&#27880;&#20876;&#38454;&#27573;&#21017;&#19981;&#36339;&#36807;
+public boolean shouldSkip(@Nullable AnnotatedTypeMetadata metadata, @Nullable ConfigurationPhase phase) {
+	// &#33509;&#27809;&#26377;&#34987;@Conditional&#25110;&#20854;&#27966;&#29983;&#27880;&#35299;&#25152;&#26631;&#27880;&#65292;&#21017;&#19981;&#20250;&#36339;&#36807;
+	if (metadata == null || !metadata.isAnnotated(Conditional.class.getName())) {
+		return false;
+	}
+	// &#27809;&#26377;&#25351;&#23450;phase&#65292;&#27880;&#24847;phase&#21487;&#20197;&#20998;&#20026;PARSE_CONFIGURATION&#25110;REGISTER_BEAN&#31867;&#22411;
+	if (phase == null) {
+		// &#33509;&#26631;&#26377;@Component&#65292;@Import&#65292;@Bean&#25110;@Configuration&#31561;&#27880;&#35299;&#30340;&#35805;&#65292;&#21017;&#35828;&#26126;&#26159;PARSE_CONFIGURATION&#31867;&#22411;
+		if (metadata instanceof AnnotationMetadata &amp;&amp;
+				ConfigurationClassUtils.isConfigurationCandidate((AnnotationMetadata) metadata)) {
+			return shouldSkip(metadata, ConfigurationPhase.PARSE_CONFIGURATION);
+		}
+		// &#21542;&#21017;&#26159;REGISTER_BEAN&#31867;&#22411;
+		return shouldSkip(metadata, ConfigurationPhase.REGISTER_BEAN);
+	}
+
+	List&lt;Condition&gt; conditions = new ArrayList&lt;&gt;();
+	// TODO &#33719;&#24471;&#25152;&#26377;&#26631;&#26377;@Conditional&#27880;&#35299;&#25110;&#20854;&#27966;&#29983;&#27880;&#35299;&#37324;&#38754;&#30340;Condition&#25509;&#21475;&#23454;&#29616;&#31867;&#24182;&#23454;&#20363;&#21270;&#25104;&#23545;&#35937;&#12290;
+	// &#27604;&#22914;@Conditional(OnBeanCondition.class)&#21017;&#33719;&#24471;OnBeanCondition.class&#65292;OnBeanCondition.class&#24448;&#24448;&#23454;&#29616;&#20102;Condition&#25509;&#21475;
+	for (String[] conditionClasses : getConditionClasses(metadata)) {
+		// &#23558;&#31867;&#23454;&#20363;&#21270;&#25104;&#23545;&#35937;
+		for (String conditionClass : conditionClasses) {
+			Condition condition = getCondition(conditionClass, this.context.getClassLoader());
+			conditions.add(condition);
+		}
+	}
+	// &#25490;&#24207;&#65292;&#21363;&#25353;&#29031;Condition&#30340;&#20248;&#20808;&#32423;&#36827;&#34892;&#25490;&#24207;
+	AnnotationAwareOrderComparator.sort(conditions);
+
+	for (Condition condition : conditions) {
+		ConfigurationPhase requiredPhase = null;
+		if (condition instanceof ConfigurationCondition) {
+			// &#20174;condition&#20013;&#33719;&#24471;&#23545;bean&#26159;&#35299;&#26512;&#36824;&#26159;&#27880;&#20876;
+			requiredPhase = ((ConfigurationCondition) condition).getConfigurationPhase();
+		}
+		// &#33509;requiredPhase&#20026;null&#25110;&#33719;&#21462;&#30340;&#38454;&#27573;&#31867;&#22411;&#27491;&#26159;&#24403;&#21069;&#38454;&#27573;&#31867;&#22411;&#19988;&#19981;&#31526;&#21512;condition&#30340;matches&#26465;&#20214;&#65292;&#21017;&#36339;&#36807;
+		if ((requiredPhase == null || requiredPhase == phase) &amp;&amp; !condition.matches(this.context, metadata)) {
+			return true;
+		}
+	}
+
+	return false;
+}</pre>
+ <p class="ne-p" id="u13e98ef5">
+  <br>
+ </p>
+ <p class="ne-p" id="u3af35e99">
+  <code class="ne-code">
+   <span class="ne-text">
+    shouldSkip
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#25191;&#34892;&#30340;&#36923;&#36753;&#20027;&#35201;&#26159;&#22914;&#26524;&#26159;&#35299;&#26512;&#38454;&#27573;&#21017;&#36339;&#36807;&#65292;&#22914;&#26524;&#26159;&#27880;&#20876;&#38454;&#27573;&#21017;&#19981;&#36339;&#36807;&#65307;&#22914;&#26524;&#26159;&#22312;&#27880;&#20876;&#38454;&#27573;&#21363;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    REGISTER_BEAN
+   </span>
+  </code>
+  <span class="ne-text">
+   &#38454;&#27573;&#30340;&#35805;&#65292;&#27492;&#26102;&#20250;&#24471;&#21040;&#25152;&#26377;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#20855;&#20307;&#23454;&#29616;&#31867;&#24182;&#23454;&#20363;&#21270;&#36825;&#20123;&#23454;&#29616;&#31867;&#65292;&#28982;&#21518;&#20877;&#25191;&#34892;&#19979;&#38754;&#20851;&#38190;&#30340;&#20195;&#30721;&#36827;&#34892;&#21028;&#26029;&#26159;&#21542;&#38656;&#35201;&#36339;&#36807;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue01ef335">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="clDzz">if ((requiredPhase == null || requiredPhase == phase) &amp;&amp; !condition.matches(this.context, metadata)) {
+    return true;
+}</pre>
+ <p class="ne-p" id="u5193ce90">
+  <br>
+ </p>
+ <p class="ne-p" id="u4bf2374c">
+  <span class="ne-text">
+   &#19978;&#38754;&#20195;&#30721;&#26368;&#37325;&#35201;&#30340;&#36923;&#36753;&#26159;&#35843;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#20855;&#20307;&#23454;&#29616;&#31867;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#33509;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36820;&#22238;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    false
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21017;&#36339;&#36807;&#65292;&#19981;&#36827;&#34892;&#27880;&#20876;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#25805;&#20316;&#65307;&#33509;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36820;&#22238;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    true
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21017;&#19981;&#36339;&#36807;&#65292;&#36827;&#34892;&#27880;&#20876;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#25805;&#20316;&#65307;
+  </span>
+ </p>
+ <p class="ne-p" id="ua3db0bc3">
+  <br>
+ </p>
+ <p class="ne-p" id="u811abde8">
+  <span class="ne-text">
+   &#22909;&#20102;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#20998;&#26512;&#23601;&#21040;&#27492;&#20026;&#27490;&#65292;&#20877;&#24448;&#19978;&#32763;&#35843;&#29992;&#26041;&#27861;&#30340;&#35805;&#24212;&#35813;&#23601;&#26159; Spring &#21152;&#36733;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23450;&#20041;&#30340;&#30456;&#20851;&#28304;&#30721;&#20102;&#65292;&#19981;&#23646;&#20110;&#36825;&#37324;&#30340;&#20998;&#26512;&#33539;&#22260;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8d8df4cc">
+  <br>
+ </p>
+ <h3 id="QTGWR">
+  <span class="ne-text">
+   3.2 Spring &#30340;&#20869;&#32622; Condition &#25509;&#21475;&#23454;&#29616;&#31867;
+  </span>
+ </h3>
+ <p class="ne-p" id="u2bc59b0a">
+  <br>
+ </p>
+ <p class="ne-p" id="u060babd6">
+  <span class="ne-text">
+   &#21069;&#38754;&#25105;&#20204;&#23398;&#20250;&#20102;&#22914;&#20309;&#33258;&#23450;&#20041;&#26465;&#20214;&#27880;&#35299;&#21450;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#20998;&#26512;&#65292;&#37027;&#20040;&#25105;&#20204;&#19981;&#31105;&#22909;&#22855;&#65292;Spring &#31350;&#31455;&#20869;&#32622;&#20102;&#21738;&#20123;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#23454;&#29616;&#31867;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u287e02cc">
+  <br>
+ </p>
+ <p class="ne-p" id="ue1ca3c1a">
+  <span class="ne-text">
+   &#37027;&#20040;&#30475;&#19979; Spring &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#20855;&#20307;&#23454;&#29616;&#31867;&#30340;&#31867;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u73978bd2">
+  <br>
+ </p>
+ <p class="ne-p" id="u117c582e">
+  <img class="ne-image" id="PJ8Cf" src="EPUB/imgPJ8Cf" width="654">
+ </p>
+ <p class="ne-p" id="u0b01a468">
+  <br>
+ </p>
+ <p class="ne-p" id="u20896fda">
+  <span class="ne-text">
+   &#21457;&#29616; Spring &#20869;&#32622;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#20855;&#20307;&#23454;&#29616;&#31867;&#34429;&#28982;&#26377;&#22810;&#20010;&#65292;&#20294;&#21482;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ProfileCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19981;&#26159;&#27979;&#35797;&#30456;&#20851;&#30340;&#65292;&#22240;&#27492;&#21487;&#20197;&#35828;&#30495;&#27491;&#30340;&#20869;&#32622;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#20855;&#20307;&#23454;&#29616;&#31867;&#21482;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ProfileCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19968;&#20010;&#65292;&#38750;&#24120;&#38750;&#24120;&#23569;,&#36825;&#36319; SpringBoot &#30340;&#22823;&#37327;&#27966;&#29983;&#26465;&#20214;&#27880;&#35299;&#24418;&#25104;&#20102;&#40092;&#26126;&#30340;&#23545;&#27604;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ProfileCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22823;&#23478;&#37117;&#30693;&#36947;&#65292;&#26159;&#36319;&#29615;&#22659;&#26377;&#20851;&#65292;&#27604;&#22914;&#25105;&#20204;&#24179;&#26102;&#19968;&#33324;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    dev
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    test
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    prod
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29615;&#22659;&#65292;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ProfileCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23601;&#26159;&#21028;&#26029;&#25105;&#20204;&#39033;&#30446;&#37197;&#32622;&#20102;&#21738;&#20010;&#29615;&#22659;&#30340;&#12290;&#19979;&#38754;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ProfileCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#65292;&#24456;&#31616;&#21333;&#65292;&#36825;&#37324;&#23601;&#19981;&#20998;&#26512;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc39a5f1a">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="G0ZIo">class ProfileCondition implements Condition {
+	@Override
+	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+		MultiValueMap&lt;String, Object&gt; attrs = metadata.getAllAnnotationAttributes(Profile.class.getName());
+		if (attrs != null) {
+			for (Object value : attrs.get("value")) {
+				if (context.getEnvironment().acceptsProfiles(Profiles.of((String[]) value))) {
+					return true;
+				}
+			}
+			return false;
+		}
+		return true;
+	}
+}</pre>
+ <p class="ne-p" id="u2803b214">
+  <br>
+ </p>
+ <h2 id="QEW7p">
+  <span class="ne-text">
+   4 SpringBootCondition &#28304;&#30721;&#35299;&#26512;
+  </span>
+ </h2>
+ <p class="ne-p" id="u397749f2">
+  <br>
+ </p>
+ <p class="ne-p" id="u38526610">
+  <span class="ne-text">
+   &#21069;&#38754;&#30475;&#21040; Spring &#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20869;&#32622;&#27880;&#35299;&#21487;&#20197;&#35828;&#21482;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ProfileCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19968;&#20010;&#65292;&#20294;&#26159;&#25105;&#20204;&#37117;&#30693;&#36947;&#65292;SpringBoot &#21017;&#20869;&#32622;&#20102;&#22823;&#37327;&#30340;&#26465;&#20214;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionalOnXXX
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#22312;&#20998;&#26512;&#21069;&#65292;&#25105;&#20204;&#20808;&#26469;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#25972;&#20307;&#31867;&#22270;&#26469;&#20010;&#25972;&#20307;&#30340;&#29702;&#35299;&#65292;&#22914;&#19979;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u493aea85">
+  <br>
+ </p>
+ <p class="ne-p" id="ud9d0c824">
+  <img class="ne-image" id="BE3Mi" src="EPUB/imgBE3Mi" width="1785">
+ </p>
+ <p class="ne-p" id="u6540a7cb">
+  <br>
+ </p>
+ <p class="ne-p" id="ue5786c8d">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20316;&#20026; SpringBoot &#26465;&#20214;&#27880;&#35299;&#30340;&#22522;&#31867;&#65292;&#22788;&#20110;&#25972;&#20010;&#31867;&#22270;&#30340;&#20013;&#24515;&#65292;&#23427;&#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#28982;&#21518;&#21448;&#26377;&#24456;&#22810;&#20855;&#20307;&#30340;&#23376;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnXXXCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   ,&#36825;&#20123;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnXXXCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20854;&#23454;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnXXX
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26465;&#20214;&#31867;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc503c075">
+  <br>
+ </p>
+ <p class="ne-p" id="u7261ed4d">
+  <span class="ne-text">
+   &#25105;&#20204;&#20808;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#29238;&#31867;&#26159;&#20027;&#35201;&#20570;&#20102;&#21738;&#20123;&#20107;&#24773;&#65292;&#25277;&#35937;&#20102;&#21738;&#20123;&#20849;&#26377;&#30340;&#36923;&#36753;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u003e3a4f">
+  <br>
+ </p>
+ <p class="ne-p" id="ufb841cb8">
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootConditon
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#20316;&#20026; SpringBoot &#20247;&#22810;&#26465;&#20214;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnXXXCondtion
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#29238;&#31867;&#65292;&#23427;&#30340;&#20316;&#29992;&#20027;&#35201;&#23601;&#26159;&#25171;&#21360;&#19968;&#20123;&#26465;&#20214;&#27880;&#35299;&#35780;&#20272;&#25253;&#21578;&#30340;&#26085;&#24535;&#65292;&#27604;&#22914;&#25171;&#21360;&#21738;&#20123;&#37197;&#32622;&#31867;&#26159;&#31526;&#21512;&#26465;&#20214;&#27880;&#35299;&#30340;&#65292;&#21738;&#20123;&#26159;&#19981;&#31526;&#21512;&#30340;&#12290;&#25171;&#21360;&#30340;&#26085;&#24535;&#24418;&#24335;&#22914;&#19979;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uf8ca60c8">
+  <br>
+ </p>
+ <p class="ne-p" id="udb3b39a2">
+  <img class="ne-image" id="yWi4d" src="EPUB/imgyWi4d" width="1195">
+ </p>
+ <p class="ne-p" id="u31f13767">
+  <br>
+ </p>
+ <p class="ne-p" id="u366edf99">
+  <img class="ne-image" id="TQW0R" src="EPUB/imgTQW0R" width="1096">
+  <span class="ne-text">
+   &#22240;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootConditon
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#20063;&#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#22240;&#27492;&#35813;&#26041;&#27861;&#21516;&#26679;&#20063;&#26159;&#34987;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionEvaluator
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    shouldSkip
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#35843;&#29992;&#65292;&#22240;&#27492;&#25105;&#20204;&#23601;&#20197;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootConditon
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20026;&#20837;&#21475;&#21435;&#36827;&#34892;&#20998;&#26512;&#12290;&#30452;&#25509;&#19978;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uc6f76b0f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="qQQ8h">// SpringBootCondition.java
+public final boolean matches(ConditionContext context,
+			AnnotatedTypeMetadata metadata) {
+		// &#24471;&#21040;metadata&#30340;&#31867;&#21517;&#25110;&#26041;&#27861;&#21517;
+		String classOrMethodName = getClassOrMethodName(metadata);
+		try {
+			// &#21028;&#26029;&#27599;&#20010;&#37197;&#32622;&#31867;&#30340;&#27599;&#20010;&#26465;&#20214;&#27880;&#35299;@ConditionalOnXXX&#26159;&#21542;&#28385;&#36275;&#26465;&#20214;&#65292;&#28982;&#21518;&#35760;&#24405;&#21040;ConditionOutcome&#32467;&#26524;&#20013;
+			// &#27880;&#24847;getMatchOutcome&#26159;&#19968;&#20010;&#25277;&#35937;&#27169;&#26495;&#26041;&#27861;&#65292;&#20132;&#32473;OnXXXCondition&#23376;&#31867;&#21435;&#23454;&#29616;
+			ConditionOutcome outcome = getMatchOutcome(context, metadata);
+			// &#25171;&#21360;condition&#35780;&#20272;&#30340;&#26085;&#24535;&#65292;&#21738;&#20123;&#26465;&#20214;&#27880;&#35299;@ConditionalOnXXX&#26159;&#28385;&#36275;&#26465;&#20214;&#30340;&#65292;&#21738;&#20123;&#26159;&#19981;&#28385;&#36275;&#26465;&#20214;&#30340;&#65292;&#36825;&#20123;&#26085;&#24535;&#37117;&#25171;&#21360;&#20986;&#26469;
+			logOutcome(classOrMethodName, outcome);
+			// &#38500;&#20102;&#25171;&#21360;&#26085;&#24535;&#22806;&#65292;&#36825;&#20123;&#26159;&#21542;&#21305;&#37197;&#30340;&#20449;&#24687;&#36824;&#35201;&#35760;&#24405;&#21040;ConditionEvaluationReport&#20013;
+			recordEvaluation(context, classOrMethodName, outcome);
+			// &#26368;&#21518;&#36820;&#22238;@ConditionalOnXXX&#26159;&#21542;&#28385;&#36275;&#26465;&#20214;
+			return outcome.isMatch();
+		}
+		catch (NoClassDefFoundError ex) {
+			throw new IllegalStateException(
+					"Could not evaluate condition on " + classOrMethodName + " due to "
+							+ ex.getMessage() + " not "
+							+ "found. Make sure your own configuration does not rely on "
+							+ "that class. This can also happen if you are "
+							+ "@ComponentScanning a springframework package (e.g. if you "
+							+ "put a @ComponentScan in the default package by mistake)",
+					ex);
+		}
+		catch (RuntimeException ex) {
+			throw new IllegalStateException(
+					"Error processing condition on " + getName(metadata), ex);
+		}
+	}</pre>
+ <p class="ne-p" id="udadf1fe8">
+  <br>
+ </p>
+ <p class="ne-p" id="u243f3ff5">
+  <span class="ne-text">
+   &#19978;&#38754;&#20195;&#30721;&#30340;&#27880;&#37322;&#24050;&#32463;&#38750;&#24120;&#35814;&#32454;&#65292;&#25105;&#20204;&#30693;&#36947;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25277;&#35937;&#20102;&#25152;&#26377;&#20854;&#20855;&#20307;&#23454;&#29616;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnXXXCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20849;&#26377;&#36923;&#36753;--
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35780;&#20272;&#20449;&#24687;&#25171;&#21360;&#65292;&#26368;&#37325;&#35201;&#30340;&#26159;&#23553;&#35013;&#20102;&#19968;&#20010;&#27169;&#26495;&#26041;&#27861;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getMatchOutcome(context, metadata)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#30041;&#32473;&#21508;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnXXXCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20855;&#20307;&#23376;&#31867;&#21435;&#35206;&#30422;&#23454;&#29616;&#23646;&#20110;&#33258;&#24049;&#30340;&#21028;&#26029;&#36923;&#36753;&#65292;&#28982;&#21518;&#20877;&#36820;&#22238;&#30456;&#24212;&#30340;&#21305;&#37197;&#32467;&#26524;&#32473;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29992;&#20110;&#26085;&#24535;&#25171;&#21360;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uecae6e95">
+  <br>
+ </p>
+ <p class="ne-p" id="u6a898d4a">
+  <span class="ne-text">
+   &#22240;&#27492;&#25105;&#20204;&#30693;&#36947;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20854;&#23454;&#23601;&#26159;&#29992;&#26469;&#25171;&#21360;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35780;&#20272;&#20449;&#24687;&#30340;&#65292;&#23545;&#20110;&#20854;&#20182;&#26525;&#33410;&#26041;&#27861;&#25105;&#20204;&#19981;&#24517;&#36861;&#31350;&#36807;&#28145;&#65292;&#20813;&#24471;&#20002;&#20102;&#20027;&#32447;&#12290;&#25105;&#20204;&#29616;&#22312;&#30340;&#37325;&#28857;&#26159;&#25918;&#22312;&#20132;&#32473;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnXXXCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23376;&#31867;&#23454;&#29616;&#30340;&#27169;&#26495;&#26041;&#27861;&#19978;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getMatchOutcome(context, metadata);
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#22240;&#20026;&#36825;&#20010;&#26041;&#27861;&#23558;&#20250;&#30001;&#24456;&#22810;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnXXXCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35206;&#30422;&#37325;&#20889;&#21028;&#26029;&#36923;&#36753;&#65292;&#36825;&#37324;&#26159;&#25105;&#20204;&#25509;&#19979;&#26469;&#20998;&#26512;&#30340;&#37325;&#28857;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1b85401b">
+  <br>
+ </p>
+ <p class="ne-p" id="udc0ed287">
+  <span class="ne-text">
+   &#22240;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26377;&#20247;&#22810;&#20855;&#20307;&#23454;&#29616;&#31867;&#65292;&#19979;&#38754;&#21482;&#25361;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnResourceCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnWebApplicationCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36827;&#34892;&#35762;&#35299;&#65292;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36319;&#33258;&#21160;&#37197;&#32622;&#26377;&#20851;&#65292;&#21017;&#30041;&#21040;&#33258;&#21160;&#37197;&#32622;&#28304;&#30721;&#35299;&#26512;&#30340;&#26102;&#20505;&#20877;&#36827;&#34892;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uaa5ac4cc">
+  <br>
+ </p>
+ <h3 id="ZRqUy">
+  <span class="ne-text">
+   4.1 OnResourceCondition &#28304;&#30721;&#20998;&#26512;
+  </span>
+ </h3>
+ <p class="ne-p" id="uc1795e89">
+  <br>
+ </p>
+ <p class="ne-p" id="uef9f052a">
+  <span class="ne-text">
+   &#29616;&#22312;&#20808;&#26469;&#30475;&#19979;&#19968;&#20010;&#36923;&#36753;&#21450;&#20854;&#31616;&#21333;&#30340;&#27880;&#35299;&#26465;&#20214;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnResourceCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnResourceCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#32487;&#25215;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29238;&#31867;&#65292;&#35206;&#30422;&#20102;&#20854;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getMatchOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#29992;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnResource
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#25351;&#23450;&#30340;&#36164;&#28304;&#23384;&#22312;&#19982;&#21542;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnResourceCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21028;&#26029;&#36923;&#36753;&#38750;&#24120;&#31616;&#21333;&#65292;&#20027;&#35201;&#25343;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnResource
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#25351;&#23450;&#30340;&#36164;&#28304;&#36335;&#24452;&#21518;&#65292;&#28982;&#21518;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ResourceLoader
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26681;&#25454;&#25351;&#23450;&#36335;&#24452;&#21435;&#21152;&#36733;&#30475;&#36164;&#28304;&#23384;&#19981;&#23384;&#22312;&#12290;&#19979;&#38754;&#30452;&#25509;&#30475;&#20195;&#30721;:
+  </span>
+ </p>
+ <p class="ne-p" id="u0bdc6008">
+  <br>
+ </p>
+ <p class="ne-p" id="u35f2f175">
+  <span class="ne-text">
+   &#20808;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnResource
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20195;&#30721;&#65292;
+  </span>
+ </p>
+ <p class="ne-p" id="u56015290">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="uQw9r">@Target({ ElementType.TYPE, ElementType.METHOD })
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Conditional(OnResourceCondition.class)
+public @interface ConditionalOnResource {
+
+	/**
+	 * The resources that must be present.
+	 * @return the resource paths that must be present.
+	 */
+	String[] resources() default {};
+
+}</pre>
+ <p class="ne-p" id="u79db071a">
+  <br>
+ </p>
+ <p class="ne-p" id="uffcb035e">
+  <span class="ne-text">
+   &#20877;&#26469;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnResourceCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u0fa4f569">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="ZM7Sc">@Order(Ordered.HIGHEST_PRECEDENCE + 20)
+class OnResourceCondition extends SpringBootCondition {
+
+	private final ResourceLoader defaultResourceLoader = new DefaultResourceLoader();
+
+	@Override
+	public ConditionOutcome getMatchOutcome(ConditionContext context,
+			AnnotatedTypeMetadata metadata) {
+		// &#33719;&#24471;@ConditionalOnResource&#27880;&#35299;&#30340;&#23646;&#24615;&#20803;&#25968;&#25454;
+		MultiValueMap&lt;String, Object&gt; attributes = metadata
+				.getAllAnnotationAttributes(ConditionalOnResource.class.getName(), true);
+		// &#33719;&#24471;&#36164;&#28304;&#21152;&#36733;&#22120;&#65292;&#33509;ConditionContext&#20013;&#26377;ResourceLoader&#21017;&#29992;ConditionContext&#20013;&#30340;&#65292;&#27809;&#26377;&#21017;&#29992;&#40664;&#35748;&#30340;
+		ResourceLoader loader = (context.getResourceLoader() != null)
+				? context.getResourceLoader() : this.defaultResourceLoader;
+		List&lt;String&gt; locations = new ArrayList&lt;&gt;();
+		// &#23558;@ConditionalOnResource&#20013;&#23450;&#20041;&#30340;resources&#23646;&#24615;&#20540;&#21462;&#20986;&#26469;&#35013;&#36827;locations&#38598;&#21512;
+		collectValues(locations, attributes.get("resources"));
+		Assert.isTrue(!locations.isEmpty(),
+				"@ConditionalOnResource annotations must specify at "
+						+ "least one resource location");
+		// missing&#38598;&#21512;&#26159;&#35013;&#19981;&#23384;&#22312;&#25351;&#23450;&#36164;&#28304;&#30340;&#36164;&#28304;&#36335;&#24452;&#30340;
+		List&lt;String&gt; missing = new ArrayList&lt;&gt;();
+		// &#36941;&#21382;&#25152;&#26377;&#30340;&#36164;&#28304;&#36335;&#24452;&#65292;&#33509;&#25351;&#23450;&#30340;&#36335;&#24452;&#30340;&#36164;&#28304;&#19981;&#23384;&#22312;&#21017;&#23558;&#20854;&#36164;&#28304;&#36335;&#24452;&#23384;&#36827;missing&#38598;&#21512;&#20013;
+		for (String location : locations) {
+			// &#36825;&#37324;&#38024;&#23545;&#26377;&#20123;&#36164;&#28304;&#36335;&#24452;&#26159;Placeholders&#30340;&#24773;&#20917;&#65292;&#21363;&#22788;&#29702; ${}
+			String resource = context.getEnvironment().resolvePlaceholders(location);
+			if (!loader.getResource(resource).exists()) {
+				missing.add(location);
+			}
+		}
+		// &#22914;&#26524;&#23384;&#22312;&#26576;&#20010;&#36164;&#28304;&#19981;&#23384;&#22312;&#65292;&#37027;&#20040;&#21017;&#25253;&#38169;
+		if (!missing.isEmpty()) {
+			return ConditionOutcome.noMatch(ConditionMessage
+					.forCondition(ConditionalOnResource.class)
+					.didNotFind("resource", "resources").items(Style.QUOTE, missing));
+		}
+		// &#25152;&#26377;&#36164;&#28304;&#37117;&#23384;&#22312;&#65292;&#37027;&#20040;&#21017;&#36820;&#22238;&#33021;&#25214;&#21040;&#23601;&#25552;&#30340;&#36164;&#28304;
+		return ConditionOutcome
+				.match(ConditionMessage.forCondition(ConditionalOnResource.class)
+						.found("location", "locations").items(locations));
+	}
+
+	// &#23558;@ConditionalOnResource&#20013;&#23450;&#20041;&#30340;resources&#23646;&#24615;&#20540;&#21462;&#20986;&#26469;&#35013;&#36827;locations&#38598;&#21512;
+	private void collectValues(List&lt;String&gt; names, List&lt;Object&gt; values) {
+		for (Object value : values) {
+			for (Object item : (Object[]) value) {
+				names.add((String) item);
+			}
+		}
+	}
+}</pre>
+ <p class="ne-p" id="u41fe7bb8">
+  <br>
+ </p>
+ <p class="ne-p" id="u588579e3">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnResourceCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getMatchOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#38750;&#24120;&#31616;&#21333;&#65292;&#36825;&#37324;&#19981;&#20877;&#35814;&#36848;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="udbc38727">
+  <br>
+ </p>
+ <h3 id="SWxtG">
+  <span class="ne-text">
+   4.2 OnBeanCondition &#28304;&#30721;&#20998;&#26512;
+  </span>
+ </h3>
+ <p class="ne-p" id="uc81c9a3d">
+  <br>
+ </p>
+ <p class="ne-p" id="u6395d814">
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21516;&#26679;&#32487;&#25215;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29238;&#31867;&#65292;&#35206;&#30422;&#20102;&#29238;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#12290;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21448;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23376;&#31867;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36319;&#33258;&#21160;&#37197;&#32622;&#31867;&#36807;&#28388;&#26377;&#20851;&#65292;&#36825;&#37324;&#20808;&#19981;&#20998;&#26512;&#12290;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#20540;&#24471;&#27880;&#24847;&#30340;&#26159;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     OnBeanCondition
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#21516;&#26679;&#37325;&#20889;&#20102;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     SpringBootCondition
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#30340;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     getMatchOutcome
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#26041;&#27861;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#29992;&#26469;&#21028;&#26029; Spring &#23481;&#22120;&#20013;&#26159;&#21542;&#23384;&#22312;&#25351;&#23450;&#26465;&#20214;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#21516;&#26102;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnSingleCandidate
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionalOnMissingBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26465;&#20214;&#31867;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u43bc0d16">
+  <br>
+ </p>
+ <p class="ne-p" id="u7bbf9c58">
+  <span class="ne-text">
+   &#21516;&#26679;&#65292;&#20808;&#26469;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22797;&#20889;&#29238;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getMatchOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u337ab82d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="gCbAe">@Override
+	public ConditionOutcome getMatchOutcome(ConditionContext context,
+			AnnotatedTypeMetadata metadata) {
+		ConditionMessage matchMessage = ConditionMessage.empty();
+		// (1)&#65292;&#37197;&#32622;&#31867;&#65288;metadata&#65289;&#26631;&#27880;@ConditionalOnBean&#27880;&#35299;&#30340;&#24773;&#20917;
+		if (metadata.isAnnotated(ConditionalOnBean.class.getName())) {
+			// &#23558;@ConditionalOnBean&#27880;&#35299;&#23646;&#24615;&#23553;&#35013;&#36827;BeanSearchSpec&#23545;&#35937;&#20013;
+			// &#27880;&#24847;BeanSearchSpec&#26159;&#19968;&#20010;&#38745;&#24577;&#20869;&#37096;&#31867;&#65292;&#29992;&#26469;&#23384;&#20648;@ConditionalOnBean&#21644;@ConditionalOnMissingBean&#27880;&#35299;&#30340;&#23646;&#24615;&#20540;
+			BeanSearchSpec spec = new BeanSearchSpec(context, metadata,
+					ConditionalOnBean.class);
+			// &#35843;&#29992;getMatchingBeans&#24471;&#21040;&#31526;&#21512;&#26465;&#20214;&#30340;bean
+			MatchResult matchResult = getMatchingBeans(context, spec);
+			// &#22914;&#26524;&#19981;&#21305;&#37197;
+			if (!matchResult.isAllMatched()) {
+				String reason = createOnBeanNoMatchReason(matchResult);
+				return ConditionOutcome.noMatch(ConditionMessage
+						.forCondition(ConditionalOnBean.class, spec).because(reason));
+			}
+			// &#22914;&#26524;&#21305;&#37197;
+			matchMessage = matchMessage.andCondition(ConditionalOnBean.class, spec)
+					.found("bean", "beans")
+					.items(Style.QUOTE, matchResult.getNamesOfAllMatches());
+		}
+		// (2)&#65292;&#37197;&#32622;&#31867;&#65288;metadata&#65289;&#26631;&#27880;@ConditionalOnSingleCandidate&#27880;&#35299;&#30340;&#24773;&#20917;
+		if (metadata.isAnnotated(ConditionalOnSingleCandidate.class.getName())) {
+			BeanSearchSpec spec = new SingleCandidateBeanSearchSpec(context, metadata,
+					ConditionalOnSingleCandidate.class);
+			MatchResult matchResult = getMatchingBeans(context, spec);
+			if (!matchResult.isAllMatched()) {
+				return ConditionOutcome.noMatch(ConditionMessage
+						.forCondition(ConditionalOnSingleCandidate.class, spec)
+						.didNotFind("any beans").atAll());
+			}
+			else if (!hasSingleAutowireCandidate(context.getBeanFactory(),
+					matchResult.getNamesOfAllMatches(),
+					spec.getStrategy() == SearchStrategy.ALL)) {
+				return ConditionOutcome.noMatch(ConditionMessage
+						.forCondition(ConditionalOnSingleCandidate.class, spec)
+						.didNotFind("a primary bean from beans")
+						.items(Style.QUOTE, matchResult.getNamesOfAllMatches()));
+			}
+			matchMessage = matchMessage
+					.andCondition(ConditionalOnSingleCandidate.class, spec)
+					.found("a primary bean from beans")
+					.items(Style.QUOTE, matchResult.getNamesOfAllMatches());
+		}
+		// (3)&#65292;&#37197;&#32622;&#31867;&#65288;metadata&#65289;&#26631;&#27880;@ConditionalOnMissingBean&#27880;&#35299;&#30340;&#24773;&#20917;
+		if (metadata.isAnnotated(ConditionalOnMissingBean.class.getName())) {
+			BeanSearchSpec spec = new BeanSearchSpec(context, metadata,
+					ConditionalOnMissingBean.class);
+			MatchResult matchResult = getMatchingBeans(context, spec);
+			if (matchResult.isAnyMatched()) {
+				String reason = createOnMissingBeanNoMatchReason(matchResult);
+				return ConditionOutcome.noMatch(ConditionMessage
+						.forCondition(ConditionalOnMissingBean.class, spec)
+						.because(reason));
+			}
+			matchMessage = matchMessage.andCondition(ConditionalOnMissingBean.class, spec)
+					.didNotFind("any beans").atAll();
+		}
+		// &#26368;&#32456;&#36820;&#22238;matchMessage
+		return ConditionOutcome.match(matchMessage);
+	}</pre>
+ <p class="ne-p" id="uec05d9da">
+  <br>
+ </p>
+ <p class="ne-p" id="ucc736896">
+  <span class="ne-text">
+   &#25105;&#20204;&#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#35206;&#30422;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getMatchOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20998;&#21035;&#22788;&#29702;&#20102;&#26631;&#27880;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnSingleCandidate
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnMissingBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#24773;&#20917;&#65292;&#20998;&#21035;&#23545;&#24212;&#19978;&#38754;&#20195;&#30721;&#27880;&#37322;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    (1)
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    (2)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    (3)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8d1d4fd4">
+  <br>
+ </p>
+ <p class="ne-p" id="u45035649">
+  <span class="ne-text">
+   &#29616;&#22312;&#25105;&#20204;&#21482;&#30475;&#38024;&#23545;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#22788;&#29702;&#36923;&#36753;&#65292;&#20174;&#19978;&#38754;&#20195;&#30721;&#20013;&#21487;&#20197;&#30475;&#21040;&#33509;&#37197;&#32622;&#31867;&#65288;metadata&#65289;&#26631;&#27880;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#35805;&#65292;&#20027;&#35201;&#20570;&#20102;&#20197;&#19979;&#20107;&#24773;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="udea39456">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="uf8549df4">
+   <span class="ne-text">
+    &#23558;&#35813;&#27880;&#35299;&#23646;&#24615;&#25552;&#21462;&#20986;&#26469;&#23553;&#35013;&#36827;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     BeanSearchSpec
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23545;&#35937;&#20013;;
+   </span>
+  </li>
+  <li id="u73aaa431">
+   <span class="ne-text">
+    &#28982;&#21518;&#35843;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     getMatchingBeans(context, spec)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#26469;&#33719;&#21462;&#26159;&#21542;&#26377;&#21305;&#37197;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bean
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65307;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="uc2bf4f1b">
+   <span class="ne-text">
+    &#26368;&#21518;&#36820;&#22238;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bean
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#21305;&#37197;&#24773;&#20917;&#65307;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u810ea4a7">
+  <br>
+ </p>
+ <p class="ne-p" id="u60f3de67">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#26368;&#37325;&#35201;&#30340;&#36923;&#36753;&#26159;&#31532; 2 &#27493;&#65292;&#37027;&#20040;&#25105;&#20204;&#20877;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getMatchingBeans
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#30452;&#25509;&#19978;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uae7b9c5e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="lM2iE">protected final MatchResult getMatchingBeans(ConditionContext context,
+			BeanSearchSpec beans) {
+		// &#33719;&#24471;Spring&#23481;&#22120;&#30340;beanFactory
+		ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
+		// &#21028;&#26029;bean&#30340;&#25628;&#32034;&#31574;&#30053;&#26159;&#21542;&#26159;SearchStrategy.ANCESTORS&#31574;&#30053;
+		if (beans.getStrategy() == SearchStrategy.ANCESTORS) {
+			BeanFactory parent = beanFactory.getParentBeanFactory();
+			Assert.isInstanceOf(ConfigurableListableBeanFactory.class, parent,
+					"Unable to use SearchStrategy.PARENTS");
+			beanFactory = (ConfigurableListableBeanFactory) parent;
+		}
+		// MatchResult&#29992;&#26469;&#23384;&#20648;bean&#30340;&#21305;&#37197;&#32467;&#26524;
+		MatchResult matchResult = new MatchResult();
+		// &#22914;&#26524;bean&#30340;&#25628;&#32034;&#31574;&#30053;&#19981;&#26159;SearchStrategy.CURRENT&#30340;&#35805;&#65292;&#21017;&#32622;considerHierarchy&#20026;true
+		boolean considerHierarchy = beans.getStrategy() != SearchStrategy.CURRENT;
+		// &#33719;&#21462;TypeExtractor&#65292;TypeExtractor&#26159;&#29992;&#26469;&#21028;&#26029;bean&#30340;&#31867;&#22411;&#30340;
+		TypeExtractor typeExtractor = beans.getTypeExtractor(context.getClassLoader());
+		// &#33719;&#21462;&#26159;&#21542;&#26377;&#34987;&#24573;&#30053;bean&#31867;&#22411;&#65292;&#33509;&#26377;&#30340;&#35805;&#23558;&#35813;bean&#31867;&#22411;&#30340;&#21517;&#31216;&#35013;&#36827;beansIgnoredByType&#38598;&#21512;
+		// &#36825;&#37324;&#20027;&#35201;&#26159;&#38024;&#23545;@ConditionalOnMissingBean&#30340;ignored&#23646;&#24615;
+		List&lt;String&gt; beansIgnoredByType = getNamesOfBeansIgnoredByType(
+				beans.getIgnoredTypes(), typeExtractor, beanFactory, context,
+				considerHierarchy);
+		// &#36941;&#21382;bean&#30340;&#25152;&#26377;&#31867;&#22411;
+		for (String type : beans.getTypes()) {
+			// &#35843;&#29992;getBeanNamesForType&#26041;&#27861;&#26681;&#25454;bean&#31867;&#22411;&#24471;&#21040;&#25152;&#26377;&#31526;&#21512;&#26465;&#20214;&#30340;bean&#31867;&#22411;&#65292;&#24182;&#25918;&#21040;typeMatches&#38598;&#21512;
+			Collection&lt;String&gt; typeMatches = getBeanNamesForType(beanFactory, type,
+					typeExtractor, context.getClassLoader(), considerHierarchy);
+			// &#31227;&#38500;&#25481;Ignored&#30340;&#31867;&#22411;
+			typeMatches.removeAll(beansIgnoredByType);
+			// &#33509;typeMatches&#20026;&#31354;&#65292;&#37027;&#20040;&#21017;&#35828;&#26126;&#27491;&#22312;&#36941;&#21382;&#30340;&#36825;&#20010;type&#31867;&#22411;&#19981;&#31526;&#21512;&#21305;&#37197;&#26465;&#20214;&#65292;&#27492;&#26102;&#29992;matchResult&#35760;&#24405;&#19968;&#19979;&#36825;&#20010;&#19981;&#31526;&#21512;&#26465;&#20214;&#30340;&#31867;&#22411;
+			if (typeMatches.isEmpty()) {
+				matchResult.recordUnmatchedType(type);
+			}
+			// &#33509;typeMatches&#19981;&#20026;&#31354;&#65292;&#37027;&#20040;&#21017;&#35828;&#26126;&#27491;&#22312;&#36941;&#21382;&#30340;&#36825;&#20010;type&#31867;&#22411;&#31526;&#21512;&#21305;&#37197;&#26465;&#20214;&#65292;&#27492;&#26102;&#29992;matchResult&#35760;&#24405;&#19968;&#19979;&#36825;&#20010;&#31526;&#21512;&#26465;&#20214;&#30340;&#31867;&#22411;
+			else {
+				matchResult.recordMatchedType(type, typeMatches);
+			}
+		}
+		// &#36825;&#37324;&#38024;&#23545;@ConditionalOnBean&#31561;&#27880;&#35299;&#30340;annotation&#23646;&#24615;&#30340;&#22788;&#29702;
+		for (String annotation : beans.getAnnotations()) {
+			List&lt;String&gt; annotationMatches = Arrays
+					.asList(getBeanNamesForAnnotation(beanFactory, annotation,
+							context.getClassLoader(), considerHierarchy));
+			annotationMatches.removeAll(beansIgnoredByType);
+			if (annotationMatches.isEmpty()) {
+				matchResult.recordUnmatchedAnnotation(annotation);
+			}
+			else {
+				matchResult.recordMatchedAnnotation(annotation, annotationMatches);
+			}
+		}
+		// &#36825;&#37324;&#38024;&#23545;@ConditionalOnBean&#31561;&#27880;&#35299;&#30340;name&#23646;&#24615;&#30340;&#22788;&#29702;
+		for (String beanName : beans.getNames()) {
+			// beansIgnoredByType&#38598;&#21512;&#19981;&#21253;&#21547;beanName&#19988;beanFactory&#21253;&#21547;&#36825;&#20010;bean&#65292;&#21017;&#21305;&#37197;
+			if (!beansIgnoredByType.contains(beanName)
+					&amp;&amp; containsBean(beanFactory, beanName, considerHierarchy)) {
+				matchResult.recordMatchedName(beanName);
+			}
+			// &#21542;&#21017;&#65292;&#19981;&#21305;&#37197;
+			else {
+				matchResult.recordUnmatchedName(beanName);
+			}
+		}
+		// &#26368;&#21518;&#36820;&#22238;&#21305;&#37197;&#32467;&#26524;
+		return matchResult;
+	}</pre>
+ <p class="ne-p" id="u3992323f">
+  <br>
+ </p>
+ <p class="ne-p" id="u0bd3a30b">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;&#36923;&#36753;&#20027;&#35201;&#26159;&#20174; spring &#23481;&#22120;&#20013;&#25628;&#32034;&#26377;&#26080;&#25351;&#23450;&#26465;&#20214;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#25628;&#32034; Spring &#23481;&#22120;&#25628;&#32034; bean &#30340;&#35805;&#26377;&#19977;&#31181;&#25628;&#32034;&#31574;&#30053;&#65292;&#20998;&#21035;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CURRENT
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ANCESTORS
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ALL
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#20998;&#34920;&#34920;&#31034;&#21482;&#20174;&#24403;&#21069;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    context
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#25628;&#32034;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#21482;&#20174;&#29238;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    context
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#25628;&#32034;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;&#20174;&#25972;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    context
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#25628;&#32034;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65307;&#23450;&#20041;&#20102;&#25628;&#32034;&#31574;&#30053;&#21518;&#65292;&#28982;&#21518;&#20877;&#26681;&#25454;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    BeanSearchSpec
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#23553;&#35013;&#30340;&#27880;&#35299;&#23646;&#24615;&#20998;&#21035;&#21462;&#25351;&#23450;&#30340;&#23481;&#22120;&#20013;&#26597;&#25214;&#26377;&#26080;&#31526;&#21512;&#26465;&#20214;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#28982;&#21518;&#20877;&#36827;&#34892;&#19968;&#20123;&#36807;&#28388;&#12290;&#27604;&#22914;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnMissingBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#26377;&#23450;&#20041;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ignored
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23646;&#24615;&#20540;&#65292;&#37027;&#20040;&#20174;&#23481;&#22120;&#20013;&#25628;&#32034;&#21040;&#26377;&#31526;&#21512;&#26465;&#20214;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26102;&#65292;&#27492;&#26102;&#36824;&#35201;&#31227;&#38500;&#25481;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ignored
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25351;&#23450;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u7ed0cc7e">
+  <br>
+ </p>
+ <p class="ne-p" id="uacf168e5">
+  <span class="ne-text">
+   &#22909;&#20102;&#65292;&#19978;&#38754;&#23601;&#24050;&#32463;&#20998;&#26512;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26465;&#20214;&#31867;&#20102;&#65292;&#25105;&#20204;&#22362;&#25345;&#20027;&#32447;&#20248;&#20808;&#30340;&#21407;&#21017;&#65292;&#20855;&#20307;&#30340;&#32454;&#33410;&#20195;&#30721;&#19981;&#20250;&#28145;&#31350;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue232d05b">
+  <br>
+ </p>
+ <h3 id="Dn1ZP">
+  <span class="ne-text">
+   4.3 OnWebApplicationCondition
+  </span>
+ </h3>
+ <p class="ne-p" id="u1b52116d">
+  <br>
+ </p>
+ <p class="ne-p" id="ufd8eeb10">
+  <code class="ne-code">
+   <span class="ne-text">
+    OnWebApplicationCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21516;&#26679;&#32487;&#25215;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29238;&#31867;&#65292;&#35206;&#30422;&#20102;&#29238;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#12290;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21448;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23376;&#31867;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36319;&#33258;&#21160;&#37197;&#32622;&#31867;&#36807;&#28388;&#26377;&#20851;&#65292;&#36825;&#37324;&#20808;&#19981;&#20998;&#26512;&#12290;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#20540;&#24471;&#27880;&#24847;&#30340;&#26159;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     OnWebApplicationCondition
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#21516;&#26679;&#37325;&#20889;&#20102;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     SpringBootCondition
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#30340;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     getMatchOutcome
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#26041;&#27861;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#29992;&#26469;&#21028;&#26029;&#24403;&#21069;&#24212;&#29992;&#26159;&#21542; web &#24212;&#29992;&#12290;&#21516;&#26102;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnWebApplicationCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnWebApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26465;&#20214;&#31867;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufb24af80">
+  <br>
+ </p>
+ <p class="ne-p" id="ucde6a031">
+  <span class="ne-text">
+   &#21516;&#26679;&#65292;&#20808;&#26469;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnWebApplicationCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37325;&#20889;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getMatchOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u2372e9de">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="WoKAy">public ConditionOutcome getMatchOutcome(ConditionContext context,
+			AnnotatedTypeMetadata metadata) {
+		// &#37197;&#32622;&#31867;&#26159;&#21542;&#26631;&#27880;&#26377;@ConditionalOnWebApplication&#27880;&#35299;
+		boolean required = metadata
+				.isAnnotated(ConditionalOnWebApplication.class.getName());
+		// &#35843;&#29992;isWebApplication&#26041;&#27861;&#36820;&#22238;&#21305;&#37197;&#32467;&#26524;
+		ConditionOutcome outcome = isWebApplication(context, metadata, required);
+		// &#33509;&#26377;&#26631;&#27880;@ConditionalOnWebApplication&#20294;&#19981;&#31526;&#21512;&#26465;&#20214;&#65292;&#21017;&#36820;&#22238;&#19981;&#21305;&#37197;
+		if (required &amp;&amp; !outcome.isMatch()) {
+			return ConditionOutcome.noMatch(outcome.getConditionMessage());
+		}
+		// &#33509;&#27809;&#26377;&#26631;&#27880;@ConditionalOnWebApplication&#20294;&#31526;&#21512;&#26465;&#20214;&#65292;&#21017;&#36820;&#22238;&#19981;&#21305;&#37197;
+		if (!required &amp;&amp; outcome.isMatch()) {
+			return ConditionOutcome.noMatch(outcome.getConditionMessage());
+		}
+		// &#36825;&#37324;&#36820;&#22238;&#21305;&#37197;&#30340;&#24773;&#20917;&#65292;TODO &#19981;&#36807;&#26377;&#20010;&#30097;&#38382;&#65306;&#22914;&#26524;&#27809;&#26377;&#26631;&#27880;@ConditionalOnWebApplication&#27880;&#35299;&#65292;&#21448;&#19981;&#31526;&#21512;&#26465;&#20214;&#30340;&#35805;&#65292;&#20063;&#20250;&#25191;&#34892;&#21040;&#36825;&#37324;&#65292;&#36820;&#22238;&#21305;&#37197;&#65311;
+		return ConditionOutcome.match(outcome.getConditionMessage());
+	}</pre>
+ <p class="ne-p" id="uaab71ada">
+  <br>
+ </p>
+ <p class="ne-p" id="ub2c4a062">
+  <span class="ne-text">
+   &#19978;&#38754;&#20195;&#30721;&#30340;&#36923;&#36753;&#24456;&#31616;&#21333;&#65292;&#20027;&#35201;&#26159;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    isWebApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26469;&#21028;&#26029;&#24403;&#21069;&#24212;&#29992;&#26159;&#21542;&#26159; web &#24212;&#29992;&#12290;&#22240;&#27492;&#65292;&#25105;&#20204;&#20877;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    isWebApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;:
+  </span>
+ </p>
+ <p class="ne-p" id="u9aef8d26">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="uskId">private ConditionOutcome isWebApplication(ConditionContext context,
+			AnnotatedTypeMetadata metadata, boolean required) {
+		// &#35843;&#29992;deduceType&#26041;&#27861;&#21028;&#26029;&#26159;&#21738;&#31181;&#31867;&#22411;&#65292;&#20854;&#20013;&#26377;SERVLET&#65292;REACTIVE&#21644;ANY&#31867;&#22411;&#65292;&#20854;&#20013;ANY&#34920;&#31034;&#20102;SERVLET&#25110;REACTIVE&#31867;&#22411;
+		switch (deduceType(metadata)) {
+		// SERVLET&#31867;&#22411;
+		case SERVLET:
+			return isServletWebApplication(context);
+		// REACTIVE&#31867;&#22411;
+		case REACTIVE:
+			return isReactiveWebApplication(context);
+		default:
+			return isAnyWebApplication(context, required);
+		}
+	}</pre>
+ <p class="ne-p" id="u05cd61f1">
+  <br>
+ </p>
+ <p class="ne-p" id="u445f33ad">
+  <span class="ne-text">
+   &#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    isWebApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#65292;&#39318;&#20808;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnWebApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#20013;&#33719;&#21462;&#20854;&#23450;&#20041;&#20102;&#20160;&#20040;&#31867;&#22411;&#65292;&#28982;&#21518;&#26681;&#25454;&#19981;&#21516;&#30340;&#31867;&#22411;&#36827;&#20837;&#19981;&#21516;&#30340;&#21028;&#26029;&#36923;&#36753;&#12290;&#36825;&#37324;&#25105;&#20204;&#21482;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SERVLET
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#24773;&#20917;&#21028;&#26029;&#22788;&#29702;&#65292;&#30475;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uf78cf70b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="M83LV">private ConditionOutcome isServletWebApplication(ConditionContext context) {
+		ConditionMessage.Builder message = ConditionMessage.forCondition("");
+		// &#33509;classpath&#20013;&#19981;&#23384;&#22312;org.springframework.web.context.support.GenericWebApplicationContext.class&#65292;&#21017;&#36820;&#22238;&#19981;&#21305;&#37197;
+		if (!ClassNameFilter.isPresent(SERVLET_WEB_APPLICATION_CLASS,
+				context.getClassLoader())) {
+			return ConditionOutcome.noMatch(
+					message.didNotFind("servlet web application classes").atAll());
+		}
+		// &#33509;classpath&#20013;&#23384;&#22312;org.springframework.web.context.support.GenericWebApplicationContext.class&#65292;&#37027;&#20040;&#21448;&#20998;&#20026;&#20197;&#19979;&#20960;&#31181;&#21305;&#37197;&#30340;&#24773;&#20917;
+		// session
+		if (context.getBeanFactory() != null) {
+			String[] scopes = context.getBeanFactory().getRegisteredScopeNames();
+			if (ObjectUtils.containsElement(scopes, "session")) {
+				return ConditionOutcome.match(message.foundExactly("'session' scope"));
+			}
+		}
+		// ConfigurableWebEnvironment
+		if (context.getEnvironment() instanceof ConfigurableWebEnvironment) {
+			return ConditionOutcome
+					.match(message.foundExactly("ConfigurableWebEnvironment"));
+		}
+		// WebApplicationContext
+		if (context.getResourceLoader() instanceof WebApplicationContext) {
+			return ConditionOutcome.match(message.foundExactly("WebApplicationContext"));
+		}
+		// &#33509;&#20197;&#19978;&#19977;&#31181;&#37117;&#19981;&#21305;&#37197;&#30340;&#35805;&#65292;&#21017;&#35828;&#26126;&#19981;&#26159;&#19968;&#20010;servlet web application
+		return ConditionOutcome.noMatch(message.because("not a servlet web application"));
+	}</pre>
+ <p class="ne-p" id="u2e161b6d">
+  <br>
+ </p>
+ <p class="ne-p" id="uefd0f2e3">
+  <span class="ne-text">
+   &#23545;&#20110;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SERVLET
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#24773;&#20917;&#65292;&#39318;&#20808;&#26681;&#25454;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classpath
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#26159;&#21542;&#23384;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    org.springframework.web.context.support.GenericWebApplicationContext.class
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#22914;&#26524;&#19981;&#23384;&#22312;&#35813;&#31867;&#65292;&#21017;&#30452;&#25509;&#36820;&#22238;&#19981;&#21305;&#37197;&#65307;&#33509;&#23384;&#22312;&#30340;&#35805;&#37027;&#20040;&#21448;&#20998;&#20026;&#20197;&#19979;&#20960;&#31181;&#21305;&#37197;&#30340;&#24773;&#20917;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u2d65207e">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="ub1e89351">
+   <span class="ne-text">
+    session
+   </span>
+  </li>
+  <li id="u9e401f4c">
+   <span class="ne-text">
+    ConfigurableWebEnvironment
+   </span>
+  </li>
+ </ul>
+ <ul class="ne-ul">
+  <li id="u40f9a57c">
+   <span class="ne-text">
+    WebApplicationContext
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="ud8d5ce1d">
+  <br>
+ </p>
+ <p class="ne-p" id="u06dccfc7">
+  <span class="ne-text">
+   &#33509;&#19978;&#38754;&#19977;&#31181;&#24773;&#20917;&#37117;&#19981;&#21305;&#37197;&#65292;&#21017;&#35828;&#26126;&#19981;&#26159;&#19968;&#20010; servlet web application&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uac44361c">
+  <br>
+ </p>
+ <h3 id="PPW9w">
+  <span class="ne-text">
+   4.4 &#20854;&#20182;
+  </span>
+ </h3>
+ <p class="ne-p" id="ud19a71fd">
+  <br>
+ </p>
+ <p class="ne-p" id="u90e05b45">
+  <span class="ne-text">
+   &#30001;&#20110; springboot &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnXXXCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#23454;&#29616;&#22826;&#22810;&#65292;&#19981;&#21487;&#33021;&#27599;&#20010;&#26465;&#20214;&#31867;&#37117;&#20998;&#26512;&#19968;&#36941;&#65292;&#22240;&#27492;&#19978;&#38754;&#21482;&#20998;&#26512;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnResourceCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    onWebApplicationCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#12290;&#25105;&#20204;&#20998;&#26512;&#28304;&#30721;&#19981;&#21487;&#33021;&#25226;&#25152;&#26377;&#20195;&#30721;&#37117;&#36890;&#35835;&#19968;&#36941;&#30340;&#65292;&#38405;&#35835;&#28304;&#30721;&#30340;&#35805;&#65292;&#21482;&#35201;&#29702;&#35299;&#20102;&#26576;&#20010;&#27169;&#22359;&#30340;&#31867;&#20043;&#38388;&#30340;&#20851;&#31995;&#21450;&#25361;&#20960;&#20010;&#26377;&#20195;&#34920;&#24615;&#30340;&#31867;&#20998;&#26512;&#19979;&#23601;&#34892;&#65292;&#19981;&#21487;&#33021;&#19968;&#32593;&#25171;&#23613;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue24b4adf">
+  <br>
+ </p>
+ <p class="ne-p" id="u7da69dd9">
+  <span class="ne-text">
+   &#33509;&#26377;&#26102;&#38388;&#30340;&#35805;&#65292;&#25512;&#33616;&#30475;&#19979;&#20960;&#20010;&#25105;&#20204;&#24120;&#29992;&#30340;&#26465;&#20214;&#31867;&#30340;&#28304;&#30721;&#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnPropertyCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnClassCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnExpressionCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5ad94450">
+  <br>
+ </p>
+ <h2 id="YpCDt">
+  <span class="ne-text">
+   5 &#22914;&#20309;&#25193;&#23637; SpringBootCondition
+  </span>
+ </h2>
+ <p class="ne-p" id="u3ccff117">
+  <br>
+ </p>
+ <p class="ne-p" id="u284111f6">
+  <span class="ne-text">
+   &#21069;&#25991;&#25105;&#20204;&#30693;&#36947;&#20102;&#22914;&#20309;&#25193;&#23637; Spring &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Condition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#37027;&#20040;&#25105;&#20204;&#35813;&#22914;&#20309;&#25193;&#23637; SpringBoot &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="ubbcccf1e">
+  <br>
+ </p>
+ <p class="ne-p" id="u55704b58">
+  <span class="ne-text">
+   &#25512;&#33616;&#38405;&#35835;
+  </span>
+  <a class="ne-link" data-href="https://link.juejin.cn?target=https%3A%2F%2Fblog.csdn.net%2Fzhanglu1236789%2Farticle%2Fdetails%2F78999496" href="https://link.juejin.cn?target=https%3A%2F%2Fblog.csdn.net%2Fzhanglu1236789%2Farticle%2Fdetails%2F78999496" target="_blank">
+   <span class="ne-text">
+    springboot &#20043;&#20351;&#29992; SpringBootCondition
+   </span>
+  </a>
+  <span class="ne-text">
+   &#33719;&#24471;&#31572;&#26696;
+  </span>
+ </p>
+ <p class="ne-p" id="ud58c23e2">
+  <br>
+ </p>
+ <p class="ne-p" id="u8bd15ad4">
+  <span class="ne-text">
+   &#22909;&#20102;&#65292;&#26412;&#31687;&#25991;&#31456;&#26159; SpringBoot &#33258;&#21160;&#37197;&#32622;&#28304;&#30721;&#20998;&#26512;&#30340;&#21069;&#32622;&#25991;&#31456;&#65292;&#36825;&#37324;&#20998;&#26512;&#20102;&#26465;&#20214;&#27880;&#35299;&#28304;&#30721;&#65292;&#37027;&#20040;&#19979;&#31687;&#25991;&#31456;&#25105;&#20204;&#23601;&#26469;&#30475;&#30475; SpringBoot &#33258;&#21160;&#37197;&#32622;&#30340;&#28304;&#30721;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u91d93bc3">
+  <br>
+ </p>
+ <p class="ne-p" id="ud1938214">
+  <span class="ne-text">
+   &#19979;&#33410;&#39044;&#21578;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uac94d87a">
+  <br>
+ </p>
+ <p class="ne-p" id="ufd48703b">
+  <span class="ne-text">
+   SpringBoot &#26032;&#29305;&#24615;&#65306;SpringBoot &#26159;&#22914;&#20309;&#33258;&#21160;&#37197;&#32622;&#30340;&#65311;--SpringBoot &#28304;&#30721;&#65288;&#22235;&#65289;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

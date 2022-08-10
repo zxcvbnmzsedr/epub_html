@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="程序员副业赚钱之路" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>程序员副业赚钱之路</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="sep_0">
+      <navLabel>
+        <text>程序员副业赚钱入门</text>
+      </navLabel>
+      <content src="Xl6G_UuL0aSQH_JT.xhtml"/>
+      <navPoint id="fl7pI3tdZLMPW92l">
+        <navLabel>
+          <text>我对程序员做副业的看法</text>
+        </navLabel>
+        <content src="fl7pI3tdZLMPW92l.xhtml"/>
+      </navPoint>
+      <navPoint id="GobufNZAnbBptKGA">
+        <navLabel>
+          <text>程序员有哪些靠谱的副业赚钱途径？</text>
+        </navLabel>
+        <content src="GobufNZAnbBptKGA.xhtml"/>
+      </navPoint>
+      <navPoint id="zFap7CIWrdae7554">
+        <navLabel>
+          <text>通过开源项目月入10w+的秘密</text>
+        </navLabel>
+        <content src="zFap7CIWrdae7554.xhtml"/>
+      </navPoint>
+      <navPoint id="yz6TR7WnROxhPq1j">
+        <navLabel>
+          <text>一个爆款专栏收益 200w+：国内常见的 8 个付费专栏平台分析、注意事项</text>
+        </navLabel>
+        <content src="yz6TR7WnROxhPq1j.xhtml"/>
+      </navPoint>
+      <navPoint id="cJ3sQv2ltAc5XCY_">
+        <navLabel>
+          <text>程序员如何接私活？国内有哪些比较靠谱的接私活平台？</text>
+        </navLabel>
+        <content src="cJ3sQv2ltAc5XCY_.xhtml"/>
+      </navPoint>
+      <navPoint id="_czEbwX8Cg5QsuPk">
+        <navLabel>
+          <text>如何做”营销“？常见的宣传手段有哪些？</text>
+        </navLabel>
+        <content src="_czEbwX8Cg5QsuPk.xhtml"/>
+      </navPoint>
+    </navPoint>
+    <navPoint id="sep_1">
+      <navLabel>
+        <text>实战案例分享</text>
+      </navLabel>
+      <content src="c7Js5q6q_y4QwdE4.xhtml"/>
+      <navPoint id="ZwNgK2gm_UKB13bg">
+        <navLabel>
+          <text>写浏览器插件，年入上百万</text>
+        </navLabel>
+        <content src="ZwNgK2gm_UKB13bg.xhtml"/>
+      </navPoint>
+      <navPoint id="YJeZv6yEDWynpYt1">
+        <navLabel>
+          <text>1个月的业余时间录课，一年内躺赚了34w+</text>
+        </navLabel>
+        <content src="YJeZv6yEDWynpYt1.xhtml"/>
+      </navPoint>
+      <navPoint id="0MrokDxJmDJh-Miy">
+        <navLabel>
+          <text>从零开始做了一个养活自己的公众号</text>
+        </navLabel>
+        <content src="0MrokDxJmDJh-Miy.xhtml"/>
+      </navPoint>
+      <navPoint id="4y9rjEpGNGXzVA8j">
+        <navLabel>
+          <text>通过整合学习资料，全流程自动化，一个月被动收入5w+</text>
+        </navLabel>
+        <content src="4y9rjEpGNGXzVA8j.xhtml"/>
+      </navPoint>
+    </navPoint>
+  </navMap>
+</ncx>

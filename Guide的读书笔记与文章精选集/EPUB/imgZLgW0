@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>NoSuchKey</Code>
+  <Message>The specified key does not exist.</Message>
+  <RequestId>62F24E22D0DEFE30336C98BD</RequestId>
+  <HostId>guide-blog-images.oss-cn-shenzhen.aliyuncs.com</HostId>
+  <Key> reading-notes/continuous_integration.4f4cddb8556e2b1a0ca0872ace4d5fe2f68bbc58.png</Key>
+</Error>

@@ -1,0 +1,3710 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>&#12300;&#28304;&#30721;&#35299;&#35835;&#12301;&#32593;&#32476;&#25805;&#20316;&#25277;&#35937;&#31867;: Channel</h1><div class="lake-content" typography="classic">
+ <div class="ne-quote">
+  <p class="ne-p" id="u01d73919">
+   <span class="ne-text">
+    &#27880;&#65306;&#25105;&#23545;&#21407;&#25991;&#36827;&#34892;&#20102;&#26684;&#24335;&#35268;&#33539;&#21644;&#20869;&#23481;&#23436;&#21892;&#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="u26d0f952">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="ua0ba7a26">
+   <span class="ne-text">
+    &#21407;&#25991;&#22320;&#22336;&#65306;https://www.javadoop.com/post/netty-part-2
+   </span>
+  </p>
+  <p class="ne-p" id="u4043f4ed">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="u026790f4">
+   <span class="ne-text">
+    &#20316;&#32773;&#65306;JavaDoop
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u15ee3e7a">
+  <br>
+ </p>
+ <h2 id="bbc33e69">
+  <span class="ne-text">
+   &#21021;&#22987;&#21270; Channel
+  </span>
+ </h2>
+ <p class="ne-p" id="u7fa7bfd6">
+  <br>
+ </p>
+ <p class="ne-p" id="u273d4ceb">
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#26159; Netty &#23545;&#32593;&#32476;&#25805;&#20316;&#25277;&#35937;&#31867;&#12290;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25105;&#20204;&#21487;&#20197;&#36827;&#34892; I/O &#25805;&#20316;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u3fe79575">
+  <br>
+ </p>
+ <p class="ne-p" id="u403e2286">
+  <span class="ne-text">
+   &#19968;&#26086;&#23458;&#25143;&#31471;&#25104;&#21151;&#36830;&#25509;&#26381;&#21153;&#31471;&#65292;&#23601;&#20250;&#26032;&#24314;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21516;&#35813;&#29992;&#25143;&#31471;&#36827;&#34892;&#32465;&#23450;&#65292;&#31034;&#20363;&#20195;&#30721;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u3000a798">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="4ba2d3b5">   //  &#36890;&#36807; Bootstrap &#30340; connect &#26041;&#27861;&#36830;&#25509;&#21040;&#26381;&#21153;&#31471;
+   public Channel doConnect(InetSocketAddress inetSocketAddress) {
+        CompletableFuture&lt;Channel&gt; completableFuture = new CompletableFuture&lt;&gt;();
+        bootstrap.connect(inetSocketAddress).addListener((ChannelFutureListener) future -&gt; {
+            if (future.isSuccess()) {
+                completableFuture.complete(future.channel());
+            } else {
+                throw new IllegalStateException();
+            }
+        });
+        return completableFuture.get();
+    }</pre>
+ <p class="ne-p" id="u4558712b">
+  <br>
+ </p>
+ <p class="ne-p" id="u65af1de6">
+  <span class="ne-text">
+   &#27604;&#36739;&#24120;&#29992;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#23454;&#29616;&#31867;&#26159; &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u77bcaad4">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="ub6c76451">
+   <code class="ne-code">
+    <span class="ne-text">
+     NioServerSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65288;&#26381;&#21153;&#31471;&#65289;
+   </span>
+  </li>
+  <li id="u6e743c4a">
+   <code class="ne-code">
+    <span class="ne-text">
+     NioSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65288;&#23458;&#25143;&#31471;&#65289;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u29f87a3c">
+  <br>
+ </p>
+ <p class="ne-p" id="ub5cb24fc">
+  <span class="ne-text">
+   &#36825;&#20004;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21487;&#20197;&#21644; BIO &#32534;&#31243;&#27169;&#22411;&#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerSocket
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20197;&#21450;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Socket
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20004;&#20010;&#27010;&#24565;&#23545;&#24212;&#19978;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ue23149af">
+  <br>
+ </p>
+ <p class="ne-p" id="u2abdfcc3">
+  <span class="ne-text">
+   &#36825;&#33410;&#25105;&#20204;&#26469;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#24590;&#20040;&#21644; JDK &#24213;&#23618;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#32852;&#31995;&#22312;&#19968;&#36215;&#30340;&#65292;&#23427;&#20204;&#26159;&#19968;&#23545;&#19968;&#30340;&#20851;&#31995;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21516;&#29702;&#65292;&#20063;&#26159;&#19968;&#23545;&#19968;&#30340;&#20851;&#31995;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u641a8c26">
+  <br>
+ </p>
+ <p class="ne-p" id="u2e879b84">
+  <img class="ne-image" id="dOoVE" src="EPUB/imgdOoVE" width="1610">
+ </p>
+ <p class="ne-p" id="u2ab420b0">
+  <br>
+ </p>
+ <p class="ne-p" id="u32069a9c">
+  <span class="ne-text">
+   &#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Bootstrap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65288;&#23458;&#25143;&#31471;&#65289; &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerBootstrap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65288;&#26381;&#21153;&#31471;&#65289; &#30340;&#21551;&#21160;&#36807;&#31243;&#20013;&#37117;&#20250;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel(&#8230;)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u8eb1803d">
+  <br>
+ </p>
+ <p class="ne-p" id="u3981df38">
+  <img class="ne-image" id="EnbNM" src="EPUB/imgEnbNM" width="2438">
+ </p>
+ <p class="ne-p" id="u1423d746">
+  <br>
+ </p>
+ <p class="ne-p" id="ucb42df2e">
+  <span class="ne-text">
+   &#19979;&#38754;&#65292;&#25105;&#20204;&#26469;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel(&#8230;)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u37447075">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="5f7e06e8">// AbstractBootstrap
+public B channel(Class&lt;? extends C&gt; channelClass) {
+    if (channelClass == null) {
+        throw new NullPointerException("channelClass");
+    }
+    return channelFactory(new ReflectiveChannelFactory&lt;C&gt;(channelClass));
+}</pre>
+ <p class="ne-p" id="u1f40538f">
+  <br>
+ </p>
+ <p class="ne-p" id="ue16ee0fd">
+  <span class="ne-text">
+   &#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#65292;&#36825;&#20010;&#26041;&#27861;&#21482;&#26159;&#35774;&#32622;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channelFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ReflectiveChannelFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#19968;&#20010;&#23454;&#20363;&#65292;&#28982;&#21518;&#25105;&#20204;&#30475;&#19979;&#36825;&#37324;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ReflectiveChannelFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21040;&#24213;&#26159;&#20160;&#20040;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u8aacf133">
+  <br>
+ </p>
+ <p class="ne-p" id="u000054ae">
+  <img class="ne-image" id="oQHRf" src="EPUB/imgoQHRf" width="1688">
+ </p>
+ <p class="ne-p" id="u9160f6e5">
+  <br>
+ </p>
+ <p class="ne-p" id="u219841ac">
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     newChannel()
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#20013;&#30340;&#21807;&#19968;&#26041;&#27861;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#24037;&#21378;&#27169;&#24335;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#22823;&#23478;&#37117;&#24456;&#29087;&#24713;&#12290;&#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ReflectiveChannelFactory#newChannel()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#20351;&#29992;&#20102;&#21453;&#23556;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26080;&#21442;&#26500;&#36896;&#26041;&#27861;&#26469;&#21019;&#24314;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#25105;&#20204;&#21482;&#35201;&#30693;&#36947;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    newChannel()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20160;&#20040;&#26102;&#20505;&#20250;&#34987;&#35843;&#29992;&#23601;&#21487;&#20197;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u7fd805a8">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u3fd63901">
+   <span class="ne-text">
+    &#23545;&#20110;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#30001;&#20110;&#23427;&#20805;&#24403;&#23458;&#25143;&#31471;&#30340;&#21151;&#33021;&#65292;&#23427;&#30340;&#21019;&#24314;&#26102;&#26426;&#22312;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     connect(&#8230;)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#26102;&#20505;&#65307;
+   </span>
+  </li>
+  <li id="u3b5b5243">
+   <span class="ne-text">
+    &#23545;&#20110;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioServerSocketChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26469;&#35828;&#65292;&#23427;&#20805;&#24403;&#26381;&#21153;&#31471;&#21151;&#33021;&#65292;&#23427;&#30340;&#21019;&#24314;&#26102;&#26426;&#22312;&#32465;&#23450;&#31471;&#21475;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     bind(&#8230;)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#26102;&#20505;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u77f39ccb">
+  <br>
+ </p>
+ <p class="ne-p" id="u2f8add44">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#26469;&#31616;&#21333;&#36861;&#36394;&#19979;&#20805;&#24403;&#23458;&#25143;&#31471;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Bootstrap
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21019;&#24314;&#36807;&#31243;&#65292;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#24590;&#20040;&#21644; JDK &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20851;&#32852;&#22312;&#19968;&#36215;&#30340;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uecccb02b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="f9de4af5">// Bootstrap
+public ChannelFuture connect(String inetHost, int inetPort) {
+    return connect(InetSocketAddress.createUnresolved(inetHost, inetPort));
+}</pre>
+ <p class="ne-p" id="u185fa8c4">
+  <br>
+ </p>
+ <p class="ne-p" id="u59b1d5bb">
+  <span class="ne-text">
+   &#28982;&#21518;&#20877;&#24448;&#37324;&#30475;&#65292;&#21040;&#36825;&#20010;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u63352502">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="d7884c9f">public ChannelFuture connect(SocketAddress remoteAddress) {
+    if (remoteAddress == null) {
+        throw new NullPointerException("remoteAddress");
+    // validate &#21482;&#26159;&#26657;&#39564;&#19968;&#19979;&#21508;&#20010;&#21442;&#25968;&#26159;&#19981;&#26159;&#27491;&#30830;&#35774;&#32622;&#20102;
+    validate();
+    return doResolveAndConnect(remoteAddress, config.localAddress());
+}</pre>
+ <p class="ne-p" id="ub78464c6">
+  <br>
+ </p>
+ <p class="ne-p" id="u579faf9c">
+  <span class="ne-text">
+   &#32487;&#32493;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u4baf0c62">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="a3669c68">// &#20877;&#24448;&#37324;&#23601;&#21040;&#36825;&#37324;&#20102;
+private ChannelFuture doResolveAndConnect(final SocketAddress remoteAddress, final SocketAddress localAddress) {
+    // &#25105;&#20204;&#35201;&#35828;&#30340;&#37096;&#20998;&#22312;&#36825;&#37324;
+    final ChannelFuture regFuture = initAndRegister();
+    final Channel channel = regFuture.channel();
+    ......
+}</pre>
+ <p class="ne-p" id="ubb1e1271">
+  <br>
+ </p>
+ <p class="ne-p" id="u55a760d6">
+  <span class="ne-text">
+   &#28982;&#21518;&#65292;&#25105;&#20204;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    initAndRegister()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u3a367b6d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="468ff326">final ChannelFuture initAndRegister() {
+    Channel channel = null;
+    try {
+        // &#21069;&#38754;&#25105;&#20204;&#35828;&#36807;&#65292;&#36825;&#37324;&#20250;&#36827;&#34892; Channel &#30340;&#23454;&#20363;&#21270;
+        channel = channelFactory.newChannel();
+        init(channel);
+    } catch (Throwable t) {
+        ...
+    }
+    ...
+    return regFuture;
+}</pre>
+ <p class="ne-p" id="u8abf5ea8">
+  <br>
+ </p>
+ <p class="ne-p" id="u039a4690">
+  <span class="ne-text">
+   &#25105;&#20204;&#25214;&#21040;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel = channelFactory.newChannel()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#34892;&#20195;&#30721;&#65292;&#26681;&#25454;&#21069;&#38754;&#35828;&#30340;&#65292;&#36825;&#37324;&#20250;&#35843;&#29992;&#30456;&#24212;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26080;&#21442;&#26500;&#36896;&#26041;&#27861;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4eaf6a2c">
+  <br>
+ </p>
+ <p class="ne-p" id="u31201844">
+  <span class="ne-text">
+   &#28982;&#21518;&#25105;&#20204;&#23601;&#21487;&#20197;&#21435;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#26041;&#27861;&#20102;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud2506b37">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="a8b36d98">public NioSocketChannel() {
+    // SelectorProvider &#23454;&#20363;&#29992;&#20110;&#21019;&#24314; JDK &#30340; SocketChannel &#23454;&#20363;
+    this(DEFAULT_SELECTOR_PROVIDER);
+}
+
+public NioSocketChannel(SelectorProvider provider) {
+    // &#30475;&#36825;&#37324;&#65292;newSocket(provider) &#26041;&#27861;&#20250;&#21019;&#24314; JDK &#30340; SocketChannel
+    this(newSocket(provider));
+}</pre>
+ <p class="ne-p" id="u9a8616b8">
+  <br>
+ </p>
+ <p class="ne-p" id="ua1e2c085">
+  <span class="ne-text">
+   &#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#65292;&#22312;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    newSocket(provider)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26102;&#20505;&#65292;&#20250;&#21019;&#24314; JDK NIO &#30340;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u73ee9b32">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="c8a8e94b">private static SocketChannel newSocket(SelectorProvider provider) {
+    try {
+        // &#21019;&#24314; SocketChannel &#23454;&#20363;
+        return provider.openSocketChannel();
+    } catch (IOException e) {
+        throw new ChannelException("Failed to open a socket.", e);
+    }
+}</pre>
+ <p class="ne-p" id="ubf909deb">
+  <br>
+ </p>
+ <p class="ne-p" id="u6c3c5d23">
+  <code class="ne-code">
+   <span class="ne-text">
+    NioServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21516;&#29702;&#65292;&#20063;&#38750;&#24120;&#31616;&#21333;&#65292;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerBootstrap#bind(...)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#19968;&#36335;&#28857;&#36827;&#21435;&#23601;&#28165;&#26970;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1d225282">
+  <br>
+ </p>
+ <p class="ne-p" id="uc5b44168">
+  <span class="ne-text">
+   &#25152;&#20197;&#25105;&#20204;&#30693;&#36947;&#20102;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22312;&#23454;&#20363;&#21270;&#36807;&#31243;&#20013;&#65292;&#20250;&#20808;&#23454;&#20363;&#21270; JDK &#24213;&#23618;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20063;&#19968;&#26679;&#65292;&#20250;&#20808;&#23454;&#20363;&#21270;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u38e93a07">
+  <br>
+ </p>
+ <p class="ne-p" id="u4279cd2e">
+  <img class="ne-image" id="lN9BZ" src="EPUB/imglN9BZ" width="1460">
+ </p>
+ <p class="ne-p" id="u67220ff6">
+  <br>
+ </p>
+ <p class="ne-p" id="ud79b2d4e">
+  <span class="ne-text">
+   &#35828;&#21040;&#36825;&#37324;&#65292;&#25105;&#20204;&#39034;&#20415;&#20877;&#32487;&#32493;&#24448;&#37324;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uf91b1e44">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="3407520c">public NioSocketChannel(SelectorProvider provider) {
+    this(newSocket(provider));
+}</pre>
+ <p class="ne-p" id="u93127af5">
+  <br>
+ </p>
+ <p class="ne-p" id="u8e04f6e7">
+  <span class="ne-text">
+   &#21018;&#25165;&#25105;&#20204;&#30475;&#21040;&#36825;&#37324;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    newSocket(provider)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21019;&#24314;&#20102;&#24213;&#23618;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65292;&#25105;&#20204;&#32487;&#32493;&#24448;&#19979;&#30475;&#26500;&#36896;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ub795ff65">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="038b0ef5">public NioSocketChannel(Channel parent, SocketChannel socket) {
+    super(parent, socket);
+    config = new NioSocketChannelConfig(this, socket.socket());
+}</pre>
+ <p class="ne-p" id="u2fa94684">
+  <br>
+ </p>
+ <p class="ne-p" id="u4ac3e514">
+  <span class="ne-text">
+   &#19978;&#38754;&#26377;&#20004;&#34892;&#20195;&#30721;&#65292;&#31532;&#20108;&#34892;&#20195;&#30721;&#24456;&#31616;&#21333;&#65292;&#23454;&#20363;&#21270;&#20102;&#20869;&#37096;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannelConfig
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65292;&#23427;&#29992;&#20110;&#20445;&#23384; channel &#30340;&#37197;&#32622;&#20449;&#24687;&#65292;&#36825;&#37324;&#27809;&#26377;&#25105;&#20204;&#29616;&#22312;&#38656;&#35201;&#20851;&#24515;&#30340;&#20869;&#23481;&#65292;&#30452;&#25509;&#36339;&#36807;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uc575e5c7">
+  <br>
+ </p>
+ <p class="ne-p" id="u884ed0ee">
+  <span class="ne-text">
+   &#31532;&#19968;&#34892;&#35843;&#29992;&#29238;&#31867;&#26500;&#36896;&#22120;&#65292;&#38500;&#20102;&#35774;&#32622;&#23646;&#24615;&#22806;&#65292;&#36824;&#35774;&#32622;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#38750;&#38459;&#22622;&#27169;&#24335;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud2f83113">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="eaa2174d">protected AbstractNioByteChannel(Channel parent, SelectableChannel ch) {
+    // &#27627;&#26080;&#30097;&#38382;&#65292;&#23458;&#25143;&#31471;&#20851;&#24515;&#30340;&#26159; OP_READ &#20107;&#20214;&#65292;&#31561;&#24453;&#35835;&#21462;&#26381;&#21153;&#31471;&#36820;&#22238;&#25968;&#25454;
+    super(parent, ch, SelectionKey.OP_READ);
+}
+
+// &#28982;&#21518;&#26159;&#21040;&#36825;&#37324;
+protected AbstractNioChannel(Channel parent, SelectableChannel ch, int readInterestOp) {
+    super(parent);
+    this.ch = ch;
+    // &#25105;&#20204;&#30475;&#21040;&#36825;&#37324;&#21482;&#26159;&#20445;&#23384;&#20102; SelectionKey.OP_READ &#36825;&#20010;&#20449;&#24687;&#65292;&#22312;&#21518;&#38754;&#30340;&#26102;&#20505;&#20250;&#29992;&#21040;
+    this.readInterestOp = readInterestOp;
+    try {
+        // ******&#35774;&#32622; channel &#30340;&#38750;&#38459;&#22622;&#27169;&#24335;******
+        ch.configureBlocking(false);
+    } catch (IOException e) {
+        ......
+    }
+}</pre>
+ <p class="ne-p" id="udc4850b5">
+  <br>
+ </p>
+ <p class="ne-p" id="u0bee4ebb">
+  <code class="ne-code">
+   <span class="ne-text">
+    NioServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26500;&#36896;&#26041;&#27861;&#31867;&#20284;&#65292;&#20063;&#35774;&#32622;&#20102;&#38750;&#38459;&#22622;&#65292;&#28982;&#21518;&#35774;&#32622;&#26381;&#21153;&#31471;&#20851;&#24515;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SelectionKey.OP_ACCEPT
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20107;&#20214;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ued14343e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="33542536">public NioServerSocketChannel(ServerSocketChannel channel) {
+    // &#23545;&#20110;&#26381;&#21153;&#31471;&#26469;&#35828;&#65292;&#20851;&#24515;&#30340;&#26159; SelectionKey.OP_ACCEPT &#20107;&#20214;&#65292;&#31561;&#24453;&#23458;&#25143;&#31471;&#36830;&#25509;
+    super(null, channel, SelectionKey.OP_ACCEPT);
+    config = new NioServerSocketChannelConfig(this, javaChannel().socket());
+}</pre>
+ <p class="ne-p" id="u4d61f906">
+  <br>
+ </p>
+ <p class="ne-p" id="u58185f32">
+  <span class="ne-text">
+   &#36825;&#33410;&#20851;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20869;&#23481;&#25105;&#20204;&#20808;&#20171;&#32461;&#36825;&#20040;&#22810;&#65292;&#20027;&#35201;&#23601;&#26159;&#23454;&#20363;&#21270;&#20102; JDK &#23618;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#28982;&#21518;&#35774;&#32622;&#20102;&#38750;&#38459;&#22622;&#27169;&#24335;&#65292;&#25105;&#20204;&#21518;&#38754;&#20877;&#32487;&#32493;&#28145;&#20837;&#19979;&#21435;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u59186b07">
+  <br>
+ </p>
+ <h2 id="4f055261">
+  <span class="ne-text">
+   Channel &#30340; register &#25805;&#20316;
+  </span>
+ </h2>
+ <p class="ne-p" id="ua29dc6cb">
+  <br>
+ </p>
+ <p class="ne-p" id="u40cda2be">
+  <span class="ne-text">
+   &#32463;&#36807;&#21069;&#38754;&#30340;&#38138;&#22443;&#65292;&#25105;&#20204;&#24050;&#32463;&#20855;&#22791;&#19968;&#23450;&#30340;&#22522;&#30784;&#20102;&#65292;&#25105;&#20204;&#24320;&#22987;&#26469;&#25226;&#21069;&#38754;&#23398;&#21040;&#30340;&#20869;&#23481;&#25545;&#22312;&#19968;&#36215;&#12290;&#36825;&#33410;&#65292;&#25105;&#20204;&#20250;&#20171;&#32461;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#65292;&#36825;&#19968;&#27493;&#20854;&#23454;&#26159;&#38750;&#24120;&#20851;&#38190;&#30340;&#65292;&#23545;&#20110;&#25105;&#20204;&#28304;&#30721;&#20998;&#26512;&#38750;&#24120;&#37325;&#35201;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u05c6ec89">
+  <br>
+ </p>
+ <p class="ne-p" id="uedbea1fa">
+  <span class="ne-text">
+   &#25105;&#20204;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EchoClient
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20986;&#21457;&#65292;&#25110;&#32773;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EchoServer
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind(port)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20986;&#21457;&#65292;&#37117;&#20250;&#36208;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    initAndRegister()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud538fb77">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="a34e84ad">final ChannelFuture initAndRegister() {
+    Channel channel = null;
+    try {
+        // 1
+        channel = channelFactory.newChannel();
+        // 2 &#23545;&#20110; Bootstrap &#21644; ServerBootstrap&#65292;&#36825;&#37324;&#38754;&#26377;&#20123;&#19981;&#19968;&#26679;
+        init(channel);
+    } catch (Throwable t) {
+        ...
+    }
+    // 3 &#25105;&#20204;&#36825;&#37324;&#35201;&#35828;&#30340;&#26159;&#36825;&#34892;
+    ChannelFuture regFuture = config().group().register(channel);
+    if (regFuture.cause() != null) {
+        if (channel.isRegistered()) {
+            channel.close();
+        } else {
+            channel.unsafe().closeForcibly();
+        }
+    }
+    return regFuture;
+}</pre>
+ <p class="ne-p" id="uc802a2da">
+  <br>
+ </p>
+ <p class="ne-p" id="u62dca05b">
+  <code class="ne-code">
+   <span class="ne-text">
+    initAndRegister()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#25105;&#20204;&#24050;&#32463;&#25509;&#35302;&#36807;&#20004;&#27425;&#20102;&#65292;&#21069;&#38754;&#20171;&#32461;&#20102;:
+  </span>
+ </p>
+ <p class="ne-p" id="ue7d0f475">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u62cc6b2c">
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#23454;&#20363;&#21270;&#65292;&#23454;&#20363;&#21270;&#36807;&#31243;&#20013;&#65292;&#20250;&#25191;&#34892;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20869;&#37096;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Unsafe
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#23454;&#20363;&#21270;&#65307;
+   </span>
+  </li>
+  <li id="ue2b33440">
+   <code class="ne-code">
+    <span class="ne-text">
+     init(channel)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#20013;&#65292;&#20250;&#24448;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#28155;&#21152;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65288;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27492;&#26102;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     head+channelnitializer+tail
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65289;&#12290;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u52047e5c">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uc34c5a0b">
+   <span class="ne-text">
+    &#25105;&#20204;&#32456;&#20110;&#35201;&#25581;&#31192;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ChannelInitializer
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     initChannel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#20102;~~~
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="uaaa61a35">
+  <br>
+ </p>
+ <p class="ne-p" id="u7cd4fb0b">
+  <span class="ne-text">
+   &#29616;&#22312;&#65292;&#25105;&#20204;&#32487;&#32493;&#24448;&#19979;&#36208;&#65292;&#30475;&#30475;&#31532; 3 &#27493;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     register
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ub940465d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="12fb8ff8">ChannelFuture regFuture = config().group().register(channel);</pre>
+ <p class="ne-p" id="u0e4aadde">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ua7845ee0">
+   <span class="ne-text">
+    &#25105;&#20204;&#35828;&#20102;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     register
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36825;&#19968;&#27493;&#26159;&#38750;&#24120;&#20851;&#38190;&#30340;&#65292;&#23427;&#21457;&#29983;&#22312;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#21270;&#20197;&#21518;&#65292;&#22823;&#23478;&#22238;&#24518;&#19968;&#19979;&#24403;&#21069;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#30340;&#19968;&#20123;&#24773;&#20917;&#65306;
+   </span>
+  </p>
+  <p class="ne-p" id="u320f6920">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="ube733670">
+   <span class="ne-text">
+    &#23454;&#20363;&#21270;&#20102; JDK &#24213;&#23618;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#35774;&#32622;&#20102;&#38750;&#38459;&#22622;&#65292;&#23454;&#20363;&#21270;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Unsafe
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#23454;&#20363;&#21270;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#21516;&#26102;&#24448;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#28155;&#21152;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     head
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12289;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     tail
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20197;&#21450;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ChannelInitializer
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="uca7471f0">
+  <br>
+ </p>
+ <p class="ne-p" id="u8d38ea36">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    config().group()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20250;&#36820;&#22238;&#21069;&#38754;&#23454;&#20363;&#21270;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoopGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23454;&#20363;&#65292;&#28982;&#21518;&#35843;&#29992;&#20854;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register(channel)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ubd1c1575">
+  <br>
+ </p>
+ <p class="ne-p" id="ueed393af">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.MultithreadEventLoopGroup
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u02ba7707">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="6f601673">@Override
+public ChannelFuture register(Channel channel) {
+    return next().register(channel);
+}</pre>
+ <p class="ne-p" id="u7bb9977b">
+  <br>
+ </p>
+ <p class="ne-p" id="ub899b9e3">
+  <code class="ne-code">
+   <span class="ne-text">
+    next()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#24456;&#31616;&#21333;&#65292;&#23601;&#26159;&#36873;&#25321;&#32447;&#31243;&#27744;&#20013;&#30340;&#19968;&#20010;&#32447;&#31243;&#65288;&#36824;&#35760;&#24471;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    chooserFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21527;?&#65289;&#65292;&#20063;&#23601;&#26159;&#36873;&#25321;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65292;&#36825;&#20010;&#26102;&#20505;&#25105;&#20204;&#23601;&#36827;&#20837;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub64d8664">
+  <br>
+ </p>
+ <p class="ne-p" id="u74c8dbbb">
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register(channel)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#23454;&#29616;&#22312;&#23427;&#30340;&#29238;&#31867;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     SingleThreadEventLoop
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uff6fd5fc">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="2e133135">@Override
+public ChannelFuture register(Channel channel) {
+    return register(new DefaultChannelPromise(channel, this));
+}</pre>
+ <p class="ne-p" id="u9ac23966">
+  <br>
+ </p>
+ <p class="ne-p" id="udd3817df">
+  <span class="ne-text">
+   &#19978;&#38754;&#30340;&#20195;&#30721;&#23454;&#20363;&#21270;&#20102;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#23558;&#24403;&#21069;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24102;&#20102;&#36827;&#21435;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u31e573dd">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="91fdeea7">@Override
+public ChannelFuture register(final ChannelPromise promise) {
+    ObjectUtil.checkNotNull(promise, "promise");
+    // promise &#20851;&#32852;&#20102; channel&#65292;channel &#25345;&#26377; Unsafe &#23454;&#20363;&#65292;register &#25805;&#20316;&#23601;&#23553;&#35013;&#22312; Unsafe &#20013;
+    promise.channel().unsafe().register(this, promise);
+    return promise;
+}</pre>
+ <p class="ne-p" id="ub5b146e2">
+  <br>
+ </p>
+ <p class="ne-p" id="u19a6c172">
+  <span class="ne-text">
+   &#25343;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#20851;&#32852;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Unsafe
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#65292;&#28982;&#21518;&#35843;&#29992;&#23427;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u85d0dec7">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="udee2ddd1">
+   <span class="ne-text">
+    &#25105;&#20204;&#35828;&#36807;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Unsafe
+    </span>
+   </code>
+   <span class="ne-text">
+    &#19987;&#38376;&#29992;&#26469;&#23553;&#35013;&#24213;&#23618;&#23454;&#29616;&#65292;&#24403;&#28982;&#36825;&#37324;&#20063;&#27809;&#37027;&#20040;&#8220;&#24213;&#23618;&#8221;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u13790c1e">
+  <br>
+ </p>
+ <p class="ne-p" id="udb4274e8">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.AbstractChannel#AbstractUnsafe
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u95ffeb83">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="e37fe191">@Override
+public final void register(EventLoop eventLoop, final ChannelPromise promise) {
+    ...
+    // &#23558;&#36825;&#20010; eventLoop &#23454;&#20363;&#35774;&#32622;&#32473;&#36825;&#20010; channel&#65292;&#20174;&#27492;&#36825;&#20010; channel &#23601;&#26159;&#26377; eventLoop &#30340;&#20102;
+    // &#25105;&#35273;&#24471;&#36825;&#19968;&#27493;&#20854;&#23454;&#25402;&#20851;&#38190;&#30340;&#65292;&#22240;&#20026;&#21518;&#32493;&#35813; channel &#20013;&#30340;&#25152;&#26377;&#24322;&#27493;&#25805;&#20316;&#65292;&#37117;&#35201;&#25552;&#20132;&#32473;&#36825;&#20010; eventLoop &#26469;&#25191;&#34892;
+    AbstractChannel.this.eventLoop = eventLoop;
+
+    // &#22914;&#26524;&#21457;&#36215; register &#21160;&#20316;&#30340;&#32447;&#31243;&#23601;&#26159; eventLoop &#23454;&#20363;&#20013;&#30340;&#32447;&#31243;&#65292;&#37027;&#20040;&#30452;&#25509;&#35843;&#29992; register0(promise)
+    // &#23545;&#20110;&#25105;&#20204;&#26469;&#35828;&#65292;&#23427;&#19981;&#20250;&#36827;&#20837;&#21040;&#36825;&#20010;&#20998;&#25903;&#65292;
+    //     &#20043;&#25152;&#20197;&#26377;&#36825;&#20010;&#20998;&#25903;&#65292;&#26159;&#22240;&#20026;&#25105;&#20204;&#26159;&#21487;&#20197; unregister&#65292;&#28982;&#21518;&#20877; register &#30340;&#65292;&#21518;&#38754;&#20877;&#20180;&#32454;&#30475;
+    if (eventLoop.inEventLoop()) {
+        register0(promise);
+    } else {
+        try {
+            // &#21542;&#21017;&#65292;&#25552;&#20132;&#20219;&#21153;&#32473; eventLoop&#65292;eventLoop &#20013;&#30340;&#32447;&#31243;&#20250;&#36127;&#36131;&#35843;&#29992; register0(promise)
+            eventLoop.execute(new Runnable() {
+                @Override
+                public void run() {
+                    register0(promise);
+                }
+            });
+        } catch (Throwable t) {
+            ...
+        }
+    }
+}</pre>
+ <p class="ne-p" id="uaf60ed2c">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u5243f379">
+   <span class="ne-text">
+    &#21040;&#36825;&#37324;&#65292;&#25105;&#20204;&#35201;&#26126;&#30333;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#26159;&#36824;&#27809;&#26377;&#23454;&#20363;&#21270;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Thread
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#30340;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u43673c0b">
+  <br>
+ </p>
+ <p class="ne-p" id="uf86d6fb2">
+  <span class="ne-text">
+   &#36825;&#20960;&#27493;&#28041;&#21450;&#21040;&#20102;&#22909;&#20960;&#20010;&#31867;&#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Unsafe
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#65292;&#22823;&#23478;&#35201;&#20180;&#32454;&#29702;&#28165;&#26970;&#23427;&#20204;&#30340;&#20851;&#31995;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8b60ee91">
+  <br>
+ </p>
+ <p class="ne-p" id="ua7b2a4c8">
+  <span class="ne-text">
+   &#23545;&#20110;&#25105;&#20204;&#21069;&#38754;&#36807;&#26469;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#65292;&#20854;&#23454;&#25552;&#20132;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    eventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20197;&#21518;&#65292;&#23601;&#30452;&#25509;&#36820;&#22238;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    promise
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#20102;&#65292;&#21097;&#19979;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register0
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#24322;&#27493;&#25805;&#20316;&#65292;&#23427;&#30001;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#26469;&#23436;&#25104;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufa9f6b27">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u3e0ada56">
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#19968;&#26086;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     register
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21040;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoopGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#20013;&#30340;&#26576;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#65292;&#37027;&#20040;&#21518;&#32493;&#35813;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#25152;&#26377;&#25805;&#20316;&#65292;&#37117;&#26159;&#30001;&#35813;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#26469;&#23436;&#25104;&#30340;&#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="u1abc6f43">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="uf68914f9">
+   <span class="ne-text">
+    &#36825;&#20010;&#20063;&#38750;&#24120;&#31616;&#21333;&#65292;&#22240;&#20026;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#26159;&#22312;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     NioEventLoop
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#20013;&#30340;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Channel
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#19968;&#26086;&#27880;&#20876;&#21040;&#26576;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Selector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23454;&#20363;&#20013;&#65292;&#24403;&#28982;&#20063;&#21482;&#33021;&#22312;&#36825;&#20010;&#23454;&#20363;&#20013;&#22788;&#29702; NIO &#20107;&#20214;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="uc230258c">
+  <br>
+ </p>
+ <p class="ne-p" id="u14071933">
+  <span class="ne-text">
+   &#25105;&#20204;&#26469;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register0(promise)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#25105;&#20204;&#30693;&#36947;&#65292;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20219;&#21153;&#36827;&#20837;&#21040;&#20102; NioEventLoop &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    taskQueue
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#28982;&#21518;&#20250;&#21551;&#21160;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#32447;&#31243;&#65292;&#35813;&#32447;&#31243;&#20250;&#36718;&#35810;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    taskQueue
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#28982;&#21518;&#25191;&#34892;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20219;&#21153;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4d2afba9">
+  <br>
+ </p>
+ <p class="ne-p" id="ue0c20882">
+  <span class="ne-text">
+   &#27880;&#24847;&#65292;&#27492;&#26102;&#25191;&#34892;&#35813;&#26041;&#27861;&#30340;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    eventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#32447;&#31243;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uf1dd9289">
+  <br>
+ </p>
+ <p class="ne-p" id="u1218e654">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.AbstractChannel#register0
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="uc13b4f5f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="0ca88cc4">private void register0(ChannelPromise promise) {
+    try {
+        ...
+        boolean firstRegistration = neverRegistered;
+        // *** &#36827;&#34892; JDK &#24213;&#23618;&#30340;&#25805;&#20316;&#65306;Channel &#27880;&#20876;&#21040; Selector &#19978; ***
+        doRegister();
+
+        neverRegistered = false;
+        registered = true;
+        // &#21040;&#36825;&#37324;&#65292;&#23601;&#31639;&#26159; registered &#20102;
+
+        // &#36825;&#19968;&#27493;&#20063;&#24456;&#20851;&#38190;&#65292;&#22240;&#20026;&#36825;&#28041;&#21450;&#21040;&#20102; ChannelInitializer &#30340; init(channel)
+        // &#25105;&#20204;&#20043;&#21069;&#35828;&#36807;&#65292;init &#26041;&#27861;&#20250;&#23558; ChannelInitializer &#20869;&#37096;&#28155;&#21152;&#30340; handlers &#28155;&#21152;&#21040; pipeline &#20013;
+        pipeline.invokeHandlerAddedIfNeeded();
+
+        // &#35774;&#32622;&#24403;&#21069; promise &#30340;&#29366;&#24577;&#20026; success
+        //   &#22240;&#20026;&#24403;&#21069; register &#26041;&#27861;&#26159;&#22312; eventLoop &#20013;&#30340;&#32447;&#31243;&#20013;&#25191;&#34892;&#30340;&#65292;&#38656;&#35201;&#36890;&#30693;&#25552;&#20132; register &#25805;&#20316;&#30340;&#32447;&#31243;
+        safeSetSuccess(promise);
+
+        // &#24403;&#21069;&#30340; register &#25805;&#20316;&#24050;&#32463;&#25104;&#21151;&#65292;&#35813;&#20107;&#20214;&#24212;&#35813;&#34987; pipeline &#19978;
+        //   &#25152;&#26377;&#20851;&#24515; register &#20107;&#20214;&#30340; handler &#24863;&#30693;&#21040;&#65292;&#24448; pipeline &#20013;&#25172;&#19968;&#20010;&#20107;&#20214;
+        pipeline.fireChannelRegistered();
+
+        // &#36825;&#37324; active &#25351;&#30340;&#26159; channel &#24050;&#32463;&#25171;&#24320;
+        if (isActive()) {
+            // &#22914;&#26524;&#35813; channel &#26159;&#31532;&#19968;&#27425;&#25191;&#34892; register&#65292;&#37027;&#20040; fire ChannelActive &#20107;&#20214;
+            if (firstRegistration) {
+                pipeline.fireChannelActive();
+            } else if (config().isAutoRead()) {
+                // &#35813; channel &#20043;&#21069;&#24050;&#32463; register &#36807;&#20102;&#65292;
+                // &#36825;&#37324;&#35753;&#35813; channel &#31435;&#39532;&#21435;&#30417;&#21548;&#36890;&#36947;&#20013;&#30340; OP_READ &#20107;&#20214;
+                beginRead();
+            }
+        }
+    } catch (Throwable t) {
+        ...
+    }
+}</pre>
+ <p class="ne-p" id="u6ec5ffcd">
+  <br>
+ </p>
+ <p class="ne-p" id="ua1d074e2">
+  <span class="ne-text">
+   &#25105;&#20204;&#20808;&#35828;&#25481;&#19978;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doRegister()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#28982;&#21518;&#20877;&#35828;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf7c92c38">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="2571850a">@Override
+protected void doRegister() throws Exception {
+    boolean selected = false;
+    for (;;) {
+        try {
+            // &#38468; JDK &#20013; Channel &#30340; register &#26041;&#27861;&#65306;
+            // public final SelectionKey register(Selector sel, int ops, Object att) {...}
+            selectionKey = javaChannel().register(eventLoop().unwrappedSelector(), 0, this);
+            return;
+        } catch (CancelledKeyException e) {
+            ...
+        }
+    }
+}</pre>
+ <p class="ne-p" id="uf3e5c43f">
+  <br>
+ </p>
+ <p class="ne-p" id="uc14a21f2">
+  <span class="ne-text">
+   &#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#65292;&#36825;&#37324;&#20570;&#20102; JDK &#24213;&#23618;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#65292;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   (&#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   ) &#27880;&#20876;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Selector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#24182;&#19988;&#21487;&#20197;&#30475;&#21040;&#65292;&#36825;&#37324;&#30340;&#30417;&#21548;&#38598;&#21512;&#35774;&#32622;&#20026;&#20102;
+  </span>
+  <strong>
+   <span class="ne-text">
+    0
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#20063;&#23601;&#26159;&#20160;&#20040;&#37117;&#19981;&#30417;&#21548;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ueda8c9d8">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u3670000d">
+   <span class="ne-text">
+    &#24403;&#28982;&#65292;&#20063;&#23601;&#24847;&#21619;&#30528;&#65292;&#21518;&#32493;&#19968;&#23450;&#26377;&#26576;&#20010;&#22320;&#26041;&#20250;&#38656;&#35201;&#20462;&#25913;&#36825;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectionKey
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#30417;&#21548;&#38598;&#21512;&#65292;&#19981;&#28982;&#21861;&#37117;&#24178;&#19981;&#20102;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="ua59e5096">
+  <br>
+ </p>
+ <p class="ne-p" id="ud3fc894e">
+  <span class="ne-text">
+   &#25105;&#20204;&#37325;&#28857;&#26469;&#35828;&#35828;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     pipeline
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#65292;&#25105;&#20204;&#20043;&#21069;&#22312;&#20171;&#32461;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26102;&#20505;&#20171;&#32461;&#21040;&#65292;&#25105;&#20204;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#29616;&#22312;&#38271;&#36825;&#20010;&#26679;&#23376;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u8f042a23">
+  <br>
+ </p>
+ <p class="ne-p" id="ua274c04b">
+  <img class="ne-image" id="Yr7Yg" src="EPUB/imgYr7Yg" width="1798">
+ </p>
+ <p class="ne-p" id="ub01a7d36">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uf6ddfef8">
+   <span class="ne-text">
+    &#29616;&#22312;&#65292;&#25105;&#20204;&#23558;&#30475;&#21040;&#36825;&#37324;&#20250;&#25226;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     LoggingHandler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     EchoClientHandler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#28155;&#21152;&#21040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u211fff8e">
+  <br>
+ </p>
+ <p class="ne-p" id="u2629a67b">
+  <span class="ne-text">
+   &#25105;&#20204;&#32487;&#32493;&#30475;&#20195;&#30721;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25104;&#21151;&#20197;&#21518;&#65292;&#25191;&#34892;&#20102;&#20197;&#19979;&#25805;&#20316;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u99bcf2d9">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b0d6a539">pipeline.invokeHandlerAddedIfNeeded();</pre>
+ <p class="ne-p" id="u3f54657c">
+  <br>
+ </p>
+ <p class="ne-p" id="u5c431fdc">
+  <span class="ne-text">
+   &#22823;&#23478;&#21487;&#20197;&#36319;&#36394;&#19968;&#19979;&#65292;&#36825;&#19968;&#27493;&#20250;&#25191;&#34892;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelInitializer
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#20363;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handlerAdded
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#22312;&#36825;&#37324;&#20250;&#25191;&#34892;&#23427;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    init(context)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6ed0c805">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="bda64c8b">@Override
+public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+    if (ctx.channel().isRegistered()) {
+        initChannel(ctx);
+    }
+}</pre>
+ <p class="ne-p" id="u1feb2dc5">
+  <br>
+ </p>
+ <p class="ne-p" id="u40821e8c">
+  <span class="ne-text">
+   &#28982;&#21518;&#25105;&#20204;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    initChannel(ctx)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#37324;&#32456;&#20110;&#26469;&#20102;&#25105;&#20204;&#20043;&#21069;&#20171;&#32461;&#36807;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    init(channel)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u8220cf15">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b3d3facb">private boolean initChannel(ChannelHandlerContext ctx) throws Exception {
+    if (initMap.putIfAbsent(ctx, Boolean.TRUE) == null) { // Guard against re-entrance.
+        try {
+            // 1. &#23558;&#25226;&#25105;&#20204;&#33258;&#23450;&#20041;&#30340; handlers &#28155;&#21152;&#21040; pipeline &#20013;
+            initChannel((C) ctx.channel());
+        } catch (Throwable cause) {
+            ...
+        } finally {
+            // 2. &#23558; ChannelInitializer &#23454;&#20363;&#20174; pipeline &#20013;&#21024;&#38500;
+            remove(ctx);
+        }
+        return true;
+    }
+    return false;
+}</pre>
+ <p class="ne-p" id="u9cc43c63">
+  <br>
+ </p>
+ <p class="ne-p" id="u2e460f89">
+  <span class="ne-text">
+   &#25105;&#20204;&#21069;&#38754;&#20063;&#35828;&#36807;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelInitializer
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    init(channel)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#34987;&#25191;&#34892;&#20197;&#21518;&#65292;&#37027;&#20040;&#20854;&#20869;&#37096;&#28155;&#21152;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handlers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20250;&#36827;&#20837;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#28982;&#21518;&#19978;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    finally
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22359;&#20013;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ChannelInitializer
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#23454;&#20363;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#21024;&#38500;&#65292;&#37027;&#20040;&#27492;&#26102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23601;&#31639;&#24314;&#31435;&#36215;&#26469;&#20102;&#65292;&#22914;&#19979;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6ad3283d">
+  <br>
+ </p>
+ <p class="ne-p" id="uba948cac">
+  <img class="ne-image" id="eurS7" src="EPUB/imgeurS7" width="1534">
+ </p>
+ <p class="ne-p" id="u1441cf43">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u185921f3">
+   <span class="ne-text">
+    &#20854;&#23454;&#36825;&#37324;&#36824;&#26377;&#20010;&#38382;&#39064;&#65292;&#22914;&#26524;&#25105;&#20204;&#22312; ChannelInitializer &#20013;&#28155;&#21152;&#30340;&#26159;&#19968;&#20010; ChannelInitializer &#23454;&#20363;&#21602;&#65311;&#22823;&#23478;&#21487;&#20197;&#32771;&#34385;&#19979;&#36825;&#20010;&#24773;&#20917;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u9b3699db">
+  <br>
+ </p>
+ <p class="ne-p" id="u6547bcea">
+  <span class="ne-text">
+   pipeline &#24314;&#31435;&#20102;&#20197;&#21518;&#65292;&#28982;&#21518;&#25105;&#20204;&#32487;&#32493;&#24448;&#19979;&#36208;&#65292;&#20250;&#25191;&#34892;&#21040;&#36825;&#19968;&#21477;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u310a6440">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="64eb8782">pipeline.fireChannelRegistered();</pre>
+ <p class="ne-p" id="ueb7e1569">
+  <br>
+ </p>
+ <p class="ne-p" id="u05039bfb">
+  <span class="ne-text">
+   &#25105;&#20204;&#21482;&#35201;&#25720;&#28165;&#26970;&#20102; fireChannelRegistered() &#26041;&#27861;&#65292;&#20197;&#21518;&#30896;&#21040;&#20854;&#20182;&#20687; fireChannelActive()&#12289;fireXxx() &#31561;&#23601;&#30693;&#36947;&#24590;&#20040;&#22238;&#20107;&#20102;&#65292;&#23427;&#20204;&#37117;&#26159;&#31867;&#20284;&#30340;&#12290;&#25105;&#20204;&#26469;&#30475;&#30475;&#36825;&#21477;&#20195;&#30721;&#20250;&#21457;&#29983;&#20160;&#20040;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ua1902d23">
+  <br>
+ </p>
+ <p class="ne-p" id="u44abd43c">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.DefaultChannelPipeline#fireChannelRegistered
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="ub6a0f50e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="a7ee4004">@Override
+public final ChannelPipeline fireChannelRegistered() {
+    // &#27880;&#24847;&#36825;&#37324;&#30340;&#20256;&#21442;&#26159; head
+    AbstractChannelHandlerContext.invokeChannelRegistered(head);
+    return this;
+}</pre>
+ <p class="ne-p" id="u73344636">
+  <br>
+ </p>
+ <p class="ne-p" id="u25843330">
+  <span class="ne-text">
+   &#20063;&#23601;&#26159;&#35828;&#65292;&#25105;&#20204;&#24448;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#25172;&#20102;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     channelRegistered
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#20107;&#20214;&#65292;&#36825;&#37324;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23646;&#20110; Inbound &#20107;&#20214;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#35201;&#20570;&#30340;&#23601;&#26159;&#25191;&#34892;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340; Inbound &#31867;&#22411;&#30340; handlers &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channelRegistered()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1ee977b8">
+  <br>
+ </p>
+ <p class="ne-p" id="u69262cf6">
+  <span class="ne-text">
+   &#20174;&#19978;&#38754;&#30340;&#20195;&#30721;&#65292;&#25105;&#20204;&#21487;&#20197;&#30475;&#20986;&#65292;&#24448;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#25172;&#20986;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channelRegistered
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20107;&#20214;&#20197;&#21518;&#65292;&#31532;&#19968;&#20010;&#22788;&#29702;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handler
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     head
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4f1ffe15">
+  <br>
+ </p>
+ <p class="ne-p" id="udb9fff5e">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#36824;&#26159;&#36319;&#30528;&#20195;&#30721;&#36208;&#65292;&#27492;&#26102;&#25105;&#20204;&#26469;&#21040;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#31532;&#19968;&#20010;&#33410;&#28857;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     head
+    </span>
+   </strong>
+  </code>
+  <span class="ne-text">
+   &#30340;&#22788;&#29702;&#20013;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u4bdb4d8b">
+  <br>
+ </p>
+ <p class="ne-p" id="u576af63c">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.AbstractChannelHandlerContext#invokeChannelRegistered
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u694adba7">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="3b7ee3bc">// next &#27492;&#26102;&#26159; head
+static void invokeChannelRegistered(final AbstractChannelHandlerContext next) {
+
+    EventExecutor executor = next.executor();
+    // &#25191;&#34892; head &#30340; invokeChannelRegistered()
+    if (executor.inEventLoop()) {
+        next.invokeChannelRegistered();
+    } else {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                next.invokeChannelRegistered();
+            }
+        });
+    }
+}</pre>
+ <p class="ne-p" id="ucd00f93b">
+  <br>
+ </p>
+ <p class="ne-p" id="ubd2a2af3">
+  <span class="ne-text">
+   &#20063;&#23601;&#26159;&#35828;&#65292;&#36825;&#37324;&#20250;&#20808;&#25191;&#34892;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    head.invokeChannelRegistered()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#32780;&#19988;&#26159;&#25918;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    taskQueue
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#25191;&#34892;&#30340;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud3acdd80">
+  <br>
+ </p>
+ <p class="ne-p" id="uff840fc8">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.AbstractChannelHandlerContext#invokeChannelRegistered
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="ua4cb1c89">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="86ca8f22">private void invokeChannelRegistered() {
+    if (invokeHandler()) {
+        try {
+            // handler() &#26041;&#27861;&#27492;&#26102;&#20250;&#36820;&#22238; head
+            ((ChannelInboundHandler) handler()).channelRegistered(this);
+        } catch (Throwable t) {
+            notifyHandlerException(t);
+        }
+    } else {
+        fireChannelRegistered();
+    }
+}</pre>
+ <p class="ne-p" id="u60c42416">
+  <br>
+ </p>
+ <p class="ne-p" id="u200e292a">
+  <span class="ne-text">
+   &#25105;&#20204;&#21435;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    head
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channelRegistered
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u422f0812">
+  <br>
+ </p>
+ <p class="ne-p" id="u64f999eb">
+  <code class="ne-code">
+   <span class="ne-text">
+    HeadContext
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DefaultChannelPipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20869;&#37096;&#31867;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uaf35f11f">
+  <br>
+ </p>
+ <p class="ne-p" id="u2a529ab7">
+  <img class="ne-image" id="MTbdt" src="EPUB/imgMTbdt" width="362">
+ </p>
+ <p class="ne-p" id="ue7f83fac">
+  <br>
+ </p>
+ <p class="ne-p" id="u01c5145f">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.DefaultChannelPipeline.HeadContext#channelRegistered
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="uc69696dc">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="ba10ef4b">@Override
+public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+    // 1. &#36825;&#19968;&#27493;&#26159; head &#23545;&#20110; channelRegistered &#20107;&#20214;&#30340;&#22788;&#29702;&#12290;&#27809;&#26377;&#25105;&#20204;&#35201;&#20851;&#24515;&#30340;
+    invokeHandlerAddedIfNeeded();
+    // 2. &#21521;&#21518;&#20256;&#25773; Inbound &#20107;&#20214;
+    ctx.fireChannelRegistered();
+}</pre>
+ <p class="ne-p" id="u37b398e7">
+  <br>
+ </p>
+ <p class="ne-p" id="u0ccbf6f6">
+  <span class="ne-text">
+   &#28982;&#21518;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    head
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20250;&#25191;&#34892;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    fireChannelRegister()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ud3e5392b">
+  <br>
+ </p>
+ <p class="ne-p" id="uc15d46cd">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.AbstractChannelHandlerContext#fireChannelRegistered
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u9f2c3bd0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="d2681635">@Override
+public ChannelHandlerContext fireChannelRegistered() {
+    // &#36825;&#37324;&#24456;&#20851;&#38190;
+    // findContextInbound() &#26041;&#27861;&#20250;&#27839;&#30528; pipeline &#25214;&#21040;&#19979;&#19968;&#20010; Inbound &#31867;&#22411;&#30340; handler
+    invokeChannelRegistered(findContextInbound());
+    return this;
+}</pre>
+ <p class="ne-p" id="u5763824d">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uc65b110d">
+   <span class="ne-text">
+    &#27880;&#24847;&#65306;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline.fireChannelRegistered()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26159;&#23558;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     channelRegistered
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20107;&#20214;&#25243;&#21040;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     pipeline
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handlers
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20934;&#22791;&#22788;&#29702;&#35813;&#20107;&#20214;&#12290;&#32780;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     context.fireChannelRegistered()
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26159;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#22788;&#29702;&#23436;&#20102;&#20197;&#21518;&#65292;&#21521;&#21518;&#20256;&#25773;&#32473;&#19979;&#19968;&#20010;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12290;
+   </span>
+  </p>
+  <p class="ne-p" id="ue1f94682">
+   <span class="ne-text">
+   </span>
+  </p>
+  <p class="ne-p" id="ub852789d">
+   <span class="ne-text">
+    &#23427;&#20204;&#20004;&#20010;&#30340;&#26041;&#27861;&#21517;&#23383;&#26159;&#19968;&#26679;&#30340;&#65292;&#20294;&#26159;&#26469;&#33258;&#20110;&#19981;&#21516;&#30340;&#31867;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u6e80f4e5">
+  <br>
+ </p>
+ <p class="ne-p" id="u069e6097">
+  <code class="ne-code">
+   <span class="ne-text">
+    findContextInbound()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23558;&#25214;&#21040;&#19979;&#19968;&#20010; Inbound &#31867;&#22411;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handler
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#28982;&#21518;&#21448;&#26159;&#37325;&#22797;&#19978;&#38754;&#30340;&#20960;&#20010;&#26041;&#27861;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u795162d7">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="ub389428c">
+   <span class="ne-text">
+    &#25105;&#35273;&#24471;&#19978;&#38754;&#36825;&#22359;&#20195;&#30721;&#27809;&#24517;&#35201;&#22826;&#32416;&#32467;&#65292;&#24635;&#20043;&#23601;&#26159;&#20174;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     head
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20013;&#24320;&#22987;&#65292;&#20381;&#27425;&#24448;&#19979;&#23547;&#25214;&#25152;&#26377;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Inbound handler
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#25191;&#34892;&#20854;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     channelRegistered(ctx)
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25805;&#20316;&#12290;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="uf67eb900">
+  <br>
+ </p>
+ <p class="ne-p" id="u43f1a022">
+  <span class="ne-text">
+   &#35828;&#20102;&#36825;&#20040;&#22810;&#65292;&#25105;&#20204;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#31639;&#26159;&#30495;&#27491;&#23436;&#25104;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u38dc6080">
+  <br>
+ </p>
+ <p class="ne-p" id="u6bd18960">
+  <span class="ne-text">
+   &#19979;&#38754;&#65292;&#25105;&#20204;&#22238;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    initAndRegister
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u182cfecc">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="c785534c">final ChannelFuture initAndRegister() {
+    Channel channel = null;
+    try {
+        channel = channelFactory.newChannel();
+        init(channel);
+    } catch (Throwable t) {
+        ...
+    }
+
+    // &#25105;&#20204;&#19978;&#38754;&#35828;&#23436;&#20102;&#36825;&#34892;
+    ChannelFuture regFuture = config().group().register(channel);
+
+    // &#22914;&#26524;&#22312; register &#30340;&#36807;&#31243;&#20013;&#65292;&#21457;&#29983;&#20102;&#38169;&#35823;
+    if (regFuture.cause() != null) {
+        if (channel.isRegistered()) {
+            channel.close();
+        } else {
+            channel.unsafe().closeForcibly();
+        }
+    }
+
+    // &#28304;&#30721;&#20013;&#35828;&#24471;&#24456;&#28165;&#26970;&#65292;&#22914;&#26524;&#21040;&#36825;&#37324;&#65292;&#35828;&#26126;&#21518;&#32493;&#21487;&#20197;&#36827;&#34892; connect() &#25110; bind() &#20102;&#65292;&#22240;&#20026;&#20004;&#31181;&#24773;&#20917;&#65306;
+    // 1. &#22914;&#26524; register &#21160;&#20316;&#26159;&#22312; eventLoop &#20013;&#21457;&#36215;&#30340;&#65292;&#37027;&#20040;&#21040;&#36825;&#37324;&#30340;&#26102;&#20505;&#65292;register &#19968;&#23450;&#24050;&#32463;&#23436;&#25104;
+    // 2. &#22914;&#26524; register &#20219;&#21153;&#24050;&#32463;&#25552;&#20132;&#21040; eventLoop &#20013;&#65292;&#20063;&#23601;&#26159;&#36827;&#21040;&#20102; eventLoop &#20013;&#30340; taskQueue &#20013;&#65292;
+    //    &#30001;&#20110;&#21518;&#32493;&#30340; connect &#25110; bind &#20063;&#20250;&#36827;&#20837;&#21040;&#21516;&#19968;&#20010; eventLoop &#30340; queue &#20013;&#65292;&#25152;&#20197;&#19968;&#23450;&#26159;&#20250;&#20808; register &#25104;&#21151;&#65292;&#25165;&#20250;&#25191;&#34892; connect &#25110; bind
+    return regFuture;
+}</pre>
+ <p class="ne-p" id="u911e838c">
+  <br>
+ </p>
+ <p class="ne-p" id="u088b9a79">
+  <span class="ne-text">
+   &#25105;&#20204;&#35201;&#30693;&#36947;&#65292;&#19981;&#31649;&#26159;&#26381;&#21153;&#31471;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36824;&#26159;&#23458;&#25143;&#31471;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26102;&#65292;&#37117;&#20250;&#20808;&#36827;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    initAndRegister
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#26041;&#27861;&#65292;&#25152;&#20197;&#25105;&#20204;&#19978;&#38754;&#35828;&#30340;&#37027;&#20123;&#65292;&#23545;&#20110;&#20004;&#32773;&#37117;&#26159;&#36890;&#29992;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uff240af2">
+  <br>
+ </p>
+ <p class="ne-p" id="u87471a19">
+  <span class="ne-text">
+   &#22823;&#23478;&#35201;&#35760;&#20303;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#26159;&#38750;&#24120;&#37325;&#35201;&#30340;&#65292;&#35201;&#30693;&#36947;&#36825;&#19968;&#27493;&#22823;&#27010;&#20570;&#20102;&#21738;&#20123;&#20107;&#24773;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#20197;&#21518;&#65292;&#23558;&#36827;&#20837;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#20013;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u2d6d6bb6">
+  <br>
+ </p>
+ <h2 id="08548f6e">
+  <span class="ne-text">
+   connect &#36807;&#31243;&#21644; bind &#36807;&#31243;&#20998;&#26512;
+  </span>
+ </h2>
+ <p class="ne-p" id="u9c592c26">
+  <br>
+ </p>
+ <p class="ne-p" id="u6115ffaf">
+  <span class="ne-text">
+   &#19978;&#38754;&#25105;&#20204;&#20171;&#32461;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#38750;&#24120;&#20851;&#38190;&#65292;&#23427;&#24314;&#31435;&#36215;&#26469;&#20102;&#24456;&#22810;&#30340;&#19996;&#35199;&#65292;&#23427;&#26159; Netty &#20013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioServerSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24320;&#22987;&#24037;&#20316;&#30340;&#36215;&#28857;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub6c80a6e">
+  <br>
+ </p>
+ <p class="ne-p" id="ub88db5f3">
+  <span class="ne-text">
+   &#36825;&#19968;&#33410;&#65292;&#25105;&#20204;&#26469;&#35828;&#35828;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20043;&#21518;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#12290;&#36825;&#33410;&#38750;&#24120;&#31616;&#21333;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u19341dc6">
+  <br>
+ </p>
+ <h3 id="4cafd6ab">
+  <span class="ne-text">
+   connect &#36807;&#31243;&#20998;&#26512;
+  </span>
+ </h3>
+ <p class="ne-p" id="u806d577c">
+  <br>
+ </p>
+ <p class="ne-p" id="u97ef068c">
+  <span class="ne-text">
+   &#23545;&#20110;&#23458;&#25143;&#31471;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioSocketChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#35828;&#65292;&#21069;&#38754;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23436;&#25104;&#20197;&#21518;&#65292;&#23601;&#35201;&#24320;&#22987;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20102;&#65292;&#36825;&#19968;&#27493;&#23558;&#36830;&#25509;&#21040;&#26381;&#21153;&#31471;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u34603235">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="9639dce6">private ChannelFuture doResolveAndConnect(final SocketAddress remoteAddress, final SocketAddress localAddress) {
+    // &#36825;&#37324;&#23436;&#25104;&#20102; register &#25805;&#20316;
+    final ChannelFuture regFuture = initAndRegister();
+    final Channel channel = regFuture.channel();
+
+    // &#36825;&#37324;&#25105;&#20204;&#19981;&#21435;&#32416;&#32467; register &#25805;&#20316;&#26159;&#21542; isDone()
+    if (regFuture.isDone()) {
+        if (!regFuture.isSuccess()) {
+            return regFuture;
+        }
+        // &#30475;&#36825;&#37324;
+        return doResolveAndConnect0(channel, remoteAddress, localAddress, channel.newPromise());
+    } else {
+        ....
+    }
+}</pre>
+ <p class="ne-p" id="u2b247620">
+  <br>
+ </p>
+ <p class="ne-p" id="u7978b91e">
+  <span class="ne-text">
+   &#36825;&#37324;&#22823;&#23478;&#33258;&#24049;&#19968;&#36335;&#28857;&#36827;&#21435;&#65292;&#25105;&#23601;&#19981;&#28010;&#36153;&#31687;&#24133;&#20102;&#12290;&#26368;&#21518;&#65292;&#25105;&#20204;&#20250;&#26469;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AbstractChannel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ue596eb6d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="a60f50c5">@Override
+public ChannelFuture connect(SocketAddress remoteAddress, ChannelPromise promise) {
+    return pipeline.connect(remoteAddress, promise);
+}</pre>
+ <p class="ne-p" id="u7f688812">
+  <br>
+ </p>
+ <p class="ne-p" id="u26979de8">
+  <span class="ne-text">
+   &#25105;&#20204;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#26159;&#20132;&#32473;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#25191;&#34892;&#30340;&#12290;&#36827;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#25105;&#20204;&#20250;&#21457;&#29616;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#31181; Outbound &#31867;&#22411;&#30340;&#25805;&#20316;&#65292;&#26159;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    tail
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24320;&#22987;&#30340;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u686f3014">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="u310a299a">
+   <span class="ne-text">
+    &#21069;&#38754;&#25105;&#20204;&#20171;&#32461;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     register
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25805;&#20316;&#26159; Inbound &#30340;&#65292;&#26159;&#20174;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     head
+    </span>
+   </code>
+   <span class="ne-text">
+    &#24320;&#22987;&#30340;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="ua23d41e1">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="509f276e">@Override
+public final ChannelFuture connect(SocketAddress remoteAddress, ChannelPromise promise) {
+    return tail.connect(remoteAddress, promise);
+}</pre>
+ <p class="ne-p" id="ucf6f6260">
+  <br>
+ </p>
+ <p class="ne-p" id="u9bf0e676">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#25805;&#20316;&#20102;&#65292;&#20174; tail &#24320;&#22987;&#65292;&#25191;&#34892;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19978;&#30340; Outbound &#31867;&#22411;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handlers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect(...)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#37027;&#20040;&#30495;&#27491;&#30340;&#24213;&#23618;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#25805;&#20316;&#21457;&#29983;&#22312;&#21738;&#37324;&#21602;&#65311;&#36824;&#35760;&#24471;&#25105;&#20204;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#22270;&#21527;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u0455c1ed">
+  <br>
+ </p>
+ <p class="ne-p" id="u8326334a">
+  <img class="ne-image" id="KzF52" src="EPUB/imgKzF52" width="1530">
+ </p>
+ <p class="ne-p" id="u3fb0b846">
+  <br>
+ </p>
+ <p class="ne-p" id="u749abf8e">
+  <span class="ne-text">
+   &#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    tail
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24320;&#22987;&#24448;&#21069;&#25214; out &#31867;&#22411;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handlers
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#27599;&#32463;&#36807;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    handler
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#37117;&#25191;&#34892;&#37324;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#26368;&#21518;&#20250;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    head
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#22240;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    head
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20063;&#26159; Outbound &#31867;&#22411;&#30340;&#65292;&#25105;&#20204;&#38656;&#35201;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#23601;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    head
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#23427;&#20250;&#36127;&#36131;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    unsafe
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#25552;&#20379;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u2d67e1e3">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="75da7480">// HeadContext
+public void connect(
+        ChannelHandlerContext ctx,
+        SocketAddress remoteAddress, SocketAddress localAddress,
+        ChannelPromise promise) throws Exception {
+    unsafe.connect(remoteAddress, localAddress, promise);
+}</pre>
+ <p class="ne-p" id="u5dca631d">
+  <br>
+ </p>
+ <p class="ne-p" id="uda7c5c7b">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#26469;&#30475;&#19968;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    unsafe
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#20013;&#25152;&#35859;&#30340;&#24213;&#23618;&#25805;&#20316;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u85afb81d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="948d7bd6">// AbstractNioChannel.AbstractNioUnsafe
+@Override
+public final void connect(
+        final SocketAddress remoteAddress, final SocketAddress localAddress, final ChannelPromise promise) {
+        ......
+
+        boolean wasActive = isActive();
+        // &#22823;&#23478;&#33258;&#24049;&#28857;&#36827;&#21435;&#30475; doConnect &#26041;&#27861;
+        // &#36825;&#19968;&#27493;&#20250;&#20570; JDK &#24213;&#23618;&#30340; SocketChannel connect&#65292;&#28982;&#21518;&#35774;&#32622; interestOps &#20026; SelectionKey.OP_CONNECT
+        // &#36820;&#22238;&#20540;&#20195;&#34920;&#26159;&#21542;&#24050;&#32463;&#36830;&#25509;&#25104;&#21151;
+        if (doConnect(remoteAddress, localAddress)) {
+            // &#22788;&#29702;&#36830;&#25509;&#25104;&#21151;&#30340;&#24773;&#20917;
+            fulfillConnectPromise(promise, wasActive);
+        } else {
+            connectPromise = promise;
+            requestedRemoteAddress = remoteAddress;
+
+            // &#19979;&#38754;&#36825;&#22359;&#20195;&#30721;&#65292;&#22312;&#22788;&#29702;&#36830;&#25509;&#36229;&#26102;&#30340;&#24773;&#20917;&#65292;&#20195;&#30721;&#24456;&#31616;&#21333;
+            // &#36825;&#37324;&#29992;&#21040;&#20102; NioEventLoop &#30340;&#23450;&#26102;&#20219;&#21153;&#30340;&#21151;&#33021;&#65292;&#36825;&#20010;&#25105;&#20204;&#20043;&#21069;&#19968;&#30452;&#37117;&#27809;&#26377;&#20171;&#32461;&#36807;&#65292;&#22240;&#20026;&#25105;&#35273;&#24471;&#20063;&#19981;&#22826;&#37325;&#35201;
+            int connectTimeoutMillis = config().getConnectTimeoutMillis();
+            if (connectTimeoutMillis &gt; 0) {
+                connectTimeoutFuture = eventLoop().schedule(new Runnable() {
+                    @Override
+                    public void run() {
+                        ChannelPromise connectPromise = AbstractNioChannel.this.connectPromise;
+                        ConnectTimeoutException cause =
+                                new ConnectTimeoutException("connection timed out: " + remoteAddress);
+                        if (connectPromise != null &amp;&amp; connectPromise.tryFailure(cause)) {
+                            close(voidPromise());
+                        }
+                    }
+                }, connectTimeoutMillis, TimeUnit.MILLISECONDS);
+            }
+
+            promise.addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture future) throws Exception {
+                    if (future.isCancelled()) {
+                        if (connectTimeoutFuture != null) {
+                            connectTimeoutFuture.cancel(false);
+                        }
+                        connectPromise = null;
+                        close(voidPromise());
+                    }
+                }
+            });
+        }
+    } catch (Throwable t) {
+        promise.tryFailure(annotateConnectException(t, remoteAddress));
+        closeIfClosed();
+    }
+}</pre>
+ <p class="ne-p" id="uae878a96">
+  <br>
+ </p>
+ <p class="ne-p" id="ubff58a9d">
+  <span class="ne-text">
+   &#22914;&#26524;&#19978;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doConnect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36820;&#22238; false&#65292;&#37027;&#20040;&#21518;&#32493;&#26159;&#24590;&#20040;&#22788;&#29702;&#30340;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u5d75da22">
+  <br>
+ </p>
+ <p class="ne-p" id="ubfd561d9">
+  <span class="ne-text">
+   &#22312;&#19978;&#19968;&#33410;&#20171;&#32461;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#20013;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    channel
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24050;&#32463;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21040;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    selector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19978;&#65292;&#21482;&#19981;&#36807;&#23558;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    interestOps
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35774;&#32622;&#20026;&#20102; 0&#65292;&#20063;&#23601;&#26159;&#20160;&#20040;&#37117;&#19981;&#30417;&#21548;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u045ace72">
+  <br>
+ </p>
+ <p class="ne-p" id="u32c0f4d7">
+  <span class="ne-text">
+   &#32780;&#22312;&#19978;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    doConnect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#65292;&#25105;&#20204;&#30475;&#21040;&#23427;&#22312;&#35843;&#29992;&#24213;&#23618;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21518;&#65292;&#20250;&#35774;&#32622;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    interestOps
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    SelectionKey.OP_CONNECT
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6db506e6">
+  <br>
+ </p>
+ <p class="ne-p" id="u62b9eae0">
+  <span class="ne-text">
+   &#21097;&#19979;&#30340;&#23601;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20107;&#24773;&#20102;&#65292;&#36824;&#35760;&#24471;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    run()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21527;&#65311;&#20063;&#23601;&#26159;&#35828;&#36825;&#37324;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25104;&#21151;&#20197;&#21518;&#65292;&#36825;&#20010; TCP &#36830;&#25509;&#23601;&#24314;&#31435;&#36215;&#26469;&#20102;&#65292;&#21518;&#32493;&#30340;&#25805;&#20316;&#20250;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    NioEventLoop.run()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#34987;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    processSelectedKeys()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#22788;&#29702;&#25481;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u918fd344">
+  <br>
+ </p>
+ <h3 id="df69858a">
+  <span class="ne-text">
+   bind &#36807;&#31243;&#20998;&#26512;
+  </span>
+ </h3>
+ <p class="ne-p" id="u434f0842">
+  <br>
+ </p>
+ <p class="ne-p" id="u82d9acd0">
+  <span class="ne-text">
+   &#35828;&#23436;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36807;&#31243;&#65292;&#25105;&#20204;&#20877;&#26469;&#31616;&#21333;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36807;&#31243;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u931a9ea7">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="4bd2d023">private ChannelFuture doBind(final SocketAddress localAddress) {
+    // **&#21069;&#38754;&#35828;&#30340; initAndRegister**
+    final ChannelFuture regFuture = initAndRegister();
+
+    final Channel channel = regFuture.channel();
+    if (regFuture.cause() != null) {
+        return regFuture;
+    }
+
+    if (regFuture.isDone()) {
+        // register &#21160;&#20316;&#24050;&#32463;&#23436;&#25104;&#65292;&#37027;&#20040;&#25191;&#34892; bind &#25805;&#20316;
+        ChannelPromise promise = channel.newPromise();
+        doBind0(regFuture, channel, localAddress, promise);
+        return promise;
+    } else {
+        ......
+    }
+}</pre>
+ <p class="ne-p" id="u4588c2ac">
+  <br>
+ </p>
+ <p class="ne-p" id="uaefcffe2">
+  <span class="ne-text">
+   &#28982;&#21518;&#19968;&#30452;&#24448;&#37324;&#30475;&#65292;&#20250;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#20063;&#26159;&#35201;&#30001;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    pipeline
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#23436;&#25104;&#30340;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u4bb62550">
+  <br>
+ </p>
+ <p class="ne-p" id="uc4d3814c">
+  <code class="ne-code">
+   <span class="ne-text">
+    io.netty.channel.AbstractChannel#bind
+   </span>
+  </code>
+ </p>
+ <p class="ne-p" id="u3387906b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="5283cc57">@Override
+public ChannelFuture bind(SocketAddress localAddress, ChannelPromise promise) {
+    return pipeline.bind(localAddress, promise);
+}</pre>
+ <p class="ne-p" id="u9d9a44be">
+  <br>
+ </p>
+ <p class="ne-p" id="u43605578">
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    connect
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19968;&#26679;&#65292;&#37117;&#26159; Outbound &#31867;&#22411;&#30340;&#65292;&#25152;&#20197;&#37117;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    tail
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24320;&#22987;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u8ea2c6d5">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="4b3b7f4f">@Override
+public final ChannelFuture bind(SocketAddress localAddress, ChannelPromise promise) {
+    return tail.bind(localAddress, promise);
+}</pre>
+ <p class="ne-p" id="u486935c9">
+  <br>
+ </p>
+ <p class="ne-p" id="u341d42b2">
+  <span class="ne-text">
+   &#26368;&#21518;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#21448;&#21040;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    head
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#30001;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    head
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    unsafe
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25552;&#20379;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u483e0a51">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="b3f296ca">@Override
+public void bind(
+        ChannelHandlerContext ctx, SocketAddress localAddress, ChannelPromise promise)
+        throws Exception {
+    unsafe.bind(localAddress, promise);
+}</pre>
+ <p class="ne-p" id="ub896e5fa">
+  <br>
+ </p>
+ <p class="ne-p" id="ue4abf248">
+  <span class="ne-text">
+   &#24863;&#20852;&#36259;&#30340;&#35835;&#32773;&#33258;&#24049;&#21435;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    unsafe
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#38750;&#24120;&#31616;&#21333;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bind
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25805;&#20316;&#20063;&#19981;&#26159;&#20160;&#20040;&#24322;&#27493;&#26041;&#27861;&#65292;&#25105;&#20204;&#23601;&#20171;&#32461;&#21040;&#36825;&#37324;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u118f09c4">
+  <br>
+ </p>
+ <p class="ne-p" id="ud611bace">
+  <span class="ne-text">
+   &#26412;&#33410;&#38750;&#24120;&#31616;&#21333;&#65292;&#23601;&#26159;&#24819;&#21644;&#22823;&#23478;&#20171;&#32461;&#19979; Netty &#20013;&#21508;&#31181;&#25805;&#20316;&#30340;&#22871;&#36335;&#12290;
+  </span>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="Kafka常见面试题" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>Kafka常见面试题</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="ln6J78kz0hjopl6S">
+      <navLabel>
+        <text>大白话带你认识Kafka</text>
+      </navLabel>
+      <content src="ln6J78kz0hjopl6S.xhtml"/>
+    </navPoint>
+    <navPoint id="sZaB9kr1cLsYmJa_">
+      <navLabel>
+        <text>Kafka消费组了解么？ 重平衡机制是做什么的？</text>
+      </navLabel>
+      <content src="sZaB9kr1cLsYmJa_.xhtml"/>
+    </navPoint>
+    <navPoint id="YjnJVVE6bAUzdojk">
+      <navLabel>
+        <text>如何保证Kafka不丢失消息?</text>
+      </navLabel>
+      <content src="YjnJVVE6bAUzdojk.xhtml"/>
+    </navPoint>
+    <navPoint id="no5cUnqIjJIbTULu">
+      <navLabel>
+        <text>Kafka 如何保证高可用？</text>
+      </navLabel>
+      <content src="no5cUnqIjJIbTULu.xhtml"/>
+    </navPoint>
+    <navPoint id="ND5WnQ90dpRXfZeX">
+      <navLabel>
+        <text>Kafka为什么这么快？</text>
+      </navLabel>
+      <content src="ND5WnQ90dpRXfZeX.xhtml"/>
+    </navPoint>
+    <navPoint id="oEY7ZcaPe5Mg3San">
+      <navLabel>
+        <text>Kafka 原理篇</text>
+      </navLabel>
+      <content src="oEY7ZcaPe5Mg3San.xhtml"/>
+    </navPoint>
+  </navMap>
+</ncx>

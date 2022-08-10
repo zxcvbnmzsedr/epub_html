@@ -1,0 +1,3613 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>4 SpringBoot&#26159;&#22914;&#20309;&#23454;&#29616;&#33258;&#21160;&#37197;&#32622;&#30340;&#65311;</h1><div class="lake-content" typography="classic">
+ <p class="ne-p" id="uc89f579c">
+  <strong>
+   <span class="ne-text">
+    &#27880;&#65306;&#35813;&#28304;&#30721;&#20998;&#26512;&#23545;&#24212; SpringBoot &#29256;&#26412;&#20026; 2.1.0.RELEASE
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="uca253431">
+  <br>
+ </p>
+ <h2 id="OGmDn">
+  <span class="ne-text">
+   1 &#21069;&#35328;
+  </span>
+ </h2>
+ <p class="ne-p" id="ufe74fc92">
+  <br>
+ </p>
+ <p class="ne-p" id="u67125c4d">
+  <span class="ne-text">
+   &#28201;&#25925;&#32780;&#30693;&#26032;&#65292;&#25105;&#20204;&#26469;&#31616;&#21333;&#22238;&#39038;&#19968;&#19979;&#19978;&#31687;&#30340;&#20869;&#23481;&#65292;&#19978;&#19968;&#31687;&#25105;&#20204;&#20998;&#26512;&#20102; SpringBoot &#30340;&#26465;&#20214;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnXxx
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#30456;&#20851;&#28304;&#30721;&#65292;&#29616;&#25361;&#37325;&#28857;&#24635;&#32467;&#22914;&#19979;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u20b48a58">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="ue6dba308">
+   <span class="ne-text">
+    SpringBoot &#30340;&#25152;&#26377;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnXxx
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#26465;&#20214;&#31867;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     OnXxxCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#37117;&#26159;&#32487;&#25215;&#20110;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SpringBootCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#22522;&#31867;&#65292;&#32780;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     SpringBootCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21448;&#23454;&#29616;&#20102;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     Condition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25509;&#21475;&#12290;
+   </span>
+  </li>
+  <li id="u110fb4c9">
+   <code class="ne-code">
+    <span class="ne-text">
+     SpringBootCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#22522;&#31867;&#20027;&#35201;&#29992;&#26469;&#25171;&#21360;&#19968;&#20123;&#26465;&#20214;&#27880;&#35299;&#35780;&#20272;&#25253;&#21578;&#30340;&#26085;&#24535;,&#36825;&#20123;&#26465;&#20214;&#35780;&#20272;&#20449;&#24687;&#20840;&#37096;&#26469;&#28304;&#20110;&#20854;&#23376;&#31867;&#27880;&#35299;&#26465;&#20214;&#31867;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     OnXxxCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;&#22240;&#27492;&#20854;&#20063;&#25277;&#35937;&#20102;&#19968;&#20010;&#27169;&#26495;&#26041;&#27861;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     getMatchOutcome
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30041;&#32473;&#23376;&#31867;&#21435;&#23454;&#29616;&#26469;&#35780;&#20272;&#20854;&#26465;&#20214;&#27880;&#35299;&#26159;&#21542;&#31526;&#21512;&#26465;&#20214;&#12290;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u71377ab0">
+   <span class="ne-text">
+    &#21069;&#19968;&#31687;&#25105;&#20204;&#20063;&#36824;&#26377;&#19968;&#20010;&#37325;&#35201;&#30340;&#30693;&#35782;&#28857;&#36824;&#27809;&#20998;&#26512;&#65292;&#37027;&#23601;&#26159;&#36319;&#36807;&#28388;&#33258;&#21160;&#37197;&#32622;&#31867;&#36923;&#36753;&#26377;&#20851;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     AutoConfigurationImportFilter
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25509;&#21475;&#65292;&#36825;&#31687;&#25991;&#31456;&#25105;&#20204;&#26469;&#22635;&#19968;&#19979;&#36825;&#20010;&#22353;&#12290;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u8f09fd6c">
+  <br>
+ </p>
+ <p class="ne-p" id="u55325c41">
+  <span class="ne-text">
+   &#21069;&#38754;&#25105;&#20204;&#20998;&#26512;&#20102;&#36319; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#24687;&#24687;&#30456;&#20851;&#20869;&#32622;&#26465;&#20214;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnXxx
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21518;&#65292;&#29616;&#22312;&#25105;&#20204;&#23601;&#24320;&#22987;&#26469;&#25784; SpringBoot &#33258;&#21160;&#37197;&#32622;&#30340;&#30456;&#20851;&#28304;&#30721;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u939359f5">
+  <br>
+ </p>
+ <h2 id="yYh7t">
+  <span class="ne-text">
+   2 @SpringBootApplication &#27880;&#35299;
+  </span>
+ </h2>
+ <p class="ne-p" id="ud84c9674">
+  <br>
+ </p>
+ <p class="ne-p" id="u72bbb7d6">
+  <span class="ne-text">
+   &#22312;&#24320;&#22987;&#21069;&#65292;&#25105;&#20204;&#20808;&#24819;&#19968;&#19979;&#65292;SpringBoot &#20026;&#20309;&#19968;&#20010;&#26631;&#27880;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @SpringBootApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#21551;&#21160;&#31867;&#36890;&#36807;&#25191;&#34892;&#19968;&#20010;&#31616;&#21333;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    run
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#23601;&#33021;&#23454;&#29616; SpringBoot &#22823;&#37327;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#33258;&#21160;&#37197;&#32622;&#21602;&#65311; &#20854;&#23454; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#23601;&#36319;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @SpringBootApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#27880;&#35299;&#26377;&#20851;&#65292;&#25105;&#20204;&#20808;&#26469;&#30475;&#19979;&#20854;&#36825;&#20010;&#27880;&#35299;&#30340;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u282f6621">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="JTBrx">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@SpringBootConfiguration
+@EnableAutoConfiguration
+@ComponentScan(excludeFilters = {
+    @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
+    @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class)
+})
+public @interface SpringBootApplication {
+    // ...&#30465;&#30053;&#38750;&#20851;&#38190;&#20195;&#30721;
+}</pre>
+ <p class="ne-p" id="u3adbe978">
+  <br>
+ </p>
+ <p class="ne-p" id="u754a8e6b">
+  <code class="ne-code">
+   <span class="ne-text">
+    @SpringBootApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26631;&#27880;&#20102;&#24456;&#22810;&#27880;&#35299;&#65292;&#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#20854;&#20013;&#36319; SpringBoot &#33258;&#21160;&#37197;&#32622;&#26377;&#20851;&#30340;&#27880;&#35299;&#23601;&#26377;&#19968;&#20010;&#21363;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#22240;&#27492;&#65292;&#21487;&#20197;&#32943;&#23450;&#30340;&#26159; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#32943;&#23450;&#36319;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#24687;&#24687;&#30456;&#20851;(&#20854;&#20013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ComponentScan
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    excludeFilters
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23646;&#24615;&#20063;&#26377;&#19968;&#20010;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationExcludeFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   ,&#36825;&#20010;&#31867;&#36319;&#33258;&#21160;&#37197;&#32622;&#20063;&#26377;&#28857;&#20851;&#31995;&#65292;&#20294;&#19981;&#26159;&#25105;&#20204;&#20851;&#27880;&#30340;&#37325;&#28857;)&#12290; &#29616;&#22312;&#25105;&#20204;&#26469;&#25171;&#24320;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#30340;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u77c9a7c8">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="Uw5i8">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@AutoConfigurationPackage
+@Import(AutoConfigurationImportSelector.class)
+public @interface EnableAutoConfiguration {
+	String ENABLED_OVERRIDE_PROPERTY = "spring.boot.enableautoconfiguration";
+	Class&lt;?&gt;[] exclude() default {};
+	String[] excludeName() default {};
+}</pre>
+ <p class="ne-p" id="u9d0b51f9">
+  <br>
+ </p>
+ <p class="ne-p" id="u195416e8">
+  <span class="ne-text">
+   &#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#21448;&#26631;&#26377;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @AutoConfigurationPackage
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @Import(AutoConfigurationImportSelector.class)
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20004;&#20010;&#27880;&#35299;&#65292;&#39038;&#21517;&#24605;&#20041;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @AutoConfigurationPackage
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#32943;&#23450;&#36319;&#33258;&#21160;&#37197;&#32622;&#30340;&#21253;&#26377;&#20851;&#65292;&#32780;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21017;&#26159;&#36319; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#36873;&#25321;&#23548;&#20837;&#26377;&#20851;&#65288;Spring &#20013;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#29992;&#26469;&#23548;&#20837;&#37197;&#32622;&#31867;&#30340;&#65292;&#36890;&#24120;&#26159;&#22522;&#20110;&#26576;&#20123;&#26465;&#20214;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnXxxx
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#20915;&#23450;&#26159;&#21542;&#23548;&#20837;&#26576;&#20010;&#37197;&#32622;&#31867;&#65289;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u436de15f">
+  <br>
+ </p>
+ <p class="ne-p" id="u8ebc4a57">
+  <span class="ne-text">
+   &#22240;&#27492;&#65292;&#21487;&#20197;&#30475;&#20986;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#26159;&#25105;&#20204;&#26412;&#31687;&#30340;&#37325;&#28857;&#65292;&#22240;&#20026; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#32943;&#23450;&#26377;&#19968;&#20010;&#37197;&#32622;&#31867;&#65292;&#32780;&#36825;&#20010;&#37197;&#32622;&#31867;&#30340;&#23548;&#20837;&#21017;&#38656;&#35201;&#38752;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#21733;&#20204;&#26469;&#23454;&#29616;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5e913764">
+  <br>
+ </p>
+ <p class="ne-p" id="u3be4f93b">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#25105;&#20204;&#37325;&#28857;&#26469;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#31867;&#65292;&#23436;&#20102;&#25105;&#20204;&#20877;&#31616;&#21333;&#20998;&#26512;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @AutoConfigurationPackage
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#27880;&#35299;&#30340;&#36923;&#36753;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u643e0d68">
+  <br>
+ </p>
+ <h2 id="jetZq">
+  <span class="ne-text">
+   3 &#22914;&#20309;&#21435;&#25214; SpringBoot &#33258;&#21160;&#37197;&#32622;&#23454;&#29616;&#36923;&#36753;&#30340;&#20837;&#21475;&#26041;&#27861;&#65311;
+  </span>
+ </h2>
+ <p class="ne-p" id="u03b21068">
+  <br>
+ </p>
+ <p class="ne-p" id="uaa4a190f">
+  <span class="ne-text">
+   &#21487;&#20197;&#32943;&#23450;&#30340;&#26159; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#30340;&#36923;&#36753;&#32943;&#23450;&#19982; AutoConfigurationImportSelector &#36825;&#20010;&#31867;&#26377;&#20851;&#65292;&#37027;&#20040;&#25105;&#20204;&#35813;&#22914;&#20309;&#21435;&#25214;&#21040; SpringBoot &#33258;&#21160;&#37197;&#32622;&#23454;&#29616;&#36923;&#36753;&#30340;&#20837;&#21475;&#26041;&#27861;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u6d5f7de1">
+  <br>
+ </p>
+ <p class="ne-p" id="u8888dc40">
+  <span class="ne-text">
+   &#22312;&#25214; SpringBoot &#33258;&#21160;&#37197;&#32622;&#23454;&#29616;&#36923;&#36753;&#30340;&#20837;&#21475;&#26041;&#27861;&#21069;&#65292;&#25105;&#20204;&#20808;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#30456;&#20851;&#31867;&#22270;&#65292;&#22909;&#26377;&#20010;&#25972;&#20307;&#30340;&#29702;&#35299;&#12290;&#30475;&#19979;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ueccf831f">
+  <br>
+ </p>
+ <p class="ne-p" id="ua2cea769">
+  <img class="ne-image" id="quRyF" src="EPUB/imgquRyF" width="1164">
+ </p>
+ <p class="ne-p" id="u412ff982">
+  <br>
+ </p>
+ <p class="ne-p" id="u9d6a190b">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37325;&#28857;&#26159;&#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DeferredImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#21644;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Aware
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#28982;&#21518;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DeferredImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#21448;&#32487;&#25215;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u0da4bd1b">
+  <br>
+ </p>
+ <p class="ne-p" id="u6c29e642">
+  <span class="ne-text">
+   &#33258;&#28982;&#32780;&#28982;&#30340;&#65292;&#25105;&#20204;&#20250;&#21435;&#20851;&#27880;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22797;&#20889;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DeferredImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#23454;&#29616;&#26041;&#27861;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    selectImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#22240;&#20026;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    selectImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36319;&#23548;&#20837;&#33258;&#21160;&#37197;&#32622;&#31867;&#26377;&#20851;&#65292;&#32780;&#36825;&#20010;&#26041;&#27861;&#24448;&#24448;&#26159;&#31243;&#24207;&#25191;&#34892;&#30340;&#20837;&#21475;&#26041;&#27861;&#12290;&#32463;&#36807;&#35843;&#35797;&#21457;&#29616;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    selectImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#24456;&#20855;&#26377;&#36855;&#24785;&#24615;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    selectImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36319;&#33258;&#21160;&#37197;&#32622;&#30456;&#20851;&#30340;&#36923;&#36753;&#26377;&#28857;&#20851;&#31995;&#65292;&#20294;&#23454;&#36136;&#20851;&#31995;&#19981;&#22823;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uec604912">
+  <br>
+ </p>
+ <p class="ne-p" id="u10670ff4">
+  <span class="ne-text">
+   &#27492;&#26102;&#21095;&#24773;&#30340;&#21457;&#23637;&#22909;&#20687;&#19981;&#22826;&#31526;&#21512;&#24120;&#29702;&#65292;&#27492;&#26102;&#25105;&#20204;&#21448;&#35813;&#22914;&#20309;&#26469;&#25214;&#21040;&#33258;&#21160;&#37197;&#32622;&#36923;&#36753;&#26377;&#20851;&#30340;&#20837;&#21475;&#26041;&#27861;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="u578e49d8">
+  <br>
+ </p>
+ <p class="ne-p" id="u0430d8b3">
+  <span class="ne-text">
+   &#26368;&#31616;&#21333;&#30340;&#26041;&#27861;&#23601;&#26159;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#30340;&#27599;&#20010;&#26041;&#27861;&#37117;&#25171;&#19978;&#26029;&#28857;&#65292;&#28982;&#21518;&#35843;&#35797;&#30475;&#20808;&#25191;&#34892;&#21040;&#21738;&#20010;&#26041;&#27861;&#12290;&#20294;&#26159;&#25105;&#20204;&#21487;&#20197;&#19981;&#36825;&#20040;&#20570;&#65292;&#25105;&#20204;&#22238;&#24819;&#19979;&#65292;&#33258;&#23450;&#20041;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Starter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26102;&#20505;&#25105;&#20204;&#26159;&#19981;&#26159;&#35201;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37197;&#32622;&#25991;&#20214;&#20013;&#37197;&#32622;
+  </span>
+ </p>
+ <p class="ne-p" id="u33958181">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="BkT7f">EnableAutoConfiguration=XxxAutoConfiguration</pre>
+ <p class="ne-p" id="u7ca3c1be">
+  <br>
+ </p>
+ <p class="ne-p" id="u284130a4">
+  <span class="ne-text">
+   &#22240;&#27492;&#21487;&#20197;&#25512;&#26029;&#65292;SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#21407;&#29702;&#32943;&#23450;&#36319;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37197;&#32622;&#25991;&#20214;&#20013;&#21152;&#36733;&#33258;&#21160;&#37197;&#32622;&#31867;&#26377;&#20851;&#65292;&#20110;&#26159;&#32467;&#21512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26041;&#27861;&#27880;&#37322;&#65292;&#25105;&#20204;&#25214;&#21040;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getAutoConfigurationEntry
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#12290;&#20110;&#26159;&#25105;&#20204;&#22312;&#36825;&#20010;&#26041;&#27861;&#37324;&#38754;&#25171;&#19978;&#19968;&#20010;&#26029;&#28857;&#65292;&#27492;&#26102;&#36890;&#36807;&#35843;&#29992;&#26632;&#24103;&#26469;&#30475;&#19979;&#26356;&#19978;&#23618;&#30340;&#20837;&#21475;&#26041;&#27861;&#22312;&#21738;&#37324;&#65292;&#28982;&#21518;&#25105;&#20204;&#20877;&#20174;&#36319;&#33258;&#21160;&#37197;&#32622;&#30456;&#20851;&#30340;&#26356;&#19978;&#23618;&#30340;&#20837;&#21475;&#26041;&#27861;&#24320;&#22987;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u248bcab6">
+  <br>
+ </p>
+ <p class="ne-p" id="u01a18d4f">
+  <img class="ne-image" id="twq3s" src="EPUB/imgtwq3s" width="854">
+ </p>
+ <p class="ne-p" id="ub8c04ee6">
+  <br>
+ </p>
+ <p class="ne-p" id="uf948569c">
+  <span class="ne-text">
+   &#36890;&#36807;&#22270; 1 &#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#65292;&#36319;&#33258;&#21160;&#37197;&#32622;&#36923;&#36753;&#30456;&#20851;&#30340;&#20837;&#21475;&#26041;&#27861;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DeferredImportSelectorGrouping
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#22788;&#65292;&#22240;&#27492;&#25105;&#20204;&#23601;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DeferredImportSelectorGrouping
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26469;&#24320;&#22987;&#20998;&#26512; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#28304;&#30721;&#22909;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u4aaf98f2">
+  <br>
+ </p>
+ <h2 id="jowAo">
+  <span class="ne-text">
+   4 &#20998;&#26512; SpringBoot &#33258;&#21160;&#37197;&#32622;&#21407;&#29702;
+  </span>
+ </h2>
+ <p class="ne-p" id="ub5033df0">
+  <br>
+ </p>
+ <p class="ne-p" id="udc745626">
+  <span class="ne-text">
+   &#26082;&#28982;&#25214;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConfigurationClassParser.getImports()&#26041;&#27861;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#33258;&#21160;&#37197;&#32622;&#30456;&#20851;&#30340;&#20837;&#21475;&#26041;&#27861;&#65292;&#37027;&#20040;&#19979;&#38754;&#25105;&#20204;&#23601;&#26469;&#30495;&#27491;&#20998;&#26512; SpringBoot &#33258;&#21160;&#37197;&#32622;&#30340;&#28304;&#30721;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uac24f527">
+  <br>
+ </p>
+ <p class="ne-p" id="u58bace39">
+  <span class="ne-text">
+   &#20808;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u943db934">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="Y39Me">// ConfigurationClassParser.java
+public Iterable&lt;Group.Entry&gt; getImports() {
+    // &#36941;&#21382;DeferredImportSelectorHolder&#23545;&#35937;&#38598;&#21512;deferredImports&#65292;deferredImports&#38598;&#21512;&#35013;&#20102;&#21508;&#31181;ImportSelector&#65292;&#24403;&#28982;&#36825;&#37324;&#35013;&#30340;&#26159;AutoConfigurationImportSelector
+    for (DeferredImportSelectorHolder deferredImport : this.deferredImports) {
+    	// &#12304;1&#12305;&#65292;&#21033;&#29992;AutoConfigurationGroup&#30340;process&#26041;&#27861;&#26469;&#22788;&#29702;&#33258;&#21160;&#37197;&#32622;&#30340;&#30456;&#20851;&#36923;&#36753;&#65292;&#20915;&#23450;&#23548;&#20837;&#21738;&#20123;&#37197;&#32622;&#31867;&#65288;&#36825;&#20010;&#26159;&#25105;&#20204;&#20998;&#26512;&#30340;&#37325;&#28857;&#65292;&#33258;&#21160;&#37197;&#32622;&#30340;&#36923;&#36753;&#20840;&#22312;&#36825;&#20102;&#65289;
+    	this.group.process(deferredImport.getConfigurationClass().getMetadata(),
+    			deferredImport.getImportSelector());
+    }
+    // &#12304;2&#12305;&#65292;&#32463;&#36807;&#19978;&#38754;&#30340;&#22788;&#29702;&#21518;&#65292;&#28982;&#21518;&#20877;&#36827;&#34892;&#36873;&#25321;&#23548;&#20837;&#21738;&#20123;&#37197;&#32622;&#31867;
+    return this.group.selectImports();
+}</pre>
+ <p class="ne-p" id="u330a2350">
+  <br>
+ </p>
+ <p class="ne-p" id="u84c73dcf">
+  <span class="ne-text">
+   &#26631;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;1&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#30340;&#30340;&#20195;&#30721;&#26159;&#25105;&#20204;&#20998;&#26512;&#30340;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#37325;&#20013;&#20043;&#37325;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65292;&#33258;&#21160;&#37197;&#32622;&#30340;&#30456;&#20851;&#30340;&#32477;&#22823;&#37096;&#20998;&#36923;&#36753;&#20840;&#22312;&#36825;&#37324;&#20102;&#65292;&#23558;&#22312; 4.1 &#20998;&#26512;&#33258;&#21160;&#37197;&#32622;&#30340;&#20027;&#35201;&#36923;&#36753;&#28145;&#20837;&#20998;&#26512;&#12290;&#37027;&#20040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    this.group.process(deferredImport.getConfigurationClass().getMetadata(), deferredImport.getImportSelector())
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65307;&#20027;&#35201;&#20570;&#30340;&#20107;&#24773;&#23601;&#26159;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    this.group
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21363;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationGroup
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    process
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20013;&#65292;&#20256;&#20837;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#26469;&#36873;&#25321;&#19968;&#20123;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#36807;&#28388;&#25481;&#19968;&#20123;&#19981;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#23601;&#26159;&#36825;&#20040;&#20010;&#20107;&#24773;&#65292;&#26080;&#20182;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uce716750">
+  <br>
+ </p>
+ <p class="ne-p" id="u2dad753c">
+  <span class="ne-text">
+   &#27880;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u3a0a1587">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u18441e49">
+   <code class="ne-code">
+    <span class="ne-text">
+     AutoConfigurationGroup
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#26159;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     AutoConfigurationImportSelector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#20869;&#37096;&#31867;&#65292;&#20027;&#35201;&#29992;&#26469;&#22788;&#29702;&#33258;&#21160;&#37197;&#32622;&#30456;&#20851;&#30340;&#36923;&#36753;&#65292;&#25317;&#26377;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     process
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     selectImports
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26041;&#27861;&#65292;&#28982;&#21518;&#25317;&#26377;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     entries
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     autoConfigurationEntries
+    </span>
+   </code>
+   <span class="ne-text">
+    &#38598;&#21512;&#23646;&#24615;&#65292;&#36825;&#20004;&#20010;&#38598;&#21512;&#20998;&#21035;&#23384;&#20648;&#34987;&#22788;&#29702;&#21518;&#30340;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#25105;&#20204;&#30693;&#36947;&#36825;&#20123;&#23601;&#36275;&#22815;&#20102;&#65307;
+   </span>
+  </li>
+  <li id="u942f3cee">
+   <code class="ne-code">
+    <span class="ne-text">
+     AutoConfigurationImportSelector
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#25215;&#25285;&#33258;&#21160;&#37197;&#32622;&#30340;&#32477;&#22823;&#37096;&#20998;&#36923;&#36753;&#65292;&#36127;&#36131;&#36873;&#25321;&#19968;&#20123;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65307;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="ue15da29e">
+   <code class="ne-code">
+    <span class="ne-text">
+     metadata
+    </span>
+   </code>
+   <span class="ne-text">
+    :&#26631;&#27880;&#22312; SpringBoot &#21551;&#21160;&#31867;&#19978;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @SpringBootApplication
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27880;&#35299;&#20803;&#25968;&#25454;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u6750376c">
+  <br>
+ </p>
+ <p class="ne-p" id="u8a41415c">
+  <span class="ne-text">
+   &#26631;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;2&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    this.group.selectImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26041;&#27861;&#20027;&#35201;&#26159;&#38024;&#23545;&#21069;&#38754;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    process
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#22788;&#29702;&#21518;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#20877;&#36827;&#19968;&#27493;&#26377;&#36873;&#25321;&#30340;&#36873;&#25321;&#23548;&#20837;&#65292;&#23558;&#22312; 4.2 &#26377;&#36873;&#25321;&#30340;&#23548;&#20837;&#33258;&#21160;&#37197;&#32622;&#31867;&#36825;&#23567;&#33410;&#28145;&#20837;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ucc527dc4">
+  <br>
+ </p>
+ <h3 id="pZpGL">
+  <span class="ne-text">
+   4.1 &#20998;&#26512;&#33258;&#21160;&#37197;&#32622;&#30340;&#20027;&#35201;&#36923;&#36753;
+  </span>
+ </h3>
+ <p class="ne-p" id="uc1d70ed3">
+  <br>
+ </p>
+ <p class="ne-p" id="ue2a218fb">
+  <span class="ne-text">
+   &#36825;&#37324;&#32487;&#32493;&#28145;&#31350;&#21069;&#38754; 4 &#20998;&#26512; SpringBoot &#33258;&#21160;&#37197;&#32622;&#21407;&#29702;&#36825;&#33410;&#26631;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;1&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    this.group.process
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26159;&#22914;&#20309;&#22788;&#29702;&#33258;&#21160;&#37197;&#32622;&#30456;&#20851;&#36923;&#36753;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="udeb2043f">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="hgvAJ">// AutoConfigurationImportSelector$AutoConfigurationGroup.java
+
+// &#36825;&#37324;&#29992;&#26469;&#22788;&#29702;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#27604;&#22914;&#36807;&#28388;&#25481;&#19981;&#31526;&#21512;&#21305;&#37197;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;
+public void process(AnnotationMetadata annotationMetadata,
+		DeferredImportSelector deferredImportSelector) {
+	Assert.state(
+			deferredImportSelector instanceof AutoConfigurationImportSelector,
+			() -&gt; String.format("Only %s implementations are supported, got %s",
+					AutoConfigurationImportSelector.class.getSimpleName(),
+					deferredImportSelector.getClass().getName()));
+	// &#12304;1&#12305;,&#35843;&#29992;getAutoConfigurationEntry&#26041;&#27861;&#24471;&#21040;&#33258;&#21160;&#37197;&#32622;&#31867;&#25918;&#20837;autoConfigurationEntry&#23545;&#35937;&#20013;
+	AutoConfigurationEntry autoConfigurationEntry = ((AutoConfigurationImportSelector) deferredImportSelector)
+			.getAutoConfigurationEntry(getAutoConfigurationMetadata(),
+					annotationMetadata);
+	// &#12304;2&#12305;&#65292;&#21448;&#23558;&#23553;&#35013;&#20102;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;autoConfigurationEntry&#23545;&#35937;&#35013;&#36827;autoConfigurationEntries&#38598;&#21512;
+	this.autoConfigurationEntries.add(autoConfigurationEntry);
+	// &#12304;3&#12305;&#65292;&#36941;&#21382;&#21018;&#33719;&#21462;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;
+	for (String importClassName : autoConfigurationEntry.getConfigurations()) {
+		// &#36825;&#37324;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#20316;&#20026;key&#65292;annotationMetadata&#20316;&#20026;&#20540;&#25918;&#36827;entries&#38598;&#21512;
+		this.entries.putIfAbsent(importClassName, annotationMetadata);
+	}
+}</pre>
+ <p class="ne-p" id="u8ecbc0c1">
+  <br>
+ </p>
+ <p class="ne-p" id="u97bf60f4">
+  <span class="ne-text">
+   &#19978;&#38754;&#20195;&#30721;&#20013;&#25105;&#20204;&#20877;&#26469;&#30475;&#26631;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;1&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26041;&#27861;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getAutoConfigurationEntry
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36825;&#20010;&#26041;&#27861;&#20027;&#35201;&#26159;&#29992;&#26469;&#33719;&#21462;&#33258;&#21160;&#37197;&#32622;&#31867;&#26377;&#20851;&#65292;&#25215;&#25285;&#20102;&#33258;&#21160;&#37197;&#32622;&#30340;&#20027;&#35201;&#36923;&#36753;&#12290;&#30452;&#25509;&#19978;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ue9d7553a">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="vMAL5">// AutoConfigurationImportSelector.java
+
+// &#33719;&#21462;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#36991;&#20813;&#21152;&#36733;&#19981;&#24517;&#35201;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#20174;&#32780;&#36896;&#25104;&#20869;&#23384;&#28010;&#36153;
+protected AutoConfigurationEntry getAutoConfigurationEntry(
+		AutoConfigurationMetadata autoConfigurationMetadata,
+		AnnotationMetadata annotationMetadata) {
+	// &#33719;&#21462;&#26159;&#21542;&#26377;&#37197;&#32622;spring.boot.enableautoconfiguration&#23646;&#24615;&#65292;&#40664;&#35748;&#36820;&#22238;true
+	if (!isEnabled(annotationMetadata)) {
+		return EMPTY_ENTRY;
+	}
+	// &#33719;&#24471;@Congiguration&#26631;&#27880;&#30340;Configuration&#31867;&#21363;&#34987;&#23457;&#35270;introspectedClass&#30340;&#27880;&#35299;&#25968;&#25454;&#65292;
+	// &#27604;&#22914;&#65306;@SpringBootApplication(exclude = FreeMarkerAutoConfiguration.class)
+	// &#23558;&#20250;&#33719;&#21462;&#21040;exclude = FreeMarkerAutoConfiguration.class&#21644;excludeName=""&#30340;&#27880;&#35299;&#25968;&#25454;
+	AnnotationAttributes attributes = getAttributes(annotationMetadata);
+	// &#12304;1&#12305;&#24471;&#21040;spring.factories&#25991;&#20214;&#37197;&#32622;&#30340;&#25152;&#26377;&#33258;&#21160;&#37197;&#32622;&#31867;
+	List&lt;String&gt; configurations = getCandidateConfigurations(annotationMetadata,
+			attributes);
+	// &#21033;&#29992;LinkedHashSet&#31227;&#38500;&#37325;&#22797;&#30340;&#37197;&#32622;&#31867;
+	configurations = removeDuplicates(configurations);
+	// &#24471;&#21040;&#35201;&#25490;&#38500;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#27604;&#22914;&#27880;&#35299;&#23646;&#24615;exclude&#30340;&#37197;&#32622;&#31867;
+	// &#27604;&#22914;&#65306;@SpringBootApplication(exclude = FreeMarkerAutoConfiguration.class)
+	// &#23558;&#20250;&#33719;&#21462;&#21040;exclude = FreeMarkerAutoConfiguration.class&#30340;&#27880;&#35299;&#25968;&#25454;
+	Set&lt;String&gt; exclusions = getExclusions(annotationMetadata, attributes);
+	// &#26816;&#26597;&#35201;&#34987;&#25490;&#38500;&#30340;&#37197;&#32622;&#31867;&#65292;&#22240;&#20026;&#26377;&#20123;&#19981;&#26159;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#25925;&#35201;&#25243;&#20986;&#24322;&#24120;
+	checkExcludedClasses(configurations, exclusions);
+	// &#12304;2&#12305;&#23558;&#35201;&#25490;&#38500;&#30340;&#37197;&#32622;&#31867;&#31227;&#38500;
+	configurations.removeAll(exclusions);
+	// &#12304;3&#12305;&#22240;&#20026;&#20174;spring.factories&#25991;&#20214;&#33719;&#21462;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#22826;&#22810;&#65292;&#22914;&#26524;&#26377;&#20123;&#19981;&#24517;&#35201;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#37117;&#21152;&#36733;&#36827;&#20869;&#23384;&#65292;&#20250;&#36896;&#25104;&#20869;&#23384;&#28010;&#36153;&#65292;&#22240;&#27492;&#36825;&#37324;&#38656;&#35201;&#36827;&#34892;&#36807;&#28388;
+	// &#27880;&#24847;&#36825;&#37324;&#20250;&#35843;&#29992;AutoConfigurationImportFilter&#30340;match&#26041;&#27861;&#26469;&#21028;&#26029;&#26159;&#21542;&#31526;&#21512;@ConditionalOnBean,@ConditionalOnClass&#25110;@ConditionalOnWebApplication&#65292;&#21518;&#38754;&#20250;&#37325;&#28857;&#20998;&#26512;&#19968;&#19979;
+	configurations = filter(configurations, autoConfigurationMetadata);
+	// &#12304;4&#12305;&#33719;&#21462;&#20102;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#21518;&#65292;&#27492;&#26102;&#35302;&#21457;AutoConfigurationImportEvent&#20107;&#20214;&#65292;
+	// &#30446;&#30340;&#26159;&#21578;&#35785;ConditionEvaluationReport&#26465;&#20214;&#35780;&#20272;&#25253;&#21578;&#22120;&#23545;&#35937;&#26469;&#35760;&#24405;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;
+	// &#35813;&#20107;&#20214;&#20160;&#20040;&#26102;&#20505;&#20250;&#34987;&#35302;&#21457;&#65311;--&gt; &#22312;&#21047;&#26032;&#23481;&#22120;&#26102;&#35843;&#29992;invokeBeanFactoryPostProcessors&#21518;&#32622;&#22788;&#29702;&#22120;&#26102;&#35302;&#21457;
+	fireAutoConfigurationImportEvents(configurations, exclusions);
+	// &#12304;5&#12305;&#23558;&#31526;&#21512;&#26465;&#20214;&#21644;&#35201;&#25490;&#38500;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#23553;&#35013;&#36827;AutoConfigurationEntry&#23545;&#35937;&#65292;&#24182;&#36820;&#22238;
+	return new AutoConfigurationEntry(configurations, exclusions);
+}</pre>
+ <p class="ne-p" id="u0a3cdecc">
+  <br>
+ </p>
+ <p class="ne-p" id="uabe45770">
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationEntry
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20027;&#35201;&#20570;&#30340;&#20107;&#24773;&#23601;&#26159;&#33719;&#21462;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#36991;&#20813;&#21152;&#36733;&#19981;&#24517;&#35201;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#20174;&#32780;&#36896;&#25104;&#20869;&#23384;&#28010;&#36153;&#12290;&#25105;&#20204;&#19979;&#38754;&#24635;&#32467;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationEntry
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20027;&#35201;&#20570;&#30340;&#20107;&#24773;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u9d427623">
+  <br>
+ </p>
+ <p class="ne-p" id="ubd496b2b">
+  <span class="ne-text">
+   &#12304;1&#12305;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37197;&#32622;&#25991;&#20214;&#20013;&#21152;&#36733;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#33258;&#21160;&#37197;&#32622;&#31867;&#65288;&#27880;&#24847;&#27492;&#26102;&#26159;&#20174;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#32531;&#23384;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#20013;&#25343;&#21040;&#30340;&#21704;&#65289;,&#33719;&#21462;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#22914;&#22270; 3 &#25152;&#31034;&#12290;&#36825;&#37324;&#25105;&#20204;&#30693;&#36947;&#35813;&#26041;&#27861;&#20570;&#20102;&#20160;&#20040;&#20107;&#24773;&#23601;&#34892;&#20102;&#65292;&#21518;&#38754;&#36824;&#20250;&#26377;&#19968;&#31687;&#25991;&#31456;&#35814;&#36848;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factories
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21407;&#29702;&#65307;
+  </span>
+ </p>
+ <p class="ne-p" id="u63b44111">
+  <br>
+ </p>
+ <p class="ne-p" id="u7dc62798">
+  <span class="ne-text">
+   &#12304;2&#12305;&#33509;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31561;&#27880;&#35299;&#26631;&#26377;&#35201;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    exclude
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#37027;&#20040;&#20877;&#23558;&#36825;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;&#25490;&#38500;&#25481;&#65307;
+  </span>
+ </p>
+ <p class="ne-p" id="ufaed93a1">
+  <br>
+ </p>
+ <p class="ne-p" id="u061cf19a">
+  <span class="ne-text">
+   &#12304;3&#12305;&#25490;&#38500;&#25481;&#35201;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    exclude
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#21518;&#65292;&#28982;&#21518;&#20877;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    filter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#36827;&#34892;&#36827;&#19968;&#27493;&#30340;&#36807;&#28388;&#65292;&#20877;&#27425;&#25490;&#38500;&#19968;&#20123;&#19981;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65307;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#36825;&#20010;&#22312;&#31245;&#21518;&#20250;&#35814;&#32454;&#20998;&#26512;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u19d539c7">
+  <br>
+ </p>
+ <p class="ne-p" id="ua1bc8121">
+  <span class="ne-text">
+   &#12304;4&#12305;&#32463;&#36807;&#37325;&#37325;&#36807;&#28388;&#21518;&#65292;&#27492;&#26102;&#20877;&#35302;&#21457;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20107;&#20214;&#65292;&#21578;&#35785;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionEvaluationReport
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26465;&#20214;&#35780;&#20272;&#25253;&#21578;&#22120;&#23545;&#35937;&#26469;&#35760;&#24405;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65307;&#65288;&#36825;&#20010;&#22312; 6 AutoConfigurationImportListener &#36825;&#23567;&#33410;&#35814;&#32454;&#20998;&#26512;&#12290;&#65289;
+  </span>
+ </p>
+ <p class="ne-p" id="u11e7ecf0">
+  <br>
+ </p>
+ <p class="ne-p" id="u32ef3cee">
+  <span class="ne-text">
+   &#12304;5&#12305; &#26368;&#21518;&#20877;&#23558;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#36820;&#22238;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u92820c2e">
+  <br>
+ </p>
+ <p class="ne-p" id="u0d6c1337">
+  <img class="ne-image" id="vNjMB" src="EPUB/imgvNjMB" width="1143">
+ </p>
+ <p class="ne-p" id="u2f13d360">
+  <br>
+ </p>
+ <p class="ne-p" id="u82ba4508">
+  <span class="ne-text">
+   &#24635;&#32467;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationEntry
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20027;&#35201;&#30340;&#36923;&#36753;&#21518;&#65292;&#25105;&#20204;&#20877;&#26469;&#32454;&#30475;&#19968;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    filter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u33d0a0e7">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="E8Nuz">// AutoConfigurationImportSelector.java
+
+private List&lt;String&gt; filter(List&lt;String&gt; configurations,
+			AutoConfigurationMetadata autoConfigurationMetadata) {
+	long startTime = System.nanoTime();
+	// &#23558;&#20174;spring.factories&#20013;&#33719;&#21462;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#36716;&#20986;&#23383;&#31526;&#20018;&#25968;&#32452;
+	String[] candidates = StringUtils.toStringArray(configurations);
+	// &#23450;&#20041;skip&#25968;&#32452;&#65292;&#26159;&#21542;&#38656;&#35201;&#36339;&#36807;&#12290;&#27880;&#24847;skip&#25968;&#32452;&#19982;candidates&#25968;&#32452;&#39034;&#24207;&#19968;&#19968;&#23545;&#24212;
+	boolean[] skip = new boolean[candidates.length];
+	boolean skipped = false;
+	// getAutoConfigurationImportFilters&#26041;&#27861;&#65306;&#25343;&#21040;OnBeanCondition&#65292;OnClassCondition&#21644;OnWebApplicationCondition
+	// &#28982;&#21518;&#36941;&#21382;&#36825;&#19977;&#20010;&#26465;&#20214;&#31867;&#21435;&#36807;&#28388;&#20174;spring.factories&#21152;&#36733;&#30340;&#22823;&#37327;&#37197;&#32622;&#31867;
+	for (AutoConfigurationImportFilter filter : getAutoConfigurationImportFilters()) {
+		// &#35843;&#29992;&#21508;&#31181;aware&#26041;&#27861;&#65292;&#23558;beanClassLoader,beanFactory&#31561;&#27880;&#20837;&#21040;filter&#23545;&#35937;&#20013;&#65292;
+		// &#36825;&#37324;&#30340;filter&#23545;&#35937;&#21363;OnBeanCondition&#65292;OnClassCondition&#25110;OnWebApplicationCondition
+		invokeAwareMethods(filter);
+		// &#21028;&#26029;&#21508;&#31181;filter&#26469;&#21028;&#26029;&#27599;&#20010;candidate&#65288;&#36825;&#37324;&#23454;&#36136;&#35201;&#36890;&#36807;candidate(&#33258;&#21160;&#37197;&#32622;&#31867;)&#25343;&#21040;&#20854;&#26631;&#27880;&#30340;
+		// @ConditionalOnClass,@ConditionalOnBean&#21644;@ConditionalOnWebApplication&#37324;&#38754;&#30340;&#27880;&#35299;&#20540;&#65289;&#26159;&#21542;&#21305;&#37197;&#65292;
+		// &#27880;&#24847;candidates&#25968;&#32452;&#19982;match&#25968;&#32452;&#19968;&#19968;&#23545;&#24212;
+		/**********************&#12304;&#20027;&#32447;&#65292;&#37325;&#28857;&#20851;&#27880;&#12305;********************************/
+		boolean[] match = filter.match(candidates, autoConfigurationMetadata);
+		// &#36941;&#21382;match&#25968;&#32452;&#65292;&#27880;&#24847;match&#39034;&#24207;&#36319;candidates&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#19968;&#19968;&#23545;&#24212;
+		for (int i = 0; i &lt; match.length; i++) {
+			// &#33509;&#26377;&#19981;&#21305;&#37197;&#30340;&#35805;
+			if (!match[i]) {
+				// &#19981;&#21305;&#37197;&#30340;&#23558;&#35760;&#24405;&#22312;skip&#25968;&#32452;&#65292;&#26631;&#24535;skip[i]&#20026;true&#65292;&#20063;&#19982;candidates&#25968;&#32452;&#19968;&#19968;&#23545;&#24212;
+				skip[i] = true;
+				// &#22240;&#20026;&#19981;&#21305;&#37197;&#65292;&#23558;&#30456;&#24212;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#32622;&#31354;
+				candidates[i] = null;
+				// &#26631;&#27880;skipped&#20026;true
+				skipped = true;
+			}
+		}
+	}
+	// &#36825;&#37324;&#34920;&#31034;&#33509;&#25152;&#26377;&#33258;&#21160;&#37197;&#32622;&#31867;&#32463;&#36807;OnBeanCondition&#65292;OnClassCondition&#21644;OnWebApplicationCondition&#36807;&#28388;&#21518;&#65292;&#20840;&#37096;&#37117;&#21305;&#37197;&#30340;&#35805;&#65292;&#21017;&#20840;&#37096;&#21407;&#26679;&#36820;&#22238;
+	if (!skipped) {
+		return configurations;
+	}
+	// &#24314;&#31435;result&#38598;&#21512;&#26469;&#35013;&#21305;&#37197;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;
+	List&lt;String&gt; result = new ArrayList&lt;&gt;(candidates.length);
+	for (int i = 0; i &lt; candidates.length; i++) {
+		// &#33509;skip[i]&#20026;false&#65292;&#21017;&#35828;&#26126;&#26159;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#27492;&#26102;&#28155;&#21152;&#21040;result&#38598;&#21512;&#20013;
+		if (!skip[i]) {
+			result.add(candidates[i]);
+		}
+	}
+	// &#25171;&#21360;&#26085;&#24535;
+	if (logger.isTraceEnabled()) {
+		int numberFiltered = configurations.size() - result.size();
+		logger.trace("Filtered " + numberFiltered + " auto configuration class in "
+				+ TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
+				+ " ms");
+	}
+	// &#26368;&#21518;&#36820;&#22238;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;
+	return new ArrayList&lt;&gt;(result);
+}</pre>
+ <p class="ne-p" id="ude5c1e0f">
+  <br>
+ </p>
+ <p class="ne-p" id="u790a0194">
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    filter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20027;&#35201;&#20570;&#30340;&#20107;&#24773;&#23601;&#26159;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26469;&#21028;&#26029;&#27599;&#19968;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;&#19978;&#30340;&#26465;&#20214;&#27880;&#35299;&#65288;&#33509;&#26377;&#30340;&#35805;&#65289;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnWebApplication
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#21542;&#28385;&#36275;&#26465;&#20214;&#65292;&#33509;&#28385;&#36275;&#65292;&#21017;&#36820;&#22238; true&#65292;&#35828;&#26126;&#21305;&#37197;&#65292;&#33509;&#19981;&#28385;&#36275;&#65292;&#21017;&#36820;&#22238; false &#35828;&#26126;&#19981;&#21305;&#37197;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u39082d2b">
+  <br>
+ </p>
+ <p class="ne-p" id="ub6f7d304">
+  <span class="ne-text">
+   &#25105;&#20204;&#29616;&#22312;&#30693;&#36947;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    filter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20027;&#35201;&#20570;&#20102;&#20160;&#20040;&#20107;&#24773;&#23601;&#34892;&#20102;&#65292;&#29616;&#22312;&#20808;&#19981;&#29992;&#30740;&#31350;&#30340;&#36807;&#28145;&#65292;&#33267;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#23558;&#22312; 5 AutoConfigurationImportFilter &#36825;&#23567;&#33410;&#20877;&#35814;&#32454;&#20998;&#26512;&#65292;&#22635;&#34917;&#19968;&#19979;&#25105;&#20204;&#21069;&#19968;&#31687;&#26465;&#20214;&#27880;&#35299;&#28304;&#30721;&#20998;&#26512;&#20013;&#30041;&#19979;&#30340;&#22353;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u25c66ada">
+  <br>
+ </p>
+ <p class="ne-p" id="u7718ea02">
+  <span class="ne-text">
+   &#27880;&#24847;&#65306;&#25105;&#20204;&#22362;&#25345;&#20027;&#32447;&#20248;&#20808;&#30340;&#21407;&#21017;&#65292;&#20854;&#20182;&#26525;&#33410;&#20195;&#30721;&#36825;&#37324;&#19981;&#28145;&#31350;&#65292;&#20197;&#20813;&#20002;&#20102;&#20027;&#32447;&#21704;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u12cff7d9">
+  <br>
+ </p>
+ <h3 id="e8QHv">
+  <span class="ne-text">
+   4.2 &#26377;&#36873;&#25321;&#30340;&#23548;&#20837;&#33258;&#21160;&#37197;&#32622;&#31867;
+  </span>
+ </h3>
+ <p class="ne-p" id="u6cda780f">
+  <br>
+ </p>
+ <p class="ne-p" id="u1c1a4ec0">
+  <span class="ne-text">
+   &#36825;&#37324;&#32487;&#32493;&#28145;&#31350;&#21069;&#38754; 4 &#20998;&#26512; SpringBoot &#33258;&#21160;&#37197;&#32622;&#21407;&#29702;&#36825;&#33410;&#26631;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;2&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    this.group.selectImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26159;&#22914;&#20309;&#36827;&#19968;&#27493;&#26377;&#36873;&#25321;&#30340;&#23548;&#20837;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#12290;&#30452;&#25509;&#30475;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u390c7e15">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="HnDJC">// AutoConfigurationImportSelector$AutoConfigurationGroup.java
+
+public Iterable&lt;Entry&gt; selectImports() {
+	if (this.autoConfigurationEntries.isEmpty()) {
+		return Collections.emptyList();
+	}
+	// &#36825;&#37324;&#24471;&#21040;&#25152;&#26377;&#35201;&#25490;&#38500;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;set&#38598;&#21512;
+	Set&lt;String&gt; allExclusions = this.autoConfigurationEntries.stream()
+			.map(AutoConfigurationEntry::getExclusions)
+			.flatMap(Collection::stream).collect(Collectors.toSet());
+	// &#36825;&#37324;&#24471;&#21040;&#32463;&#36807;&#28388;&#21518;&#25152;&#26377;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;set&#38598;&#21512;
+	Set&lt;String&gt; processedConfigurations = this.autoConfigurationEntries.stream()
+			.map(AutoConfigurationEntry::getConfigurations)
+			.flatMap(Collection::stream)
+			.collect(Collectors.toCollection(LinkedHashSet::new));
+	// &#31227;&#38500;&#25481;&#35201;&#25490;&#38500;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;
+	processedConfigurations.removeAll(allExclusions);
+	// &#23545;&#26631;&#27880;&#26377;@Order&#27880;&#35299;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#36827;&#34892;&#25490;&#24207;&#65292;
+	return sortAutoConfigurations(processedConfigurations,
+			getAutoConfigurationMetadata())
+					.stream()
+					.map((importClassName) -&gt; new Entry(
+							this.entries.get(importClassName), importClassName))
+					.collect(Collectors.toList());
+}
+&#22797;&#21046;&#20195;&#30721;</pre>
+ <p class="ne-p" id="ufee83b2e">
+  <br>
+ </p>
+ <p class="ne-p" id="ucf3b6943">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    selectImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20027;&#35201;&#26159;&#38024;&#23545;&#32463;&#36807;&#25490;&#38500;&#25481;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    exclude
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21644;&#34987;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#36807;&#28388;&#21518;&#30340;&#28385;&#36275;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#20877;&#36827;&#19968;&#27493;&#25490;&#38500;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    exclude
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#28982;&#21518;&#20877;&#25490;&#24207;&#12290;&#36923;&#36753;&#24456;&#31616;&#21333;&#65292;&#19981;&#20877;&#35814;&#36848;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u7c7c0438">
+  <br>
+ </p>
+ <p class="ne-p" id="u972cee51">
+  <span class="ne-text">
+   &#19981;&#36807;&#26377;&#20010;&#30097;&#38382;&#65292;&#21069;&#38754;&#24050;&#32463;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    exclude
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36807;&#19968;&#27425;&#20102;&#65292;&#20026;&#20309;&#36825;&#37324;&#36824;&#35201;&#20877;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    exclude
+   </span>
+  </code>
+  <span class="ne-text">
+   &#19968;&#27425;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="uc8bea08a">
+  <br>
+ </p>
+ <h2 id="C0JbV">
+  <span class="ne-text">
+   5 AutoConfigurationImportFilter
+  </span>
+ </h2>
+ <p class="ne-p" id="u6b9dc3e9">
+  <br>
+ </p>
+ <p class="ne-p" id="ue5024f56">
+  <span class="ne-text">
+   &#36825;&#37324;&#32487;&#32493;&#28145;&#31350;&#21069;&#38754; 4.1 &#33410;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector.filter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#36807;&#28388;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    boolean[] match = filter.match(candidates, autoConfigurationMetadata);
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#21477;&#20195;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u65554261">
+  <br>
+ </p>
+ <p class="ne-p" id="u04bbb8f0">
+  <span class="ne-text">
+   &#22240;&#27492;&#25105;&#20204;&#32487;&#32493;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#65292;&#20998;&#26512;&#20854;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#21516;&#26102;&#20063;&#26159;&#23545;&#21069;&#19968;&#31687;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnXxx
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#20998;&#26512;&#25991;&#31456;&#20013;&#30041;&#19979;&#30340;&#22353;&#36827;&#34892;&#22635;&#34917;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u11e491fe">
+  <br>
+ </p>
+ <p class="ne-p" id="ubfd89c91">
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#21482;&#26377;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#29992;&#26469;&#36807;&#28388;&#19981;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1c8821a7">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="pGGfo">@FunctionalInterface
+public interface AutoConfigurationImportFilter {
+    boolean[] match(String[] autoConfigurationClasses,
+    		AutoConfigurationMetadata autoConfigurationMetadata);
+}</pre>
+ <p class="ne-p" id="ufeec4ce5">
+  <br>
+ </p>
+ <p class="ne-p" id="uf6193115">
+  <span class="ne-text">
+   &#21516;&#26679;&#65292;&#22312;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21069;&#65292;&#25105;&#20204;&#20808;&#26469;&#30475;&#19979;&#20854;&#31867;&#20851;&#31995;&#22270;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u332195de">
+  <br>
+ </p>
+ <p class="ne-p" id="uefa746f1">
+  <img class="ne-image" id="BoH4P" src="EPUB/imgBoH4P" width="692">
+ </p>
+ <p class="ne-p" id="u3af31c3e">
+  <br>
+ </p>
+ <p class="ne-p" id="ua87d3b39">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#26377;&#19968;&#20010;&#20855;&#20307;&#30340;&#23454;&#29616;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21448;&#26377;&#19977;&#20010;&#20855;&#20307;&#30340;&#23376;&#31867;&#65306;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnClassCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondtition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnWebApplicationCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u44258848">
+  <br>
+ </p>
+ <p class="ne-p" id="u31917bd1">
+  <strong>
+   <span class="ne-text">
+    &#37027;&#20040;&#36825;&#20960;&#20010;&#31867;&#20043;&#38388;&#30340;&#20851;&#31995;&#26159;&#24590;&#26679;&#30340;&#21602;&#65311;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ue5065c7d">
+  <br>
+ </p>
+ <p class="ne-p" id="ueca0b81f">
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#28982;&#21518;&#22312;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#25277;&#35937;&#27169;&#26495;&#26041;&#27861;&#36820;&#22238;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#21305;&#37197;&#19982;&#21542;&#30340;&#20449;&#24687;&#12290;&#21516;&#26102;&#65292;&#26368;&#37325;&#35201;&#30340;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#19977;&#20010;&#23376;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnClassCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   ,
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondtition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnWebApplicationCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23558;&#20250;&#22797;&#20889;&#36825;&#20010;&#27169;&#26495;&#26041;&#27861;&#23454;&#29616;&#33258;&#24049;&#30340;&#21305;&#37197;&#21028;&#26029;&#36923;&#36753;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u3cf76207">
+  <br>
+ </p>
+ <p class="ne-p" id="u616068c3">
+  <span class="ne-text">
+   &#22909;&#20102;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#25972;&#20307;&#20851;&#31995;&#24050;&#32463;&#28165;&#26970;&#20102;&#65292;&#29616;&#22312;&#25105;&#20204;&#20877;&#36827;&#20837;&#20854;&#20855;&#20307;&#23454;&#29616;&#31867;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30475;&#30475;&#26159;&#20854;&#22914;&#20309;&#26681;&#25454;&#26465;&#20214;&#36807;&#28388;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ucc254665">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="HrCV1">// FilteringSpringBootCondition.java
+
+@Override
+public boolean[] match(String[] autoConfigurationClasses,
+		AutoConfigurationMetadata autoConfigurationMetadata) {
+	// &#21019;&#24314;&#35780;&#20272;&#25253;&#21578;
+	ConditionEvaluationReport report = ConditionEvaluationReport
+			.find(this.beanFactory);
+	// &#27880;&#24847;getOutcomes&#26159;&#27169;&#26495;&#26041;&#27861;&#65292;&#23558;spring.factories&#25991;&#20214;&#31181;&#21152;&#36733;&#30340;&#25152;&#26377;&#33258;&#21160;&#37197;&#32622;&#31867;&#20256;&#20837;
+	// &#23376;&#31867;&#65288;&#36825;&#37324;&#25351;&#30340;&#26159;OnClassCondition,OnBeanCondition&#21644;OnWebApplicationCondition&#31867;&#65289;&#21435;&#36807;&#28388;
+	// &#27880;&#24847;outcomes&#25968;&#32452;&#23384;&#20648;&#30340;&#26159;&#19981;&#21305;&#37197;&#30340;&#32467;&#26524;&#65292;&#36319;autoConfigurationClasses&#25968;&#32452;&#19968;&#19968;&#23545;&#24212;
+	/*****************************&#12304;&#20027;&#32447;&#65292;&#37325;&#28857;&#20851;&#27880;&#12305;*********************************************/
+	ConditionOutcome[] outcomes = getOutcomes(autoConfigurationClasses,
+			autoConfigurationMetadata);
+	boolean[] match = new boolean[outcomes.length];
+	// &#36941;&#21382;outcomes,&#36825;&#37324;outcomes&#20026;null&#21017;&#34920;&#31034;&#21305;&#37197;&#65292;&#19981;&#20026;null&#21017;&#34920;&#31034;&#19981;&#21305;&#37197;
+	for (int i = 0; i &lt; outcomes.length; i++) {
+		ConditionOutcome outcome = outcomes[i];
+		match[i] = (outcome == null || outcome.isMatch());
+		if (!match[i] &amp;&amp; outcomes[i] != null) {
+			// &#36825;&#37324;&#33509;&#26377;&#26576;&#20010;&#31867;&#19981;&#21305;&#37197;&#30340;&#35805;&#65292;&#27492;&#26102;&#35843;&#29992;&#29238;&#31867;SpringBootCondition&#30340;logOutcome&#26041;&#27861;&#25171;&#21360;&#26085;&#24535;
+			logOutcome(autoConfigurationClasses[i], outcomes[i]);
+			// &#24182;&#23558;&#19981;&#21305;&#37197;&#24773;&#20917;&#35760;&#24405;&#21040;report
+			if (report != null) {
+				report.recordConditionEvaluation(autoConfigurationClasses[i], this,
+						outcomes[i]);
+			}
+		}
+	}
+	return match;
+}</pre>
+ <p class="ne-p" id="u90d2d17c">
+  <br>
+ </p>
+ <p class="ne-p" id="uc5df55b9">
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    match
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20027;&#35201;&#20570;&#30340;&#20107;&#24773;&#36824;&#26159;&#35843;&#29992;&#25277;&#35937;&#27169;&#26495;&#26041;&#27861;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#26681;&#25454;&#26465;&#20214;&#26469;&#36807;&#28388;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#32780;&#22797;&#20889;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27169;&#26495;&#26041;&#27861;&#30340;&#26377;&#19977;&#20010;&#23376;&#31867;&#65292;&#36825;&#37324;&#19981;&#20877;&#19968;&#19968;&#20998;&#26512;&#65292;
+  </span>
+  <strong>
+   <span class="ne-text">
+    &#21482;&#25361;&#36873;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     OnClassCondition
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#22797;&#20889;&#30340;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     getOutcomes
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#26041;&#27861;&#36827;&#34892;&#20998;&#26512;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ub5615d6d">
+  <br>
+ </p>
+ <h3 id="fVpZr">
+  <span class="ne-text">
+   5.1 OnClassCondition
+  </span>
+ </h3>
+ <p class="ne-p" id="ucbc5908c">
+  <br>
+ </p>
+ <p class="ne-p" id="u3bb8d367">
+  <span class="ne-text">
+   &#20808;&#30452;&#25509;&#19978;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnClassCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22797;&#20889;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u800b8d19">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="TkYMO">// OnClassCondition.java
+
+protected final ConditionOutcome[] getOutcomes(String[] autoConfigurationClasses,
+		AutoConfigurationMetadata autoConfigurationMetadata) {
+	// Split the work and perform half in a background thread. Using a single
+	// additional thread seems to offer the best performance. More threads make
+	// things worse
+	// &#36825;&#37324;&#32463;&#36807;&#27979;&#35797;&#29992;&#20004;&#20010;&#32447;&#31243;&#21435;&#36305;&#30340;&#35805;&#24615;&#33021;&#26159;&#26368;&#22909;&#30340;&#65292;&#22823;&#20110;&#20004;&#20010;&#32447;&#31243;&#24615;&#33021;&#21453;&#32780;&#21464;&#24046;
+	int split = autoConfigurationClasses.length / 2;
+	// &#12304;1&#12305;&#24320;&#21551;&#19968;&#20010;&#26032;&#32447;&#31243;&#21435;&#25195;&#25551;&#21028;&#26029;&#24050;&#32463;&#21152;&#36733;&#30340;&#19968;&#21322;&#33258;&#21160;&#37197;&#32622;&#31867;
+	OutcomesResolver firstHalfResolver = createOutcomesResolver(
+			autoConfigurationClasses, 0, split, autoConfigurationMetadata);
+	// &#12304;2&#12305;&#36825;&#37324;&#29992;&#20027;&#32447;&#31243;&#21435;&#25195;&#25551;&#21028;&#26029;&#24050;&#32463;&#21152;&#36733;&#30340;&#19968;&#21322;&#33258;&#21160;&#37197;&#32622;&#31867;
+	OutcomesResolver secondHalfResolver = new StandardOutcomesResolver(
+			autoConfigurationClasses, split, autoConfigurationClasses.length,
+			autoConfigurationMetadata, getBeanClassLoader());
+	// &#12304;3&#12305;&#20808;&#35753;&#20027;&#32447;&#31243;&#21435;&#25191;&#34892;&#35299;&#26512;&#19968;&#21322;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#21305;&#37197;&#26465;&#20214;
+	ConditionOutcome[] secondHalf = secondHalfResolver.resolveOutcomes();
+	// &#12304;4&#12305;&#36825;&#37324;&#29992;&#26032;&#24320;&#21551;&#30340;&#32447;&#31243;&#21462;&#35299;&#26512;&#21478;&#19968;&#21322;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#21305;&#37197;
+	// &#27880;&#24847;&#20026;&#20102;&#38450;&#27490;&#20027;&#32447;&#31243;&#25191;&#34892;&#36807;&#24555;&#32467;&#26463;&#65292;resolveOutcomes&#26041;&#27861;&#37324;&#38754;&#35843;&#29992;&#20102;thread.join()&#26469;
+	// &#35753;&#20027;&#32447;&#31243;&#31561;&#24453;&#26032;&#32447;&#31243;&#25191;&#34892;&#32467;&#26463;&#65292;&#22240;&#20026;&#21518;&#38754;&#35201;&#21512;&#24182;&#20004;&#20010;&#32447;&#31243;&#30340;&#35299;&#26512;&#32467;&#26524;
+	ConditionOutcome[] firstHalf = firstHalfResolver.resolveOutcomes();
+	// &#26032;&#24314;&#19968;&#20010;ConditionOutcome&#25968;&#32452;&#26469;&#23384;&#20648;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#31579;&#36873;&#32467;&#26524;
+	ConditionOutcome[] outcomes = new ConditionOutcome[autoConfigurationClasses.length];
+	// &#23558;&#21069;&#38754;&#20004;&#20010;&#32447;&#31243;&#30340;&#31579;&#36873;&#32467;&#26524;&#20998;&#21035;&#25335;&#36125;&#36827;outcomes&#25968;&#32452;
+	System.arraycopy(firstHalf, 0, outcomes, 0, firstHalf.length);
+	System.arraycopy(secondHalf, 0, outcomes, split, secondHalf.length);
+	// &#36820;&#22238;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#31579;&#36873;&#32467;&#26524;
+	return outcomes;
+}</pre>
+ <p class="ne-p" id="udefc8862">
+  <br>
+ </p>
+ <p class="ne-p" id="ubbb1d572">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnClassCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20027;&#35201;&#35299;&#26512;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#31526;&#21512;&#21305;&#37197;&#26465;&#20214;&#65292;&#24403;&#28982;&#36825;&#20010;&#21305;&#37197;&#26465;&#20214;&#25351;&#33258;&#21160;&#37197;&#32622;&#31867;&#19978;&#30340;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25351;&#23450;&#30340;&#31867;&#23384;&#19981;&#23384;&#22312;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classpath
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#65292;&#23384;&#22312;&#21017;&#36820;&#22238;&#21305;&#37197;&#65292;&#19981;&#23384;&#22312;&#21017;&#36820;&#22238;&#19981;&#21305;&#37197;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6cee4f4e">
+  <br>
+ </p>
+ <p class="ne-p" id="u6ef0bbae">
+  <span class="ne-text">
+   &#30001;&#20110;&#35299;&#26512;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#21305;&#37197;&#27604;&#36739;&#32791;&#26102;&#65292;&#22240;&#27492;&#20174;&#19978;&#38754;&#20195;&#30721;&#20013;&#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#20998;&#21035;&#21019;&#24314;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    firstHalfResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    secondHalfResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20004;&#20010;&#35299;&#26512;&#23545;&#35937;&#65292;&#36825;&#20004;&#20010;&#35299;&#26512;&#23545;&#35937;&#20010;&#20998;&#21035;&#23545;&#24212;&#19968;&#20010;&#32447;&#31243;&#21435;&#35299;&#26512;&#21152;&#36733;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#31526;&#21512;&#26465;&#20214;&#65292;&#26368;&#32456;&#23558;&#20004;&#20010;&#32447;&#31243;&#30340;&#35299;&#26512;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#21305;&#37197;&#32467;&#26524;&#21512;&#24182;&#21518;&#36820;&#22238;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u208d8cf8">
+  <br>
+ </p>
+ <p class="ne-p" id="u2c216135">
+  <span class="ne-text">
+   &#37027;&#20040;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#31526;&#21512;&#26465;&#20214;&#30340;&#35299;&#26512;&#21028;&#26029;&#36807;&#31243;&#21448;&#26159;&#24590;&#26679;&#30340;&#21602;&#65311;&#29616;&#22312;&#25105;&#20204;&#20998;&#21035;&#26469;&#30475;&#19968;&#19979;&#19978;&#38754;&#20195;&#30721;&#27880;&#37322;&#26631;&#27880;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;1&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;2&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;3&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;4&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1e42d5e1">
+  <br>
+ </p>
+ <h4 id="vV2Ij">
+  <span class="ne-text">
+   5.1.1 createOutcomesResolver
+  </span>
+ </h4>
+ <p class="ne-p" id="ued5c98d2">
+  <br>
+ </p>
+ <p class="ne-p" id="u6422d60f">
+  <span class="ne-text">
+   &#36825;&#37324;&#23545;&#24212;&#21069;&#38754; 5.1 &#33410;&#30340;&#20195;&#30721;&#27880;&#37322;&#26631;&#27880;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;1&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OutcomesResolver firstHalfResolver = createOutcomesResolver(...);
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26041;&#27861;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ube46b9da">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="HkmjE">// OnClassCondition.java
+
+private OutcomesResolver createOutcomesResolver(String[] autoConfigurationClasses,
+		int start, int end, AutoConfigurationMetadata autoConfigurationMetadata) {
+	// &#26032;&#24314;&#19968;&#20010;StandardOutcomesResolver&#23545;&#35937;
+	OutcomesResolver outcomesResolver = new StandardOutcomesResolver(
+			autoConfigurationClasses, start, end, autoConfigurationMetadata,
+			getBeanClassLoader());
+	try {
+		// new&#19968;&#20010;ThreadedOutcomesResolver&#23545;&#35937;&#65292;&#24182;&#23558;StandardOutcomesResolver&#31867;&#22411;&#30340;outcomesResolver&#23545;&#35937;&#20316;&#20026;&#26500;&#36896;&#22120;&#21442;&#25968;&#20256;&#20837;
+		return new ThreadedOutcomesResolver(outcomesResolver);
+	}
+	// &#33509;&#19978;&#38754;&#24320;&#21551;&#30340;&#32447;&#31243;&#25243;&#20986;AccessControlException&#24322;&#24120;&#65292;&#21017;&#36820;&#22238;StandardOutcomesResolver&#23545;&#35937;
+	catch (AccessControlException ex) {
+		return outcomesResolver;
+	}
+}
+&#22797;&#21046;&#20195;&#30721;</pre>
+ <p class="ne-p" id="u5896d96c">
+  <br>
+ </p>
+ <p class="ne-p" id="u24dd8d2a">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    createOutcomesResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21019;&#24314;&#20102;&#19968;&#20010;&#23553;&#35013;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StandardOutcomesResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ThreadedOutcomesResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#35299;&#26512;&#23545;&#35937;&#12290; &#25105;&#20204;&#20877;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ThreadedOutcomesResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#32447;&#31243;&#35299;&#26512;&#31867;&#23553;&#35013;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StandardOutcomesResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20010;&#23545;&#35937;&#30340;&#30446;&#30340;&#26159;&#20160;&#20040;&#65311;&#25105;&#20204;&#32487;&#32493;&#36319;&#36827;&#20195;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u4eb45e9b">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="njcNs">// OnClassCondtion.java
+
+private ThreadedOutcomesResolver(OutcomesResolver outcomesResolver) {
+	// &#36825;&#37324;&#24320;&#21551;&#19968;&#20010;&#26032;&#30340;&#32447;&#31243;&#65292;&#36825;&#20010;&#32447;&#31243;&#20854;&#23454;&#36824;&#26159;&#21033;&#29992;StandardOutcomesResolver&#30340;resolveOutcomes&#26041;&#27861;
+	// &#23545;&#33258;&#21160;&#37197;&#32622;&#31867;&#36827;&#34892;&#35299;&#26512;&#21028;&#26029;&#26159;&#21542;&#21305;&#37197;
+	this.thread = new Thread(
+			() -&gt; this.outcomes = outcomesResolver.resolveOutcomes());
+	// &#24320;&#21551;&#32447;&#31243;
+	this.thread.start();
+}
+&#22797;&#21046;&#20195;&#30721;</pre>
+ <p class="ne-p" id="u974db6d1">
+  <br>
+ </p>
+ <p class="ne-p" id="u0770afa5">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#22312;&#26500;&#36896;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ThreadedOutcomesResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#26102;&#20505;&#65292;&#21407;&#26469;&#26159;&#24320;&#21551;&#20102;&#19968;&#20010;&#32447;&#31243;&#65292;&#28982;&#21518;&#36825;&#20010;&#32447;&#31243;&#20854;&#23454;&#36824;&#26159;&#35843;&#29992;&#20102;&#21018;&#20256;&#36827;&#26469;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StandardOutcomesResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    resolveOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21435;&#35299;&#26512;&#33258;&#21160;&#37197;&#32622;&#31867;&#12290;&#20855;&#20307;&#22914;&#20309;&#35299;&#26512;&#21602;&#65311;&#31245;&#21518;&#25105;&#20204;&#22312;&#20998;&#26512;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;3&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#20195;&#30721;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    secondHalfResolver.resolveOutcomes();
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26102;&#20505;&#20877;&#28145;&#31350;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u0467914a">
+  <br>
+ </p>
+ <h4 id="uaVWx">
+  <span class="ne-text">
+   5.1.2 new StandardOutcomesResolver
+  </span>
+ </h4>
+ <p class="ne-p" id="uc88dffd9">
+  <br>
+ </p>
+ <p class="ne-p" id="u6e007a23">
+  <span class="ne-text">
+   &#36825;&#37324;&#23545;&#24212;&#21069;&#38754; 5.1 &#33410;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;2&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#22788;&#30340;&#20195;&#30721;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OutcomesResolver secondHalfResolver = new StandardOutcomesResolver(...);
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#36923;&#36753;&#24456;&#31616;&#21333;&#65292;&#23601;&#26159;&#21019;&#24314;&#20102;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StandardOutcomesResolver
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#65292;&#29992;&#20110;&#21518;&#38754;&#35299;&#26512;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#21305;&#37197;&#65292;&#21516;&#26102;&#65292;&#26032;&#24314;&#30340;&#19968;&#20010;&#32447;&#31243;&#20063;&#26159;&#21033;&#29992;&#23427;&#26469;&#23436;&#25104;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#35299;&#26512;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u01906c87">
+  <br>
+ </p>
+ <h4 id="wZ2wU">
+  <span class="ne-text">
+   5.1.3 StandardOutcomesResolver.resolveOutcomes &#26041;&#27861;
+  </span>
+ </h4>
+ <p class="ne-p" id="u9259ed45">
+  <br>
+ </p>
+ <p class="ne-p" id="u0ce39ef2">
+  <span class="ne-text">
+   &#36825;&#37324;&#23545;&#24212;&#21069;&#38754; 5.1 &#33410;&#26631;&#27880;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;3&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20195;&#30721;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionOutcome[] secondHalf = secondHalfResolver.resolveOutcomes();
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ua480bc27">
+  <br>
+ </p>
+ <p class="ne-p" id="u72facd52">
+  <span class="ne-text">
+   &#36825;&#37324;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StandardOutcomesResolver.resolveOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#25215;&#25285;&#20102;&#35299;&#26512;&#33258;&#21160;&#37197;&#32622;&#31867;&#21305;&#37197;&#19982;&#21542;&#30340;&#20840;&#37096;&#36923;&#36753;&#65292;&#26159;&#25105;&#20204;&#35201;&#37325;&#28857;&#20998;&#26512;&#30340;&#26041;&#27861;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    resolveOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26368;&#32456;&#25226;&#35299;&#26512;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#32467;&#26524;&#36171;&#32473;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    secondHalf
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25968;&#32452;&#12290;&#37027;&#20040;&#23427;&#26159;&#22914;&#20309;&#35299;&#26512;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#21305;&#37197;&#26465;&#20214;&#30340;&#21602;&#65311;
+  </span>
+ </p>
+ <p class="ne-p" id="ud29bea33">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="IE0VK">// OnClassCondition$StandardOutcomesResolver.java
+
+public ConditionOutcome[] resolveOutcomes() {
+	// &#20877;&#35843;&#29992;getOutcomes&#26041;&#27861;&#26469;&#35299;&#26512;
+	return getOutcomes(this.autoConfigurationClasses, this.start, this.end,
+			this.autoConfigurationMetadata);
+}
+
+private ConditionOutcome[] getOutcomes(String[] autoConfigurationClasses,
+		int start, int end, AutoConfigurationMetadata autoConfigurationMetadata) { // &#21482;&#35201;autoConfigurationMetadata&#27809;&#26377;&#23384;&#20648;&#30456;&#20851;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#37027;&#20040;outcome&#40664;&#35748;&#20026;null&#65292;&#21017;&#35828;&#26126;&#21305;&#37197;
+	ConditionOutcome[] outcomes = new ConditionOutcome[end - start];
+	// &#36941;&#21382;&#27599;&#19968;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;
+	for (int i = start; i &lt; end; i++) {
+		String autoConfigurationClass = autoConfigurationClasses[i];
+		// TODO &#23545;&#20110;autoConfigurationMetadata&#26377;&#20010;&#30097;&#38382;&#65306;&#20026;&#20309;&#26377;&#20123;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#26465;&#20214;&#27880;&#35299;&#33021;&#34987;&#21152;&#36733;&#21040;autoConfigurationMetadata&#65292;&#32780;&#26377;&#20123;&#21448;&#19981;&#33021;&#65292;&#27604;&#22914;&#33258;&#24049;&#23450;&#20041;&#30340;&#19968;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;HelloWorldEnableAutoConfiguration&#23601;&#27809;&#26377;&#34987;&#23384;&#21040;autoConfigurationMetadata&#20013;
+		if (autoConfigurationClass != null) {
+			// &#36825;&#37324;&#21462;&#20986;&#27880;&#35299;&#22312;AutoConfiguration&#33258;&#21160;&#37197;&#32622;&#31867;&#31867;&#30340;@ConditionalOnClass&#27880;&#35299;&#30340;&#25351;&#23450;&#31867;&#30340;&#20840;&#38480;&#23450;&#21517;&#65292;
+			// &#20030;&#20010;&#26647;&#23376;&#65292;&#30475;&#19979;&#38754;&#30340;KafkaStreamsAnnotationDrivenConfiguration&#36825;&#20010;&#33258;&#21160;&#37197;&#32622;&#31867;
+			/**
+			 * @ConditionalOnClass(StreamsBuilder.class)
+			 * class KafkaStreamsAnnotationDrivenConfiguration {
+			 * // &#30465;&#30053;&#26080;&#20851;&#20195;&#30721;
+			 * }
+			 */
+			// &#37027;&#20040;&#21462;&#20986;&#30340;&#23601;&#26159;StreamsBuilder&#31867;&#30340;&#20840;&#38480;&#23450;&#21517;&#21363;candidates = org.apache.kafka.streams.StreamsBuilder
+			String candidates = autoConfigurationMetadata
+					.get(autoConfigurationClass, "ConditionalOnClass"); // &#22240;&#20026;&#36825;&#37324;&#26159;&#22788;&#29702;&#26576;&#20010;&#31867;&#26159;&#21542;&#23384;&#22312;&#20110;classpath&#20013;&#65292;&#25152;&#20197;&#20256;&#20837;&#30340;key&#26159;ConditionalOnClass
+			// &#33509;&#33258;&#21160;&#37197;&#32622;&#31867;&#26631;&#26377;ConditionalOnClass&#27880;&#35299;&#19988;&#26377;&#20540;&#65292;&#27492;&#26102;&#35843;&#29992;getOutcome&#21028;&#26029;&#26159;&#21542;&#23384;&#22312;&#20110;&#31867;&#36335;&#24452;&#20013;
+			if (candidates != null) {
+				// &#25343;&#21040;&#33258;&#21160;&#37197;&#32622;&#31867;&#27880;&#35299;@ConditionalOnClass&#30340;&#20540;&#21518;&#65292;&#20877;&#35843;&#29992;getOutcome&#26041;&#27861;&#21435;&#21028;&#26029;&#21305;&#37197;&#32467;&#26524;,&#33509;&#35813;&#31867;&#23384;&#22312;&#20110;&#31867;&#36335;&#24452;&#65292;&#21017;getOutcome&#36820;&#22238;null&#65292;&#21542;&#21017;&#38750;null
+				/*******************&#12304;&#20027;&#32447;&#65292;&#37325;&#28857;&#20851;&#27880;&#12305;******************/
+				outcomes[i - start] = getOutcome(candidates);
+			}
+		}
+	}
+	return outcomes;
+}
+&#22797;&#21046;&#20195;&#30721;</pre>
+ <p class="ne-p" id="u7ce9a8c4">
+  <br>
+ </p>
+ <p class="ne-p" id="ucea0f5f0">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StandardOutcomesResolver.resolveOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26041;&#27861;&#20013;&#20877;&#27425;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#20027;&#35201;&#26159;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    autoConfigurationMetadata
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#20013;&#33719;&#21462;&#21040;&#33258;&#21160;&#37197;&#32622;&#31867;&#19978;&#30340;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25351;&#23450;&#30340;&#31867;&#30340;&#20840;&#38480;&#23450;&#21517;&#65292;&#28982;&#21518;&#20316;&#20026;&#21442;&#25968;&#20256;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#29992;&#20110;&#21435;&#31867;&#36335;&#24452;&#21152;&#36733;&#35813;&#31867;&#65292;&#33509;&#33021;&#21152;&#36733;&#21040;&#21017;&#35828;&#26126;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#28385;&#36275;&#26465;&#20214;&#65292;&#27492;&#26102;&#35828;&#26126;&#33258;&#21160;&#37197;&#32622;&#31867;&#21305;&#37197;&#25104;&#21151;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u171c3f0f">
+  <br>
+ </p>
+ <p class="ne-p" id="ufd8f00e6">
+  <span class="ne-text">
+   &#20294;&#26159;&#21035;&#24536;&#20102;&#65292;&#36825;&#37324;&#21482;&#26159;&#36807;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#36825;&#19968;&#20851;&#65292;&#33509;&#33258;&#21160;&#37197;&#32622;&#31867;&#36824;&#26377;&#20854;&#20182;&#27880;&#35299;&#27604;&#22914;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#33509;&#35813;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnBean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#19981;&#28385;&#36275;&#26465;&#20214;&#30340;&#35805;&#65292;&#21516;&#26679;&#26368;&#32456;&#32467;&#26524;&#26159;&#19981;&#21305;&#37197;&#30340;&#12290;&#36825;&#37324;&#25199;&#30340;&#26377;&#28857;&#36828;&#65292;&#25105;&#20204;&#22238;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnClassCondtion
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#21028;&#26029;&#36923;&#36753;&#65292;&#32487;&#32493;&#36827;&#20837;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30475;&#23427;&#26159;&#22914;&#20309;&#21435;&#21028;&#26029;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#28385;&#19981;&#28385;&#36275;&#26465;&#20214;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ucebaed38">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="I5xyo">// OnClassCondition$StandardOutcomesResolver.java
+
+// &#36820;&#22238;&#30340;outcome&#35760;&#24405;&#30340;&#26159;&#19981;&#21305;&#37197;&#30340;&#24773;&#20917;&#65292;&#19981;&#20026;null&#65292;&#21017;&#35828;&#26126;&#19981;&#21305;&#37197;&#65307;&#20026;null&#65292;&#21017;&#35828;&#26126;&#21305;&#37197;
+private ConditionOutcome getOutcome(String candidates) {
+	// candidates&#30340;&#24418;&#24335;&#20026;&#8220;org.springframework.boot.autoconfigure.aop.AopAutoConfiguration.ConditionalOnClass=org.aspectj.lang.annotation.Aspect,org.aspectj.lang.reflect.Advice,org.aspectj.weaver.AnnotatedElement&#8221;
+	try {// &#33258;&#21160;&#37197;&#32622;&#31867;&#19978;@ConditionalOnClass&#30340;&#20540;&#21482;&#26377;&#19968;&#20010;&#30340;&#35805;&#65292;&#30452;&#25509;&#35843;&#29992;getOutcome&#26041;&#27861;&#21028;&#26029;&#26159;&#21542;&#21305;&#37197;
+		if (!candidates.contains(",")) {
+			// &#30475;&#21040;&#22240;&#20026;&#20256;&#20837;&#30340;&#21442;&#25968;&#26159; ClassNameFilter.MISSING&#65292;&#22240;&#27492;&#21487;&#20197;&#29468;&#27979;&#36825;&#37324;&#24212;&#35813;&#26159;&#24471;&#21040;&#19981;&#21305;&#37197;&#30340;&#32467;&#26524;
+			/******************&#12304;&#20027;&#32447;&#65292;&#37325;&#28857;&#20851;&#27880;&#12305;********************/
+			return getOutcome(candidates, ClassNameFilter.MISSING,
+					this.beanClassLoader);
+		}
+		// &#33258;&#21160;&#37197;&#32622;&#31867;&#19978;@ConditionalOnClass&#30340;&#20540;&#26377;&#22810;&#20010;&#30340;&#35805;&#65292;&#21017;&#36941;&#21382;&#27599;&#20010;&#20540;&#65288;&#20854;&#20540;&#20197;&#36887;&#21495;&#65292;&#20998;&#38548;&#65289;
+		for (String candidate : StringUtils
+				.commaDelimitedListToStringArray(candidates)) {
+			ConditionOutcome outcome = getOutcome(candidate,
+					ClassNameFilter.MISSING, this.beanClassLoader);
+			// &#21487;&#20197;&#30475;&#21040;&#65292;&#36825;&#37324;&#21482;&#35201;&#26377;&#19968;&#20010;&#19981;&#21305;&#37197;&#30340;&#35805;&#65292;&#21017;&#36820;&#22238;&#19981;&#21305;&#37197;&#32467;&#26524;
+			if (outcome != null) {
+				return outcome;
+			}
+		}
+	}
+	catch (Exception ex) {
+		// We'll get another chance later
+	}
+	return null;
+}
+&#22797;&#21046;&#20195;&#30721;</pre>
+ <p class="ne-p" id="ue45d1a31">
+  <br>
+ </p>
+ <p class="ne-p" id="u0d392806">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20877;&#27425;&#35843;&#29992;&#37325;&#36733;&#26041;&#27861;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getOutcome
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36827;&#19968;&#27493;&#21435;&#21028;&#26029;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25351;&#23450;&#30340;&#31867;&#23384;&#19981;&#23384;&#22312;&#31867;&#36335;&#24452;&#20013;&#65292;&#36319;&#30528;&#20027;&#32447;&#32487;&#32493;&#36319;&#36827;&#21435;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u6b584fba">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="AFzyz">// OnClassCondition$StandardOutcomesResolver.java
+
+private ConditionOutcome getOutcome(String className,
+		ClassNameFilter classNameFilter, ClassLoader classLoader) {
+	// &#35843;&#29992;classNameFilter&#30340;matches&#26041;&#27861;&#26469;&#21028;&#26029;`@ConditionalOnClass`&#25351;&#23450;&#30340;&#31867;&#23384;&#19981;&#23384;&#22312;&#31867;&#36335;&#24452;&#20013;
+	/******************&#12304;&#20027;&#32447;&#65292;&#37325;&#28857;&#20851;&#27880;&#12305;********************/
+	if (classNameFilter.matches(className, classLoader)) { // &#36825;&#37324;&#35843;&#29992;classNameFilter&#21435;&#21028;&#26029;className&#26159;&#21542;&#23384;&#22312;&#20110;&#31867;&#36335;&#24452;&#20013;&#65292;&#20854;&#20013;ClassNameFilter&#21448;&#20998;&#20026;PRESENT&#21644;MISSING&#20004;&#31181;;&#30446;&#21069;&#21482;&#30475;&#21040;ClassNameFilter&#20026;MISSING&#30340;&#35843;&#29992;&#24773;&#20917;&#65292;&#25152;&#20197;&#40664;&#35748;&#20026;true&#30340;&#35805;&#35760;&#24405;&#19981;&#21305;&#37197;&#20449;&#24687;&#65307;&#33509;&#20256;&#20837;ClassNameFilter&#20026;PRESENT&#30340;&#35805;&#65292;&#20272;&#35745;&#36824;&#35201;&#20877;&#20889;&#19968;&#20010;else&#20998;&#25903;
+		return ConditionOutcome.noMatch(ConditionMessage
+				.forCondition(ConditionalOnClass.class)
+				.didNotFind("required class").items(Style.QUOTE, className));
+	}
+	return null;
+}
+&#22797;&#21046;&#20195;&#30721;</pre>
+ <p class="ne-p" id="u9dcde8b1">
+  <br>
+ </p>
+ <p class="ne-p" id="u0f762647">
+  <span class="ne-text">
+   &#25105;&#20204;&#19968;&#23618;&#19968;&#23618;&#30340;&#21093;&#65292;&#26368;&#32456;&#21093;&#21040;&#20102;&#26368;&#24213;&#23618;&#20102;&#65292;&#36825;&#20010;&#30495;&#30340;&#38656;&#35201;&#36275;&#22815;&#32784;&#24515;&#65292;&#27809;&#21150;&#27861;&#65292;&#28304;&#30721;&#21482;&#33021;&#19968;&#28857;&#19968;&#28857;&#30340;&#21827;&#65292;&#22079;&#22079;&#12290;&#21487;&#20197;&#30475;&#21040;&#26368;&#32456;&#26159;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ClassNameFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    matches
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26469;&#21028;&#26029;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @ConditionalOnClass
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25351;&#23450;&#30340;&#31867;&#23384;&#19981;&#23384;&#22312;&#31867;&#36335;&#24452;&#20013;,&#33509;&#19981;&#23384;&#22312;&#30340;&#35805;&#65292;&#21017;&#36820;&#22238;&#19981;&#21305;&#37197;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uf5d756f4">
+  <br>
+ </p>
+ <p class="ne-p" id="u0e67fc48">
+  <span class="ne-text">
+   &#25105;&#20204;&#32487;&#32493;&#36319;&#36827;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ClassNameFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uc174d226">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="WhEqC">// FilteringSpringBootCondition.java
+
+protected enum ClassNameFilter {
+	// &#36825;&#37324;&#34920;&#31034;&#25351;&#23450;&#30340;&#31867;&#23384;&#22312;&#20110;&#31867;&#36335;&#24452;&#20013;&#65292;&#21017;&#36820;&#22238;true
+	PRESENT {
+
+		@Override
+		public boolean matches(String className, ClassLoader classLoader) {
+			return isPresent(className, classLoader);
+		}
+
+	},
+	// &#36825;&#37324;&#34920;&#31034;&#25351;&#23450;&#30340;&#31867;&#19981;&#23384;&#22312;&#20110;&#31867;&#36335;&#24452;&#20013;&#65292;&#21017;&#36820;&#22238;true
+	MISSING {
+
+		@Override
+		public boolean matches(String className, ClassLoader classLoader) {
+			return !isPresent(className, classLoader); // &#33509;classpath&#19981;&#23384;&#22312;className&#36825;&#20010;&#31867;&#65292;&#21017;&#36820;&#22238;true
+		}
+
+	};
+	// &#36825;&#21448;&#26159;&#19968;&#20010;&#25277;&#35937;&#26041;&#27861;&#65292;&#20998;&#21035;&#34987;PRESENT&#21644;MISSING&#26522;&#20030;&#31867;&#23454;&#29616;
+	public abstract boolean matches(String className, ClassLoader classLoader);
+	// &#26816;&#26597;&#25351;&#23450;&#30340;&#31867;&#26159;&#21542;&#23384;&#22312;&#20110;&#31867;&#36335;&#24452;&#20013;
+	public static boolean isPresent(String className, ClassLoader classLoader) {
+		if (classLoader == null) {
+			classLoader = ClassUtils.getDefaultClassLoader();
+		}
+		// &#21033;&#29992;&#31867;&#21152;&#36733;&#22120;&#21435;&#21152;&#36733;&#30456;&#24212;&#31867;&#65292;&#33509;&#27809;&#26377;&#25243;&#20986;&#24322;&#24120;&#21017;&#35828;&#26126;&#31867;&#36335;&#24452;&#20013;&#23384;&#22312;&#35813;&#31867;&#65292;&#27492;&#26102;&#36820;&#22238;true
+		try {
+			forName(className, classLoader);
+			return true;
+		}// &#33509;&#19981;&#23384;&#22312;&#20110;&#31867;&#36335;&#24452;&#20013;&#65292;&#27492;&#26102;&#25243;&#20986;&#30340;&#24322;&#24120;&#23558;catch&#20303;&#65292;&#36820;&#22238;false&#12290;
+		catch (Throwable ex) {
+			return false;
+		}
+	}
+	// &#21033;&#29992;&#31867;&#21152;&#36733;&#22120;&#21435;&#21152;&#36733;&#25351;&#23450;&#30340;&#31867;
+	private static Class&lt;?&gt; forName(String className, ClassLoader classLoader)
+			throws ClassNotFoundException {
+		if (classLoader != null) {
+			return classLoader.loadClass(className);
+		}
+		return Class.forName(className);
+	}
+
+}
+&#22797;&#21046;&#20195;&#30721;</pre>
+ <p class="ne-p" id="u508ba044">
+  <br>
+ </p>
+ <p class="ne-p" id="u191b0b91">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ClassNameFilter
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21407;&#26469;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    FilteringSpringBootCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#19968;&#20010;&#20869;&#37096;&#26522;&#20030;&#31867;&#65292;&#20854;&#23454;&#29616;&#20102;&#21028;&#26029;&#25351;&#23450;&#31867;&#26159;&#21542;&#23384;&#22312;&#20110;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    classpath
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20013;&#30340;&#36923;&#36753;&#65292;&#36825;&#20010;&#31867;&#24456;&#31616;&#21333;&#65292;&#36825;&#37324;&#19981;&#20877;&#35814;&#36848;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u46e510b3">
+  <br>
+ </p>
+ <h4 id="v9HIl">
+  <span class="ne-text">
+   5.1.4 ThreadedOutcomesResolver.resolveOutcomes &#26041;&#27861;
+  </span>
+ </h4>
+ <p class="ne-p" id="uc950a4d2">
+  <br>
+ </p>
+ <p class="ne-p" id="u0c377afb">
+  <span class="ne-text">
+   &#36825;&#37324;&#23545;&#24212;&#21069;&#38754; 5.1 &#33410;&#30340;&#26631;&#27880;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;4&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20195;&#30721;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionOutcome[] firstHalf = firstHalfResolver.resolveOutcomes()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u383bf3b6">
+  <br>
+ </p>
+ <p class="ne-p" id="u4591f060">
+  <span class="ne-text">
+   &#21069;&#38754;&#20998;&#26512; 5.1.3 StandardOutcomesResolver.resolveOutcomes &#26041;&#27861;&#24050;&#32463;&#21032;&#26681;&#36861;&#24213;&#65292;&#38519;&#20837;&#32454;&#33410;&#27604;&#36739;&#28145;&#65292;&#29616;&#22312;&#25105;&#20204;&#38656;&#35201;&#36339;&#20986;&#26469;&#32487;&#32493;&#30475;&#21069;&#38754;&#26631;&#27880;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    &#12304;4&#12305;
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#20195;&#30721;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionOutcome[] firstHalf = firstHalfResolver.resolveOutcomes()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#26041;&#27861;&#21704;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ucce2e5e2">
+  <br>
+ </p>
+ <p class="ne-p" id="u8193832b">
+  <span class="ne-text">
+   &#36825;&#37324;&#26159;&#29992;&#26032;&#24320;&#21551;&#30340;&#32447;&#31243;&#21435;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    StandardOutcomesResolver.resolveOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#35299;&#26512;&#21478;&#19968;&#21322;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#21305;&#37197;&#65292;&#22240;&#20026;&#26159;&#26032;&#32447;&#31243;&#65292;&#36825;&#37324;&#24456;&#21487;&#33021;&#20250;&#20986;&#29616;&#36825;&#20040;&#19968;&#31181;&#24773;&#20917;&#65306;&#20027;&#32447;&#31243;&#35299;&#26512;&#23436;&#23646;&#20110;&#33258;&#24049;&#35299;&#26512;&#30340;&#19968;&#21322;&#33258;&#21160;&#37197;&#32622;&#31867;&#21518;&#65292;&#37027;&#20040;&#20037;&#32487;&#32493;&#24448;&#19979;&#36305;&#20102;&#65292;&#27492;&#26102;&#19981;&#20250;&#31561;&#24453;&#26032;&#24320;&#21551;&#30340;&#23376;&#32447;&#31243;&#30340;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u625fe9d6">
+  <br>
+ </p>
+ <p class="ne-p" id="u0bd1a522">
+  <span class="ne-text">
+   &#22240;&#27492;&#65292;&#20026;&#20102;&#35753;&#20027;&#32447;&#31243;&#35299;&#26512;&#23436;&#21518;&#65292;&#25105;&#20204;&#38656;&#35201;&#35753;&#20027;&#32447;&#31243;&#32487;&#32493;&#31561;&#24453;&#27491;&#22312;&#35299;&#26512;&#30340;&#23376;&#32447;&#31243;&#65292;&#30452;&#21040;&#23376;&#32447;&#31243;&#32467;&#26463;&#12290;&#37027;&#20040;&#25105;&#20204;&#32487;&#32493;&#36319;&#36827;&#20195;&#30721;&#21306;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ThreadedOutcomesResolver.resolveOutcomes
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26159;&#24590;&#26679;&#23454;&#29616;&#35753;&#20027;&#32447;&#31243;&#31561;&#24453;&#23376;&#32447;&#31243;&#30340;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u37ef318e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="mBoy3">// OnClassCondition$ThreadedOutcomesResolver.java
+
+public ConditionOutcome[] resolveOutcomes() {
+	try {
+		// &#35843;&#29992;&#23376;&#32447;&#31243;&#30340;Join&#26041;&#27861;&#65292;&#35753;&#20027;&#32447;&#31243;&#31561;&#24453;
+		this.thread.join();
+	}
+	catch (InterruptedException ex) {
+		Thread.currentThread().interrupt();
+	}
+	// &#33509;&#23376;&#32447;&#31243;&#32467;&#26463;&#21518;&#65292;&#27492;&#26102;&#36820;&#22238;&#23376;&#32447;&#31243;&#30340;&#35299;&#26512;&#32467;&#26524;
+	return this.outcomes;
+}
+&#22797;&#21046;&#20195;&#30721;</pre>
+ <p class="ne-p" id="u77bff60d">
+  <br>
+ </p>
+ <p class="ne-p" id="u9c91ebe4">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Thread.join()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#26469;&#35753;&#20027;&#32447;&#31243;&#31561;&#24453;&#27491;&#22312;&#35299;&#26512;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#23376;&#32447;&#31243;&#65292;&#36825;&#37324;&#24212;&#35813;&#20063;&#21487;&#20197;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CountDownLatch
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26469;&#35753;&#20027;&#32447;&#31243;&#31561;&#24453;&#23376;&#32447;&#31243;&#32467;&#26463;&#12290;&#26368;&#32456;&#23558;&#23376;&#32447;&#31243;&#35299;&#26512;&#21518;&#30340;&#32467;&#26524;&#36171;&#32473;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    firstHalf
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25968;&#32452;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ub1154527">
+  <br>
+ </p>
+ <h3 id="zM33N">
+  <span class="ne-text">
+   5.2 OnBeanCondition &#21644; OnWebApplicationCondition
+  </span>
+ </h3>
+ <p class="ne-p" id="ubdd0caef">
+  <br>
+ </p>
+ <p class="ne-p" id="u67fc3f48">
+  <span class="ne-text">
+   &#21069;&#38754; 5.1 OnClassCondition &#33410;&#28145;&#20837;&#20998;&#26512;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnClassCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#22914;&#20309;&#36807;&#28388;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#65292;&#37027;&#20040;&#33258;&#21160;&#37197;&#32622;&#31867;&#38500;&#20102;&#35201;&#32463;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnClassCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#36807;&#28388;&#65292;&#36824;&#35201;&#32463;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnBeanCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    OnWebApplicationCondition
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#20004;&#20010;&#26465;&#20214;&#31867;&#30340;&#36807;&#28388;&#65292;&#36825;&#37324;&#19981;&#20877;&#35814;&#36848;&#65292;&#26377;&#20852;&#36259;&#30340;&#23567;&#20249;&#20276;&#21487;&#33258;&#34892;&#20998;&#26512;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u06a926d7">
+  <br>
+ </p>
+ <h2 id="hcCQY">
+  <span class="ne-text">
+   6 AutoConfigurationImportListener
+  </span>
+ </h2>
+ <p class="ne-p" id="u29203a07">
+  <br>
+ </p>
+ <p class="ne-p" id="uf34fc41c">
+  <span class="ne-text">
+   &#36825;&#37324;&#32487;&#32493;&#28145;&#31350;&#21069;&#38754; 4.1 &#33410;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportSelector.getAutoConfigurationEntry
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30340;&#35302;&#21457;&#33258;&#21160;&#37197;&#32622;&#31867;&#36807;&#28388;&#23436;&#27605;&#30340;&#20107;&#20214;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    fireAutoConfigurationImportEvents(configurations, exclusions);
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36825;&#21477;&#20195;&#30721;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5eeab08b">
+  <br>
+ </p>
+ <p class="ne-p" id="u3fbab92a">
+  <span class="ne-text">
+   &#25105;&#20204;&#30452;&#25509;&#28857;&#36827;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    fireAutoConfigurationImportEvents
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#30475;&#30475;&#20854;&#26159;&#22914;&#20309;&#35302;&#21457;&#20107;&#20214;&#30340;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u06fee3cd">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="CDoIy">// AutoConfigurationImportSelector.java
+
+private void fireAutoConfigurationImportEvents(List&lt;String&gt; configurations,
+		Set&lt;String&gt; exclusions) {
+	// &#20174;spring.factories&#24635;&#33719;&#21462;&#21040;AutoConfigurationImportListener&#21363;ConditionEvaluationReportAutoConfigurationImportListener
+	List&lt;AutoConfigurationImportListener&gt; listeners = getAutoConfigurationImportListeners();
+	if (!listeners.isEmpty()) {
+		// &#26032;&#24314;&#19968;&#20010;AutoConfigurationImportEvent&#20107;&#20214;
+		AutoConfigurationImportEvent event = new AutoConfigurationImportEvent(this,
+				configurations, exclusions);
+		// &#36941;&#21382;&#21018;&#33719;&#21462;&#21040;&#30340;AutoConfigurationImportListener
+		for (AutoConfigurationImportListener listener : listeners) {
+			// &#36825;&#37324;&#35843;&#29992;&#21508;&#31181;Aware&#26041;&#27861;&#29992;&#20110;&#35302;&#21457;&#20107;&#20214;&#21069;&#36171;&#20540;&#65292;&#27604;&#22914;&#35774;&#32622;factory,environment&#31561;
+			invokeAwareMethods(listener);
+			// &#30495;&#27491;&#35302;&#21457;AutoConfigurationImportEvent&#20107;&#20214;&#21363;&#22238;&#35843;listener&#30340;onXXXEveent&#26041;&#27861;&#12290;&#36825;&#37324;&#29992;&#20110;&#35760;&#24405;&#33258;&#21160;&#37197;&#32622;&#31867;&#30340;&#35780;&#20272;&#20449;&#24687;
+			listener.onAutoConfigurationImportEvent(event);
+		}
+	}
+}</pre>
+ <p class="ne-p" id="uc6a26d8c">
+  <br>
+ </p>
+ <p class="ne-p" id="u92fd67ee">
+  <span class="ne-text">
+   &#22914;&#19978;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    fireAutoConfigurationImportEvents
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20570;&#20102;&#20197;&#19979;&#20004;&#20214;&#20107;&#24773;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ucb9bc954">
+  <br>
+ </p>
+ <p class="ne-p" id="u2e1f95cf">
+  <span class="ne-text">
+   1&#12289;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    getAutoConfigurationImportListeners
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#20174;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    spring.factoris
+   </span>
+  </code>
+  <span class="ne-text">
+   &#37197;&#32622;&#25991;&#20214;&#33719;&#21462;&#23454;&#29616;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationImportListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25509;&#21475;&#30340;&#20107;&#20214;&#30417;&#21548;&#22120;&#65307;&#22914;&#19979;&#22270;&#65292;&#21487;&#20197;&#30475;&#21040;&#33719;&#21462;&#30340;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionEvaluationReportAutoConfigurationImportListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u09fe0030">
+  <br>
+ </p>
+ <p class="ne-p" id="u3d982b0a">
+  <img class="ne-image" id="lTS0u" src="EPUB/imglTS0u" width="1138">
+ </p>
+ <p class="ne-p" id="ub66e0cd9">
+  <br>
+ </p>
+ <p class="ne-p" id="uad8c1de5">
+  <span class="ne-text">
+   2&#12289;&#36941;&#21382;&#33719;&#21462;&#30340;&#21508;&#20010;&#20107;&#20214;&#30417;&#21548;&#22120;&#65292;&#28982;&#21518;&#35843;&#29992;&#30417;&#21548;&#22120;&#21508;&#31181;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Aware
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#32473;&#30417;&#21548;&#22120;&#36171;&#20540;&#65292;&#26368;&#21518;&#20877;&#20381;&#27425;&#22238;&#35843;&#20107;&#20214;&#30417;&#21548;&#22120;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    onAutoConfigurationImportEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#25191;&#34892;&#30417;&#21548;&#20107;&#20214;&#30340;&#36923;&#36753;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6911452e">
+  <br>
+ </p>
+ <p class="ne-p" id="u9e02168c">
+  <span class="ne-text">
+   &#27492;&#26102;&#25105;&#20204;&#20877;&#26469;&#30475;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionEvaluationReportAutoConfigurationImportListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30417;&#21548;&#22120;&#30417;&#21548;&#21040;&#20107;&#20214;&#21518;&#65292;&#23427;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    onAutoConfigurationImportEvent
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#31350;&#31455;&#20570;&#20102;&#21738;&#20123;&#20107;&#24773;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u5974234e">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="lSI47">// ConditionEvaluationReportAutoConfigurationImportListener.java
+
+public void onAutoConfigurationImportEvent(AutoConfigurationImportEvent event) {
+	if (this.beanFactory != null) {
+		// &#33719;&#21462;&#21040;&#26465;&#20214;&#35780;&#20272;&#25253;&#21578;&#22120;&#23545;&#35937;
+		ConditionEvaluationReport report = ConditionEvaluationReport
+				.get(this.beanFactory);
+		// &#23558;&#31526;&#21512;&#26465;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#35760;&#24405;&#21040;unconditionalClasses&#38598;&#21512;&#20013;
+		report.recordEvaluationCandidates(event.getCandidateConfigurations());
+		// &#23558;&#35201;exclude&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#35760;&#24405;&#21040;exclusions&#38598;&#21512;&#20013;
+		report.recordExclusions(event.getExclusions());
+	}
+}</pre>
+ <p class="ne-p" id="ubf714438">
+  <br>
+ </p>
+ <p class="ne-p" id="u1958b7d6">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;&#65292;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ConditionEvaluationReportAutoConfigurationImportListener
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30417;&#21548;&#22120;&#30417;&#21548;&#21040;&#20107;&#20214;&#21518;&#65292;&#20570;&#30340;&#20107;&#24773;&#24456;&#31616;&#21333;&#65292;&#21482;&#26159;&#20998;&#21035;&#35760;&#24405;&#19979;&#31526;&#21512;&#26465;&#20214;&#21644;&#34987;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    exclude
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1f6cb789">
+  <br>
+ </p>
+ <h2 id="oLZfV">
+  <span class="ne-text">
+   7 AutoConfigurationPackages
+  </span>
+ </h2>
+ <p class="ne-p" id="u0e59e860">
+  <br>
+ </p>
+ <p class="ne-p" id="ubf45ef21">
+  <span class="ne-text">
+   &#21069;&#38754;&#24050;&#32463;&#35814;&#36848;&#20102; SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#21407;&#29702;&#20102;&#65292;&#26368;&#21518;&#30340;&#26368;&#21518;&#65292;&#36319; SpringBoot &#33258;&#21160;&#37197;&#32622;&#26377;&#20851;&#30340;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @AutoConfigurationPackage
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36824;&#27809;&#20998;&#26512;&#65292;&#25105;&#20204;&#26469;&#30475;&#19979;&#36825;&#20010;&#27880;&#35299;&#30340;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u1154680d">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="rRZI0">@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Inherited
+@Import(AutoConfigurationPackages.Registrar.class)
+public @interface AutoConfigurationPackage {
+}</pre>
+ <p class="ne-p" id="u6936a515">
+  <br>
+ </p>
+ <p class="ne-p" id="uc19f9339">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @AutoConfigurationPackage
+   </span>
+  </code>
+  <span class="ne-text">
+   &#27880;&#35299;&#26159;&#36319; SpringBoot &#33258;&#21160;&#37197;&#32622;&#25152;&#22312;&#30340;&#21253;&#30456;&#20851;&#30340;&#65292;&#21363;&#23558; &#28155;&#21152;&#35813;&#27880;&#35299;&#30340;&#31867;&#25152;&#22312;&#30340; package &#20316;&#20026; &#33258;&#21160;&#37197;&#32622; package &#36827;&#34892;&#31649;&#29702;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u89217fc4">
+  <br>
+ </p>
+ <p class="ne-p" id="u9074de79">
+  <span class="ne-text">
+   &#25509;&#19979;&#26469;&#25105;&#20204;&#20877;&#30475;&#30475;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationPackages.Registrar
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#26159;&#24178;&#22043;&#30340;&#65292;&#30452;&#25509;&#30475;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u1f25f251">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="xMJOF">//AutoConfigurationPackages.Registrar.java
+
+static class Registrar implements ImportBeanDefinitionRegistrar, DeterminableImports {
+    @Override
+    public void registerBeanDefinitions(AnnotationMetadata metadata,
+    		BeanDefinitionRegistry registry) {
+    	register(registry, new PackageImport(metadata).getPackageName());
+    }
+
+    @Override
+    public Set&lt;Object&gt; determineImports(AnnotationMetadata metadata) {
+    	return Collections.singleton(new PackageImport(metadata));
+    }
+}</pre>
+ <p class="ne-p" id="u043de408">
+  <br>
+ </p>
+ <p class="ne-p" id="u3c567683">
+  <span class="ne-text">
+   &#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Registrar
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationPackages
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#38745;&#24577;&#20869;&#37096;&#31867;&#65292;&#23454;&#29616;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ImportBeanDefinitionRegistrar
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    DeterminableImports
+   </span>
+  </code>
+  <span class="ne-text">
+   &#20004;&#20010;&#25509;&#21475;&#12290;&#29616;&#22312;&#25105;&#20204;&#20027;&#35201;&#26469;&#20851;&#27880;&#19979;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    Registrar
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23454;&#29616;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    registerBeanDefinitions
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;,&#39038;&#21517;&#24605;&#20041;&#65292;&#36825;&#20010;&#26041;&#27861;&#26159;&#27880;&#20876;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23450;&#20041;&#30340;&#26041;&#27861;&#12290;&#30475;&#21040;&#23427;&#21448;&#35843;&#29992;&#20102;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    AutoConfigurationPackages
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#65292;&#32487;&#32493;&#36319;&#36827;&#28304;&#30721;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uba161e64">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="PX1Mz">// AutoConfigurationPackages.java
+
+public static void register(BeanDefinitionRegistry registry, String... packageNames) {
+	if (registry.containsBeanDefinition(BEAN)) {
+		BeanDefinition beanDefinition = registry.getBeanDefinition(BEAN);
+		ConstructorArgumentValues constructorArguments = beanDefinition
+				.getConstructorArgumentValues();
+		constructorArguments.addIndexedArgumentValue(0,
+				addBasePackages(constructorArguments, packageNames));
+	}
+	else {
+		GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+		beanDefinition.setBeanClass(BasePackages.class);
+		beanDefinition.getConstructorArgumentValues().addIndexedArgumentValue(0,
+				packageNames);
+		beanDefinition.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
+		registry.registerBeanDefinition(BEAN, beanDefinition);
+	}
+}</pre>
+ <p class="ne-p" id="ua6ac9d14">
+  <br>
+ </p>
+ <p class="ne-p" id="u685ebdcf">
+  <span class="ne-text">
+   &#22914;&#19978;&#65292;&#21487;&#20197;&#30475;&#21040;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    register
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#27880;&#20876;&#20102;&#19968;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    packageNames
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21363;&#33258;&#21160;&#37197;&#32622;&#31867;&#27880;&#35299;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    @EnableAutoConfiguration
+   </span>
+  </code>
+  <span class="ne-text">
+   &#25152;&#22312;&#30340;&#25152;&#22312;&#30340;&#21253;&#21517;&#30456;&#20851;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#12290;&#37027;&#20040;&#27880;&#20876;&#36825;&#20010;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#30340;&#30446;&#30340;&#26159;&#20026;&#20102;&#20160;&#20040;&#21602;&#65311; &#32467;&#21512;&#23448;&#32593;&#27880;&#37322;&#30693;&#36947;&#65292;&#27880;&#20876;&#36825;&#20010;&#33258;&#21160;&#37197;&#32622;&#21253;&#21517;&#30456;&#20851;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    bean
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26159;&#20026;&#20102;&#34987;&#20854;&#20182;&#22320;&#26041;&#24341;&#29992;&#65292;&#27604;&#22914;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    JPA entity scanner
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#20855;&#20307;&#25343;&#26469;&#24178;&#20160;&#20040;&#20037;&#19981;&#30693;&#36947;&#20102;&#65292;&#36825;&#37324;&#19981;&#20877;&#28145;&#31350;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5bbe9d8d">
+  <br>
+ </p>
+ <h1 id="T6PIa">
+  <span class="ne-text">
+   8 &#23567;&#32467;
+  </span>
+ </h1>
+ <p class="ne-p" id="ucef5ff42">
+  <br>
+ </p>
+ <p class="ne-p" id="u42d633b5">
+  <span class="ne-text">
+   &#22909;&#20102;&#65292;SpringBoot &#30340;&#33258;&#21160;&#37197;&#32622;&#30340;&#28304;&#30721;&#20998;&#26512;&#23601;&#21040;&#36825;&#37324;&#20102;&#65292;&#27604;&#36739;&#38271;&#65292;&#26377;&#20123;&#22320;&#26041;&#20063;&#24456;&#28145;&#20837;&#32454;&#33410;&#65292;&#35835;&#23436;&#38656;&#35201;&#19968;&#23450;&#30340;&#32784;&#24515;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u548f810f">
+  <br>
+ </p>
+ <p class="ne-p" id="u11352ab4">
+  <span class="ne-text">
+   &#26368;&#21518;&#65292;&#25105;&#20204;&#20877;&#24635;&#32467;&#19979; SpringBoot &#33258;&#21160;&#37197;&#32622;&#30340;&#21407;&#29702;&#65292;&#20027;&#35201;&#20570;&#20102;&#20197;&#19979;&#20107;&#24773;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u35b08ed0">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="u42616ff2">
+   <span class="ne-text">
+    &#20174;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring.factories
+    </span>
+   </code>
+   <span class="ne-text">
+    &#37197;&#32622;&#25991;&#20214;&#20013;&#21152;&#36733;&#33258;&#21160;&#37197;&#32622;&#31867;&#65307;
+   </span>
+  </li>
+  <li id="udfcbca40">
+   <span class="ne-text">
+    &#21152;&#36733;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#20013;&#25490;&#38500;&#25481;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @EnableAutoConfiguration
+    </span>
+   </code>
+   <span class="ne-text">
+    &#27880;&#35299;&#30340;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     exclude
+    </span>
+   </code>
+   <span class="ne-text">
+    &#23646;&#24615;&#25351;&#23450;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65307;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="3">
+  <li id="u0ca79ddf">
+   <span class="ne-text">
+    &#28982;&#21518;&#20877;&#29992;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     AutoConfigurationImportFilter
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25509;&#21475;&#21435;&#36807;&#28388;&#33258;&#21160;&#37197;&#32622;&#31867;&#26159;&#21542;&#31526;&#21512;&#20854;&#26631;&#27880;&#27880;&#35299;&#65288;&#33509;&#26377;&#26631;&#27880;&#30340;&#35805;&#65289;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnClass
+    </span>
+   </code>
+   <span class="ne-text">
+    ,
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnBean
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     @ConditionalOnWebApplication
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#26465;&#20214;&#65292;&#33509;&#37117;&#31526;&#21512;&#30340;&#35805;&#21017;&#36820;&#22238;&#21305;&#37197;&#32467;&#26524;&#65307;
+   </span>
+  </li>
+  <li id="u11a61f28">
+   <span class="ne-text">
+    &#28982;&#21518;&#35302;&#21457;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     AutoConfigurationImportEvent
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20107;&#20214;&#65292;&#21578;&#35785;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     ConditionEvaluationReport
+    </span>
+   </code>
+   <span class="ne-text">
+    &#26465;&#20214;&#35780;&#20272;&#25253;&#21578;&#22120;&#23545;&#35937;&#26469;&#20998;&#21035;&#35760;&#24405;&#31526;&#21512;&#26465;&#20214;&#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     exclude
+    </span>
+   </code>
+   <span class="ne-text">
+    &#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#12290;
+   </span>
+  </li>
+ </ol>
+ <ol class="ne-ol" start="5">
+  <li id="u82c8ef9b">
+   <span class="ne-text">
+    &#26368;&#21518; spring &#20877;&#23558;&#26368;&#21518;&#31579;&#36873;&#21518;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#23548;&#20837; IOC &#23481;&#22120;&#20013;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u3b827a2f">
+  <br>
+ </p>
+ <p class="ne-p" id="u35ecc7a8">
+  <strong>
+   <span class="ne-text">
+    &#26368;&#21518;&#30041;&#20010;&#33258;&#24049;&#30340;&#30097;&#38382;&#65292;&#36824;&#26395;&#30693;&#36947;&#31572;&#26696;&#30340;&#22823;&#20332;&#35299;&#31572;&#65292;&#36825;&#37324;&#34920;&#31034;&#24863;&#35874;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u56a4a29a">
+  <br>
+ </p>
+ <div class="ne-quote">
+  <p class="ne-p" id="uc9eacfd7">
+   <span class="ne-text">
+    &#20026;&#20102;&#36991;&#20813;&#21152;&#36733;&#19981;&#24517;&#35201;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#36896;&#25104;&#20869;&#23384;&#28010;&#36153;&#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     FilteringSpringBootCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#29992;&#20110;&#36807;&#28388;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     spring.factories
+    </span>
+   </code>
+   <span class="ne-text">
+    &#25991;&#20214;&#30340;&#33258;&#21160;&#37197;&#32622;&#31867;&#65292;&#32780;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     FilteringSpringBootCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#20026;&#21861;&#21482;&#26377;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     OnOnBeanCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    ,
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     OnClassCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#21644;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     onWebApplicationCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#36825;&#19977;&#20010;&#26465;&#20214;&#31867;&#29992;&#20110;&#36807;&#28388;&#65292;&#20026;&#21861;&#27809;&#26377;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     onPropertyCondtion
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65292;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     onResourceCondition
+    </span>
+   </code>
+   <span class="ne-text">
+    &#31561;&#26465;&#20214;&#31867;&#26469;&#36807;&#28388;&#33258;&#21160;&#37197;&#32622;&#31867;&#21602;&#65311;
+   </span>
+  </p>
+ </div>
+ <p class="ne-p" id="u6647c079">
+  <br>
+ </p>
+ <p class="ne-p" id="u382742e4">
+  <span class="ne-text">
+   &#19979;&#33410;&#39044;&#21578;&#65306; SpringBoot &#30340;&#21551;&#21160;&#27969;&#31243;&#26159;&#24590;&#26679;&#30340;&#65311;--SpringBoot &#28304;&#30721;&#65288;&#20116;&#65289;
+  </span>
+ </p>
+ <p class="ne-p" id="udd5f6d13">
+  <br>
+ </p>
+ <p class="ne-p" id="uc788e566">
+  <strong>
+   <span class="ne-text">
+    &#21407;&#21019;&#19981;&#26131;&#65292;&#24110;&#24537;&#28857;&#20010;&#36190;&#21591;&#65281;
+   </span>
+  </strong>
+ </p>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

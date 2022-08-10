@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+  <head>
+    <meta content="计算机是怎样运行的" name="dtb:uid"/>
+    <meta content="0" name="dtb:depth"/>
+    <meta content="0" name="dtb:totalPageCount"/>
+    <meta content="0" name="dtb:maxPageNumber"/>
+  </head>
+  <docTitle>
+    <text>计算机是怎样运行的</text>
+  </docTitle>
+  <navMap>
+    <navPoint id="chapter_0">
+      <navLabel>
+        <text>万里长征第一步 —— 概述与阅读建议</text>
+      </navLabel>
+      <content src="6844733810467143693.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_1">
+      <navLabel>
+        <text>像原始人一样数数 —— 计数</text>
+      </navLabel>
+      <content src="6844733810479726600.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_2">
+      <navLabel>
+        <text>半斤对八两 —— 进制转换</text>
+      </navLabel>
+      <content src="6844733810479726599.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_3">
+      <navLabel>
+        <text>再上一次物理课 —— 中学电学知识回顾</text>
+      </navLabel>
+      <content src="6844733810483937288.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_4">
+      <navLabel>
+        <text>信息的不同表示 —— 用电压表示信号</text>
+      </navLabel>
+      <content src="6844733810483920909.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_5">
+      <navLabel>
+        <text>计算机的基石 —— 电控开关</text>
+      </navLabel>
+      <content src="6844733810488115214.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_6">
+      <navLabel>
+        <text>信号从这里发生改变 —— 逻辑门</text>
+      </navLabel>
+      <content src="6844733810488115208.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_7">
+      <navLabel>
+        <text>知识升华一下 —— 逻辑变量和逻辑运算</text>
+      </navLabel>
+      <content src="6844733810488131592.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_8">
+      <navLabel>
+        <text>机器是怎么算1 +１＝２的　——　加法器</text>
+      </navLabel>
+      <content src="6844733810492309518.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_9">
+      <navLabel>
+        <text>时间是一场轮回，数字也是　——　补数和减法</text>
+      </navLabel>
+      <content src="6877441486049247232.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_10">
+      <navLabel>
+        <text>人类的霸气解释权 —— 负数的表示</text>
+      </navLabel>
+      <content src="6888680121536872460.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_11">
+      <navLabel>
+        <text>器件的大杂烩 —— ALU的诞生</text>
+      </navLabel>
+      <content src="6893078267318763520.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_12">
+      <navLabel>
+        <text>直肠子的缺点 —— 组合电路的不足之处</text>
+      </navLabel>
+      <content src="6903901877428027407.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_13">
+      <navLabel>
+        <text>保持自我是一种美德 —— 锁存器和寄存器</text>
+      </navLabel>
+      <content src="6925401808479371272.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_14">
+      <navLabel>
+        <text>大肚能容 —— 存储器</text>
+      </navLabel>
+      <content src="6925426383728410631.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_15">
+      <navLabel>
+        <text>解放双手 —— 自动执行</text>
+      </navLabel>
+      <content src="6899405451159404559.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_16">
+      <navLabel>
+        <text>是时候让软件登场了 —— 指令的诞生(一)</text>
+      </navLabel>
+      <content src="6902059539885981709.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_17">
+      <navLabel>
+        <text>加载和保存 —— 指令的诞生（二）</text>
+      </navLabel>
+      <content src="6903562782034100232.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_18">
+      <navLabel>
+        <text>条件转移 —— 指令的诞生（三）</text>
+      </navLabel>
+      <content src="6904151352847368200.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_19">
+      <navLabel>
+        <text>让指令更省地方 —— 指令的诞生（四）</text>
+      </navLabel>
+      <content src="6903422055664844804.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_20">
+      <navLabel>
+        <text>更灵活的指令—— 指令升级</text>
+      </navLabel>
+      <content src="6906129501332176907.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_21">
+      <navLabel>
+        <text>冯·诺伊曼结构 —— 只保留一个RAM</text>
+      </navLabel>
+      <content src="6908186338294513668.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_22">
+      <navLabel>
+        <text>CPU和内存的通信中介 —— RAM控制器</text>
+      </navLabel>
+      <content src="6935006232197464098.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_23">
+      <navLabel>
+        <text>条条大路通罗马 —— 总线</text>
+      </navLabel>
+      <content src="6999966019406020647.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_24">
+      <navLabel>
+        <text>软件程序员的基操——软件程序结构</text>
+      </navLabel>
+      <content src="6999966154131243041.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_25">
+      <navLabel>
+        <text>像金字塔一样——存储器层次结构和I_O设备</text>
+      </navLabel>
+      <content src="7000194329952124968.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_26">
+      <navLabel>
+        <text>还让不让人好好干活了 —— 中断和异常</text>
+      </navLabel>
+      <content src="7000355625381134374.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_27">
+      <navLabel>
+        <text>程序员能看到的一切 —— 指令集体系结构</text>
+      </navLabel>
+      <content src="7000355747918053379.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_28">
+      <navLabel>
+        <text>源码和参考资料</text>
+      </navLabel>
+      <content src="6999965963919556639.xhtml"/>
+    </navPoint>
+    <navPoint id="chapter_29">
+      <navLabel>
+        <text>给小孩子的书打个广告</text>
+      </navLabel>
+      <content src="6990320252303196163.xhtml"/>
+    </navPoint>
+  </navMap>
+</ncx>

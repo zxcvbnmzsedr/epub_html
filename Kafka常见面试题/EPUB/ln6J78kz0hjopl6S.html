@@ -1,0 +1,648 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>&#22823;&#30333;&#35805;&#24102;&#20320;&#35748;&#35782;Kafka</h1><div class="lake-content-editor-core lake-engine lake-typography-classic" data-lake-element="root" data-selection-undefined="%7B%22path%22%3A%5B%5B132%2C2%2C1%2C0%2C49%5D%2C%5B132%2C2%2C1%2C0%2C49%5D%5D%2C%22active%22%3Atrue%7D">
+ <h2 data-lake-id="f179f139689356341d11b6970c2048f3" id="df368884" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  &#21069;&#35328;
+ </h2>
+ <p data-lake-id="7d9379da22755e3722c69f4340e276a7" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="cde5118fdf52278373be93c4944d2c54" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#25105;&#20204;&#29616;&#22312;&#32463;&#24120;&#25552;&#21040; Kafka &#30340;&#26102;&#20505;&#23601;&#24050;&#32463;&#40664;&#35748;&#23427;&#26159;&#19968;&#20010;&#38750;&#24120;&#20248;&#31168;&#30340;&#28040;&#24687;&#38431;&#21015;&#20102;&#65292;&#25105;&#20204;&#20063;&#20250;&#32463;&#24120;&#25343;&#23427;&#32473; RocketMQ&#12289;RabbitMQ &#23545;&#27604;&#12290;&#25105;&#35273;&#24471; Kafka &#30456;&#27604;&#20854;&#20182;&#28040;&#24687;&#38431;&#21015;&#20027;&#35201;&#30340;&#20248;&#21183;&#22914;&#19979;&#65306;
+ </p>
+ <p data-lake-id="7ea8f2c97f0b3d35e2c3334a1d5c2730" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ol data-lake-id="9b389ae8f274721c963653077f913194" lake-indent="0" start="1" style="list-style-type: decimal; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="4958612578a148ba4b5ca999ef71a4dc">
+   <strong>
+    &#26497;&#33268;&#30340;&#24615;&#33021;
+   </strong>
+   &#65306;&#22522;&#20110; Scala &#21644; Java &#35821;&#35328;&#24320;&#21457;&#65292;&#35774;&#35745;&#20013;&#22823;&#37327;&#20351;&#29992;&#20102;&#25209;&#37327;&#22788;&#29702;&#21644;&#24322;&#27493;&#30340;&#24605;&#24819;&#65292;&#26368;&#39640;&#21487;&#20197;&#27599;&#31186;&#22788;&#29702;&#21315;&#19975;&#32423;&#21035;&#30340;&#28040;&#24687;&#12290;
+  </li>
+  <li data-lake-id="394e44caa21882107c9f0a6ea0ad6363">
+   <strong>
+    &#29983;&#24577;&#31995;&#32479;&#20860;&#23481;&#24615;&#26080;&#21487;&#21305;&#25932;
+   </strong>
+   &#65306;Kafka &#19982;&#21608;&#36793;&#29983;&#24577;&#31995;&#32479;&#30340;&#20860;&#23481;&#24615;&#26159;&#26368;&#22909;&#30340;&#27809;&#26377;&#20043;&#19968;&#65292;&#23588;&#20854;&#22312;&#22823;&#25968;&#25454;&#21644;&#27969;&#35745;&#31639;&#39046;&#22495;&#12290;
+  </li>
+ </ol>
+ <p data-lake-id="c8570740a8f6b5920a1df81db690f319" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="e1d71346833316599a7d77dcd66dacfe" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#23454;&#38469;&#19978;&#22312;&#26089;&#26399;&#30340;&#26102;&#20505; Kafka &#24182;&#19981;&#26159;&#19968;&#20010;&#21512;&#26684;&#30340;&#28040;&#24687;&#38431;&#21015;&#65292;&#26089;&#26399;&#30340; Kafka &#22312;&#28040;&#24687;&#38431;&#21015;&#39046;&#22495;&#23601;&#20687;&#26159;&#19968;&#20010;&#34915;&#34923;&#35124;&#35099;&#30340;&#23401;&#23376;&#19968;&#26679;&#65292;&#21151;&#33021;&#19981;&#23436;&#22791;&#24182;&#19988;&#26377;&#19968;&#20123;&#23567;&#38382;&#39064;&#27604;&#22914;&#20002;&#22833;&#28040;&#24687;&#12289;&#19981;&#20445;&#35777;&#28040;&#24687;&#21487;&#38752;&#24615;&#31561;&#31561;&#12290;&#24403;&#28982;&#65292;&#36825;&#20063;&#21644; LinkedIn &#26368;&#26089;&#24320;&#21457; Kafka &#29992;&#20110;&#22788;&#29702;&#28023;&#37327;&#30340;&#26085;&#24535;&#26377;&#24456;&#22823;&#20851;&#31995;&#65292;&#21704;&#21704;&#21704;&#65292;&#20154;&#23478;&#26412;&#26469;&#26368;&#24320;&#22987;&#23601;&#19981;&#26159;&#20026;&#20102;&#20316;&#20026;&#28040;&#24687;&#38431;&#21015;&#28404;&#65292;&#35841;&#30693;&#36947;&#21518;&#38754;&#35823;&#25171;&#35823;&#25758;&#22312;&#28040;&#24687;&#38431;&#21015;&#39046;&#22495;&#21344;&#25454;&#20102;&#19968;&#24109;&#20043;&#22320;&#12290;
+ </p>
+ <p data-lake-id="0ae705312327209f780e4acc7cd47851" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="d96b96d12ece03992f84aadd8cfd305d" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#38543;&#30528;&#21518;&#32493;&#30340;&#21457;&#23637;&#65292;&#36825;&#20123;&#30701;&#26495;&#37117;&#34987; Kafka &#36880;&#27493;&#20462;&#22797;&#23436;&#21892;&#12290;&#25152;&#20197;&#65292;
+  <strong>
+   Kafka &#20316;&#20026;&#28040;&#24687;&#38431;&#21015;&#19981;&#21487;&#38752;&#36825;&#20010;&#35828;&#27861;&#24050;&#32463;&#36807;&#26102;&#65281;
+  </strong>
+ </p>
+ <p data-lake-id="ab2b7a8a30af8d37a3a1bfa16abde40f" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="8188c50895a4640af3dcb1987b073b12" id="8d514881" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  &#21021;&#35782; Kafka
+ </h2>
+ <p data-lake-id="ad1bb787ef96fec0dd8eb1302933aaa2" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="78a70cf9bfb6e1b01b64cf59564ddfe6" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#20808;&#26469;&#30475;&#19968;&#19979;&#23448;&#32593;&#23545;&#20854;&#30340;&#20171;&#32461;&#65292;&#24212;&#35813;&#26159;&#26368;&#26435;&#23041;&#21644;&#23454;&#26102;&#30340;&#20102;&#12290;&#26159;&#33521;&#25991;&#20063;&#27809;&#26377;&#20851;&#31995;&#65292;&#25105;&#24050;&#32463;&#23558;&#27604;&#36739;&#37325;&#35201;&#30340;&#20449;&#24687;&#37117;&#20026;&#20320;&#25552;&#21462;&#20986;&#26469;&#20102;&#12290;
+ </p>
+ <p data-lake-id="7c66dc807177d620fd481369a2ff1e00" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="4305bce86ba72955271c3f7115ac3ce4" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="446px" data-raw-src="EPUB/" data-role="image" src="ccf27fe4-17da-11ed-9785-acde48001122" style="visibility: visible; width: 710px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="a9fa94ce0a29a25feece0103cf3e30e9" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="050f88e9fe8ec0b55d435a42bf7bbd94" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#20174;&#23448;&#26041;&#20171;&#32461;&#20013;&#25105;&#20204;&#21487;&#20197;&#24471;&#21040;&#20197;&#19979;&#20449;&#24687;&#65306;
+  <strong>
+   Kafka &#26159;&#19968;&#20010;&#20998;&#24067;&#24335;&#27969;&#24335;&#22788;&#29702;&#24179;&#21488;&#12290;
+  </strong>
+ </p>
+ <p data-lake-id="9a66efa7f73dbb13f8b1cbb61b3679ab" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="4243f0af23e23890770e4e562be30ca7" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#36825;&#21040;&#24213;&#26159;&#20160;&#20040;&#24847;&#24605;&#21602;&#65311;
+ </p>
+ <p data-lake-id="d3dfe517128180f5b1fd0e588e796a44" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="08d52958b119d4df504e5ae635d9bd75" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#27969;&#24179;&#21488;&#20855;&#26377;&#19977;&#20010;&#20851;&#38190;&#21151;&#33021;&#65306;
+ </p>
+ <p data-lake-id="44eea1593c1c538b548c9728aeb10363" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ol data-lake-id="a76236243e119c7ff23f1047f9693a46" lake-indent="0" start="1" style="list-style-type: decimal; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="53c20d6250d5289982ab8bfe54588172">
+   <strong>
+    &#28040;&#24687;&#38431;&#21015;
+   </strong>
+   &#65306;&#21457;&#24067;&#21644;&#35746;&#38405;&#28040;&#24687;&#27969;&#65292;&#36825;&#20010;&#21151;&#33021;&#31867;&#20284;&#20110;&#28040;&#24687;&#38431;&#21015;&#65292;&#36825;&#20063;&#26159; Kafka &#20063;&#34987;&#24402;&#31867;&#20026;&#28040;&#24687;&#38431;&#21015;&#30340;&#21407;&#22240;&#12290;
+  </li>
+  <li data-lake-id="bdc1c16f888972bb5f7aee3ef84ba29e">
+   <strong>
+    &#23481;&#38169;&#30340;&#25345;&#20037;&#26041;&#24335;&#23384;&#20648;&#35760;&#24405;&#28040;&#24687;&#27969;
+   </strong>
+   &#65306; Kafka &#20250;&#25226;&#28040;&#24687;&#25345;&#20037;&#21270;&#21040;&#30913;&#30424;&#65292;&#26377;&#25928;&#36991;&#20813;&#20102;&#28040;&#24687;&#20002;&#22833;&#30340;&#39118;&#38505;&#183;&#12290;
+  </li>
+  <li data-lake-id="44bd8c35d26255c4e9dde55d1cc7d38d">
+   <strong>
+    &#27969;&#24335;&#22788;&#29702;&#24179;&#21488;&#65306;
+   </strong>
+   &#22312;&#28040;&#24687;&#21457;&#24067;&#30340;&#26102;&#20505;&#36827;&#34892;&#22788;&#29702;&#65292;Kafka &#25552;&#20379;&#20102;&#19968;&#20010;&#23436;&#25972;&#30340;&#27969;&#24335;&#22788;&#29702;&#31867;&#24211;&#12290;
+  </li>
+ </ol>
+ <p data-lake-id="4d9dc351903a9f54909437ddf3b91f40" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="361fa17a41a85a831bd78f7fcbf4d507" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Kafka &#20027;&#35201;&#26377;&#20004;&#22823;&#24212;&#29992;&#22330;&#26223;&#65306;
+ </p>
+ <p data-lake-id="49c7ba99e1394559a9571d7f6f619ad3" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ol data-lake-id="3752d3e7a6d372f88d1d9a7de68ea100" lake-indent="0" start="1" style="list-style-type: decimal; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="34936f83717a1f3d7d8498aea5ecb81c">
+   <strong>
+    &#28040;&#24687;&#38431;&#21015;
+   </strong>
+   &#65306;&#24314;&#31435;&#23454;&#26102;&#27969;&#25968;&#25454;&#31649;&#36947;&#65292;&#20197;&#21487;&#38752;&#22320;&#22312;&#31995;&#32479;&#25110;&#24212;&#29992;&#31243;&#24207;&#20043;&#38388;&#33719;&#21462;&#25968;&#25454;&#12290;
+  </li>
+  <li data-lake-id="6adfd6b262ebe06ff962fd066e0da8e6">
+   <strong>
+    &#25968;&#25454;&#22788;&#29702;&#65306;
+   </strong>
+   &#26500;&#24314;&#23454;&#26102;&#30340;&#27969;&#25968;&#25454;&#22788;&#29702;&#31243;&#24207;&#26469;&#36716;&#25442;&#25110;&#22788;&#29702;&#25968;&#25454;&#27969;&#12290;
+  </li>
+ </ol>
+ <p data-lake-id="e6ede8de55ac2005a32cb9227c8eaca8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="0bf934a5cc6c22294098dd11317a55a7" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#20851;&#20110; Kafka &#20960;&#20010;&#38750;&#24120;&#37325;&#35201;&#30340;&#27010;&#24565;&#65306;
+ </p>
+ <p data-lake-id="9282f819354076f17ab5952916d9aa63" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ol data-lake-id="f07e82807eb5b15f55495cd1b1319b94" lake-indent="0" start="2" style="list-style-type: decimal; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="b7c5a3eb9e34d5a0d66e0ecdabf062c8">
+   Kafka &#23558;&#35760;&#24405;&#27969;&#65288;&#27969;&#25968;&#25454;&#65289;&#23384;&#20648;&#22312;
+   <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+    topic
+   </code>
+   &#20013;&#12290;
+  </li>
+  <li data-lake-id="9a537bb9def38348a47adbdcc0bba8c1">
+   &#27599;&#20010;&#35760;&#24405;&#30001;&#19968;&#20010;&#38190;&#12289;&#19968;&#20010;&#20540;&#12289;&#19968;&#20010;&#26102;&#38388;&#25139;&#32452;&#25104;&#12290;
+  </li>
+ </ol>
+ <p data-lake-id="3a16c7523ddcfeaa4e25d3cbc754415b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="1eb59a6295582a1241c88056a6b01d45" id="23a3eba6" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  Kafka &#28040;&#24687;&#27169;&#22411;
+ </h2>
+ <p data-lake-id="f257022a42298aadb73ead4e7beb8611" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <blockquote style="margin-top: 5px; margin-bottom: 5px; padding-left: 1em; margin-left: 0px; border-left: 3px solid rgb(238, 238, 238); opacity: 0.6;">
+  <p data-lake-id="e76d1e387c27d7341c7a7e9a5813cd05" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+   &#39064;&#22806;&#35805;&#65306;&#26089;&#26399;&#30340; JMS &#21644; AMQP &#23646;&#20110;&#28040;&#24687;&#26381;&#21153;&#39046;&#22495;&#26435;&#23041;&#32452;&#32455;&#25152;&#20570;&#30340;&#30456;&#20851;&#30340;&#26631;&#20934;&#12290;&#20294;&#26159;&#65292;&#36825;&#20123;&#26631;&#20934;&#30340;&#36827;&#21270;&#36319;&#19981;&#19978;&#28040;&#24687;&#38431;&#21015;&#30340;&#28436;&#36827;&#36895;&#24230;&#65292;&#36825;&#20123;&#26631;&#20934;&#23454;&#38469;&#19978;&#24050;&#32463;&#23646;&#20110;&#24223;&#24323;&#29366;&#24577;&#12290;&#25152;&#20197;&#65292;&#21487;&#33021;&#23384;&#22312;&#30340;&#24773;&#20917;&#26159;&#65306;&#19981;&#21516;&#30340;&#28040;&#24687;&#38431;&#21015;&#37117;&#26377;&#33258;&#24049;&#30340;&#19968;&#22871;&#28040;&#24687;&#27169;&#22411;&#12290;
+  </p>
+ </blockquote>
+ <p data-lake-id="03cf59b6037b68a235772b71d13d075a" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="6634b24317c6cce80b3f3bfb42d2513b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Kafka &#30340;&#28040;&#24687;&#27169;&#22411;&#21516;&#26102;&#25903;&#25345;&#38431;&#21015;&#27169;&#22411;&#21644;&#21457;&#24067;-&#35746;&#38405;&#27169;&#22411;&#12290;
+ </p>
+ <p data-lake-id="8afaf06e94d5460a34cc356b613d4e90" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h3 data-lake-id="0562bd3f124db12b6fc854d81ed76196" id="53dc673b" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 20px; line-height: 28px;">
+  &#38431;&#21015;&#27169;&#22411;(&#28857;&#23545;&#28857;&#27169;&#22411;)
+ </h3>
+ <p data-lake-id="2b4a246495074405055af26b260c38f6" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="a48fb4f4b1275bb84fc2b4c8f33d6b30" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="161px" data-raw-src="EPUB/" data-role="image" src="cd34c67e-17da-11ed-9785-acde48001122" style="visibility: visible; width: 571px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="e63789e782ca785b6f61b9e5e37a9ba8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="558e068706c5e913e361ff184c8f1450" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#20351;&#29992;&#38431;&#21015;&#65288;Queue&#65289;&#20316;&#20026;&#28040;&#24687;&#36890;&#20449;&#36733;&#20307;&#65292;&#28385;&#36275;&#29983;&#20135;&#32773;&#19982;&#28040;&#36153;&#32773;&#27169;&#24335;&#65292;&#19968;&#26465;&#28040;&#24687;&#21482;&#33021;&#34987;&#19968;&#20010;&#28040;&#36153;&#32773;&#20351;&#29992;&#65292;&#26410;&#34987;&#28040;&#36153;&#30340;&#28040;&#24687;&#22312;&#38431;&#21015;&#20013;&#20445;&#30041;&#30452;&#21040;&#34987;&#28040;&#36153;&#25110;&#36229;&#26102;&#12290;
+  </strong>
+  &#27604;&#22914;&#65306;&#25105;&#20204;&#29983;&#20135;&#32773;&#21457;&#36865; 100 &#26465;&#28040;&#24687;&#30340;&#35805;&#65292;&#20004;&#20010;&#28040;&#36153;&#32773;&#26469;&#28040;&#36153;&#19968;&#33324;&#24773;&#20917;&#19979;&#20004;&#20010;&#28040;&#36153;&#32773;&#20250;&#25353;&#29031;&#28040;&#24687;&#21457;&#36865;&#30340;&#39034;&#24207;&#21508;&#33258;&#28040;&#36153;&#19968;&#21322;&#65288;&#20063;&#23601;&#26159;&#20320;&#19968;&#20010;&#25105;&#19968;&#20010;&#30340;&#28040;&#36153;&#12290;&#65289;
+ </p>
+ <p data-lake-id="edbfc1885750f4438d0bd26424c2e1be" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h4 data-lake-id="f8b08440c272064cd8b963b4e9fff97d" id="f34f8689" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 16px; line-height: 24px;">
+  &#38431;&#21015;&#27169;&#22411;&#23384;&#22312;&#30340;&#38382;&#39064;
+ </h4>
+ <p data-lake-id="915186e5f66067fd66eee6aeadc43e4e" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="775e82e48421b254beee35db1a2e98fd" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#20551;&#22914;&#25105;&#20204;&#23384;&#22312;&#36825;&#26679;&#19968;&#31181;&#24773;&#20917;&#65306;&#25105;&#20204;&#38656;&#35201;&#23558;&#29983;&#20135;&#32773;&#20135;&#29983;&#30340;&#28040;&#24687;&#20998;&#21457;&#32473;&#22810;&#20010;&#28040;&#36153;&#32773;&#65292;&#24182;&#19988;&#27599;&#20010;&#28040;&#36153;&#32773;&#37117;&#33021;&#25509;&#25910;&#21040;&#23436;&#25104;&#30340;&#28040;&#24687;&#20869;&#23481;&#12290;
+ </p>
+ <p data-lake-id="1d5704a583f80853cd5c6dd11cbff115" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="6e892b0b02e06306a603d15bdec5d699" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#36825;&#31181;&#24773;&#20917;&#65292;&#38431;&#21015;&#27169;&#22411;&#23601;&#19981;&#22909;&#35299;&#20915;&#20102;&#12290;&#24456;&#22810;&#27604;&#36739;&#26464;&#31934;&#30340;&#20154;&#23601;&#35828;&#65306;&#25105;&#20204;&#21487;&#20197;&#20026;&#27599;&#20010;&#28040;&#36153;&#32773;&#21019;&#24314;&#19968;&#20010;&#21333;&#29420;&#30340;&#38431;&#21015;&#65292;&#35753;&#29983;&#20135;&#32773;&#21457;&#36865;&#22810;&#20221;&#12290;&#36825;&#26159;&#19968;&#31181;&#38750;&#24120;&#24858;&#34850;&#30340;&#20570;&#27861;&#65292;&#28010;&#36153;&#36164;&#28304;&#19981;&#35828;&#65292;&#36824;&#36829;&#32972;&#20102;&#20351;&#29992;&#28040;&#24687;&#38431;&#21015;&#30340;&#30446;&#30340;&#12290;
+ </p>
+ <p data-lake-id="cb595b1f0bc365107c37eebf7f7f758f" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h3 data-lake-id="4e319d29fe3fd988e0aa2f31fc70f036" id="37e6879a" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 20px; line-height: 28px;">
+  &#21457;&#24067;-&#35746;&#38405;&#27169;&#22411;
+ </h3>
+ <p data-lake-id="7e0c3c6ef9a84499ad9bcb810b226afe" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="227e615ca2e1a6e49d09097779acf757" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21457;&#24067;-&#35746;&#38405;&#27169;&#22411;&#20027;&#35201;&#26159;&#20026;&#20102;&#35299;&#20915;&#38431;&#21015;&#27169;&#22411;&#23384;&#22312;&#30340;&#38382;&#39064;&#12290;
+ </p>
+ <p data-lake-id="53d7a0af8abd5eb103f36758d3a98aff" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="dfc64eeab7dfe32ddeb9c19e6964b067" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="301px" data-raw-src="EPUB/" data-role="image" src="cd778d9c-17da-11ed-9785-acde48001122" style="visibility: visible; width: 596px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="35e69cf892785e1de5987a63123195c8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="16c694fda8e74a2ef83a1b9179b93e7b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21457;&#24067;&#35746;&#38405;&#27169;&#22411;&#65288;Pub-Sub&#65289; &#20351;&#29992;
+  <strong>
+   &#20027;&#39064;&#65288;Topic&#65289;
+  </strong>
+  &#20316;&#20026;&#28040;&#24687;&#36890;&#20449;&#36733;&#20307;&#65292;&#31867;&#20284;&#20110;
+  <strong>
+   &#24191;&#25773;&#27169;&#24335;
+  </strong>
+  &#65307;&#21457;&#24067;&#32773;&#21457;&#24067;&#19968;&#26465;&#28040;&#24687;&#65292;&#35813;&#28040;&#24687;&#36890;&#36807;&#20027;&#39064;&#20256;&#36882;&#32473;&#25152;&#26377;&#30340;&#35746;&#38405;&#32773;&#65292;
+  <strong>
+   &#22312;&#19968;&#26465;&#28040;&#24687;&#24191;&#25773;&#20043;&#21518;&#25165;&#35746;&#38405;&#30340;&#29992;&#25143;&#21017;&#26159;&#25910;&#19981;&#21040;&#35813;&#26465;&#28040;&#24687;&#30340;
+  </strong>
+  &#12290;
+ </p>
+ <p data-lake-id="3679f16ef755f34a36068d809102e603" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="39b5143fc629c09e8df60824fc558930" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   &#22312;&#21457;&#24067; - &#35746;&#38405;&#27169;&#22411;&#20013;&#65292;&#22914;&#26524;&#21482;&#26377;&#19968;&#20010;&#35746;&#38405;&#32773;&#65292;&#37027;&#23427;&#21644;&#38431;&#21015;&#27169;&#22411;&#23601;&#22522;&#26412;&#26159;&#19968;&#26679;&#30340;&#20102;&#12290;&#25152;&#20197;&#35828;&#65292;&#21457;&#24067; - &#35746;&#38405;&#27169;&#22411;&#22312;&#21151;&#33021;&#23618;&#38754;&#19978;&#26159;&#21487;&#20197;&#20860;&#23481;&#38431;&#21015;&#27169;&#22411;&#30340;&#12290;
+  </strong>
+ </p>
+ <p data-lake-id="d8af5ade0239e85b50c1feed6ec20064" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="e5c42fb785f4f28be6c5998aebccd138" id="521e0a30" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  Kafka &#37325;&#35201;&#27010;&#24565;&#35299;&#35835;
+ </h2>
+ <p data-lake-id="4c208f7e321bafa3ef6718cce3e59cf8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="6f2884bb2c8cec6e9b9e919d938da486" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Kafka &#23558;&#29983;&#20135;&#32773;&#21457;&#24067;&#30340;&#28040;&#24687;&#21457;&#36865;&#21040;
+  <strong>
+   Topic&#65288;&#20027;&#39064;&#65289;
+  </strong>
+  &#20013;&#65292;&#38656;&#35201;&#36825;&#20123;&#28040;&#24687;&#30340;&#28040;&#36153;&#32773;&#21487;&#20197;&#35746;&#38405;&#36825;&#20123;
+  <strong>
+   Topic&#65288;&#20027;&#39064;&#65289;
+  </strong>
+  &#65292;&#22914;&#19979;&#22270;&#25152;&#31034;&#65306;
+ </p>
+ <p data-lake-id="ab48f65bd1662906fdb8a2a4b4f89ef8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="0a94da4e93d5502241726f82433dc09b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="655px" data-raw-src="EPUB/" data-role="image" src="cdbf3926-17da-11ed-9785-acde48001122" style="visibility: visible; width: 701px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="5704c9c268aff6bd17d3a5e67a360aff" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="61cf253bf947aeca8ee46968d379fe23" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#19978;&#38754;&#36825;&#24352;&#22270;&#20063;&#20026;&#25105;&#20204;&#24341;&#20986;&#20102;&#65292;Kafka &#27604;&#36739;&#37325;&#35201;&#30340;&#20960;&#20010;&#27010;&#24565;&#65306;
+ </p>
+ <p data-lake-id="25b677a5fe8258073203a080699cd219" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ul data-lake-id="bdeaf3837b078ba08751300d1c1d47aa" lake-indent="0" style="list-style-type: disc; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="cb6ee6afacb21f4c56e62e516608f629">
+   <strong>
+    Producer&#65288;&#29983;&#20135;&#32773;&#65289;
+   </strong>
+   : &#20135;&#29983;&#28040;&#24687;&#30340;&#19968;&#26041;&#12290;
+  </li>
+  <li data-lake-id="c97ad8fc20c19220e372974fcec9a6d4">
+   <strong>
+    Consumer&#65288;&#28040;&#36153;&#32773;&#65289;
+   </strong>
+   : &#28040;&#36153;&#28040;&#24687;&#30340;&#19968;&#26041;&#12290;
+  </li>
+  <li data-lake-id="5801990b399f38ec8b2da5a819de745b">
+   <strong>
+    Consumer Group&#65288;&#28040;&#36153;&#32773;&#32452;&#65289;
+   </strong>
+   &#65306;&#22810;&#20010;&#28040;&#36153;&#32773;&#23454;&#20363;&#20849;&#21516;&#32452;&#25104;&#30340;&#19968;&#20010;&#32452;&#65292;&#21516;&#26102;&#28040;&#36153;&#22810;&#20010;&#20998;&#21306;&#20197;&#23454;&#29616;&#39640;&#21534;&#21520;&#12290;
+  </li>
+  <li data-lake-id="507ee0be3ec9f874a1bdd45be8602a7b">
+   <strong>
+    Broker&#65288;&#20195;&#29702;&#65289;
+   </strong>
+   : &#21487;&#20197;&#30475;&#20316;&#26159;&#19968;&#20010;&#29420;&#31435;&#30340; Kafka &#23454;&#20363;&#65292;&#36127;&#36131;&#22788;&#29702;&#23458;&#25143;&#31471;&#35831;&#27714;&#20197;&#21450;&#23545;&#28040;&#24687;&#25345;&#20037;&#21270;&#12290;
+  </li>
+ </ul>
+ <p data-lake-id="432c2b1143a7d08b54a3e38fdaf86f7e" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="30141ec27e49442d1d37733535931c50" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21516;&#26102;&#65292;&#20320;&#19968;&#23450;&#20063;&#27880;&#24847;&#21040;&#27599;&#20010; Broker &#20013;&#21448;&#21253;&#21547;&#20102; Topic &#20197;&#21450; Partition &#36825;&#20004;&#20010;&#37325;&#35201;&#30340;&#27010;&#24565;&#65306;
+ </p>
+ <p data-lake-id="791740305821ef6516b98bb3cc0ade57" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ul data-lake-id="45405f920270f6b4b3bfe2a8beab7780" lake-indent="0" style="list-style-type: disc; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="cb5afb684baa4b34c0db7e36da5bfccd">
+   <strong>
+    Topic&#65288;&#20027;&#39064;&#65289;
+   </strong>
+   : Producer &#23558;&#28040;&#24687;&#21457;&#36865;&#21040;&#29305;&#23450;&#30340;&#20027;&#39064;&#65292;Consumer &#36890;&#36807;&#35746;&#38405;&#29305;&#23450;&#30340; Topic &#26469;&#28040;&#36153;&#28040;&#24687;&#12290;
+  </li>
+  <li data-lake-id="6772fbaecf8e0e359339035e0b4a99e9">
+   <strong>
+    Partition&#65288;&#20998;&#21306;&#65289;
+   </strong>
+   : Partition &#23646;&#20110; Topic &#30340;&#19968;&#37096;&#20998;&#12290;&#19968;&#20010; Topic &#21487;&#20197;&#26377;&#22810;&#20010; Partition &#65292;&#24182;&#19988;&#21516;&#19968; Topic &#19979;&#30340; Partition &#21487;&#20197;&#20998;&#24067;&#22312;&#19981;&#21516;&#30340; Broker &#19978;&#65292;&#36825;&#20063;&#23601;&#34920;&#26126;&#19968;&#20010; Topic &#21487;&#20197;&#27178;&#36328;&#22810;&#20010; Broker &#12290;&#36825;&#27491;&#22914;&#25105;&#19978;&#38754;&#25152;&#30011;&#30340;&#22270;&#19968;&#26679;&#12290;
+  </li>
+ </ul>
+ <p data-lake-id="127d577b6d604e5df5297ba01336bdd5" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="b0bdd7cdef54047933e7052a8a55be98" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Kafka &#20013;&#30340; Partition&#65288;&#20998;&#21306;&#65289; &#23454;&#38469;&#19978;&#21487;&#20197;&#23545;&#24212;&#25104;&#20026;&#28040;&#24687;&#38431;&#21015;&#20013;&#30340;&#38431;&#21015;&#12290;&#36825;&#26679;&#26159;&#19981;&#26159;&#26356;&#22909;&#29702;&#35299;&#19968;&#28857;&#65311;
+ </p>
+ <p data-lake-id="ea5f28c6d1316df8867abc3f6a42f33b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="b651ca3957d48c5e6723a28d5b738951" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#9888;&#65039;
+  <strong>
+   &#27880;&#24847;
+  </strong>
+  &#65306;Topic &#19979;&#30340;&#27599;&#20010; Partition &#21482;&#20174;&#23646;&#20110; Consumer Group &#20013;&#30340;&#19968;&#20010; Consumer&#65292;&#19981;&#21487;&#33021;&#20986;&#29616; Consumer Group &#20013;&#30340;&#20004;&#20010; Consumer &#36127;&#36131;&#21516;&#19968;&#20010; Partition&#12290;&#30456;&#20851;&#38405;&#35835;&#65306;
+  <a href="https://www.cnblogs.com/cjsblog/p/9664536.html" target="_blank">
+   &#12298;Kafka&#20998;&#21306;&#19982;&#28040;&#36153;&#32773;&#30340;&#20851;&#31995;&#12299;
+  </a>
+ </p>
+ <p data-lake-id="368f28fb2127fec1f7f9bd9a90e52201" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="e235ecf90d1ef71796cc0e5088abaa5b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21478;&#22806;&#65292;&#36824;&#26377;&#19968;&#28857;&#25105;&#35273;&#24471;&#27604;&#36739;&#37325;&#35201;&#30340;&#26159; Kafka &#20026; Partition &#24341;&#20837;&#20102;&#22810;&#21103;&#26412;&#65288;Replica&#65289;&#26426;&#21046;&#12290;Partition &#20013;&#30340;&#22810;&#20010;&#21103;&#26412;&#20043;&#38388;&#20250;&#26377;&#19968;&#20010;&#21483;&#20570; Leader &#30340;&#23478;&#20249;&#65292;&#20854;&#20182;&#21103;&#26412;&#31216;&#20026; Follower&#12290;&#25105;&#20204;&#21457;&#36865;&#30340;&#28040;&#24687;&#20250;&#34987;&#21457;&#36865;&#21040; Leader &#21103;&#26412;&#65292;&#28982;&#21518; Follower &#21103;&#26412;&#25165;&#33021;&#20174; Leader &#21103;&#26412;&#20013;&#25289;&#21462;&#28040;&#24687;&#36827;&#34892;&#21516;&#27493;&#12290;
+ </p>
+ <p data-lake-id="cb1c3c7498c0e547796aaa437c75d18e" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <blockquote style="margin-top: 5px; margin-bottom: 5px; padding-left: 1em; margin-left: 0px; border-left: 3px solid rgb(238, 238, 238); opacity: 0.6;">
+  <p data-lake-id="4e04f91f15dd928a1eb500f137401c82" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+   &#29983;&#20135;&#32773;&#21644;&#28040;&#36153;&#32773;&#21482;&#19982; leader &#21103;&#26412;&#20132;&#20114;&#12290;&#20320;&#21487;&#20197;&#29702;&#35299;&#20026;&#20854;&#20182;&#21103;&#26412;&#21482;&#26159; leader &#21103;&#26412;&#30340;&#25335;&#36125;&#65292;&#23427;&#20204;&#30340;&#23384;&#22312;&#21482;&#26159;&#20026;&#20102;&#20445;&#35777;&#28040;&#24687;&#23384;&#20648;&#30340;&#23433;&#20840;&#24615;&#12290;&#24403; leader &#21103;&#26412;&#21457;&#29983;&#25925;&#38556;&#26102;&#20250;&#20174; follower &#20013;&#36873;&#20030;&#20986;&#19968;&#20010; leader,&#20294;&#26159; follower &#20013;&#22914;&#26524;&#26377;&#21644; leader &#21516;&#27493;&#31243;&#24230;&#36798;&#19981;&#21040;&#35201;&#27714;&#30340;&#21442;&#21152;&#19981;&#20102; leader &#30340;&#31454;&#36873;&#12290;
+  </p>
+ </blockquote>
+ <p data-lake-id="7dffb5b90e4b1d2e07253d99af1faf4b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="c935698fb8bf04b4506ee197e918f7a7" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <strong>
+   Kafka &#30340;&#22810;&#20998;&#21306;&#65288;Partition&#65289;&#20197;&#21450;&#22810;&#21103;&#26412;&#65288;Replica&#65289;&#26426;&#21046;&#26377;&#20160;&#20040;&#22909;&#22788;&#21602;&#65311;
+  </strong>
+ </p>
+ <p data-lake-id="e5af256ce5fbd6b6cb37356f59f03af4" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ol data-lake-id="866c01c59d4b35e97e09491d4ac97d65" lake-indent="0" start="1" style="list-style-type: decimal; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="bcf2f7720387a5636bd615e4719cc930">
+   Kafka &#36890;&#36807;&#32473;&#29305;&#23450; Topic &#25351;&#23450;&#22810;&#20010; Partition, &#32780;&#21508;&#20010; Partition &#21487;&#20197;&#20998;&#24067;&#22312;&#19981;&#21516;&#30340; Broker &#19978;, &#36825;&#26679;&#20415;&#33021;&#25552;&#20379;&#27604;&#36739;&#22909;&#30340;&#24182;&#21457;&#33021;&#21147;&#65288;&#36127;&#36733;&#22343;&#34913;&#65289;&#12290;
+  </li>
+  <li data-lake-id="d1be1abc20b274c51977e68dc1a7cfd8">
+   Partition &#21487;&#20197;&#25351;&#23450;&#23545;&#24212;&#30340; Replica &#25968;, &#36825;&#20063;&#26497;&#22823;&#22320;&#25552;&#39640;&#20102;&#28040;&#24687;&#23384;&#20648;&#30340;&#23433;&#20840;&#24615;, &#25552;&#39640;&#20102;&#23481;&#28798;&#33021;&#21147;&#65292;&#19981;&#36807;&#20063;&#30456;&#24212;&#30340;&#22686;&#21152;&#20102;&#25152;&#38656;&#35201;&#30340;&#23384;&#20648;&#31354;&#38388;&#12290;
+  </li>
+ </ol>
+ <p data-lake-id="191b012898dd5b55d39c6612628084f4" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="2f663b9234839064443cef2295fd6600" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  
+  <strong>
+   &#25299;&#23637;&#19968;&#19979;
+  </strong>
+  &#65288;&#21448;&#19968;&#20010;&#24120;&#29992;&#30340; Kafka &#39640;&#21487;&#29992;&#23567;&#25216;&#24039;&#65289;&#65306;
+ </p>
+ <p data-lake-id="503cdd1345390d477761e8ceb0718016" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="8a546c5df67f443368fc7f322f8ec622" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#22810;&#20010; Kafka Broker &#21487;&#20197;&#32452;&#25104;&#19968;&#20010; Kafka Cluster&#65288;&#38598;&#32676;&#65289;&#12290;&#24314;&#35758;&#23558;&#19981;&#21516;&#30340; Broker &#20998;&#25955;&#36816;&#34892;&#22312;&#19981;&#21516;&#30340;&#26426;&#22120;&#19978;&#26469;&#25552;&#39640;&#21487;&#29992;&#24615;&#65288;&#26377;&#25928;&#36991;&#20813;&#21333;&#28857;&#25925;&#38556;&#65289;&#12290;
+ </p>
+ <p data-lake-id="5ecd30a1edcd4224703d4987fae4db8a" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="aacb3f8e5e954bca3aeeff4784c4f2d6" id="5c6354f4" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  Zookeeper &#22312; Kafka &#20013;&#30340;&#20316;&#29992;
+ </h2>
+ <p data-lake-id="26bc71058d63784caba02de7c005d21f" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="dcecf3908c4cbb5e544b5325d900d6cf" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#35201;&#24819;&#25630;&#25026; zookeeper &#22312; Kafka &#20013;&#30340;&#20316;&#29992; &#19968;&#23450;&#35201;&#33258;&#24049;&#25645;&#24314;&#19968;&#20010; Kafka &#29615;&#22659;&#28982;&#21518;&#33258;&#24049;&#36827; zookeeper &#21435;&#30475;&#19968;&#19979;&#26377;&#21738;&#20123;&#25991;&#20214;&#22841;&#21644; Kafka &#26377;&#20851;&#65292;&#27599;&#20010;&#33410;&#28857;&#21448;&#20445;&#23384;&#20102;&#20160;&#20040;&#20449;&#24687;&#12290;&#19968;&#23450;&#19981;&#35201;&#20809;&#30475;&#19981;&#23454;&#36341;&#65281;
+ </p>
+ <p data-lake-id="d37dba03f28242d42648a445495dde66" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="6bd5c891cc2d2c8cd9523bc88c6ead74" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#21518;&#38754;&#30340;&#25991;&#31456;&#20013;&#20250;&#20171;&#32461;&#22914;&#20309;&#25645;&#24314; Kafka &#29615;&#22659;&#65292;&#20320;&#19988;&#19981;&#35201;&#24613;&#65292;&#30475;&#20102;&#21518;&#32493;&#25991;&#31456; 3 &#20998;&#38047;&#23601;&#33021;&#25645;&#24314;&#19968;&#20010; Kafka &#29615;&#22659;&#12290;
+ </p>
+ <p data-lake-id="5ab9094057a398f95303051d6cda6237" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="0499c3f0ffd7708f77a8f774b93ec6b8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#19979;&#22270;&#23601;&#26159;&#25105;&#30340;&#26412;&#22320; Zookeeper &#65292;&#23427;&#25104;&#21151;&#21644;&#25105;&#26412;&#22320;&#30340; Kafka &#20851;&#32852;&#19978;&#65288;&#20197;&#19979;&#25991;&#20214;&#22841;&#32467;&#26500;&#20511;&#21161; idea &#25554;&#20214; Zookeeper tool &#23454;&#29616;&#65289;&#12290;
+ </p>
+ <p data-lake-id="0f9a234b071f0743fd0e127b8778b001" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="508a4cd3e4d4e906381aaa6470e88e8a" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="822px" data-raw-src="EPUB/" data-role="image" src="ce05b7ca-17da-11ed-9785-acde48001122" style="visibility: visible; width: 630px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="c6b738dc8999a09532de1dc08bdb9900" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="8fd1bceac7099029946428ad1c5c0d1b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  ZooKeeper &#20027;&#35201;&#20026; Kafka &#25552;&#20379;&#20803;&#25968;&#25454;&#30340;&#31649;&#29702;&#30340;&#21151;&#33021;&#12290;
+ </p>
+ <p data-lake-id="2ff6913a81439c84eb9dd2847b3b257b" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="b402399e2a795d26fcce9ade0a33d7af" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#20174;&#22270;&#20013;&#25105;&#20204;&#21487;&#20197;&#30475;&#20986;&#65292;Zookeeper &#20027;&#35201;&#20026; Kafka &#20570;&#20102;&#19979;&#38754;&#36825;&#20123;&#20107;&#24773;&#65306;
+ </p>
+ <p data-lake-id="e7bbd7b1f6280ae680979fd5c31d3a0e" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ol data-lake-id="b65041e0efb400778fec1c8226c82261" lake-indent="0" start="1" style="list-style-type: decimal; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="9391f433c3a782a70ddbf7185baaaca0">
+   <strong>
+    Broker &#27880;&#20876;
+   </strong>
+   &#65306;&#22312; Zookeeper &#19978;&#20250;&#26377;&#19968;&#20010;&#19987;&#38376;
+   <strong>
+    &#29992;&#26469;&#36827;&#34892; Broker &#26381;&#21153;&#22120;&#21015;&#34920;&#35760;&#24405;
+   </strong>
+   &#30340;&#33410;&#28857;&#12290;&#27599;&#20010; Broker &#22312;&#21551;&#21160;&#26102;&#65292;&#37117;&#20250;&#21040; Zookeeper &#19978;&#36827;&#34892;&#27880;&#20876;&#65292;&#21363;&#21040;/brokers/ids &#19979;&#21019;&#24314;&#23646;&#20110;&#33258;&#24049;&#30340;&#33410;&#28857;&#12290;&#27599;&#20010; Broker &#23601;&#20250;&#23558;&#33258;&#24049;&#30340; IP &#22320;&#22336;&#21644;&#31471;&#21475;&#31561;&#20449;&#24687;&#35760;&#24405;&#21040;&#35813;&#33410;&#28857;&#20013;&#21435;
+  </li>
+  <li data-lake-id="08e18d8f2e8bdf08132478ff07f229e1">
+   <strong>
+    Topic &#27880;&#20876;
+   </strong>
+   &#65306; &#22312; Kafka &#20013;&#65292;&#21516;&#19968;&#20010;
+   <strong>
+    Topic &#30340;&#28040;&#24687;&#20250;&#34987;&#20998;&#25104;&#22810;&#20010;&#20998;&#21306;
+   </strong>
+   &#24182;&#23558;&#20854;&#20998;&#24067;&#22312;&#22810;&#20010; Broker &#19978;&#65292;
+   <strong>
+    &#36825;&#20123;&#20998;&#21306;&#20449;&#24687;&#21450;&#19982; Broker &#30340;&#23545;&#24212;&#20851;&#31995;
+   </strong>
+   &#20063;&#37117;&#26159;&#30001; Zookeeper &#22312;&#32500;&#25252;&#12290;&#27604;&#22914;&#25105;&#21019;&#24314;&#20102;&#19968;&#20010;&#21517;&#23383;&#20026; my-topic &#30340;&#20027;&#39064;&#24182;&#19988;&#23427;&#26377;&#20004;&#20010;&#20998;&#21306;&#65292;&#23545;&#24212;&#21040; zookeeper &#20013;&#20250;&#21019;&#24314;&#36825;&#20123;&#25991;&#20214;&#22841;&#65306;
+   <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+    /brokers/topics/my-topic/Partitions/0
+   </code>
+   &#12289;
+   <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+    /brokers/topics/my-topic/Partitions/1
+   </code>
+  </li>
+  <li data-lake-id="c5363b3e5700858ad9015ab2b9d54b9e">
+   <strong>
+    &#36127;&#36733;&#22343;&#34913;
+   </strong>
+   &#65306;&#19978;&#38754;&#20063;&#35828;&#36807;&#20102; Kafka &#36890;&#36807;&#32473;&#29305;&#23450; Topic &#25351;&#23450;&#22810;&#20010; Partition, &#32780;&#21508;&#20010; Partition &#21487;&#20197;&#20998;&#24067;&#22312;&#19981;&#21516;&#30340; Broker &#19978;, &#36825;&#26679;&#20415;&#33021;&#25552;&#20379;&#27604;&#36739;&#22909;&#30340;&#24182;&#21457;&#33021;&#21147;&#12290; &#23545;&#20110;&#21516;&#19968;&#20010; Topic &#30340;&#19981;&#21516; Partition&#65292;Kafka &#20250;&#23613;&#21147;&#23558;&#36825;&#20123; Partition &#20998;&#24067;&#21040;&#19981;&#21516;&#30340; Broker &#26381;&#21153;&#22120;&#19978;&#12290;&#24403;&#29983;&#20135;&#32773;&#20135;&#29983;&#28040;&#24687;&#21518;&#20063;&#20250;&#23613;&#37327;&#25237;&#36882;&#21040;&#19981;&#21516; Broker &#30340; Partition &#37324;&#38754;&#12290;&#24403; Consumer &#28040;&#36153;&#30340;&#26102;&#20505;&#65292;Zookeeper &#21487;&#20197;&#26681;&#25454;&#24403;&#21069;&#30340; Partition &#25968;&#37327;&#20197;&#21450; Consumer &#25968;&#37327;&#26469;&#23454;&#29616;&#21160;&#24577;&#36127;&#36733;&#22343;&#34913;&#12290;
+  </li>
+  <li data-lake-id="d0f3d8b797afa4934252b68aaf460afa">
+   ......
+  </li>
+ </ol>
+ <p data-lake-id="6808c51ebeab728ae5145104c3f05626" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="394ea567f62276bb9b604c68a15e4ee9" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#38656;&#35201;&#35828;&#26126;&#30340;&#26159;&#65292;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   Kafka 2.8.0
+  </code>
+  &#65292;&#31227;&#38500;&#20102;&#23545;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   Zookeeper
+  </code>
+  &#30340;&#20381;&#36182;&#65288;&#20351;&#29992;&#20869;&#23884;&#30340;KRaft&#26367;&#20195;&#20102;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   ZooKeeper
+  </code>
+  &#65289;&#12290;&#36825;&#26679;&#20854;&#23454;&#23545;&#20110; Kafka &#26469;&#35828;&#19968;&#20010;&#27604;&#36739;&#22909;&#30340;&#25913;&#36827;&#65292;&#25105;&#20204;&#20877;&#20063;&#19981;&#38656;&#35201;&#39069;&#22806;&#32500;&#25252;&#19968;&#22871;
+  <code style="font-family: monospace; font-size: inherit; background-color: rgba(0, 0, 0, 0.06); padding: 0px 2px; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 2px; line-height: inherit; overflow-wrap: break-word; text-indent: 0px;">
+   ZooKpper
+  </code>
+  &#38598;&#32676;&#20102;&#12290;&#30456;&#20851;&#38405;&#35835;&#65306;
+  <a href="https://mp.weixin.qq.com/s/geR3pDw_Yjhmu8KMsXQosg" target="_blank">
+   &#12298;Kafka&#20026;&#20160;&#20040;&#35201;&#25243;&#24323;ZooKeeper&#65311;&#12299;&#8212;yes
+  </a>
+  &#12290;
+ </p>
+ <p data-lake-id="5ee440a753844461e229db78785476f1" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="b9af0902b6196e25b0244b61f94769d2" id="4a761ea3" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  Kafka &#22914;&#20309;&#20445;&#35777;&#28040;&#24687;&#30340;&#28040;&#36153;&#39034;&#24207;&#65311;
+ </h2>
+ <p data-lake-id="9903cef64fcab2eae1151434baf9d14f" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="6e3523a2c9a81ec580acfbb9edd51716" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#25105;&#20204;&#22312;&#20351;&#29992;&#28040;&#24687;&#38431;&#21015;&#30340;&#36807;&#31243;&#20013;&#32463;&#24120;&#26377;&#19994;&#21153;&#22330;&#26223;&#38656;&#35201;&#20005;&#26684;&#20445;&#35777;&#28040;&#24687;&#30340;&#28040;&#36153;&#39034;&#24207;&#65292;&#27604;&#22914;&#25105;&#20204;&#21516;&#26102;&#21457;&#20102; 2 &#20010;&#28040;&#24687;&#65292;&#36825; 2 &#20010;&#28040;&#24687;&#23545;&#24212;&#30340;&#25805;&#20316;&#20998;&#21035;&#23545;&#24212;&#30340;&#25968;&#25454;&#24211;&#25805;&#20316;&#26159;&#65306;&#26356;&#25913;&#29992;&#25143;&#20250;&#21592;&#31561;&#32423;&#12289;&#26681;&#25454;&#20250;&#21592;&#31561;&#32423;&#35745;&#31639;&#35746;&#21333;&#20215;&#26684;&#12290;&#20551;&#22914;&#36825;&#20004;&#26465;&#28040;&#24687;&#30340;&#28040;&#36153;&#39034;&#24207;&#19981;&#19968;&#26679;&#36896;&#25104;&#30340;&#26368;&#32456;&#32467;&#26524;&#23601;&#20250;&#25130;&#28982;&#19981;&#21516;&#12290;
+ </p>
+ <p data-lake-id="7e68d893863a910765267de5e25e0bd2" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="1dd94d8ac74ddd4fdfdd5f06b8eff9dc" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#25105;&#20204;&#30693;&#36947; Kafka &#20013; Partition(&#20998;&#21306;)&#26159;&#30495;&#27491;&#20445;&#23384;&#28040;&#24687;&#30340;&#22320;&#26041;&#65292;&#25105;&#20204;&#21457;&#36865;&#30340;&#28040;&#24687;&#37117;&#34987;&#25918;&#22312;&#20102;&#36825;&#37324;&#12290;&#32780;&#25105;&#20204;&#30340; Partition(&#20998;&#21306;) &#21448;&#23384;&#22312;&#20110; Topic(&#20027;&#39064;) &#36825;&#20010;&#27010;&#24565;&#20013;&#65292;&#24182;&#19988;&#25105;&#20204;&#21487;&#20197;&#32473;&#29305;&#23450; Topic &#25351;&#23450;&#22810;&#20010; Partition&#12290;
+ </p>
+ <p data-lake-id="f3f4043a2b3a6d5f8b54ba2e6ccf1bb9" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="12b3ed391a7009cfcfa540764861cff9" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <span data-card-type="inline" data-lake-card="image">
+   <img alt="image" class="image lake-drag-image" data-height="333px" data-raw-src="EPUB/" data-role="image" src="ce4471a4-17da-11ed-9785-acde48001122" style="visibility: visible; width: 512px;" title="image">
+  </span>
+ </p>
+ <p data-lake-id="d6424499b65b368dd5e3953373be6a3d" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="7a0b3382dde3885935a69eb254c37003" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#27599;&#27425;&#28155;&#21152;&#28040;&#24687;&#21040; Partition(&#20998;&#21306;) &#30340;&#26102;&#20505;&#37117;&#20250;&#37319;&#29992;&#23614;&#21152;&#27861;&#65292;&#22914;&#19978;&#22270;&#25152;&#31034;&#12290;Kafka &#21482;&#33021;&#20026;&#25105;&#20204;&#20445;&#35777; Partition(&#20998;&#21306;) &#20013;&#30340;&#28040;&#24687;&#26377;&#24207;&#65292;&#32780;&#19981;&#33021;&#20445;&#35777; Topic(&#20027;&#39064;) &#20013;&#30340; Partition(&#20998;&#21306;) &#30340;&#26377;&#24207;&#12290;
+ </p>
+ <p data-lake-id="99e6285a85e852ba04f7aa729218d491" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <blockquote style="margin-top: 5px; margin-bottom: 5px; padding-left: 1em; margin-left: 0px; border-left: 3px solid rgb(238, 238, 238); opacity: 0.6;">
+  <p data-lake-id="340c1ae4d875b3d52f59b82cf8409372" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+   &#28040;&#24687;&#22312;&#34987;&#36861;&#21152;&#21040; Partition(&#20998;&#21306;)&#30340;&#26102;&#20505;&#37117;&#20250;&#20998;&#37197;&#19968;&#20010;&#29305;&#23450;&#30340;&#20559;&#31227;&#37327;&#65288;offset&#65289;&#12290;Kafka &#36890;&#36807;&#20559;&#31227;&#37327;&#65288;offset&#65289;&#26469;&#20445;&#35777;&#28040;&#24687;&#22312;&#20998;&#21306;&#20869;&#30340;&#39034;&#24207;&#24615;&#12290;
+  </p>
+ </blockquote>
+ <p data-lake-id="08192054bb4d6448335058523103f0a2" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="27f06f01b4f5fdb3ce0e00a5fadbbe03" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#25152;&#20197;&#65292;&#25105;&#20204;&#23601;&#26377;&#19968;&#31181;&#24456;&#31616;&#21333;&#30340;&#20445;&#35777;&#28040;&#24687;&#28040;&#36153;&#39034;&#24207;&#30340;&#26041;&#27861;&#65306;
+  <strong>
+   1 &#20010; Topic &#21482;&#23545;&#24212;&#19968;&#20010; Partition
+  </strong>
+  &#12290;&#36825;&#26679;&#24403;&#28982;&#21487;&#20197;&#35299;&#20915;&#38382;&#39064;&#65292;&#20294;&#26159;&#30772;&#22351;&#20102; Kafka &#30340;&#35774;&#35745;&#21021;&#34935;&#12290;
+ </p>
+ <p data-lake-id="5e03a950057a725041600d591a47eaed" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="f0e3348f55c73d37f11d985a7c3baa72" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  Kafka &#20013;&#21457;&#36865; 1 &#26465;&#28040;&#24687;&#30340;&#26102;&#20505;&#65292;&#21487;&#20197;&#25351;&#23450; topic, partition, key,data&#65288;&#25968;&#25454;&#65289; 4 &#20010;&#21442;&#25968;&#12290;&#22914;&#26524;&#20320;&#21457;&#36865;&#28040;&#24687;&#30340;&#26102;&#20505;&#25351;&#23450;&#20102; Partition &#30340;&#35805;&#65292;&#25152;&#26377;&#28040;&#24687;&#37117;&#20250;&#34987;&#21457;&#36865;&#21040;&#25351;&#23450;&#30340; Partition&#12290;&#24182;&#19988;&#65292;&#21516;&#19968;&#20010; key &#30340;&#28040;&#24687;&#21487;&#20197;&#20445;&#35777;&#21482;&#21457;&#36865;&#21040;&#21516;&#19968;&#20010; partition&#65292;&#36825;&#20010;&#25105;&#20204;&#21487;&#20197;&#37319;&#29992;&#34920;/&#23545;&#35937;&#30340; id &#26469;&#20316;&#20026; key &#12290;
+ </p>
+ <p data-lake-id="9c1ba95a9e44eeccf133a8dff8be4786" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="1d9820bec2042ee5b7c891202df9cf27" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#24635;&#32467;&#19968;&#19979;&#65292;&#23545;&#20110;&#22914;&#20309;&#20445;&#35777; Kafka &#20013;&#28040;&#24687;&#28040;&#36153;&#30340;&#39034;&#24207;&#65292;&#26377;&#20102;&#19979;&#38754;&#20004;&#31181;&#26041;&#27861;&#65306;
+ </p>
+ <p data-lake-id="9c7c94645e7accdf5598d1b04c9a9594" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ol data-lake-id="e313cd7bb4272954b9ae08add31c46ea" lake-indent="0" start="1" style="list-style-type: decimal; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="3cd69da6338bd48284a84bd7fd3f1ee2">
+   1 &#20010; Topic &#21482;&#23545;&#24212;&#19968;&#20010; Partition&#12290;
+  </li>
+  <li data-lake-id="485c6ea1be21e1cb718bce8b044b92dc">
+   &#65288;&#25512;&#33616;&#65289;&#21457;&#36865;&#28040;&#24687;&#30340;&#26102;&#20505;&#25351;&#23450; key/Partition&#12290;
+  </li>
+ </ol>
+ <p data-lake-id="2f27bbbb4d15416dcd7d14b6746f5ba8" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <p data-lake-id="54b0042afc7988f4bf16925cd840862f" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  &#24403;&#28982;&#19981;&#20165;&#20165;&#21482;&#26377;&#19978;&#38754;&#20004;&#31181;&#26041;&#27861;&#65292;&#19978;&#38754;&#20004;&#31181;&#26041;&#27861;&#26159;&#25105;&#35273;&#24471;&#27604;&#36739;&#22909;&#29702;&#35299;&#30340;&#65292;
+ </p>
+ <p data-lake-id="30c0d8cde2a1639d13a733af1c07c7c3" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <h2 data-lake-id="bfd485efc1e54c36536de7fe23e1822f" id="80c58c5c" style="padding: 7px 0px; margin: 0px; font-weight: 700; font-size: 24px; line-height: 32px;">
+  &#25512;&#33616;&#38405;&#35835;
+ </h2>
+ <p data-lake-id="a647bf0d17ee5432e35d49ef068d6a56" style="font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word; margin: 0px;">
+  <br>
+ </p>
+ <ul data-lake-id="ee90eff90c231df27796f0b2f10e4e13" lake-indent="0" style="list-style-type: disc; margin: 0px; padding-left: 23px; font-size: 14px; color: rgb(38, 38, 38); line-height: 1.74; letter-spacing: 0.05em; outline-style: none; overflow-wrap: break-word;">
+  <li data-lake-id="87273b020d820dd0f536b686f2d79a1d">
+   Apache Kafka using Keys for Partition&#65306;
+   <a href="https://linuxhint.com/apache_kafka_partitions/" target="_blank">
+    https://linuxhint.com/apache_kafka_partitions/
+   </a>
+  </li>
+  <li data-lake-id="798750266a9a9bdba190b19066956fc6">
+   Spring Boot and Kafka &#8211; Practical Configuration Examples&#65306;
+   <a href="https://thepracticaldeveloper.com/2018/11/24/spring-boot-kafka-config/" target="_blank">
+    https://thepracticaldeveloper.com/2018/11/24/spring-boot-kafka-config/
+   </a>
+  </li>
+  <li data-lake-id="399d1d6be707694a0bc3190969e24a78">
+   &#19968;&#25991;&#30475;&#25026;&#22823;&#25968;&#25454;&#39046;&#22495;&#30340;&#20845;&#24180;&#24040;&#21464;&#65306;
+   <a href="https://www.infoq.cn/article/b8*EMm6AeiHDfI3SfT11" target="_blank">
+    https://www.infoq.cn/article/b8*EMm6AeiHDfI3SfT11
+   </a>
+  </li>
+ </ul>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        

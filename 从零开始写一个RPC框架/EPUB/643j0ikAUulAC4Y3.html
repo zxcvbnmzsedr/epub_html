@@ -1,0 +1,1099 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    <h1>08 ZooKeeper&#24120;&#29992;&#21629;&#20196;+ Curator&#20351;&#29992;&#35814;&#35299;</h1><div class="lake-content" typography="classic">
+ <h1 id="578450c1">
+  <span class="ne-text">
+   08 ZooKeeper&#24120;&#29992;&#21629;&#20196;+ Curator&#20351;&#29992;&#35814;&#35299;
+  </span>
+ </h1>
+ <p class="ne-p" id="u6ef180fd">
+  <br>
+ </p>
+ <p class="ne-p" id="u765db0e3">
+  <a class="ne-link" data-href="https://github.com/Snailclimb/guide-rpc-framework" href="https://github.com/Snailclimb/guide-rpc-framework" target="_blank">
+   <span class="ne-text">
+    guide-rpc-framework
+   </span>
+  </a>
+  <span class="ne-text">
+   &#20351;&#29992;&#20102; Zookeeper &#26469;&#23384;&#20648;&#26381;&#21153;&#30340;&#30456;&#20851;&#20449;&#24687; &#65292;&#24182;&#19988;&#20351;&#29992;&#30340;&#26159; ZooKeeper Java&#23458;&#25143;&#31471; &#160;Curator &#26469;&#23545; ZooKeeper &#36827;&#34892;&#22686;&#21024;&#25913;&#26597;&#31561;&#25805;&#20316;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uea0e83cd">
+  <br>
+ </p>
+ <p class="ne-p" id="u55621e9b">
+  <span class="ne-text">
+   &#25152;&#20197;&#65292;&#26412;&#25991;&#23601;&#31616;&#21333;&#20171;&#32461;&#19968;&#19979; ZooKeeper&#24120;&#29992;&#21629;&#20196; &#20197;&#21450; Curator &#30340;&#22522;&#26412;&#20351;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u910ede8d">
+  <br>
+ </p>
+ <h2 id="Ifluh">
+  <span class="ne-text">
+   1. &#21069;&#35328;
+  </span>
+ </h2>
+ <p class="ne-p" id="u93f06ab8">
+  <br>
+ </p>
+ <p class="ne-p" id="ub98edd01">
+  <span class="ne-text">
+   &#36825;&#31687;&#25991;&#31456;&#31616;&#21333;&#32473;&#28436;&#31034;&#19968;&#19979; ZooKeeper &#24120;&#35265;&#21629;&#20196;&#30340;&#20351;&#29992;&#20197;&#21450; ZooKeeper Java&#23458;&#25143;&#31471; Curator &#30340;&#22522;&#26412;&#20351;&#29992;&#12290;&#20171;&#32461;&#21040;&#30340;&#20869;&#23481;&#37117;&#26159;&#26368;&#22522;&#26412;&#30340;&#25805;&#20316;&#65292;&#33021;&#28385;&#36275;&#26085;&#24120;&#24037;&#20316;&#30340;&#22522;&#26412;&#38656;&#35201;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufc28511d">
+  <br>
+ </p>
+ <p class="ne-p" id="u1b88adc6">
+  <span class="ne-text">
+   &#22914;&#26524;&#25991;&#31456;&#26377;&#20219;&#20309;&#38656;&#35201;&#25913;&#21892;&#21644;&#23436;&#21892;&#30340;&#22320;&#26041;&#65292;&#27426;&#36814;&#22312;&#35780;&#35770;&#21306;&#25351;&#20986;&#65292;&#20849;&#21516;&#36827;&#27493;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="ub325915b">
+  <br>
+ </p>
+ <h2 id="Ohhz0">
+  <span class="ne-text">
+   2. ZooKeeper &#23433;&#35013;&#21644;&#20351;&#29992;
+  </span>
+ </h2>
+ <p class="ne-p" id="ua7512be0">
+  <br>
+ </p>
+ <h3 id="lSjf3">
+  <span class="ne-text">
+   2.1. &#20351;&#29992;Docker &#23433;&#35013; zookeeper
+  </span>
+ </h3>
+ <p class="ne-p" id="u8efb837a">
+  <br>
+ </p>
+ <p class="ne-p" id="ue01c49b7">
+  <strong>
+   <span class="ne-text">
+    a.&#20351;&#29992; Docker &#19979;&#36733; ZooKeeper
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u593b0583">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="CRn69">docker pull zookeeper:3.5.8</pre>
+ <p class="ne-p" id="u4a90e483">
+  <br>
+ </p>
+ <p class="ne-p" id="uc628be5c">
+  <strong>
+   <span class="ne-text">
+    b.&#36816;&#34892; ZooKeeper
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u490a0653">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="byj6F">docker run -d --name zookeeper -p 2181:2181 zookeeper:3.5.8</pre>
+ <p class="ne-p" id="ud776ff51">
+  <br>
+ </p>
+ <h3 id="OR7Gh">
+  <span class="ne-text">
+   2.2. &#36830;&#25509; ZooKeeper &#26381;&#21153;
+  </span>
+ </h3>
+ <p class="ne-p" id="u81f60c1f">
+  <br>
+ </p>
+ <p class="ne-p" id="u12cb0d06">
+  <strong>
+   <span class="ne-text">
+    a.&#36827;&#20837;ZooKeeper&#23481;&#22120;&#20013;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ucfd5bbee">
+  <br>
+ </p>
+ <p class="ne-p" id="u602fdecd">
+  <span class="ne-text">
+   &#20808;&#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    docker ps
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26597;&#30475; ZooKeeper &#30340; ContainerID&#65292;&#28982;&#21518;&#20351;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    docker exec -it ContainerID /bin/bash
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#36827;&#20837;&#23481;&#22120;&#20013;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u6403a898">
+  <br>
+ </p>
+ <p class="ne-p" id="ua5634c8c">
+  <strong>
+   <span class="ne-text">
+    b.&#20808;&#36827;&#20837; bin &#30446;&#24405;,&#28982;&#21518;&#36890;&#36807;
+   </span>
+  </strong>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     ./zkCli.sh -server 127.0.0.1:2181
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#21629;&#20196;&#36830;&#25509;ZooKeeper &#26381;&#21153;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ub883f80c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-bash" data-language="bash" id="Bt8tZ">root@eaf70fc620cb:/apache-zookeeper-3.5.8-bin# cd bin</pre>
+ <p class="ne-p" id="ub0f58064">
+  <br>
+ </p>
+ <p class="ne-p" id="ucab0e9f6">
+  <span class="ne-text">
+   &#22914;&#26524;&#20320;&#30475;&#21040;&#25511;&#21046;&#21488;&#25104;&#21151;&#25171;&#21360;&#20986;&#22914;&#19979;&#20449;&#24687;&#30340;&#35805;&#65292;&#35828;&#26126;&#20320;&#24050;&#32463;&#25104;&#21151;&#36830;&#25509; ZooKeeper &#26381;&#21153;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u318de260">
+  <br>
+ </p>
+ <p class="ne-p" id="ufb644bbd">
+  <img class="ne-image" id="m1JsV" src="EPUB/imgm1JsV" width="3188">
+ </p>
+ <p class="ne-p" id="ufb04dcf8">
+  <br>
+ </p>
+ <h3 id="WCRHD">
+  <span class="ne-text">
+   2.3. &#24120;&#29992;&#21629;&#20196;&#28436;&#31034;
+  </span>
+ </h3>
+ <p class="ne-p" id="u135ca2c3">
+  <br>
+ </p>
+ <h4 id="eLfBW">
+  <span class="ne-text">
+   2.3.1. &#26597;&#30475;&#24120;&#29992;&#21629;&#20196;(help &#21629;&#20196;)
+  </span>
+ </h4>
+ <p class="ne-p" id="u6e9374eb">
+  <br>
+ </p>
+ <p class="ne-p" id="u1b1080a1">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    help
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#26597;&#30475; ZooKeeper &#24120;&#29992;&#21629;&#20196;
+  </span>
+ </p>
+ <p class="ne-p" id="u7aa53c8b">
+  <br>
+ </p>
+ <h4 id="PBo2Q">
+  <span class="ne-text">
+   2.3.2. &#21019;&#24314;&#33410;&#28857;(create &#21629;&#20196;)
+  </span>
+ </h4>
+ <p class="ne-p" id="ueb281d5a">
+  <br>
+ </p>
+ <p class="ne-p" id="ub04becda">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    create
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#22312;&#26681;&#30446;&#24405;&#21019;&#24314;&#20102; node1 &#33410;&#28857;&#65292;&#19982;&#23427;&#20851;&#32852;&#30340;&#23383;&#31526;&#20018;&#26159;"node1"
+  </span>
+ </p>
+ <p class="ne-p" id="udde8943c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="OeNdV">[zk: 127.0.0.1:2181(CONNECTED) 34] create /node1 &#8220;node1&#8221;</pre>
+ <p class="ne-p" id="u6106c957">
+  <br>
+ </p>
+ <p class="ne-p" id="ucbf59351">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    create
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#22312;&#26681;&#30446;&#24405;&#21019;&#24314;&#20102; node1 &#33410;&#28857;&#65292;&#19982;&#23427;&#20851;&#32852;&#30340;&#20869;&#23481;&#26159;&#25968;&#23383; 123
+  </span>
+ </p>
+ <p class="ne-p" id="u38df08d7">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="n0sep">[zk: 127.0.0.1:2181(CONNECTED) 1] create /node1/node1.1 123
+Created /node1/node1.1</pre>
+ <p class="ne-p" id="u75096ba8">
+  <br>
+ </p>
+ <h4 id="M8ii5">
+  <span class="ne-text">
+   2.3.3. &#26356;&#26032;&#33410;&#28857;&#25968;&#25454;&#20869;&#23481;(set &#21629;&#20196;)
+  </span>
+ </h4>
+ <p class="ne-p" id="uc9b38434">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="R0HMY">[zk: 127.0.0.1:2181(CONNECTED) 11] set /node1 "set node1"</pre>
+ <p class="ne-p" id="uf1bca381">
+  <br>
+ </p>
+ <h4 id="kUDfo">
+  <span class="ne-text">
+   2.3.4. &#33719;&#21462;&#33410;&#28857;&#30340;&#25968;&#25454;(get &#21629;&#20196;)
+  </span>
+ </h4>
+ <p class="ne-p" id="u0815e95b">
+  <br>
+ </p>
+ <p class="ne-p" id="ue8128235">
+  <code class="ne-code">
+   <span class="ne-text">
+    get
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#21487;&#20197;&#33719;&#21462;&#25351;&#23450;&#33410;&#28857;&#30340;&#25968;&#25454;&#20869;&#23481;&#21644;&#33410;&#28857;&#30340;&#29366;&#24577;,&#21487;&#20197;&#30475;&#20986;&#25105;&#20204;&#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    set
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#24050;&#32463;&#23558;&#33410;&#28857;&#25968;&#25454;&#20869;&#23481;&#25913;&#20026; "set node1"&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u1aa34abf">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="TwWtC">set node1
+cZxid = 0x47
+ctime = Sun Jan 20 10:22:59 CST 2019
+mZxid = 0x4b
+mtime = Sun Jan 20 10:41:10 CST 2019
+pZxid = 0x4a
+cversion = 1
+dataVersion = 1
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 9
+numChildren = 1</pre>
+ <p class="ne-p" id="u0abe67a7">
+  <br>
+ </p>
+ <h4 id="CcKDW">
+  <span class="ne-text">
+   2.3.5. &#26597;&#30475;&#26576;&#20010;&#30446;&#24405;&#19979;&#30340;&#23376;&#33410;&#28857;(ls &#21629;&#20196;)
+  </span>
+ </h4>
+ <p class="ne-p" id="ua7344a7c">
+  <br>
+ </p>
+ <p class="ne-p" id="ub98a4094">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ls
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#26597;&#30475;&#26681;&#30446;&#24405;&#19979;&#30340;&#33410;&#28857;
+  </span>
+ </p>
+ <p class="ne-p" id="u440b2115">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="yWxJO">[zk: 127.0.0.1:2181(CONNECTED) 37] ls /
+[dubbo, ZooKeeper, node1]</pre>
+ <p class="ne-p" id="uc78afe80">
+  <br>
+ </p>
+ <p class="ne-p" id="u495084be">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ls
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#26597;&#30475; node1 &#30446;&#24405;&#19979;&#30340;&#33410;&#28857;
+  </span>
+ </p>
+ <p class="ne-p" id="u7eef44d2">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="T0y5X">[zk: 127.0.0.1:2181(CONNECTED) 5] ls /node1
+[node1.1]</pre>
+ <p class="ne-p" id="u31e1c347">
+  <br>
+ </p>
+ <p class="ne-p" id="ua6eb5562">
+  <span class="ne-text">
+   ZooKeeper &#20013;&#30340; ls &#21629;&#20196;&#21644; linux &#21629;&#20196;&#20013;&#30340; ls &#31867;&#20284;&#65292; &#36825;&#20010;&#21629;&#20196;&#23558;&#21015;&#20986;&#32477;&#23545;&#36335;&#24452; path &#19979;&#30340;&#25152;&#26377;&#23376;&#33410;&#28857;&#20449;&#24687;&#65288;&#21015;&#20986; 1 &#32423;&#65292;&#24182;&#19981;&#36882;&#24402;&#65289;
+  </span>
+ </p>
+ <p class="ne-p" id="uef6b5303">
+  <br>
+ </p>
+ <h4 id="re9Zs">
+  <span class="ne-text">
+   2.3.6. &#26597;&#30475;&#33410;&#28857;&#29366;&#24577;(stat &#21629;&#20196;)
+  </span>
+ </h4>
+ <p class="ne-p" id="u22959f7f">
+  <br>
+ </p>
+ <p class="ne-p" id="u9c3fae98">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    stat
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#26597;&#30475;&#33410;&#28857;&#29366;&#24577;
+  </span>
+ </p>
+ <p class="ne-p" id="u990a1af2">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="bipnC">[zk: 127.0.0.1:2181(CONNECTED) 10] stat /node1
+cZxid = 0x47
+ctime = Sun Jan 20 10:22:59 CST 2019
+mZxid = 0x47
+mtime = Sun Jan 20 10:22:59 CST 2019
+pZxid = 0x4a
+cversion = 1
+dataVersion = 0
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 11
+numChildren = 1</pre>
+ <p class="ne-p" id="u606c76e9">
+  <br>
+ </p>
+ <p class="ne-p" id="u2202cea7">
+  <span class="ne-text">
+   &#19978;&#38754;&#26174;&#31034;&#30340;&#19968;&#20123;&#20449;&#24687;&#27604;&#22914; cversion&#12289;aclVersion&#12289;numChildren &#31561;&#31561;&#65292;&#25105;&#22312;&#19978;&#38754; &#8220;
+  </span>
+  <a class="ne-link" data-href="https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro.html" href="https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro.html" target="_blank">
+   <span class="ne-text">
+    ZooKeeper &#30456;&#20851;&#27010;&#24565;&#24635;&#32467;(&#20837;&#38376;)
+   </span>
+  </a>
+  <span class="ne-text">
+   &#8221; &#36825;&#31687;&#25991;&#31456;&#20013;&#24050;&#32463;&#20171;&#32461;&#21040;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u14adcd9f">
+  <br>
+ </p>
+ <h4 id="hlzOb">
+  <span class="ne-text">
+   2.3.7. &#26597;&#30475;&#33410;&#28857;&#20449;&#24687;&#21644;&#29366;&#24577;(ls2 &#21629;&#20196;)
+  </span>
+ </h4>
+ <p class="ne-p" id="ua05b0f54">
+  <br>
+ </p>
+ <p class="ne-p" id="u9b8c18a3">
+  <code class="ne-code">
+   <span class="ne-text">
+    ls2
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#26356;&#20687;&#26159;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ls
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#21644;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    stat
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#30340;&#32467;&#21512;&#12290;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    ls2
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21629;&#20196;&#36820;&#22238;&#30340;&#20449;&#24687;&#21253;&#25324; 2 &#37096;&#20998;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="uf9cd8fa0">
+  <br>
+ </p>
+ <ol class="ne-ol">
+  <li id="ucd94a19f">
+   <span class="ne-text">
+    &#23376;&#33410;&#28857;&#21015;&#34920;
+   </span>
+  </li>
+  <li id="uf3d7b282">
+   <span class="ne-text">
+    &#24403;&#21069;&#33410;&#28857;&#30340; stat &#20449;&#24687;&#12290;
+   </span>
+  </li>
+ </ol>
+ <p class="ne-p" id="u9323cd51">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="DTJvu">[zk: 127.0.0.1:2181(CONNECTED) 7] ls2 /node1
+[node1.1]
+cZxid = 0x47
+ctime = Sun Jan 20 10:22:59 CST 2019
+mZxid = 0x47
+mtime = Sun Jan 20 10:22:59 CST 2019
+pZxid = 0x4a
+cversion = 1
+dataVersion = 0
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 11
+numChildren = 1</pre>
+ <p class="ne-p" id="u6844e300">
+  <br>
+ </p>
+ <h4 id="avYSz">
+  <span class="ne-text">
+   2.3.8. &#21024;&#38500;&#33410;&#28857;(delete &#21629;&#20196;)
+  </span>
+ </h4>
+ <p class="ne-p" id="u18685f95">
+  <br>
+ </p>
+ <p class="ne-p" id="u08b6349d">
+  <span class="ne-text">
+   &#36825;&#20010;&#21629;&#20196;&#24456;&#31616;&#21333;&#65292;&#20294;&#26159;&#38656;&#35201;&#27880;&#24847;&#30340;&#19968;&#28857;&#26159;&#22914;&#26524;&#20320;&#35201;&#21024;&#38500;&#26576;&#19968;&#20010;&#33410;&#28857;&#65292;&#37027;&#20040;&#36825;&#20010;&#33410;&#28857;&#24517;&#39035;&#26080;&#23376;&#33410;&#28857;&#25165;&#34892;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u8a1242f5">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-shell" data-language="shell" id="cr2gL">[zk: 127.0.0.1:2181(CONNECTED) 3] delete /node1/node1.1</pre>
+ <p class="ne-p" id="uf13e096c">
+  <br>
+ </p>
+ <p class="ne-p" id="u11605735">
+  <span class="ne-text">
+   &#22312;&#21518;&#38754;&#25105;&#20250;&#20171;&#32461;&#21040; Java &#23458;&#25143;&#31471; API &#30340;&#20351;&#29992;&#20197;&#21450;&#24320;&#28304; ZooKeeper &#23458;&#25143;&#31471; ZkClient &#21644; Curator &#30340;&#20351;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u06ab5412">
+  <br>
+ </p>
+ <h2 id="t5Hss">
+  <span class="ne-text">
+   3. ZooKeeper Java&#23458;&#25143;&#31471; Curator&#31616;&#21333;&#20351;&#29992;
+  </span>
+ </h2>
+ <p class="ne-p" id="ua5d5d988">
+  <br>
+ </p>
+ <p class="ne-p" id="u72cf38cb">
+  <span class="ne-text">
+   Curator &#26159;Netflix&#20844;&#21496;&#24320;&#28304;&#30340;&#19968;&#22871; ZooKeeper Java&#23458;&#25143;&#31471;&#26694;&#26550;&#65292;&#30456;&#27604;&#20110; Zookeeper &#33258;&#24102;&#30340;&#23458;&#25143;&#31471; zookeeper &#26469;&#35828;&#65292;Curator &#30340;&#23553;&#35013;&#26356;&#21152;&#23436;&#21892;&#65292;&#21508;&#31181; API &#37117;&#21487;&#20197;&#27604;&#36739;&#26041;&#20415;&#22320;&#20351;&#29992;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ud3380550">
+  <br>
+ </p>
+ <p class="ne-p" id="u4e3cc1ec">
+  <img class="ne-image" id="JHLnw" src="EPUB/imgJHLnw" width="537">
+ </p>
+ <p class="ne-p" id="u9ca53718">
+  <br>
+ </p>
+ <p class="ne-p" id="u8e07b392">
+  <span class="ne-text">
+   &#19979;&#38754;&#25105;&#20204;&#23601;&#26469;&#31616;&#21333;&#22320;&#28436;&#31034;&#19968;&#19979; Curator &#30340;&#20351;&#29992;&#21543;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="u169b5c3a">
+  <br>
+ </p>
+ <p class="ne-p" id="u4d87da55">
+  <span class="ne-text">
+   Curator4.0+&#29256;&#26412;&#23545;ZooKeeper 3.5.x&#25903;&#25345;&#27604;&#36739;&#22909;&#12290;&#24320;&#22987;&#20043;&#21069;&#65292;&#35831;&#20808;&#23558;&#19979;&#38754;&#30340;&#20381;&#36182;&#28155;&#21152;&#36827;&#20320;&#30340;&#39033;&#30446;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u93d80902">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-xml" data-language="xml" id="mVwcH">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+    &lt;artifactId&gt;curator-framework&lt;/artifactId&gt;
+    &lt;version&gt;4.2.0&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+    &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+    &lt;version&gt;4.2.0&lt;/version&gt;
+&lt;/dependency&gt;</pre>
+ <p class="ne-p" id="u3dd5d3f1">
+  <br>
+ </p>
+ <h3 id="uPdZe">
+  <span class="ne-text">
+   3.1. &#36830;&#25509; ZooKeeper &#23458;&#25143;&#31471;
+  </span>
+ </h3>
+ <p class="ne-p" id="u88558c87">
+  <br>
+ </p>
+ <p class="ne-p" id="ue063b5c7">
+  <span class="ne-text">
+   &#36890;&#36807;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CuratorFrameworkFactory
+   </span>
+  </code>
+  <span class="ne-text">
+   &#21019;&#24314;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CuratorFramework
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#65292;&#28982;&#21518;&#20877;&#35843;&#29992;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CuratorFramework
+   </span>
+  </code>
+  <span class="ne-text">
+   &#23545;&#35937;&#30340;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    start()
+   </span>
+  </code>
+  <span class="ne-text">
+   &#26041;&#27861;&#21363;&#21487;&#65281;
+  </span>
+ </p>
+ <p class="ne-p" id="ua300f549">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="nPmSy">private static final int BASE_SLEEP_TIME = 1000;
+private static final int MAX_RETRIES = 3;
+
+// Retry strategy. Retry 3 times, and will increase the sleep time between retries.
+RetryPolicy retryPolicy = new ExponentialBackoffRetry(BASE_SLEEP_TIME, MAX_RETRIES);
+CuratorFramework zkClient = CuratorFrameworkFactory.builder()
+    // the server to connect to (can be a server list)
+    .connectString("127.0.0.1:2181")
+    .retryPolicy(retryPolicy)
+    .build();
+zkClient.start();</pre>
+ <p class="ne-p" id="u5b9d1a4d">
+  <br>
+ </p>
+ <p class="ne-p" id="u641b66f1">
+  <span class="ne-text">
+   &#23545;&#20110;&#19968;&#20123;&#22522;&#26412;&#21442;&#25968;&#30340;&#35828;&#26126;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u12b75d09">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="u413c292c">
+   <code class="ne-code">
+    <span class="ne-text">
+     baseSleepTimeMs
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#37325;&#35797;&#20043;&#38388;&#31561;&#24453;&#30340;&#21021;&#22987;&#26102;&#38388;
+   </span>
+  </li>
+  <li id="u4c5c9e51">
+   <code class="ne-code">
+    <span class="ne-text">
+     maxRetries
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#26368;&#22823;&#37325;&#35797;&#27425;&#25968;
+   </span>
+  </li>
+  <li id="u37681aa6">
+   <code class="ne-code">
+    <span class="ne-text">
+     connectString
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#35201;&#36830;&#25509;&#30340;&#26381;&#21153;&#22120;&#21015;&#34920;
+   </span>
+  </li>
+  <li id="u6d0f1c41">
+   <code class="ne-code">
+    <span class="ne-text">
+     retryPolicy
+    </span>
+   </code>
+   <span class="ne-text">
+    &#65306;&#37325;&#35797;&#31574;&#30053;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u9611842e">
+  <br>
+ </p>
+ <h3 id="X4S08">
+  <span class="ne-text">
+   3.2. &#25968;&#25454;&#33410;&#28857;&#30340;&#22686;&#21024;&#25913;&#26597;
+  </span>
+ </h3>
+ <p class="ne-p" id="u5d335d31">
+  <br>
+ </p>
+ <h4 id="aTI6x">
+  <span class="ne-text">
+   3.2.1. &#21019;&#24314;&#33410;&#28857;
+  </span>
+ </h4>
+ <p class="ne-p" id="u4cb6d400">
+  <br>
+ </p>
+ <p class="ne-p" id="u0f733dea">
+  <span class="ne-text">
+   &#25105;&#20204;&#22312;
+  </span>
+  <a class="ne-link" data-href="https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro/" href="https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro/" target="_blank">
+   <span class="ne-text">
+    ZooKeeper&#24120;&#35265;&#27010;&#24565;&#35299;&#35835;
+   </span>
+  </a>
+  <span class="ne-text">
+   &#20013;&#20171;&#32461;&#21040;&#65292;&#25105;&#20204;&#36890;&#24120;&#26159;&#23558; znode &#20998;&#20026; 4 &#22823;&#31867;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="u7e89cfac">
+  <br>
+ </p>
+ <ul class="ne-ul">
+  <li id="udb11273c">
+   <strong>
+    <span class="ne-text">
+     &#25345;&#20037;&#65288;PERSISTENT&#65289;&#33410;&#28857;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306;&#19968;&#26086;&#21019;&#24314;&#23601;&#19968;&#30452;&#23384;&#22312;&#21363;&#20351; ZooKeeper &#38598;&#32676;&#23445;&#26426;&#65292;&#30452;&#21040;&#23558;&#20854;&#21024;&#38500;&#12290;
+   </span>
+  </li>
+  <li id="u02c787dc">
+   <strong>
+    <span class="ne-text">
+     &#20020;&#26102;&#65288;EPHEMERAL&#65289;&#33410;&#28857;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306;&#20020;&#26102;&#33410;&#28857;&#30340;&#29983;&#21629;&#21608;&#26399;&#26159;&#19982;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#23458;&#25143;&#31471;&#20250;&#35805;&#65288;session&#65289;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#32465;&#23450;&#30340;&#65292;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#20250;&#35805;&#28040;&#22833;&#21017;&#33410;&#28857;&#28040;&#22833;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#12290;&#24182;&#19988;&#65292;&#20020;&#26102;&#33410;&#28857;
+   </span>
+   <strong>
+    <span class="ne-text">
+     &#21482;&#33021;&#20570;&#21494;&#23376;&#33410;&#28857;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65292;&#19981;&#33021;&#21019;&#24314;&#23376;&#33410;&#28857;&#12290;
+   </span>
+  </li>
+  <li id="u77fdee51">
+   <strong>
+    <span class="ne-text">
+     &#25345;&#20037;&#39034;&#24207;&#65288;PERSISTENT_SEQUENTIAL&#65289;&#33410;&#28857;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306;&#38500;&#20102;&#20855;&#26377;&#25345;&#20037;&#65288;PERSISTENT&#65289;&#33410;&#28857;&#30340;&#29305;&#24615;&#20043;&#22806;&#65292; &#23376;&#33410;&#28857;&#30340;&#21517;&#31216;&#36824;&#20855;&#26377;&#39034;&#24207;&#24615;&#12290;&#27604;&#22914;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     /node1/app0000000001
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12289;
+   </span>
+   <code class="ne-code">
+    <span class="ne-text">
+     /node1/app0000000002
+    </span>
+   </code>
+   <span class="ne-text">
+    &#12290;
+   </span>
+  </li>
+  <li id="ue5c3c8e6">
+   <strong>
+    <span class="ne-text">
+     &#20020;&#26102;&#39034;&#24207;&#65288;EPHEMERAL_SEQUENTIAL&#65289;&#33410;&#28857;
+    </span>
+   </strong>
+   <span class="ne-text">
+    &#65306;&#38500;&#20102;&#20855;&#22791;&#20020;&#26102;&#65288;EPHEMERAL&#65289;&#33410;&#28857;&#30340;&#29305;&#24615;&#20043;&#22806;&#65292;&#23376;&#33410;&#28857;&#30340;&#21517;&#31216;&#36824;&#20855;&#26377;&#39034;&#24207;&#24615;&#12290;
+   </span>
+  </li>
+ </ul>
+ <p class="ne-p" id="u9b302718">
+  <br>
+ </p>
+ <p class="ne-p" id="u86f40fa6">
+  <span class="ne-text">
+   &#20320;&#22312;&#20351;&#29992;&#30340; ZooKeeper &#30340;&#26102;&#20505;&#65292;&#20250;&#21457;&#29616;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    CreateMode
+   </span>
+  </code>
+  <span class="ne-text">
+   &#31867;&#20013;&#23454;&#38469;&#26377; 7&#31181; znode &#31867;&#22411; &#65292;&#20294;&#26159;&#29992;&#30340;&#26368;&#22810;&#30340;&#36824;&#26159;&#19978;&#38754;&#20171;&#32461;&#30340; 4 &#31181;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u5462c964">
+  <br>
+ </p>
+ <p class="ne-p" id="u10ea9386">
+  <strong>
+   <span class="ne-text">
+    a.&#21019;&#24314;&#25345;&#20037;&#21270;&#33410;&#28857;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ucad378ea">
+  <br>
+ </p>
+ <p class="ne-p" id="uf99d6112">
+  <span class="ne-text">
+   &#20320;&#21487;&#20197;&#36890;&#36807;&#19979;&#38754;&#20004;&#31181;&#26041;&#24335;&#21019;&#24314;&#25345;&#20037;&#21270;&#30340;&#33410;&#28857;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="ufabb7f74">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="JnB4U">//&#27880;&#24847;:&#19979;&#38754;&#30340;&#20195;&#30721;&#20250;&#25253;&#38169;&#65292;&#19979;&#25991;&#35828;&#20102;&#20855;&#20307;&#21407;&#22240;
+zkClient.create().forPath("/node1/00001");
+zkClient.create().withMode(CreateMode.PERSISTENT).forPath("/node1/00002");</pre>
+ <p class="ne-p" id="ue1c69c34">
+  <br>
+ </p>
+ <p class="ne-p" id="u2ab499aa">
+  <span class="ne-text">
+   &#20294;&#26159;&#65292;&#20320;&#36816;&#34892;&#19978;&#38754;&#30340;&#20195;&#30721;&#20250;&#25253;&#38169;&#65292;&#36825;&#26159;&#22240;&#20026;&#30340;&#29238;&#33410;&#28857;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    node1
+   </span>
+  </code>
+  <span class="ne-text">
+   &#36824;&#26410;&#21019;&#24314;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="uecfb39b6">
+  <br>
+ </p>
+ <p class="ne-p" id="u908835a1">
+  <span class="ne-text">
+   &#20320;&#21487;&#20197;&#20808;&#21019;&#24314;&#29238;&#33410;&#28857;
+  </span>
+  <code class="ne-code">
+   <span class="ne-text">
+    node1
+   </span>
+  </code>
+  <span class="ne-text">
+   &#65292;&#28982;&#21518;&#20877;&#25191;&#34892;&#19978;&#38754;&#30340;&#20195;&#30721;&#23601;&#19981;&#20250;&#25253;&#38169;&#20102;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u533def63">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="WIpRd">zkClient.create().forPath("/node1");</pre>
+ <p class="ne-p" id="uc4edf61c">
+  <br>
+ </p>
+ <p class="ne-p" id="ua99e47ad">
+  <span class="ne-text">
+   &#26356;&#25512;&#33616;&#30340;&#26041;&#24335;&#26159;&#36890;&#36807;&#19979;&#38754;&#36825;&#34892;&#20195;&#30721;&#65292;
+  </span>
+  <code class="ne-code">
+   <strong>
+    <span class="ne-text">
+     creatingParentsIfNeeded()
+    </span>
+   </strong>
+  </code>
+  <strong>
+   <span class="ne-text">
+    &#21487;&#20197;&#20445;&#35777;&#29238;&#33410;&#28857;&#19981;&#23384;&#22312;&#30340;&#26102;&#20505;&#33258;&#21160;&#21019;&#24314;&#29238;&#33410;&#28857;&#65292;&#36825;&#26159;&#38750;&#24120;&#26377;&#29992;&#30340;&#12290;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u6f7e53a5">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="paoPM">zkClient.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath("/node1/00001");</pre>
+ <p class="ne-p" id="u03d0352e">
+  <br>
+ </p>
+ <p class="ne-p" id="u7df4f7fd">
+  <strong>
+   <span class="ne-text">
+    b.&#21019;&#24314;&#20020;&#26102;&#33410;&#28857;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="uf4705e72">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="RcsKG">zkClient.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath("/node1/00001");</pre>
+ <p class="ne-p" id="u2e5550fc">
+  <br>
+ </p>
+ <p class="ne-p" id="u05cf1a55">
+  <strong>
+   <span class="ne-text">
+    c.&#21019;&#24314;&#33410;&#28857;&#24182;&#25351;&#23450;&#25968;&#25454;&#20869;&#23481;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="u6e138798">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="zwKN5">zkClient.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath("/node1/00001","java".getBytes());
+zkClient.getData().forPath("/node1/00001");//&#33719;&#21462;&#33410;&#28857;&#30340;&#25968;&#25454;&#20869;&#23481;&#65292;&#33719;&#21462;&#21040;&#30340;&#26159; byte&#25968;&#32452;</pre>
+ <p class="ne-p" id="ud54f8234">
+  <br>
+ </p>
+ <p class="ne-p" id="uba6f034c">
+  <strong>
+   <span class="ne-text">
+    d.&#26816;&#27979;&#33410;&#28857;&#26159;&#21542;&#21019;&#24314;&#25104;&#21151;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="udce3d8af">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="uIJeo">zkClient.checkExists().forPath("/node1/00001");//&#19981;&#20026;null&#30340;&#35805;&#65292;&#35828;&#26126;&#33410;&#28857;&#21019;&#24314;&#25104;&#21151;</pre>
+ <p class="ne-p" id="u7c0e96df">
+  <br>
+ </p>
+ <h4 id="Mbxnp">
+  <span class="ne-text">
+   3.2.2. &#21024;&#38500;&#33410;&#28857;
+  </span>
+ </h4>
+ <p class="ne-p" id="ub4fd827a">
+  <br>
+ </p>
+ <p class="ne-p" id="ua3da6f62">
+  <strong>
+   <span class="ne-text">
+    a.&#21024;&#38500;&#19968;&#20010;&#23376;&#33410;&#28857;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="uc8163af0">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="NXFIq">zkClient.delete().forPath("/node1/00001");</pre>
+ <p class="ne-p" id="u80e3d518">
+  <br>
+ </p>
+ <p class="ne-p" id="ue4053009">
+  <strong>
+   <span class="ne-text">
+    b.&#21024;&#38500;&#19968;&#20010;&#33410;&#28857;&#20197;&#21450;&#20854;&#19979;&#30340;&#25152;&#26377;&#23376;&#33410;&#28857;
+   </span>
+  </strong>
+ </p>
+ <p class="ne-p" id="ue1cb363c">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="ZZlST">zkClient.delete().deletingChildrenIfNeeded().forPath("/node1");</pre>
+ <p class="ne-p" id="uddcbd65a">
+  <br>
+ </p>
+ <h4 id="WrLV4">
+  <span class="ne-text">
+   3.2.3. &#33719;&#21462;/&#26356;&#26032;&#33410;&#28857;&#25968;&#25454;&#20869;&#23481;
+  </span>
+ </h4>
+ <p class="ne-p" id="ub4ec86ff">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="ZjkVU">zkClient.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath("/node1/00001","java".getBytes());
+zkClient.getData().forPath("/node1/00001");//&#33719;&#21462;&#33410;&#28857;&#30340;&#25968;&#25454;&#20869;&#23481;
+zkClient.setData().forPath("/node1/00001","c++".getBytes());//&#26356;&#26032;&#33410;&#28857;&#25968;&#25454;&#20869;&#23481;</pre>
+ <p class="ne-p" id="ue46cdbb6">
+  <br>
+ </p>
+ <h4 id="VrnCU">
+  <span class="ne-text">
+   3.2.4. &#33719;&#21462;&#26576;&#20010;&#33410;&#28857;&#30340;&#25152;&#26377;&#23376;&#33410;&#28857;&#36335;&#24452;
+  </span>
+ </h4>
+ <p class="ne-p" id="u907486e4">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="s5UHS">List&lt;String&gt; childrenPaths = zkClient.getChildren().forPath("/node1");</pre>
+ <p class="ne-p" id="ud7c360aa">
+  <br>
+ </p>
+ <h3 id="37b98385">
+  <span class="ne-text">
+   3.3. &#30417;&#21548;&#22120;
+  </span>
+ </h3>
+ <p class="ne-p" id="ufaf93845">
+  <br>
+ </p>
+ <p class="ne-p" id="ua87f7a57">
+  <strong>
+   <span class="ne-text">
+    &#19979;&#38754;&#31616;&#21333;&#28436;&#31034;&#19968;&#19979;&#22914;&#20309;&#32473;&#26576;&#20010;&#33410;&#28857;&#27880;&#20876;&#23376;&#33410;&#28857;&#30417;&#21548;&#22120;
+   </span>
+  </strong>
+  <span class="ne-text">
+   &#12290;&#27880;&#20876;&#20102;&#30417;&#21548;&#22120;&#20043;&#21518;&#65292;&#36825;&#20010;&#33410;&#28857;&#30340;&#23376;&#33410;&#28857;&#21457;&#29983;&#21464;&#21270;&#27604;&#22914;&#22686;&#21152;&#12289;&#20943;&#23569;&#25110;&#32773;&#26356;&#26032;&#30340;&#26102;&#20505;&#65292;&#20320;&#21487;&#20197;&#33258;&#23450;&#20041;&#22238;&#35843;&#25805;&#20316;&#12290;
+  </span>
+ </p>
+ <p class="ne-p" id="u597b1eb6">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="eGbxh">String path = "/node1";
+PathChildrenCache pathChildrenCache = new PathChildrenCache(zkClient, path, true);
+PathChildrenCacheListener pathChildrenCacheListener = (curatorFramework, pathChildrenCacheEvent) -&gt; {
+    // do something
+};
+pathChildrenCache.getListenable().addListener(pathChildrenCacheListener);
+pathChildrenCache.start();</pre>
+ <p class="ne-p" id="uea37013c">
+  <br>
+ </p>
+ <p class="ne-p" id="u0e3c3461">
+  <span class="ne-text">
+   &#22914;&#26524;&#20320;&#35201;&#33719;&#21462;&#33410;&#28857;&#20107;&#20214;&#31867;&#22411;&#30340;&#35805;&#65292;&#21487;&#20197;&#36890;&#36807;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="ua1dd4160">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="zW3Ws">pathChildrenCacheEvent.getType()</pre>
+ <p class="ne-p" id="uc486efe0">
+  <br>
+ </p>
+ <p class="ne-p" id="u8e0e4530">
+  <span class="ne-text">
+   &#19968;&#20849;&#26377;&#19979;&#38754;&#20960;&#31181;&#31867;&#22411;&#65306;
+  </span>
+ </p>
+ <p class="ne-p" id="udc1f4bcd">
+  <br>
+ </p>
+ <pre class="ne-codeblock language-java" data-language="java" id="oPSdg">    public static enum Type {
+        CHILD_ADDED,//&#23376;&#33410;&#28857;&#22686;&#21152;
+        CHILD_UPDATED,//&#23376;&#33410;&#28857;&#26356;&#26032;
+        CHILD_REMOVED,//&#23376;&#33410;&#28857;&#34987;&#21024;&#38500;
+        CONNECTION_SUSPENDED,
+        CONNECTION_RECONNECTED,
+        CONNECTION_LOST,
+        INITIALIZED;
+
+        private Type() {
+        }
+    }</pre>
+</div>
+</div>
+</div>
+
+        </body>
+        
+        
