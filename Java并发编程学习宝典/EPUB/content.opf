@@ -1,0 +1,302 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="id" version="3.0" prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <meta property="dcterms:modified">2022-08-10T13:32:23Z</meta>
+    <meta name="generator" content="Ebook-lib 0.17.1"/>
+    <dc:identifier id="id">Java并发编程学习宝典</dc:identifier>
+    <dc:title>Java并发编程学习宝典</dc:title>
+    <dc:language>cn</dc:language>
+    <dc:creator id="creator">Java并发编程学习宝典</dc:creator>
+    <meta name="cover" content="cover-img"></meta>
+  </metadata>
+  <manifest>
+    <item href="cover" id="cover-img" media-type="application/octet-stream" properties="cover-image"/>
+    <item href="cover.xhtml" id="cover" media-type="application/xhtml+xml"/>
+    <item href="b36f766a-186d-11ed-a978-acde48001122" id="b36f766a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b39a9a3e-186d-11ed-a978-acde48001122" id="b39a9a3e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b3bd966a-186d-11ed-a978-acde48001122" id="b3bd966a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b3dbf42a-186d-11ed-a978-acde48001122" id="b3dbf42a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b3f731a4-186d-11ed-a978-acde48001122" id="b3f731a4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="01 开篇词-多线程为什么是你必需要掌握的知识-慕课专栏.xhtml" id="chapter_0" media-type="application/xhtml+xml"/>
+    <item href="b41b33c4-186d-11ed-a978-acde48001122" id="b41b33c4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b446036a-186d-11ed-a978-acde48001122" id="b446036a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b45e146e-186d-11ed-a978-acde48001122" id="b45e146e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b4796aac-186d-11ed-a978-acde48001122" id="b4796aac-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b490ce68-186d-11ed-a978-acde48001122" id="b490ce68-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b4aa3ee8-186d-11ed-a978-acde48001122" id="b4aa3ee8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="02 绝对不仅仅是为了面试—我们为什么需要学习多线程-慕课专栏.xhtml" id="chapter_1" media-type="application/xhtml+xml"/>
+    <item href="b4d849be-186d-11ed-a978-acde48001122" id="b4d849be-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b4f9975e-186d-11ed-a978-acde48001122" id="b4f9975e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b5194fc2-186d-11ed-a978-acde48001122" id="b5194fc2-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b536b51c-186d-11ed-a978-acde48001122" id="b536b51c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b548e41c-186d-11ed-a978-acde48001122" id="b548e41c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="03 多线程开发如此简单—Java中如何编写多线程程序-慕课专栏.xhtml" id="chapter_2" media-type="application/xhtml+xml"/>
+    <item href="b57f822e-186d-11ed-a978-acde48001122" id="b57f822e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b5a0f8c8-186d-11ed-a978-acde48001122" id="b5a0f8c8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b5c006fa-186d-11ed-a978-acde48001122" id="b5c006fa-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b5dc4a9a-186d-11ed-a978-acde48001122" id="b5dc4a9a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b5f92d0e-186d-11ed-a978-acde48001122" id="b5f92d0e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b60d6576-186d-11ed-a978-acde48001122" id="b60d6576-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b623fce6-186d-11ed-a978-acde48001122" id="b623fce6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="04 人多力量未必大—并发可能会遇到的问题-慕课专栏.xhtml" id="chapter_3" media-type="application/xhtml+xml"/>
+    <item href="b6501556-186d-11ed-a978-acde48001122" id="b6501556-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b66c8d3a-186d-11ed-a978-acde48001122" id="b66c8d3a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b6844150-186d-11ed-a978-acde48001122" id="b6844150-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b69bbff6-186d-11ed-a978-acde48001122" id="b69bbff6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b6b54f5c-186d-11ed-a978-acde48001122" id="b6b54f5c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b6c9b028-186d-11ed-a978-acde48001122" id="b6c9b028-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b6e1c1a4-186d-11ed-a978-acde48001122" id="b6e1c1a4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="05 看若兄弟，实如父子—Thread和Runnable详解-慕课专栏.xhtml" id="chapter_4" media-type="application/xhtml+xml"/>
+    <item href="b70a362a-186d-11ed-a978-acde48001122" id="b70a362a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b715541a-186d-11ed-a978-acde48001122" id="b715541a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b72f3c0e-186d-11ed-a978-acde48001122" id="b72f3c0e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b7482142-186d-11ed-a978-acde48001122" id="b7482142-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b7591524-186d-11ed-a978-acde48001122" id="b7591524-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b766afc2-186d-11ed-a978-acde48001122" id="b766afc2-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="06 线程什么时候开始真正执行？—线程的状态详解-慕课专栏.xhtml" id="chapter_5" media-type="application/xhtml+xml"/>
+    <item href="b78c76da-186d-11ed-a978-acde48001122" id="b78c76da-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b79f4d64-186d-11ed-a978-acde48001122" id="b79f4d64-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b7bd954e-186d-11ed-a978-acde48001122" id="b7bd954e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b7dcf7fe-186d-11ed-a978-acde48001122" id="b7dcf7fe-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b7f17026-186d-11ed-a978-acde48001122" id="b7f17026-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="07 深入Thread类—线程API精讲-慕课专栏.xhtml" id="chapter_6" media-type="application/xhtml+xml"/>
+    <item href="b83629aa-186d-11ed-a978-acde48001122" id="b83629aa-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b859eebc-186d-11ed-a978-acde48001122" id="b859eebc-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b8726d66-186d-11ed-a978-acde48001122" id="b8726d66-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b8933ae6-186d-11ed-a978-acde48001122" id="b8933ae6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b8ae3e5e-186d-11ed-a978-acde48001122" id="b8ae3e5e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b8c4827c-186d-11ed-a978-acde48001122" id="b8c4827c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="08 集体协作，什么最重要？沟通！—线程的等待和通知-慕课专栏.xhtml" id="chapter_7" media-type="application/xhtml+xml"/>
+    <item href="b8f1e230-186d-11ed-a978-acde48001122" id="b8f1e230-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b90790e4-186d-11ed-a978-acde48001122" id="b90790e4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b91fbe76-186d-11ed-a978-acde48001122" id="b91fbe76-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b939ae3a-186d-11ed-a978-acde48001122" id="b939ae3a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b96a4b8a-186d-11ed-a978-acde48001122" id="b96a4b8a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b9988004-186d-11ed-a978-acde48001122" id="b9988004-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="09 使用多线程实现分工、解耦、缓冲—生产者、消费者实战-慕课专栏.xhtml" id="chapter_8" media-type="application/xhtml+xml"/>
+    <item href="b9dbc300-186d-11ed-a978-acde48001122" id="b9dbc300-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="b9efebb4-186d-11ed-a978-acde48001122" id="b9efebb4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ba15471a-186d-11ed-a978-acde48001122" id="ba15471a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ba41a878-186d-11ed-a978-acde48001122" id="ba41a878-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ba86040a-186d-11ed-a978-acde48001122" id="ba86040a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="10 有福同享，有难同当—原子性-慕课专栏.xhtml" id="chapter_9" media-type="application/xhtml+xml"/>
+    <item href="bad182cc-186d-11ed-a978-acde48001122" id="bad182cc-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bb0710ea-186d-11ed-a978-acde48001122" id="bb0710ea-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bb242d9c-186d-11ed-a978-acde48001122" id="bb242d9c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bb3c304a-186d-11ed-a978-acde48001122" id="bb3c304a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bb543b90-186d-11ed-a978-acde48001122" id="bb543b90-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bb6b07d0-186d-11ed-a978-acde48001122" id="bb6b07d0-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bb830664-186d-11ed-a978-acde48001122" id="bb830664-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="11 眼见不实—可见性-慕课专栏.xhtml" id="chapter_10" media-type="application/xhtml+xml"/>
+    <item href="bba74b46-186d-11ed-a978-acde48001122" id="bba74b46-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bbcde0e4-186d-11ed-a978-acde48001122" id="bbcde0e4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bbfdeee2-186d-11ed-a978-acde48001122" id="bbfdeee2-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bc1c1c28-186d-11ed-a978-acde48001122" id="bc1c1c28-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bc352f24-186d-11ed-a978-acde48001122" id="bc352f24-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bc501dde-186d-11ed-a978-acde48001122" id="bc501dde-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="12 什么？还有这种操作！—有序性-慕课专栏.xhtml" id="chapter_11" media-type="application/xhtml+xml"/>
+    <item href="bc7043ac-186d-11ed-a978-acde48001122" id="bc7043ac-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bc8b3eb4-186d-11ed-a978-acde48001122" id="bc8b3eb4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bcd42f16-186d-11ed-a978-acde48001122" id="bcd42f16-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bcf2b42c-186d-11ed-a978-acde48001122" id="bcf2b42c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bd09d454-186d-11ed-a978-acde48001122" id="bd09d454-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="13 问题的根源—Java内存模型简介-慕课专栏.xhtml" id="chapter_12" media-type="application/xhtml+xml"/>
+    <item href="bd33c156-186d-11ed-a978-acde48001122" id="bd33c156-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bd4d51d4-186d-11ed-a978-acde48001122" id="bd4d51d4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bd6e2544-186d-11ed-a978-acde48001122" id="bd6e2544-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bd898fe6-186d-11ed-a978-acde48001122" id="bd898fe6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bdb5838a-186d-11ed-a978-acde48001122" id="bdb5838a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bdd2a712-186d-11ed-a978-acde48001122" id="bdd2a712-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bde95c32-186d-11ed-a978-acde48001122" id="bde95c32-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="be02f71e-186d-11ed-a978-acde48001122" id="be02f71e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="14 僵持不下—死锁详解-慕课专栏.xhtml" id="chapter_13" media-type="application/xhtml+xml"/>
+    <item href="be29d398-186d-11ed-a978-acde48001122" id="be29d398-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="be5a53c4-186d-11ed-a978-acde48001122" id="be5a53c4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="be77f578-186d-11ed-a978-acde48001122" id="be77f578-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bea3ccb6-186d-11ed-a978-acde48001122" id="bea3ccb6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bec32084-186d-11ed-a978-acde48001122" id="bec32084-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="15 原子性轻量级实现—深入理解Atomic与CAS-慕课专栏.xhtml" id="chapter_14" media-type="application/xhtml+xml"/>
+    <item href="bee9f254-186d-11ed-a978-acde48001122" id="bee9f254-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="befeaba4-186d-11ed-a978-acde48001122" id="befeaba4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bf182372-186d-11ed-a978-acde48001122" id="bf182372-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bf325b34-186d-11ed-a978-acde48001122" id="bf325b34-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bf48a1a0-186d-11ed-a978-acde48001122" id="bf48a1a0-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="16 让你眼见为实—volatile详解-慕课专栏.xhtml" id="chapter_15" media-type="application/xhtml+xml"/>
+    <item href="bf746f88-186d-11ed-a978-acde48001122" id="bf746f88-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bf8bf4f0-186d-11ed-a978-acde48001122" id="bf8bf4f0-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bfa80d0c-186d-11ed-a978-acde48001122" id="bfa80d0c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bfc19dc6-186d-11ed-a978-acde48001122" id="bfc19dc6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="bfdb7c0a-186d-11ed-a978-acde48001122" id="bfdb7c0a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="17 资源有限，请排队等候—Synchronized使用、原理及缺陷-慕课专栏.xhtml" id="chapter_16" media-type="application/xhtml+xml"/>
+    <item href="c00fadc2-186d-11ed-a978-acde48001122" id="c00fadc2-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c025ea24-186d-11ed-a978-acde48001122" id="c025ea24-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c043f2a8-186d-11ed-a978-acde48001122" id="c043f2a8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c062aacc-186d-11ed-a978-acde48001122" id="c062aacc-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c07b8a38-186d-11ed-a978-acde48001122" id="c07b8a38-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="18 线程作用域内共享变量—深入解析ThreadLocal-慕课专栏.xhtml" id="chapter_17" media-type="application/xhtml+xml"/>
+    <item href="c0b098ae-186d-11ed-a978-acde48001122" id="c0b098ae-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c0ca3d68-186d-11ed-a978-acde48001122" id="c0ca3d68-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c0e1f98a-186d-11ed-a978-acde48001122" id="c0e1f98a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c0fab542-186d-11ed-a978-acde48001122" id="c0fab542-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c11762be-186d-11ed-a978-acde48001122" id="c11762be-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c12e7f9e-186d-11ed-a978-acde48001122" id="c12e7f9e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c142e33a-186d-11ed-a978-acde48001122" id="c142e33a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="19 自己动手丰衣足食—简单线程池实现-慕课专栏.xhtml" id="chapter_18" media-type="application/xhtml+xml"/>
+    <item href="c1867244-186d-11ed-a978-acde48001122" id="c1867244-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c19f0d54-186d-11ed-a978-acde48001122" id="c19f0d54-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c1bad908-186d-11ed-a978-acde48001122" id="c1bad908-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c1d49e60-186d-11ed-a978-acde48001122" id="c1d49e60-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c1e9c33a-186d-11ed-a978-acde48001122" id="c1e9c33a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c200d232-186d-11ed-a978-acde48001122" id="c200d232-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c21a0ab8-186d-11ed-a978-acde48001122" id="c21a0ab8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="20 其实不用造轮子—Executor框架详解-慕课专栏.xhtml" id="chapter_19" media-type="application/xhtml+xml"/>
+    <item href="c2601666-186d-11ed-a978-acde48001122" id="c2601666-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c27cff6a-186d-11ed-a978-acde48001122" id="c27cff6a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c294e030-186d-11ed-a978-acde48001122" id="c294e030-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c2b07430-186d-11ed-a978-acde48001122" id="c2b07430-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c2c8690a-186d-11ed-a978-acde48001122" id="c2c8690a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c2e1c44a-186d-11ed-a978-acde48001122" id="c2e1c44a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="21 更高级的锁—深入解析Lock-慕课专栏.xhtml" id="chapter_20" media-type="application/xhtml+xml"/>
+    <item href="c30d6c26-186d-11ed-a978-acde48001122" id="c30d6c26-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c328ef00-186d-11ed-a978-acde48001122" id="c328ef00-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c34347ce-186d-11ed-a978-acde48001122" id="c34347ce-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c35e30c0-186d-11ed-a978-acde48001122" id="c35e30c0-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c37bea8e-186d-11ed-a978-acde48001122" id="c37bea8e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="22 到底哪把锁更适合你？—synchronized与ReentrantLock对比-慕课专栏.xhtml" id="chapter_21" media-type="application/xhtml+xml"/>
+    <item href="c3ad890e-186d-11ed-a978-acde48001122" id="c3ad890e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c3e10716-186d-11ed-a978-acde48001122" id="c3e10716-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c40fdc44-186d-11ed-a978-acde48001122" id="c40fdc44-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c42b5d34-186d-11ed-a978-acde48001122" id="c42b5d34-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c44584a2-186d-11ed-a978-acde48001122" id="c44584a2-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c4595c66-186d-11ed-a978-acde48001122" id="c4595c66-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="23 按需上锁—ReadWriteLock详解-慕课专栏.xhtml" id="chapter_22" media-type="application/xhtml+xml"/>
+    <item href="c49efda2-186d-11ed-a978-acde48001122" id="c49efda2-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c4b6830a-186d-11ed-a978-acde48001122" id="c4b6830a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c4f21316-186d-11ed-a978-acde48001122" id="c4f21316-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c50f11a0-186d-11ed-a978-acde48001122" id="c50f11a0-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c520cde6-186d-11ed-a978-acde48001122" id="c520cde6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c53cf872-186d-11ed-a978-acde48001122" id="c53cf872-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="24 经典并发容器，多线程面试必备。—深入解析ConcurrentHashMap-慕课专栏.xhtml" id="chapter_23" media-type="application/xhtml+xml"/>
+    <item href="c58a6ee0-186d-11ed-a978-acde48001122" id="c58a6ee0-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c5a83ee8-186d-11ed-a978-acde48001122" id="c5a83ee8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c5e96b3e-186d-11ed-a978-acde48001122" id="c5e96b3e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c601ecea-186d-11ed-a978-acde48001122" id="c601ecea-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="25 经典并发容器，多线程面试必备—深入解析ConcurrentHashMap下-慕课专栏.xhtml" id="chapter_24" media-type="application/xhtml+xml"/>
+    <item href="c64adf9a-186d-11ed-a978-acde48001122" id="c64adf9a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c65d6c50-186d-11ed-a978-acde48001122" id="c65d6c50-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c67fe5e6-186d-11ed-a978-acde48001122" id="c67fe5e6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c6ba1b9e-186d-11ed-a978-acde48001122" id="c6ba1b9e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="26不让我进门，我就在门口一直等！—BlockingQueue和ArrayBlockingQueue-慕课专栏.xhtml" id="chapter_25" media-type="application/xhtml+xml"/>
+    <item href="c6e7c710-186d-11ed-a978-acde48001122" id="c6e7c710-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c70562d4-186d-11ed-a978-acde48001122" id="c70562d4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c734c394-186d-11ed-a978-acde48001122" id="c734c394-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c765249e-186d-11ed-a978-acde48001122" id="c765249e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c77ddf20-186d-11ed-a978-acde48001122" id="c77ddf20-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="27 倒数计时开始，三、二、一—CountDownLatch详解-慕课专栏.xhtml" id="chapter_26" media-type="application/xhtml+xml"/>
+    <item href="c7b6865e-186d-11ed-a978-acde48001122" id="c7b6865e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c7fbe082-186d-11ed-a978-acde48001122" id="c7fbe082-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c81868d8-186d-11ed-a978-acde48001122" id="c81868d8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c834b164-186d-11ed-a978-acde48001122" id="c834b164-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c84ef01a-186d-11ed-a978-acde48001122" id="c84ef01a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="28 人齐了，一起行动—CyclicBarrier详解-慕课专栏.xhtml" id="chapter_27" media-type="application/xhtml+xml"/>
+    <item href="c88dd99c-186d-11ed-a978-acde48001122" id="c88dd99c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c8af269c-186d-11ed-a978-acde48001122" id="c8af269c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c8cb07b8-186d-11ed-a978-acde48001122" id="c8cb07b8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c8e4a9d4-186d-11ed-a978-acde48001122" id="c8e4a9d4-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c8ff3e7a-186d-11ed-a978-acde48001122" id="c8ff3e7a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="29 一手交钱，一手交货—Exchanger详解-慕课专栏.xhtml" id="chapter_28" media-type="application/xhtml+xml"/>
+    <item href="c93f6b6c-186d-11ed-a978-acde48001122" id="c93f6b6c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c95a7466-186d-11ed-a978-acde48001122" id="c95a7466-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c98b9e42-186d-11ed-a978-acde48001122" id="c98b9e42-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c9a5c6e6-186d-11ed-a978-acde48001122" id="c9a5c6e6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="c9c1ec72-186d-11ed-a978-acde48001122" id="c9c1ec72-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="30 限量供应，不好意思您来晚了—Semaphore详解-慕课专栏.xhtml" id="chapter_29" media-type="application/xhtml+xml"/>
+    <item href="ca167260-186d-11ed-a978-acde48001122" id="ca167260-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ca368f46-186d-11ed-a978-acde48001122" id="ca368f46-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ca4de7b8-186d-11ed-a978-acde48001122" id="ca4de7b8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ca63c164-186d-11ed-a978-acde48001122" id="ca63c164-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ca787adc-186d-11ed-a978-acde48001122" id="ca787adc-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ca8cae62-186d-11ed-a978-acde48001122" id="ca8cae62-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="caae64c6-186d-11ed-a978-acde48001122" id="caae64c6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="31 凭票取餐—Future模式详解-慕课专栏.xhtml" id="chapter_30" media-type="application/xhtml+xml"/>
+    <item href="cb2191da-186d-11ed-a978-acde48001122" id="cb2191da-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cb49b750-186d-11ed-a978-acde48001122" id="cb49b750-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cb633e78-186d-11ed-a978-acde48001122" id="cb633e78-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cb7e2d6e-186d-11ed-a978-acde48001122" id="cb7e2d6e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="32 请按到场顺序发言—Completion Service详解-慕课专栏.xhtml" id="chapter_31" media-type="application/xhtml+xml"/>
+    <item href="cbba690a-186d-11ed-a978-acde48001122" id="cbba690a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cbd4a1c6-186d-11ed-a978-acde48001122" id="cbd4a1c6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cbee538c-186d-11ed-a978-acde48001122" id="cbee538c-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cc07c222-186d-11ed-a978-acde48001122" id="cc07c222-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="33 分阶段执行你的任务-学习使用Phaser运行多阶段任务-慕课专栏.xhtml" id="chapter_32" media-type="application/xhtml+xml"/>
+    <item href="cc422aca-186d-11ed-a978-acde48001122" id="cc422aca-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cc74ff22-186d-11ed-a978-acde48001122" id="cc74ff22-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ccaebf1e-186d-11ed-a978-acde48001122" id="ccaebf1e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ccd5ef44-186d-11ed-a978-acde48001122" id="ccd5ef44-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ccf514e6-186d-11ed-a978-acde48001122" id="ccf514e6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cd0f1b20-186d-11ed-a978-acde48001122" id="cd0f1b20-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cd291e3a-186d-11ed-a978-acde48001122" id="cd291e3a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="34 谁都不能偷懒-通过 CompletableFuture 组装你的异步计算单元-慕课专栏.xhtml" id="chapter_33" media-type="application/xhtml+xml"/>
+    <item href="cd93f390-186d-11ed-a978-acde48001122" id="cd93f390-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cdb6d73e-186d-11ed-a978-acde48001122" id="cdb6d73e-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cdd2d7ea-186d-11ed-a978-acde48001122" id="cdd2d7ea-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cdfb4ba8-186d-11ed-a978-acde48001122" id="cdfb4ba8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ce16ec78-186d-11ed-a978-acde48001122" id="ce16ec78-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ce37774a-186d-11ed-a978-acde48001122" id="ce37774a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="35 拆分你的任务—学习使用Fork-Join框架.xhtml" id="chapter_34" media-type="application/xhtml+xml"/>
+    <item href="ce7c08a6-186d-11ed-a978-acde48001122" id="ce7c08a6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ce97c5aa-186d-11ed-a978-acde48001122" id="ce97c5aa-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ceb644a8-186d-11ed-a978-acde48001122" id="ceb644a8-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ced02f8a-186d-11ed-a978-acde48001122" id="ced02f8a-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="ceedf574-186d-11ed-a978-acde48001122" id="ceedf574-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="36 为多线程们安排一位经理—Master-Slave模式详解.xhtml" id="chapter_35" media-type="application/xhtml+xml"/>
+    <item href="cf3f9cb2-186d-11ed-a978-acde48001122" id="cf3f9cb2-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cf57a5be-186d-11ed-a978-acde48001122" id="cf57a5be-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cf9b53d6-186d-11ed-a978-acde48001122" id="cf9b53d6-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="cfb95098-186d-11ed-a978-acde48001122" id="cfb95098-186d-11ed-a978-acde48001122" media-type="image/jpg"/>
+    <item href="37 结束语-慕课专栏.xhtml" id="chapter_36" media-type="application/xhtml+xml"/>
+    <item href="toc.ncx" id="ncx" media-type="application/x-dtbncx+xml"/>
+    <item href="nav.xhtml" id="nav" media-type="application/xhtml+xml" properties="nav"/>
+    <item href="style/style.css" id="style" media-type="text/css"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="nav"/>
+    <itemref idref="chapter_0"/>
+    <itemref idref="chapter_1"/>
+    <itemref idref="chapter_2"/>
+    <itemref idref="chapter_3"/>
+    <itemref idref="chapter_4"/>
+    <itemref idref="chapter_5"/>
+    <itemref idref="chapter_6"/>
+    <itemref idref="chapter_7"/>
+    <itemref idref="chapter_8"/>
+    <itemref idref="chapter_9"/>
+    <itemref idref="chapter_10"/>
+    <itemref idref="chapter_11"/>
+    <itemref idref="chapter_12"/>
+    <itemref idref="chapter_13"/>
+    <itemref idref="chapter_14"/>
+    <itemref idref="chapter_15"/>
+    <itemref idref="chapter_16"/>
+    <itemref idref="chapter_17"/>
+    <itemref idref="chapter_18"/>
+    <itemref idref="chapter_19"/>
+    <itemref idref="chapter_20"/>
+    <itemref idref="chapter_21"/>
+    <itemref idref="chapter_22"/>
+    <itemref idref="chapter_23"/>
+    <itemref idref="chapter_24"/>
+    <itemref idref="chapter_25"/>
+    <itemref idref="chapter_26"/>
+    <itemref idref="chapter_27"/>
+    <itemref idref="chapter_28"/>
+    <itemref idref="chapter_29"/>
+    <itemref idref="chapter_30"/>
+    <itemref idref="chapter_31"/>
+    <itemref idref="chapter_32"/>
+    <itemref idref="chapter_33"/>
+    <itemref idref="chapter_34"/>
+    <itemref idref="chapter_35"/>
+    <itemref idref="chapter_36"/>
+  </spine>
+</package>

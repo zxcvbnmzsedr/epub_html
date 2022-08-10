@@ -1,0 +1,627 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  25 &#32463;&#20856;&#24182;&#21457;&#23481;&#22120;&#65292;&#22810;&#32447;&#31243;&#38754;&#35797;&#24517;&#22791;&#8212;&#28145;&#20837;&#35299;&#26512;ConcurrentHashMap&#19979;
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-11-21 10:45:02
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/c58a6ee0-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/c5a83ee8-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/c5e96b3e-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#38738;&#24180;&#26159;&#23398;&#20064;&#26234;&#24935;&#30340;&#26102;&#26399;&#65292;&#20013;&#24180;&#26159;&#20184;&#35832;&#23454;&#36341;&#30340;&#26102;&#26399;&#12290;
+    <p class="author">
+     &#8212;&#8212; &#21346;&#26797;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807;&#19978;&#19968;&#33410;&#30340;&#23398;&#20064;&#65292;&#25105;&#20204;&#20102;&#35299;&#20102; ConcurrentHashMap &#30340;&#26680;&#24515; hash &#31639;&#27861;&#23454;&#29616;&#12290;&#26412;&#33410;&#25105;&#20204;&#23558;&#32487;&#32493;&#23398;&#20064; put &#30456;&#20851;&#30340;&#20960;&#20010;&#26041;&#27861;&#20197;&#21450; get &#26041;&#27861;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19978;&#33410;&#25552;&#21040;&#23545;&#21704;&#24076;&#34920;&#30340;&#21152;&#36733;&#26159;&#22312;&#31532;&#19968;&#27425; put &#25805;&#20316;&#26102;&#36827;&#34892;&#30340;&#65292;put &#26041;&#27861;&#20013;&#30456;&#20851;&#30340;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span>tab <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token punctuation">(</span>n <span class="token operator">=</span> tab<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    tab <span class="token operator">=</span> <span class="token function">initTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#37027;&#20040;&#25509;&#19979;&#26469;&#25105;&#20204;&#23601;&#26469;&#30475;&#30475; initTable &#26041;&#27861;&#65292;&#22914;&#20309;&#21019;&#24314;&#21704;&#24076;&#34920;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;inittable-&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     1&#12289;initTable &#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     initTable &#26159;&#21021;&#22987;&#21270; table &#30340;&#26041;&#27861;&#12290;&#20869;&#37096;&#32771;&#34385;&#20102;&#22810;&#32447;&#31243;&#30340;&#24182;&#21457;&#23433;&#20840;&#12290;&#25105;&#20204;&#30452;&#25509;&#30475; initTable &#30340;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">final</span> Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">initTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tab<span class="token punctuation">;</span> <span class="token keyword">int</span> sc<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>tab <span class="token operator">=</span> table<span class="token punctuation">)</span> <span class="token operator">==</span> null <span class="token operator">||</span> tab<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">//&#22914;&#26524;sizeCtl&lt;0,&#37027;&#20040;&#26377;&#20854;&#20182;&#32447;&#31243;&#27491;&#22312;&#21019;&#24314;table&#65292;&#25152;&#20197;&#26412;&#32447;&#31243;&#35753;&#20986;CPU&#30340;&#25191;&#34892;&#26435;&#12290;&#30452;&#21040;table&#21019;&#24314;&#23436;&#25104;&#65292;while&#24490;&#29615;&#36339;&#20986;&#12290;if&#20013;&#21516;&#26102;&#36824;&#25226;sizeCtl&#30340;&#20540;&#36171;&#20540;&#32473;&#20102;sc&#12290;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>sc <span class="token operator">=</span> sizeCtl<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            Thread<span class="token punctuation">.</span><span class="token function">yield</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// lost initialization race; just spin</span>
+      <span class="token comment">//&#20197;CAS&#26041;&#24335;&#20462;&#25913;sizeCtl&#20026;-1&#65292;&#34920;&#31034;&#26412;&#32447;&#31243;&#24050;&#32463;&#24320;&#22987;&#21019;&#24314;table&#30340;&#24037;&#20316;&#12290;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>U<span class="token punctuation">.</span><span class="token function">compareAndSwapInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> SIZECTL<span class="token punctuation">,</span> sc<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+              <span class="token comment">//&#20877;&#27425;&#30830;&#35748;&#26159;&#21542;table&#36824;&#26159;&#31354;&#30340;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>tab <span class="token operator">=</span> table<span class="token punctuation">)</span> <span class="token operator">==</span> null <span class="token operator">||</span> tab<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  <span class="token comment">//&#22914;&#26524;sc&#26377;&#20540;&#65292;&#37027;&#20040;&#20351;&#29992;sc&#30340;&#20540;&#20316;&#20026;table&#30340;size&#65292;&#21542;&#21017;&#20351;&#29992;&#40664;&#35748;&#20540;16</span>
+                    <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token punctuation">(</span>sc <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">?</span> sc <span class="token operator">:</span> DEFAULT_CAPACITY<span class="token punctuation">;</span>
+                    <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
+                    Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nt <span class="token operator">=</span> <span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    table <span class="token operator">=</span> tab <span class="token operator">=</span> nt<span class="token punctuation">;</span>
+                  <span class="token comment">//sc&#34987;&#35774;&#32622;&#20026;table&#22823;&#23567;&#30340;3/4</span>
+                    sc <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token punctuation">(</span>n <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+              	<span class="token comment">//sizeCtl&#34987;&#35774;&#32622;&#20026;table&#22823;&#23567;&#30340;3/4</span>
+                sizeCtl <span class="token operator">=</span> sc<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> tab<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#37324;&#38754;&#26377;&#20010;&#20851;&#38190;&#30340;&#20540; sizeCtl&#65292;&#36825;&#20010;&#20540;&#26377;&#22810;&#20010;&#21547;&#20041;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;-1 &#20195;&#34920;&#26377;&#32447;&#31243;&#27491;&#22312;&#21019;&#24314; table&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;-N &#20195;&#34920;&#26377; N-1 &#20010;&#32447;&#31243;&#27491;&#22312;&#22797;&#21046; table&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;&#22312; table &#34987;&#21021;&#22987;&#21270;&#21069;&#65292;&#20195;&#34920;&#26681;&#25454;&#26500;&#36896;&#20989;&#25968;&#20256;&#20837;&#30340;&#20540;&#35745;&#31639;&#20986;&#30340;&#24212;&#34987;&#21021;&#22987;&#21270;&#30340;&#22823;&#23567;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     4&#12289;&#22312; table &#34987;&#21021;&#22987;&#21270;&#21518;&#65292;&#21017;&#34987;&#35774;&#32622;&#20026; table &#22823;&#23567; &#30340; 75%&#65292;&#20195;&#34920; table &#30340;&#23481;&#37327;&#65288;&#25968;&#32452;&#23481;&#37327;&#65289;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     initTable &#20013;&#20351;&#29992;&#21040; 1 &#21644; 4&#65292;2 &#21644; 3 &#22312;&#20854;&#23427;&#26041;&#27861;&#20013;&#20250;&#26377;&#20351;&#29992;&#12290;&#19979;&#38754;&#25105;&#20204;&#21487;&#20197;&#20808;&#30475;&#19979; ConcurrentHashMap &#30340;&#26500;&#36896;&#26041;&#27861;&#65292;&#37324;&#38754;&#20250;&#20351;&#29992;&#19978;&#38754;&#30340; 3 &#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;concurrenthashmap-&#26500;&#36896;&#20989;&#25968;&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     2&#12289;ConcurrentHashMap &#26500;&#36896;&#20989;&#25968;&#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ConcurrentHashMap &#24102;&#23481;&#37327;&#21442;&#25968;&#30340;&#26500;&#36896;&#20989;&#25968;&#28304;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token function">ConcurrentHashMap</span><span class="token punctuation">(</span><span class="token keyword">int</span> initialCapacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>initialCapacity <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//&#22914;&#26524;&#20256;&#20837;&#30340;&#21021;&#22987;&#21270;&#23481;&#37327;&#20540;&#36229;&#36807;&#26368;&#22823;&#23481;&#37327;&#30340;&#19968;&#21322;&#65292;&#37027;&#20040;sizeCtl&#20250;&#34987;&#35774;&#32622;&#20026;&#26368;&#22823;&#23481;&#37327;&#12290;</span>
+  <span class="token comment">//&#21542;&#21017;&#36890;&#36807;tableSizeFor&#26041;&#27861;&#23601;&#31639;&#20986;&#19968;&#20010;2&#30340;n&#27425;&#26041;&#25968;&#20540;&#20316;&#20026;size</span>
+    <span class="token keyword">int</span> cap <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>initialCapacity <span class="token operator">&gt;=</span> <span class="token punctuation">(</span>MAXIMUM_CAPACITY <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span>
+               MAXIMUM_CAPACITY <span class="token operator">:</span>
+               <span class="token function">tableSizeFor</span><span class="token punctuation">(</span>initialCapacity <span class="token operator">+</span> <span class="token punctuation">(</span>initialCapacity <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>sizeCtl <span class="token operator">=</span> cap<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#26159;&#19968;&#20010;&#26377;&#21442;&#25968;&#30340;&#26500;&#36896;&#26041;&#27861;&#12290;&#22914;&#26524;&#20320;&#23545;&#26410;&#26469;&#23384;&#20648;&#30340;&#25968;&#25454;&#37327;&#26377;&#39044;&#20272;&#65292;&#25105;&#20204;&#21487;&#20197;&#25351;&#23450;&#21704;&#24076;&#34920;&#30340;&#22823;&#23567;&#65292;&#36991;&#20813;&#39057;&#32321;&#30340;&#25193;&#23481;&#25805;&#20316;&#12290;tableSizeFor &#36825;&#20010;&#26041;&#27861;&#30830;&#20445;&#20102;&#21704;&#24076;&#34920;&#30340;&#22823;&#23567;&#27704;&#36828;&#37117;&#26159; 2 &#30340; n &#27425;&#26041;&#12290;&#36825;&#37324;&#25105;&#20204;&#22238;&#24819;&#19968;&#19979;&#19978;&#19968;&#33410;&#30340;&#20869;&#23481;&#65292;&#22914;&#26524; size &#19981;&#26159; 2 &#30340; n &#27425;&#26041;&#65292;&#37027;&#20040; hash &#31639;&#27861;&#35745;&#31639;&#30340;&#19979;&#26631;&#21457;&#29983;&#30340;&#30896;&#25758;&#27010;&#29575;&#20250;&#22823;&#22823;&#22686;&#21152;&#12290;&#22240;&#27492;&#36890;&#36807; tableSizeFor &#26041;&#27861;&#30830;&#20445;&#20102;&#36820;&#22238;&#22823;&#20110;&#20256;&#20837;&#21442;&#25968;&#30340;&#26368;&#23567; 2 &#30340; n &#27425;&#26041;&#12290;&#27880;&#24847;&#36825;&#37324;&#20256;&#20837;&#30340;&#21442;&#25968;&#19981;&#26159; initialCapacity&#65292;&#32780;&#26159; initialCapacity &#30340; 1.5 &#20493; + 1&#12290;&#36825;&#26679;&#20570;&#26159;&#20026;&#20102;&#20445;&#35777;&#22312;&#40664;&#35748; 75% &#30340;&#36127;&#36733;&#22240;&#23376;&#19979;&#65292;&#33021;&#22815;&#36275;&#22815;&#23481;&#32435; initialCapacity &#25968;&#37327;&#30340;&#20803;&#32032;&#12290;&#35762;&#21040;&#36825;&#37324;&#20320;&#19968;&#23450;&#22909;&#22855; tableSizeFor &#26159;&#22914;&#20309;&#23454;&#29616;&#21521;&#19978;&#21462;&#24471;&#26368;&#25509;&#36817;&#20837;&#21442; 2 &#30340; n &#27425;&#26041;&#30340;&#12290;&#19979;&#38754;&#25105;&#20204;&#26469;&#30475; tableSizeFor &#28304;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">tableSizeFor</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> c <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    n <span class="token operator">|=</span> n <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    n <span class="token operator">|=</span> n <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    n <span class="token operator">|=</span> n <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">4</span><span class="token punctuation">;</span>
+    n <span class="token operator">|=</span> n <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">8</span><span class="token punctuation">;</span>
+    n <span class="token operator">|=</span> n <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">16</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token punctuation">(</span>n <span class="token operator">&gt;=</span> MAXIMUM_CAPACITY<span class="token punctuation">)</span> <span class="token operator">?</span> MAXIMUM_CAPACITY <span class="token operator">:</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20381;&#26087;&#26159;&#20108;&#36827;&#21046;&#25353;&#20301;&#25805;&#20316;&#65292;&#36825;&#26679;&#19968;&#39039;&#25805;&#20316;&#21518;&#65292;&#24471;&#21040;&#30340;&#25968;&#20540;&#23601;&#26159;&#22823;&#20110; c &#30340;&#26368;&#23567; 2 &#30340; n &#27425;&#12290;&#25105;&#20204;&#25512;&#28436;&#19979;&#36807;&#31243;&#65292;&#20551;&#35774; c &#26159; 9&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      1&#12289;int n = 9 - 1
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n=8
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      2&#12289;n |= n &gt;&gt;&gt; 1
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n=1000
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n &gt;&gt;&gt; 1=0100
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20004;&#20010;&#20540;&#25353;&#20301;&#25110;&#21518;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n=1100
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      3&#12289;n |= n &gt;&gt;&gt; 2
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n=1100
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n &gt;&gt;&gt; 2=0011
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n=1111
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21040;&#36825;&#37324;&#21487;&#20197;&#30475;&#20986;&#35268;&#24459;&#26469;&#20102;&#12290;&#22914;&#26524; c &#36275;&#22815;&#22823;&#65292;&#20351;&#24471; n &#24456;&#22823;&#65292;&#37027;&#20040;&#36816;&#31639;&#21040; n |= n &gt;&gt;&gt; 16 &#26102;&#65292;n &#30340; 32 &#20301;&#37117;&#20026; 1&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#24635;&#32467;&#19968;&#19979;&#36825;&#19968;&#27573;&#36923;&#36753;&#65292;&#20854;&#23454;&#23601;&#26159;
+     <strong>
+      &#25226; n &#26377;&#25968;&#20540;&#30340; bit &#20301;&#20840;&#37096;&#32622;&#20026; 1
+     </strong>
+     &#12290;&#36825;&#26679;&#23601;&#24471;&#21040;&#20102;&#19968;&#20010;&#32943;&#23450;&#22823;&#20110;&#31561;&#20110; n &#30340;&#20540;&#12290;&#25105;&#20204;&#20877;&#30475;&#26368;&#21518;&#19968;&#34892;&#20195;&#30721;&#65292;&#26368;&#32456;&#36820;&#22238;&#30340;&#26159; n+1&#65292;&#37027;&#20040;&#19968;&#20010;&#25152;&#26377;&#20301;&#37117;&#26159; 1 &#30340;&#20108;&#36827;&#21046;&#25968;&#23383;&#65292;+1 &#21518;&#24471;&#21040;&#30340;&#23601;&#26159;&#19968;&#20010; 2 &#30340; n &#27425;&#26041;&#25968;&#20540;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20851;&#20110; ConcurrentHashMap (int initialCapacity) &#26500;&#36896;&#20989;&#25968;&#30340;&#20998;&#26512;&#25105;&#20204;&#24635;&#32467;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;&#26500;&#36896;&#20989;&#25968;&#20013;&#24182;&#19981;&#20250;&#21021;&#22987;&#21270;&#21704;&#24076;&#34920;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;&#26500;&#36896;&#20989;&#25968;&#20013;&#20165;&#35774;&#32622;&#21704;&#24076;&#34920;&#22823;&#23567;&#30340;&#21464;&#37327; sizeCtl&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;initialCapacity &#24182;&#19981;&#26159;&#21704;&#24076;&#34920;&#22823;&#23567;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     4&#12289;&#21704;&#24076;&#34920;&#22823;&#23567;&#20026; initialCapacity*1.5+1 &#21518;&#65292;&#21521;&#19978;&#21462;&#26368;&#23567;&#30340; 2 &#30340; n &#27425;&#26041;&#12290;&#22914;&#26524;&#36229;&#36807;&#26368;&#22823;&#23481;&#37327;&#19968;&#21322;&#65292;&#37027;&#20040;&#23601;&#26159;&#26368;&#22823;&#23481;&#37327;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;put-&#26041;&#27861;&#20013;&#65292;&#20445;&#23384;-keyvalue-&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     3&#12289;Put &#26041;&#27861;&#20013;&#65292;&#20445;&#23384; key/value &#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21069;&#38754;&#25105;&#20204;&#36824;&#19968;&#30452;&#22260;&#32469;&#22312;&#21704;&#24076;&#34920;&#30340;&#21019;&#24314;&#22312;&#20570;&#35762;&#35299;&#12290;&#25509;&#19979;&#26469;&#25105;&#20204;&#20998;&#26512;&#30495;&#27491;&#24448;&#21704;&#24076;&#34920;&#23384;&#20648;&#25968;&#25454;&#30340;&#36923;&#36753;&#65292;&#25105;&#20204;&#20808;&#36827;&#34892;&#19979;&#22238;&#39038;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            V oldVal <span class="token operator">=</span> null<span class="token punctuation">;</span>
+            <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>f<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              	<span class="token comment">//&#20877;&#27425;&#30830;&#35748;&#35813;&#20301;&#32622;&#30340;&#20540;&#26159;&#21542;&#24050;&#32463;&#21457;&#29983;&#20102;&#21464;&#21270;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">tabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">==</span> f<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  <span class="token comment">//fh&#22823;&#20110;0&#65292;&#34920;&#31034;&#35813;&#20301;&#32622;&#23384;&#20648;&#30340;&#36824;&#26159;&#38142;&#34920;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>fh <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        binCount <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                      <span class="token comment">//&#36941;&#21382;&#38142;&#34920;</span>
+                        <span class="token keyword">for</span> <span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> e <span class="token operator">=</span> f<span class="token punctuation">;</span><span class="token punctuation">;</span> <span class="token operator">++</span>binCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            K ek<span class="token punctuation">;</span>
+                          <span class="token comment">//&#22914;&#26524;&#23384;&#22312;&#19968;&#26679;hash&#20540;&#30340;node&#65292;&#37027;&#20040;&#26681;&#25454;onlyIfAbsent&#30340;&#20540;&#36873;&#25321;&#35206;&#30422;value&#25110;&#32773;&#19981;&#35206;&#30422;</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>hash <span class="token operator">==</span> hash <span class="token operator">&amp;&amp;</span>
+                                <span class="token punctuation">(</span><span class="token punctuation">(</span>ek <span class="token operator">=</span> e<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> key <span class="token operator">||</span>
+                                 <span class="token punctuation">(</span>ek <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> key<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>ek<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                                oldVal <span class="token operator">=</span> e<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+                                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>onlyIfAbsent<span class="token punctuation">)</span>
+                                    e<span class="token punctuation">.</span>val <span class="token operator">=</span> value<span class="token punctuation">;</span>
+                                <span class="token keyword">break</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">}</span>
+                            Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> pred <span class="token operator">=</span> e<span class="token punctuation">;</span>
+                          <span class="token comment">//&#22914;&#26524;&#25214;&#21040;&#26368;&#21518;&#19968;&#20010;&#20803;&#32032;&#65292;&#20063;&#27809;&#26377;&#25214;&#21040;&#30456;&#21516;hash&#30340;node&#65292;&#37027;&#20040;&#29983;&#25104;&#26032;&#30340;node&#23384;&#20648;key/value&#65292;&#20316;&#20026;&#23614;&#33410;&#28857;&#25918;&#20837;&#38142;&#34920;&#12290;</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>e <span class="token operator">=</span> e<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                                pred<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> key<span class="token punctuation">,</span>
+                                                          value<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                <span class="token keyword">break</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">}</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token comment">//&#19979;&#38754;&#30340;&#36923;&#36753;&#22788;&#29702;&#38142;&#34920;&#24050;&#32463;&#36716;&#20026;&#32418;&#40657;&#26641;&#26102;&#30340;key/value&#20445;&#23384;</span>
+                    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>f <span class="token keyword">instanceof</span> <span class="token class-name">TreeBin</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> p<span class="token punctuation">;</span>
+                        binCount <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>TreeBin<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">)</span>f<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putTreeVal</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> key<span class="token punctuation">,</span>
+                                                       value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            oldVal <span class="token operator">=</span> p<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>onlyIfAbsent<span class="token punctuation">)</span>
+                                p<span class="token punctuation">.</span>val <span class="token operator">=</span> value<span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#27573;&#20195;&#30721;&#20027;&#36923;&#36753;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#31532;&#19968;&#31181;&#24773;&#20917;&#65306;hash &#20540;&#26144;&#23556;&#21704;&#24076;&#34920;&#23545;&#24212;&#20301;&#32622;&#23384;&#20648;&#30340;&#26159;&#38142;&#34920;&#65306;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;&#36941;&#21382; hash &#20540;&#26144;&#23556;&#20301;&#32622;&#30340;&#38142;&#34920;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;&#22914;&#26524;&#23384;&#22312;&#21516;&#26679; hash &#20540;&#30340; node&#65292;&#37027;&#20040;&#26681;&#25454;&#35201;&#27714;&#36873;&#25321;&#35206;&#30422;&#25110;&#32773;&#19981;&#35206;&#30422;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;&#22914;&#26524;&#19981;&#23384;&#22312;&#21516;&#26679; hash &#20540;&#30340; node&#65292;&#37027;&#20040;&#21019;&#24314;&#26032;&#30340; node &#29992;&#26469;&#20445;&#23384; key/value&#65292;&#24182;&#19988;&#25918;&#22312;&#38142;&#34920;&#23614;&#37096;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#31532;&#20108;&#31181;&#24773;&#20917;&#65306;hash &#20540;&#26144;&#23556;&#21704;&#24076;&#34920;&#23545;&#24212;&#20301;&#32622;&#23384;&#20648;&#30340;&#26159;&#32418;&#40657;&#26641;&#65306;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807; TreeBin &#23545;&#35937;&#30340; putTreeVal &#26041;&#27861;&#20445;&#23384; key/value
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20197;&#19978;&#36923;&#36753;&#36824;&#26159;&#27604;&#36739;&#28165;&#26224;&#21644;&#31616;&#21333;&#12290;&#25105;&#20204;&#32487;&#32493;&#24448;&#19979;&#30475;&#65292;&#20445;&#23384;&#23436; key/value &#21518;&#65292;&#20854;&#23454;&#24182;&#27809;&#26377;&#32467;&#26463; put &#25805;&#20316;&#65292;&#32780;&#26159;&#36827;&#34892;&#20102;&#25193;&#23481;&#30340;&#25805;&#20316;&#65292;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span>binCount <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>binCount <span class="token operator">&gt;=</span> TREEIFY_THRESHOLD<span class="token punctuation">)</span>
+        <span class="token function">treeifyBin</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>oldVal <span class="token operator">!=</span> null<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> oldVal<span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     binCount &#26159;&#29992;&#26469;&#35760;&#24405;&#38142;&#34920;&#20445;&#23384; node &#30340;&#25968;&#37327;&#30340;&#65292;&#21487;&#20197;&#30475;&#21040;&#24403;&#20854;&#22823;&#20110; TREEIFY_THRESHOLD&#65292;&#20063;&#23601;&#26159; 8 &#30340;&#26102;&#20505;&#36827;&#34892;&#25193;&#23481;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;&#25193;&#23481;&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     4&#12289;&#25193;&#23481;&#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#39318;&#20808;&#25105;&#20204;&#35201;&#29702;&#35299;&#20026;&#20160;&#20040; Map &#38656;&#35201;&#25193;&#23481;&#65292;&#36825;&#26159;&#22240;&#20026;&#25105;&#20204;&#37319;&#29992;&#21704;&#24076;&#34920;&#23384;&#20648;&#25968;&#25454;&#65292;&#24403;&#22266;&#23450;&#22823;&#23567;&#30340;&#21704;&#24076;&#34920;&#23384;&#20648;&#25968;&#25454;&#36234;&#26469;&#36234;&#22810;&#26102;&#65292;&#38142;&#34920;&#38271;&#24230;&#20250;&#36234;&#26469;&#36234;&#38271;&#65292;&#36825;&#20250;&#36896;&#25104; put &#21644; get &#30340;&#24615;&#33021;&#19979;&#38477;&#12290;&#27492;&#26102;&#25105;&#20204;&#24076;&#26395;&#21704;&#24076;&#34920;&#20013;&#22810;&#19968;&#20123;&#26742;&#20301;&#65292;&#39044;&#38450;&#38142;&#34920;&#32487;&#32493;&#22534;&#31215;&#30340;&#26356;&#38271;&#12290;&#25509;&#19979;&#26469;&#25105;&#20204;&#20998;&#26512; treeifyBin &#26041;&#27861;&#20195;&#30721;&#65292;&#36825;&#20010;&#20195;&#30721;&#20013;&#20250;&#36873;&#25321;&#26159;&#25226;&#27492;&#26102;&#20445;&#23384;&#25968;&#25454;&#25152;&#22312;&#30340;&#38142;&#34920;&#36716;&#20026;&#32418;&#40657;&#26641;&#65292;&#36824;&#26159;&#23545;&#25972;&#20010;&#21704;&#24076;&#34920;&#25193;&#23481;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">treeifyBin</span><span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tab<span class="token punctuation">,</span> <span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> b<span class="token punctuation">;</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> sc<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>tab <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">//&#22914;&#26524;&#21704;&#24076;&#34920;&#38271;&#24230;&#23567;&#20110;64&#65292;&#37027;&#20040;&#36873;&#25321;&#25193;&#22823;&#21704;&#24076;&#34920;&#30340;&#22823;&#23567;&#65292;&#32780;&#19981;&#26159;&#25226;&#38142;&#34920;&#36716;&#20026;&#32418;&#40657;&#26641;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>n <span class="token operator">=</span> tab<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">&lt;</span> MIN_TREEIFY_CAPACITY<span class="token punctuation">)</span>
+            <span class="token function">tryPresize</span><span class="token punctuation">(</span>n <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//&#23558;&#21704;&#24076;&#34920;&#20013;index&#20301;&#32622;&#30340;&#38142;&#34920;&#36716;&#20026;&#32418;&#40657;&#26641;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>b <span class="token operator">=</span> <span class="token function">tabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> b<span class="token punctuation">.</span>hash <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              	<span class="token comment">//&#19979;&#38754;&#36923;&#36753;&#23558;node&#38142;&#34920;&#36716;&#21270;&#20026;TreeNode&#38142;&#34920;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">tabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> index<span class="token punctuation">)</span> <span class="token operator">==</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    TreeNode<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> hd <span class="token operator">=</span> null<span class="token punctuation">,</span> tl <span class="token operator">=</span> null<span class="token punctuation">;</span>
+                    <span class="token keyword">for</span> <span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> e <span class="token operator">=</span> b<span class="token punctuation">;</span> e <span class="token operator">!=</span> null<span class="token punctuation">;</span> e <span class="token operator">=</span> e<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        TreeNode<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> p <span class="token operator">=</span>
+                            <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>hash<span class="token punctuation">,</span> e<span class="token punctuation">.</span>key<span class="token punctuation">,</span> e<span class="token punctuation">.</span>val<span class="token punctuation">,</span>
+                                              null<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>prev <span class="token operator">=</span> tl<span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span>
+                            hd <span class="token operator">=</span> p<span class="token punctuation">;</span>
+                        <span class="token keyword">else</span>
+                            tl<span class="token punctuation">.</span>next <span class="token operator">=</span> p<span class="token punctuation">;</span>
+                        tl <span class="token operator">=</span> p<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token comment">//TreeBin&#20195;&#34920;&#32418;&#40657;&#26641;&#65292;&#23558;TreeBin&#20445;&#23384;&#22312;&#21704;&#24076;&#34920;&#30340;index&#20301;&#32622;</span>
+                    <span class="token function">setTabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> index<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">TreeBin</span><span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">(</span>hd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20877;&#37325;&#28857;&#30475;&#19968;&#19979; tryPresize&#65292;&#27492;&#26041;&#27861;&#20013;&#23454;&#29616;&#20102;&#23545;&#25968;&#32452;&#30340;&#25193;&#23481;&#65292;&#20256;&#20837;&#30340;&#21442;&#25968; size &#26159;&#21407;&#26469;&#21704;&#24076;&#34920;&#22823;&#23567;&#30340;&#19968;&#20493;&#12290;&#25105;&#20204;&#20551;&#23450;&#21407;&#26469;&#21704;&#24076;&#34920;&#22823;&#23567;&#20026; 16&#65292;&#37027;&#20040;&#20256;&#20837;&#30340; size &#20540;&#20026; 32&#65292;&#20197;&#27492;&#25968;&#20540;&#20316;&#20026;&#20363;&#23376;&#26469;&#20998;&#26512;&#28304;&#20195;&#30721;&#12290;&#27880;&#24847; while &#20013;&#31532;&#19968;&#20010; if &#27492;&#26102;&#19981;&#20250;&#36827;&#20837;&#65292;&#20294;&#20026;&#20102;&#35762;&#35299;&#20195;&#30721;&#25105;&#20063;&#22312;&#27880;&#37322;&#20013;&#19968;&#24182;&#35762;&#35299;&#20102;&#65292;&#22823;&#23478;&#30475;&#30340;&#26102;&#20505;&#22312;&#36825;&#20010;&#20998;&#25903;&#20013;&#19981;&#35201;&#20197; size=16 &#20316;&#20026;&#21069;&#25552;&#26469;&#20998;&#26512;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token comment">//size&#20026;32</span>
+<span class="token comment">//sizeCtl&#20026;&#21407;&#22823;&#23567;16&#30340;3/4&#65292;&#20063;&#23601;&#26159;12</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">tryPresize</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  	<span class="token comment">//&#26681;&#25454;tableSizeFor&#35745;&#31639;&#20986;&#28385;&#36275;&#35201;&#27714;&#30340;&#21704;&#24076;&#34920;&#22823;&#23567;&#65292;&#23545;&#40784;&#20026;2&#30340;n&#27425;&#26041;&#12290;c&#34987;&#36171;&#20540;&#20026;64&#65292;&#36825;&#26159;&#25193;&#23481;&#30340;&#19978;&#38480;&#65292;&#25193;&#23481;&#19968;&#33324;&#37117;&#26159;&#25193;&#23481;&#20026;&#21407;&#26469;&#30340;2&#20493;&#65292;&#36825;&#37324;c&#20540;&#20026;&#20102;&#22788;&#29702;&#19968;&#20123;&#29305;&#27530;&#30340;&#24773;&#20917;&#65292;&#30830;&#20445;&#25193;&#23481;&#33021;&#22815;&#27491;&#24120;&#36864;&#20986;&#12290;</span>
+    <span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token punctuation">(</span>size <span class="token operator">&gt;=</span> <span class="token punctuation">(</span>MAXIMUM_CAPACITY <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">?</span> MAXIMUM_CAPACITY <span class="token operator">:</span>
+        <span class="token function">tableSizeFor</span><span class="token punctuation">(</span>size <span class="token operator">+</span> <span class="token punctuation">(</span>size <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> sc<span class="token punctuation">;</span>
+  <span class="token comment">//&#27492;&#26102;sc&#21644;sizeCtl&#22343;&#20026;12&#65292;&#36827;&#20837;while&#24490;&#29615;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>sc <span class="token operator">=</span> sizeCtl<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tab <span class="token operator">=</span> table<span class="token punctuation">;</span> <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+      <span class="token comment">//&#36825;&#37324;&#22788;&#29702;&#30340;table&#36824;&#26410;&#21021;&#22987;&#21270;&#30340;&#36923;&#36753;&#65292;&#36825;&#26159;&#30001;&#20110;putAll&#25805;&#20316;&#19981;&#35843;&#29992;initTable&#65292;&#32780;&#26159;&#30452;&#25509;&#35843;&#29992;tryPresize</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>tab <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token punctuation">(</span>n <span class="token operator">=</span> tab<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment">//putAll&#31532;&#19968;&#27425;&#35843;&#29992;&#26102;&#65292;&#20551;&#35774;putAll&#36827;&#26469;&#30340;map&#21482;&#26377;&#19968;&#20010;&#20803;&#32032;&#65292;&#37027;&#20040;size&#20256;&#20837;1&#65292;&#35745;&#31639;&#20986;c&#20026;2.&#32780;sc&#21644;sizeCtl&#37117;&#20026;0&#65292;&#22240;&#27492;n=2</span>
+            n <span class="token operator">=</span> <span class="token punctuation">(</span>sc <span class="token operator">&gt;</span> c<span class="token punctuation">)</span> <span class="token operator">?</span> sc <span class="token operator">:</span> c<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>U<span class="token punctuation">.</span><span class="token function">compareAndSwapInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> SIZECTL<span class="token punctuation">,</span> sc<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>table <span class="token operator">==</span> tab<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
+                        Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nt <span class="token operator">=</span> <span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                        table <span class="token operator">=</span> nt<span class="token punctuation">;</span>
+                      <span class="token comment">//&#32463;&#36807;&#35745;&#31639;sc=2</span>
+                        sc <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token punctuation">(</span>n <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+                  <span class="token comment">//sizeCtl&#35774;&#32622;&#20026;2.&#31532;&#20108;&#27425;&#24490;&#29615;&#26102;&#65292;&#22240;&#20026;sc&#21644;c&#30456;&#31561;&#65292;&#37117;&#20026;2&#65292;&#36827;&#20837;&#19979;&#38754;&#30340;else if&#20998;&#25903;&#65292;&#32467;&#26463;while&#24490;&#29615;&#12290;</span>
+                    sizeCtl <span class="token operator">=</span> sc<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token comment">//&#25193;&#23481;&#24050;&#32463;&#36798;&#21040;C&#20540;&#65292;&#32467;&#26463;&#25193;&#23481;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">&lt;=</span> sc <span class="token operator">||</span> n <span class="token operator">&gt;=</span> MAXIMUM_CAPACITY<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+      <span class="token comment">//table&#24050;&#32463;&#23384;&#22312;&#65292;&#37027;&#20040;&#23601;&#23545;&#24050;&#26377;table&#36827;&#34892;&#25193;&#23481;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>tab <span class="token operator">==</span> table<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> rs <span class="token operator">=</span> <span class="token function">resizeStamp</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token comment">//sc&#23567;&#20110;0&#65292;&#35828;&#26126;&#21035;&#30340;&#32447;&#31243;&#27491;&#22312;&#25193;&#23481;&#65292;&#26412;&#32447;&#31243;&#21327;&#21161;&#25193;&#23481;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>sc <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nt<span class="token punctuation">;</span>
+              <span class="token comment">//&#21028;&#26029;&#26159;&#21542;&#25193;&#23481;&#30340;&#32447;&#31243;&#36798;&#21040;&#19978;&#38480;&#65292;&#22914;&#26524;&#36798;&#21040;&#19978;&#38480;&#65292;&#36864;&#20986;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>sc <span class="token operator">&gt;&gt;&gt;</span> RESIZE_STAMP_SHIFT<span class="token punctuation">)</span> <span class="token operator">!=</span> rs <span class="token operator">||</span> sc <span class="token operator">==</span> rs <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">||</span>
+                    sc <span class="token operator">==</span> rs <span class="token operator">+</span> MAX_RESIZERS <span class="token operator">||</span> <span class="token punctuation">(</span>nt <span class="token operator">=</span> nextTable<span class="token punctuation">)</span> <span class="token operator">==</span> null <span class="token operator">||</span>
+                    transferIndex <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span><span class="token punctuation">;</span>
+              <span class="token comment">//&#26410;&#36798;&#19978;&#38480;&#65292;&#21442;&#19982;&#25193;&#23481;&#65292;&#26356;&#26032;sizeCtl&#20540;&#12290;transfer&#26041;&#27861;&#36127;&#36131;&#25226;&#24403;&#21069;&#21704;&#24076;&#34920;&#25968;&#25454;&#31227;&#20837;&#26032;&#30340;&#21704;&#24076;&#34920;&#12290;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>U<span class="token punctuation">.</span><span class="token function">compareAndSwapInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> SIZECTL<span class="token punctuation">,</span> sc<span class="token punctuation">,</span> sc <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token function">transfer</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> nt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+          <span class="token comment">//&#26412;&#32447;&#31243;&#20026;&#31532;&#19968;&#20010;&#25193;&#23481;&#32447;&#31243;&#65292;transfer&#31532;&#20108;&#20010;&#21442;&#25968;&#20256;&#20837;null&#65292;&#20195;&#34920;&#38656;&#35201;&#26032;&#24314;&#25193;&#23481;&#21518;&#30340;&#21704;&#24076;&#34920;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>U<span class="token punctuation">.</span><span class="token function">compareAndSwapInt</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> SIZECTL<span class="token punctuation">,</span> sc<span class="token punctuation">,</span>
+                                         <span class="token punctuation">(</span>rs <span class="token operator">&lt;&lt;</span> RESIZE_STAMP_SHIFT<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token function">transfer</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25193;&#23481;&#26041;&#27861;  transfer &#20013;&#20250;&#21019;&#24314;&#26032;&#30340;&#21704;&#24076;&#34920;&#65292;&#20851;&#38190;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">int</span> n <span class="token operator">=</span> tab<span class="token punctuation">.</span>length<span class="token punctuation">,</span> stride<span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nt <span class="token operator">=</span> <span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span><span class="token operator">?</span><span class="token punctuation">,</span><span class="token operator">?</span><span class="token operator">&gt;</span><span class="token punctuation">[</span>n <span class="token operator">&lt;&lt;</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n&lt;&lt;1 &#24471;&#21040;&#30340;&#25968;&#20540;&#20026; 2n&#65292;&#20063;&#23601;&#26159;&#35828;&#27599;&#27425;&#37117;&#26159;&#25193;&#23481;&#21040;&#21407;&#26469; 2 &#20493;&#65292;&#36825;&#26679;&#20445;&#35777;&#20102;&#21704;&#24076;&#34920;&#30340;&#22823;&#23567;&#22987;&#32456;&#20026; 2 &#30340; n &#27425;&#26041;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25193;&#23481;&#30340;&#26680;&#24515;&#20195;&#30721;&#21040;&#36825;&#37324;&#23601;&#20998;&#26512;&#23436;&#20102;&#65292;&#25193;&#23481;&#30456;&#20851;&#20195;&#30721;&#36824;&#26377;&#24456;&#22810;&#65292;&#19981;&#36807;&#20027;&#35201;&#30340;&#26680;&#24515;&#24605;&#24819;&#25105;&#20204;&#33021;&#29702;&#35299;&#23601;&#21487;&#20197;&#20102;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35762;&#21040;&#36825;&#37324;&#25105;&#20204;&#20877;&#22238;&#19968;&#19979; put &#26041;&#27861;&#20013;&#26368;&#21518;&#26377;&#22914;&#19979;&#19968;&#34892;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token function">addCount</span><span class="token punctuation">(</span>1L<span class="token punctuation">,</span> binCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#34892;&#20195;&#30721;&#20854;&#23454;&#26159;&#23545;&#21704;&#24076;&#34920;&#20445;&#23384;&#30340;&#20803;&#32032;&#25968;&#37327;&#36827;&#34892;&#35745;&#25968;&#12290;&#21516;&#26102;&#26681;&#25454;&#24403;&#21069;&#20445;&#23384;&#29366;&#20917;&#65292;&#21028;&#26029;&#26159;&#21542;&#36827;&#34892;&#25193;&#23481;&#12290;&#20320;&#21487;&#33021;&#20250;&#38382;&#65292;&#22312;&#28155;&#21152;&#20803;&#32032;&#30340;&#36807;&#31243;&#20013;&#19981;&#26159;&#24050;&#32463;&#25191;&#34892;&#20102;&#25193;&#23481;&#30340;&#36923;&#36753;&#20102;&#21527;&#65311;&#27809;&#38169;&#65292;&#19981;&#36807;&#19978;&#38754;&#30340;&#25193;&#23481;&#36923;&#36753;&#26159;&#38142;&#34920;&#36807;&#38271;&#24341;&#36215;&#30340;&#12290;&#32780; addCount &#26041;&#27861;&#20013;&#20250;&#21028;&#26029;&#21704;&#24076;&#34920;&#26159;&#21542;&#36229;&#36807; 75% &#30340;&#20301;&#32622;&#24050;&#32463;&#34987;&#20351;&#29992;&#65292;&#20174;&#32780;&#35302;&#21457;&#25193;&#23481;&#12290;&#25193;&#23481;&#30340;&#36923;&#36753;&#26159;&#22522;&#26412;&#19968;&#33268;&#30340;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;get&#26041;&#27861;&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     5&#12289;get &#26041;&#27861;&#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26412;&#33410;&#21644;&#21069;&#19968;&#33410;&#32791;&#36153;&#20102;&#22823;&#37327;&#31508;&#22696;&#20998;&#26512; put &#30340;&#28304;&#20195;&#30721;&#12290;put &#30340;&#28304;&#20195;&#30721;&#27604;&#36739;&#22797;&#26434;&#65292;&#20854;&#23454; put &#26041;&#27861;&#30340;&#22797;&#26434;&#26159;&#20026;&#20102; get &#26381;&#21153;&#65292;&#20197;&#25552;&#39640; get &#30340;&#25928;&#29575;&#12290;&#30456;&#27604;&#36739; put &#26041;&#27861;&#32780;&#35328;&#65292;get &#26041;&#27861;&#23601;&#31616;&#21333;&#22810;&#20102;&#12290;&#25105;&#20204;&#30452;&#25509;&#30475;&#28304;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> V <span class="token function">get</span><span class="token punctuation">(</span>Object key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tab<span class="token punctuation">;</span> Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> e<span class="token punctuation">,</span> p<span class="token punctuation">;</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> eh<span class="token punctuation">;</span> K ek<span class="token punctuation">;</span>
+  <span class="token comment">//&#33719;&#21462;key&#20540;&#30340;hash&#20540;</span>
+    <span class="token keyword">int</span> h <span class="token operator">=</span> <span class="token function">spread</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//&#36825;&#20010;if&#21028;&#26029;&#20013;&#20570;&#20102;&#22914;&#19979;&#20960;&#20214;&#20107;&#24773;&#65306;</span>
+  <span class="token comment">//1&#12289;&#21704;&#24076;&#34920;&#26159;&#21542;&#23384;&#22312;</span>
+  <span class="token comment">//2&#12289;&#21704;&#24076;&#34920;&#26159;&#21542;&#20445;&#23384;&#20102;&#25968;&#25454;&#65292;&#21516;&#26102;&#21462;&#24471;&#21704;&#24076;&#34920;length</span>
+  <span class="token comment">//3&#12289;&#21704;&#24076;&#34920;&#20013;hash&#20540;&#26144;&#23556;&#20301;&#32622;&#20445;&#23384;&#30340;&#23545;&#35937;&#19981;&#20026;null&#65292;&#24182;&#21462;&#20986;&#32473;e&#65292;e&#20026;&#38142;&#34920;&#22836;&#33410;&#28857;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>tab <span class="token operator">=</span> table<span class="token punctuation">)</span> <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>n <span class="token operator">=</span> tab<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span>
+        <span class="token punctuation">(</span>e <span class="token operator">=</span> <span class="token function">tabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> h<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">//&#22914;&#26524;e&#30340;hash&#20540;&#21644;&#20256;&#20837;key&#30340;hash&#20540;&#30456;&#31561;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>eh <span class="token operator">=</span> e<span class="token punctuation">.</span>hash<span class="token punctuation">)</span> <span class="token operator">==</span> h<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment">//&#22914;&#26524;e&#30340;key&#21644;&#20256;&#20837;&#30340;key&#24341;&#29992;&#30456;&#21516;&#65292;&#25110;&#32773;key eaquals ek&#12290;&#37027;&#20040;&#36820;&#22238;e&#30340;value&#12290;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>ek <span class="token operator">=</span> e<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> key <span class="token operator">||</span> <span class="token punctuation">(</span>ek <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> key<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>ek<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> e<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token comment">//&#22914;&#26524;&#22836;&#33410;&#28857;&#30340;hash&lt;0,&#26377;&#20004;&#31181;&#24773;&#20917;</span>
+      <span class="token comment">//1&#12289;hash=-1&#65292;&#27491;&#22312;&#25193;&#23481;&#65292;&#35813;&#33410;&#28857;&#20026;ForwardingNode&#65292;&#36890;&#36807;find&#26041;&#27861;&#22312;nextTable&#20013;&#26597;&#25214;</span>
+      <span class="token comment">//2&#12289;hash=-2&#65292;&#35813;&#33410;&#28857;&#20026;TreeBin&#65292;&#38142;&#34920;&#24050;&#32463;&#36716;&#20026;&#20102;&#32418;&#40657;&#26641;&#12290;&#21516;&#26679;&#36890;&#36807;TreeBin&#30340;find&#26041;&#27861;&#26597;&#25214;&#12290;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>eh <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span>p <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>h<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null <span class="token operator">?</span> p<span class="token punctuation">.</span>val <span class="token operator">:</span> null<span class="token punctuation">;</span>
+      <span class="token comment">//&#20197;&#19978;&#20004;&#31181;&#26465;&#20214;&#19981;&#28385;&#36275;&#65292;&#35828;&#26126;hash&#26144;&#23556;&#20301;&#32622;&#20445;&#23384;&#30340;&#36824;&#26159;&#38142;&#34920;&#22836;&#33410;&#28857;&#65292;&#20294;&#26159;&#21644;&#20256;&#20837;key&#20540;&#19981;&#21516;&#12290;&#37027;&#20040;&#36941;&#21382;&#38142;&#34920;&#26597;&#25214;&#21363;&#21487;&#12290;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>e <span class="token operator">=</span> e<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>hash <span class="token operator">==</span> h <span class="token operator">&amp;&amp;</span>
+                <span class="token punctuation">(</span><span class="token punctuation">(</span>ek <span class="token operator">=</span> e<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> key <span class="token operator">||</span> <span class="token punctuation">(</span>ek <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> key<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>ek<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> e<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;&#24635;&#32467;" style="font-size: 30px;">
+     6&#12289;&#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807;&#20004;&#23567;&#33410;&#30340;&#23398;&#20064;&#65292;&#25105;&#20204;&#25226; ConcurrentHashMap &#20013;&#30340;&#20027;&#35201;&#28304;&#20195;&#30721;&#23398;&#20064;&#23436;&#25104;&#20102;&#65292;&#30001;&#20110;&#31687;&#24133;&#26377;&#38480;&#65292;&#36824;&#26377;&#24456;&#22810;&#26356;&#32454;&#33410;&#30340;&#22320;&#26041;&#27809;&#26377;&#35762;&#35299;&#12290;&#22914;&#26524;&#24819;&#32487;&#32493;&#30740;&#31350;&#30340;&#35805;&#65292;&#24314;&#35758;&#25226; Node&#12289;TreeNode &#30456;&#20851;&#32467;&#26500;&#30475;&#19968;&#19979;&#12290;&#23545;&#31639;&#27861;&#24863;&#20852;&#36259;&#30340;&#35805;&#65292;&#21487;&#20197;&#30475;&#19968;&#19979;&#32418;&#40657;&#26641;&#36716;&#21270;&#30340;&#36807;&#31243;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ConcurrentHashMap &#20013;&#65292;&#36890;&#36807;&#22823;&#37327;&#30340; CAS &#25805;&#20316;&#21152;&#19978; Synchronized &#26469;&#30830;&#20445;&#32447;&#31243;&#23433;&#20840;&#12290;&#23545; ConcurrentHashMap &#30340;&#23398;&#20064;&#25105;&#20204;&#25226;&#37325;&#28857;&#25918;&#22312;&#21704;&#24076;&#31639;&#27861;&#21644;&#25193;&#23481;&#19978;&#65292;&#38754;&#35797;&#30340;&#26102;&#20505;&#26159;&#32771;&#23519;&#30340;&#37325;&#28857;&#12290;
+    </p>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/959">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     24 &#32463;&#20856;&#24182;&#21457;&#23481;&#22120;&#65292;&#22810;&#32447;&#31243;&#38754;&#35797;&#24517;&#22791;&#8212;&#28145;&#20837;&#35299;&#26512;ConcurrentHashMap&#19978;
+    </p>
+   </div>
+  </a>
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/1224">
+   <div class="next r clearfix">
+    <p>
+     26&#19981;&#35753;&#25105;&#36827;&#38376;&#65292;&#25105;&#23601;&#22312;&#38376;&#21475;&#19968;&#30452;&#31561;&#65281;&#8212;BlockingQueue&#21644;ArrayBlockingQueue
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        

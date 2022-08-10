@@ -1,0 +1,656 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  24 &#32463;&#20856;&#24182;&#21457;&#23481;&#22120;&#65292;&#22810;&#32447;&#31243;&#38754;&#35797;&#24517;&#22791;&#12290;&#8212;&#28145;&#20837;&#35299;&#26512;ConcurrentHashMap
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-11-19 10:04:41
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/c49efda2-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/c4b6830a-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/c4f21316-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#21220;&#33021;&#34917;&#25305;&#26159;&#33391;&#35757;&#65292;&#19968;&#20998;&#36763;&#21171;&#19968;&#20998;&#25165;&#12290;
+    <p class="author">
+     &#8212;&#8212;&#21326;&#32599;&#24218;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26412;&#23567;&#33410;&#25105;&#20204;&#23558;&#23398;&#20064;&#19968;&#20010;&#32463;&#20856;&#30340;&#24182;&#21457;&#23481;&#22120; ConcurrentHashMap&#65292;&#23427;&#22312;&#25216;&#26415;&#38754;&#35797;&#20013;&#20986;&#29616;&#30340;&#39057;&#29575;&#30456;&#24403;&#20043;&#39640;&#65292;&#25152;&#20197;&#25105;&#20204;&#24517;&#39035;&#23545;&#23427;&#28145;&#20837;&#29702;&#35299;&#21644;&#25484;&#25569;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35848;&#21040; ConcurrentHashMap&#65292;&#23601;&#19968;&#23450;&#20250;&#24819;&#21040; HashMap&#12290;HashMap &#22312;&#25105;&#20204;&#30340;&#20195;&#30721;&#20013;&#20351;&#29992;&#39057;&#29575;&#26356;&#39640;&#65292;&#19981;&#38656;&#35201;&#32771;&#34385;&#32447;&#31243;&#23433;&#20840;&#30340;&#22320;&#26041;&#65292;&#25105;&#20204;&#19968;&#33324;&#37117;&#20250;&#20351;&#29992; HashMap&#12290;HashMap &#30340;&#23454;&#29616;&#38750;&#24120;&#32463;&#20856;&#65292;&#22914;&#26524;&#20320;&#35835;&#36807; HashMap &#30340;&#28304;&#20195;&#30721;&#65292;&#37027;&#20040;&#23545; ConcurrentHashMap &#28304;&#20195;&#30721;&#30340;&#29702;&#35299;&#20250;&#30456;&#23545;&#36731;&#26494;&#65292;&#22240;&#20026;&#20004;&#32773;&#37319;&#29992;&#30340;&#25968;&#25454;&#32467;&#26500;&#26159;&#31867;&#20284;&#30340;&#12290;&#19981;&#36807;&#21363;&#20351;&#27809;&#35835;&#36807;HashMap &#28304;&#20195;&#30721;&#65292;&#20063;&#19981;&#24433;&#21709;&#26412;&#33410;&#30340;&#23398;&#20064;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;concurrenthashmap-&#21407;&#29702;&#27010;&#36848;" style="font-size: 30px;">
+     1&#12289;ConcurrentHashMap &#21407;&#29702;&#27010;&#36848;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ConcurrentHashMap &#26159;&#19968;&#20010;&#23384;&#20648; key/value &#23545;&#30340;&#23481;&#22120;&#65292;&#24182;&#19988;&#26159;&#32447;&#31243;&#23433;&#20840;&#30340;&#12290;&#25105;&#20204;&#20808;&#30475; ConcurrentHashMap &#30340;&#23384;&#20648;&#32467;&#26500;&#65292;&#22914;&#19979;&#22270;&#65306;
+     <br>
+     <img alt="&#22270;&#29255;&#25551;&#36848;" class="" data-original="//img.mukewang.com/5dd215cf000105da09090532.jpg" src="EPUB/c50f11a0-186d-11ed-a978-acde48001122">
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#26159;&#32463;&#20856;&#30340;&#25968;&#32452;&#21152;&#38142;&#34920;&#30340;&#24418;&#24335;&#12290;&#24182;&#19988;&#22312;&#38142;&#34920;&#38271;&#24230;&#36807;&#38271;&#26102;&#36716;&#21270;&#20026;&#32418;&#40657;&#26641;&#23384;&#20648;&#65288; Java 8 &#30340;&#20248;&#21270;&#65289;&#65292;&#21152;&#24555;&#26597;&#25214;&#36895;&#24230;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#23384;&#20648;&#32467;&#26500;&#23450;&#20041;&#20102;&#23481;&#22120;&#30340;&#8220;&#24418;&#29366;&#8221;&#65292;&#37027;&#23481;&#22120;&#20869;&#30340;&#19996;&#35199;&#25353;&#29031;&#20160;&#20040;&#35268;&#21017;&#26469;&#25918;&#21602;&#65311;&#25442;&#21477;&#35805;&#35762;&#65292;&#26576;&#20010; key &#26159;&#25353;&#29031;&#20160;&#20040;&#36923;&#36753;&#25918;&#20837;&#23481;&#22120;&#30340;&#23545;&#24212;&#20301;&#32622;&#21602;&#65311;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#25105;&#20204;&#20551;&#35774;&#35201;&#23384;&#20837;&#30340; key &#20026;&#23545;&#35937; x&#65292;&#36825;&#20010;&#36807;&#31243;&#22914;&#19979;&#65306;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;&#36890;&#36807;&#23545;&#35937; x &#30340; hashCode() &#26041;&#27861;&#33719;&#21462;&#20854; hashCode&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;&#23558; hashCode &#26144;&#23556;&#21040;&#25968;&#32452;&#30340;&#26576;&#20010;&#20301;&#32622;&#19978;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;&#25226;&#35813;&#20803;&#32032;&#23384;&#20648;&#21040;&#35813;&#20301;&#32622;&#30340;&#38142;&#34920;&#20013;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#20174;&#23481;&#22120;&#21462;&#25968;&#30340;&#36923;&#36753;&#22914;&#19979;&#65306;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;&#36890;&#36807;&#23545;&#35937; x &#30340; hashCode() &#26041;&#27861;&#33719;&#21462;&#20854; hashCode&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;&#23558; hashCode &#26144;&#23556;&#21040;&#25968;&#32452;&#30340;&#26576;&#20010;&#20301;&#32622;&#19978;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;&#36941;&#21382;&#35813;&#20301;&#32622;&#30340;&#38142;&#34920;&#25110;&#32773;&#20174;&#32418;&#40657;&#26641;&#20013;&#25214;&#21040;&#21305;&#37197;&#30340;&#23545;&#35937;&#36820;&#22238;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;&#25968;&#32452;+&#38142;&#34920;&#30340;&#23384;&#20648;&#32467;&#26500;&#20854;&#23454;&#26159;&#19968;&#20010;&#21704;&#24076;&#34920;&#12290;&#25226;&#23545;&#35937; x &#26144;&#23556;&#21040;&#25968;&#32452;&#30340;&#26576;&#20010;&#20301;&#32622;&#30340;&#20989;&#25968;&#65292;&#21483;&#20570; hash&#20989;&#25968;&#12290;&#36825;&#20010;&#20989;&#25968;&#30340;&#22909;&#22351;&#20915;&#23450;&#20803;&#32032;&#22312;&#21704;&#24076;&#34920;&#20013;&#20998;&#24067;&#26159;&#21542;&#22343;&#21248;&#65292;&#22914;&#26524;&#20803;&#32032;&#37117;&#22534;&#31215;&#22312;&#19968;&#20010;&#20301;&#32622;&#19978;&#65292;&#37027;&#20040;&#22312;&#21462;&#20540;&#26102;&#38656;&#35201;&#36941;&#21382;&#24456;&#38271;&#30340;&#38142;&#34920;&#12290;&#20294;&#20803;&#32032;&#22914;&#26524;&#26159;&#22343;&#21248;&#30340;&#20998;&#24067;&#22312;&#25968;&#32452;&#20013;&#65292;&#37027;&#20040;&#38142;&#34920;&#23601;&#20250;&#36739;&#30701;&#65292;&#36890;&#36807;&#21704;&#24076;&#20989;&#25968;&#23450;&#20301;&#20301;&#32622;&#21518;&#65292;&#33021;&#22815;&#24555;&#36895;&#25214;&#21040;&#23545;&#24212;&#30340;&#20803;&#32032;&#12290;&#20855;&#20307; ConcurrentHashMap &#20013;&#30340;&#21704;&#24076;&#20989;&#25968;&#22914;&#20309;&#23454;&#29616;&#25105;&#20204;&#21518;&#38754;&#20250;&#35814;&#32454;&#35762;&#21040;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#25193;&#23481;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#22823;&#33268;&#20102;&#35299;&#20102;ConcurrentHashMap &#30340;&#23384;&#20648;&#32467;&#26500;&#65292;&#37027;&#20040;&#25105;&#20204;&#24605;&#32771;&#19968;&#20010;&#38382;&#39064;&#65292;&#24403;&#25968;&#32452;&#20013;&#20445;&#23384;&#30340;&#38142;&#34920;&#36234;&#26469;&#36234;&#22810;&#65292;&#37027;&#20040;&#20877;&#23384;&#20648;&#36827;&#26469;&#30340;&#20803;&#32032;&#22823;&#27010;&#29575;&#20250;&#25554;&#20837;&#21040;&#29616;&#26377;&#30340;&#38142;&#34920;&#20013;&#65292;&#32780;&#19981;&#26159;&#20351;&#29992;&#25968;&#32452;&#20013;&#21097;&#19979;&#30340;&#31354;&#20301;&#12290;&#36825;&#26679;&#20250;&#36896;&#25104;&#25968;&#32452;&#20013;&#20445;&#23384;&#30340;&#38142;&#34920;&#36234;&#26469;&#36234;&#38271;&#65292;&#30001;&#27492;&#23548;&#33268;&#21704;&#24076;&#34920;&#26597;&#25214;&#36895;&#24230;&#19979;&#38477;&#65292;&#20174; O(1) &#24930;&#24930;&#36235;&#36817;&#20110;&#38142;&#34920;&#30340;&#26102;&#38388;&#22797;&#26434;&#24230; O(n/2)&#65292;&#36825;&#26174;&#28982;&#36829;&#32972;&#20102;&#21704;&#24076;&#34920;&#30340;&#21021;&#34935;&#12290;&#25152;&#20197; ConcurrentHashMap &#20250;&#20570;&#19968;&#20010;&#25805;&#20316;&#65292;&#31216;&#20026;&#25193;&#23481;&#12290;&#20063;&#23601;&#26159;&#25226;&#25968;&#32452;&#38271;&#24230;&#21464;&#22823;&#65292;&#22686;&#21152;&#26356;&#22810;&#30340;&#31354;&#20301;&#20986;&#26469;&#65292;&#26368;&#32456;&#30446;&#30340;&#23601;&#26159;&#39044;&#38450;&#38142;&#34920;&#36807;&#38271;&#65292;&#36825;&#26679;&#26597;&#25214;&#30340;&#26102;&#38388;&#22797;&#26434;&#24230;&#25165;&#20250;&#36235;&#21521;&#20110; O(1)&#12290;&#25193;&#23481;&#30340;&#25805;&#20316;&#24182;&#19981;&#20250;&#22312;&#25968;&#32452;&#27809;&#26377;&#31354;&#20301;&#26102;&#25165;&#36827;&#34892;&#65292;&#22240;&#20026;&#22312;&#26742;&#20301;&#24555;&#28385;&#26102;&#65292;&#26032;&#20445;&#23384;&#20803;&#32032;&#26356;&#22823;&#30340;&#27010;&#29575;&#20250;&#21629;&#20013;&#24050;&#32463;&#20351;&#29992;&#30340;&#20301;&#32622;&#65292;&#37027;&#20040;&#21487;&#33021;&#26368;&#21518;&#20960;&#20010;&#26742;&#20301;&#24456;&#38590;&#34987;&#20351;&#29992;&#65292;&#32780;&#38142;&#34920;&#21364;&#36234;&#26469;&#36234;&#38271;&#20102;&#12290;ConcurrentHashMap &#20250;&#22312;&#26356;&#21512;&#36866;&#30340;&#26102;&#26426;&#36827;&#34892;&#25193;&#23481;&#65292;&#36890;&#24120;&#26159;&#22312;&#25968;&#32452;&#20013; 75% &#30340;&#20301;&#32622;&#34987;&#20351;&#29992;&#26102;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21478;&#22806; ConcurrentHashMap &#36824;&#20250;&#26377;&#38142;&#34920;&#36716;&#32418;&#40657;&#26641;&#30340;&#25805;&#20316;&#65292;&#20197;&#25552;&#39640;&#26597;&#25214;&#30340;&#36895;&#24230;&#65292;&#32418;&#40657;&#26641;&#26102;&#38388;&#22797;&#26434;&#24230;&#20026; O(logn)&#65292;&#32780;&#38142;&#34920;&#26159; O(n/2)&#65292;&#22240;&#27492;&#21482;&#22312; O(logn)&lt;O(n/2) &#26102;&#25165;&#20250;&#36827;&#34892;&#36716;&#25442;&#65292;&#20063;&#23601;&#26159;&#20197; 8 &#20316;&#20026;&#20998;&#30028;&#28857;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20854;&#23454;&#20197;&#19978;&#20869;&#23481;&#21644; HashMap &#31867;&#20284;&#65292;ConcurrentHashMap &#27492;&#22806;&#25552;&#20379;&#20102;&#32447;&#31243;&#23433;&#20840;&#30340;&#20445;&#35777;&#65292;&#23427;&#20027;&#35201;&#26159;&#36890;&#36807; CAS &#21644;Synchronized &#20851;&#38190;&#23383;&#26469;&#23454;&#29616;&#65292;&#25105;&#20204;&#22312;&#28304;&#30721;&#20998;&#26512;&#20013;&#20877;&#35814;&#32454;&#26469;&#30475;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20570;&#19968;&#19979;&#24635;&#32467;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;ConcurrentHashMap &#37319;&#29992;&#25968;&#32452;+&#38142;&#34920;+&#32418;&#40657;&#26641;&#30340;&#23384;&#20648;&#32467;&#26500;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;&#23384;&#20837;&#30340;Key&#20540;&#36890;&#36807;&#33258;&#24049;&#30340; hashCode &#26144;&#23556;&#21040;&#25968;&#32452;&#30340;&#30456;&#24212;&#20301;&#32622;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;ConcurrentHashMap &#20026;&#20445;&#38556;&#26597;&#35810;&#25928;&#29575;&#65292;&#22312;&#29305;&#23450;&#30340;&#26102;&#20505;&#20250;&#23545;&#25968;&#25454;&#22686;&#21152;&#38271;&#24230;&#65292;&#36825;&#20010;&#25805;&#20316;&#21483;&#20570;&#25193;&#23481;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     4&#12289;&#24403;&#38142;&#34920;&#38271;&#24230;&#22686;&#21152;&#21040; 8 &#26102;&#65292;&#21487;&#33021;&#20250;&#35302;&#21457;&#38142;&#34920;&#36716;&#20026;&#32418;&#40657;&#26641;&#65288;&#25968;&#32452;&#38271;&#24230;&#22914;&#26524;&#23567;&#20110; 64&#65292;&#20248;&#20808;&#25193;&#23481;&#65292;&#20855;&#20307;&#30475;&#21518;&#38754;&#28304;&#30721;&#20998;&#26512;&#65289;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#30340;&#28304;&#30721;&#20998;&#26512;&#23601;&#20174; ConcurrentHashMap &#30340;&#26500;&#25104;&#12289;&#20445;&#23384;&#20803;&#32032;&#12289;&#21704;&#24076;&#31639;&#27861;&#12289;&#25193;&#23481;&#12289;&#26597;&#25214;&#25968;&#25454;&#36825;&#20960;&#20010;&#26041;&#38754;&#26469;&#36827;&#34892;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;concurrenthashmap-&#30340;&#26500;&#25104;" style="font-size: 30px;">
+     2&#12289;ConcurrentHashMap &#30340;&#26500;&#25104;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="&#37325;&#35201;&#23646;&#24615;">
+     2.1 &#37325;&#35201;&#23646;&#24615;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#26469;&#30475;&#30475; ConcurrentHashMap &#30340;&#20960;&#20010;&#37325;&#35201;&#23646;&#24615;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      1&#12289;transient volatile Node&lt;K,V&gt;[] table
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;Node&#25968;&#32452;&#23601;&#26159;ConcurrentHashMap&#29992;&#26469;&#23384;&#20648;&#25968;&#25454;&#30340;&#21704;&#24076;&#34920;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      2&#12289;private static final int DEFAULT_CAPACITY = 16;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#26159;&#40664;&#35748;&#30340;&#21021;&#22987;&#21270;&#21704;&#24076;&#34920;&#25968;&#32452;&#22823;&#23567;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      3&#12289;static final int TREEIFY_THRESHOLD = 8
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36716;&#21270;&#20026;&#32418;&#40657;&#26641;&#30340;&#38142;&#34920;&#38271;&#24230;&#38408;&#20540;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      4&#12289;static final int MOVED     = -1
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;&#26631;&#35782;&#20301;&#29992;&#20110;&#35782;&#21035;&#25193;&#23481;&#26102;&#27491;&#22312;&#36716;&#31227;&#25968;&#25454;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      5&#12289;static final int HASH_BITS = 0x7fffffff;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35745;&#31639;&#21704;&#24076;&#20540;&#26102;&#29992;&#21040;&#30340;&#21442;&#25968;&#65292;&#29992;&#26469;&#21435;&#38500;&#31526;&#21495;&#20301;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      6&#12289;private transient volatile Node&lt;K,V&gt;[] nextTable;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25968;&#25454;&#36716;&#31227;&#26102;&#65292;&#26032;&#30340;&#21704;&#24076;&#34920;&#25968;&#32452;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#33021;&#26377;&#20123;&#23646;&#24615;&#30475;&#23436;&#35299;&#37322;&#20320;&#36824;&#25720;&#19981;&#21040;&#22836;&#33041;&#12290;&#27809;&#20851;&#31995;&#65292;&#25105;&#20204;&#22312;&#21518;&#38754;&#28304;&#30721;&#20998;&#26512;&#26102;&#65292;&#20855;&#20307;&#20351;&#29992;&#30340;&#22320;&#26041;&#36824;&#20250;&#20570;&#30456;&#24212;&#35762;&#35299;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="&#37325;&#35201;&#32452;&#25104;&#20803;&#32032;">
+     2.2 &#37325;&#35201;&#32452;&#25104;&#20803;&#32032;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <h4 id="node" style="font-size: 26px;">
+     Node
+    </h4>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#38142;&#34920;&#20013;&#30340;&#20803;&#32032;&#20026;Node&#23545;&#35937;&#12290;&#20182;&#26159;&#38142;&#34920;&#19978;&#30340;&#19968;&#20010;&#33410;&#28857;&#65292;&#20869;&#37096;&#23384;&#20648;&#20102;key&#12289;value&#20540;&#65292;&#20197;&#21450;&#20182;&#30340;&#19979;&#19968;&#20010;&#33410;&#28857;&#30340;&#24341;&#29992;&#12290;&#36825;&#26679;&#19968;&#31995;&#21015;&#30340;Node&#23601;&#20018;&#25104;&#19968;&#20018;&#65292;&#32452;&#25104;&#19968;&#20010;&#38142;&#34920;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h4 id="forwardingnode" style="font-size: 26px;">
+     ForwardingNode
+    </h4>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#24403;&#36827;&#34892;&#25193;&#23481;&#26102;&#65292;&#35201;&#25226;&#38142;&#34920;&#36801;&#31227;&#21040;&#26032;&#30340;&#21704;&#24076;&#34920;&#65292;&#22312;&#20570;&#36825;&#20010;&#25805;&#20316;&#26102;&#65292;&#20250;&#22312;&#25226;&#25968;&#32452;&#20013;&#30340;&#22836;&#33410;&#28857;&#26367;&#25442;&#20026;ForwardingNode&#23545;&#35937;&#12290;ForwardingNode&#20013;&#19981;&#20445;&#23384;key&#21644;value&#65292;&#21482;&#20445;&#23384;&#20102;&#25193;&#23481;&#21518;&#21704;&#24076;&#34920;&#65288;nextTable&#65289;&#30340;&#24341;&#29992;&#12290;&#27492;&#26102;&#26597;&#25214;&#30456;&#24212;node&#26102;&#65292;&#38656;&#35201;&#21435;nextTable&#20013;&#26597;&#25214;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h4 id="treebin" style="font-size: 26px;">
+     TreeBin
+    </h4>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#24403;&#38142;&#34920;&#36716;&#20026;&#32418;&#40657;&#26641;&#21518;&#65292;&#25968;&#32452;&#20013;&#20445;&#23384;&#30340;&#24341;&#29992;&#20026; TreeBin&#65292;TreeBin &#20869;&#37096;&#19981;&#20445;&#23384; key/value&#65292;&#20182;&#20445;&#23384;&#20102; TreeNode&#30340;list&#20197;&#21450;&#32418;&#40657;&#26641; root&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h4 id="treenode" style="font-size: 26px;">
+     TreeNode
+    </h4>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#32418;&#40657;&#26641;&#30340;&#33410;&#28857;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;put-&#26041;&#27861;&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     3&#12289;put &#26041;&#27861;&#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     put &#26041;&#27861;&#29992;&#26469;&#25226;&#19968;&#20010;&#38190;&#20540;&#23545;&#23384;&#20648;&#21040;map&#20013;&#12290;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> V <span class="token function">put</span><span class="token punctuation">(</span>K key<span class="token punctuation">,</span> V value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">putVal</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#23454;&#38469;&#35843;&#29992;&#30340;&#26159; putVal &#26041;&#27861;&#65292;&#31532;&#19977;&#20010;&#21442;&#25968;&#20256;&#20837; false&#65292;&#25511;&#21046; key &#23384;&#22312;&#26102;&#35206;&#30422;&#21407;&#26469;&#30340;&#20540;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#25509;&#19979;&#26469;&#30475; putVal &#30340;&#20195;&#30721;&#65292;&#20195;&#30721;&#27604;&#36739;&#22810;&#65292;&#25105;&#25226;&#35299;&#37322;&#30452;&#25509;&#25918;&#21040;&#20195;&#30721;&#20013;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">final</span> V <span class="token function">putVal</span><span class="token punctuation">(</span>K key<span class="token punctuation">,</span> V value<span class="token punctuation">,</span> <span class="token keyword">boolean</span> onlyIfAbsent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//key&#21644;value&#19981;&#33021;&#20026;&#31354;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">==</span> null <span class="token operator">||</span> value <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//&#35745;&#31639;key&#30340;hash&#20540;&#65292;&#21518;&#38754;&#25105;&#20204;&#20250;&#30475;spread&#26041;&#27861;&#30340;&#23454;&#29616;</span>
+    <span class="token keyword">int</span> hash <span class="token operator">=</span> <span class="token function">spread</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> binCount <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token comment">//&#24320;&#22987;&#33258;&#26059;&#65292;table&#23646;&#24615;&#37319;&#21462;&#25042;&#21152;&#36733;&#65292;&#31532;&#19968;&#27425;put&#30340;&#26102;&#20505;&#36827;&#34892;&#21021;&#22987;&#21270;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tab <span class="token operator">=</span> table<span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> f<span class="token punctuation">;</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> i<span class="token punctuation">,</span> fh<span class="token punctuation">;</span>
+      <span class="token comment">//&#22914;&#26524;table&#26410;&#34987;&#21021;&#22987;&#21270;&#65292;&#21017;&#21021;&#22987;&#21270;table</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>tab <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token punctuation">(</span>n <span class="token operator">=</span> tab<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            tab <span class="token operator">=</span> <span class="token function">initTable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//&#36890;&#36807;key&#30340;hash&#20540;&#26144;&#23556;table&#20301;&#32622;&#65292;&#22914;&#26524;&#35813;&#20301;&#32622;&#30340;&#20540;&#20026;&#31354;&#65292;&#37027;&#20040;&#29983;&#25104;&#26032;&#30340;node&#26469;&#23384;&#20648;&#35813;key&#12289;value&#65292;&#25918;&#20837;&#27492;&#20301;&#32622;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>f <span class="token operator">=</span> <span class="token function">tabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> hash<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">casTabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> i<span class="token punctuation">,</span> null<span class="token punctuation">,</span>
+                         <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>                   <span class="token comment">// no lock when adding to empty bin</span>
+        <span class="token punctuation">}</span>
+      <span class="token comment">//&#22914;&#26524;&#35813;&#20301;&#32622;&#33410;&#28857;&#20803;&#32032;&#30340;hash&#20540;&#20026;MOVED&#65292;&#20063;&#23601;&#26159;-1&#65292;&#20195;&#34920;&#27491;&#22312;&#20570;&#25193;&#23481;&#30340;&#22797;&#21046;&#12290;&#37027;&#20040;&#35813;&#32447;&#31243;&#21442;&#19982;&#22797;&#21046;&#24037;&#20316;&#12290;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>fh <span class="token operator">=</span> f<span class="token punctuation">.</span>hash<span class="token punctuation">)</span> <span class="token operator">==</span> MOVED<span class="token punctuation">)</span>
+            tab <span class="token operator">=</span> <span class="token function">helpTransfer</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//&#19979;&#38754;&#20998;&#25903;&#22788;&#29702;table&#26144;&#23556;&#30340;&#20301;&#32622;&#24050;&#32463;&#23384;&#22312;node&#30340;&#24773;&#20917;</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            V oldVal <span class="token operator">=</span> null<span class="token punctuation">;</span>
+            <span class="token keyword">synchronized</span> <span class="token punctuation">(</span>f<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              	<span class="token comment">//&#20877;&#27425;&#30830;&#35748;&#35813;&#20301;&#32622;&#30340;&#20540;&#26159;&#21542;&#24050;&#32463;&#21457;&#29983;&#20102;&#21464;&#21270;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">tabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">==</span> f<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                  <span class="token comment">//fh&#22823;&#20110;0&#65292;&#34920;&#31034;&#35813;&#20301;&#32622;&#23384;&#20648;&#30340;&#36824;&#26159;&#38142;&#34920;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>fh <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        binCount <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                      <span class="token comment">//&#36941;&#21382;&#38142;&#34920;</span>
+                        <span class="token keyword">for</span> <span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> e <span class="token operator">=</span> f<span class="token punctuation">;</span><span class="token punctuation">;</span> <span class="token operator">++</span>binCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            K ek<span class="token punctuation">;</span>
+                          <span class="token comment">//&#22914;&#26524;&#23384;&#22312;&#19968;&#26679;hash&#20540;&#30340;node&#65292;&#37027;&#20040;&#26681;&#25454;onlyIfAbsent&#30340;&#20540;&#36873;&#25321;&#35206;&#30422;value&#25110;&#32773;&#19981;&#35206;&#30422;</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>hash <span class="token operator">==</span> hash <span class="token operator">&amp;&amp;</span>
+                                <span class="token punctuation">(</span><span class="token punctuation">(</span>ek <span class="token operator">=</span> e<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> key <span class="token operator">||</span>
+                                 <span class="token punctuation">(</span>ek <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> key<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>ek<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                                oldVal <span class="token operator">=</span> e<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+                                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>onlyIfAbsent<span class="token punctuation">)</span>
+                                    e<span class="token punctuation">.</span>val <span class="token operator">=</span> value<span class="token punctuation">;</span>
+                                <span class="token keyword">break</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">}</span>
+                            Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> pred <span class="token operator">=</span> e<span class="token punctuation">;</span>
+                          <span class="token comment">//&#22914;&#26524;&#25214;&#21040;&#26368;&#21518;&#19968;&#20010;&#20803;&#32032;&#65292;&#20063;&#27809;&#26377;&#25214;&#21040;&#30456;&#21516;hash&#30340;node&#65292;&#37027;&#20040;&#29983;&#25104;&#26032;&#30340;node&#23384;&#20648;key/value&#65292;&#20316;&#20026;&#23614;&#33410;&#28857;&#25918;&#20837;&#38142;&#34920;&#12290;</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>e <span class="token operator">=</span> e<span class="token punctuation">.</span>next<span class="token punctuation">)</span> <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                                pred<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> key<span class="token punctuation">,</span>
+                                                          value<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                                <span class="token keyword">break</span><span class="token punctuation">;</span>
+                            <span class="token punctuation">}</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token comment">//&#19979;&#38754;&#30340;&#36923;&#36753;&#22788;&#29702;&#38142;&#34920;&#24050;&#32463;&#36716;&#20026;&#32418;&#40657;&#26641;&#26102;&#30340;key/value&#20445;&#23384;</span>
+                    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>f <span class="token keyword">instanceof</span> <span class="token class-name">TreeBin</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        Node<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span> p<span class="token punctuation">;</span>
+                        binCount <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>TreeBin<span class="token operator">&lt;</span>K<span class="token punctuation">,</span>V<span class="token operator">&gt;</span><span class="token punctuation">)</span>f<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putTreeVal</span><span class="token punctuation">(</span>hash<span class="token punctuation">,</span> key<span class="token punctuation">,</span>
+                                                       value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            oldVal <span class="token operator">=</span> p<span class="token punctuation">.</span>val<span class="token punctuation">;</span>
+                            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>onlyIfAbsent<span class="token punctuation">)</span>
+                                p<span class="token punctuation">.</span>val <span class="token operator">=</span> value<span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+          <span class="token comment">//node&#20445;&#23384;&#23436;&#25104;&#21518;&#65292;&#21028;&#26029;&#38142;&#34920;&#38271;&#24230;&#26159;&#21542;&#24050;&#32463;&#36229;&#20986;&#38408;&#20540;&#65292;&#21017;&#36827;&#34892;&#21704;&#24076;&#34920;&#25193;&#23481;&#25110;&#32773;&#23558;&#38142;&#34920;&#36716;&#21270;&#20026;&#32418;&#40657;&#26641;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>binCount <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>binCount <span class="token operator">&gt;=</span> TREEIFY_THRESHOLD<span class="token punctuation">)</span>
+                    <span class="token function">treeifyBin</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>oldVal <span class="token operator">!=</span> null<span class="token punctuation">)</span>
+                    <span class="token keyword">return</span> oldVal<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  	<span class="token comment">//&#35745;&#25968;&#65292;&#24182;&#19988;&#21028;&#26029;&#21704;&#24076;&#34920;&#20013;&#20351;&#29992;&#30340;&#26742;&#20301;&#26159;&#21542;&#36229;&#20986;&#38408;&#20540;&#65292;&#36229;&#20986;&#30340;&#35805;&#36827;&#34892;&#25193;&#23481;</span>
+    <span class="token function">addCount</span><span class="token punctuation">(</span>1L<span class="token punctuation">,</span> binCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20027;&#32447;&#27969;&#31243;&#26803;&#29702;&#22914;&#19979;&#22270;&#65306;
+     <br>
+     <img alt="&#22270;&#29255;&#25551;&#36848;" class="" data-original="//img.mukewang.com/5dd215e00001eb9e16001056.jpg" src="EPUB/c520cde6-186d-11ed-a978-acde48001122">
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20854;&#23454; put &#30340;&#26680;&#24515;&#24605;&#24819;&#37117;&#22312;&#36825;&#37324;&#20102;&#12290;&#25509;&#19979;&#26469;&#25105;&#20204;&#20998;&#21035;&#30475;&#19968;&#19979;&#20851;&#38190;&#33410;&#28857;&#30340;&#26041;&#27861;&#28304;&#30721;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;spread-&#26041;&#27861;&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     4&#12289;spread &#26041;&#27861;&#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21704;&#24076;&#31639;&#27861;&#30340;&#36923;&#36753;&#65292;&#20915;&#23450; ConcurrentHashMap &#20445;&#23384;&#21644;&#35835;&#21462;&#36895;&#24230;&#12290;hash &#31639;&#27861;&#26159; hashmap &#30340;&#26680;&#24515;&#31639;&#27861;&#65292;JDK &#30340;&#23454;&#29616;&#21313;&#20998;&#24039;&#22937;&#65292;&#20540;&#24471;&#25105;&#20204;&#23398;&#20064;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     spreed &#26041;&#27861;&#28304;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">spread</span><span class="token punctuation">(</span><span class="token keyword">int</span> h<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>h <span class="token operator">^</span> <span class="token punctuation">(</span>h <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> HASH_BITS<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20256;&#20837;&#30340;&#21442;&#25968;h&#20026; key &#23545;&#35937;&#30340; hashCode&#65292;spreed &#26041;&#27861;&#23545; hashCode &#36827;&#34892;&#20102;&#21152;&#24037;&#12290;&#37325;&#26032;&#35745;&#31639;&#20986; hash&#12290;&#25105;&#20204;&#20808;&#26242;&#19981;&#20998;&#26512;&#36825;&#19968;&#34892;&#20195;&#30721;&#30340;&#36923;&#36753;&#65292;&#20808;&#32487;&#32493;&#24448;&#19979;&#30475;&#22914;&#20309;&#20351;&#29992;&#27492; hash &#20540;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     hash &#20540;&#26159;&#29992;&#26469;&#26144;&#23556;&#35813; key &#20540;&#22312;&#21704;&#24076;&#34920;&#20013;&#30340;&#20301;&#32622;&#12290;&#21462;&#20986;&#21704;&#24076;&#34920;&#20013;&#35813; hash &#20540;&#23545;&#24212;&#20301;&#32622;&#30340;&#20195;&#30721;&#22914;&#19979;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token function">tabAt</span><span class="token punctuation">(</span>tab<span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> hash<span class="token punctuation">)</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20808;&#30475;&#36825;&#19968;&#34892;&#20195;&#30721;&#30340;&#36923;&#36753;&#65292;&#31532;&#19968;&#20010;&#21442;&#25968;&#20026;&#21704;&#24076;&#34920;&#65292;&#31532;&#20108;&#20010;&#21442;&#25968;&#26159;&#21704;&#24076;&#34920;&#20013;&#30340;&#25968;&#32452;&#19979;&#26631;&#12290;&#36890;&#36807; (n - 1) &amp; hash &#35745;&#31639;&#19979;&#26631;&#12290;n &#20026;&#25968;&#32452;&#38271;&#24230;&#65292;&#25105;&#20204;&#20197;&#40664;&#35748;&#22823;&#23567; 16 &#20026;&#20363;&#65292;&#37027;&#20040; n-1 = 15&#65292;&#25105;&#20204;&#21487;&#20197;&#20551;&#35774; hash &#20540;&#20026; 100&#65292;&#37027;&#20040; 15 &amp; 100&#20026;&#22810;&#23569;&#21602;&#65311;&amp; &#25226;&#23427;&#24038;&#21491;&#25968;&#20540;&#36716;&#21270;&#20026;&#20108;&#36827;&#21046;&#65292;&#25353;&#20301;&#36827;&#34892;&#19982;&#25805;&#20316;&#65292;&#21482;&#26377;&#20004;&#20010;&#20540;&#37117;&#20026; 1 &#25165;&#20026; 1&#65292;&#26377;&#19968;&#20010;&#20026; 0 &#21017;&#20026; 0&#12290;&#37027;&#20040;&#25105;&#20204;&#25226; 15 &#21644; 100 &#36716;&#21270;&#20026;&#20108;&#36827;&#21046;&#26469;&#35745;&#31639;&#65292;java&#20013; int &#31867;&#22411;&#20026; 8 &#20010;&#23383;&#33410;&#65292;&#19968;&#20849; 32 &#20010;bit&#20301;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     n&#30340;&#20540;15&#36716;&#20026;&#20108;&#36827;&#21046;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     0000 0000 0000 0000  0000 0000 0000 1111
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     hash&#30340;&#20540;100&#36716;&#20026;&#20108;&#36827;&#21046;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     0000 0000 0000 0000  0000 0000 0110 0100&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35745;&#31639;&#32467;&#26524;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     0000 0000 0000 0000  0000 0000 0000 0100
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#23545;&#24212;&#30340;&#21313;&#36827;&#21046;&#20540;&#20026; 4
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26159;&#19981;&#26159;&#24050;&#32463;&#30475;&#20986;&#28857;&#20160;&#20040;&#20102;&#65311;15&#30340;&#20108;&#36827;&#21046;&#39640;&#20301;&#37117;&#20026;0&#65292;&#20302;&#20301;&#37117;&#26159;1&#12290;&#37027;&#20040;&#32463;&#36807;&amp;&#35745;&#31639;&#21518;&#65292;hash&#20540;100&#30340;&#39640;&#20301;&#20840;&#37096;&#34987;&#28165;&#38646;&#65292;&#20302;&#20301;&#21017;&#20445;&#25345;&#19981;&#21464;&#65292;&#24182;&#19988;&#19968;&#23450;&#26159;&#23567;&#20110;&#65288;n-1&#65289;&#30340;&#12290;&#20063;&#23601;&#26159;&#35828;&#32463;&#36807;&#22914;&#27492;&#35745;&#31639;&#65292;&#36890;&#36807;hash&#20540;&#24471;&#21040;&#30340;&#25968;&#32452;&#19979;&#26631;&#32477;&#23545;&#19981;&#20250;&#36234;&#30028;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#37324;&#25105;&#25552;&#20986;&#20004;&#20010;&#38382;&#39064;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;&#25968;&#32452;&#22823;&#23567;&#21487;&#20197;&#20026; 17&#65292;&#25110;&#32773; 18 &#21527;&#65311;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;&#22914;&#26524;&#20026;&#20102;&#20445;&#35777;&#19981;&#36234;&#30028;&#20026;&#20160;&#20040;&#19981;&#30452;&#25509;&#29992; % &#35745;&#31639;&#21462;&#20313;&#25968;&#65311;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;&#20026;&#20160;&#20040;&#19981;&#30452;&#25509;&#29992; key &#30340; hashCode&#65292;&#32780;&#26159;&#20351;&#29992;&#32463; spreed &#26041;&#27861;&#21152;&#24037;&#21518;&#30340; hash &#20540;&#65311;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20960;&#20010;&#38382;&#39064;&#26159;&#38754;&#35797;&#32463;&#24120;&#20250;&#38382;&#21040;&#30340;&#30456;&#20851;&#38382;&#39064;&#12290;&#25105;&#20204;&#19968;&#20010;&#20010;&#26469;&#35299;&#31572;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="&#25968;&#32452;&#22823;&#23567;&#24517;&#39035;&#20026;-2-&#30340;-n-&#27425;&#26041;">
+     4.1 &#25968;&#32452;&#22823;&#23567;&#24517;&#39035;&#20026; 2 &#30340; n &#27425;&#26041;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#31532;&#19968;&#20010;&#38382;&#39064;&#30340;&#31572;&#26696;&#26159;&#25968;&#32452;&#22823;&#23567;&#24517;&#39035;&#20026; 2 &#30340; n &#27425;&#26041;&#65292;&#20063;&#23601;&#26159; 16&#12289;32&#12289;64&#8230;.&#19981;&#33021;&#20026;&#20854;&#20182;&#20540;&#12290;&#22240;&#20026;&#22914;&#26524;&#19981;&#26159; 2 &#30340; n &#27425;&#26041;&#65292;&#37027;&#20040;&#32463;&#36807;&#35745;&#31639;&#30340;&#25968;&#32452;&#19979;&#26631;&#20250;&#22686;&#22823;&#30896;&#25758;&#30340;&#20960;&#29575;&#65292;&#20363;&#22914;&#25968;&#32452;&#38271;&#24230;&#20026; 21&#65292;&#37027;&#20040; n-1=20&#65292;&#23545;&#24212;&#30340;&#20108;&#36827;&#21046;&#20026;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     10100
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#37027;&#20040;hash&#20540;&#30340;&#20108;&#36827;&#21046;&#22914;&#26524;&#26159; 10000&#65288;&#21313;&#36827;&#21046;16&#65289;&#12289;10010&#65288;&#21313;&#36827;&#21046;18&#65289;&#12289;10001&#65288;&#21313;&#36827;&#21046;17&#65289;&#65292;&#21644;10100&#20570;&amp;&#35745;&#31639;&#21518;&#65292;&#37117;&#26159;10000&#65292;&#20063;&#23601;&#26159;&#37117;&#34987;&#26144;&#23556;&#21040;&#25968;&#32452;16&#36825;&#20010;&#19979;&#26631;&#19978;&#12290;&#36825;&#19977;&#20010;&#20540;&#20250;&#20197;&#38142;&#34920;&#30340;&#24418;&#24335;&#23384;&#20648;&#22312;&#25968;&#32452;16&#19979;&#26631;&#30340;&#20301;&#32622;&#12290;&#36825;&#26174;&#28982;&#19981;&#26159;&#25105;&#20204;&#24819;&#35201;&#30340;&#32467;&#26524;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20294;&#22914;&#26524;&#25968;&#32452;&#38271;&#24230;n&#20026;2&#30340;n&#27425;&#26041;&#65292;2&#36827;&#21046;&#30340;&#25968;&#20540;&#20026;10&#65292;100&#65292;1000&#65292;10000&#8230;&#8230;n-1&#21518;&#23545;&#24212;&#20108;&#36827;&#21046;&#20026;1&#65292;11&#65292;111&#65292;1111&#8230;&#8230;&#36825;&#26679;&#21644;hash&#20540;&#20302;&#20301;&amp;&#21518;&#65292;&#20250;&#20445;&#30041;&#21407;&#26469;hash&#20540;&#30340;&#20302;&#20301;&#25968;&#20540;&#65292;&#37027;&#20040;&#21482;&#35201;hash&#20540;&#30340;&#20302;&#20301;&#19981;&#19968;&#26679;&#65292;&#23601;&#19981;&#20250;&#21457;&#29983;&#30896;&#25758;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20854;&#23454;&#22914;&#26524;&#25968;&#32452;&#38271;&#24230;&#20026; 2 &#30340; n &#27425;&#26041;&#65292;&#37027;&#20040;  (n - 1) &amp; hash  &#31561;&#20215;&#20110; hash%n&#12290;&#37027;&#20040;&#20026;&#20160;&#20040;&#19981;&#30452;&#25509;&#29992;hash%n&#21602;&#65311;&#36825;&#26159;&#22240;&#20026;&#25353;&#20301;&#30340;&#25805;&#20316;&#25928;&#29575;&#20250;&#26356;&#39640;&#65292;&#32463;&#36807;&#25105;&#26412;&#22320;&#27979;&#35797;&#65292;&amp; &#35745;&#31639;&#36895;&#24230;&#22823;&#27010;&#26159; % &#25805;&#20316;&#30340; 50 &#20493;&#24038;&#21491;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25152;&#20197; JDK &#20026;&#20102;&#24615;&#33021;&#65292;&#32780;&#20351;&#29992;&#36825;&#31181;&#24039;&#22937;&#30340;&#31639;&#27861;&#65292;&#22312;&#30830;&#20445;&#20803;&#32032;&#22343;&#21248;&#20998;&#24067;&#30340;&#21516;&#26102;&#65292;&#36824;&#20445;&#35777;&#20102;&#25928;&#29575;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="&#20026;&#20160;&#20040;&#19981;&#30452;&#25509;&#29992;-key-&#30340;-hashcode&#65311;">
+     4.2 &#20026;&#20160;&#20040;&#19981;&#30452;&#25509;&#29992; key &#30340; hashCode&#65311;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26412;&#26469;&#25105;&#20204;&#35201;&#20998;&#26512; spreed &#26041;&#27861;&#30340;&#20195;&#30721;&#65292;&#20294;&#26159;&#29616;&#22312;&#30475;&#36215;&#26469;&#36825;&#20010;&#26041;&#27861;&#22909;&#20687;&#24182;&#27809;&#26377;&#20160;&#20040;&#29992;&#22788;&#65292;&#30452;&#25509;&#29992; key &#30340; hashCode&#26469;&#23450;&#20301;&#21704;&#24076;&#34920;&#30340;&#20301;&#32622;&#23601;&#21487;&#20197;&#20102;&#21834;&#65292;&#20026;&#20160;&#20040;&#36824;&#35201;&#32463;&#36807; spreed &#26041;&#27861;&#30340;&#21152;&#24037;&#21602;&#65311;&#20854;&#23454;&#35828;&#21040;&#24213;&#36824;&#26159;&#20026;&#20102;&#20943;&#23569;&#30896;&#25758;&#30340;&#27010;&#29575;&#12290;&#25105;&#20204;&#20808;&#30475;&#30475; spreed &#26041;&#27861;&#20013;&#30340;&#20195;&#30721;&#20570;&#20102;&#20160;&#20040;&#20107;&#24773;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      1&#12289;h ^ (h &gt;&gt;&gt; 16)
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     h &gt;&gt;&gt; 16 &#30340;&#24847;&#24605;&#26159;&#25226; h &#30340;&#20108;&#36827;&#21046;&#25968;&#20540;&#21521;&#21491;&#31227;&#21160; 16 &#20301;&#12290;&#25105;&#20204;&#30693;&#36947;&#25972;&#24418;&#20026; 32 &#20301;&#65292;&#37027;&#20040;&#21491;&#31227; 16 &#20301;&#21518;&#65292;&#23601;&#26159;&#25226;&#39640; 16 &#20301;&#31227;&#21040;&#20102;&#20302; 16 &#20301;&#12290;&#32780;&#39640; 16 &#20301;&#28165;0&#20102;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ^&#20026;&#24322;&#25110;&#25805;&#20316;&#65292;&#20108;&#36827;&#21046;&#25353;&#20301;&#27604;&#36739;&#65292;&#22914;&#26524;&#30456;&#21516;&#21017;&#20026; 0&#65292;&#19981;&#21516;&#21017;&#20026; 1&#12290;&#36825;&#34892;&#20195;&#30721;&#30340;&#24847;&#24605;&#23601;&#26159;&#25226;&#39640;&#20302;16&#20301;&#20570;&#24322;&#25110;&#12290;&#22914;&#26524;&#20004;&#20010;hashCode&#20540;&#30340;&#20302;16&#20301;&#30456;&#21516;&#65292;&#20294;&#26159;&#39640;&#20301;&#19981;&#21516;&#65292;&#32463;&#36807;&#22914;&#27492;&#35745;&#31639;&#65292;&#20302;16&#20301;&#20250;&#21464;&#24471;&#19981;&#19968;&#26679;&#20102;&#12290;&#20026;&#20160;&#20040;&#35201;&#25226;&#20302;&#20301;&#21464;&#24471;&#19981;&#19968;&#26679;&#21602;&#65311;&#36825;&#26159;&#30001;&#20110;&#21704;&#24076;&#34920;&#25968;&#32452;&#38271;&#24230;n&#20250;&#26159;&#20559;&#23567;&#30340;&#25968;&#20540;&#65292;&#37027;&#20040;&#36827;&#34892; (n - 1) &amp; hash &#36816;&#31639;&#26102;&#65292;&#19968;&#30452;&#20351;&#29992;&#30340;&#26159;hash&#36739;&#20302;&#20301;&#30340;&#20540;&#12290;&#37027;&#20040;&#21363;&#20351;hash&#20540;&#19981;&#21516;&#65292;&#20294;&#22914;&#26524;&#20302;&#20301;&#30456;&#24403;&#65292;&#20063;&#20250;&#21457;&#29983;&#30896;&#25758;&#12290;&#32780;&#36827;&#34892;h ^ (h &gt;&gt;&gt; 16)&#21152;&#24037;&#21518;&#30340;hash&#20540;&#65292;&#35753;hashCode&#39640;&#20301;&#30340;&#20540;&#20063;&#21442;&#19982;&#20102;&#21704;&#24076;&#36816;&#31639;&#65292;&#22240;&#27492;&#20943;&#23569;&#20102;&#30896;&#25758;&#30340;&#27010;&#29575;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      2&#12289;(h ^ (h &gt;&gt;&gt; 16)) &amp; HASH_BITS
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20877;&#30475;&#23436;&#25972;&#30340;&#20195;&#30721;&#65292;&#20026;&#20309;&#39640;&#20301;&#31227;&#21040;&#20302;&#20301;&#21644;&#21407;&#26469;&#20302;&#20301;&#20570;&#24322;&#25110;&#25805;&#20316;&#21518;&#65292;&#36824;&#38656;&#35201;&#21644;HASH_BITS&#36825;&#20010;&#24120;&#37327;&#20570; &amp; &#35745;&#31639;&#21602;&#65311;HASH_BITS &#36825;&#20010;&#24120;&#37327;&#30340;&#20540;&#20026; 0x7fffffff&#65292;&#36716;&#21270;&#20026;&#20108;&#36827;&#21046;&#20026; 0111 1111 1111 1111 1111 1111 1111 1111&#12290;&#36825;&#20010;&#25805;&#20316;&#21518;&#20250;&#25226;&#26368;&#39640;&#20301;&#36716;&#20026; 0&#65292;&#20854;&#23454;&#23601;&#26159;&#28040;&#38500;&#20102;&#31526;&#21495;&#20301;&#65292;&#24471;&#21040;&#30340;&#37117;&#26159;&#27491;&#25968;&#12290;&#36825;&#26159;&#22240;&#20026;&#36127;&#30340; hashCode &#22312;ConcurrentHashMap &#20013;&#26377;&#29305;&#27530;&#30340;&#21547;&#20041;&#65292;&#22240;&#27492;&#25105;&#20204;&#38656;&#35201;&#24471;&#21040;&#19968;&#20010;&#27491;&#30340; hashCode&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#24635;&#32467;" style="font-size: 30px;">
+     &#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807;&#20197;&#19978;&#20998;&#26512;&#25105;&#20204;&#24050;&#32463;&#28165;&#26970; ConcurrentHashMap &#20013;&#26159;&#22914;&#20309;&#36890;&#36807; Hash &#20540;&#26469;&#26144;&#23556;&#25968;&#32452;&#20301;&#32622;&#30340;&#65292;&#36825;&#37324;&#38754;&#30340;&#31639;&#27861;&#35774;&#35745;&#30830;&#23454;&#21313;&#20998;&#30340;&#24039;&#22937;&#12290;&#21487;&#33021;&#24179;&#26102;&#25105;&#20204;&#32534;&#30721;&#29992;&#19981;&#21040;&#65292;&#20294;&#20063;&#35201;&#29087;&#35760;&#20110;&#24515;&#65292;&#30456;&#20449;&#22312;&#38754;&#35797;&#20013;&#19968;&#23450;&#29992;&#24471;&#21040;&#12290;&#19979;&#38754;&#19968;&#33410;&#25105;&#20204;&#20877;&#26469;&#30475;&#30475;table &#21021;&#22987;&#21270;&#20197;&#21450;&#25193;&#23481;&#30340;&#30456;&#20851;&#20869;&#23481;&#65292;put &#26041;&#27861;&#30340;&#20027;&#35201;&#20869;&#23481;&#23601;&#26159;&#36825;&#20123;&#65292;&#19979;&#33410;&#26368;&#21518;&#20877;&#30475;&#19968;&#19979; get &#26041;&#27861;&#12290;
+    </p>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/958">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     23 &#25353;&#38656;&#19978;&#38145;&#8212;ReadWriteLock&#35814;&#35299;
+    </p>
+   </div>
+  </a>
+  <!-- &#26410;&#20080;&#19981;&#21487;&#35797;&#35835;&#25110;&#32773;&#26410;&#24320;&#25918; -->
+  <a class="js-cantIn" data-cantaste="1" data-ifopen="1" href="javascript:;">
+   <div class="next r clearfix">
+    <p>
+     25 &#19981;&#35753;&#25105;&#36827;&#38376;&#65292;&#25105;&#23601;&#22312;&#38376;&#21475;&#19968;&#30452;&#31561;&#65281;&#8212;BlockingQueue&#21644;ArrayBlockingQueue
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        

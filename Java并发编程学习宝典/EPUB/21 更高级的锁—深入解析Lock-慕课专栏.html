@@ -1,0 +1,414 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  21 &#26356;&#39640;&#32423;&#30340;&#38145;&#8212;&#28145;&#20837;&#35299;&#26512;Lock
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-11-07 10:15:23
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/c2601666-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/c27cff6a-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/c294e030-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#27809;&#26377;&#26234;&#24935;&#30340;&#22836;&#33041;&#65292;&#23601;&#35937;&#27809;&#26377;&#33098;&#28891;&#30340;&#28783;&#31548;&#12290;
+    <p class="author">
+     &#8212;&#8212;&#21015;&#22827;&#183;&#25176;&#23572;&#26031;&#27888;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21069;&#38754;&#30340;&#31456;&#33410;&#25105;&#20204;&#21018;&#21018;&#23398;&#20064;&#20102; Java &#30340;&#20869;&#32622;&#38145;&#65292;&#20063;&#23601;&#26159; synchronized &#20851;&#38190;&#23383;&#30340;&#20351;&#29992;&#12290;&#22312; Java 5.0 &#20043;&#21069;&#21482;&#26377; synchronized &#21644; volatile &#21487;&#20197;&#29992;&#26469;&#36827;&#34892;&#21516;&#27493;&#12290;&#22312; Java 5.0 &#20043;&#21518;&#65292;&#20986;&#29616;&#20102;&#26032;&#30340;&#21516;&#27493;&#26426;&#21046;&#65292;&#20063;&#23601;&#26159;&#20351;&#29992;  ReentrantLock &#26174;&#24335;&#30340;&#21152;&#38145;&#12290;&#32780; ReentrantLock &#30340;&#35806;&#29983;&#24182;&#19981;&#26159;&#29992;&#26469;&#21462;&#20195; synchroinized&#12290;&#32780;&#26159;&#24212;&#35813;&#22312; synchroinized &#26080;&#27861;&#28385;&#36275;&#25105;&#20204;&#38656;&#27714;&#30340;&#26102;&#20505;&#25165;&#20351;&#29992; ReentrantLock&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#29983;&#27963;&#20013;&#20063;&#26159;&#19968;&#26679;&#30340;&#65292;&#19981;&#35201;&#36807;&#20998;&#36861;&#27714;&#21517;&#29260;&#12289;&#36861;&#27714;&#21151;&#33021;&#40784;&#20840;&#12290;&#20854;&#23454;&#32477;&#22823;&#22810;&#25968;&#24773;&#20917;&#19979;&#65292;&#25105;&#20204;&#36873;&#25321;&#19968;&#33324;&#30340;&#20135;&#21697;&#24050;&#32463;&#36275;&#22815;&#29992;&#20102;&#12290;&#19968;&#20010;&#20135;&#21697; 80% &#30340;&#21151;&#33021;&#20854;&#23454;&#22312;&#20320;&#28120;&#27760;&#23427;&#20043;&#21069;&#37117;&#19981;&#20250;&#29992;&#21040;&#12290;&#24403;&#28982;&#65292;&#22914;&#26524;&#20320;&#30830;&#23454;&#26377;&#38656;&#27714;&#65292;&#37027;&#20040;&#36824;&#26159;&#24212;&#35813;&#36873;&#25321;&#26356;&#20026;&#39640;&#32423;&#30340;&#20135;&#21697;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;reentrantlock&#30340;&#20351;&#29992;" style="font-size: 30px;">
+     1&#12289;ReentrantLock &#30340;&#20351;&#29992;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#31616;&#21333;&#24212;&#29992;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ReentrantLock &#30340;&#20351;&#29992;&#30456;&#27604;&#36739; synchronized &#20250;&#31245;&#24494;&#32321;&#29712;&#19968;&#28857;&#65292;&#25152;&#35859;&#26174;&#31034;&#38145;&#65292;&#20063;&#23601;&#26159;&#20320;&#22312;&#20195;&#30721;&#20013;&#38656;&#35201;&#20027;&#21160;&#30340;&#21435;&#36827;&#34892; lock &#25805;&#20316;&#12290;&#19968;&#33324;&#26469;&#35762;&#25105;&#20204;&#21487;&#20197;&#25353;&#29031;&#19979;&#38754;&#30340;&#26041;&#24335;&#20351;&#29992; ReentrantLock&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">Lock lock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReentrantLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+lock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+ <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+ lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     lock.lock ()  &#23601;&#26159;&#22312;&#26174;&#24335;&#30340;&#19978;&#38145;&#12290;&#19978;&#38145;&#21518;&#65292;&#19979;&#38754;&#30340;&#20195;&#30721;&#22359;&#19968;&#23450;&#35201;&#25918;&#21040; try &#20013;&#65292;&#24182;&#19988;&#35201;&#32467;&#21512; finally &#20195;&#30721;&#22359;&#35843;&#29992; lock.unlock () &#26469;&#37322;&#25918;&#38145;&#65292;&#21542;&#21017;&#19968;&#23450; doSomething &#26041;&#27861;&#20013;&#20986;&#29616;&#20219;&#20309;&#24322;&#24120;&#65292;&#36825;&#20010;&#38145;&#23558;&#27704;&#36828;&#19981;&#20250;&#34987;&#37322;&#25918;&#25481;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#20844;&#24179;&#38145;&#21644;&#38750;&#20844;&#24179;&#38145;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     synchronized &#26159;&#38750;&#20844;&#24179;&#38145;&#65292;&#20063;&#23601;&#26159;&#35828;&#27599;&#24403;&#38145;&#21273;&#25918;&#30340;&#26102;&#20505;&#65292;&#25152;&#26377;&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;&#24182;&#19981;&#20250;&#25353;&#29031;&#25490;&#38431;&#39034;&#21435;&#20381;&#27425;&#33719;&#24471;&#38145;&#65292;&#32780;&#26159;&#20250;&#20877;&#27425;&#21435;&#20105;&#25250;&#38145;&#12290;ReentrantLock &#30456;&#27604;&#36739;&#32780;&#35328;&#26356;&#20026;&#28789;&#27963;&#65292;&#23427;&#33021;&#22815;&#25903;&#25345;&#20844;&#24179;&#21644;&#38750;&#20844;&#24179;&#38145;&#20004;&#31181;&#24418;&#24335;&#12290;&#21482;&#38656;&#35201;&#22312;&#22768;&#26126;&#30340;&#26102;&#20505;&#20256;&#20837; true&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">Lock lock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ReentrantLock</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#32780;&#40664;&#35748;&#30340;&#26080;&#21442;&#26500;&#36896;&#26041;&#27861;&#21017;&#20250;&#21019;&#24314;&#38750;&#20844;&#24179;&#38145;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      tryLock
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21069;&#38754;&#25105;&#20204;&#36890;&#36807; lock.lock (); &#26469;&#23436;&#25104;&#21152;&#38145;&#65292;&#27492;&#26102;&#21152;&#38145;&#25805;&#20316;&#26159;&#38459;&#22622;&#30340;&#65292;&#30452;&#21040;&#33719;&#21462;&#38145;&#25165;&#20250;&#32487;&#32493;&#21521;&#19979;&#36827;&#34892;&#12290;ReentrantLock &#20854;&#23454;&#36824;&#26377;&#26356;&#20026;&#28789;&#27963;&#30340;&#26551;&#38145;&#26041;&#24335; tryLock&#12290;tryLock &#26041;&#27861;&#26377;&#20004;&#20010;&#37325;&#36733;&#65292;&#31532;&#19968;&#20010;&#26159;&#26080;&#21442;&#25968;&#30340; tryLock &#26041;&#27861;&#65292;&#34987;&#35843;&#29992;&#21518;&#65292;&#35813;&#26041;&#27861;&#20250;&#31435;&#21363;&#36820;&#22238;&#33719;&#21462;&#38145;&#30340;&#24773;&#20917;&#12290;&#33719;&#21462;&#20026; true&#65292;&#26410;&#33021;&#33719;&#21462;&#20026; false&#12290;&#25105;&#20204;&#30340;&#20195;&#30721;&#20013;&#21487;&#20197;&#36890;&#36807;&#36820;&#22238;&#30340;&#32467;&#26524;&#36827;&#34892;&#36827;&#19968;&#27493;&#30340;&#22788;&#29702;&#12290;&#31532;&#20108;&#20010;&#26159;&#26377;&#21442;&#25968;&#30340; tryLock &#26041;&#27861;&#65292;&#36890;&#36807;&#20256;&#20837;&#26102;&#38388;&#21644;&#21333;&#20301;&#65292;&#26469;&#25511;&#21046;&#31561;&#24453;&#33719;&#21462;&#38145;&#30340;&#26102;&#38271;&#12290;&#22914;&#26524;&#36229;&#36807;&#26102;&#38388;&#26410;&#33021;&#33719;&#21462;&#38145;&#21017;&#25918;&#22238; false&#65292;&#21453;&#20043;&#36820;&#22238; true&#12290;&#20351;&#29992;&#26041;&#27861;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">if</span><span class="token punctuation">(</span>lock<span class="token punctuation">.</span><span class="token function">tryLock</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+      lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+  <span class="token function">doSomethingElse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#22914;&#26524;&#19981;&#24076;&#26395;&#26080;&#27861;&#33719;&#21462;&#38145;&#26102;&#19968;&#30452;&#31561;&#24453;&#65292;&#32780;&#26159;&#24076;&#26395;&#33021;&#22815;&#21435;&#20570;&#19968;&#20123;&#20854;&#23427;&#20107;&#24773;&#26102;&#65292;&#21487;&#20197;&#36873;&#25321;&#27492;&#26041;&#24335;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;lock-&#26041;&#27861;&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     2&#12289;lock &#26041;&#27861;&#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20808;&#20174; lock &#26041;&#27861;&#30475;&#36215;&#12290;lock &#26041;&#27861;&#30340;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        sync<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807;&#20869;&#32622;&#30340; sync &#23545;&#35937;&#21152;&#38145;&#65292;&#37027;&#20040; sync &#23545;&#35937;&#26159;&#20160;&#20040;&#21602;&#65311;&#25105;&#20204;&#26469;&#30475; ReentrantLock &#30340;&#26080;&#21442;&#26500;&#36896;&#20989;&#25968;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token function">ReentrantLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        sync <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NonfairSync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26377;&#21442;&#30340;&#26500;&#36896;&#20989;&#25968;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token function">ReentrantLock</span><span class="token punctuation">(</span><span class="token keyword">boolean</span> fair<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        sync <span class="token operator">=</span> fair <span class="token operator">?</span> <span class="token keyword">new</span> <span class="token class-name">FairSync</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">NonfairSync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     FairSync &#21644; NonFairSync &#37117;&#32487;&#25215;&#33258; Sync&#12290;&#23427;&#20204;&#30340;&#32487;&#25215;&#20851;&#31995;&#22914;&#19979;&#22270;&#65306;
+     <br>
+     <img alt="&#22270;&#29255;&#25551;&#36848;" class="" data-original="//img.mukewang.com/5dc37dfd00017b7806860361.jpg" src="EPUB/c2b07430-186d-11ed-a978-acde48001122">
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#37117;&#26159;&#26368;&#32456;&#32487;&#25215;&#33258; AbstractQueuedSynchronizer&#12290;&#36825;&#23601;&#26159; Java &#20013;&#33879;&#21517;&#30340; AQS&#12290;&#36890;&#36807;&#26597;&#30475; AQS &#30340;&#27880;&#37322;&#25105;&#20204;&#20102;&#35299;&#21040;&#65292; AQS &#20381;&#36182;&#20808;&#36827;&#20808;&#20986;&#38431;&#21015;&#23454;&#29616;&#20102;&#38459;&#22622;&#38145;&#21644;&#30456;&#20851;&#30340;&#21516;&#27493;&#22120;&#65288;&#20449;&#21495;&#37327;&#12289;&#20107;&#20214;&#31561;&#65289;&#12290;AQS &#20869;&#37096;&#26377;&#19968;&#20010; volatile &#31867;&#22411;&#30340; state &#23646;&#24615;&#65292;&#23454;&#38469;&#19978;&#22810;&#32447;&#31243;&#23545;&#38145;&#30340;&#31454;&#20105;&#20307;&#29616;&#22312;&#23545; state &#20540;&#20889;&#20837;&#30340;&#31454;&#20105;&#12290;&#19968;&#26086; state &#20174; 0 &#21464;&#20026; 1&#65292;&#20195;&#34920;&#26377;&#32447;&#31243;&#24050;&#32463;&#31454;&#20105;&#21040;&#38145;&#65292;&#37027;&#20040;&#20854;&#23427;&#32447;&#31243;&#21017;&#36827;&#20837;&#31561;&#24453;&#38431;&#21015;&#12290;&#31561;&#24453;&#38431;&#21015;&#26159;&#19968;&#20010;&#38142;&#34920;&#32467;&#26500;&#30340; FIFO &#38431;&#21015;&#65292;&#36825;&#33021;&#22815;&#30830;&#20445;&#20844;&#24179;&#38145;&#30340;&#23454;&#29616;&#12290;&#21516;&#19968;&#32447;&#31243;&#22810;&#27425;&#33719;&#21462;&#38145;&#26102;&#65292;&#22914;&#26524;&#20043;&#21069;&#35813;&#32447;&#31243;&#24050;&#32463;&#25345;&#26377;&#38145;&#65292;&#37027;&#20040;&#23545; state &#20877;&#27425;&#21152; 1&#12290;&#37322;&#25918;&#38145;&#26102;&#65292;&#21017;&#20250;&#23545; state-1&#12290;&#30452;&#21040;&#20943;&#20026; 0&#65292;&#25165;&#24847;&#21619;&#30528;&#27492;&#32447;&#31243;&#30495;&#27491;&#37322;&#25918;&#20102;&#38145;&#12290;
+     <br>
+     <img alt="&#22270;&#29255;&#25551;&#36848;" class="" data-original="//img.mukewang.com/5dc37e130001f42308690399.jpg" src="EPUB/c2c8690a-186d-11ed-a978-acde48001122">
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#22238;&#36807;&#22836;&#26469;&#65292;&#32487;&#32493;&#36319;&#36827; sync.lock (); &#30340;&#28304;&#20195;&#30721;&#12290;&#25105;&#20204;&#23545;&#20195;&#30721;&#30340;&#20998;&#26512;&#36873;&#25321;&#20844;&#24179;&#38145;&#36825;&#26465;&#32447;&#12290;FairSync &#23454;&#29616;&#30340; lock &#20195;&#30721;&#24456;&#31616;&#21333;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">acquire</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22312; FairSync &#24182;&#27809;&#26377;&#37325;&#20889; acquire &#26041;&#27861;&#20195;&#30721;&#12290;&#35843;&#29992;&#30340;&#20026; AbstractQueuedSynchronizer &#30340;&#20195;&#30721;&#65292;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">acquire</span><span class="token punctuation">(</span><span class="token keyword">int</span> arg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">tryAcquire</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+        <span class="token function">acquireQueued</span><span class="token punctuation">(</span><span class="token function">addWaiter</span><span class="token punctuation">(</span>Node<span class="token punctuation">.</span>EXCLUSIVE<span class="token punctuation">)</span><span class="token punctuation">,</span> arg<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token function">selfInterrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#39318;&#20808;&#35843;&#29992;&#19968;&#27425; tryAcquire &#26041;&#27861;&#12290;&#22914;&#26524; tryAcquire &#26041;&#27861;&#36820;&#22238; true&#65292;&#37027;&#20040; acquire &#23601;&#20250;&#31435;&#21363;&#36820;&#22238;&#12290;&#20294;&#22914;&#26524; tryAcquire &#36820;&#22238;&#20102; false&#65292;&#37027;&#20040;&#21017;&#20250;&#20808;&#35843;&#29992; addWaiter&#65292;&#25226;&#24403;&#21069;&#32447;&#31243;&#21253;&#35013;&#25104;&#19968;&#20010;&#31561;&#24453;&#30340; node&#65292;&#21152;&#20837;&#21040;&#31561;&#24453;&#38431;&#21015;&#12290;&#28982;&#21518;&#35843;&#29992; acquireQueued &#23581;&#35797;&#25490;&#38431;&#33719;&#21462;&#38145;&#65292;&#22914;&#26524;&#25104;&#21151;&#21518;&#21457;&#29616;&#33258;&#24049;&#34987;&#20013;&#26029;&#36807;&#65292;&#37027;&#20040;&#36820;&#22238; true&#65292;&#23548;&#33268; selfInterrupt &#34987;&#35302;&#21457;&#65292;&#36825;&#20010;&#26041;&#37324;&#21482;&#26159;&#35843;&#29992; Thread.currentThread ().interrupt (); &#36827;&#34892; interrupt&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     acquireQueued &#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">acquireQueued</span><span class="token punctuation">(</span><span class="token keyword">final</span> Node node<span class="token punctuation">,</span> <span class="token keyword">int</span> arg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">boolean</span> failed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> interrupted <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> Node p <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token function">predecessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> head <span class="token operator">&amp;&amp;</span> <span class="token function">tryAcquire</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">setHead</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                p<span class="token punctuation">.</span>next <span class="token operator">=</span> null<span class="token punctuation">;</span> <span class="token comment">// help GC</span>
+                failed <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> interrupted<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">shouldParkAfterFailedAcquire</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> node<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                <span class="token function">parkAndCheckInterrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                interrupted <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>failed<span class="token punctuation">)</span>
+            <span class="token function">cancelAcquire</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22312;&#27492;&#26041;&#27861;&#20013;&#36827;&#20837;&#33258;&#26059;&#65292;&#19981;&#26029;&#26597;&#30475;&#33258;&#24049;&#25490;&#38431;&#30340;&#24773;&#20917;&#12290;&#22914;&#26524;&#36718;&#21040;&#33258;&#24049;&#65288; header &#26159;&#24050;&#32463;&#33719;&#21462;&#38145;&#30340;&#32447;&#31243;&#65292;&#32780; header &#21518;&#38754;&#30340;&#32447;&#31243;&#26159;&#25490;&#38431;&#21040;&#35201;&#21435;&#33719;&#21462;&#38145;&#30340;&#32447;&#31243;&#65289;&#65292;&#37027;&#20040;&#35843;&#29992; tryAcquire &#26041;&#27861;&#21435;&#33719;&#21462;&#38145;&#65292;&#28982;&#21518;&#25226;&#33258;&#24049;&#35774;&#32622;&#20026;&#38431;&#21015;&#30340; header&#12290;&#22312;&#33258;&#26059;&#20013;&#65292;&#22914;&#26524;&#27809;&#26377;&#25490;&#38431;&#21040;&#33258;&#24049;&#65292;&#36824;&#20250;&#26816;&#26597;&#26159;&#21542;&#24212;&#35813;&#24212;&#35813;&#34987;&#20013;&#26029;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25972;&#20010;&#33719;&#21462;&#38145;&#30340;&#36807;&#31243;&#25105;&#20204;&#21487;&#20197;&#24635;&#32467;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <ol>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#30452;&#25509;&#36890;&#36807; tryAcquire &#23581;&#35797;&#33719;&#21462;&#38145;&#65292;&#25104;&#21151;&#30452;&#25509;&#36820;&#22238;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#22914;&#26524;&#27809;&#33021;&#33719;&#21462;&#25104;&#21151;&#65292;&#37027;&#20040;&#25226;&#33258;&#24049;&#21152;&#20837;&#31561;&#24453;&#38431;&#21015;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#33258;&#26059;&#26597;&#30475;&#33258;&#24049;&#30340;&#25490;&#38431;&#24773;&#20917;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#22914;&#26524;&#25490;&#38431;&#36718;&#21040;&#33258;&#24049;&#65292;&#37027;&#20040;&#23581;&#35797;&#36890;&#36807; tryAcquire &#33719;&#21462;&#38145;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#22914;&#26524;&#27809;&#36718;&#21040;&#33258;&#24049;&#65292;&#37027;&#20040;&#22238;&#21040;&#31532;&#19977;&#27493;&#26597;&#30475;&#33258;&#24049;&#30340;&#25490;&#38431;&#24773;&#20917;&#12290;
+     </li>
+    </ol>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20174;&#20197;&#19978;&#36807;&#31243;&#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#38145;&#30340;&#33719;&#21462;&#26159;&#36890;&#36807; tryAcquire &#26041;&#27861;&#12290;&#32780;&#36825;&#20010;&#26041;&#27861;&#22312; FairSync &#21644; NonfairSync &#26377;&#19981;&#21516;&#23454;&#29616;&#65292;&#25105;&#20204;&#26469;&#20998;&#26512;&#22312; FairSync &#20013;&#30340;&#23454;&#29616;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">        <span class="token keyword">protected</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">tryAcquire</span><span class="token punctuation">(</span><span class="token keyword">int</span> acquires<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">final</span> Thread current <span class="token operator">=</span> Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">hasQueuedPredecessors</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                    <span class="token function">compareAndSetState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> acquires<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">setExclusiveOwnerThread</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>current <span class="token operator">==</span> <span class="token function">getExclusiveOwnerThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> nextc <span class="token operator">=</span> c <span class="token operator">+</span> acquires<span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>nextc <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Maximum lock count exceeded"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">setState</span><span class="token punctuation">(</span>nextc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#23454;&#38469;&#19978;&#23427;&#30340;&#23454;&#29616;&#21644; NonfairSync &#30340;&#23454;&#29616;&#65292;&#20540;&#26159;&#22312; c==0 &#26102;&#65292;&#22810;&#20102;&#23545; hasQueuedPredecessors &#26041;&#27861;&#30340;&#35843;&#29992;&#12290;&#25925;&#21517;&#24605;&#20041;&#65292;&#36825;&#20010;&#26041;&#27861;&#20570;&#30340;&#20107;&#24773;&#23601;&#26159;&#21028;&#26029;&#24403;&#21069;&#32447;&#31243;&#26159;&#21542;&#21069;&#38754;&#36824;&#26377;&#25490;&#38431;&#30340;&#32447;&#31243;&#12290;&#24403;&#23427;&#21069;&#38754;&#27809;&#26377;&#25490;&#38431;&#32447;&#31243;&#65292;&#35828;&#26126;&#24050;&#32463;&#25490;&#38431;&#21040;&#33258;&#24049;&#20102;&#65292;&#36825;&#26159;&#25165;&#20250;&#36890;&#36807; CAS &#30340;&#30340;&#26041;&#24335;&#21435;&#25913;&#21464; state &#20540;&#20026; 1&#65292;&#22914;&#26524;&#25104;&#21151;&#65292;&#37027;&#20040;&#35828;&#26126;&#24403;&#21069;&#32447;&#31243;&#33719;&#21462;&#38145;&#25104;&#21151;&#12290;&#25509;&#19979;&#26469;&#23601;&#26159;&#35843;&#29992; setExclusiveOwnerThread &#25226;&#33258;&#24049;&#35774;&#32622;&#25104;&#20026;&#38145;&#30340;&#25317;&#26377;&#32773;&#12290;else if &#20013;&#36923;&#36753;&#21017;&#26159;&#22312;&#22788;&#29702;&#37325;&#20837;&#36923;&#36753;&#65292;&#22914;&#26524;&#24403;&#21069;&#32447;&#31243;&#23601;&#26159;&#38145;&#30340;&#25317;&#26377;&#32773;&#65292;&#37027;&#20040;&#20250;&#25226; state &#21152; 1 &#26356;&#26032;&#22238;&#21435;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807;&#20197;&#19978;&#20998;&#26512;&#65292;&#25105;&#20204;&#21487;&#20197;&#30475;&#20986; AbstractQueuedSynchronizer &#25552;&#20379; acquire &#26041;&#27861;&#30340;&#27169;&#26495;&#36923;&#36753;&#65292;&#20294;&#20854;&#20013;&#30495;&#27491;&#23545;&#38145;&#30340;&#33719;&#21462;&#26041;&#27861; tryAcquire&#65292;&#26159;&#22312;&#19981;&#21516;&#23376;&#31867;&#20013;&#23454;&#29616;&#30340;&#65292;&#36825;&#26159;&#24456;&#22909;&#30340;&#35774;&#35745;&#24605;&#24819;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;unlock-&#26041;&#27861;&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     3&#12289;unlock &#26041;&#27861;&#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#38754;&#25105;&#20204;&#26469;&#20998;&#26512; unlock &#30340;&#28304;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    sync<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21644; lock &#24456;&#20687;&#65292;&#23454;&#38469;&#35843;&#29992;&#30340;&#26159; sync &#23454;&#29616;&#31867;&#30340; release &#26041;&#27861;&#12290;&#21644; lock &#26041;&#27861;&#19968;&#26679;&#65292;&#36825;&#20010; release &#26041;&#27861;&#22312; AbstractQueuedSynchronizer &#20013;&#65292;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">tryRelease</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Node h <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>h <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> h<span class="token punctuation">.</span>waitStatus <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token function">unparkSuccessor</span><span class="token punctuation">(</span>h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;&#26041;&#27861;&#20013;&#20250;&#20808;&#25191;&#34892; tryRelease&#65292;&#23427;&#30340;&#23454;&#29616;&#20063;&#22312; AbstractQueuedSynchronizer &#30340;&#23376;&#31867; Sync &#20013;&#65292;&#22914;&#26524;&#37322;&#25918;&#38145;&#25104;&#21151;&#65292;&#37027;&#20040;&#21017;&#20250;&#36890;&#36807; unparkSuccessor &#26041;&#27861;&#25214;&#21040;&#38431;&#21015;&#20013;&#31532;&#19968;&#20010; waitStatus&lt;0 &#30340;&#32447;&#31243;&#36827;&#34892;&#21796;&#37266;&#12290;&#25105;&#20204;&#19979;&#38754;&#30475;&#19968;&#19979; tryRelease &#26041;&#27861;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">				<span class="token keyword">protected</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> <span class="token function">tryRelease</span><span class="token punctuation">(</span><span class="token keyword">int</span> releases<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> releases<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token function">getExclusiveOwnerThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalMonitorStateException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">boolean</span> free <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                free <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token function">setExclusiveOwnerThread</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token function">setState</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> free<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36824;&#26159;&#27604;&#36739;&#31616;&#21333;&#65292;&#37322;&#25918;&#30340;&#26102;&#20505;&#20250;&#25226; state &#20943; 1&#65292;&#22914;&#26524;&#20943;&#21040; 0&#65292;&#37027;&#20040;&#35828;&#26126;&#27809;&#26377;&#32447;&#31243;&#25345;&#26377;&#38145;&#65292;&#21017;&#20250;&#35774;&#32622; free=true &#24182;&#19988;&#28165;&#31354;&#38145;&#30340;&#25345;&#26377;&#32773;&#12290;&#22914;&#26524; state &#20540;&#36824;&#26159;&#22823;&#20110; 0&#65292;&#36825;&#35828;&#26126;&#21487;&#37325;&#20837;&#38145;&#36824;&#26377;&#20854;&#23427;&#32447;&#31243;&#25345;&#26377;&#65292;&#37027;&#20040;&#38145;&#24182;&#27809;&#26377;&#34987;&#30495;&#27491;&#37322;&#25918;&#65292;&#20165;&#20165;&#26159;&#20943;&#23569;&#20102;&#25345;&#26377;&#30340;&#25968;&#37327;&#65292;&#25152;&#20197;&#36820;&#22238; false&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#24635;&#32467;" style="font-size: 30px;">
+     &#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26412;&#33410;&#23398;&#20064;&#20102; ReentrantLock &#30340;&#20351;&#29992;&#21450;&#20854;&#26680;&#24515;&#28304;&#20195;&#30721;&#65292;&#20854;&#23454; Lock &#30456;&#20851;&#30340;&#20195;&#30721;&#36824;&#26377;&#24456;&#22810;&#12290;&#25105;&#20204;&#21487;&#20197;&#23581;&#35797;&#33258;&#24049;&#21435;&#38405;&#35835;&#12290;ReentrantLock &#30340;&#35774;&#35745;&#24605;&#24819;&#26159;&#36890;&#36807; FIFO &#30340;&#38431;&#21015;&#20445;&#23384;&#31561;&#24453;&#38145;&#30340;&#32447;&#31243;&#12290;&#36890;&#36807; volatile &#31867;&#22411;&#30340; state &#20445;&#23384;&#38145;&#30340;&#25345;&#26377;&#25968;&#37327;&#65292;&#20174;&#32780;&#23454;&#29616;&#20102;&#38145;&#30340;&#21487;&#37325;&#20837;&#24615;&#12290;&#32780;&#20844;&#24179;&#38145;&#21017;&#26159;&#36890;&#36807;&#21028;&#26029;&#33258;&#24049;&#26159;&#21542;&#25490;&#38431;&#25104;&#21151;&#65292;&#26469;&#20915;&#23450;&#26159;&#21542;&#21435;&#20105;&#25250;&#38145;&#12290;&#23398;&#20064;&#23436;&#26412;&#33410;&#30456;&#20449;&#20320;&#19968;&#23450;&#20250;&#26377;&#30097;&#38382;&#65292;&#20026;&#20160;&#20040;&#22312;&#20869;&#32622;&#38145;&#20043;&#22806;&#21448;&#35774;&#35745;&#20102; Lock &#26174;&#24335;&#38145;&#21602;&#65311;&#19979;&#19968;&#33410;&#65292;&#25105;&#20204;&#23558;&#23545;&#36825;&#20004;&#31181;&#38145;&#36827;&#34892;&#23545;&#27604;&#65292;&#30475;&#30475;&#21508;&#33258;&#36866;&#21512;&#30340;&#22330;&#26223;&#12290;
+    </p>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/955">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     20 &#20854;&#23454;&#19981;&#29992;&#36896;&#36718;&#23376;&#8212;Executor&#26694;&#26550;&#35814;&#35299;
+    </p>
+   </div>
+  </a>
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/957">
+   <div class="next r clearfix">
+    <p>
+     22 &#21040;&#24213;&#21738;&#25226;&#38145;&#26356;&#36866;&#21512;&#20320;&#65311;&#8212;synchronized&#19982;ReentrantLock&#23545;&#27604;
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        

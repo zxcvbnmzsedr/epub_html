@@ -1,0 +1,594 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  07 &#28145;&#20837;Thread&#31867;&#8212;&#32447;&#31243;API&#31934;&#35762;
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-09-25 15:53:08
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/b78c76da-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/b79f4d64-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/b7bd954e-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#27599;&#20010;&#20154;&#30340;&#29983;&#21629;&#37117;&#26159;&#19968;&#21482;&#23567;&#33337;&#65292;&#29702;&#24819;&#26159;&#23567;&#33337;&#30340;&#39118;&#24070;&#12290;
+    <p class="author">
+     &#8212;&#8212;&#24352;&#28023;&#36842;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21069;&#38754;&#20960;&#33410;&#25105;&#20204;&#37117;&#22312;&#22260;&#32469;&#30528;&#22914;&#20309;&#21019;&#24314; Thread &#21644; &#21551;&#21160; Thread &#20570;&#20998;&#26512;&#12290;&#19978;&#33410;&#25105;&#20204;&#35762;&#35299;&#20102; Thread &#30340;&#20960;&#31181;&#29366;&#24577;&#65292;&#20197;&#21450;&#29366;&#24577;&#38388;&#30340;&#21464;&#21270;&#12290;&#26377;&#20123;&#29366;&#24577;&#30340;&#21464;&#21270;&#26159;&#34987;&#21160;&#21457;&#29983;&#30340;&#65292;&#27604;&#22914; run &#26041;&#27861;&#25191;&#34892;&#23436;&#21518;&#36827;&#20837; TERMINATED &#29366;&#24577;&#12290;&#19981;&#36807;&#26356;&#22810;&#26102;&#20505;&#65292;&#29366;&#24577;&#30340;&#21464;&#21270;&#26159;&#30001;&#20110;&#20027;&#21160;&#35843;&#29992;&#20102;&#26576;&#20123;&#26041;&#27861;&#12290;&#32780;&#36825;&#20123;&#26041;&#27861;&#22823;&#22810;&#25968;&#26159; Thread &#31867;&#30340; API&#12290;&#26412;&#23567;&#32467;&#65292;&#25105;&#20204;&#23601;&#26469;&#37325;&#28857;&#23398;&#20064;&#19979; Thread &#31867;&#26292;&#38706;&#20986;&#26469;&#30340; API&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="sleep-&#26041;&#27861;" style="font-size: 30px;">
+     sleep &#26041;&#27861;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#39038;&#21517;&#24605;&#20041;&#65292;&#32447;&#31243;&#30340; sleep &#26041;&#27861;&#20250;&#20351;&#32447;&#31243;&#20241;&#30496;&#25351;&#23450;&#30340;&#26102;&#38388;&#38271;&#24230;&#12290;&#20241;&#30496;&#30340;&#24847;&#24605;&#26159;&#65292;&#24403;&#21069;&#36923;&#36753;&#25191;&#34892;&#21040;&#27492;&#19981;&#20877;&#32487;&#32493;&#25191;&#34892;&#65292;&#32780;&#26159;&#31561;&#24453;&#25351;&#23450;&#30340;&#26102;&#38388;&#12290;&#20294;&#22312;&#36825;&#27573;&#26102;&#38388;&#20869;&#65292;&#35813;&#32447;&#31243;&#25345;&#26377;&#30340; monitor &#38145;&#65288;&#38145;&#22312;&#21518;&#38754;&#20250;&#35762;&#35299;&#65292;&#36825;&#37324;&#21487;&#20197;&#35748;&#20026;&#23545;&#20849;&#20139;&#36164;&#28304;&#30340;&#29420;&#21344;&#26631;&#24535;&#65289;&#24182;&#19981;&#20250;&#34987;&#25918;&#24323;&#12290;&#25105;&#20204;&#21487;&#20197;&#35748;&#20026;&#32447;&#31243;&#21482;&#26159;&#24037;&#20316;&#21040;&#19968;&#21322;&#20241;&#24687;&#20102;&#19968;&#20250;&#65292;&#20294;&#23427;&#25152;&#21344;&#26377;&#30340;&#36164;&#28304;&#24182;&#19981;&#20250;&#20132;&#36824;&#12290;&#36825;&#26679;&#35774;&#35745;&#24456;&#22909;&#29702;&#35299;&#65292;&#22240;&#20026;&#32447;&#31243;&#22312; sleep &#30340;&#26102;&#20505;&#21487;&#33021;&#26159;&#22788;&#20110;&#21516;&#27493;&#20195;&#30721;&#22359;&#30340;&#20013;&#38388;&#20301;&#32622;&#65292;&#22914;&#26524;&#27492;&#26102;&#25226;&#38145;&#25918;&#24323;&#65292;&#23601;&#36829;&#32972;&#20102;&#21516;&#27493;&#30340;&#35821;&#20041;&#12290;&#25152;&#20197; sleep &#26102;&#24182;&#19981;&#20250;&#25918;&#24323;&#38145;&#65292;&#31561;&#36807;&#20102; sleep &#26102;&#38271;&#21518;&#65292;&#21487;&#20197;&#30830;&#20445;&#21518;&#38754;&#30340;&#36923;&#36753;&#36824;&#22312;&#21516;&#27493;&#25191;&#34892;&#12290;
+     <br>
+     <img alt="&#22270;&#29255;&#25551;&#36848;" class="" data-original="//img.mukewang.com/5d7ef1b40001079108400407.jpg" src="EPUB/b7dcf7fe-186d-11ed-a978-acde48001122">
+     <br>
+     sleep &#26041;&#27861;&#26377;&#20004;&#20010;&#37325;&#36733;&#65292;&#20998;&#21035;&#26159;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">native</span> <span class="token keyword">void</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token keyword">long</span> millis<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token keyword">long</span> millis<span class="token punctuation">,</span> <span class="token keyword">int</span> nanos<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20004;&#32773;&#30340;&#21306;&#21035;&#21482;&#26159;&#19968;&#20010;&#25903;&#25345;&#20241;&#30496;&#26102;&#38388;&#21040;&#27627;&#31186;&#32423;&#65292;&#21478;&#22806;&#19968;&#20010;&#21040;&#32435;&#31186;&#32423;&#12290;&#20294;&#20854;&#23454;&#31532;&#20108;&#20010;&#24182;&#19981;&#33021;&#30495;&#30340;&#31934;&#30830;&#21040;&#32435;&#31186;&#32423;&#21035;&#65292;&#25105;&#20204;&#26469;&#30475;&#31532;&#20108;&#20010;&#37325;&#36733;&#26041;&#27861;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token keyword">long</span> millis<span class="token punctuation">,</span> <span class="token keyword">int</span> nanos<span class="token punctuation">)</span>
+<span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>millis <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">"timeout value is negative"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nanos <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> nanos <span class="token operator">&gt;</span> <span class="token number">999999</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span>
+                            <span class="token string">"nanosecond timeout value out of range"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>nanos <span class="token operator">&gt;=</span> <span class="token number">500000</span> <span class="token operator">||</span> <span class="token punctuation">(</span>nanos <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> millis <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        millis<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">sleep</span><span class="token punctuation">(</span>millis<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#28165;&#26970;&#30340;&#30475;&#21040;&#65292;&#26368;&#32456;&#35843;&#29992;&#30340;&#36824;&#26159;&#31532;&#19968;&#20010;&#27627;&#31186;&#32423;&#21035;&#30340; sleep &#26041;&#27861;&#12290;&#32780;&#20256;&#20837;&#30340;&#32435;&#31186;&#20250;&#34987;&#22235;&#33293;&#20116;&#20837;&#12290;&#22914;&#26524;&#22823;&#20110; 50 &#19975;&#65292;&#27627;&#31186; ++&#65292;&#21542;&#21017;&#32435;&#31186;&#34987;&#30465;&#30053;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="yield-&#26041;&#27861;" style="font-size: 30px;">
+     yield &#26041;&#27861;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     yield &#26041;&#27861;&#25105;&#20204;&#24179;&#26102;&#24182;&#19981;&#24120;&#29992;&#12290;yield &#21333;&#35789;&#30340;&#24847;&#24605;&#26159;&#35753;&#36335;&#65292;&#22312;&#22810;&#32447;&#31243;&#20013;&#24847;&#21619;&#30528;&#26412;&#32447;&#31243;&#24895;&#24847;&#25918;&#24323; CPU &#36164;&#28304;&#65292;&#20063;&#23601;&#26159;&#21487;&#20197;&#35753;&#20986; CPU &#36164;&#28304;&#12290;&#19981;&#36807;&#36825;&#21482;&#26159;&#32473; CPU &#19968;&#20010;&#25552;&#31034;&#65292;&#24403; CPU &#36164;&#28304;&#24182;&#19981;&#32039;&#24352;&#26102;&#65292;&#21017;&#20250;&#26080;&#35270; yield &#25552;&#37266;&#12290;&#22914;&#26524; CPU &#27809;&#26377;&#26080;&#35270; yield &#25552;&#37266;&#65292;&#37027;&#20040;&#24403;&#21069; CPU &#20250;&#20174; RUNNING &#21464;&#20026; RUNNABLE &#29366;&#24577;&#65292;&#27492;&#26102;&#20854;&#23427;&#31561;&#24453; CPU &#30340; RUNNABLE &#32447;&#31243;&#65292;&#20250;&#21435;&#31454;&#20105; CPU &#36164;&#28304;&#12290;&#35762;&#21040;&#36825;&#37324;&#26377;&#20010;&#38382;&#39064;&#65292;&#21018;&#21018; yield &#30340;&#32447;&#31243;&#21516;&#20026; RUNNABLE &#29366;&#24577;&#65292;&#26159;&#21542;&#20063;&#20250;&#21442;&#19982;&#31454;&#20105;&#20877;&#27425;&#33719;&#24471; CPU &#36164;&#28304;&#21602;&#65311;&#32463;&#36807;&#25105;&#22823;&#37327;&#27979;&#35797;&#65292;&#21018;&#21018; yield &#30340;&#32447;&#31243;&#26159;&#19981;&#20250;&#39532;&#19978;&#21442;&#19982;&#31454;&#20105;&#33719;&#24471; CPU &#36164;&#28304;&#30340;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#30475;&#19979;&#38754;&#27979;&#35797;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">YieldExampleClient</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Thread xiaoming <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#23567;&#26126;--"</span> <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//                if (i == 2) {</span>
+<span class="token comment">//                    Thread.yield();</span>
+<span class="token comment">//                }</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Thread jianguo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#24314;&#22269;--"</span> <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        xiaoming<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jianguo<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#21551;&#21160;&#20004;&#20010;&#32447;&#31243;&#25171;&#21360;&#65292;&#25511;&#21046;&#21488;&#36755;&#20986;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>&#23567;&#26126;--0
+&#23567;&#26126;--1
+&#23567;&#26126;--2
+&#23567;&#26126;--3
+&#23567;&#26126;--4
+&#23567;&#26126;--5
+&#23567;&#26126;--6
+&#23567;&#26126;--7
+&#23567;&#26126;--8
+&#23567;&#26126;--9
+&#24314;&#22269;--0
+&#24314;&#22269;--1
+&#24314;&#22269;--2
+&#24314;&#22269;--3
+&#24314;&#22269;--4
+&#24314;&#22269;--5
+&#24314;&#22269;--6
+&#24314;&#22269;--7
+&#24314;&#22269;--8
+&#24314;&#22269;--9
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#27599;&#27425;&#32467;&#26524;&#26377;&#25152;&#21306;&#21035;&#65292;&#20294;&#26159;&#19968;&#33324;&#37117;&#26159;&#23567;&#26126;&#36755;&#20986;&#21040; 5 &#20197;&#21518;&#65292;&#24314;&#22269;&#25165;&#24320;&#22987;&#36755;&#20986;&#12290;&#36825;&#19968;&#26159;&#22240;&#20026;&#32447;&#31243;&#21551;&#21160;&#38656;&#35201;&#26102;&#38388;&#65292;&#21478;&#22806;&#20063;&#26159;&#22240;&#20026; CPU &#32039;&#24352;&#65292; jianguo &#32447;&#31243;&#22312;&#25490;&#38431;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#25918;&#24320;&#23567;&#26126;&#32447;&#31243;&#27880;&#35299;&#37096;&#20998;&#65292;&#35753;&#36755;&#20986;&#21040; xiaoming &#32447;&#31243;&#36755;&#20986;&#21040; 2 &#30340;&#26102;&#20505; yield &#65292;&#30475;&#30475;&#20250;&#24590;&#20040;&#26679;&#12290;&#36755;&#20986;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>&#23567;&#26126;--0
+&#23567;&#26126;--1
+&#23567;&#26126;--2
+&#24314;&#22269;--0
+&#24314;&#22269;--1
+......
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#30475;&#21069;&#22235;&#34892;&#65292;xiaoming &#20808;&#33719;&#24471;&#20102; CPU &#30340;&#20351;&#29992;&#26435;&#65292;&#19981;&#36807;&#22312;&#25171;&#21360;&#21040; 2 &#30340;&#26102;&#20505;&#35843;&#29992;&#20102; yield &#26041;&#27861;&#65292;&#25552;&#31034;&#21487;&#20197;&#35753;&#20986; CPU &#30340;&#20351;&#29992;&#26435;&#65292;&#32780;&#27492;&#26102; CPU &#25509;&#21463;&#20102;&#25552;&#31034;&#65292;&#20174;&#32780;&#35753;&#24314;&#22269;&#33719;&#24471;&#20102; CPU &#30340;&#20351;&#29992;&#26435;&#12290;&#25105;&#23581;&#35797;&#24314;&#31435;&#26356;&#22810;&#30340;&#32447;&#31243;&#65292;&#22810;&#27425;&#23581;&#35797;&#65292;&#21457;&#29616;&#23567;&#26126;&#25171;&#21360;&#21040; 2 &#30340;&#26102;&#20505;&#65292;&#32943;&#23450;&#20250;&#20999;&#25442;&#20026;&#20854;&#23427;&#32447;&#31243;&#25171;&#21360;&#12290;&#19981;&#36807;&#22914;&#26524; CPU &#36164;&#28304;&#20016;&#23500;&#65292;&#37027;&#20040;&#20250;&#26080;&#35270; yield &#26041;&#27861;&#65292;xiaoming &#20063;&#26080;&#38656;&#35753;&#20986; CPU &#36164;&#28304;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     yield &#26041;&#27861;&#20026;&#20102;&#25552;&#21319;&#32447;&#31243;&#38388;&#30340;&#20132;&#20114;&#65292;&#36991;&#20813;&#26576;&#20010;&#32447;&#31243;&#38271;&#26102;&#38388;&#36807;&#28193;&#38712;&#21344; CPU &#36164;&#28304;&#12290;&#20294; yield &#22312;&#23454;&#38469;&#24320;&#21457;&#20013;&#29992;&#30340;&#27604;&#36739;&#23569;&#65292;&#28304;&#30721;&#30340;&#27880;&#35299;&#20063;&#25552;&#21040;&#36825;&#19968;&#28857;&#65306;&#8220;
+     <em>
+      It is rarely appropriate to use this method.
+     </em>
+     &#8221;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="currentthread-&#26041;&#27861;" style="font-size: 30px;">
+     currentThread &#26041;&#27861;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#21069;&#20960;&#33410;&#20013;&#24050;&#32463;&#20351;&#29992;&#36807;&#35813;&#26041;&#27861;&#65292;&#36825;&#26159;&#19968;&#20010;&#38745;&#24577;&#26041;&#27861;&#65292;&#29992;&#20110;&#33719;&#21462;&#24403;&#21069;&#32447;&#31243;&#30340;&#23454;&#20363;&#12290;&#29992;&#27861;&#24456;&#31616;&#21333;&#65292;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25343;&#21040;&#32447;&#31243;&#30340;&#23454;&#20363;&#21518;&#65292;&#25105;&#20204;&#36824;&#21487;&#20197;&#33719;&#21462; Thread &#30340; &#21517;&#31216;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20004;&#20010;&#26041;&#27861;&#22312;&#20043;&#21069;&#20363;&#23376;&#20013;&#25105;&#20204;&#37117;&#20351;&#29992;&#36807;&#65292;&#20063;&#27604;&#36739;&#31616;&#21333;&#65292;&#23601;&#19981;&#20877;&#36184;&#36848;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#27492;&#22806;&#25105;&#20204;&#36824;&#21487;&#20197;&#33719;&#21462;&#32447;&#31243; ID &#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="setpriority-&#26041;&#27861;" style="font-size: 30px;">
+     setPriority &#26041;&#27861;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#27492;&#26041;&#27861;&#29992;&#20110;&#35774;&#32622;&#32447;&#31243;&#30340;&#20248;&#20808;&#32423;&#12290;&#27599;&#20010;&#32447;&#31243;&#37117;&#26377;&#33258;&#24049;&#30340;&#20248;&#20808;&#32423;&#25968;&#20540;&#65292;&#24403; CPU &#36164;&#28304;&#32039;&#24352;&#30340;&#26102;&#20505;&#65292;&#20248;&#20808;&#32423;&#39640;&#30340;&#32447;&#31243;&#33719;&#24471; CPU &#36164;&#28304;&#30340;&#27010;&#29575;&#20250;&#26356;&#22823;&#12290;&#35831;&#27880;&#24847;&#20165;&#20165;&#26159;&#27010;&#29575;&#20250;&#26356;&#22823;&#65292;&#24182;&#19981;&#24847;&#21619;&#30528;&#23601;&#19968;&#23450;&#33021;&#22815;&#20808;&#20110;&#20248;&#20808;&#32423;&#20302;&#30340;&#33719;&#21462;&#12290;&#36825;&#21644;&#25671;&#36710;&#29260;&#21495;&#19968;&#20010;&#36947;&#29702;&#65292;&#25105;&#29616;&#22312;&#20013;&#31614;&#27010;&#29575;&#26159;&#26631;&#20934;&#30340; 9 &#20493;&#65292;&#20294;&#25671;&#20013;&#20381;&#28982;&#25671;&#25671;&#26080;&#26399;&#12290;&#32780;&#36523;&#36793;&#21364;&#26102;&#19981;&#26102;&#30340;&#20986;&#29616;&#31532;&#19968;&#27425;&#25671;&#21495;&#23601;&#20013;&#30340;&#26379;&#21451;&#12290;&#22914;&#26524;&#22312; CPU &#27604;&#36739;&#31354;&#38386;&#30340;&#26102;&#20505;&#65292;&#37027;&#20040;&#20248;&#20808;&#32423;&#23601;&#27809;&#26377;&#29992;&#20102;&#65292;&#20154;&#20154;&#37117;&#26377;&#32905;&#21507;&#65292;&#19981;&#38656;&#35201;&#25671;&#21495;&#20102;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20248;&#20808;&#32423;&#21035;&#39640;&#21487;&#20197;&#22312;&#22823;&#37327;&#30340;&#25191;&#34892;&#20013;&#26377;&#25152;&#20307;&#29616;&#12290;&#22312;&#22823;&#37327;&#25968;&#25454;&#30340;&#26679;&#26412;&#20013;&#65292;&#20248;&#20808;&#32423;&#39640;&#30340;&#32447;&#31243;&#20250;&#34987;&#36873;&#20013;&#25191;&#34892;&#30340;&#27425;&#25968;&#26356;&#22810;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26368;&#21518;&#25105;&#20204;&#30475;&#19979; setPriority &#30340;&#28304;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">setPriority</span><span class="token punctuation">(</span><span class="token keyword">int</span> newPriority<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ThreadGroup g<span class="token punctuation">;</span>
+    <span class="token function">checkAccess</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>newPriority <span class="token operator">&gt;</span> MAX_PRIORITY <span class="token operator">||</span> newPriority <span class="token operator">&lt;</span> MIN_PRIORITY<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>g <span class="token operator">=</span> <span class="token function">getThreadGroup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>newPriority <span class="token operator">&gt;</span> g<span class="token punctuation">.</span><span class="token function">getMaxPriority</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            newPriority <span class="token operator">=</span> g<span class="token punctuation">.</span><span class="token function">getMaxPriority</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">setPriority0</span><span class="token punctuation">(</span>priority <span class="token operator">=</span> newPriority<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Thread &#26377;&#33258;&#24049;&#30340;&#26368;&#23567;&#21644;&#26368;&#22823;&#20248;&#20808;&#32423;&#25968;&#20540;&#65292;&#33539;&#22260;&#22312; 1-10&#12290;&#22914;&#26524;&#19981;&#22312;&#27492;&#33539;&#22260;&#20869;&#65292;&#21017;&#20250;&#25253;&#38169;&#12290;&#21478;&#22806;&#22914;&#26524;&#35774;&#32622;&#30340; priority &#36229;&#36807;&#20102;&#32447;&#31243;&#25152;&#22312;&#32452;&#30340; priority &#65292;&#37027;&#20040;&#21482;&#33021;&#34987;&#35774;&#32622;&#20026;&#32452;&#30340;&#26368;&#39640; priority &#12290;&#26368;&#21518;&#36890;&#36807;&#35843;&#29992; native &#26041;&#27861; setPriority0 &#36827;&#34892;&#35774;&#32622;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="interrupt-&#30456;&#20851;&#26041;&#27861;" style="font-size: 30px;">
+     interrupt &#30456;&#20851;&#26041;&#27861;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     interrupt &#30340;&#24847;&#24605;&#26159;&#25171;&#26029;&#12290;&#35843;&#29992;&#20102; interrupt &#26041;&#27861;&#21518;&#65292;&#32447;&#31243;&#20250;&#24590;&#20040;&#26679;&#65311;&#19981;&#30693;&#36947;&#20320;&#30340;&#31572;&#26696;&#26159;&#20160;&#20040;&#12290;&#25105;&#22312;&#31532;&#19968;&#27425;&#23398;&#20064; interrupt &#30340;&#26102;&#20505;&#65292;&#31532;&#19968;&#24863;&#35273;&#26159;&#35753;&#32447;&#31243;&#20013;&#26029;&#12290;&#20854;&#23454;&#65292;&#24182;&#19981;&#26159;&#36825;&#26679;&#12290;inerrupt &#26041;&#27861;&#30340;&#20316;&#29992;&#26159;&#35753;&#21487;&#20013;&#26029;&#26041;&#27861;&#65292;&#27604;&#22914;&#35753; sleep &#20013;&#26029;&#12290;&#20063;&#23601;&#26159;&#35828;&#20854;&#20013;&#26029;&#30340;&#24182;&#19981;&#26159;&#32447;&#31243;&#30340;&#36923;&#36753;&#65292;&#20013;&#26029;&#30340;&#26159;&#32447;&#31243;&#30340;&#38459;&#22622;&#12290;&#36825;&#19968;&#28857;&#22312;&#26412;&#23567;&#32467;&#19968;&#24320;&#22987;&#23601;&#35201;&#24443;&#24213;&#25630;&#28165;&#27744;&#65292;&#21542;&#21017;&#24102;&#30528;&#38169;&#35823;&#30340;&#24819;&#27861;&#20250;&#24433;&#21709;&#23398;&#20064;&#30340;&#25928;&#26524;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#37027;&#20040; interrupt &#26041;&#27861;&#35843;&#29992;&#21518;&#65292;&#23545;&#26410;&#20351;&#29992;&#21487;&#20013;&#26029;&#26041;&#27861;&#30340;&#32447;&#31243;&#26377;&#24433;&#21709;&#21527;&#65311;&#25105;&#20204;&#20570;&#20010;&#31616;&#21333;&#30340;&#23454;&#39564;&#65292;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">InterruptClient</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        Thread thread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">100</span> <span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I'm doing my work"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I'm interrupted?"</span><span class="token operator">+</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isInterrupted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        thread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        thread<span class="token punctuation">.</span><span class="token function">interrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#32447;&#31243; run &#26041;&#27861;&#20013;&#27809;&#26377;&#35843;&#29992;&#21487;&#20013;&#26029;&#26041;&#27861;&#65292;&#21482;&#26159;&#36755;&#20986;
+     <strong>
+      I&#8217;m doing my work
+     </strong>
+     &#65292;&#21478;&#22806;&#36824;&#20250;&#36755;&#20986;&#33258;&#24049;&#30340;&#20013;&#26029;&#29366;&#24577;&#12290;&#32780;&#20027;&#32447;&#31243;&#20250; sleep &#19968;&#27627;&#31186;&#65292;&#30041;&#26102;&#38388;&#32473; thread &#32447;&#31243;&#21551;&#21160;&#65292;&#28982;&#21518;&#35843;&#29992; thread &#32447;&#31243;&#30340; interrupt &#26041;&#27861;&#12290;&#25105;&#25130;&#21462;&#20854;&#20013;&#20851;&#38190;&#19968;&#27573;&#36755;&#20986;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>I'm doing my work
+I'm interrupted?false
+I'm doing my work
+I'm interrupted?true
+I'm doing my work
+I'm interrupted?true
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#27573;&#21518;&#38754;&#30340;&#36755;&#20986;&#19968;&#30452;&#21040;&#32467;&#26463;&#65292;&#37117;&#22312;&#37325;&#22797; &#8220;I&#8217;m doing my work I&#8217;m interrupted?true&#8220;&#65292;&#36825;&#35828;&#26126;&#20004;&#20010;&#38382;&#39064;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <ol>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#35843;&#29992; interrupt &#26041;&#27861;&#65292;&#24182;&#19981;&#20250;&#24433;&#21709;&#21487;&#20013;&#26029;&#26041;&#27861;&#20043;&#22806;&#30340;&#36923;&#36753;&#12290;&#32447;&#31243;&#19981;&#20250;&#20013;&#26029;&#65292;&#20250;&#32487;&#32493;&#25191;&#34892;&#12290;&#36825;&#37324;&#30340;&#20013;&#26029;&#27010;&#24565;&#24182;&#19981;&#26159;&#25351;&#20013;&#26029;&#32447;&#31243;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#19968;&#26086;&#35843;&#29992;&#20102; interrupt &#26041;&#27861;&#65292;&#37027;&#20040;&#32447;&#31243;&#30340; interrupted &#29366;&#24577;&#20250;&#19968;&#30452;&#20026; ture&#65288;&#27809;&#26377;&#36890;&#36807;&#35843;&#29992;&#21487;&#20013;&#26029;&#26041;&#27861;&#25110;&#32773;&#20854;&#20182;&#26041;&#24335;&#20027;&#21160;&#28165;&#38500;&#26631;&#35782;&#30340;&#24773;&#20917;&#19979;&#65289;&#65307;
+     </li>
+    </ol>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807;&#19978;&#38754;&#23454;&#29616;&#25105;&#20204;&#20102;&#35299;&#20102; interrupt &#26041;&#27861;&#20013;&#26029;&#30340;&#19981;&#26159;&#32447;&#31243;&#12290;&#23427;&#20013;&#26029;&#30340;&#20854;&#23454;&#26159;&#21487;&#20013;&#26029;&#26041;&#27861;&#65292;&#22914; sleep &#12290;&#21487;&#20013;&#26029;&#26041;&#27861;&#34987;&#20013;&#26029;&#21518;&#65292;&#20250;&#25226; interrupted &#29366;&#24577;&#24402;&#20301;&#65292;&#25913;&#22238; false &#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#36824;&#26159;&#20570;&#20010;&#23454;&#39564;&#65292;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">InterruptSleepClient</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        Thread xiaopang <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">100</span> <span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I'm doing my work"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I will sleep"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"My sleeping was interrupted"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I'm interrupted?"</span><span class="token operator">+</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isInterrupted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaopang<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        xiaopang<span class="token punctuation">.</span><span class="token function">interrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#27425;&#24178;&#27963;&#30340;&#23567;&#32982;&#27604;&#36739;&#25042;&#65292;&#27599;&#27425;&#24178;&#23436;&#27963;&#37117;&#35201;&#20241;&#24687;&#19968;&#31186;&#38047;&#12290;&#26377;&#19968;&#27425;&#34987;&#35753;&#20182;&#24178;&#27963;&#30340;&#32769;&#24072;&#21457;&#29616;&#65292;&#25226;&#20182;&#21483;&#37266;&#20102;&#12290;&#20294;&#26159;&#21518;&#26469;&#30475;&#20182;&#29031;&#30561;&#19981;&#35823;&#65292;&#20063;&#23601;&#38543;&#20182;&#21435;&#20102;&#12290;&#36825;&#27573;&#20195;&#30721;&#25191;&#34892;&#32467;&#26524;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>I'm doing my work
+I will sleep
+My sleeping was interrupted
+I'm interrupted? false
+I'm doing my work
+I will sleep
+I'm interrupted? false
+I'm doing my work
+I will sleep
+I'm interrupted? false
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#24403; xiaopang.interrupt () &#25191;&#34892;&#21518;&#65292;&#30561;&#30496;&#20013;&#30340; xiaopang &#34987;&#21796;&#37266;&#20102;&#12290;&#36825;&#37324;&#39069;&#22806;&#38656;&#35201;&#27880;&#24847;&#30340;&#26159;&#65292;&#27492;&#26102; xiaopang &#32447;&#31243;&#30340; interrupted &#29366;&#24577;&#36824;&#26159; false &#12290;&#22240;&#20026;&#21487;&#20013;&#26029;&#32447;&#31243;&#20250;&#25429;&#33719;&#20013;&#26029;&#30340;&#20449;&#21495;&#65292;&#24182;&#19988;&#20250;&#28165;&#38500;&#25481; interrupted &#26631;&#35782;&#12290;&#22240;&#27492;&#36755;&#20986;&#30340; &#8220;I&#8217;m interrupted ?&#8221; &#20840;&#37096;&#26159; false &#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26368;&#21518;&#25105;&#20204;&#20877;&#30475;&#19968;&#19979;&#38745;&#24577;&#26041;&#27861; interrupted &#12290;&#36825;&#20010;&#26041;&#27861;&#20854;&#23454;&#21644;&#25104;&#21592;&#26041;&#27861; isInterrupted &#26041;&#27861;&#31867;&#20284;&#65292;&#37117;&#26159;&#36820;&#22238;&#20102; interrupted &#29366;&#24577;&#12290;&#19981;&#21516;&#23601;&#26159; interrupted &#26041;&#27861;&#36820;&#22238;&#29366;&#24577;&#21518;&#65292;&#22914;&#26524;&#20026; true &#21017;&#20250;&#28165;&#38500;&#25481;&#29366;&#24577;&#12290;&#32780; isInterrupted &#21017;&#19981;&#20250;&#12290;&#19978;&#38754;&#31532;&#19968;&#27573;&#27979;&#35797;&#20195;&#30721;&#24050;&#32463;&#39564;&#35777;&#20102;&#36825;&#19968;&#28857;&#65292;&#34987;&#25171;&#26029;&#21518;&#65292;&#35843;&#29992; isInterrupted &#19968;&#30452;&#36820;&#22238; true&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#38754;&#25105;&#20204;&#26469;&#39564;&#35777;&#19979; interrupted &#26159;&#21542;&#20250;&#28165;&#38500;&#26631;&#35782;&#20301;&#12290;&#25226;&#31532;&#19968;&#27573;&#20195;&#30721;&#31245;&#24494;&#25913;&#19968;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">InterruptedClient</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        Thread thread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">100</span> <span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I'm doing my work"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//&#21407;&#20195;&#30721;  System.out.println("I'm interrupted?"+Thread.currentThread().isInterrupted());</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I'm interrupted?"</span><span class="token operator">+</span>Thread<span class="token punctuation">.</span><span class="token function">interrupted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        thread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        thread<span class="token punctuation">.</span><span class="token function">interrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25913;&#21160;&#24050;&#32463;&#22312;&#27880;&#35299;&#20013;&#35828;&#26126;&#65292;&#20165;&#20165;&#26159;&#25913;&#20102;&#33719;&#21462; interrupted &#29366;&#24577;&#30340;&#26041;&#27861;&#12290;&#20294;&#36755;&#20986;&#32467;&#26524;&#21364;&#26159;&#19981;&#19968;&#26679;&#30340;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>I'm doing my work
+I'm interrupted?false
+I'm doing my work
+I'm interrupted?false
+I'm doing my work
+I'm interrupted?true
+I'm doing my work
+I'm interrupted?false
+I'm doing my work
+I'm interrupted?false
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#22312;&#36755;&#20986; &#8220;I&#8217;m interrupted?true&#8221; &#21518;&#65292;&#20013;&#26029;&#29366;&#24577;&#21448;&#21464;&#22238;&#20102; false&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807;&#20197;&#19978;&#35762;&#35299;&#65292;&#21487;&#20197;&#30475;&#20986; interrupt &#26041;&#27861;&#21482;&#26159;&#35774;&#32622;&#20102;&#20013;&#26029;&#26631;&#35782;&#20301;&#65292;&#36825;&#20010;&#26631;&#35782;&#20301;&#21482;&#23545;&#21487;&#20013;&#26029;&#26041;&#27861;&#20250;&#20135;&#29983;&#20316;&#29992;&#12290;&#19981;&#36807;&#25105;&#20204;&#36824;&#21487;&#20197;&#21033;&#29992;&#23427;&#20570;&#26356;&#22810;&#30340;&#20107;&#24773;&#65292;&#27604;&#22914;&#35828;&#22914;&#26524;&#32447;&#31243;&#30340; run &#26041;&#27861;&#20013;&#36825;&#20040;&#20889;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isInterrupted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token comment">//do somenting</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#26679;&#20027;&#32447;&#31243;&#20013;&#21487;&#20197;&#36890;&#36807;&#35843;&#29992;&#27492;&#32447;&#31243;&#30340; interrupt &#26041;&#27861;&#65292;&#35753;&#20854;&#25512;&#20986;&#36816;&#34892;&#12290;&#27492;&#26102; interrupted &#30340;&#21547;&#20041;&#23601;&#30495;&#30340;&#26159;&#32447;&#31243;&#36864;&#20986;&#20102;&#12290;&#19981;&#36807;&#20551;&#22914;&#20320;&#30340; while &#24490;&#29615;&#20013;&#35843;&#29992;&#20102;&#21487;&#20013;&#26029;&#26041;&#27861;&#65292;&#37027;&#20040;&#23601;&#20250;&#26377;&#24178;&#25200;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="join-&#26041;&#27861;" style="font-size: 30px;">
+     join &#26041;&#27861;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26368;&#21518;&#25105;&#20204;&#20877;&#35762;&#35299;&#19968;&#20010;&#37325;&#35201;&#30340;&#26041;&#27861; join&#12290;&#36825;&#20010;&#26041;&#27861;&#21151;&#33021;&#24378;&#22823;&#65292;&#20063;&#24456;&#23454;&#29992;&#12290;&#25105;&#20204;&#29992;&#23427;&#33021;&#22815;&#23454;&#29616;&#24182;&#34892;&#21270;&#22788;&#29702;&#12290;&#27604;&#22914;&#20027;&#32447;&#31243;&#38656;&#35201;&#20570;&#20004;&#20214;&#27809;&#26377;&#30456;&#20114;&#20381;&#36182;&#30340;&#20107;&#24773;&#65292;&#37027;&#20040;&#21487;&#20197;&#36215; A&#12289;B &#20004;&#20010;&#32447;&#31243;&#20998;&#21035;&#21435;&#20570;&#12290;&#36890;&#36807;&#35843;&#29992; A&#12289;B &#30340; join &#26041;&#27861;&#65292;&#35753;&#20027;&#32447;&#31243; block &#20303;&#65292;&#30452;&#21040; A&#12289;B &#32447;&#31243;&#30340;&#24037;&#20316;&#20840;&#37096;&#23436;&#25104;&#65292;&#25165;&#32487;&#32493;&#36208;&#19979;&#21435;&#12290;&#25105;&#20204;&#26469;&#30475;&#19979;&#38754;&#36825;&#27573;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JoinClient</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        Thread backendDev <span class="token operator">=</span> <span class="token function">createWorker</span><span class="token punctuation">(</span><span class="token string">"backed dev"</span><span class="token punctuation">,</span> <span class="token string">"backend coding"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Thread frontendDev <span class="token operator">=</span> <span class="token function">createWorker</span><span class="token punctuation">(</span><span class="token string">"frontend dev"</span><span class="token punctuation">,</span> <span class="token string">"frontend coding"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Thread tester <span class="token operator">=</span> <span class="token function">createWorker</span><span class="token punctuation">(</span><span class="token string">"tester"</span><span class="token punctuation">,</span> <span class="token string">"testing"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        backendDev<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        frontendDev<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+<span class="token comment">//        backendDev.join();</span>
+<span class="token comment">//        frontendDev.join();</span>
+      
+        tester<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> Thread <span class="token function">createWorker</span><span class="token punctuation">(</span>String role<span class="token punctuation">,</span> String work<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I finished "</span> <span class="token operator">+</span> work <span class="token operator">+</span> <span class="token string">" as a "</span> <span class="token operator">+</span> role<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#27573;&#20195;&#30721;&#20013;&#65292;&#25105;&#20204;&#25226; join &#26041;&#27861;&#21435;&#25481;&#12290;&#25191;&#34892;&#32467;&#26524;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>I finished backend coding as a backed dev
+I finished testing as a tester
+I finished backend coding as a frontend dev
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#26399;&#26395;&#30340;&#26159;&#21069;&#31471;&#21644;&#21518;&#31471;&#24320;&#21457;&#23436;&#25104;&#24037;&#20316;&#21518;&#65292;&#27979;&#35797;&#25165;&#24320;&#22987;&#27979;&#35797;&#12290;&#20294;&#20174;&#36755;&#20986;&#32467;&#26524;&#30475;&#24182;&#38750;&#22914;&#27492;&#12290;&#35201;&#24819;&#23454;&#29616;&#36825;&#20010;&#38656;&#27714;&#65292;&#25105;&#20204;&#21482;&#38656;&#25226;&#27880;&#37322;&#25171;&#24320;&#65292;&#35753;
+     <strong>
+      backendDev
+     </strong>
+     &#21644;
+     <strong>
+      frontendDev
+     </strong>
+     &#20808;&#20570; join &#25805;&#20316;&#65292;&#27492;&#26102;&#20027;&#32447;&#31243;&#20250;&#34987; block &#20303;&#12290;&#30452;&#21040;
+     <strong>
+      backendDev
+     </strong>
+     &#21644;
+     <strong>
+      frontendDev
+     </strong>
+     &#32447;&#31243;&#37117;&#25191;&#34892;&#32467;&#26463;&#65292;&#25165;&#20250;&#32487;&#32493;&#24448;&#19979;&#25191;&#34892;&#12290;&#36755;&#20986;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>I finished backend coding as a backed dev
+I finished frontend coding as a frontend dev
+I finished testing as a tester
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#29616;&#22312;&#30340;&#36755;&#20986;&#23436;&#20840;&#31526;&#21512;&#25105;&#20204;&#30340;&#26399;&#26395;&#12290;&#21487;&#35265;&#35843;&#29992; join &#26041;&#27861;&#21518; block &#30340;&#24182;&#19981;&#26159;&#34987;&#35843;&#29992;&#30340;
+     <strong>
+      backendDev
+     </strong>
+     &#25110;
+     <strong>
+      frontendDev &#32447;&#31243;
+     </strong>
+     &#65292;&#32780;&#26159;&#35843;&#29992;&#26041;&#32447;&#31243;&#65292;&#36825;&#20010;&#38656;&#35201;&#29282;&#35760;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#24635;&#32467;" style="font-size: 30px;">
+     &#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26412;&#23567;&#32467;&#35762;&#35299;&#20102; Thread &#30340;&#20960;&#20010;&#24120;&#29992;&#30340;&#26041;&#27861;&#65292;&#36825;&#20123;&#26041;&#27861;&#22312;&#25105;&#20204;&#23454;&#38469;&#24320;&#21457;&#20013;&#20250;&#32463;&#24120;&#29992;&#21040;&#30340;&#65292;&#38656;&#35201;&#25105;&#20204;&#35748;&#30495;&#23398;&#20064;&#21644;&#29702;&#35299;&#12290;&#26377;&#20123;&#24050;&#32463;&#34987;&#24323;&#29992;&#30340;&#26041;&#27861;&#27809;&#26377;&#20877;&#35762;&#35299;&#65292;&#27604;&#22914; stop &#26041;&#27861;&#12290;&#20851;&#20110;&#26356;&#22810;&#30340;&#26041;&#27861;&#65292;&#20854;&#23454;&#35835;&#32773;&#21487;&#20197;&#30452;&#25509;&#38405;&#35835; Thread &#28304;&#20195;&#30721;&#65292;Thread &#31867;&#30340;&#27880;&#35299;&#20889;&#24471;&#30456;&#24403;&#35814;&#32454;&#12290;&#20854;&#23454;&#24456;&#22810;&#26102;&#20505;&#25105;&#20204;&#33258;&#24049;&#21160;&#25163;&#30452;&#25509;&#38405;&#35835;&#28304;&#20195;&#30721;&#21644;&#27880;&#35299;&#65292;&#26159;&#26356;&#20026;&#24555;&#25463;&#30340;&#23398;&#20064;&#26041;&#24335;&#65292;&#32780;&#19988;&#20063;&#26356;&#20026;&#26435;&#23041;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#19968;&#33410;&#25105;&#20204;&#32487;&#32493;&#35762;&#35299;&#32447;&#31243;&#30340;&#30456;&#20851;&#25805;&#20316; wait ()&#12289;notify ()&#12289;notifyAll ()&#12290;&#36825;&#20123;&#26041;&#27861;&#20063;&#20250;&#25913;&#21464;&#32447;&#31243;&#30340;&#29366;&#24577;&#65292;&#20294;&#24182;&#19981;&#26159; Thread &#30340; API &#12290;
+    </p>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/941">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     06 &#32447;&#31243;&#20160;&#20040;&#26102;&#20505;&#24320;&#22987;&#30495;&#27491;&#25191;&#34892;&#65311;&#8212;&#32447;&#31243;&#30340;&#29366;&#24577;&#35814;&#35299;
+    </p>
+   </div>
+  </a>
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/943">
+   <div class="next r clearfix">
+    <p>
+     08 &#38598;&#20307;&#21327;&#20316;&#65292;&#20160;&#20040;&#26368;&#37325;&#35201;&#65311;&#27807;&#36890;&#65281;&#8212;&#32447;&#31243;&#30340;&#31561;&#24453;&#21644;&#36890;&#30693;
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        

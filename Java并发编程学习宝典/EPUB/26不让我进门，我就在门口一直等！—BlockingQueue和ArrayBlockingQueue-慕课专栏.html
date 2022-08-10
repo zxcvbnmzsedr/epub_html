@@ -1,0 +1,606 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  26&#19981;&#35753;&#25105;&#36827;&#38376;&#65292;&#25105;&#23601;&#22312;&#38376;&#21475;&#19968;&#30452;&#31561;&#65281;&#8212;BlockingQueue&#21644;ArrayBlockingQueue
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-11-26 10:24:24
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/c64adf9a-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/c65d6c50-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/c67fe5e6-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#35835;&#20070;&#32780;&#19981;&#24605;&#32771;&#65292;&#31561;&#20110;&#21507;&#39277;&#32780;&#19981;&#28040;&#21270;&#12290;
+    <p class="author">
+     &#8212;&#8212;&#27874;&#23572;&#20811;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21069;&#38754;&#20004;&#33410;&#25105;&#20204;&#23545; ConcurrentHashMap &#30340;&#28304;&#20195;&#30721;&#36827;&#34892;&#20102;&#20998;&#26512;&#65292;&#26159;&#19981;&#26159;&#24847;&#29369;&#26410;&#23613;&#65311;&#37027;&#20040;&#20570;&#22909;&#20934;&#22791;&#65292;&#26412;&#23567;&#33410;&#65292;&#25105;&#20204;&#23558;&#23545;&#38459;&#22622;&#38431;&#21015;&#30340;&#20511;&#21475; BlockingQueue &#20197;&#21450;&#23427;&#30340;&#19968;&#20010;&#23454;&#29616; ArrayBlockingQueue &#20570;&#28304;&#30721;&#20998;&#26512;&#12290;&#35828;&#23454;&#35805;&#65292;&#28304;&#30721;&#20998;&#26512;&#21313;&#20998;&#30340;&#26543;&#29157;&#21644;&#33392;&#38590;&#65292;&#19981;&#36807;&#22362;&#25345;&#19979;&#26469;&#65292;&#25910;&#33719;&#23558;&#20250;&#24456;&#22823;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;blockingqueue-&#20171;&#32461;" style="font-size: 30px;">
+     1&#12289;BlockingQueue &#20171;&#32461;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     BlockingQueue &#39038;&#21517;&#24605;&#20041;----&#38459;&#22622;&#38431;&#21015;&#12290;&#38431;&#21015;&#22823;&#23478;&#24212;&#35813;&#37117;&#24456;&#28165;&#26970;&#20102;&#65292;&#38459;&#22622;&#38431;&#21015;&#26159;&#25351;&#24403;&#38431;&#21015;&#28385;&#26102;&#65292;&#20837;&#38431;&#25805;&#20316;&#38656;&#35201;&#31561;&#24453;&#65307;&#24403;&#38431;&#21015;&#31354;&#26102;&#65292;&#20986;&#38431;&#25805;&#20316;&#38656;&#35201;&#31561;&#24453;&#12290;&#32780;&#38750;&#38459;&#22622;&#30340;&#26041;&#24335;&#21017;&#20250;&#30452;&#25509;&#36820;&#22238;false&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     BlockingQueue &#26159;&#19968;&#20010;&#25509;&#21475;&#12290;&#23450;&#20041;&#20102;&#20986;&#38431;&#21644;&#20837;&#38431;&#30340;&#26041;&#27861;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h6 id="&#25105;&#20204;&#39318;&#20808;&#30475;&#20837;&#38431;&#30340;&#26041;&#27861;&#65306;">
+     &#25105;&#20204;&#39318;&#20808;&#30475;&#20837;&#38431;&#30340;&#26041;&#27861;&#65306;
+    </h6>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      1&#12289;boolean add(E e)
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35813;&#26041;&#27861;&#21521;&#38431;&#21015;&#28155;&#21152;&#20803;&#32032;e&#65292;&#22914;&#26524;&#21487;&#20197;&#26377;&#31354;&#38388;&#28155;&#21152;&#65292;&#37027;&#20040;&#28155;&#21152;&#25104;&#21151;&#36820;&#22238; true&#12290;&#22914;&#26524;&#27809;&#26377;&#31354;&#38388;&#65292;&#37027;&#20040;&#30452;&#25509;&#25243;&#20986; IllegalStateException&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      2&#12289;boolean offer(E e)
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35813;&#26041;&#27861;&#21521;&#38431;&#21015;&#28155;&#21152;&#20803;&#32032; e&#65292;&#22914;&#26524;&#21487;&#20197;&#26377;&#31354;&#38388;&#28155;&#21152;&#65292;&#37027;&#20040;&#28155;&#21152;&#25104;&#21151;&#36820;&#22238; true&#12290;&#22914;&#26524;&#27809;&#26377;&#31354;&#38388;&#65292;&#21017;&#20250;&#36820;&#22238; false&#12290;&#21644; add &#26041;&#27861;&#24456;&#20687;&#65292;&#21482;&#19981;&#36807;&#19981;&#26159;&#25243;&#24322;&#24120;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      3&#12289;boolean offer(E e, long timeout, TimeUnit unit) throws InterruptedException
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35813;&#26041;&#27861;&#21521;&#38431;&#21015;&#28155;&#21152;&#20803;&#32032; e&#65292;&#22914;&#26524;&#21487;&#20197;&#26377;&#31354;&#38388;&#28155;&#21152;&#65292;&#37027;&#20040;&#28155;&#21152;&#25104;&#21151;&#36820;&#22238; true&#12290;&#22914;&#26524;&#27809;&#26377;&#31354;&#38388;&#65292;&#21017;&#20250;&#31561;&#24453;&#19968;&#23450;&#26102;&#38271;&#65292;&#22914;&#26524;&#20173;&#26087;&#27809;&#26377;&#31354;&#38388;&#21017;&#36820;&#22238; false&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      4&#12289;void put(E e) throws InterruptedException
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35813;&#26041;&#27861;&#21521;&#38431;&#21015;&#28155;&#21152;&#20803;&#32032; e&#65292;&#22914;&#26524;&#25104;&#21151;&#31435;&#21363;&#36820;&#22238;&#65292;&#22914;&#26524;&#27809;&#26377;&#31354;&#38388;&#65292;&#21017;&#19968;&#30452;&#31561;&#24453;&#31354;&#38388;&#12290;&#31561;&#24453;&#26159;&#21487;&#34987;&#30452;&#25509;&#20013;&#26029;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#22235;&#31181;&#20837;&#38431;&#30340;&#26041;&#27861;&#20013;&#21069;&#20004;&#31181;&#20026;&#38750;&#38459;&#22622;&#26041;&#24335;&#65292;&#21518;&#20004;&#31181;&#20026;&#38459;&#22622;&#26041;&#24335;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h6 id="&#25509;&#19979;&#26469;&#25105;&#20204;&#20877;&#26469;&#20998;&#26512;&#20986;&#38431;&#30340;&#26041;&#27861;&#65306;">
+     &#25509;&#19979;&#26469;&#25105;&#20204;&#20877;&#26469;&#20998;&#26512;&#20986;&#38431;&#30340;&#26041;&#27861;&#65306;
+    </h6>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      1&#12289;E take() throws InterruptedException
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36820;&#22238;&#24182;&#19988;&#20174;&#38431;&#21015;&#20013;&#31227;&#38500; head &#20803;&#32032;&#12290;&#22914;&#26524;&#38431;&#21015;&#20026;&#31354;&#65292;&#21017;&#20250;&#38459;&#22622;&#31561;&#24453;&#30452;&#21040;&#20803;&#32032;&#20837;&#38431;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      2&#12289;E poll(long timeout, TimeUnit unit)
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36820;&#22238;&#24182;&#19988;&#20174;&#38431;&#21015;&#20013;&#31227;&#38500; head &#20803;&#32032;&#12290;&#22914;&#26524;&#38431;&#21015;&#20026;&#31354;&#65292;&#21017;&#20250;&#38459;&#22622;&#19968;&#23450;&#30340;&#26102;&#38388;&#65292;&#31561;&#24453;&#26377;&#20803;&#32032;&#20837;&#38431;&#12290;&#22914;&#26524;&#31561;&#24453;&#26102;&#38388;&#20869;&#27809;&#26377;&#20803;&#32032;&#20837;&#38431;&#65292;&#37027;&#20040;&#36820;&#22238; null&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20197;&#19978;&#20004;&#31181;&#20986;&#38431;&#26041;&#27861;&#22343;&#20026;&#38459;&#22622;&#26041;&#27861;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h6 id="&#36824;&#26377;&#20960;&#20010;&#20854;&#23427;&#30340;&#26041;&#27861;&#65292;&#20063;&#20570;&#19979;&#20171;&#32461;&#65306;">
+     &#36824;&#26377;&#20960;&#20010;&#20854;&#23427;&#30340;&#26041;&#27861;&#65292;&#20063;&#20570;&#19979;&#20171;&#32461;&#65306;
+    </h6>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      1&#12289;boolean contains(Object o)
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22914;&#26524;&#38431;&#21015;&#20013;&#33267;&#23569;&#21547;&#26377;&#19968;&#20010;&#20803;&#32032; equals &#23545;&#35937; o&#65292;&#37027;&#20040;&#36820;&#22238; true&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      2&#12289;int drainTo(Collection&lt;? super E&gt; c)&#21644;int drainTo(Collection&lt;? super E&gt; c, int maxElements)
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#31532;&#19968;&#20010;&#26041;&#27861;&#26159;&#19968;&#27425;&#24615;&#8220;&#27048;&#24178;&#8221;&#38431;&#21015;&#65292;&#25226;&#25152;&#26377;&#20803;&#32032; remove &#25481;&#65292;&#25918;&#20837;&#38598;&#21512; c &#20013;&#12290;&#31532;&#20108;&#20010;&#26041;&#27861;&#30340;&#21306;&#21035;&#26159;&#27599;&#27425; remove &#25481; maxElements &#20010;&#20803;&#32032;&#65292;&#25918;&#20837;&#38598;&#21512; c&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      3&#12289;int remainingCapacity()
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36820;&#22238;&#21015;&#34920;&#30340;&#21097;&#20313;&#23481;&#37327;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h6 id="&#25105;&#20204;&#36890;&#36807;&#20197;&#19979;&#34920;&#26684;&#23545;&#20986;&#20837;&#23545;&#26041;&#27861;&#36827;&#34892;&#24635;&#32467;&#65306;">
+     &#25105;&#20204;&#36890;&#36807;&#20197;&#19979;&#34920;&#26684;&#23545;&#20986;&#20837;&#23545;&#26041;&#27861;&#36827;&#34892;&#24635;&#32467;&#65306;
+    </h6>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#20837;&#38431;&#65306;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <div class="table-wrapper">
+     <table>
+      <thead>
+       <tr>
+        <th>
+         &#26041;&#27861;&#21517;
+        </th>
+        <th>
+         &#26159;&#21542;&#38459;&#22622;
+        </th>
+        <th>
+         &#25243;&#20986;&#24322;&#24120;
+        </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+        <td>
+         add(E e)
+        </td>
+        <td>
+         &#21542;
+        </td>
+        <td>
+         IllegalStateException
+        </td>
+       </tr>
+       <tr>
+        <td>
+         offer(E e)
+        </td>
+        <td>
+         &#21542;
+        </td>
+        <td>
+         &#26080;&#12290;&#36820;&#22238;false
+        </td>
+       </tr>
+       <tr>
+        <td>
+         offer(E e, long timeout, TimeUnit unit)
+        </td>
+        <td>
+         &#38459;&#22622;&#25351;&#23450;&#26102;&#38271;
+        </td>
+        <td>
+         InterruptedException
+        </td>
+       </tr>
+       <tr>
+        <td>
+         put(E e)
+        </td>
+        <td>
+         &#26159;
+        </td>
+        <td>
+         InterruptedException
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <strong>
+      &#20986;&#38431;&#65306;
+     </strong>
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <div class="table-wrapper">
+     <table>
+      <thead>
+       <tr>
+        <th>
+         &#26041;&#27861;&#21517;
+        </th>
+        <th>
+         &#26159;&#21542;&#38459;&#22622;
+        </th>
+        <th>
+         &#25243;&#20986;&#24322;&#24120;
+        </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+        <td>
+         take()
+        </td>
+        <td>
+         &#26159;
+        </td>
+        <td>
+         InterruptedException
+        </td>
+       </tr>
+       <tr>
+        <td>
+         poll(long timeout, TimeUnit unit)
+        </td>
+        <td>
+         &#38459;&#22622;&#25351;&#23450;&#26102;&#38271;&#65292;&#36229;&#26102;&#36820;&#22238;null
+        </td>
+        <td>
+         InterruptedException
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;arrayblockingqueue&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     2&#12289;ArrayBlockingQueue&#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ArrayBlockingQueue &#26159; BlockingQueue &#30340;&#19968;&#31181;&#23454;&#29616;&#12290;&#24213;&#23618;&#36890;&#36807;&#25968;&#32452;&#23454;&#29616;&#12290;ArrayBlockingQueue &#25903;&#25345;&#20844;&#24179;&#21644;&#38750;&#20844;&#24179;&#30340;&#26041;&#24335;&#26469;&#20837;&#38431;&#21644;&#20986;&#38431;&#12290;&#20844;&#24179;&#26159;&#25351;&#24403;&#20986;&#29616;&#22810;&#20010;&#32447;&#31243;&#38459;&#22622;&#26102;&#65292;&#31561;&#24453;&#26102;&#38388;&#38271;&#30340;&#20250;&#20808;&#33719;&#24471;&#38145;&#65292;&#38750;&#20844;&#24179;&#21017;&#19981;&#19968;&#23450;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20808;&#30475; ArrayBlockingQueue &#30340;&#26500;&#36896;&#20989;&#25968;&#65292;&#26377;&#22914;&#19979;&#19977;&#20010;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <ol>
+     <li style="font-size: 20px; line-height: 38px;">
+      public ArrayBlockingQueue(int capacity)&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      public ArrayBlockingQueue(int capacity, boolean fair)&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      public ArrayBlockingQueue(int capacity, boolean fair, Collection&lt;? extends E&gt; c) &#12290;
+     </li>
+    </ol>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     capacity &#20026;&#38431;&#21015;&#30340;&#22823;&#23567;&#65292;&#19968;&#26086;&#21021;&#22987;&#21270;&#20102;&#26080;&#27861;&#25913;&#21464;&#12290;fair &#25351;&#38145;&#30340;&#31867;&#22411;&#65292;c &#29992;&#26469;&#21021;&#22987;&#21270;&#38431;&#21015;&#26102;&#35774;&#32622;&#21021;&#22987;&#20803;&#32032;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ArrayBlockingQueue &#36890;&#36807;&#20004;&#20010; Condition &#20449;&#21495;&#37327;&#26469;&#25511;&#21046;&#20986;&#38431;&#21644;&#20837;&#38431;&#30340;&#38459;&#22622;&#65292;&#20998;&#21035;&#20026; notEmpty &#21644; notFull&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25509;&#19979;&#26469;&#65292;&#25105;&#20204;&#20808;&#20998;&#26512;&#20837;&#38431;&#26041;&#27861; put &#30340;&#28304;&#20195;&#30721;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="put-&#26041;&#27861;&#28304;&#30721;&#20998;&#26512;">
+     2.1 put &#26041;&#27861;&#28304;&#30721;&#20998;&#26512;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">put</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+  <span class="token comment">//&#26816;&#26597;e&#26159;&#21542;&#20026;null&#65292;&#22914;&#26524;&#20026;null&#65292;&#25243;&#20986;NullPointerException</span>
+    <span class="token function">checkNotNull</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//&#22768;&#26126;&#26174;&#24335;&#38145;</span>
+    <span class="token keyword">final</span> ReentrantLock lock <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lock<span class="token punctuation">;</span>
+  <span class="token comment">//&#20197;lockInterruptibly&#26041;&#24335;&#19978;&#38145;&#65292;&#22914;&#26524;&#20854;&#20182;&#32447;&#31243;&#25171;&#26029;&#31561;&#24453;&#30340;&#32447;&#31243;&#65292;&#37027;&#20040;&#31561;&#24453;&#30340;&#32447;&#31243;&#20250;&#31435;&#21051;&#32456;&#27490;&#31561;&#24453;&#65292;&#25243;&#20986;InterruptedException</span>
+  lock<span class="token punctuation">.</span><span class="token function">lockInterruptibly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token comment">//&#22914;&#26524;&#38431;&#21015;&#24050;&#32463;&#28385;&#20102;&#65292;&#37027;&#20040;&#31561;&#24453;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> items<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+            notFull<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//&#30452;&#21040;&#28040;&#36153;&#32773;&#28040;&#36153;&#20102;&#19968;&#20010;&#20803;&#32032;&#21518;&#65292;&#36890;&#36807;notFull.signal()&#26469;&#36890;&#30693;&#31561;&#24453;&#30340;&#32447;&#31243;&#28155;&#21152;&#20803;&#32032;</span>
+        <span class="token function">enqueue</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+      <span class="token comment">//&#37322;&#25918;&#38145;</span>
+        lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     enqueue &#20013;&#23454;&#29616;&#20803;&#32032;&#30340;&#20837;&#38431;&#25805;&#20316;&#65292;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">enqueue</span><span class="token punctuation">(</span>E x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">final</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> items <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">;</span>
+    items<span class="token punctuation">[</span>putIndex<span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">++</span>putIndex <span class="token operator">==</span> items<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+        putIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    count<span class="token operator">++</span><span class="token punctuation">;</span>
+    notEmpty<span class="token punctuation">.</span><span class="token function">signal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     putIndex &#35760;&#24405;&#20102;&#24403;&#21069;&#21487;&#20197;&#20889;&#20837;&#30340;&#25968;&#32452;&#19979;&#26631;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     count &#26159; queue &#20013;&#20445;&#23384;&#30340;&#20803;&#32032;&#24635;&#25968;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#27573;&#20195;&#30721;&#20013;&#65292;&#31532; 4&#12289;5 &#34892;&#19981;&#22826;&#22909;&#29702;&#35299;&#12290;&#24403; ++putIndex &#21644;&#25968;&#32452;&#38271;&#24230;&#19968;&#26679;&#26102;&#65292;&#35828;&#26126;&#21040;&#20102;&#25968;&#32452;&#30340;&#26368;&#21518;&#19968;&#20010;&#20803;&#32032;&#12290;&#28982;&#21518;putIndex &#34987;&#32622;&#20026;0&#12290;&#36825;&#26159;&#22240;&#20026;&#36825;&#37324;&#24490;&#29615;&#20351;&#29992;&#25968;&#32452;&#65292;&#30001;&#20110;&#25968;&#32452;&#38271;&#24230;&#23601;&#26159;&#38431;&#21015;&#30340;&#38271;&#24230;&#65292;&#24182;&#19988;&#20986;&#19968;&#20010;&#25165;&#33021;&#36827;&#19968;&#20010;&#65292;&#25152;&#20197;&#36827;&#21040;&#25968;&#32452;&#26368;&#21518;&#19968;&#20301;&#26102;&#65292;&#19979;&#19968;&#20010;&#31561;&#24453;&#20986;&#38431;&#30340;&#20301;&#32622;&#32943;&#23450;&#26159; &gt;=0 &#12290;&#27492;&#26102;&#24490;&#29615;&#20351;&#29992;&#25968;&#32452;&#65292;&#19979;&#19968;&#20010; put &#30340;&#20301;&#32622;&#36716;&#21040;&#25968;&#32452;&#31532;&#19968;&#20301;&#12290;&#22914;&#26524;&#28040;&#36153;&#24471;&#27604;&#36739;&#24555;&#65292;&#28040;&#36153;&#30340;&#20301;&#32622; &gt;0&#65292;&#37027;&#20040;&#27809;&#38382;&#39064;&#65292;&#20877;&#27425; put &#26102;&#20505;&#23601;&#20250;&#20889;&#20837; index=0 &#30340;&#20301;&#32622;&#12290;&#22914;&#26524;&#24688;&#24039;&#20986;&#38431;&#20301;&#32622;&#23601;&#26159; 0&#12290;&#37027;&#20040;&#19979;&#27425; put &#30340;&#26102;&#20505;&#65292;&#30001;&#20110;count == items.length&#65292;&#32780;&#20250;&#36827;&#20837;&#31561;&#24453;&#12290;&#30452;&#21040;&#20301;&#32622; 0 &#30340;&#20803;&#32032;&#34987;&#28040;&#36153;&#25481;&#65292;&#37027;&#20040;&#20889;&#20837; 0 &#20301;&#32622;&#65292;&#20063;&#19981;&#20250;&#26377;&#20219;&#20309;&#38382;&#39064;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20040;&#20570;&#30340;&#22909;&#22788;&#26159;&#24490;&#29615;&#20351;&#29992;&#25968;&#32452;&#65292;&#32780;&#19981;&#38656;&#35201;&#27599;&#27425;&#28040;&#36153;&#37117;&#21521;&#21069;&#31227;&#21160;&#25968;&#32452;&#20013;&#20803;&#32032;&#30340;&#20301;&#32622;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="offer-&#26041;&#27861;&#21644;-add-&#26041;&#27861;&#28304;&#30721;&#20998;&#26512;">
+     2.2 offer &#26041;&#27861;&#21644; add &#26041;&#27861;&#28304;&#30721;&#20998;&#26512;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#38754;&#25105;&#20204;&#20877;&#26469;&#30475;&#30475; offer &#30340;&#28304;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">offer</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">checkNotNull</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> ReentrantLock lock <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lock<span class="token punctuation">;</span>
+    lock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> items<span class="token punctuation">.</span>length<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token function">enqueue</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21306;&#21035;&#23601;&#26159;&#20351;&#29992; lock&#65292;&#22312;&#31561;&#24453;&#38145;&#30340;&#26399;&#38388;&#19981;&#33021;&#34987;&#25171;&#26029;&#12290;&#21478;&#22806;&#22914;&#26524; count == items.length&#65292;&#38431;&#21015;&#28385;&#20102;&#30452;&#25509;&#36820;&#22238; false&#65292;&#32780;&#19981;&#26159;&#38459;&#22622;&#31561;&#24453;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#37324;&#19968;&#24182;&#35762;&#35299; add &#26041;&#27861;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">add</span><span class="token punctuation">(</span>E e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">offer</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"Queue full"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20854;&#23454; add &#26041;&#27861;&#20013;&#35843;&#29992;&#30340; offer &#26041;&#27861;&#65292;&#21482;&#19981;&#36807; add &#22312; offer &#36820;&#22238; false &#26102;&#65292;&#25243;&#20986;&#24322;&#24120;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="&#26377;&#31561;&#24453;&#36229;&#26102;&#21442;&#25968;&#30340;-offer-&#26041;&#27861;&#28304;&#30721;&#20998;&#26512;">
+     2.3 &#26377;&#31561;&#24453;&#36229;&#26102;&#21442;&#25968;&#30340; offer &#26041;&#27861;&#28304;&#30721;&#20998;&#26512;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">offer</span><span class="token punctuation">(</span>E e<span class="token punctuation">,</span> <span class="token keyword">long</span> timeout<span class="token punctuation">,</span> TimeUnit unit<span class="token punctuation">)</span>
+    <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+
+    <span class="token function">checkNotNull</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">long</span> nanos <span class="token operator">=</span> unit<span class="token punctuation">.</span><span class="token function">toNanos</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">final</span> ReentrantLock lock <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>lock<span class="token punctuation">;</span>
+    lock<span class="token punctuation">.</span><span class="token function">lockInterruptibly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> items<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>nanos <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            nanos <span class="token operator">=</span> notFull<span class="token punctuation">.</span><span class="token function">awaitNanos</span><span class="token punctuation">(</span>nanos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">enqueue</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20854;&#23454;&#36825;&#20010;&#26041;&#27861;&#21644; put &#26356;&#20687;&#19968;&#28857;&#65292;put &#38459;&#22622;&#30452;&#21040;&#26377;&#31354;&#20301;&#20986;&#29616;&#12290;&#32780;&#27492;&#26041;&#27861;&#38459;&#22622;&#26102;&#20250;&#26377;&#36229;&#26102;&#26102;&#38388;&#35774;&#32622;&#65292; notFull.awaitNanos(nanos) &#36820;&#22238;&#21097;&#20313;&#30340;&#36229;&#26102;&#26102;&#38271;&#65292;&#24403; nanos &lt;= 0&#65292;&#20063;&#23601;&#26159;&#35828;&#27809;&#26377;&#26102;&#38271;&#20102;&#65292;&#22914;&#26524;&#36824;&#27809;&#26377;&#31561;&#21040;&#31354;&#20301;&#65292;&#37027;&#20040;&#20063;&#20250;&#25918;&#22238; false&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20197;&#19978;&#20837;&#38431;&#30340;&#26041;&#27861;&#24050;&#32463;&#35762;&#23436;&#20102;&#65292;&#25509;&#19979;&#26469;&#25105;&#20204;&#30475;&#19968;&#19979;&#20986;&#38431;&#30340;&#26041;&#27861;&#65292;&#20986;&#38431;&#26041;&#27861;&#30340;&#21306;&#21035;&#20854;&#23454;&#21644;&#20837;&#38431;&#31867;&#20284;&#65292;&#25152;&#20197;&#36825;&#37324;&#25105;&#19981;&#20877;&#35814;&#32454;&#35762;&#35299;&#27599;&#19968;&#20010;&#65292;&#25105;&#20204;&#30475;&#19968;&#20010;&#20856;&#22411;&#23601;&#21487;&#20197;&#20102;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="take-&#26041;&#27861;&#28304;&#20195;&#30721;&#20998;&#26512;">
+     2.4 take &#26041;&#27861;&#28304;&#20195;&#30721;&#20998;&#26512;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     tabke &#26041;&#27861;&#21644; put &#26041;&#27861;&#30456;&#23545;&#24212;&#65292;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-csharp"><code class="prism language-csharp"><span class="token keyword">public</span> E <span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span> throws InterruptedException <span class="token punctuation">{</span>
+        final ReentrantLock <span class="token keyword">lock</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token keyword">lock</span><span class="token punctuation">;</span>
+        <span class="token keyword">lock</span><span class="token punctuation">.</span><span class="token function">lockInterruptibly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                notEmpty<span class="token punctuation">.</span><span class="token keyword">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> <span class="token function">dequeue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token keyword">lock</span><span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#65292;&#21644;put &#19968;&#26679;&#37117;&#26159;&#20351;&#29992;&#30340; lockInterruptibly &#26041;&#27861;&#19978;&#38145;&#65292;&#21487;&#20197;&#34987;&#20013;&#26029;&#12290;&#24403; count &#20026;0&#26102;&#65292;&#35828;&#26126;&#38431;&#21015;&#24050;&#32463;&#31354;&#20102;&#65292;&#26080;&#27861;&#21462;&#20986;&#20803;&#32032;&#65292;&#37027;&#20040;&#36890;&#36807;&#35843;&#29992; notEmpty.await() &#38459;&#22622;&#12290;&#30452;&#21040;&#26576;&#20010;&#20837;&#38431;&#26041;&#27861;&#28155;&#21152;&#20803;&#32032;&#21518;&#35843;&#29992;&#20102;notEmpty.signal()&#65292;&#36890;&#30693;&#35813;&#32447;&#31243;&#21487;&#20197;&#32487;&#32493;&#20986;&#38431;&#25805;&#20316;&#20102;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     poll() &#26041;&#27861;&#19981;&#20250;&#38459;&#22622;&#65292;&#22914;&#26524;&#27809;&#26377;&#20803;&#32032;&#65292;&#21017;&#30452;&#25509;&#36820;&#22238; null&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     poll(long timeout, TimeUnit unit) &#65292;&#21017;&#20250;&#38459;&#22622;&#19968;&#23450;&#26102;&#38271;&#65292;&#22914;&#26524;&#36824;&#26159;&#27809;&#26377;&#20803;&#32032;&#65292;&#25165;&#20250;&#36820;&#22238; null&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;&#24635;&#32467;" style="font-size: 30px;">
+     3&#12289;&#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20851;&#20110; ArrayBlockingQueue &#30340;&#28304;&#20195;&#30721;&#23601;&#35762;&#35299;&#21040;&#36825;&#37324;&#65292;&#21487;&#20197;&#30475;&#20986;&#28304;&#20195;&#30721;&#24182;&#19981;&#22797;&#26434;&#65292;&#32780;&#19988;&#19981;&#21516;&#26041;&#27861;&#30340;&#23454;&#29616;&#20063;&#24456;&#31867;&#20284;&#65292;&#21482;&#26377;&#32454;&#24494;&#30340;&#24046;&#21035;&#12290;&#22914;&#26524;&#22823;&#23478;&#24863;&#20852;&#36259;&#65292;&#30456;&#20449;&#20320;&#36731;&#26494;&#23601;&#33021;&#35835;&#25026;&#28304;&#20195;&#30721;&#12290;&#21478;&#22806; BlockingQueue &#30340;&#23454;&#29616;&#36824;&#26377;&#24456;&#22810;&#65292;&#36824;&#26377;&#20010;&#27604;&#36739;&#24120;&#29992;&#30340;&#26159; LinkedBlockingQueue&#65292;&#36890;&#36807;&#38142;&#34920;&#23384;&#20648;&#26469;&#23454;&#29616;&#65292;&#22914;&#26524;&#24863;&#20852;&#36259;&#20063;&#21487;&#20197;&#33258;&#24049;&#21435;&#30475;&#28304;&#20195;&#30721;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#38459;&#22622;&#38431;&#21015;&#29992;&#26469;&#23454;&#29616;&#29983;&#20135;&#32773;&#21644;&#28040;&#36153;&#32773;&#24456;&#22909;&#29992;&#12290;&#21478;&#22806;&#25105;&#20204;&#36824;&#24212;&#35813;&#30693;&#36947;&#22312; Executor &#20013;&#20351;&#29992;&#20102; BlockingQueue&#12290;&#22823;&#23478;&#22914;&#26524;&#24050;&#32463;&#24536;&#20102;&#65292;&#21487;&#20197;&#22238;&#36807;&#22836;&#20877;&#21435;&#30475;&#30475; Executor &#28304;&#30721;&#20998;&#26512;&#37027;&#19968;&#33410;&#30340;&#20869;&#23481;&#12290;
+    </p>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/960">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     25 &#32463;&#20856;&#24182;&#21457;&#23481;&#22120;&#65292;&#22810;&#32447;&#31243;&#38754;&#35797;&#24517;&#22791;&#8212;&#28145;&#20837;&#35299;&#26512;ConcurrentHashMap&#19979;
+    </p>
+   </div>
+  </a>
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/961">
+   <div class="next r clearfix">
+    <p>
+     27 &#20498;&#25968;&#35745;&#26102;&#24320;&#22987;&#65292;&#19977;&#12289;&#20108;&#12289;&#19968;&#8212;CountDownLatch&#35814;&#35299;
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        

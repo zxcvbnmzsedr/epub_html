@@ -1,0 +1,408 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  32 &#35831;&#25353;&#21040;&#22330;&#39034;&#24207;&#21457;&#35328;&#8212;Completion Service&#35814;&#35299;
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-12-17 09:48:40
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/cb2191da-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/cb49b750-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/cb633e78-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#26102;&#38388;&#20687;&#28023;&#32501;&#37324;&#30340;&#27700;&#65292;&#21482;&#35201;&#20320;&#24895;&#24847;&#25380;&#65292;&#24635;&#36824;&#26159;&#26377;&#30340;&#12290;
+    <p class="author">
+     &#8212;&#8212;&#40065;&#36805;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#35762;&#35299; CompletionService &#20043;&#21069;&#65292;&#25105;&#20204;&#20808;&#22238;&#24518;&#19968;&#19979; ExcutorSevice&#12290;ExcutorService &#23454;&#29616;&#20102;&#36890;&#36807;&#32447;&#31243;&#27744;&#26469;&#24182;&#21457;&#25191;&#34892;&#20219;&#21153;&#12290;&#20854;&#20013;&#26377;&#19968;&#31181;&#26041;&#24335;&#26159;&#36890;&#36807;&#32447;&#31243;&#27744;&#25191;&#34892; Callable &#20219;&#21153;&#65292;&#28982;&#21518;&#36890;&#36807; Future &#33719;&#21462;&#24322;&#27493;&#25191;&#34892;&#30340;&#32467;&#26524;&#65292;&#22914;&#19979;&#38754;&#30340;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> ExecutionException<span class="token punctuation">,</span> InterruptedException <span class="token punctuation">{</span>
+    ExecutorService executor <span class="token operator">=</span> Executors<span class="token punctuation">.</span><span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    Callable callable1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"&#20219;&#21153;1&#23436;&#25104;"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    Callable callable2 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"&#20219;&#21153;2&#23436;&#25104;"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+
+    Future future1 <span class="token operator">=</span> executor<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span>callable1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Future future2 <span class="token operator">=</span> executor<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span>callable2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>future1<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>future2<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20219;&#21153;&#19968;&#25191;&#34892;&#38656;&#35201; 10 &#31186;&#65292;&#20219;&#21153;&#20108;&#25191;&#34892;&#21482;&#38656;&#35201; 5 &#31186;&#12290;&#20294;&#26159;&#24403;&#25191;&#34892;&#21040; future1.get () &#26102;&#65292;&#20027;&#32447;&#31243;&#20250;&#34987;&#38459;&#22622;&#12290;&#31561;&#24453; 10 &#31186;&#21518;&#31532;&#19968;&#20010;&#20219;&#21153;&#25191;&#34892;&#23436;&#25165;&#20250;&#21435;&#33719;&#21462;&#31532;&#20108;&#20010;&#20219;&#21153;&#12290;&#28982;&#21518;&#25191;&#34892;&#21644;&#31532;&#20108;&#20010;&#20219;&#21153;&#30456;&#20851;&#30340;&#25171;&#21360;&#25805;&#20316;&#12290;&#22823;&#23478;&#26377;&#27809;&#26377;&#30475;&#20986;&#38382;&#39064;&#65311;&#20219;&#21153; 2 &#26126;&#26126;&#22312; 5 &#31186;&#21069;&#23601;&#24050;&#32463;&#25191;&#34892;&#23436;&#25104;&#65292;&#21364;&#19981;&#33021;&#31435;&#21051;&#25171;&#21360;&#12290;&#20027;&#32447;&#31243;&#38459;&#22622;&#22312;&#20219;&#21153;&#19968;&#32467;&#26524;&#30340;&#33719;&#21462;&#19978;&#12290;&#36825;&#26679;&#31243;&#24207;&#25191;&#34892;&#30340;&#25928;&#29575;&#24182;&#19981;&#39640;&#12290;&#22914;&#26524;&#20219;&#21153;&#23436;&#25104;&#21518;&#33021;&#22815;&#31435;&#21051;&#34987;&#21462;&#24471;&#25191;&#34892;&#32467;&#26524;&#65292;&#28982;&#21518;&#25191;&#34892;&#21518;&#38754;&#30340;&#36923;&#36753;&#65292;&#25928;&#29575;&#23601;&#20250;&#26377;&#26174;&#33879;&#30340;&#25552;&#21319;&#12290;&#20170;&#22825;&#25105;&#20204;&#35201;&#35762;&#35299;&#30340; CompletionService &#23601;&#26159;&#29992;&#26469;&#20570;&#36825;&#20010;&#20107;&#24773;&#30340;&#12290;CompletionService &#21487;&#20197;&#25353;&#29031;&#25191;&#34892;&#23436;&#25104;&#32467;&#26524;&#30340;&#21040;&#22330;&#39034;&#24207;&#65292;&#34987;&#20027;&#32447;&#31243;&#33719;&#21462;&#21040;&#65292;&#20174;&#32780;&#32487;&#32493;&#25191;&#34892;&#21518;&#38754;&#36923;&#36753;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;&#20102;&#35299;-completionservice" style="font-size: 30px;">
+     1&#12289;&#20102;&#35299; CompletionService
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20102;&#35299;&#19968;&#20010;&#31867;&#26368;&#22909;&#12289;&#26368;&#24555;&#30340;&#26041;&#27861;&#23601;&#26159;&#38405;&#35835;&#28304;&#20195;&#30721;&#30340;&#27880;&#35299;&#12290;&#32780;&#22823;&#22810;&#25968;&#20154;&#36890;&#24120;&#30340;&#20570;&#27861;&#21364;&#26159;&#21435;&#30334;&#24230;&#25110;&#32773; google&#12290;&#36825;&#26679;&#26377;&#20004;&#20010;&#24330;&#31471;&#65292;&#19968;&#26159;&#25928;&#29575;&#24182;&#19981;&#19968;&#23450;&#39640;&#65292;&#21487;&#33021;&#25628;&#20986;&#26469;&#24456;&#22810;&#26080;&#29992;&#30340;&#20869;&#23481;&#12290;&#20108;&#26159;&#30475;&#21040;&#30340;&#25991;&#31456;&#24182;&#19981;&#26435;&#23041;&#65292;&#29978;&#33267;&#21487;&#33021;&#26159;&#38169;&#30340;&#12290;&#26377;&#30340;&#21516;&#23398;&#21487;&#33021;&#35273;&#24471;&#33521;&#25991;&#38405;&#35835;&#36153;&#21170;&#65292;&#20854;&#23454;&#20316;&#20026;&#24320;&#21457;&#20154;&#21592;&#65292;&#33521;&#35821;&#38405;&#35835;&#24050;&#32463;&#26159;&#24517;&#22791;&#25216;&#33021;&#12290;&#36825;&#23601;&#22914;&#21516;&#20320;&#35201;&#29087;&#30693; IDE &#30340;&#24555;&#25463;&#38190;&#19968;&#26679;&#65292;&#25152;&#20197;&#22914;&#26524;&#35273;&#24471;&#33521;&#25991;&#38405;&#35835;&#22256;&#38590;&#65292;&#21487;&#20197;&#21051;&#24847;&#32451;&#20064;&#12290;&#20854;&#23454;&#22810;&#35835;&#19968;&#20123;&#25216;&#26415;&#25991;&#26723;&#65292;&#20250;&#21457;&#29616;&#29992;&#35789;&#22522;&#26412;&#37117;&#26159;&#31867;&#20284;&#30340;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25199;&#30340;&#26377;&#28857;&#36828;&#65292;&#25105;&#20204;&#25910;&#22238;&#26469;&#65292;&#20808;&#30475;&#30475;&#28304;&#20195;&#30721;&#20013;&#23545; CompletionService &#30340;&#35299;&#37322;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#23545;&#24322;&#27493;&#20219;&#21153;&#25191;&#34892;&#21644;&#25191;&#34892;&#32467;&#26524;&#28040;&#36153;&#35299;&#34261;&#12290;&#29983;&#20135;&#32773;&#25552;&#20132;&#20219;&#21153;&#25191;&#34892;&#12290;&#28040;&#36153;&#32773;&#21017;&#33719;&#21462;&#23436;&#25104;&#30340;&#20219;&#21153;&#65292;&#28982;&#21518;&#25353;&#29031;&#23436;&#25104;&#20219;&#21153;&#30340;&#39034;&#24207;&#23545;&#20219;&#21153;&#32467;&#26524;&#36827;&#34892;&#22788;&#29702;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#23448;&#26041;&#30340;&#35299;&#37322;&#26159;&#19981;&#26159;&#21313;&#20998;&#31616;&#27905;&#26126;&#20102;&#65311;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h1 id="&#12289;&#20351;&#29992;-completionservice">
+     2&#12289;&#20351;&#29992; CompletionService
+    </h1>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#38754;&#25105;&#20204;&#20351;&#29992; CompletionService &#23454;&#29616;&#19968;&#20010;&#21507;&#33529;&#26524;&#30340;&#31243;&#24207;&#12290;&#39318;&#20808;&#25105;&#22768;&#26126;&#19968;&#20010;&#27969;&#65292;&#37324;&#38754;&#26159;&#19968;&#20123;&#27700;&#26524;&#65292;&#27599;&#20010;&#27700;&#26524;&#20250;&#23545;&#24212;&#19968;&#20010;&#27927;&#24178;&#20928;&#30340;&#20219;&#21153;&#12290;&#28982;&#21518;&#20027;&#32447;&#31243;&#25343;&#21040;&#27927;&#24178;&#20928;&#30340;&#27700;&#26524;&#20877;&#19968;&#20010;&#20010;&#21507;&#25481;&#12290;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException<span class="token punctuation">,</span> ExecutionException <span class="token punctuation">{</span>
+    ExecutorService pool <span class="token operator">=</span> Executors<span class="token punctuation">.</span><span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CompletionService<span class="token operator">&lt;</span>String<span class="token operator">&gt;</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExecutorCompletionService</span><span class="token operator">&lt;</span>String<span class="token operator">&gt;</span><span class="token punctuation">(</span>pool<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+  Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"&#33529;&#26524;"</span><span class="token punctuation">,</span> <span class="token string">"&#26792;"</span><span class="token punctuation">,</span> <span class="token string">"&#33889;&#33796;"</span><span class="token punctuation">,</span> <span class="token string">"&#26691;"</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>fruit <span class="token operator">-</span><span class="token operator">&gt;</span> service<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">if</span><span class="token punctuation">(</span>fruit<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"&#33529;&#26524;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>fruit<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"&#26792;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>fruit<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"&#33889;&#33796;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>fruit<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"&#26691;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                        <span class="token keyword">return</span> <span class="token string">"&#27927;&#24178;&#20928;&#30340;"</span><span class="token operator">+</span>fruit<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    String result<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token operator">=</span>service<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#21507;&#25481;"</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#26377;&#22235;&#31181;&#27700;&#26524;&#12290;&#20250;&#20026;&#27599;&#20010;&#27700;&#26524;&#21551;&#19968;&#20010;&#27927;&#27700;&#26524;&#30340;&#20219;&#21153;&#12290;&#27599;&#31181;&#27700;&#26524;&#27927;&#30340;&#26102;&#38388;&#19981;&#21516;&#65292;&#20854;&#20013;&#33889;&#33796;&#26368;&#19981;&#22909;&#27927;&#35201; 10 &#31186;&#65292;&#32780;&#26792;&#26368;&#22909;&#27927;&#65292;&#21482;&#38656;&#35201; 1 &#31186;&#12290;&#31561;&#24453;&#27700;&#26524;&#27927;&#22909;&#21518;&#65292;&#20027;&#32447;&#31243;&#36890;&#36807; service.take () &#21462;&#24471;&#25191;&#34892;&#23436;&#25104;&#30340; Future&#65292;&#28982;&#21518;&#20174;&#37324;&#38754; get &#20986;&#36820;&#22238;&#20540;&#65292;&#25226;&#27927;&#24178;&#20928;&#30340;&#27700;&#26524;&#21507;&#25481;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#21487;&#20197;&#30475;&#21040;&#36755;&#20986;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>&#21507;&#25481;&#27927;&#24178;&#20928;&#30340;&#26792;
+&#21507;&#25481;&#27927;&#24178;&#20928;&#30340;&#26691;
+&#21507;&#25481;&#27927;&#24178;&#20928;&#30340;&#33529;&#26524;
+&#21507;&#25481;&#27927;&#24178;&#20928;&#30340;&#33889;&#33796;
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#21738;&#20010;&#27700;&#26524;&#20808;&#27927;&#24178;&#20928;&#23601;&#20250;&#20808;&#34987;&#21507;&#25481;&#12290;&#36825;&#20063;&#35777;&#26126;&#20102; service.take () &#30340;&#39034;&#24207;&#26159;&#20219;&#21153;&#30340;&#23436;&#25104;&#39034;&#24207;&#65292;&#32780;&#19981;&#26159;&#20219;&#21153;&#25552;&#20132;&#30340;&#39034;&#24207;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36890;&#36807; CompletionService &#25105;&#20204;&#23601;&#21487;&#20197;&#19968;&#31471;&#29983;&#20135;&#65292;&#21478;&#19968;&#31471;&#25353;&#29031;&#23436;&#25104;&#30340;&#39034;&#24207;&#36827;&#34892;&#28040;&#36153;&#12290;&#36825;&#36991;&#20813;&#25552;&#20132;&#22823;&#37327;&#20219;&#21153;&#26102;&#65292;&#19981;&#30693;&#36947;&#21738;&#20010;&#20219;&#21153;&#20808;&#23436;&#25104;&#65292;&#20174;&#32780;&#22312;&#35843;&#29992; Future &#30340; get &#26041;&#27861;&#26102;&#20135;&#29983;&#38459;&#22622;&#12290;&#20351;&#29992; CompletionService&#65292;&#27704;&#36828;&#37117;&#26159;&#23436;&#25104;&#19968;&#20010;&#36820;&#22238;&#19968;&#20010;&#65292;&#28982;&#21518;&#28040;&#36153;&#19968;&#20010;&#12290;&#36825;&#26679;&#20320;&#30340;&#31243;&#24207;&#25165;&#26356;&#20026;&#39640;&#25928;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20027;&#32447;&#31243;&#25910;&#21040;&#36820;&#22238;&#21518;&#65292;&#21487;&#20197;&#20877;&#32487;&#32493;&#20351;&#29992; CompletionService &#26469;&#24322;&#27493;&#25191;&#34892;&#19979;&#19968;&#27493;&#30340;&#36923;&#36753;&#65292;&#36825;&#21644;&#38750;&#38459;&#22622;&#30340;&#32534;&#31243;&#26041;&#24335;&#24322;&#26354;&#21516;&#24037;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;completionservice-&#28304;&#30721;&#20998;&#26512;" style="font-size: 30px;">
+     3&#12289;CompletionService &#28304;&#30721;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="completionservice-&#26500;&#36896;&#26041;&#27861;">
+     3.1 CompletionService &#26500;&#36896;&#26041;&#27861;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20808;&#30475;&#22914;&#20309;&#21021;&#22987;&#21270; CompletionService&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">ExecutorService pool <span class="token operator">=</span> Executors<span class="token punctuation">.</span><span class="token function">newFixedThreadPool</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+CompletionService<span class="token operator">&lt;</span>String<span class="token operator">&gt;</span> service <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ExecutorCompletionService</span><span class="token operator">&lt;</span>String<span class="token operator">&gt;</span><span class="token punctuation">(</span>pool<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#39318;&#20808;&#21021;&#22987;&#21270; ExecutorService&#65292;&#22312;&#26500;&#36896; ExecutorCompletionService &#26102;&#20316;&#20026;&#21442;&#25968;&#20256;&#20837;&#12290;&#20854;&#23454; CompletionService &#23545;&#20219;&#21153;&#30340;&#25191;&#34892;&#20854;&#23454;&#23601;&#26159;&#20511;&#21161;&#20110; ExecutorService &#26469;&#23436;&#25104;&#30340;&#12290;&#25509;&#19979;&#26469;&#25105;&#20204;&#36827;&#20837;&#23427;&#30340;&#26500;&#36896;&#20989;&#25968;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token function">ExecutorCompletionService</span><span class="token punctuation">(</span>Executor executor<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>executor <span class="token operator">==</span> null<span class="token punctuation">)</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>executor <span class="token operator">=</span> executor<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>aes <span class="token operator">=</span> <span class="token punctuation">(</span>executor <span class="token keyword">instanceof</span> <span class="token class-name">AbstractExecutorService</span><span class="token punctuation">)</span> <span class="token operator">?</span>
+        <span class="token punctuation">(</span>AbstractExecutorService<span class="token punctuation">)</span> executor <span class="token operator">:</span> null<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>completionQueue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedBlockingQueue</span><span class="token operator">&lt;</span>Future<span class="token operator">&lt;</span>V<span class="token operator">&gt;&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26500;&#36896;&#20989;&#25968;&#20013;&#26500;&#36896;&#20102;&#19977;&#20010;&#23646;&#24615;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">final</span> Executor executor<span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> AbstractExecutorService aes<span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> BlockingQueue<span class="token operator">&lt;</span>Future<span class="token operator">&lt;</span>V<span class="token operator">&gt;&gt;</span> completionQueue<span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     executor &#23601;&#26159;&#20320;&#20256;&#20837;&#30340; ExecutorService&#65292;&#29992;&#26469;&#25191;&#34892;&#20219;&#21153;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     aes &#30340;&#20316;&#29992;&#26159;&#21019;&#24314;&#26032;&#30340; task&#12290;&#23427;&#30340;&#21021;&#22987;&#21270;&#36807;&#31243;&#27604;&#36739;&#26377;&#24847;&#24605;&#65292;&#21028;&#26029;&#20102;&#26159;&#21542;&#20026; AbstractExecutorService &#30340;&#23454;&#20363;&#12290;&#33267;&#20110;&#20026;&#20160;&#20040;&#36825;&#20040;&#20570;&#65292;&#25105;&#20204;&#21518;&#38754;&#20877;&#35814;&#32454;&#35762;&#35299;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     completionQueue &#26159;&#19968;&#20010;&#23384;&#25918; Future &#30340;&#38459;&#22622;&#38431;&#21015;&#65292;&#24182;&#19988;&#26159;&#26080;&#30028;&#30340;&#12290;&#36825;&#24847;&#21619;&#30528;&#22914;&#26524;&#28304;&#22836;&#19981;&#26029;&#30340;&#20135;&#29983; Future&#65292;&#20294;&#26159;&#27809;&#26377;&#21435;&#28040;&#36153;&#65292;&#23601;&#20250;&#36896;&#25104;&#20869;&#23384;&#27844;&#28431;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     executor &#25191;&#34892;&#23436;&#25104;&#30340; Future &#20250;&#34987;&#25918;&#20837; completionQueue &#20013;&#65292;take &#26041;&#27861;&#23558;&#20250;&#20174;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     completionQueue &#20013;&#21462;&#24471;&#26368;&#26032;&#30340; future &#23545;&#35937;&#65288;&#26368;&#36817;&#25191;&#34892;&#23436;&#30340; task &#30340;&#32467;&#26524;&#65289;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="completionservice-&#30340;-submit-&#26041;&#27861;">
+     3.2 CompletionService &#30340; submit &#26041;&#27861;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> Future<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> <span class="token function">submit</span><span class="token punctuation">(</span>Callable<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> task<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>task <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    RunnableFuture<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> f <span class="token operator">=</span> <span class="token function">newTaskFor</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    executor<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">QueueingFuture</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#39318;&#20808;&#23558; Callable &#31867;&#22411;&#30340; task &#36716;&#20026; RunnableFuture &#31867;&#22411;&#12290;RunnableFuture &#26159;&#20010;&#25509;&#21475;&#65292;FutureTask &#26159;&#20854;&#19968;&#31181;&#23454;&#29616;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#28982;&#21518;&#36890;&#36807; new QueueingFuture (f)&#65292;&#20877;&#23558; RunnableFuture &#21253;&#35013;&#20026; QueueingFuture &#31867;&#22411;&#30340;&#23545;&#35937;&#12290;QueueingFuture &#30340;&#20316;&#29992;&#23601;&#26159;&#22312; Future &#23436;&#25104;&#26102;&#65292;&#21152;&#20837;&#21040; completionQueue &#20013;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20808;&#30475; newTaskFor &#30340;&#28304;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> RunnableFuture<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> <span class="token function">newTaskFor</span><span class="token punctuation">(</span>Callable<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> task<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>aes <span class="token operator">==</span> null<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">FutureTask</span><span class="token operator">&lt;</span>V<span class="token operator">&gt;</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token keyword">return</span> aes<span class="token punctuation">.</span><span class="token function">newTaskFor</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22914;&#26524; aes &#20026;&#31354;&#65292;&#37027;&#20040;&#30452;&#25509; new FutureTask&#12290;&#22914;&#26524;&#19981;&#20026;&#31354;&#21017;&#35843;&#29992; aes &#30340; newTaskFor &#26041;&#27861;&#12290;&#20160;&#20040;&#24773;&#20917; aes &#20250;&#20026;&#31354;&#21602;&#65311;&#25105;&#20204;&#20877;&#30475;&#19979; aes &#21021;&#22987;&#21270;&#30340;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">this</span><span class="token punctuation">.</span>aes <span class="token operator">=</span> <span class="token punctuation">(</span>executor <span class="token keyword">instanceof</span> <span class="token class-name">AbstractExecutorService</span><span class="token punctuation">)</span> <span class="token operator">?</span>
+<span class="token punctuation">(</span>AbstractExecutorService<span class="token punctuation">)</span> executor <span class="token operator">:</span> null<span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#24403;&#20256;&#20837;&#30340; executor &#20026; AbstractExecutorService &#31867;&#22411;&#26102;&#65292;&#37027;&#20040; aes &#19981;&#20026;&#31354;&#12290;&#21542;&#21017; aes &#20026;&#31354;&#12290;&#36825;&#20004;&#22788;&#36923;&#36753;&#22788;&#29702;&#26159;&#30456;&#20851;&#32852;&#30340;&#65292;&#36825;&#20040;&#20570;&#30340;&#21407;&#22240;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;&#22914;&#26524; executor &#26159; AbstractExecutorService &#30340;&#23376;&#31867;&#65292;&#26377;&#21487;&#33021;&#20250;&#37325;&#20889; newTaskFor &#26041;&#27861;&#65292;&#25152;&#20197;&#36825;&#37324;&#20248;&#20808;&#20351;&#29992; executo r &#30340;&#26041;&#27861;&#26469;&#21019;&#24314; Task&#65292;&#36825;&#26679;&#21518;&#38754;&#36890;&#36807; executor &#25191;&#34892; task &#25165;&#33021;&#27491;&#30830;&#12290;&#27604;&#22914; ForkJoinPool &#23601;&#23545; newTaskFor &#26041;&#27861;&#36827;&#34892;&#20102;&#37325;&#20889;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;&#22914;&#26524; executor &#19981;&#26159;&#32487;&#25215;&#33258; AbstractExecutorService&#12290;&#37027;&#20040;&#23427;&#21487;&#33021;&#24182;&#27809;&#26377; newTaskFor &#26041;&#27861;&#12290;&#25152;&#20197;&#38656;&#35201; CompletionService &#33258;&#24049;&#26469;&#21019;&#24314; FutureTask&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#26679;&#30475;&#26469; aes &#30340;&#23384;&#22312;&#65292;&#21482;&#26159;&#20026;&#20102;&#23613;&#37327;&#20351;&#29992; executor &#25552;&#20379;&#30340; newTaskFor &#26041;&#27861;&#26469;&#21019;&#24314; task&#65292;&#20197;&#20351;&#21518;&#38754; excute &#26041;&#27861;&#33021;&#22815;&#27491;&#24120;&#36816;&#34892;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25509;&#19979;&#26469;&#25105;&#20204;&#20998;&#26512; QueueingFuture &#26041;&#27861;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">QueueingFuture</span> <span class="token keyword">extends</span> <span class="token class-name">FutureTask</span><span class="token operator">&lt;</span>Void<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">QueueingFuture</span><span class="token punctuation">(</span>RunnableFuture<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> task<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>task<span class="token punctuation">,</span> null<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>task <span class="token operator">=</span> task<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> completionQueue<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> Future<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> task<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     QueueingFuture &#26159;&#20869;&#37096;&#38745;&#24577;&#31867;&#65292;&#24182;&#19988;&#26159; FutureTask &#30340;&#23376;&#31867;&#12290;&#20182;&#21482;&#26159;&#37325;&#20889;&#20102; done &#26041;&#27861;&#12290;&#22823;&#23478;&#22238;&#24518;&#19978;&#19968;&#33410;&#23545; Future &#30340;&#20998;&#26512;&#65292;&#24212;&#35813;&#36824;&#35760;&#24471; done &#26041;&#27861;&#22312;&#20219;&#21153;&#25191;&#34892;&#32467;&#26524;&#36820;&#22238;&#21518;&#34987;&#35843;&#29992;&#65292;&#20294;&#26159;&#30041;&#32473;&#23376;&#31867;&#26469;&#23454;&#12290;&#36825;&#37324;&#23601;&#29992;&#19978;&#20102;&#36825;&#20010;&#29305;&#24615;&#12290;done &#26041;&#27861;&#37324;&#38754;&#20570;&#30340;&#23601;&#26159;&#25226; task &#21152;&#20837;&#38459;&#22622;&#38431;&#21015;&#20013;&#12290;&#36825;&#24847;&#21619;&#30528;&#65292;&#20808;&#23436;&#25104;&#30340; task &#20250;&#20808;&#25226;&#33258;&#24049;&#30340; Future &#25918;&#20837;&#38431;&#21015;&#20013;&#12290;&#37027;&#20040;&#24403;&#28982;&#20063;&#20250;&#34987; take &#26041;&#27861;&#20808;&#21462;&#21040;&#12290;&#32780;&#30001;&#20110;&#26159;&#38459;&#22622;&#38431;&#21015;&#65292;&#25152;&#20197; take &#26041;&#27861;&#21462;&#19981;&#21040; task &#26102;&#65292;&#23601;&#20250;&#38459;&#22622;&#12290;&#20294;&#30001;&#20110;&#33021;&#34987; take &#21040;&#30340; task &#32943;&#23450;&#24050;&#32463;&#26377;&#20102;&#36820;&#22238;&#20540;&#65292;&#25152;&#20197;&#35843;&#29992; task &#30340; get &#26041;&#27861;&#26102;&#23601;&#19981;&#20250;&#20877;&#27425;&#38459;&#22622;&#20102;&#12290;&#20063;&#23601;&#26159;&#35828; client &#20195;&#30721;&#20013;&#30340;&#19979;&#38754;&#19968;&#34892;&#21482;&#20250;&#22312; take &#26102;&#21457;&#29983;&#38459;&#22622;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token operator">=</span>service<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#21507;&#25481;"</span><span class="token operator">+</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     executor &#25191;&#34892;&#20219;&#21153;&#30340;&#20195;&#30721;&#23601;&#19981;&#29992;&#20877;&#27425;&#20998;&#26512;&#20102;&#65292;&#36825;&#22312;&#20043;&#21069;&#23398;&#20064; Executor &#30340;&#26102;&#20505;&#24050;&#32463;&#35814;&#32454;&#20998;&#26512;&#36807;&#20102;&#12290;submit &#26041;&#27861;&#20998;&#26512;&#23436;&#21518;&#25105;&#20204;&#20877;&#26469;&#30475;&#30475; take &#26041;&#27861;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="completionservice-&#30340;-take-&#26041;&#27861;">
+     3.3 CompletionService &#30340; take &#26041;&#27861;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#30456;&#27604;&#36739; submit &#26041;&#27861;&#65292;take &#26041;&#27861;&#23601;&#26356;&#20026;&#31616;&#21333;&#20102;&#65292;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> Future<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> completionQueue<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21482;&#26377;&#19968;&#34892;&#20195;&#30721;&#65292;&#23601;&#26159;&#20174; completionQueue &#20013;&#21462;&#24471; Futrue &#23545;&#35937;&#12290;&#30001;&#20110; completionQueue &#26159;&#38459;&#22622;&#38431;&#21015;&#65292;&#24403;&#27809;&#26377; Future &#26102;&#65292;&#23601;&#20250;&#38459;&#22622;&#22312;&#27492;&#12290;&#32780; completionQueue &#20013;&#20445;&#23384; Future &#30340;&#39034;&#24207;&#26159;&#23436;&#25104;&#39034;&#24207;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;-&#24635;&#32467;" style="font-size: 30px;">
+     4&#12289; &#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     CompletionService &#32473;&#25105;&#20204;&#25552;&#20379;&#20102;&#19968;&#31181;&#38750;&#38459;&#22622;&#30340;&#24322;&#27493;&#25191;&#34892;&#26041;&#24335;&#12290;&#35753;&#31243;&#24207;&#26356;&#20026;&#39640;&#25928;&#12290;&#20182;&#30340;&#23454;&#29616;&#38750;&#24120;&#30340;&#31616;&#21333;&#21644;&#24039;&#22937;&#65292;&#20540;&#24471;&#25105;&#20204;&#20511;&#37492;&#12290;&#20854;&#23454;&#25105;&#20204;&#23398;&#20064;&#21040;&#36825;&#37324;&#65292;&#19981;&#30693;&#36947;&#20320;&#26159;&#21542;&#26377;&#36825;&#31181;&#20307;&#20250;&#65292;&#36825;&#20123;&#24037;&#20855;&#23454;&#38469;&#19978;&#23601;&#26159;&#25105;&#20204;&#20043;&#21069;&#23398;&#20064;&#20869;&#23481;&#30340;&#32452;&#21512;&#36816;&#29992;&#65292;&#22914;&#26524;&#21069;&#38754;&#20320;&#25484;&#25569;&#30340;&#24456;&#29282;&#22266;&#65292;&#23398;&#20064;&#36215;&#26469;&#19968;&#28857;&#20063;&#19981;&#36153;&#21170;&#12290;&#22914;&#26524;&#21069;&#38754;&#23601;&#20284;&#25026;&#38750;&#25026;&#65292;&#37027;&#20040;&#23601;&#20250;&#36234;&#30475;&#36234;&#31946;&#28034;&#12290;&#20854;&#23454;&#25105;&#20204;&#22312;&#23398;&#20064;&#19978;&#33267;&#23569;&#26377;&#19968;&#21322;&#30340;&#26102;&#38388;&#37117;&#26159;&#22312;&#25171;&#22522;&#30784;&#65292;&#20294;&#36825;&#20010;&#36807;&#31243;&#24517;&#19981;&#21487;&#23569;&#65292;&#24182;&#19988;&#21463;&#30410;&#26356;&#20026;&#28145;&#36828;&#12290;
+    </p>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/965">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     31 &#20973;&#31080;&#21462;&#39184;&#8212;Future&#27169;&#24335;&#35814;&#35299;
+    </p>
+   </div>
+  </a>
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/967">
+   <div class="next r clearfix">
+    <p>
+     33 &#20998;&#38454;&#27573;&#25191;&#34892;&#20320;&#30340;&#20219;&#21153;-&#23398;&#20064;&#20351;&#29992;Phaser&#36816;&#34892;&#22810;&#38454;&#27573;&#20219;&#21153;
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        

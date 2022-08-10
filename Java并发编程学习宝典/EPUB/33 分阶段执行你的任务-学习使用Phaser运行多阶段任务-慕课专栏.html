@@ -1,0 +1,446 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  33 &#20998;&#38454;&#27573;&#25191;&#34892;&#20320;&#30340;&#20219;&#21153;-&#23398;&#20064;&#20351;&#29992;Phaser&#36816;&#34892;&#22810;&#38454;&#27573;&#20219;&#21153;
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-12-19 09:43:24
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/cbba690a-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/cbd4a1c6-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/cbee538c-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#38738;&#24180;&#26159;&#23398;&#20064;&#26234;&#24935;&#30340;&#26102;&#26399;&#65292;&#20013;&#24180;&#26159;&#20184;&#35832;&#23454;&#36341;&#30340;&#26102;&#26399;&#12290;
+    <p class="author">
+     &#8212;&#8212; &#21346;&#26797;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26412;&#33410;&#25105;&#20204;&#23398;&#20064;&#30340; Phaser&#65292;&#33258; Java 7 &#20986;&#29616;&#65292;&#22312;&#21151;&#33021;&#19978;&#21644; CyclicBarrier &#21450; CountDownLatch &#24456;&#30456;&#20284;&#65292;&#19981;&#36807;&#26356;&#20026;&#28789;&#27963;&#12290;&#25105;&#20204;&#22238;&#24819; CyclicBarrier &#30340;&#20351;&#29992;&#65292;&#22312;&#21021;&#22987;&#21270;&#26102;&#38656;&#35201;&#25351;&#23450;&#21442;&#19982;&#32773;&#25968;&#37327;&#65292;&#24182;&#19988;&#26080;&#27861;&#26356;&#25913;&#12290;&#32780; Phaser &#21487;&#20197;&#28789;&#27963;&#30340;&#28155;&#21152;&#21442;&#19982;&#32773;&#65292;&#20197;&#21450;&#21160;&#24577;&#27880;&#38144;&#21442;&#19982;&#32773;&#65292;&#20174;&#32780;&#26356;&#21152;&#28789;&#27963;&#22320;&#21327;&#21516;&#32447;&#31243;&#24037;&#20316;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;phaser-api-&#20171;&#32461;" style="font-size: 30px;">
+     1&#12289;Phaser API &#20171;&#32461;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Phaser &#20174;&#21517;&#31216;&#21487;&#20197;&#30475;&#20986;&#65292;&#23427;&#23545;&#32447;&#31243;&#21327;&#21516;&#30340;&#37325;&#28857;&#26159;&#20219;&#21153;&#38454;&#27573;&#12290;phaser &#20013;&#32500;&#25252;&#20102;&#25152;&#22788;&#38454;&#27573;&#30340;&#25968;&#20540;&#12290;&#20854;&#23454; CyclicBarrier &#20063;&#21487;&#20197;&#23454;&#29616;&#31867;&#20284;&#30340;&#21151;&#33021;&#65292;&#20294;&#26080;&#27861;&#24212;&#23545;&#26356;&#20026;&#22797;&#26434;&#30340;&#22330;&#26223;&#12290;Phaser &#20250;&#26356;&#20026;&#30340;&#28789;&#27963;&#65292;&#36825;&#20307;&#29616;&#30528;&#23427;&#23545;&#21442;&#19982;&#32773;&#30340;&#21160;&#24577;&#22686;&#20943;&#12290;&#24182;&#19988;&#21442;&#19982;&#32773;&#21487;&#20197;&#36873;&#25321;&#21040;&#36798;&#23631;&#38556;&#28857;&#21518;&#26159;&#21542;&#38459;&#22622;&#12290;&#25105;&#20204;&#20808;&#30475; Phaser &#20013;&#28041;&#21450;&#21040;&#30340;&#20004;&#20010;&#37325;&#35201;&#27010;&#24565;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <ol>
+     <li style="font-size: 20px; line-height: 38px;">
+      phase&#12290;Phaser &#23545;&#38454;&#27573;&#36827;&#34892;&#31649;&#29702;&#65292;&#32780; phase &#23601;&#26159;&#38454;&#27573;&#65292;&#21487;&#20197;&#26159;&#38454;&#27573; 1&#12289;&#38454;&#27573; 2&#12289;&#38454;&#27573; 3&#8230;&#8230; &#24403;&#25152;&#26377;&#30340;&#21442;&#19982;&#32773;&#21040;&#36798;&#26576;&#20010;&#38454;&#27573;&#23631;&#38556;&#28857;&#26102;&#65292;phaser &#20250;&#36827;&#20837;&#19979;&#19968;&#20010;&#38454;&#27573;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      party&#12290;&#21442;&#19982;&#32773;&#65292;Phase r &#20013;&#20250;&#35760;&#24405;&#21442;&#19982;&#32773;&#30340;&#25968;&#37327;&#65292;&#21487;&#20197;&#36890;&#36807; register &#26041;&#27861;&#26469;&#28155;&#21152;&#65292;&#25110;&#32773;&#36890;&#36807; arriveAndDeregister &#26469;&#27880;&#38144;&#12290;
+     </li>
+    </ol>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25509;&#19979;&#26469;&#25105;&#20204;&#30475;&#19968;&#19979; Phaser &#30340;&#20027;&#35201; API&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <ol>
+     <li style="font-size: 20px; line-height: 38px;">
+      register ()&#65306;&#21442;&#19982;&#32773;&#25968;&#37327;&#21152;&#19968;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      arrive ()&#65306;&#21442;&#19982;&#32773;&#21040;&#36798;&#23631;&#38556;&#28857;&#65292;&#21040;&#36798;&#25968;&#37327;&#21152;&#19968;&#12290;&#20294;&#26159;&#19981;&#20250;&#38459;&#22622;&#35843;&#29992;&#27492;&#26041;&#27861;&#30340;&#32447;&#31243;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      arriveAndAwaitAdvance ()&#65306;&#21442;&#19982;&#32773;&#21040;&#36798;&#23631;&#38556;&#28857;&#65292;&#21040;&#36798;&#25968;&#37327;&#21152;&#19968;&#12290;&#38459;&#22622;&#32447;&#31243;&#30452;&#21040;&#25152;&#26377;&#30340;&#21442;&#19982;&#32773;&#21040;&#36798;&#35813; phase &#36718;&#27425;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      arriveAndDeregister ()&#65306;&#21442;&#19982;&#32773;&#21040;&#36798;&#23631;&#38556;&#28857;&#65292;&#21040;&#36798;&#25968;&#37327;&#21152;&#19968;&#12290;&#28982;&#21518;&#20174; Phase &#27880;&#38144;&#25481;&#19968;&#20010;&#21442;&#19982;&#32773;&#65292;&#21442;&#19982;&#32773;&#20943;&#19968;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      awaitAdvance (int phase)&#65306;&#38459;&#22622;&#25152;&#26377;&#30340;&#21442;&#19982;&#32773;&#21040;&#36798;&#35813; phaser &#30340;&#25351;&#23450;&#36718;&#27425;&#12290;&#22914;&#26524;&#24403;&#21069;&#36718;&#27425;&#21644; phase &#20540;&#19981;&#21516;&#25110;&#32773; phase &#24050;&#34987;&#32456;&#27490;&#26102;&#65292;&#20250;&#31435;&#21363;&#36820;&#22238;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      awaitAdvanceInterruptibly (int phase)&#65306;&#21151;&#33021;&#21516;&#19978;&#65292;&#20294;&#26159;&#21487;&#20197;&#34987;&#25171;&#26029;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      awaitAdvanceInterruptibly (int phase,  long timeout, TimeUnit unit)&#65306;&#21151;&#33021;&#21516;&#19978;&#65292;&#20294;&#26159;&#21482;&#38459;&#22622;&#25351;&#23450;&#30340;&#26102;&#38271;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      bulkRegister (int parties)&#65306;&#25209;&#37327;&#27880;&#20876;&#21442;&#19982;&#32773;&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      forceTermination ()&#65306;&#32456;&#27490;&#24403;&#21069; phaser&#65292;&#25913;&#21464;&#20854;&#29366;&#24577;&#20026; termination&#65307;
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      onAdvance ()&#65306;&#38454;&#27573;&#36798;&#25104;&#26102;&#34987;&#35843;&#29992;&#65292;&#23376;&#31867;&#21487;&#20197;&#23545;&#20854;&#37325;&#20889;&#12290;&#12290;
+     </li>
+    </ol>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;phaser&#20351;&#29992;&#31034;&#20363;" style="font-size: 30px;">
+     2&#12289;Phaser &#20351;&#29992;&#31034;&#20363;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#32593;&#19978;&#26377;&#24456;&#22810;  Phaser &#30340;&#20351;&#29992;&#33539;&#20363;&#65292;&#20294;&#20854;&#23454;&#32477;&#22823;&#22810;&#25968;&#24182;&#27809;&#26377;&#20307;&#29616;&#20986; Phaser &#30340;&#20248;&#21183;&#26469;&#65292;&#30475;&#23436;&#20043;&#21518;&#21453;&#32780;&#35273;&#24471;&#29992; CyclicBarrier &#20063;&#26159;&#33021;&#30452;&#25509;&#23454;&#29616;&#12290;&#20854;&#23454; Phaser &#30340;&#20248;&#21183;&#20307;&#29616;&#22312;&#23545;&#21442;&#19982;&#32773;&#25968;&#37327;&#21160;&#24577;&#31649;&#29702;&#19978;&#12290;&#19979;&#38754;&#25105;&#20204;&#20889;&#19968;&#20010;&#31616;&#21333;&#30340;&#20363;&#23376;&#65292;&#26469;&#30475;&#30475; Phaser &#22914;&#20309;&#20351;&#29992;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#35774;&#24819;&#22914;&#19979;&#22330;&#26223;&#65306;&#26399;&#26411;&#32771;&#35797;&#21040;&#20102;&#65292;&#36719;&#20214;&#23398;&#38498;&#19977;&#20010;&#29677;&#20849;&#26377; 60 &#20010;&#23398;&#29983;&#19968;&#36215;&#21442;&#21152;&#32771;&#35797;&#65292;&#20840;&#37096;&#20132;&#21367;&#21518;&#65292;&#26377; 3 &#20010;&#32769;&#24072;&#20570;&#21028;&#21367;&#30340;&#24037;&#20316;&#65292;&#20877;&#30001; 3 &#20301;&#36741;&#23548;&#21592;&#20844;&#24067;&#25104;&#32489;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;&#36807;&#31243;&#20013;&#20998;&#20026;&#19977;&#20010;&#38454;&#27573;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <ol>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#23398;&#29983;&#32771;&#35797;&#65292;&#21442;&#19982;&#32773; 50
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#32769;&#24072;&#21028;&#21367;&#65292;&#21442;&#19982;&#32773; 3
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      &#36741;&#23548;&#21592;&#20844;&#24067;&#25104;&#32489;&#65292;&#21442;&#19982;&#32773; 3
+     </li>
+    </ol>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;&#36807;&#31243;&#20351;&#29992;&#19968;&#20010; CyclicBarrier &#26159;&#26080;&#27861;&#23454;&#29616;&#30340;&#65292;&#22240;&#20026; CyclicBarrier &#30340;&#21442;&#19982;&#32773;&#25968;&#37327;&#26080;&#27861;&#21464;&#21270;&#12290;&#20026;&#20102;&#26085;&#24535;&#30340;&#31616;&#27905;&#65292;&#19979;&#38754;&#30340;&#20195;&#30721;&#21482;&#27169;&#25311; 10 &#20010;&#23398;&#29983;&#32771;&#35797;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Phaser phaser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Phaser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//&#20027;&#32447;&#31243;&#27880;&#20876;</span>
+        phaser<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//10&#20010;&#23398;&#29983;&#32447;&#31243;&#20998;&#21035;&#21551;&#21160;&#24320;&#22987;&#32771;&#35797;&#65292;&#28982;&#21518;&#20132;&#21367;&#65292;&#20132;&#21367;&#21518;&#36890;&#30693;phaser&#24050;&#21040;&#36798;&#24182;&#19988;&#27880;&#38144;</span>
+        IntStream<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>number<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+            phaser<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Thread student<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#23398;&#29983;"</span><span class="token operator">+</span>number<span class="token operator">+</span><span class="token string">"&#20132;&#21367;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                phaser<span class="token punctuation">.</span><span class="token function">arriveAndDeregister</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            student<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//&#23398;&#29983;&#24182;&#34892;&#32771;&#35797;&#26102;&#65292;&#20027;&#32447;&#31243;&#20250;&#20808;&#25191;&#34892;&#21040;&#27492;&#34892;&#20195;&#30721;&#65292;&#20294;&#30001;&#20110;&#26412;phase&#36824;&#27809;&#26377;&#36798;&#25104;&#65292;&#25152;&#20197;&#38459;&#22622;&#22312;&#27492;</span>
+        phaser<span class="token punctuation">.</span><span class="token function">arriveAndAwaitAdvance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//&#25152;&#26377;&#23398;&#29983;&#36798;&#25104;&#21518;&#65292;&#24320;&#22987;&#26032;&#30340;phase&#65292;&#19979;&#38754;&#21551;&#21160;&#19977;&#20010;&#32769;&#24072;&#32447;&#31243;&#65292;&#24320;&#22987;&#21028;&#21367;</span>
+        IntStream<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>number<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+            phaser<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Thread teacher<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    TimeUnit<span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#32769;&#24072;"</span><span class="token operator">+</span>number<span class="token operator">+</span><span class="token string">"&#21028;&#21367;&#23436;&#25104;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                phaser<span class="token punctuation">.</span><span class="token function">arriveAndDeregister</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            teacher<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">//&#32769;&#24072;&#21028;&#21367;&#26102;&#65292;&#20027;&#32447;&#31243;&#20250;&#20808;&#25191;&#34892;&#21040;&#27492;&#34892;&#20195;&#30721;&#65292;&#20294;&#30001;&#20110;&#26412;phase&#36824;&#27809;&#26377;&#36798;&#25104;&#65292;&#25152;&#20197;&#38459;&#22622;&#22312;&#27492;</span>
+        phaser<span class="token punctuation">.</span><span class="token function">arriveAndAwaitAdvance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//&#25152;&#26377;&#32769;&#24072;&#37117;&#36798;&#25104;&#21518;&#65292;&#24320;&#22987;&#26032;&#30340;phase&#65292;&#19979;&#38754;&#21551;&#21160;&#19977;&#20010;&#36741;&#23548;&#21592;&#32447;&#31243;&#65292;&#20844;&#24067;&#25104;&#32489;</span>
+        IntStream<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>number<span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+            phaser<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Thread counsellor<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#36741;&#23548;&#21592;"</span><span class="token operator">+</span>number<span class="token operator">+</span><span class="token string">"&#20844;&#24067;&#25104;&#32489;&#23436;&#25104;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                phaser<span class="token punctuation">.</span><span class="token function">arriveAndDeregister</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            counsellor<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;&#39318;&#20808;&#20027;&#32447;&#31243;&#36827;&#34892; register&#65292;&#22240;&#20026;&#20027;&#32447;&#31243;&#35201;&#20351;&#29992; phaser &#26469;&#25511;&#21046;&#27969;&#31243;&#65292;&#23427;&#20063;&#26159;&#21442;&#19982;&#32773;&#20043;&#19968;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;&#28982;&#21518;&#36215; 10 &#20010;&#23398;&#29983;&#32447;&#31243;&#32771;&#35797;&#12289;&#20132;&#21367;&#12290;&#27880;&#24847;&#36215;&#32447;&#31243;&#21069;&#38656;&#35201;&#36890;&#36807; phaser.register () &#26469;&#27880;&#20876;&#21442;&#19982;&#32773;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;&#25509;&#19979;&#26469;&#20027;&#32447;&#31243; phaser.arriveAndAwaitAdvance (); &#36825;&#20010;&#26041;&#27861;&#20250;&#38459;&#22622;&#65292;&#30452;&#21040;&#25152;&#26377;&#30340;&#23376;&#32447;&#31243;&#25191;&#34892;&#20102; phaser.arriveAndDeregister ()&#65292;&#27492;&#26102;&#36827;&#20837;&#19979;&#19968;&#20010; phase&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     4&#12289;&#21019;&#24314;&#19977;&#20010; teacher &#32447;&#31243;&#36827;&#34892;&#21028;&#21367;&#65292;&#21644; student &#32447;&#31243;&#19968;&#26679;&#65292;&#38656;&#35201;&#20808;&#27880;&#20876;&#33258;&#24049;&#65292;&#36755;&#20986;&#21028;&#21367;&#23436;&#25104;&#21518;&#65292;&#35843;&#29992; phaser.arriveAndAwaitAdvance ()&#65292;&#36890;&#30693; phaser &#33258;&#24049;&#24050;&#32463;&#21040;&#36798;&#24182;&#19988;&#35201;&#27880;&#38144;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     5&#12289;&#20027;&#32447;&#31243;&#36824;&#26159;&#35843;&#29992; phaser.arriveAndAwaitAdvance (); &#38459;&#22622;&#65292;&#31561;&#24453;&#25152;&#26377;&#32769;&#24072;&#32447;&#31243; arrive&#12290;&#28982;&#21518;&#32487;&#32493;&#25191;&#34892;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     6&#12289;&#21019;&#24314; 3 &#20010; counsellor &#32447;&#31243;&#12290;&#20808;&#27880;&#20876;&#33258;&#24049;&#65292;&#20844;&#24067;&#25104;&#32489;&#21518;&#65292;&#35843;&#29992; phaser.arriveAndAwaitAdvance ()&#65292;&#36890;&#30693; phaser &#33258;&#24049;&#24050;&#32463;&#21040;&#36798;&#24182;&#19988;&#35201;&#27880;&#38144;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20027;&#27969;&#31243;&#36890;&#36807; phaser.arriveAndAwaitAdvance () &#26469;&#38459;&#22622;&#65292;&#25511;&#21046;&#20027;&#27969;&#31243;&#22312;&#19978;&#19968; phase &#23436;&#25104;&#21518;&#25165;&#36827;&#20837;&#19979;&#20010; phase&#12290;&#22312;&#27599;&#20010; phase &#20013;&#20250;&#26377;&#22810;&#20010;&#32447;&#31243;&#21516;&#26102;&#25191;&#34892;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#31243;&#24207;&#36755;&#20986;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>&#23398;&#29983;8&#20132;&#21367;
+&#23398;&#29983;1&#20132;&#21367;
+&#23398;&#29983;9&#20132;&#21367;
+&#23398;&#29983;2&#20132;&#21367;
+&#23398;&#29983;3&#20132;&#21367;
+&#23398;&#29983;6&#20132;&#21367;
+&#23398;&#29983;7&#20132;&#21367;
+&#23398;&#29983;4&#20132;&#21367;
+&#23398;&#29983;5&#20132;&#21367;
+&#23398;&#29983;10&#20132;&#21367;
+&#32769;&#24072;3&#21028;&#21367;&#23436;&#25104;
+&#32769;&#24072;1&#21028;&#21367;&#23436;&#25104;
+&#32769;&#24072;2&#21028;&#21367;&#23436;&#25104;
+&#36741;&#23548;&#21592;1&#20844;&#24067;&#25104;&#32489;&#23436;&#25104;
+&#36741;&#23548;&#21592;2&#20844;&#24067;&#25104;&#32489;&#23436;&#25104;
+&#36741;&#23548;&#21592;3&#20844;&#24067;&#25104;&#32489;&#23436;&#25104;
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#21644;&#25105;&#20204;&#39044;&#24819;&#30340;&#19968;&#27169;&#19968;&#26679;&#12290;&#38454;&#27573;&#38388;&#20018;&#34892;&#65292;&#38454;&#27573;&#20869;&#24182;&#34892;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#38754;&#24635;&#32467;&#19968;&#19979;&#25105;&#20204;&#20351;&#29992;&#21040;&#30340; phaser &#30340;&#26041;&#27861;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;new Phaser ()&#12290;&#21019;&#24314;&#26032;&#30340; Phaser&#65292;&#24182;&#19988;&#21442;&#19982;&#32773;&#20026; 0&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;phaser.register (); &#22686;&#21152;&#21442;&#19982;&#32773;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;phaser.arriveAndDeregister (); &#21442;&#19982;&#32773;&#21040;&#36798;&#65292;&#24182;&#19988;&#27880;&#38144;&#25481;&#21442;&#19982;&#32773;&#12290;&#36825;&#20010;&#26041;&#27861;&#19981;&#20250;&#38459;&#22622;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     4&#12289;phaser.arriveAndAwaitAdvance (); &#38459;&#22622;&#31561;&#24453;&#38454;&#27573;&#36798;&#25104;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;phaser-&#23454;&#29616;&#21407;&#29702;&#35299;&#26512;" style="font-size: 30px;">
+     3&#12289;Phaser &#23454;&#29616;&#21407;&#29702;&#35299;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#38754;&#25105;&#20204;&#20998;&#26512;&#19968;&#19979; Phaser &#30340;&#23454;&#29616;&#21407;&#29702;&#12290;&#25105;&#20204;&#20808;&#26469;&#29702;&#35299; Phaser &#20013;&#26377;&#19968;&#20010;&#24456;&#20851;&#38190;&#30340;&#23646;&#24615; status&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">volatile</span> <span class="token keyword">long</span> state<span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010; long &#31867;&#22411;&#30340; status &#22312;&#19981;&#21516; bit &#20301;&#20445;&#23384;&#20102; Phaser &#29366;&#24577;&#30456;&#20851;&#30340;&#22235;&#31181;&#23646;&#24615;&#65292;&#20855;&#20307;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     0-15 &#20301;&#65306;&#36824;&#26410;&#21040;&#36798;&#23631;&#38556;&#30340;&#21442;&#19982;&#32773;&#25968;&#37327;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     16-31 &#20301;&#65306;&#21442;&#19982;&#32773;&#25968;&#37327;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     32-62 &#20301;&#65306;phase &#30340;&#36718;&#27425;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     63 &#20301;&#65306;&#26631;&#35782;&#26159;&#21542;&#34987;&#32456;&#27490;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#19982; Phaser &#29366;&#24577;&#30456;&#20851;&#30340;&#25968;&#25454;&#37117;&#21253;&#21547;&#22312; state &#20043;&#20013;&#12290;&#19981;&#20998;&#24320;&#20445;&#23384;&#30340;&#21407;&#22240;&#26159;&#22810;&#20010;&#23646;&#24615;&#19981;&#33021;&#36890;&#36807; CAS &#30340;&#26041;&#24335;&#20570;&#21407;&#23376;&#25805;&#20316;&#12290;&#25226;&#36825;&#20123;&#23646;&#24615;&#32452;&#21512;&#36215;&#26469;&#65292;&#21487;&#20197;&#36890;&#36807; CAS &#26041;&#24335;&#26356;&#26032;&#30830;&#20445;&#32447;&#31243;&#23433;&#20840;&#65292;&#24182;&#19988;&#21464;&#30456;&#20570;&#21040;&#20102;&#22810;&#20010;&#23646;&#24615;&#26356;&#26032;&#30340;&#21407;&#23376;&#25805;&#20316;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Phaser &#20013;&#26377;&#20004;&#20010;&#38142;&#34920;&#20445;&#23384;&#31561;&#24453;&#30340;&#32447;&#31243;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">final</span> AtomicReference<span class="token operator">&lt;</span>QNode<span class="token operator">&gt;</span> evenQ<span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> AtomicReference<span class="token operator">&lt;</span>QNode<span class="token operator">&gt;</span> oddQ<span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#26159;&#20026;&#20102;&#28040;&#38500;&#28155;&#21152;&#21644;&#37322;&#25918;&#32447;&#31243;&#31561;&#24453;&#30340;&#20105;&#25250;&#12290;&#25152;&#20197;&#26681;&#25454; phaser &#36718;&#27425;&#30340;&#22855;&#20598;&#65292;&#20445;&#23384;&#22312;&#19981;&#21516;&#30340;&#38142;&#34920;&#20013;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#37324;&#23601;&#19981;&#20877;&#23637;&#24320;&#23558; Phaser &#30340;&#28304;&#20195;&#30721;&#20102;&#65292;&#31616;&#21333;&#35762;&#19968;&#19979;&#28304;&#20195;&#30721;&#20013;&#30340;&#23454;&#29616;&#21407;&#29702;&#12290;&#39318;&#20808;&#25105;&#20204;&#30693;&#36947; state &#20445;&#23384;&#20102; 4 &#31181;&#29366;&#24577;&#65292;&#25152;&#20197;&#26356;&#26032;&#29366;&#24577;&#30340;&#26102;&#20505;&#35201;&#25226; status &#20013;&#30456;&#24212;&#23646;&#24615;&#22686;&#20943;&#30340;&#25968;&#20540;&#25442;&#31639;&#20026;&#30456;&#24212;&#20301;&#25968;&#23545;&#24212;&#30340;&#25972;&#25968;&#65292;&#28982;&#21518;&#36890;&#36807; CAS &#30340;&#26041;&#24335;&#36827;&#34892;&#20462;&#25913;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#27604;&#22914;&#36890;&#36807;&#35843;&#29992; arrive &#26041;&#27861;&#65292;&#38656;&#35201;&#20943;&#23569;&#19968;&#20010;&#26410;&#21040;&#36798;&#23631;&#38556;&#30340;&#21442;&#19982;&#32773;&#65292;&#20063;&#23601;&#26159;&#35201;&#23545; state &#30340; 0-1 5 &#20301; - 1&#12290;&#30001;&#20110;&#20026;&#20302;&#20301; -1&#65292;&#25152;&#20197;&#30452;&#25509;&#23545; state &#20943;&#19968;&#21363;&#21487;&#12290;&#22914;&#19979;&#65292;adjust &#30340;&#20540;&#20026; 1&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token punctuation">(</span>UNSAFE<span class="token punctuation">.</span><span class="token function">compareAndSwapLong</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> stateOffset<span class="token punctuation">,</span> s<span class="token punctuation">,</span> s<span class="token operator">-=</span>adjust<span class="token punctuation">)</span><span class="token punctuation">)</span> 
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22914;&#26524;&#35843;&#29992; arriveAndDeregister &#26041;&#27861;&#65292;&#20943;&#23569;&#19968;&#20010;&#26410;&#21040;&#36798;&#23631;&#38556;&#30340;&#21442;&#19982;&#32773;&#65292;&#24182;&#19988;&#36824;&#35201;&#20943;&#23569;&#19968;&#20010;&#21442;&#19982;&#32773;&#12290;&#30456;&#24403;&#20110;&#23545; 0-15 &#20301;&#20943; 1&#65292;&#24182;&#19988;&#23545; 16-31 &#20301;&#20943; 1&#65292;&#23545;&#24212;&#30340;&#20108;&#36827;&#21046;&#25968;&#20540;&#23601;&#26159; 10000000000000001&#65292;&#36716;&#21270;&#20026; 10 &#36827;&#21046;&#20026; 65537&#12290;&#37027;&#20040;&#38656;&#35201;&#23545; status &#20943;&#25481; 65537&#12290;&#25105;&#20204;&#30475;&#19968;&#19979; arriveAndDeregister &#26041;&#27861;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">arriveAndDeregister</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">doArrive</span><span class="token punctuation">(</span>ONE_DEREGISTER<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#30475;&#21040;&#35843;&#29992; doArrive &#26102;&#20256;&#20837;&#30340;&#21442;&#25968;&#26159; ONE_DEREGISTER&#65292;&#23427;&#30340;&#20540;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span>  ONE_DEREGISTER  <span class="token operator">=</span> ONE_ARRIVAL<span class="token operator">|</span>ONE_PARTY<span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ONE_ARRIVAL= 1&#65292; ONE_PARTY=1 &lt;&lt; PARTIES_SHIFT&#65292;PARTIES_SHIFT=16&#12290;&#20063;&#23601;&#26159; ONE_PARTY &#30340;&#20540;&#26159; 1 &#21521;&#24038;&#31227; 16 &#20301;&#12290;&#37027;&#20040; ONE_ARRIVAL|ONE_PARTY &#24471;&#20986;&#30340;&#20108;&#36827;&#21046;&#23601;&#26159; 10000000000000001&#12290;&#27491;&#26159;&#25105;&#20204;&#25353;&#29031;&#38656;&#27714;&#25512;&#26029;&#20986;&#30340;&#20108;&#36827;&#21046;&#25968;&#20540;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#27492;&#22806;&#20026;&#20102;&#21462;&#20986; state &#20013;&#30456;&#24212; bit &#20301;&#25968;&#21306;&#38388;&#30340;&#29366;&#24577;&#20540;&#65292;Phaser &#26159;&#36890;&#36807;&#20301;&#31227;&#25110;&#32773; &amp;&#12289;| &#25805;&#20316;&#26469;&#23454;&#29616;&#65292;&#20363;&#22914;&#21462;&#24471; phse &#36718;&#27425;&#20540;&#30340;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">int</span> phase <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>s <span class="token operator">&gt;&gt;&gt;</span> PHASE_SHIFT<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     PHASE_SHIFT &#20026; 32&#12290;&#23558; state &#20540;&#21491;&#31227; 32 &#20301;&#65292;&#36825;&#24847;&#21619;&#30528;&#25226;&#20195;&#34920; phase &#36718;&#27425;&#30340; 32-63 &#20301; bit &#25968;&#20540;&#31227;&#21040;&#20102; 0-32 &#20301;&#12290;&#28982;&#21518;&#24378;&#36716; int &#31867;&#22411;&#65292;&#28040;&#38500;&#25481;&#39640; 32 &#20301;&#12290;&#36825;&#26679;&#23601;&#24471;&#21040;&#20102; phase &#30340;&#36718;&#27425;&#30495;&#27491;&#25968;&#20540;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Phaser &#23545; state &#30340;&#25805;&#20316;&#26041;&#24335;&#37117;&#26159;&#36825;&#31181;&#20108;&#36827;&#21046;&#30340;&#26041;&#24335;&#65292;&#19968;&#24320;&#22987;&#30475;&#36215;&#26469;&#20250;&#27604;&#36739;&#36153;&#21170;&#65292;&#20294;&#26159;&#29702;&#35299;&#20102;&#23427;&#30340;&#21407;&#29702;&#65292;&#20063;&#24182;&#19981;&#22797;&#26434;&#12290;&#20854;&#20182;&#30340;&#20851;&#20110;&#31561;&#24453;&#32447;&#31243;&#30340;&#31649;&#29702;&#12289;&#32447;&#31243;&#38459;&#22622;&#21644;&#24674;&#22797;&#65292;&#21644;&#20043;&#21069;&#25105;&#20204;&#20998;&#26512;&#30340;&#28304;&#20195;&#30721;&#22823;&#21516;&#23567;&#24322;&#12290;&#22823;&#23478;&#24863;&#20852;&#36259;&#30340;&#35805;&#65292;&#20063;&#21487;&#20197;&#30475;&#19968;&#30475;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;&#24635;&#32467;" style="font-size: 30px;">
+     4&#12289;&#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Phaser &#25552;&#20379;&#20102;&#20998;&#38454;&#27573;&#25191;&#34892;&#20219;&#21153;&#30340;&#21151;&#33021;&#65292;&#24182;&#19988;&#33021;&#22815;&#21160;&#24577;&#30340;&#25913;&#21464;&#21442;&#19982;&#32773;&#30340;&#25968;&#37327;&#65292;&#21644; CyclicBarrier &#20197;&#21450; CountDownLatch &#27604;&#36739;&#36215;&#26469;&#26356;&#20026;&#28789;&#27963;&#12290;&#36825;&#20063;&#26159; JDK &#30340;&#25991;&#26723;&#20013;&#25152;&#25552;&#21040;&#30340;&#12290;&#23454;&#38469;&#24320;&#21457;&#20013;&#25353;&#29031;&#38656;&#27714;&#36873;&#25321;&#20351;&#29992;&#12290;
+    </p>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/966">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     32 &#35831;&#25353;&#21040;&#22330;&#39034;&#24207;&#21457;&#35328;&#8212;Completion Service&#35814;&#35299;
+    </p>
+   </div>
+  </a>
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/1318">
+   <div class="next r clearfix">
+    <p>
+     34 &#35841;&#37117;&#19981;&#33021;&#20599;&#25042;-&#36890;&#36807; CompletableFuture &#32452;&#35013;&#20320;&#30340;&#24322;&#27493;&#35745;&#31639;&#21333;&#20803;
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        

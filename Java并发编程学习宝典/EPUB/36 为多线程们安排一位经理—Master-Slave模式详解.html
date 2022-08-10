@@ -1,0 +1,786 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  36 &#20026;&#22810;&#32447;&#31243;&#20204;&#23433;&#25490;&#19968;&#20301;&#32463;&#29702;&#8212;Master/Slave&#27169;&#24335;&#35814;&#35299;
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-12-24 14:13:05
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/ce7c08a6-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/ce97c5aa-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/ceb644a8-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#27809;&#26377;&#24341;&#21457;&#20219;&#20309;&#34892;&#21160;&#30340;&#24605;&#24819;&#37117;&#19981;&#26159;&#24605;&#24819;&#65292;&#32780;&#26159;&#26790;&#24819;&#12290;
+    <p class="author">
+     &#8212;&#8212; &#39532;&#19969;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21069;&#25991;&#25105;&#20204;&#35762;&#36807; ForkJoinPool &#26159;&#20998;&#32780;&#27835;&#20043;&#30340;&#24605;&#24819;&#12290;&#20170;&#22825;&#25105;&#20204;&#23558;&#35201;&#23398;&#20064;&#30340; Master/Slave &#20063;&#26159;&#21516;&#26679;&#30340;&#24605;&#24819;&#12290;&#20854;&#20013; Master &#36127;&#36131;&#25215;&#25509;&#19968;&#20010;&#22823;&#30340;&#20219;&#21153;&#65292;&#28982;&#21518;&#23427;&#20250;&#26681;&#25454;&#19968;&#23450;&#31574;&#30053;&#25226;&#22823;&#20219;&#21153;&#25286;&#25955;&#20026;&#33509;&#24178;&#20010;&#23567;&#20219;&#21153;&#65292;&#28982;&#21518;&#38543;&#26426;&#20998;&#21457;&#32473;&#19968;&#32452; Slave&#12290;&#27599;&#20010; Slave &#23436;&#25104;&#20219;&#21153;&#21518;&#19978;&#25253;&#33258;&#24049;&#30340;&#20219;&#21153;&#23436;&#25104;&#24773;&#20917;&#12290;&#24403;&#25152;&#26377; Slave &#37117;&#23436;&#25104;&#20102;&#33258;&#24049;&#30340;&#20219;&#21153;&#26102;&#65292;Master &#20063;&#23601;&#23436;&#25104;&#20102;&#33258;&#24049;&#30340;&#20219;&#21153;&#12290;Master &#23601;&#20687;&#26159; Slave &#30340;&#32463;&#29702;&#65292;&#25226;&#33258;&#24049;&#30340;&#20219;&#21153;&#20998;&#21457;&#19979;&#21435;&#65292;&#32780; Slave &#21017;&#22312;&#23436;&#25104;&#24037;&#20316;&#21518;&#21521;&#23427;&#27719;&#25253;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;masterslave-&#27169;&#24335;&#35774;&#35745;" style="font-size: 30px;">
+     1&#12289;Master/Slave &#27169;&#24335;&#35774;&#35745;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="master-&#35774;&#35745;">
+     1.1 Master &#35774;&#35745;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22312; Master/Slave &#27169;&#24335;&#20013;&#65292;&#19968;&#20010; Master &#25345;&#26377;&#19968;&#32452; Slave &#30340;&#24341;&#29992;&#12290;Master &#23545;&#22806;&#26292;&#38706;&#19968;&#20010;&#25215;&#25509;&#20219;&#21153;&#30340;&#26041;&#27861; startTask&#12290;&#36825;&#26159; Master &#30340;&#20027;&#35201;&#26041;&#27861;&#65292;&#22312;&#20869;&#37096;&#20570;&#20102;&#22914;&#19979;&#20107;&#24773;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <ol>
+     <li style="font-size: 20px; line-height: 38px;">
+      <p style="font-size: 20px; line-height: 38px;">
+       &#21019;&#24314; slave
+      </p>
+      <p style="font-size: 20px; line-height: 38px;">
+       &#30001;&#20110;&#21019;&#24314; Slave &#32447;&#31243;&#24182;&#21551;&#21160;&#30340;&#25805;&#20316;&#27604;&#36739;&#37325;&#65292;&#25152;&#20197;&#25918;&#21040;&#25552;&#20132;&#20219;&#21153;&#30340;&#26102;&#20505;&#25165;&#30495;&#27491;&#21435;&#20570;&#65307;
+      </p>
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      <p style="font-size: 20px; line-height: 38px;">
+       &#20998;&#21457;&#20219;&#21153;
+      </p>
+      <p style="font-size: 20px; line-height: 38px;">
+       &#25226; Task &#36827;&#34892;&#25286;&#20998;&#65292;&#28982;&#21518;&#20998;&#21457;&#32473;&#27599;&#20010; Slave&#65307;
+      </p>
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      <p style="font-size: 20px; line-height: 38px;">
+       &#31561;&#24453;&#22788;&#29702;&#32467;&#26524;
+      </p>
+      <p style="font-size: 20px; line-height: 38px;">
+       &#36718;&#24490;&#26816;&#26597;&#20219;&#21153;&#26159;&#21542;&#20840;&#37096;&#23436;&#25104;&#65292;&#20840;&#37096;&#23436;&#25104;&#32467;&#26463;&#36718;&#24490;&#65307;
+      </p>
+     </li>
+     <li style="font-size: 20px; line-height: 38px;">
+      <p style="font-size: 20px; line-height: 38px;">
+       &#36820;&#22238;&#22788;&#29702;&#32467;&#26524;
+      </p>
+      <p style="font-size: 20px; line-height: 38px;">
+       &#36820;&#22238;&#20219;&#21153;&#25191;&#34892;&#32467;&#26524;&#12290;
+      </p>
+     </li>
+    </ol>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040;&#36825;&#22235;&#20010;&#26041;&#27861;&#36923;&#36753;&#21313;&#20998;&#30340;&#28165;&#26224;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="slave-&#35774;&#35745;">
+     1.2 Slave &#35774;&#35745;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#38754;&#25105;&#20204;&#20877;&#30475;&#30475; Slave &#30340;&#35774;&#35745;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Slave &#32487;&#25215;&#33258; Thread&#12290;&#20869;&#37096;&#36890;&#36807;&#38459;&#22622;&#38431;&#21015; BlockingQueue &#20445;&#23384; Task&#12290;&#36825;&#26679;&#22312;&#21462;&#20219;&#21153;&#26102;&#20505;&#22914;&#26524;&#24050;&#32463;&#27809;&#26377;&#65292;&#21017;&#20250;&#38459;&#22622;&#31561;&#24453;&#12290;&#23427;&#26377;&#19968;&#20010; submitTask &#29992;&#26469;&#25552;&#20132;&#23376;&#20219;&#21153;&#65292;&#36825;&#20010;&#26041;&#27861;&#22312; Master &#20998;&#21457;&#20219;&#21153;&#26102;&#20250;&#34987;&#35843;&#29992;&#12290;&#27492;&#22806;&#36824;&#26377; run &#26041;&#27861;&#20174; BlockingQueue &#20013;&#21462;&#24471;&#20219;&#21153;&#25191;&#34892;&#12290;&#25191;&#34892;&#32467;&#26463;&#21518;&#36890;&#30693; Master&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20197;&#19978;&#30340;&#35774;&#35745;&#24182;&#19981;&#26159;&#22266;&#23450;&#30340;&#27169;&#24335;&#12290;&#20294; Master &#25509;&#25910;&#20219;&#21153;&#65292;&#20998;&#21106;&#20219;&#21153;&#65292;&#27966;&#21457;&#20219;&#21153;&#36825;&#20123;&#21151;&#33021;&#26159;&#35201;&#26377;&#30340;&#65292;&#27492;&#22806; Master &#35201;&#26377;&#33021;&#21147;&#30693;&#36947;&#25152;&#26377;&#23376;&#20219;&#21153;&#37117;&#34987;&#25191;&#34892;&#23436;&#27605;&#12290;&#32780; Slave &#21017;&#38656;&#35201;&#19981;&#26029;&#25215;&#25509;&#23376;&#20219;&#21153;&#65292;&#24182;&#19988;&#25191;&#34892;&#12290;&#25191;&#34892;&#23436;&#27605;&#33021;&#22815;&#25226;&#25191;&#34892;&#32467;&#26524;&#22238;&#20889;&#32473; Master&#12290;&#35774;&#35745;&#22914;&#19979;&#22270;&#65306;
+     <br>
+     <img alt="&#22270;&#29255;&#25551;&#36848;" class="" data-original="//img.mukewang.com/5e01ac580001105815280932.jpg" src="EPUB/ced02f8a-186d-11ed-a978-acde48001122">
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20854;&#23454;&#35828;&#36825;&#20040;&#22810;&#65292;&#19981;&#22914;&#30452;&#25509;&#30475;&#20195;&#30721;&#12290;&#19979;&#38754;&#25105;&#20204;&#23601;&#36890;&#36807;&#19968;&#20010;&#23567;&#20363;&#23376;&#65292;&#26469;&#24863;&#21463;&#19968;&#19979; Master/Slave &#27169;&#24335;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;masterslave-&#20195;&#30721;&#31034;&#20363;" style="font-size: 30px;">
+     2&#12289;Master/Slave &#20195;&#30721;&#31034;&#20363;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="client-&#20195;&#30721;">
+     2.1 Client &#20195;&#30721;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19981;&#30693;&#36947;&#20320;&#26159;&#21542;&#36824;&#35760;&#24471;&#26412;&#19987;&#26639;&#24320;&#22987;&#20960;&#33410;&#21453;&#22797;&#29992;&#26469;&#20030;&#20363;&#30340;&#21333;&#35789;&#25220;&#20889;&#30340;&#38656;&#27714;&#12290;&#26412;&#33410;&#26159;&#27491;&#25991;&#26368;&#21518;&#19968;&#31687;&#65292;&#27491;&#22909;&#25105;&#20204;&#22238;&#21040;&#26368;&#21021;&#30340;&#20363;&#23376;&#65292;&#29992; Master/Slave &#26041;&#24335;&#26469;&#23454;&#29616;&#23427;&#12290;&#25105;&#20204;&#36825;&#27425;&#20808;&#30475; Client &#30340;&#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        Task task <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span><span class="token string">"internationalization"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Master master <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Master</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        master<span class="token punctuation">.</span><span class="token function">startTask</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        master<span class="token punctuation">.</span><span class="token function">printResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#29305;&#21035;&#30340;&#31616;&#21333;&#65292;&#21019;&#24314;&#19968;&#20010;&#21333;&#35789;&#25220;&#20889;&#30340; Task&#65292;&#28982;&#21518;&#36890;&#36807; Master &#26469;&#25191;&#34892;&#65292;&#26368;&#21518;&#25171;&#21360;&#25191;&#34892;&#32467;&#26524;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="task&#20195;&#30721;">
+     2.2 Task &#20195;&#30721;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Task &#20195;&#30721;&#22914;&#19979;&#65292;&#30465;&#30053;&#20102; get &#26041;&#27861; &#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token punctuation">{</span>
+  <span class="token comment">//&#35201;&#25220;&#20889;&#30340;&#27425;&#25968;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> copyCount<span class="token punctuation">;</span>
+  <span class="token comment">//&#25220;&#20889;&#30340;&#24207;&#21495;&#24320;&#22987;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> from<span class="token punctuation">;</span>
+  <span class="token comment">//&#25220;&#20889;&#30340;&#24207;&#21495;&#32467;&#26463;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> to<span class="token punctuation">;</span>
+  <span class="token comment">//&#35201;&#25220;&#20889;&#30340;&#21333;&#35789;</span>
+    <span class="token keyword">private</span> String word<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Task</span><span class="token punctuation">(</span><span class="token keyword">int</span> copyCount<span class="token punctuation">,</span> <span class="token keyword">int</span> from<span class="token punctuation">,</span> <span class="token keyword">int</span> to<span class="token punctuation">,</span> String word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>copyCount <span class="token operator">=</span> copyCount<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>word <span class="token operator">=</span> word<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>from <span class="token operator">=</span> from<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>to <span class="token operator">=</span> to<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Task</span><span class="token punctuation">(</span><span class="token keyword">int</span> copyCount<span class="token punctuation">,</span> String word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>copyCount <span class="token operator">=</span> copyCount<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>word <span class="token operator">=</span> word<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>from <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>to <span class="token operator">=</span> copyCount<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25509;&#19979;&#26469;&#25105;&#20204;&#30475;&#30475; Master &#20195;&#30721;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="master-&#20195;&#30721;">
+     2.3 Master &#20195;&#30721;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20808;&#26469;&#30475;&#30475; Master &#26377;&#21738;&#20123;&#23646;&#24615;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token comment">//&#20445;&#23384;&#24178;&#27963;&#30340;Slave&#32447;&#31243;</span>
+<span class="token keyword">private</span> List<span class="token operator">&lt;</span>Slave<span class="token operator">&gt;</span> slaves<span class="token punctuation">;</span>
+<span class="token comment">//slave&#30340;&#25968;&#37327;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> SLAVES_COUNT <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+<span class="token comment">//&#23376;&#20219;&#21153;&#25286;&#20998;&#30340;&#21147;&#24230;</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> SUB_TASK_SIZE <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token comment">//&#23436;&#25104;&#30340;&#20219;&#21153;&#25968;&#37327;&#12290;&#21508;&#20010;Slave&#32447;&#31243;&#37117;&#20250;&#26356;&#26032;&#27492;&#25968;&#37327;&#65292;&#25152;&#20197;&#20351;&#29992;Atomic&#21464;&#37327;</span>
+<span class="token keyword">private</span> AtomicInteger finishedTaskCount <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AtomicInteger</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//&#25191;&#34892;&#32467;&#26524;&#65292;key&#20026;&#32447;&#31243;&#21517;&#23383;&#65292;value&#20026;&#27492;&#32447;&#31243;&#23436;&#25104;&#30340;&#25968;&#37327;</span>
+<span class="token keyword">private</span> ConcurrentHashMap<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Integer<span class="token operator">&gt;</span> results<span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#21487;&#20197;&#30475;&#21040; Master &#25345;&#26377;&#19968;&#32452; slave &#32447;&#31243;&#65292;&#29992;&#26469;&#20026;&#23427;&#24178;&#27963;&#12290;&#25105;&#20204;&#30340;&#20219;&#21153;&#26159;&#21333;&#35789;&#25220;&#20889;&#65292;&#27599;&#20010;&#23376;&#20219;&#21153;&#30001; SUB_TASK_SIZE &#26469;&#25511;&#21046;&#21333;&#20010;&#23567;&#20219;&#21153;&#30340;&#25220;&#20889;&#27425;&#25968;&#12290;&#23376;&#32447;&#31243;&#25220;&#20889;&#23436;&#25104;&#21518;&#20250;&#26356;&#26032; finishedTaskCount &#21644; results &#20570;&#20219;&#21153;&#23436;&#25104;&#35760;&#24405;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Master &#23545;&#22806;&#25552;&#20379;&#20102;&#22914;&#19979;&#26041;&#27861;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token comment">//&#20027;&#26041;&#27861;&#65292;&#29992;&#20110;&#25191;&#34892;&#20219;&#21153;</span>
+<span class="token keyword">public</span> ConcurrentHashMap<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Integer<span class="token operator">&gt;</span> <span class="token function">startTask</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span>
+<span class="token comment">//&#23376;&#26041;&#27861;&#23436;&#25104;&#21518;&#21521;Master&#25552;&#20132;&#23436;&#25104;&#35760;&#24405;</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">subTaskFinished</span><span class="token punctuation">(</span>String slaveName<span class="token punctuation">,</span><span class="token keyword">int</span> finishedSubTaskCount<span class="token punctuation">)</span>
+<span class="token comment">//&#25171;&#21360;&#25191;&#34892;&#32467;&#26524;</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">printResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#19977;&#20010;&#26041;&#27861;&#37324;&#26368;&#37325;&#35201;&#30340;&#23601;&#26159; startTask&#65292;Master &#20027;&#35201;&#30340;&#25191;&#34892;&#36923;&#36753;&#37117;&#22312;&#37324;&#38754;&#65292;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> ConcurrentHashMap<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Integer<span class="token operator">&gt;</span> <span class="token function">startTask</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+
+    <span class="token comment">// 1 &#21019;&#24314;slave</span>
+    <span class="token function">createSlaves</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 2 &#20998;&#21457;&#20219;&#21153;</span>
+    <span class="token function">splitAndAssignTask</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 3 &#31561;&#24453;&#32467;&#26524;&#22788;&#29702;</span>
+    <span class="token function">checkTaskFinished</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 4 &#36820;&#22238;&#22788;&#29702;&#32467;&#26524;</span>
+    <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     startTask &#20869;&#37096;&#20027;&#35201;&#35843;&#29992;&#19977;&#20010;&#26041;&#27861;&#65292;&#26368;&#21518;&#36820;&#22238;&#25191;&#34892;&#32467;&#26524;&#12290;&#30001;&#20110;&#21019;&#24314;&#32447;&#31243;&#25104;&#26412;&#39640;&#65292;&#25152;&#20197;&#22312;&#26500;&#36896; Master &#26102;&#24182;&#27809;&#26377;&#21019;&#24314; Slave&#65292;&#32780;&#26159;&#24310;&#36831;&#21040; startTask &#30340;&#26102;&#20505;&#26469;&#21019;&#24314;&#12290;splitAndAssignTask &#20570;&#30340;&#20107;&#24773;&#23601;&#26159;&#25226;&#22823;&#30340; task &#25353;&#29031;&#25286;&#20998;&#36923;&#36753;&#25286;&#24320;&#65292;&#20998;&#21457;&#32473; slave &#21435;&#25191;&#34892;&#12290;checkTaskFinished &#20250;&#36718;&#24490;&#26816;&#26597; task &#30340;&#25191;&#34892;&#24773;&#20917;&#65292;&#24403;&#20840;&#37096;&#23436;&#25104;&#26102;&#65292;&#25191;&#34892;&#19979;&#38754;&#30340; return &#35821;&#21477;&#12290;&#36825;&#20960;&#20010;&#26041;&#27861;&#37117;&#24456;&#37325;&#35201;&#65292;&#25509;&#19979;&#26469;&#25105;&#20204;&#19968;&#20010;&#20010;&#30475;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h4 id="createslaves-&#26041;&#27861;" style="font-size: 26px;">
+     2.3.1 createSlaves &#26041;&#27861;
+    </h4>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">createSlaves</span><span class="token punctuation">(</span>Master master<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>slaves<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        IntStream<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>SLAVES_COUNT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>count <span class="token operator">-</span><span class="token operator">&gt;</span>
+                slaves<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Slave</span><span class="token punctuation">(</span><span class="token string">"slave "</span> <span class="token operator">+</span> count<span class="token punctuation">,</span> master<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        slaves<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>slave <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+            slave<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;&#26041;&#27861;&#27604;&#36739;&#31616;&#21333;&#65292;&#23601;&#26159;&#21019;&#24314; SLAVES_COUNT &#20010; slave&#65292;&#28982;&#21518;&#21551;&#21160;&#36215;&#26469;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h4 id="splitandassigntask-&#26041;&#27861;" style="font-size: 26px;">
+     2.3.2 splitAndAssignTask &#26041;&#27861;
+    </h4>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">splitAndAssignTask</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> count <span class="token operator">=</span> task<span class="token punctuation">.</span><span class="token function">getCopyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> start <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    List<span class="token operator">&lt;</span>Task<span class="token operator">&gt;</span> subTasks <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//&#25286;&#20998;task</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>start <span class="token operator">&lt;=</span> count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> end <span class="token operator">=</span> count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>start <span class="token operator">+</span> SUB_TASK_SIZE <span class="token operator">&lt;=</span> count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            end <span class="token operator">=</span> start <span class="token operator">+</span> SUB_TASK_SIZE<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        subTasks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span>end<span class="token operator">-</span>start<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">,</span> task<span class="token punctuation">.</span><span class="token function">getWord</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        start <span class="token operator">=</span> end<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+	<span class="token comment">//&#20998;&#21457;subTask</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> subTasks<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> slaveIndex <span class="token operator">=</span> i <span class="token operator">%</span> SLAVES_COUNT<span class="token punctuation">;</span>
+        slaves<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>slaveIndex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">submitTask</span><span class="token punctuation">(</span>subTasks<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;&#26041;&#27861;&#20570;&#20102;&#20004;&#20214;&#20107;&#24773;&#65292;&#19968;&#26159;&#25226; task &#25286;&#20998;&#20026;&#22810;&#20010; subTask&#12290;&#20108;&#26159;&#25226; subTask &#20998;&#21457;&#32473; slave &#21435;&#25191;&#34892;&#12290;subTask &#20013;&#20445;&#23384;&#20102;&#35201; copy &#30340;&#25968;&#37327;&#65292;&#20197;&#21450; copy &#30340; from &#24207;&#21495;&#21644; to &#24207;&#21495;&#12290;&#24403;&#28982;&#36824;&#26377;&#35201;&#25220;&#20889;&#30340;&#21333;&#35789;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h4 id="checktaskfinished" style="font-size: 26px;">
+     2.3.3 checkTaskFinished
+    </h4>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#20010;&#26041;&#27861;&#29992;&#26469;&#26816;&#26597; task &#26159;&#21542;&#20840;&#37096;&#25191;&#34892;&#23436;&#25104;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">checkTaskFinished</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>task<span class="token punctuation">.</span><span class="token function">getCopyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> finishedTaskCount<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      
+     	  TimeUnit<span class="token punctuation">.</span>MILLISECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26041;&#27861;&#20013;&#20351;&#29992;&#30340;&#36718;&#24490;&#30340;&#26041;&#24335;&#26469;&#26816;&#26597; task &#30340; copy &#24635;&#25968;&#21644;&#24050;&#23436;&#25104;&#25968;&#37327; finishedTaskCount &#26159;&#21542;&#19968;&#33268;&#65292;&#22914;&#26524;&#19968;&#33268;&#21017;&#35828;&#26126; task &#24050;&#32463;&#20840;&#37096;&#23436;&#25104;&#65292;&#37027;&#20040;&#35843;&#29992; finished &#26041;&#27861;&#24037;&#20316;&#20570;&#25910;&#23614;&#65292;&#36339;&#20986;&#24490;&#29615;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h4 id="subtaskfinished" style="font-size: 26px;">
+     2.3.4 subTaskFinished
+    </h4>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Master &#38500;&#20102;&#36825;&#20960;&#20010;&#26041;&#27861;&#36824;&#26377;&#19968;&#20010;&#26041;&#27861;&#29992;&#20110;&#23376;&#32447;&#31243;&#25552;&#20132;&#25191;&#34892;&#32467;&#26524;&#12290;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">subTaskFinished</span><span class="token punctuation">(</span>String slaveName<span class="token punctuation">,</span><span class="token keyword">int</span> finishedSubTaskCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Integer count <span class="token operator">=</span> results<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>slaveName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>count<span class="token operator">==</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        results<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>slaveName<span class="token punctuation">,</span>finishedSubTaskCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        results<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>slaveName<span class="token punctuation">,</span>count<span class="token operator">+</span>finishedSubTaskCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    finishedTaskCount<span class="token punctuation">.</span><span class="token function">getAndAdd</span><span class="token punctuation">(</span>finishedSubTaskCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#39318;&#20808;&#25226;&#25191;&#34892;&#32467;&#26524;&#25918;&#20837; results&#65292;&#22914;&#26524;&#24050;&#32463;&#23384;&#22312;&#65292;&#21017;&#36827;&#34892;&#32047;&#35745;&#12290;&#27492;&#22806;&#26356;&#26032; finishedTaskCount&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Master &#30340;&#20027;&#35201;&#26041;&#27861;&#37117;&#24050;&#32463;&#20171;&#32461;&#23436;&#27605;&#12290;&#19979;&#38754;&#25105;&#20204;&#26469;&#30475;&#30475; Slave&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="slave&#20195;&#30721;">
+     2.4 Slave &#20195;&#30721;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Slave &#26159;&#19968;&#20010;&#24037;&#20316;&#30340;&#32447;&#31243;&#65292;&#23427;&#32487;&#25215;&#33258; Thread &#31867;&#65292;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Slave</span> <span class="token keyword">extends</span> <span class="token class-name">Thread</span> 
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#20808;&#30475;&#30475; Slave &#30340;&#23646;&#24615;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token comment">//slave&#30340;&#32447;&#31243;&#21517;&#23383;</span>
+<span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+<span class="token comment">//&#25345;&#26377;master&#24341;&#29992;&#65292;&#22240;&#20026;&#38656;&#35201;&#21521;master&#25552;&#20132;&#25191;&#34892;&#32467;&#26524;</span>
+<span class="token keyword">private</span> Master master<span class="token punctuation">;</span>
+<span class="token comment">//&#38459;&#22622;&#38431;&#21015;&#26469;&#20445;&#23384;task</span>
+<span class="token keyword">private</span> BlockingQueue<span class="token operator">&lt;</span>Task<span class="token operator">&gt;</span> tasks<span class="token punctuation">;</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     slave &#20013;&#25552;&#20379;&#20004;&#20010;&#26041;&#27861;&#65292;&#19968;&#20010;&#26159;&#25552;&#20132; task &#30340;&#26041;&#27861; submitTask&#65292;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">submitTask</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+    tasks<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20195;&#30721;&#24456;&#31616;&#21333;&#65292;&#21482;&#26159;&#21521;&#38459;&#22622;&#38431;&#21015;&#20013;&#25918;&#20837; task&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Slave &#25191;&#34892; task &#30340;&#36923;&#36753;&#22312; run &#26041;&#27861;&#20013;&#65292;Slave &#32487;&#25215;&#33258; Thread&#65292;&#24403;&#20182;&#21551;&#21160;&#21518;&#65292;run &#26041;&#27861;&#23601;&#20250;&#34987;&#35843;&#29992;&#12290;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Task task <span class="token operator">=</span> tasks<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            IntStream<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span>task<span class="token punctuation">.</span><span class="token function">getFrom</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> task<span class="token punctuation">.</span><span class="token function">getTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+                    count <span class="token operator">-</span><span class="token operator">&gt;</span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"&#32447;&#31243;%s&#31532;%d&#25220;&#20889;&#21333;&#35789;%s"</span><span class="token punctuation">,</span> name<span class="token punctuation">,</span> count<span class="token punctuation">,</span> task<span class="token punctuation">.</span><span class="token function">getWord</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            master<span class="token punctuation">.</span><span class="token function">subTaskFinished</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> task<span class="token punctuation">.</span><span class="token function">getCopyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"&#32447;&#31243;%s&#34987;&#25171;&#26029;"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#36825;&#27573;&#20195;&#30721;&#19981;&#26029;&#30340;&#20174;&#38459;&#22622;&#38431;&#21015;&#20013; take &#20986; task&#12290;&#22914;&#26524;&#27809;&#26377; task&#65292;&#23601;&#20250;&#38459;&#22622;&#22312;&#27492;&#12290;&#28982;&#21518;&#26681;&#25454; task &#20869;&#23481;&#36827;&#34892;&#36755;&#20986;&#12290;&#25191;&#34892;&#23436;&#25104;&#21518;&#35843;&#29992; master &#30340; subTaskFinished &#26041;&#27861;&#25226;&#33258;&#24049;&#30340;&#25191;&#34892;&#32467;&#26524;&#25552;&#20132;&#32473; master&#12290;&#22914;&#26524;&#38459;&#22622;&#30340;&#26102;&#20505;&#34987;&#25171;&#26029;&#65292;&#21017;&#25171;&#21360;&#20986;&#26085;&#24535;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;&#25191;&#34892;&#32467;&#26524;&#20998;&#26512;" style="font-size: 30px;">
+     3&#12289;&#25191;&#34892;&#32467;&#26524;&#20998;&#26512;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22312; Client &#30340; main &#26041;&#27861;&#20013;&#25105;&#20204;&#22768;&#26126;&#20102;&#19968;&#20010; task = new Task (123,&#8220;internationalization&#8221;)&#65292;&#25220;&#20889; internationalization &#21333;&#35789; 123 &#27425;&#12290;&#36816;&#34892;&#21518;&#36755;&#20986;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>&#32447;&#31243;slave 1&#31532;5&#25220;&#20889;&#21333;&#35789;internationalization
+&#32447;&#31243;slave 5&#31532;21&#25220;&#20889;&#21333;&#35789;internationalization
+&#32447;&#31243;slave 4&#31532;17&#25220;&#20889;&#21333;&#35789;internationalization
+&#32447;&#31243;slave 2&#31532;9&#25220;&#20889;&#21333;&#35789;internationalization
+&#32447;&#31243;slave 5&#31532;22&#25220;&#20889;&#21333;&#35789;internationalization
+&#32447;&#31243;slave 3&#31532;13&#25220;&#20889;&#21333;&#35789;internationalization
+&#32447;&#31243;slave 0&#31532;1&#25220;&#20889;&#21333;&#35789;internationalization
+
+&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;
+
+&#32447;&#31243;slave 2&#31532;107&#25220;&#20889;&#21333;&#35789;internationalization
+&#32447;&#31243;slave 0&#31532;100&#25220;&#20889;&#21333;&#35789;internationalization
+&#32447;&#31243;slave 2&#31532;108&#25220;&#20889;&#21333;&#35789;internationalization
+&#20219;&#21153;&#20840;&#37096;&#23436;&#25104;&#65281;
+&#32447;&#31243;slave 4&#34987;&#25171;&#26029;
+&#32447;&#31243;slave 0&#34987;&#25171;&#26029;
+&#32447;&#31243;slave 6&#34987;&#25171;&#26029;
+&#32447;&#31243;slave 1&#34987;&#25171;&#26029;
+&#32447;&#31243;slave 7&#34987;&#25171;&#26029;
+&#32447;&#31243;slave 3&#34987;&#25171;&#26029;
+&#32447;&#31243;slave 5&#34987;&#25171;&#26029;
+&#32447;&#31243;slave 2&#34987;&#25171;&#26029;
+&#32447;&#31243;slave 0,&#23436;&#25104;&#20102;16&#27425;&#25220;&#20889;
+&#32447;&#31243;slave 7,&#23436;&#25104;&#20102;12&#27425;&#25220;&#20889;
+&#32447;&#31243;slave 5,&#23436;&#25104;&#20102;16&#27425;&#25220;&#20889;
+&#32447;&#31243;slave 6,&#23436;&#25104;&#20102;15&#27425;&#25220;&#20889;
+&#32447;&#31243;slave 3,&#23436;&#25104;&#20102;16&#27425;&#25220;&#20889;
+&#32447;&#31243;slave 4,&#23436;&#25104;&#20102;16&#27425;&#25220;&#20889;
+&#32447;&#31243;slave 1,&#23436;&#25104;&#20102;16&#27425;&#25220;&#20889;
+&#32447;&#31243;slave 2,&#23436;&#25104;&#20102;16&#27425;&#25220;&#20889;
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20013;&#38388;&#30465;&#30053;&#20102;&#19968;&#20123;&#36755;&#20986;&#12290;&#21487;&#20197;&#30475;&#21040;&#25152;&#26377;&#20219;&#21153;&#23436;&#25104;&#21518; slave &#32447;&#31243;&#37117;&#34987;&#25171;&#26029;&#12290;&#26368;&#21518;&#32467;&#26524;&#36755;&#20986;&#20102;&#27599;&#20010;&#32447;&#31243;&#25220;&#20889;&#30340;&#27425;&#25968;&#65292;&#30456;&#21152;&#24635;&#21644;&#20026; 123&#12290;&#25105;&#25226;&#19978;&#38754;&#30340; slave &#25171;&#21360;&#26085;&#24535;&#20570;&#20102;&#32479;&#35745;&#65292;&#20063;&#26159;&#25171;&#21360;&#20102; 123 &#26465;&#12290;&#23436;&#20840;&#31526;&#21512;&#25105;&#20204;&#30340;&#39044;&#26399;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;&#24635;&#32467;" style="font-size: 30px;">
+     4&#12289;&#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Master/Slave &#27169;&#24335;&#26159;&#24120;&#29992;&#30340;&#22810;&#32447;&#31243;&#35774;&#35745;&#27169;&#24335;&#12290;&#19968;&#33324;&#29992;&#20110;&#22823;&#20219;&#21153;&#30340;&#25286;&#20998;&#21644;&#20998;&#21457;&#12290;Master &#20316;&#20026;&#38376;&#38754;&#23545;&#22806;&#26292;&#38706;&#20219;&#21153;&#25191;&#34892;&#30340;&#25509;&#21475;&#65292;&#20869;&#37096;&#21017;&#26159;&#20998;&#21457;&#32473;&#22810;&#20010; Slave &#32447;&#31243;&#23436;&#25104;&#12290;&#36825;&#19968;&#20999;&#23545;&#20110;&#35843;&#29992;&#32773;&#26469;&#35828;&#26159;&#36879;&#26126;&#30340;&#12290;Master/Slave &#27169;&#24335;&#20851;&#38190;&#28857;&#22312;&#20110;&#20219;&#21153;&#30340;&#20998;&#21457;&#21644;&#32467;&#26524;&#30340;&#27719;&#24635;&#12290;&#23427;&#30340;&#23454;&#29616;&#26041;&#24335;&#24456;&#28789;&#27963;&#65292;&#26412;&#25991;&#21482;&#26159;&#19968;&#31181;&#26041;&#24335;&#65292;&#20063;&#21487;&#20197;&#36890;&#36807;&#32447;&#31243;&#27744;&#26469;&#23454;&#29616;&#12290;&#23376;&#20219;&#21153;&#30340;&#35745;&#31639;&#32467;&#26524;&#20063;&#21487;&#20197;&#20351;&#29992; Future&#12290;&#27492;&#22806;&#65292;&#20998;&#24067;&#24335;&#31995;&#32479;&#20063;&#26377; Master/slave &#30340;&#35774;&#35745;&#27169;&#24335;&#65292;&#21487;&#20197;&#20511;&#21161; ZooKeeper &#26469;&#23454;&#29616;&#12290;&#22312; Akka &#20013;&#20351;&#29992; Actor &#20063;&#33021;&#23454;&#29616; Master/Slave &#27169;&#24335;&#12290;&#23454;&#38469;&#20351;&#29992;&#20013;&#21487;&#20197;&#26681;&#25454;&#19994;&#21153;&#38656;&#27714;&#26469;&#33258;&#24049;&#23454;&#29616;&#12290;&#25105;&#20204;&#21482;&#38656;&#35201;&#25484;&#25569;&#27169;&#24335;&#30340;&#26680;&#24515;&#24605;&#24819;&#65292;&#32780;&#19981;&#29992;&#25304;&#27877;&#20110;&#26576;&#19968;&#31181;&#20855;&#20307;&#30340;&#23454;&#29616;&#26041;&#24335;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h3 id="&#38468;&#23436;&#25104;&#20195;&#30721;">
+     &#38468;&#23436;&#25104;&#20195;&#30721;
+    </h3>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Master &#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Master</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> List<span class="token operator">&lt;</span>Slave<span class="token operator">&gt;</span> slaves<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> SLAVES_COUNT <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> SUB_TASK_SIZE <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> AtomicInteger finishedTaskCount <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AtomicInteger</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> ConcurrentHashMap<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Integer<span class="token operator">&gt;</span> results<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Master</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        results <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcurrentHashMap</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        slaves <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> ConcurrentHashMap<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Integer<span class="token operator">&gt;</span> <span class="token function">startTask</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+
+        <span class="token comment">// 1 &#21019;&#24314;slave</span>
+        <span class="token function">createSlaves</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 2 &#20998;&#21457;&#20219;&#21153;</span>
+        <span class="token function">splitAndAssignTask</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 3 &#31561;&#24453;&#32467;&#26524;&#22788;&#29702;</span>
+        <span class="token function">checkTaskFinished</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 4 &#36820;&#22238;&#22788;&#29702;&#32467;&#26524;</span>
+        <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">createSlaves</span><span class="token punctuation">(</span>Master master<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>slaves<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            IntStream<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>SLAVES_COUNT<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>count <span class="token operator">-</span><span class="token operator">&gt;</span>
+                    slaves<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Slave</span><span class="token punctuation">(</span><span class="token string">"slave "</span> <span class="token operator">+</span> count<span class="token punctuation">,</span> master<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            slaves<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>slave <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+                slave<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">splitAndAssignTask</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> count <span class="token operator">=</span> task<span class="token punctuation">.</span><span class="token function">getCopyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> start <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>Task<span class="token operator">&gt;</span> subTasks <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>start <span class="token operator">&lt;=</span> count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> end <span class="token operator">=</span> count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>start <span class="token operator">+</span> SUB_TASK_SIZE <span class="token operator">&lt;=</span> count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                end <span class="token operator">=</span> start <span class="token operator">+</span> SUB_TASK_SIZE<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            subTasks<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">,</span> start<span class="token punctuation">,</span> end<span class="token punctuation">,</span> task<span class="token punctuation">.</span><span class="token function">getWord</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            start <span class="token operator">=</span> end<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> subTasks<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> slaveIndex <span class="token operator">=</span> i <span class="token operator">%</span> SLAVES_COUNT<span class="token punctuation">;</span>
+            slaves<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>slaveIndex<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">submitTask</span><span class="token punctuation">(</span>subTasks<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">subTaskFinished</span><span class="token punctuation">(</span>String slaveName<span class="token punctuation">,</span> <span class="token keyword">int</span> finishedSubTaskCount<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Integer count <span class="token operator">=</span> results<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>slaveName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>count <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            results<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>slaveName<span class="token punctuation">,</span> finishedSubTaskCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            results<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>slaveName<span class="token punctuation">,</span> count <span class="token operator">+</span> finishedSubTaskCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        finishedTaskCount<span class="token punctuation">.</span><span class="token function">getAndAdd</span><span class="token punctuation">(</span>finishedSubTaskCount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">checkTaskFinished</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>task<span class="token punctuation">.</span><span class="token function">getCopyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> finishedTaskCount<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+          
+          TimeUnit<span class="token punctuation">.</span>MILLISECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#20219;&#21153;&#20840;&#37096;&#23436;&#25104;&#65281;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        slaves<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>slave <span class="token operator">-</span><span class="token operator">&gt;</span> slave<span class="token punctuation">.</span><span class="token function">interrupt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        slaves<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">printResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        results<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"&#32447;&#31243;%s,&#23436;&#25104;&#20102;%d&#27425;&#25220;&#20889;"</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Slave &#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Slave</span> <span class="token keyword">extends</span> <span class="token class-name">Thread</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> Master master<span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> BlockingQueue<span class="token operator">&lt;</span>Task<span class="token operator">&gt;</span> tasks<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Slave</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> Master master<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>master <span class="token operator">=</span> master<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>tasks <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBlockingQueue</span><span class="token operator">&lt;</span>Task<span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">submitTask</span><span class="token punctuation">(</span>Task task<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        tasks<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Task task <span class="token operator">=</span> tasks<span class="token punctuation">.</span><span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                IntStream<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span>task<span class="token punctuation">.</span><span class="token function">getFrom</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> task<span class="token punctuation">.</span><span class="token function">getTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>
+                        count <span class="token operator">-</span><span class="token operator">&gt;</span> System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"&#32447;&#31243;%s&#31532;%d&#25220;&#20889;&#21333;&#35789;%s"</span><span class="token punctuation">,</span> name<span class="token punctuation">,</span> count<span class="token punctuation">,</span> task<span class="token punctuation">.</span><span class="token function">getWord</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                master<span class="token punctuation">.</span><span class="token function">subTaskFinished</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> task<span class="token punctuation">.</span><span class="token function">getCopyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"&#32447;&#31243;%s&#34987;&#25171;&#26029;"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Task &#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> copyCount<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> from<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> to<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String word<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Task</span><span class="token punctuation">(</span><span class="token keyword">int</span> copyCount<span class="token punctuation">,</span> <span class="token keyword">int</span> from<span class="token punctuation">,</span> <span class="token keyword">int</span> to<span class="token punctuation">,</span> String word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>copyCount <span class="token operator">=</span> copyCount<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>word <span class="token operator">=</span> word<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>from <span class="token operator">=</span> from<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>to <span class="token operator">=</span> to<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Task</span><span class="token punctuation">(</span><span class="token keyword">int</span> copyCount<span class="token punctuation">,</span> String word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>copyCount <span class="token operator">=</span> copyCount<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>word <span class="token operator">=</span> word<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>from <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>to <span class="token operator">=</span> copyCount<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getCopyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> copyCount<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getWord</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> word<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getFrom</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> from<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> to<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Client &#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
+        Task task <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span><span class="token string">"internationalization"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        Master master <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Master</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        master<span class="token punctuation">.</span><span class="token function">startTask</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        master<span class="token punctuation">.</span><span class="token function">printResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/968">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     35&#25286;&#20998;&#20320;&#30340;&#20219;&#21153;&#8212;&#23398;&#20064;&#20351;&#29992;Fork/Join&#26694;&#26550;
+    </p>
+   </div>
+  </a>
+  <!-- &#26410;&#20080;&#19981;&#21487;&#35797;&#35835;&#25110;&#32773;&#26410;&#24320;&#25918; -->
+  <a class="js-cantIn" data-cantaste="1" data-ifopen="1" href="javascript:;">
+   <div class="next r clearfix">
+    <p>
+     37 &#32467;&#26463;&#35821;
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        

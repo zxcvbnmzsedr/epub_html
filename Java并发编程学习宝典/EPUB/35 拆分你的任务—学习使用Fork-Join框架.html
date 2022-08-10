@@ -1,0 +1,314 @@
+
+        <html lang="en">
+        <head>
+        <meta charset="UTF-8"/>
+        </head>
+        <body>
+        <div><div class="markdown-body">
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style/style.css" type="text/css">
+
+<div class="markdown-body">
+    <div class="article-con">
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-title" style="margin-top: 0px;">
+  35&#25286;&#20998;&#20320;&#30340;&#20219;&#21153;&#8212;&#23398;&#20064;&#20351;&#29992;Fork/Join&#26694;&#26550;
+ </div>
+ <div class="art-info clearfix">
+  <span class="l">
+   &#26356;&#26032;&#26102;&#38388;&#65306;2019-12-25 09:40:02
+  </span>
+ </div>
+ <div class="art-top">
+  <img alt="" src="EPUB/cd93f390-186d-11ed-a978-acde48001122">
+  <div class="famous-word-box">
+   <img alt="" class="bg1 bg" src="EPUB/cdb6d73e-186d-11ed-a978-acde48001122">
+   <img alt="" class="bg2 bg" src="EPUB/cdd2d7ea-186d-11ed-a978-acde48001122">
+   <div class="famous-word">
+    &#35835;&#20070;&#32473;&#20154;&#20197;&#24555;&#20048;&#12289;&#32473;&#20154;&#20197;&#20809;&#24425;&#12289;&#32473;&#20154;&#20197;&#25165;&#24178;&#12290;
+    <p class="author">
+     &#8212;&#8212;&#22521;&#26681;
+    </p>
+   </div>
+  </div>
+ </div>
+ <div class="art-content js-lookimg">
+  <div id="article_content">
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#26412;&#33410;&#25105;&#20204;&#23398;&#20064; Excutor &#30340;&#21478;&#22806;&#19968;&#31181;&#23454;&#29616; ForkJoinPool&#12290;&#39038;&#21517;&#24605;&#20041;&#65292;ForkJoinPool &#30340;&#26680;&#24515;&#21151;&#33021;&#26377;&#20004;&#20010;&#12290;&#31532;&#19968;&#20010;&#26159; Fork&#65292;&#25286;&#35299;&#20320;&#30340;&#20219;&#21153;&#12290;&#31532;&#20108;&#20010;&#26159; Join&#65292;&#21512;&#24182;&#20219;&#21153;&#30340;&#25191;&#34892;&#32467;&#26524;&#12290;&#36825;&#20010;&#22330;&#26223;&#24456;&#24120;&#35265;&#65292;&#27604;&#22914;&#25105;&#20204;&#35201;&#22788;&#29702;&#19968;&#25209;&#25968;&#25454;&#65292;&#30001;&#20110;&#25968;&#25454;&#38388;&#27809;&#26377;&#20381;&#36182;&#24615;&#65292;&#37027;&#20040;&#25105;&#20204;&#21487;&#20197;&#25226;&#36825;&#19968;&#25209;&#25968;&#25454;&#25286;&#35299;&#20026;&#26356;&#23567;&#30340;&#25209;&#27425;&#65292;&#22810;&#32447;&#31243;&#24182;&#34892;&#22788;&#29702;&#12290;&#26368;&#21518;&#20877;&#21512;&#24182;&#22788;&#29702;&#30340;&#32467;&#26524;&#12290; Fork/Join &#30340;&#26680;&#24515;&#24605;&#24819;&#23601;&#26159;&#20998;&#32780;&#27835;&#20043;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;forkjoinpool-&#20171;&#32461;" style="font-size: 30px;">
+     1&#12289;ForkJoinPool &#20171;&#32461;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ForkJoinPool &#33258; Java 7 &#24341;&#20837;&#12290;&#23427;&#21644; ThreadPoolExecutor &#37117;&#32487;&#25215;&#33258; AbstractExecutorService&#65292;&#23454;&#29616;&#20102; ExecutorService &#21644; Executor &#25509;&#21475;&#12290;ForkJoinPool &#29992;&#26469;&#25226;&#22823;&#20219;&#21153;&#20999;&#20998;&#20026;&#23567;&#20219;&#21153;&#65292;&#22914;&#26524;&#20999;&#20998;&#23436;&#23567;&#20219;&#21153;&#36824;&#19981;&#22815;&#23567;&#65288;&#30001;&#20320;&#35774;&#32622;&#30340;&#38408;&#20540;&#20915;&#23450;&#65289;&#65292;&#37027;&#20040;&#23601;&#32487;&#32493;&#21521;&#19979;&#20999;&#20998;&#12290;&#32463;&#36807;&#20999;&#20998;&#21518;&#65292;&#26368;&#21518;&#30340;&#20219;&#21153;&#26159;&#37329;&#23383;&#22612;&#24418;&#29366;&#65292;&#35745;&#31639;&#23436;&#25104;&#21518;&#21521;&#19978;&#27719;&#24635;&#12290;&#22914;&#19979;&#22270;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     <img alt="&#22270;&#29255;&#25551;&#36848;" class="" data-original="//img.mukewang.com/5e01ac0f0001bcc116000994.jpg" src="EPUB/cdfb4ba8-186d-11ed-a978-acde48001122">
+     <br>
+     ForkJoinPool &#22788;&#29702;&#20219;&#21153;&#30340;&#26680;&#24515;&#24605;&#24819;&#21487;&#20197;&#29992;&#22914;&#19979;&#20266;&#20195;&#30721;&#34920;&#31034;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java">Result <span class="token function">solve</span><span class="token punctuation">(</span>Problem problem<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">if</span> <span class="token punctuation">(</span>problem is small<span class="token punctuation">)</span>
+ 		directly solve problem
+ <span class="token keyword">else</span> <span class="token punctuation">{</span>
+ 		split problem into independent parts
+ 		fork <span class="token keyword">new</span> <span class="token class-name">subtasks</span> to solve each part
+ 		join all subtasks
+ 		compose result from subresults
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22914;&#26524;&#19968;&#20010;&#20219;&#21153;&#36275;&#22815;&#23567;&#65292;&#37027;&#20040;&#25191;&#34892;&#20219;&#21153;&#36923;&#36753;&#12290;&#22914;&#26524;&#19981;&#22815;&#23567;&#65292;&#25286;&#20998;&#20026;&#20004;&#20010;&#29420;&#31435;&#30340;&#23376;&#20219;&#21153;&#12290;&#23376;&#20219;&#21153;&#25191;&#34892;&#21518;&#65292; &#21462;&#24471;&#20004;&#20010;&#23376;&#20219;&#21153;&#30340;&#25191;&#34892;&#32467;&#26524;&#36827;&#34892;&#21512;&#24182;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ForkJoinPool &#36890;&#36807; submit &#25191;&#34892; ForkJoinTask &#31867;&#22411;&#30340;&#20219;&#21153;&#12290;ForkJoinTask &#26159;&#25277;&#35937;&#31867;&#65292;&#26377;&#30528;&#19981;&#21516;&#30340;&#23376;&#31867;&#23454;&#29616;&#12290;&#27604;&#36739;&#24120;&#29992;&#30340;&#26159;&#22914;&#19979;&#20004;&#31181;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;RecursiveAction&#65292;&#27809;&#26377;&#36820;&#22238;&#20540;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;RecurisiveTask&#65292;&#26377;&#36820;&#22238;&#20540;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#27492;&#22806; submit &#26041;&#27861;&#36824;&#21487;&#20197;&#25191;&#34892; Callable &#21644; Runnable &#30340;&#25509;&#21475;&#23454;&#29616;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ForkJoinTask &#23601;&#26159;&#25105;&#20204;&#20026;&#20195;&#30721;&#20013;&#30340; problem&#12290;&#25105;&#26469;&#20030;&#20010;&#20363;&#23376;&#30475;&#20855;&#20307;&#22914;&#20309;&#20351;&#29992;&#12290;&#20551;&#22914;&#35753;&#20320;&#35745;&#31639; 1-10000 &#30340;&#21644;&#65292;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#21487;&#20197;&#25226;&#20219;&#21153;&#25286;&#35299;&#20026; 100 &#20010;&#65292;&#27599;&#20010;&#20219;&#21153;&#35745;&#31639; 100 &#20010;&#25968;&#23383;&#20043;&#21644;&#12290;&#20195;&#30721;&#22914;&#19979;.
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Task &#20195;&#30721;&#65307;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Task</span> <span class="token keyword">extends</span> <span class="token class-name">RecursiveTask</span><span class="token operator">&lt;</span>Integer<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> THRESHOLD <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> from<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> to<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Task</span><span class="token punctuation">(</span><span class="token keyword">int</span> from<span class="token punctuation">,</span> <span class="token keyword">int</span> to<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>from <span class="token operator">=</span> from<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>to <span class="token operator">=</span> to<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> Integer <span class="token function">compute</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>THRESHOLD <span class="token operator">&gt;</span> <span class="token punctuation">(</span>to <span class="token operator">-</span> from<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> IntStream<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span>from<span class="token punctuation">,</span> to <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> a <span class="token operator">+</span> b<span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">getAsInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> forkNumber <span class="token operator">=</span> <span class="token punctuation">(</span>from <span class="token operator">+</span> to<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            Task left <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span>from<span class="token punctuation">,</span> forkNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Task right <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span>forkNumber <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> to<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            left<span class="token punctuation">.</span><span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            right<span class="token punctuation">.</span><span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">return</span> left<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> right<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Task &#32487;&#25215;&#33258; RecursiveTask&#12290;&#36882;&#24402;&#20219;&#21153;&#30340;&#22823;&#23567;&#21147;&#24230;&#20026; 100&#12290;&#37325;&#20889;&#30340; compute &#26041;&#27861;&#21644;&#25991;&#31456;&#24320;&#22836;&#30340;&#20266;&#20195;&#30721; solve &#26159;&#19968;&#26679;&#30340;&#24605;&#36335;&#12290;&#20808;&#21028;&#26029;&#20219;&#21153;&#30340;&#22823;&#23567;&#26159;&#21542;&#22312; THRESHOLD &#20043;&#20869;&#12290;&#22914;&#26524;&#24050;&#32463;&#25286;&#35299;&#21040; THRESHOLD &#20869;&#65292;&#37027;&#20040;&#36827;&#34892;&#35745;&#31639;&#12290;&#22914;&#26524;&#20219;&#21153;&#25286;&#20998;&#36824;&#27809;&#36798;&#21040; THRESHOLD&#65292;&#37027;&#20040;&#32487;&#32493;&#25286;&#35299;&#20219;&#21153;&#12290;fork &#25805;&#20316;&#20250;&#25226;&#24403;&#21069;&#20219;&#21153;&#25918;&#20837;&#32447;&#31243;&#27744;&#20013;&#26469;&#25191;&#34892;&#12290;&#26368;&#21518;&#20877;&#36890;&#36807; join &#21462;&#24471;&#25191;&#34892;&#32467;&#26524;&#20570;&#21512;&#24182;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     Client &#20195;&#30721;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> ExecutionException<span class="token punctuation">,</span> InterruptedException <span class="token punctuation">{</span>
+        ForkJoinPool forkJoinPool <span class="token operator">=</span> ForkJoinPool<span class="token punctuation">.</span><span class="token function">commonPool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ForkJoinTask<span class="token operator">&lt;</span>Integer<span class="token operator">&gt;</span> result <span class="token operator">=</span> forkJoinPool<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Task</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"&#35745;&#31639;&#32467;&#26524;&#20026;"</span><span class="token operator">+</span>result<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        forkJoinPool<span class="token punctuation">.</span><span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25105;&#20204;&#39318;&#20808;&#36890;&#36807;&#38745;&#24577;&#26041;&#27861; commonPool &#22768;&#26126;&#19968;&#20010; ForkJoinPool&#12290;commonPool &#21019;&#24314;&#30340; ForkJoinPool &#28385;&#36275;&#32477;&#22823;&#22810;&#25968;&#30340;&#24212;&#29992;&#22330;&#26223;&#12290;&#28982;&#21518;&#36890;&#36807; submit &#26041;&#27861;&#25552;&#20132;&#25105;&#20204;&#30340; Task&#65292;&#35745;&#31639; 1-10000 &#30340;&#21644;&#12290;&#25552;&#20132; Task &#21518;&#65292;Task &#20013;&#30340; compute &#26041;&#27861;&#26368;&#32456;&#20250;&#34987;&#35843;&#29992;&#65292;&#36890;&#36807;&#23545;&#20219;&#21153;&#30340;&#25286;&#35299;&#65292;&#20197;&#21450;&#23545;&#20219;&#21153;&#35745;&#31639;&#32467;&#26524;&#30340;&#21512;&#24182;&#65292;&#27719;&#24635;&#21040;&#27492;&#22788;&#30340; Task &#20013;&#12290;&#36890;&#36807; Task &#30340; get &#26041;&#27861;&#33719;&#21462;&#35745;&#31639;&#32467;&#26524;&#12290;&#26368;&#21518;&#20851;&#38381;&#32447;&#31243;&#27744;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#25191;&#34892;&#32467;&#26524;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre><code>&#35745;&#31639;&#32467;&#26524;&#20026;50005000
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;forkjoinpool-&#21407;&#29702;&#20171;&#32461;" style="font-size: 30px;">
+     2&#12289;ForkJoinPool &#21407;&#29702;&#20171;&#32461;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ForkJoinPool &#20013;&#30340;&#27599;&#20010;&#32447;&#31243;&#37117;&#32500;&#25252;&#33258;&#24049;&#30340;&#24037;&#20316;&#38431;&#21015;&#12290;&#36825;&#26159;&#19968;&#20010;&#21452;&#31471;&#38431;&#21015;&#65292;&#26082;&#21487;&#20197;&#20808;&#36827;&#20808;&#20986;&#65292;&#20063;&#21487;&#20197;&#20808;&#36827;&#21518;&#20986;&#12290;&#31616;&#21333;&#26469;&#35828;&#23601;&#26159;&#38431;&#21015;&#20004;&#31471;&#37117;&#21487;&#20197;&#20570;&#20986;&#38431;&#25805;&#20316;&#12290;&#24403;&#27599;&#20010;&#32447;&#31243;&#20135;&#29983;&#26032;&#30340;&#20219;&#21153;&#26102;&#65288;&#27604;&#22914;&#35828;&#35843;&#29992;&#20102; fork &#25805;&#20316;&#65289;&#65292;&#20250;&#34987;&#21152;&#20837;&#21040;&#38431;&#23614;&#12290;&#32447;&#31243;&#24037;&#20316;&#30340;&#26102;&#20505;&#20250;&#20174;&#33258;&#24049;&#32500;&#25252;&#30340;&#24037;&#20316;&#38431;&#21015;&#30340; top &#20570;&#20986;&#38431;&#25805;&#20316;&#65288;LIFO&#65289;&#65292;&#21462;&#24471;&#20219;&#21153;&#26469;&#25191;&#34892;&#12290;&#32447;&#31243;&#36824;&#20250;&#21435;&#20854;&#23427;&#32447;&#31243;&#20219;&#21153;&#38431;&#21015;&#31363;&#21462;&#20219;&#21153;&#65292;&#27492;&#26102;&#26159;&#20174;&#20854;&#23427;&#38431;&#21015;&#30340; base &#21462;&#24471;&#20219;&#21153;&#65288;FIFO&#65289;&#12290;&#22914;&#19979;&#22270;&#25152;&#31034;&#65306;
+     <br>
+     <img alt="&#22270;&#29255;&#25551;&#36848;" class="" data-original="//img.mukewang.com/5e01abfb0001f1d315260880.jpg" src="EPUB/ce16ec78-186d-11ed-a978-acde48001122">
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#19979;&#38754;&#31616;&#21333;&#20171;&#32461;&#20960;&#20010;&#24120;&#29992;&#26041;&#27861;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     1&#12289;fork &#26041;&#27861;&#20013;&#20250;&#21028;&#26029;&#22914;&#26524;&#24403;&#21069;&#32447;&#31243;&#19981;&#26159; ForkJoinWorkerThread&#65292;&#21017;&#25226;&#20219;&#21153;&#21152;&#20837; submission queue&#12290;&#21542;&#21017;&#21152;&#20837;&#33258;&#24049;&#30340;&#24037;&#20316;&#38431;&#21015;&#20013;&#12290;submission queue &#27809;&#26377;&#20851;&#32852;&#30340;&#32447;&#31243;&#65292;&#26159;&#25152;&#26377;&#32447;&#31243;&#37117;&#21487;&#20197;&#25191;&#34892;&#30340;&#20219;&#21153;&#38431;&#21015;&#12290;fork &#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> ForkJoinTask<span class="token operator">&lt;</span>V<span class="token operator">&gt;</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Thread t<span class="token punctuation">;</span>
+  <span class="token comment">//&#21028;&#26029;&#26412;&#32447;&#31243;&#26159;&#21542;&#20026;ForkJoinWorkerThread&#65292;&#26159;&#30340;&#35805;&#65292;&#21152;&#20837;&#21040;&#33258;&#24049;&#30340;workQueue&#20013;&#65292;&#21542;&#21017;&#35843;&#29992;externalPush</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>t <span class="token operator">=</span> Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">instanceof</span> <span class="token class-name">ForkJoinWorkerThread</span><span class="token punctuation">)</span>
+        <span class="token punctuation">(</span><span class="token punctuation">(</span>ForkJoinWorkerThread<span class="token punctuation">)</span>t<span class="token punctuation">)</span><span class="token punctuation">.</span>workQueue<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        ForkJoinPool<span class="token punctuation">.</span>common<span class="token punctuation">.</span><span class="token function">externalPush</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     2&#12289;join &#26041;&#27861;&#20013;&#65292;&#33258;&#24049;&#20219;&#21153;&#27809;&#26377;&#25191;&#34892;&#23436;&#65292;&#21017;&#21462;&#30340;&#33258;&#24049;&#20219;&#21153;&#38431;&#21015;&#20013;&#30340;&#20219;&#21153;&#25191;&#34892;&#12290;&#22914;&#26524;&#21457;&#29616;&#33258;&#24049;&#30340;&#20219;&#21153;&#24050;&#32463;&#27809;&#26377;&#20102;&#65292;&#21017;&#20250;&#21435;&#31363;&#21462;&#20854;&#23427;&#32447;&#31243;&#30340;&#20219;&#21153;&#26469;&#25191;&#34892;&#12290;Join &#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> V <span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> s<span class="token punctuation">;</span>
+  <span class="token comment">//&#21462;&#24471;doJoin&#21518;&#30340;&#29366;&#24577;&#65292;&#20301;&#36816;&#31639;&#21518;&#21028;&#26029;&#26159;&#21542;&#27491;&#24120;&#65292;&#19981;&#27491;&#24120;&#30340;&#35805;&#25243;&#20986;&#24322;&#24120;&#12290;&#27491;&#24120;&#30340;&#35805;&#36820;&#22238;&#35745;&#31639;&#32467;&#26524;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>s <span class="token operator">=</span> <span class="token function">doJoin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> DONE_MASK<span class="token punctuation">)</span> <span class="token operator">!=</span> NORMAL<span class="token punctuation">)</span>
+        <span class="token function">reportException</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">getRawResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#20027;&#35201;&#36923;&#36753;&#22312; doJoin &#20013;&#65292;&#20195;&#30721;&#22914;&#19979;&#65306;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <pre class="language-java"><code class="prism language-java"><span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">doJoin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> s<span class="token punctuation">;</span> Thread t<span class="token punctuation">;</span> ForkJoinWorkerThread wt<span class="token punctuation">;</span> ForkJoinPool<span class="token punctuation">.</span>WorkQueue w<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>s <span class="token operator">=</span> status<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> s <span class="token operator">:</span>
+        <span class="token punctuation">(</span><span class="token punctuation">(</span>t <span class="token operator">=</span> Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">instanceof</span> <span class="token class-name">ForkJoinWorkerThread</span><span class="token punctuation">)</span> <span class="token operator">?</span>
+        <span class="token punctuation">(</span>w <span class="token operator">=</span> <span class="token punctuation">(</span>wt <span class="token operator">=</span> <span class="token punctuation">(</span>ForkJoinWorkerThread<span class="token punctuation">)</span>t<span class="token punctuation">)</span><span class="token punctuation">.</span>workQueue<span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">tryUnpush</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>s <span class="token operator">=</span> <span class="token function">doExec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">?</span> s <span class="token operator">:</span>
+        wt<span class="token punctuation">.</span>pool<span class="token punctuation">.</span><span class="token function">awaitJoin</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> 0L<span class="token punctuation">)</span> <span class="token operator">:</span>
+        <span class="token function">externalAwaitDone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     &#22914;&#26524;&#24403;&#21069;&#32447;&#31243;&#19981;&#26159; ForkJoinWorkerThread&#65292;&#21017;&#35843;&#29992; externalAwaitDone&#12290;&#22914;&#26524;&#26159; ForkJoinWorkerThread &#37027;&#20040;&#20808;&#36890;&#36807; tryUnpush &#20174;&#33258;&#24049;&#30340; workQueue &#30340; top &#20301;&#32622;&#21462;&#24471;&#24403;&#21069; task&#65292;&#28982;&#21518;&#35843;&#29992; doExec &#25191;&#34892;&#12290;&#36825;&#20004;&#27493;&#25104;&#21151;&#30340;&#35805;&#36820;&#22238;&#25191;&#34892;&#32467;&#26524; s&#65292;&#21542;&#21017;&#35843;&#29992; awaitJoin&#12290;&#36825;&#20010;&#26041;&#27861;&#20013;&#21028;&#26029;&#26412;&#20219;&#21153;&#26159;&#21542;&#25191;&#34892;&#23436;&#25104;&#65292;&#23436;&#25104;&#30452;&#25509;&#36820;&#22238;&#65292;&#21542;&#21017;&#20250;&#23581;&#35797;&#31363;&#25191;&#34892;&#21462;&#21035;&#30340;&#32447;&#31243;&#30340;&#20219;&#21153;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     3&#12289;submit &#26041;&#27861;&#20013;&#65292;&#20250;&#25226;&#20219;&#21153; push &#21040; submission queue&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ForkJoinPool &#36890;&#36807;&#20219;&#21153;&#31363;&#21462;&#65292;&#20351;&#24471;&#20219;&#21153;&#30340;&#25191;&#34892;&#26356;&#20026;&#39640;&#25928;&#12290;
+    </p>
+   </div>
+   <div class="cl-preview-section">
+    <h2 id="&#12289;&#24635;&#32467;" style="font-size: 30px;">
+     3&#12289;&#24635;&#32467;
+    </h2>
+   </div>
+   <div class="cl-preview-section">
+    <p style="font-size: 20px; line-height: 38px;">
+     ForkJoinPool &#20026;&#25105;&#20204;&#25286;&#20998;&#22823;&#20219;&#21153;&#20877;&#27719;&#24635;&#23567;&#20219;&#21153;&#35745;&#31639;&#32467;&#26524;&#25552;&#20379;&#20102;&#24456;&#22909;&#30340;&#25903;&#25345;&#12290;&#23427;&#24456;&#36866;&#21512;&#25191;&#34892;&#35745;&#31639;&#23494;&#38598;&#22411;&#30340;&#20219;&#21153;&#12290;&#20294;&#26159;&#22914;&#26524;&#20320;&#30340;&#20219;&#21153;&#25286;&#20998;&#36923;&#36753;&#27604;&#35745;&#31639;&#36923;&#36753;&#36824;&#35201;&#22797;&#26434;&#65292;ForkJoinPool &#24182;&#19981;&#33021;&#20026;&#20320;&#24102;&#26469;&#24615;&#33021;&#30340;&#25552;&#21319;&#65292;&#21453;&#32780;&#20250;&#36215;&#21040;&#36127;&#38754;&#20316;&#29992;&#12290;&#22240;&#27492;&#38656;&#35201;&#32467;&#21512;&#33258;&#24049;&#30340;&#22330;&#26223;&#26469;&#36873;&#25321;&#20351;&#29992;&#12290;
+    </p>
+   </div>
+   }
+  </div>
+ </div>
+ <!-- &#20080;&#36807;&#30340;&#38405;&#35835; -->
+ <div class="art-next-prev clearfix">
+  <!-- &#24050;&#20080;&#19988;&#24320;&#25918; &#25110;&#32773;&#21487;&#20197;&#35797;&#35835; -->
+  <a href="/read/49/article/1318">
+   <div class="prev l clearfix">
+    <div class="icon l">
+     <i class="imv2-arrow3_l">
+     </i>
+    </div>
+    <p>
+     34 &#35841;&#37117;&#19981;&#33021;&#20599;&#25042;-&#36890;&#36807; CompletableFuture &#32452;&#35013;&#20320;&#30340;&#24322;&#27493;&#35745;&#31639;&#21333;&#20803;
+    </p>
+   </div>
+  </a>
+  <!-- &#26410;&#20080;&#19981;&#21487;&#35797;&#35835;&#25110;&#32773;&#26410;&#24320;&#25918; -->
+  <a class="js-cantIn" data-cantaste="1" data-ifopen="1" href="javascript:;">
+   <div class="next r clearfix">
+    <p>
+     36 &#20026;&#22810;&#32447;&#31243;&#20204;&#23433;&#25490;&#19968;&#20301;&#32463;&#29702;&#8212;Master/Slave&#27169;&#24335;&#35814;&#35299;
+    </p>
+    <div class="icon r">
+     <i class="imv2-arrow3_r">
+     </i>
+    </div>
+   </div>
+  </a>
+ </div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+        </body>
+        
+        
