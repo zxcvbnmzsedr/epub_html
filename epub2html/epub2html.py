@@ -25,8 +25,8 @@ class Epub2Html():
         self.epub_name_without_ext = epub_name_without_ext
         self.outputdir = outputdir
         self.root_a_path = join(outputdir, epub_name_without_ext)
-
         self.unzip()
+
 
         opf_r_root_path = self.get_opf_r_root_path()
         self.index_a_path = join(self.root_a_path, "index.html")
@@ -238,10 +238,13 @@ def parse_dir(dir, out_path):
     for path, dir_list, file_list in epub_list:
         for file_name in file_list:
             epub_path = os.path.join(path, file_name)
-            r, cover = main(epub_path, out_path)
+            try:
+                r, cover = main(epub_path, out_path)
+                book_list.append(
+                    f"<a class='card' href=\"{r}\"><img src=\"{r}/{cover}\" /><div class='title'><p>{r}</p></div></a>")
+            except Exception as e:
+                print('处理' + epub_path)
 
-            book_list.append(
-                f"<a class='card' href=\"{r}\"><img src=\"{r}/{cover}\" /><div class='title'><p>{r}</p></div></a>")
 
     script_dir = dirname(abspath(__file__))
     template_path = join(script_dir, "index.html")
